@@ -188,7 +188,33 @@ function hasOptions(body: string): boolean {
   return /^[ \t]*-?[ \t]*[A-Da-d][.)][ \t]+\S/m.test(body);
 }
 
-function inferKind(title: string, body: string): QuestionKind {
+// A quoted error token followed by an arrow ("X" →) is the signature of the
+// error-correction variant-extraction path (`variantsErrorCorrection`'s
+// "quote form"). Some sections use this shape in their key without saying
+// "ERROR CORRECTION"/"SỬA LỖI" anywhere in the title — e.g. phase_4
+// lesson_07 Section C, "CORRECT THE INAPPROPRIATE IDIOM USE", whose key is
+// `1. "tip of the mountain" → sai idiom. Đúng: "the tip of the iceberg"`.
+// Falling through title-keyword inference alone classified it FILL_BLANK,
+// which stores the *entire* prose line as one variant instead of the actual
+// corrected idiom — a student answering "the tip of the iceberg" exactly
+// would never match. Gated on a >=50% ratio of the section's key items
+// (not just "contains one somewhere") because the pattern also shows up
+// incidentally as an explanatory aside inside otherwise-correct
+// MULTIPLE_CHOICE/TRANSFORMATION sections elsewhere in the corpus (verified:
+// those all score well under 50%, e.g. phase_2 lesson_04 Section A's MCQ
+// keyNotes "C (were — "a number of" → số nhiều)" score 3/15) — those return
+// long before reaching this check anyway (title keywords resolve them at
+// steps 2/3 above), but the ratio gate is kept as a second line of defense
+// for any future lesson whose title is similarly keyword-free.
+function looksLikeErrorCorrectionKey(keyRawBlock: string): boolean {
+  if (!keyRawBlock) return false;
+  const items = splitMarkedItems(keyRawBlock);
+  if (items.length === 0) return false;
+  const matching = items.filter((it) => /"[^"]+"\s*(?:→|->)/.test(it.raw));
+  return matching.length >= 2 && matching.length / items.length >= 0.5;
+}
+
+function inferKind(title: string, body: string, keyRawBlock: string): QuestionKind {
   const t = title.toUpperCase();
   // "COMPLET" (not "COMPLETE") deliberately catches both "COMPLETE" and
   // "COMPLETION" ("SENTENCE COMPLETION" is a real IELTS section title whose
@@ -213,6 +239,7 @@ function inferKind(title: string, body: string): QuestionKind {
   if (/TRANSLAT|DỊCH/.test(t)) return "TRANSLATION";
   if (/WRITING|FREE\b|ĐOẠN VĂN|PARAGRAPH|ESSAY|SPEAKING|VIẾT/.test(t)) return "OPEN_WRITING";
   if (hasOptions(body)) return "MULTIPLE_CHOICE";
+  if (looksLikeErrorCorrectionKey(keyRawBlock)) return "ERROR_CORRECTION";
   if (/_{3,}/.test(body)) return "FILL_BLANK";
   return "OPEN_WRITING";
 }
@@ -270,11 +297,25 @@ function unpackKeyLine(block: string): string {
     .replace(/^([A-Za-z]?\d+[a-z]?[.)])(?=\S)/gm, "$1 ")
     // A "matching" answer key (phase_3 lesson_12 Section D: "1-B, 2-C, 3-D,
     // 4-J, ...") uses "N-X" pairs instead of "N. X". Rewrite each pair onto
-    // its own line so the shared marker splitter picks it up. Gated on 3+
-    // occurrences in the same block so an incidental single hyphenated
-    // number ("a 24-hour service") in ordinary prose is never misread.
-    .replace(/(\d+)[ \t]*-[ \t]*([A-Za-z0-9]+)/g, (whole, num, ans, _off, full: string) => {
-      const count = (full.match(/\d+[ \t]*-[ \t]*[A-Za-z0-9]+/g) || []).length;
+    // its own line so the shared marker splitter picks it up.
+    //
+    // Two guards keep this from misreading ordinary hyphenated prose as a
+    // matching list:
+    //   - the answer side must START with a letter (`[A-Za-z]`, not
+    //     `[A-Za-z0-9]`) — this rejects a numeric range like "2024-2025"
+    //     while still accepting "1-B"/"2-C".
+    //   - 3+ occurrences must appear in the SAME key block — rejects an
+    //     incidental single hyphenated number ("a 24-hour service").
+    // Neither guard is bulletproof: a future lesson whose key block happens
+    // to mention 3+ unrelated "<number>-<word starting with a letter>"
+    // pairs in its own prose (e.g. repeated "24-hour"/"7-day"/"9-to-5"
+    // asides) would still be misread as a matching list. Not observed
+    // anywhere in the current 52-lesson corpus — if it ever is, tighten
+    // further by also requiring the matched numbers to form a plausible
+    // increasing item sequence (1, 2, 3, ...) rather than just counting
+    // occurrences.
+    .replace(/(\d+)[ \t]*-[ \t]*([A-Za-z][A-Za-z0-9]*)/g, (whole, num, ans, _off, full: string) => {
+      const count = (full.match(/\d+[ \t]*-[ \t]*[A-Za-z][A-Za-z0-9]*/g) || []).length;
       return count >= 3 ? `\n${num}. ${ans}` : whole;
     });
 }
@@ -456,6 +497,25 @@ function variantsMultipleChoice(
   return { variants: dedupeVariants(variants), keyNote };
 }
 
+// Vietnamese/English markers that introduce the corrected form when it isn't
+// bolded: "Lỗi: "X" → Sửa: Y", "... → sai idiom. Đúng: "Y"", "... Nên dùng:
+// "Y"", "**Error:** "X" **Correction:** "Y"", "**Corrected:** <sentence>".
+// Tolerant of optional surrounding `**` since these words are just as often
+// bolded as plain. Deliberately excludes "Error"/"Assessment"/"Note" — those
+// introduce a description of the MISTAKE, never the fix.
+const CORRECTION_MARKER =
+  /\*{0,2}(?:Sửa(?:\s+lại)?|Đúng|Nên\s+dùng|Corrected|Correction|Better|Correct)\*{0,2}\s*:?/gi;
+
+// A bold span whose entire content is JUST one of these structural label
+// words (optionally with a trailing "s" and/or colon) is a heading, not an
+// answer — e.g. `**Error:** "gave out" **Correction:** "gave in"` bolds
+// BOTH labels, and naively taking every bold token produced the literal,
+// never-matchable string "Error:" as a stored variant (phase_3 lesson_07
+// Section D and 4 other lessons — found by auditing every ERROR_CORRECTION
+// section's variants for leftover label words after the initial fix).
+const BOLD_LABEL_ONLY =
+  /^(?:Error|Correction|Corrected|Assessment|Better|Note|Answer)s?:?$/i;
+
 function variantsErrorCorrection(
   answers: string[]
 ): { variants: ParsedVariant[]; keyNote: string | null } {
@@ -463,50 +523,130 @@ function variantsErrorCorrection(
   let keyNote: string | null = null;
 
   for (const a of answers) {
-    const line = a.split("\n")[0];
-    // Quote form:  "goes" → **go** (full corrected sentence)
+    // Strip a trailing "---" section divider (markdown horizontal rule) —
+    // the last item's raw block commonly runs up to the next section's
+    // divider, and without this it leaks into the whole-line/plain-text
+    // fallback variants below (phase_4 lesson_02 Section E Q6).
+    const flat = a.replace(/\n/g, " ").replace(/[-–—]{3,}\s*$/, "").trim();
+
+    // A trailing parenthetical is usually an explanatory aside (keyNote),
+    // not part of the answer itself. Trailing `*`/space allowed so this
+    // still matches an italicized aside: "*(explanation)*". Everything from
+    // here on searches `searchRegion` (the text with that trailing aside
+    // sliced off), NOT `flat` — otherwise a quote living *inside* the aside
+    // (e.g. "(possessive thường tự nhiên hơn "of + agent")") can be
+    // mistaken for the answer. Verified against phase_3 lesson_09
+    // Section D Q1, a real case where this happened.
+    const trailingParen = flat.match(/\(([^)]*)\)[ \t*]*$/);
+    let searchRegion = flat;
+    if (trailingParen) {
+      keyNote = keyNote || stripMd(trailingParen[1]);
+      searchRegion = flat.slice(0, trailingParen.index);
+    }
+
+    // A quoted phrase that ITSELF contains bold markup ("take advantage
+    // **OF** new digital technologies") is a full-phrase answer with an
+    // inline emphasis marker on just the changed word — prefer the WHOLE
+    // quoted phrase over the bare emphasized fragment (phase_3 lesson_08
+    // Section D Q34-37: taking just "OF"/"Heavy"/"makes" instead of the full
+    // corrected phrase would reject a student's fuller, equally correct
+    // answer). Must run before the generic bold-fragment extraction below.
     //
-    // NOTE: an earlier version used a single regex with a lazy capture group
-    // followed by an OPTIONAL parenthetical — `([^*(→\n]+?)\**\s*(?:\(...\))?`
-    // — but because the trailing group is optional, the lazy quantifier is
-    // satisfied by the SHORTEST possible match (a single character, e.g. "g"
-    // instead of "go" for lesson_01 Q34: `"goes" → **go** (Does your brother
-    // go to school by bus?)`). Splitting the bold token and the parenthetical
-    // into two independent matches avoids that trap.
-    const qm = a.match(/"([^"]+)"\s*→\s*([\s\S]*)$/);
-    if (qm) {
-      const rest = qm[2];
-      const paren = rest.match(/\(([^)]*)\)/);
-      const bold = rest.match(/\*\*([^*]+)\*\*/);
-      if (bold) {
-        variants.push(mkVariant(stripMd(bold[1])));
-      } else {
-        const before = paren ? rest.slice(0, paren.index) : rest;
-        const w = stripMd(before);
-        if (w) variants.push(mkVariant(w));
-      }
-      if (paren) {
-        keyNote = keyNote || stripMd(paren[1]);
-        variants.push(mkVariant(stripMd(paren[1])));
-      }
+    // NOTE: this must first find PROPERLY PAIRED quotes (`"([^"]*)"`, same
+    // regex used everywhere else in this function) and only then filter for
+    // "**" inside each one's own content — matching `"[^"]*\*\*[^"]*"`
+    // directly is unsafe: with 2 unrelated quoted phrases and a `**label**`
+    // in between (`"do a real difference" → **Correction:** "make a real
+    // difference..."`), it can span from the FIRST phrase's closing quote
+    // to the SECOND phrase's opening quote, wrongly treating the label
+    // in between as if it were bolded quote content. Caught by re-running
+    // the fix against phase_3 lesson_08 Section D Q31 (no bold at all) and
+    // seeing it wrongly produce "Correction:" as the variant.
+    const properQuotes = [...searchRegion.matchAll(/"([^"]*)"/g)];
+    const boldedQuotes = properQuotes.filter((qm) => qm[1].includes("**"));
+    if (boldedQuotes.length > 0) {
+      for (const qm of boldedQuotes) variants.push(mkVariant(stripMd(qm[1])));
       continue;
     }
-    // Arrow form:  ❌ was write → ✓ was **written**
-    if (a.includes("→")) {
-      const parts = a.replace(/\n/g, " ").split("→");
-      let corr = parts[parts.length - 1];
-      const pn = corr.match(/\(([^)]*)\)\s*$/);
-      if (pn) {
-        keyNote = keyNote || stripMd(pn[1]);
-        corr = corr.replace(/\([^)]*\)\s*$/, "");
-      }
-      const bold = corr.match(/\*\*([^*]+)\*\*/);
-      if (bold) variants.push(mkVariant(stripMd(bold[1])));
-      const whole = stripMd(corr);
-      if (whole) variants.push(mkVariant(whole));
+
+    // Bold is the strongest "this is the answer" signal — except a bold
+    // token that's purely a structural label (see BOLD_LABEL_ONLY above),
+    // which is filtered out here before anything else runs.
+    const boldMatches = [...searchRegion.matchAll(/\*\*([^*]+)\*\*/g)].filter(
+      (bm) => !BOLD_LABEL_ONLY.test(bm[1].trim())
+    );
+    if (boldMatches.length > 0) {
+      for (const bm of boldMatches) variants.push(mkVariant(stripMd(bm[1])));
       continue;
     }
-    const w = stripMd(line);
+
+    // No usable bold: prefer whatever follows the LAST correction marker
+    // (quoted if quoted, else the plain text itself — several lessons put
+    // the full corrected sentence here as plain, unbolded, unquoted text:
+    // phase_4 lesson_02/lesson_03 Section E, "**Error:** ... **Corrected:**
+    // <full sentence>."). Taking the LAST marker (not the first) matters
+    // when a section stacks "Assessment:"/"Error:" before the real
+    // correction label (phase_3 lesson_07 Section D Q36: "**Assessment:**
+    // ... **Error:** "carrying on" **Better:** "carrying out""; picking the
+    // first marker here would stop at "Error:" and miss the actual answer
+    // introduced by "Better:"). This deliberately does NOT just take "every
+    // quote after the first" — verified against phase_4 lesson_07 Section C
+    // Q4, whose raw key is `"burn all its bridges..." → idiom dùng sai
+    // nghĩa. "Burn bridges" có nghĩa là... Câu này nên dùng: "abandon/
+    // dismantle environmental regulations"` — the MIDDLE quote ("Burn
+    // bridges") is an explanatory aside about what the idiom normally
+    // means, not a valid answer; only the quote(s) after "nên dùng:" are.
+    const markerMatches = [...searchRegion.matchAll(CORRECTION_MARKER)];
+    if (markerMatches.length > 0) {
+      const lastMarker = markerMatches[markerMatches.length - 1];
+      const afterMarker = searchRegion.slice(lastMarker.index! + lastMarker[0].length).trim();
+      const quotesAfter = [...afterMarker.matchAll(/"([^"]+)"/g)];
+      if (quotesAfter.length > 0) {
+        for (const qm of quotesAfter) variants.push(mkVariant(stripMd(qm[1])));
+        continue;
+      }
+      if (afterMarker) {
+        variants.push(mkVariant(stripMd(afterMarker)));
+        continue;
+      }
+    }
+
+    // No marker word, but there's still an arrow: prefer whatever follows
+    // the LAST arrow (quoted if quoted, else the plain text) — the
+    // corrected side always comes after the arrow, an explanatory quote
+    // could only precede it. Handles both phase_2 lesson_08 Section D Q35
+    // (`Change "due to it was raining" → "because it was raining" / "due to
+    // the heavy rain"`, no marker word but quoted alternates after →) and
+    // phase_3 lesson_04 Section E Q4 (`Error: *it* (...) → The city where I
+    // was born has changed...`, no marker word AND no quotes at all after →
+    // — just the plain corrected sentence).
+    const lastArrowIdx = searchRegion.lastIndexOf("→");
+    if (lastArrowIdx !== -1) {
+      const afterArrow = searchRegion.slice(lastArrowIdx + 1).trim();
+      const quotesAfterArrow = [...afterArrow.matchAll(/"([^"]+)"/g)];
+      if (quotesAfterArrow.length > 0) {
+        for (const qm of quotesAfterArrow) variants.push(mkVariant(stripMd(qm[1])));
+        continue;
+      }
+      if (afterArrow) {
+        variants.push(mkVariant(stripMd(afterArrow)));
+        continue;
+      }
+    }
+
+    // No marker, no arrow: if there are exactly two quoted substrings total,
+    // the second is conventionally the corrected form ("X" ... "Y", no
+    // explicit marker word or arrow). 3+ quotes with nothing to anchor on is
+    // genuinely ambiguous about which is the answer, so it falls through to
+    // the whole-line fallback below instead of guessing.
+    const allQuotes = [...searchRegion.matchAll(/"([^"]+)"/g)];
+    if (allQuotes.length === 2) {
+      variants.push(mkVariant(stripMd(allQuotes[1][1])));
+      continue;
+    }
+
+    // Last resort: no isolable answer token — use the whole line.
+    const w = stripMd(a.split("\n")[0]);
     if (w) variants.push(mkVariant(w));
   }
   return { variants: dedupeVariants(variants), keyNote };
@@ -629,8 +769,8 @@ export function parseExercise(
   // 4. Assemble sections + questions.
   const sections: ParsedSection[] = bodySections.map((bs) => {
     const overrideKind = overrides?.[bs.label];
-    const kind = overrideKind || inferKind(bs.title, bs.body);
     const keySec = keySections.get(bs.label);
+    const kind = overrideKind || inferKind(bs.title, bs.body, keySec?.rawBlock ?? "");
     const sectionOpen =
       !keyFound || kind === "OPEN_WRITING" || (keySec?.open ?? false);
     const keyAnswers = resolveAnswers(keySec, kind);

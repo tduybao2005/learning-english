@@ -90,6 +90,53 @@ describe("parseExercise — lesson_02_present_continuous (canonical)", () => {
   });
 });
 
+describe("parseExercise — phase_4 lesson_07_idioms_colloquialisms (ERROR_CORRECTION misclassified as FILL_BLANK)", () => {
+  // Regression test for a real false-negative grading bug: Section C's title
+  // ("CORRECT THE INAPPROPRIATE IDIOM USE") has no FILL/COMPLET/ERROR/SỬA LỖI
+  // keyword, so title-based inferKind alone fell through to FILL_BLANK (the
+  // body has "_______" blanks). FILL_BLANK's variant extraction then stored
+  // the ENTIRE prose answer line — `1. "tip of the mountain" → sai idiom.
+  // Đúng: "the tip of the iceberg"` — as one variant, so a student answering
+  // exactly "the tip of the iceberg" would never exact-match and would be
+  // marked wrong. inferKind now also looks at the section's own key content:
+  // when >=50% of a section's key items match the `"X" → ...` error-
+  // correction shape, it classifies ERROR_CORRECTION regardless of title.
+  const parsed = parseExercise(
+    fixture("phase_4_advanced/lesson_07_idioms_colloquialisms/exercise.md")
+  );
+  const secC = parsed.sections.find((s) => s.label === "C")!;
+
+  it("Section C is classified ERROR_CORRECTION, not FILL_BLANK", () => {
+    expect(secC.kind).toBe("ERROR_CORRECTION");
+  });
+
+  it("Q1 variant is exactly the corrected idiom, not the whole prose answer line", () => {
+    const q1 = secC.questions.find((q) => q.number === 1)!;
+    expect(q1.variants.map((v) => v.text)).toContain("the tip of the iceberg");
+    // the bug produced a variant containing the raw prose/labels verbatim —
+    // guard against that regressing back in.
+    for (const v of q1.variants) {
+      expect(v.text).not.toMatch(/sai idiom|Đúng:/);
+    }
+  });
+
+  it("Q5 has two variants (a marker introducing two alternate corrections)", () => {
+    const q5 = secC.questions.find((q) => q.number === 5)!;
+    expect(q5.variants.map((v) => v.text)).toEqual(
+      expect.arrayContaining(["burns the midnight oil", "goes the extra mile"])
+    );
+  });
+
+  it("every question in Section C has a clean, short (<40 char) variant", () => {
+    for (const q of secC.questions) {
+      expect(q.variants.length).toBeGreaterThan(0);
+    }
+    // Q1-3, Q6-7 are the clean short-idiom cases; assert on one more directly.
+    const q6 = secC.questions.find((q) => q.number === 6)!;
+    expect(q6.variants.map((v) => v.text)).toContain("a step in the right direction");
+  });
+});
+
 describe("parseExercise — phase3 lesson_01_passive_voice (worst-case headings)", () => {
   const parsed = parseExercise(
     fixture("phase_3_intermediate/lesson_01_passive_voice/exercise.md")
