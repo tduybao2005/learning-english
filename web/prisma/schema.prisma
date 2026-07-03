@@ -1,15 +1,255 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+enum GoalType {
+  IELTS
+  CEFR
+}
+
+enum QuestionKind {
+  FILL_BLANK
+  MULTIPLE_CHOICE
+  TRANSFORMATION
+  ERROR_CORRECTION
+  TRANSLATION
+  OPEN_WRITING
+}
+
+// LOCKED = no row
+enum LessonStatus {
+  UNLOCKED
+  COMPLETED
+  SKIPPED
+}
+
+enum MatchType {
+  EXACT
+  VARIANT
+  FUZZY
+  MANUAL
+  AI
+}
+
+enum ListeningKind {
+  PLACEMENT
+  PRACTICE
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  goalType      GoalType?
+  goalValue     String?   // "6.5" | "B2"
+  placementBand Float?
+  createdAt     DateTime  @default(now())
+  lessonProgress    LessonProgress[]
+  vocabProgress     VocabProgress[]
+  attempts          ExerciseAttempt[]
+  placementAttempts PlacementAttempt[]
+}
+
+model OtpCode {
+  id         String    @id @default(cuid())
+  email      String
+  codeHash   String    // sha256(code + SESSION_SECRET)
+  expiresAt  DateTime  // now + 10 min
+  attempts   Int       @default(0)  // max 5
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+  @@index([email, createdAt])
+}
+
+model Phase {
+  id         String   @id @default(cuid())
+  slug       String   @unique  // "phase_1_foundation"
+  orderIndex Int
+  title      String
+  cefrLabel  String   // "A1→A2"
+  lessons    Lesson[]
+}
+
+model Lesson {
+  id          String  @id @default(cuid())
+  phaseId     String
+  phase       Phase   @relation(fields: [phaseId], references: [id])
+  slug        String  // "lesson_01_simple_present"
+  orderIndex  Int
+  title       String
+  lectureMd   String  @db.Text
+  sourceDir   String
+  contentHash String  // sha256 of the 3 source files → idempotent seed
+  words       VocabWord[]
+  exercise    Exercise?
+  progress    LessonProgress[]
+  @@unique([phaseId, slug])
+}
+
+model VocabWord {
+  id         String @id @default(cuid())
+  lessonId   String
+  lesson     Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  groupName  String
+  word       String
+  ipa        String
+  meaningVi  String
+  exampleEn  String
+  orderIndex Int
+  progress   VocabProgress[]
+  @@unique([lessonId, orderIndex])
+}
+
+model Exercise {
+  id       String  @id @default(cuid())
+  lessonId String  @unique
+  lesson   Lesson  @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  title    String
+  sections Section[]
+  attempts ExerciseAttempt[]
+}
+
+// Shared question container for exercises, listening sets, placement tests.
+// Exactly one FK is set (app-level invariant).
+model Section {
+  id              String  @id @default(cuid())
+  exerciseId      String?
+  exercise        Exercise? @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  listeningSetId  String?
+  listeningSet    ListeningSet? @relation(fields: [listeningSetId], references: [id], onDelete: Cascade)
+  placementTestId String?
+  placementTest   PlacementTest? @relation(fields: [placementTestId], references: [id], onDelete: Cascade)
+  label        String   // "A"
+  title        String
+  kind         QuestionKind
+  instructions String?  @db.Text
+  orderIndex   Int
+  questions    Question[]
+}
+
+model Question {
+  id          String  @id @default(cuid())
+  sectionId   String
+  section     Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  number      Int     // global number within the exercise (matches answer key)
+  prompt      String  @db.Text
+  options     Json?   // [{label:"A",text:"has"},...]
+  answerRaw   String  @db.Text  // raw key line, audit + future AI context
+  keyNote     String? @db.Text
+  isOpenEnded Boolean @default(false)
+  variants    AnswerVariant[]
+  @@unique([sectionId, number])
+}
+
+model AnswerVariant {
+  id         String   @id @default(cuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  text       String   // display form
+  normalized String   // matching form
+  @@index([questionId])
+}
+
+model ExerciseAttempt {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  exerciseId  String
+  exercise    Exercise  @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  currentQuestionNumber Int @default(1)
+  answers     AttemptAnswer[]
+  @@index([userId, exerciseId])
+}
+
+model AttemptAnswer {
+  id               String  @id @default(cuid())
+  attemptId        String
+  attempt          ExerciseAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId       String
+  answerText       String  @db.Text
+  isCorrect        Boolean
+  matchType        MatchType?
+  tries            Int     @default(1)
+  wrongAnswers     Json?   // history of wrong submissions this run
+  explanation      String? @db.Text  // FUTURE: AI explanation
+  explanationModel String?           // FUTURE: model version
+  updatedAt        DateTime @updatedAt
+  @@unique([attemptId, questionId])
+}
+
+model LessonProgress {
+  userId      String
+  user        User   @relation(fields: [userId], references: [id])
+  lessonId    String
+  lesson      Lesson @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  status      LessonStatus
+  unlockedAt  DateTime @default(now())
+  completedAt DateTime?
+  @@id([userId, lessonId])
+}
+
+model VocabProgress {
+  userId         String
+  user           User      @relation(fields: [userId], references: [id])
+  wordId         String
+  word           VocabWord @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  box            Int       @default(0)  // Leitner 0..5; >=3 = learned
+  lastReviewedAt DateTime  @default(now())
+  @@id([userId, wordId])
+}
+
+model ListeningSet {
+  id           String @id @default(cuid())
+  slug         String @unique
+  title        String
+  kind         ListeningKind
+  audioUrl     String        // "/audio/listening/placement_01.mp3"
+  transcriptMd String @db.Text
+  durationSec  Int?
+  sections     Section[]
+}
+
+model PlacementTest {
+  id              String @id @default(cuid())
+  slug            String @unique  // "default"
+  readingMd       String @db.Text
+  writingPromptMd String @db.Text
+  listeningSetId  String?
+  bandTable       Json    // [{min:33,band:8.0},...] raw→band for reading & listening
+  sections        Section[]
+  attempts        PlacementAttempt[]
+}
+
+model PlacementAttempt {
+  id              String    @id @default(cuid())
+  userId          String
+  user            User      @relation(fields: [userId], references: [id])
+  testId          String
+  test            PlacementTest @relation(fields: [testId], references: [id])
+  startedAt       DateTime  @default(now())
+  completedAt     DateTime?
+  readingScore    Int?
+  listeningScore  Int?
+  band            Float?    // computed from reading+listening only (writing deferred)
+  writingText     String?   @db.Text  // stored, ungraded for now
+  writingBand     Float?    // FUTURE: AI
+  writingFeedback String?   @db.Text  // FUTURE: AI
+  answers         Json      // {questionId: {text, isCorrect}}
+}
+
+model IeltsTest {
+  id          String  @id @default(cuid())
+  number      Int     @unique  // 1..30
+  readingMd   String  @db.Text
+  writingMd   String  @db.Text
+  speakingMd  String  @db.Text
+  answerKeyMd String  @db.Text
+  isComplete  Boolean @default(true)
 }

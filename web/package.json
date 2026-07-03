@@ -8,9 +8,12 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "seed": "tsx scripts/seed/ingest.ts",
-    "seed:validate": "tsx scripts/seed/validate.ts",
-    "postinstall": "prisma generate"
+    "seed": "dotenv -e .env.local -- tsx scripts/seed/ingest.ts",
+    "seed:validate": "dotenv -e .env.local -- tsx scripts/seed/validate.ts",
+    "postinstall": "prisma generate",
+    "db:validate": "dotenv -e .env.local -- prisma validate",
+    "db:migrate": "dotenv -e .env.local -- prisma migrate dev",
+    "db:studio": "dotenv -e .env.local -- prisma studio"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
@@ -38,6 +41,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@vitest/coverage-v8": "^4.1.9",
+    "dotenv-cli": "^11.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.20",
     "tailwindcss": "^4",
