@@ -16,6 +16,15 @@ export interface VocabRow {
 const IPA_RE = /ipa|phát âm|pronunciation/i;
 const MEANING_RE = /nghĩa|meaning/i;
 const EXAMPLE_RE = /ví dụ|example/i;
+// Fallback for tables with no explicit "Ví dụ"/"Example" column, where a
+// "Cách dùng" ("usage") column's cell content is itself a full example
+// sentence (e.g. phase_3 lesson_10's "# | Cụm từ | Cách dùng" table: cells
+// like "*X increased **compared to** Y*"). Only applied as a second pass,
+// after an explicit example column, so it never shadows a table that has
+// BOTH a short "Usage Notes" column and a separate real "Example Sentence"
+// column (e.g. phase_5 lesson_04) — there, EXAMPLE_RE already matches
+// "Example Sentence" in the strict pass, so this fallback never fires.
+const EXAMPLE_FALLBACK_RE = /cách dùng|usage/i;
 const INDEX_RE = /^#$|^stt$/i;
 const SECTION_BREAK_RE = /bài tập|exercise/i;
 const HEADING_RE = /^#{1,4}\s+(.+)$/;
@@ -49,6 +58,15 @@ function detectColumnRoles(headerCells: string[]): ColumnRoles {
     if (roles.meaning === -1 && MEANING_RE.test(h)) { roles.meaning = i; return; }
     if (roles.example === -1 && EXAMPLE_RE.test(h)) { roles.example = i; return; }
   });
+  // Second pass: only if no explicit "Ví dụ"/"Example" column was found,
+  // fall back to a "Cách dùng"/"Usage" column (see EXAMPLE_FALLBACK_RE).
+  if (roles.example === -1) {
+    headerCells.forEach((h, i) => {
+      if (roles.example === -1 && i !== roles.word && i !== roles.ipa && i !== roles.meaning && EXAMPLE_FALLBACK_RE.test(h)) {
+        roles.example = i;
+      }
+    });
+  }
   return roles;
 }
 

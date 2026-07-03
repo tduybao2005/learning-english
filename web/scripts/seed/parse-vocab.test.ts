@@ -102,4 +102,28 @@ describe("parseVocab: real-corpus format variations", () => {
     expect(words).toHaveLength(1);
     expect(words[0].word).toBe("kill time");
   });
+
+  it("falls back to a 'Cách dùng' column as the example when no explicit Ví dụ/Example column exists (phase_3 lesson_10 chart-language style)", () => {
+    const md = `### Ngôn ngữ mô tả biểu đồ
+| # | Cụm từ | Cách dùng |
+|---|---|---|
+| 39 | compared to/with | *X increased **compared to** Y* |
+`;
+    const words = parseVocab(md);
+    expect(words).toEqual([
+      { groupName: "Ngôn ngữ mô tả biểu đồ", word: "compared to/with", ipa: "", meaningVi: "", exampleEn: "*X increased **compared to** Y*" },
+    ]);
+  });
+
+  it("does NOT let a 'Usage Notes' column shadow a separate real 'Example Sentence' column (phase_5 lesson_04 style)", () => {
+    const md = `### Presenting View A
+| Phrase | Essay Type | Usage Notes | Example Sentence |
+|---|---|---|---|
+| Proponents argue that... | Discussion | Formal; introduces View A | Proponents argue that stricter controls are essential. |
+`;
+    const words = parseVocab(md);
+    expect(words).toHaveLength(1);
+    expect(words[0].exampleEn).toBe("Proponents argue that stricter controls are essential.");
+    expect(words[0].exampleEn).not.toContain("Formal; introduces");
+  });
 });
