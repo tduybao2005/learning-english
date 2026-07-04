@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates, getNextLesson } from "@/lib/progress";
 import { getOrCreateOpenAttempt } from "@/lib/attempts";
+import { getOrderedQuestions } from "@/lib/exercises";
 import { ExerciseRunner, type NextLessonInfo } from "@/components/ExerciseRunner";
 import type { SafeQuestion } from "@/components/runner/QuestionCard";
 import { cn } from "@/lib/utils";
@@ -23,23 +24,7 @@ export default async function ExercisePage({
     where: { slug: lessonSlug, phase: { slug: phaseSlug } },
     include: {
       phase: true,
-      exercise: {
-        include: {
-          sections: {
-            orderBy: { orderIndex: "asc" },
-            select: {
-              kind: true,
-              questions: {
-                orderBy: { number: "asc" },
-                // Deliberately NOT selecting `answerRaw`/`variants`/`keyNote` —
-                // the answer key must never reach the client. Checking happens
-                // only server-side, in POST /api/attempts/[id]/answers.
-                select: { id: true, number: true, prompt: true, options: true, isOpenEnded: true },
-              },
-            },
-          },
-        },
-      },
+      exercise: { select: { id: true } },
     },
   });
 
@@ -68,17 +53,19 @@ export default async function ExercisePage({
     );
   }
 
-  const questions: SafeQuestion[] = lesson.exercise.sections.flatMap((section) =>
-    section.questions.map((q) => ({
-      id: q.id,
-      number: q.number,
-      prompt: q.prompt,
-      options: q.options as { label: string; text: string }[] | null,
-      kind: section.kind,
-      isOpenEnded: q.isOpenEnded,
-    })),
-  );
-  questions.sort((a, b) => a.number - b.number);
+  // `getOrderedQuestions` already returns the true pedagogical order
+  // (Section.orderIndex asc, then Question.number asc within each section —
+  // see its docstring for why raw `number` alone must never be re-sorted
+  // on: it restarts per section for most real lessons). No further sort.
+  const ordered = await getOrderedQuestions(lesson.exercise.id);
+  const questions: SafeQuestion[] = ordered.map((q) => ({
+    id: q.id,
+    number: q.number,
+    prompt: q.prompt,
+    options: q.options as { label: string; text: string }[] | null,
+    kind: q.kind,
+    isOpenEnded: q.isOpenEnded,
+  }));
 
   const attempt = await getOrCreateOpenAttempt(user.id, lesson.exercise.id);
 

@@ -7,6 +7,7 @@ import { getSessionUser } from "@/lib/auth/session";
 import { matchAnswer, type QuestionKind } from "@/lib/grading/match";
 import { explainer } from "@/lib/ai/grader";
 import { getNextLesson } from "@/lib/progress";
+import { getOrderedQuestions } from "@/lib/exercises";
 
 const bodySchema = z.object({
   questionId: z.string().min(1),
@@ -75,10 +76,26 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     });
   }
 
-  const totalQuestions = await db.question.count({
-    where: { section: { exerciseId: attempt.exerciseId } },
-  });
-  const isLastQuestion = question.number >= totalQuestions;
+  // `Question.number` is only unique *within its section* — it restarts at
+  // 1 in every section for most real lessons (e.g.
+  // phase_1_foundation/lesson_08_adjectives: A1..A12, B1..B10, ...), so it
+  // is NOT a cross-section ordinal and must never be compared against a
+  // whole-exercise count. `getOrderedQuestions` gives the one true global
+  // order (Section.orderIndex asc, then Question.number asc within each
+  // section); this question's 1-based position in that list is the real
+  // "how far through the exercise is this" signal.
+  const orderedQuestions = await getOrderedQuestions(attempt.exerciseId);
+  const totalQuestions = orderedQuestions.length;
+  const positionIndex = orderedQuestions.findIndex((q) => q.id === questionId);
+  if (positionIndex === -1) {
+    // Already validated above that this question belongs to the attempt's
+    // exercise, so this would mean `getOrderedQuestions` and the
+    // section/question relations have gone out of sync — a real bug, not
+    // a user-triggerable state. Fail loudly rather than silently miscount.
+    throw new Error(`Question ${questionId} not found in ordered list for exercise ${attempt.exerciseId}`);
+  }
+  const globalPosition = positionIndex + 1; // 1-based
+  const isLastQuestion = globalPosition === totalQuestions;
   const isCompleting = matchResult.correct && isLastQuestion;
 
   // Read-only lookup, safe to do outside the write transaction below — the
@@ -104,7 +121,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       await tx.exerciseAttempt.update({
         where: { id: attemptId },
         data: {
-          currentQuestionNumber: Math.max(attempt.currentQuestionNumber, question.number + 1),
+          currentQuestionNumber: Math.max(attempt.currentQuestionNumber, globalPosition + 1),
           completedAt: isCompleting ? new Date() : undefined,
         },
       });

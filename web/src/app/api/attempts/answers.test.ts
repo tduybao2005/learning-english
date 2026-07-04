@@ -1,6 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, vi } from "vitest";
 
 import { db } from "@/lib/db";
+import { getOrderedQuestions } from "@/lib/exercises";
 
 // `getSessionUser` reads the request-scoped `cookies()` from `next/headers`,
 // which throws when called outside a real Next.js request (verified: calling
@@ -259,5 +260,179 @@ describe("exercise runner API (integration, real Postgres)", () => {
 
     const newAnswers = await db.attemptAnswer.findMany({ where: { attemptId: newAttemptId } });
     expect(newAnswers).toHaveLength(0); // fresh attempt starts clean
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Regression coverage for a reviewer-found bug: `Question.number` is unique
+// only *within its section* (`@@unique([sectionId, number])`), NOT a global
+// ordinal within the exercise — Task 4's real parser assigns it from each
+// item's own marker digit (`A1.` -> 1, `B1.` -> 1, ...), so numbering
+// restarts at 1 in every section for most real lessons. Using raw `number`
+// for cross-section ordering/"is this the last question" broke exercise
+// completion (and therefore lesson unlocking) for those lessons entirely.
+//
+// This uses a REAL corpus lesson with exactly that shape —
+// `phase_1_foundation/lesson_08_adjectives` (confirmed via psql: Section A
+// numbers 1..12, Section B numbers 1..10, C 1..8, D 1..5, E 1..5 — 40
+// questions total, but max(number) across the whole exercise is only 12) —
+// rather than a synthetic fixture, so it can't accidentally pass by
+// constructing the "easy" bare-global-numbering case that
+// `lesson_01_simple_present` happens to have.
+// ---------------------------------------------------------------------------
+describe("real corpus lesson with per-section-restarting numbering (lesson_08_adjectives)", () => {
+  let corpusUserId: string;
+  let adjExerciseId: string;
+  let adjLessonId: string;
+  let nextLessonSlug: string;
+  let orderedIds: string[];
+  let answerByQuestionId: Map<string, string>;
+
+  beforeAll(async () => {
+    const lesson = await db.lesson.findFirstOrThrow({ where: { slug: "lesson_08_adjectives" } });
+    adjLessonId = lesson.id;
+
+    const exercise = await db.exercise.findUniqueOrThrow({ where: { lessonId: adjLessonId } });
+    adjExerciseId = exercise.id;
+
+    const nextLesson = await db.lesson.findFirstOrThrow({ where: { slug: "lesson_09_adverbs" } });
+    nextLessonSlug = nextLesson.slug;
+
+    const ordered = await getOrderedQuestions(adjExerciseId);
+    orderedIds = ordered.map((q) => q.id);
+
+    // First stored AnswerVariant per question is always a valid correct
+    // submission for `matchAnswer` (EXACT match).
+    const variants = await db.answerVariant.findMany({
+      where: { questionId: { in: orderedIds } },
+      orderBy: { id: "asc" },
+    });
+    answerByQuestionId = new Map();
+    for (const v of variants) {
+      if (!answerByQuestionId.has(v.questionId)) answerByQuestionId.set(v.questionId, v.text);
+    }
+
+    const user = await db.user.create({
+      data: { email: `runner-test-adj-${RUN_ID}@example.com` },
+    });
+    corpusUserId = user.id;
+    sessionMock.getSessionUser.mockResolvedValue(user);
+  });
+
+  afterAll(async () => {
+    await db.lessonProgress.deleteMany({ where: { userId: corpusUserId } });
+    await db.attemptAnswer.deleteMany({ where: { attempt: { userId: corpusUserId } } });
+    await db.exerciseAttempt.deleteMany({ where: { userId: corpusUserId } });
+    await db.user.delete({ where: { id: corpusUserId } });
+    // Real seeded curriculum data (Lesson/Exercise/Section/Question/
+    // AnswerVariant) is left untouched — only this test's own user-scoped
+    // rows are cleaned up.
+  });
+
+  it("orders questions by section then per-section number — not by raw number across the exercise", async () => {
+    // Independently derived expected order (not via `getOrderedQuestions`
+    // itself), so this actually checks the real DB relations agree with it.
+    const sections = await db.section.findMany({
+      where: { exerciseId: adjExerciseId },
+      orderBy: { orderIndex: "asc" },
+      include: { questions: { orderBy: { number: "asc" }, select: { id: true } } },
+    });
+    const expectedIds = sections.flatMap((s) => s.questions.map((q) => q.id));
+
+    expect(orderedIds).toEqual(expectedIds);
+    expect(orderedIds).toHaveLength(40);
+
+    const ordered = await getOrderedQuestions(adjExerciseId);
+    expect(ordered.slice(0, 12).map((q) => q.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+    // Section B starts right after Section A, restarting its own numbering at 1.
+    expect(ordered[12].number).toBe(1);
+
+    // Prove this genuinely differs from the bug: a naive whole-exercise sort
+    // by raw `number` would scramble 1,1,1,1,1,2,2,2,2,2,... together instead
+    // of preserving each section's internal 1..N run.
+    const naiveSorted = [...ordered].sort((a, b) => a.number - b.number);
+    expect(naiveSorted.map((q) => q.id)).not.toEqual(ordered.map((q) => q.id));
+  });
+
+  it(
+    "completing all 40 real questions (across 5 sections, numbering restarts every section) " +
+      "sets completedAt and unlocks the real next lesson (lesson_09_adverbs)",
+    async () => {
+      const created = await createAttempt(postRequest({ redo: true }), {
+        params: Promise.resolve({ id: adjExerciseId }),
+      });
+      const { attemptId } = await created.json();
+
+      let lastJson: { correct: boolean; completedLesson?: { nextLessonSlug: string | null } } | undefined;
+      for (const questionId of orderedIds) {
+        const answerText = answerByQuestionId.get(questionId);
+        expect(answerText, `question ${questionId} has no AnswerVariant fixture`).toBeDefined();
+
+        const res = await submitAnswer(postRequest({ questionId, answerText }), {
+          params: Promise.resolve({ id: attemptId }),
+        });
+        const json = await res.json();
+        expect(json.correct, `question ${questionId} should match its own real AnswerVariant`).toBe(true);
+        lastJson = json;
+      }
+
+      expect(lastJson?.completedLesson).toEqual({ nextLessonSlug });
+
+      const attempt = await db.exerciseAttempt.findUnique({ where: { id: attemptId } });
+      expect(attempt?.completedAt).not.toBeNull();
+
+      const thisLesson = await db.lessonProgress.findUnique({
+        where: { userId_lessonId: { userId: corpusUserId, lessonId: adjLessonId } },
+      });
+      expect(thisLesson?.status).toBe("COMPLETED");
+      expect(thisLesson?.completedAt).not.toBeNull();
+
+      const nextLesson = await db.lesson.findFirstOrThrow({ where: { slug: nextLessonSlug } });
+      const nextProgress = await db.lessonProgress.findUnique({
+        where: { userId_lessonId: { userId: corpusUserId, lessonId: nextLesson.id } },
+      });
+      expect(nextProgress?.status).toBe("UNLOCKED");
+    },
+  );
+
+  it("resume position advances correctly across a section boundary (Section A's last question doesn't freeze)", async () => {
+    const created = await createAttempt(postRequest({ redo: true }), {
+      params: Promise.resolve({ id: adjExerciseId }),
+    });
+    const { attemptId } = await created.json();
+
+    // Section A is positions 1..12 (raw numbers 1..12). Answer all of it.
+    for (let i = 0; i < 12; i++) {
+      const questionId = orderedIds[i];
+      const answerText = answerByQuestionId.get(questionId)!;
+      const res = await submitAnswer(postRequest({ questionId, answerText }), {
+        params: Promise.resolve({ id: attemptId }),
+      });
+      expect((await res.json()).correct).toBe(true);
+    }
+
+    let attempt = await db.exerciseAttempt.findUnique({ where: { id: attemptId } });
+    expect(attempt?.currentQuestionNumber).toBe(13); // advanced past all of Section A
+
+    // Section B's first question (position 13) has raw `number` = 1 — the
+    // exact value that broke the old `Math.max(current, question.number+1)`
+    // logic (Math.max(13, 1+1) = 13, frozen forever). Answer it and the next
+    // one, and confirm the position keeps climbing instead of freezing.
+    const sectionBQ1 = orderedIds[12];
+    const sectionBQ2 = orderedIds[13];
+
+    await submitAnswer(
+      postRequest({ questionId: sectionBQ1, answerText: answerByQuestionId.get(sectionBQ1)! }),
+      { params: Promise.resolve({ id: attemptId }) },
+    );
+    attempt = await db.exerciseAttempt.findUnique({ where: { id: attemptId } });
+    expect(attempt?.currentQuestionNumber).toBe(14); // NOT frozen at 13
+
+    await submitAnswer(
+      postRequest({ questionId: sectionBQ2, answerText: answerByQuestionId.get(sectionBQ2)! }),
+      { params: Promise.resolve({ id: attemptId }) },
+    );
+    attempt = await db.exerciseAttempt.findUnique({ where: { id: attemptId } });
+    expect(attempt?.currentQuestionNumber).toBe(15); // keeps climbing
   });
 });
