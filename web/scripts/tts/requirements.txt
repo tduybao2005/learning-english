@@ -1,0 +1,10 @@
+# NOTE: the plan originally specified `edge-tts==6.*`, but as of this
+# pipeline's implementation, edge-tts 6.1.19 (the latest 6.x release) fails
+# against Microsoft's current speech endpoint with a 403 (a known
+# Sec-MS-GEC/DRM-token-derivation drift issue between edge-tts and Edge's
+# actual client version — see edge-tts changelog/issues around the 7.0
+# rewrite). Pinned to the first 7.x release confirmed working end-to-end in
+# this environment instead. Re-verify with `edge-tts --version` +
+# a real `generate_audio.py` run after any future upgrade.
+edge-tts==7.2.8
+pydub

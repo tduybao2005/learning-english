@@ -1,0 +1,26 @@
+# Build context for web/Dockerfile is the repo root — keep the image build
+# fast by excluding everything the image doesn't need.
+
+.git
+.worktrees
+.superpowers
+.claude
+docs
+
+# Quarto PDF rendering artifacts / source, unrelated to the web app
+.quarto
+*.pdf
+plan*.md
+polymorphic-scribbling-journal.md
+_quarto.yml
+WORKFLOW.md
+
+# web/ build artifacts and local-only files (never needed in the image;
+# the Dockerfile builds fresh inside the container)
+web/node_modules
+web/.next
+web/.env*
+!web/.env.example
+web/scripts/tts/.venv
+web/scripts/tts/__pycache__
+web/src/generated
