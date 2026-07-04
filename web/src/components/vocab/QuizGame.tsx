@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -15,21 +15,45 @@ interface ReviewResult {
 /**
  * A 10-round (or fewer, on a small lesson) multiple-choice quiz: random
  * EN→VI or VI→EN direction per round, 4 options (fewer on a small lesson),
- * instant right/wrong color feedback, running streak counter. Rounds are
- * locked in once at mount (`useState` lazy init) so re-renders don't
- * reshuffle mid-session. Results accumulate client-side and are
- * batch-POSTed to `/api/vocab/review` once at the end — same pattern as
- * `Flashcards.tsx` — and, because `buildQuizRounds` samples without
- * replacement, no wordId can appear twice in one session's results.
+ * instant right/wrong color feedback, running streak counter. Results
+ * accumulate client-side and are batch-POSTed to `/api/vocab/review` once
+ * at the end — same pattern as `Flashcards.tsx` — and, because
+ * `buildQuizRounds` samples without replacement, no wordId can appear
+ * twice in one session's results.
+ *
+ * `rounds` starts `null` and is computed in a `useEffect` (Task 15 fix),
+ * NOT a `useState` lazy initializer — this component is still rendered
+ * once on the server (Next.js SSRs "use client" components for the initial
+ * HTML too), and `buildQuizRounds`'s default `rng` is `Math.random`, which
+ * produces a different shuffle on the server pass than on the client's
+ * hydration pass. That mismatch triggered a real React hydration error
+ * (#418) caught during this task's E2E smoke test. Deferring the shuffle to
+ * an effect means both the server render and the client's first render
+ * produce the same "loading" output; the real (random) rounds are only
+ * ever computed client-side, after hydration has already reconciled.
  */
 export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref: string }) {
-  const [rounds] = useState<QuizRound[]>(() => buildQuizRounds(words, 10, 4));
+  const [rounds, setRounds] = useState<QuizRound[] | null>(null);
   const [index, setIndex] = useState(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [results, setResults] = useState<ReviewResult[]>([]);
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+
+  useEffect(() => {
+    setRounds(buildQuizRounds(words, 10, 4));
+    // `words` is a stable prop per mount; this should run exactly once, not reshuffle on every parent re-render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (rounds === null) {
+    return (
+      <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
+        Đang chuẩn bị câu hỏi...
+      </p>
+    );
+  }
 
   const total = rounds.length;
   const done = index >= total;

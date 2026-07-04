@@ -33,6 +33,13 @@ function formatTime(totalSeconds: number): string {
  * `buildMatchRounds` sampling without replacement, every wordId appears at
  * most once in the whole session's results, so there is no duplicate-wordId
  * batching concern for this game either (see `games.ts`).
+ *
+ * `rounds` starts `null` and is computed in a `useEffect` (Task 15 fix), NOT
+ * a `useState` lazy initializer — see `QuizGame`'s docstring for why: this
+ * component is still server-rendered once for the initial HTML, and
+ * `buildMatchRounds`'s default `Math.random` rng shuffles differently on
+ * that server pass vs. the client hydration pass, which produced a real
+ * React hydration error (#418) caught during this task's E2E smoke test.
  */
 export function MatchGame({
   words,
@@ -43,7 +50,7 @@ export function MatchGame({
   backHref: string;
   lessonId: string;
 }) {
-  const [rounds] = useState<MatchRound[]>(() => buildMatchRounds(words, 6));
+  const [rounds, setRounds] = useState<MatchRound[] | null>(null);
   const [roundIndex, setRoundIndex] = useState(0);
   const [matched, setMatched] = useState<Set<string>>(new Set());
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
@@ -56,10 +63,20 @@ export function MatchGame({
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const wrongTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const totalRounds = rounds.length;
-  const round = rounds[roundIndex];
-  const allDone = roundIndex >= totalRounds;
+  // `totalRounds` (not `round`/`allDone`) is needed by the timer effect's
+  // dependency array below, so it's computed here, ahead of the
+  // rounds-not-ready-yet early return — 0 while `rounds` is still null,
+  // which correctly keeps the timer from starting until real rounds exist.
+  const totalRounds = rounds?.length ?? 0;
   const storageKey = `vocab-match-best:${lessonId}`;
+
+  // Compute the shuffled rounds client-side only, post-mount — see the
+  // docstring above for why this can't be a `useState` lazy initializer.
+  useEffect(() => {
+    setRounds(buildMatchRounds(words, 6));
+    // `words` is a stable prop per mount; this should run exactly once, not reshuffle mid-session.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Load the previous best time client-side only, after mount — reading
   // localStorage during render would desync server/client HTML.
@@ -84,6 +101,17 @@ export function MatchGame({
       if (wrongTimeoutRef.current) clearTimeout(wrongTimeoutRef.current);
     };
   }, []);
+
+  if (rounds === null) {
+    return (
+      <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
+        Đang chuẩn bị trò chơi...
+      </p>
+    );
+  }
+
+  const round = rounds[roundIndex];
+  const allDone = roundIndex >= totalRounds;
 
   async function submitResults(finalResults: ReviewResult[]) {
     setSaveState("saving");
