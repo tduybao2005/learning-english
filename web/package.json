@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run",
+    "test": "dotenv -e .env.local -- vitest run",
     "seed": "dotenv -e .env.local -- tsx scripts/seed/ingest.ts",
     "seed:validate": "dotenv -e .env.local -- tsx scripts/seed/validate.ts",
     "postinstall": "prisma generate",
