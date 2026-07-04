@@ -21,7 +21,21 @@ export interface SafeQuestion {
   isOpenEnded: boolean;
 }
 
-const BLANK_RE = /_{3,}/g;
+// Deliberately NOT the `g` flag: this module-level regex is shared across
+// every question render, and `RegExp.prototype.test()` on a `g`-flagged
+// regex mutates its own `lastIndex` as a side effect. That previously made
+// `BLANK_RE.test(...)` below intermittently return a false negative for a
+// perfectly valid blank — e.g. after matching a blank at some offset in one
+// prompt, `lastIndex` could land past the blank's position in the NEXT
+// prompt tested (a shorter string, or one with an earlier blank), silently
+// falling through to the generic textarea input instead of the inline
+// blank fields. Reproduced via a real browser run of the listening runner:
+// the very first FILL_BLANK question rendered as a bare textarea in dev
+// (React Strict Mode's double-render of the same component built up
+// `lastIndex` on the first pass, then failed `.test()` on the second).
+// `String.prototype.split()` doesn't need `g` either — the spec's
+// `Symbol.split` clones the regex internally regardless of the flag.
+const BLANK_RE = /_{3,}/;
 
 /** Splits a prompt into the text segments around each `______` blank. There
  * are always `blanks.length + 1` segments (possibly empty at the ends). */

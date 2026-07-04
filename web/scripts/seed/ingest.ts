@@ -1,10 +1,12 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { execFileSync } from "child_process";
 import { db } from "../../src/lib/db";
 import { listLessons, PHASE_META } from "./parse-lesson";
 import { parseVocab } from "./parse-vocab";
 import { parseExercise } from "./parse-exercise";
+import { parseListening } from "./parse-listening";
 import { loadOverrides, scopedOverrides } from "./overrides-loader";
 
 function parseArgs(argv: string[]) {
@@ -34,6 +36,114 @@ function contentHashOf(lectureMd: string, vocabMd: string, exerciseMd: string): 
     .update("\0")
     .update(exerciseMd)
     .digest("hex");
+}
+
+/** Reads an mp3's duration via `ffprobe` (assumed present locally — same
+ * environment that runs `generate_audio.py`). Returns null (not an error)
+ * if the file or the `ffprobe` binary is missing, so seeding never hard-fails
+ * just because audio hasn't been generated yet for a given listening set. */
+function probeDurationSec(mp3Path: string): number | null {
+  if (!fs.existsSync(mp3Path)) return null;
+  try {
+    const out = execFileSync("ffprobe", [
+      "-v", "error",
+      "-show_entries", "format=duration",
+      "-of", "csv=p=0",
+      mp3Path,
+    ]).toString().trim();
+    const sec = parseFloat(out);
+    return Number.isFinite(sec) ? Math.round(sec) : null;
+  } catch (err) {
+    console.warn(`[seed] WARN: ffprobe failed for ${mp3Path}: ${(err as Error).message}`);
+    return null;
+  }
+}
+
+/**
+ * Seeds `content/listening/*.md` into `ListeningSet` (+ Section/Question/
+ * AnswerVariant via `listeningSetId`, mirroring the Exercise subtree shape).
+ * Delete + recreate on every run (like the Exercise subtree above) — listening
+ * sets are few and hand-authored, so a content-hash skip isn't worth the
+ * complexity yet.
+ */
+async function seedListeningSets(repoRoot: string, dryRun: boolean) {
+  const contentDir = path.join(repoRoot, "web", "content", "listening");
+  if (!fs.existsSync(contentDir)) {
+    console.log("[seed] no web/content/listening directory — skipping listening sets");
+    return { count: 0, questions: 0 };
+  }
+
+  const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md")).sort();
+  let count = 0;
+  let totalQuestions = 0;
+
+  for (const file of files) {
+    const md = fs.readFileSync(path.join(contentDir, file), "utf8");
+    const parsed = parseListening(md);
+    const { slug, title, kind } = parsed.frontMatter;
+    const audioUrl = `/audio/listening/${slug}.mp3`;
+    const mp3Path = path.join(repoRoot, "web", "public", "audio", "listening", `${slug}.mp3`);
+    const durationSec = probeDurationSec(mp3Path);
+    const questionCount = parsed.questions.sections.reduce((n, s) => n + s.questions.length, 0);
+
+    if (!fs.existsSync(mp3Path)) {
+      console.warn(`[seed] WARN: ${slug} has no generated mp3 at ${mp3Path} — run scripts/tts/generate_audio.py first`);
+    }
+
+    if (dryRun) {
+      console.log(
+        `[seed] would upsert listening set: ${slug} "${title}" (${questionCount} questions, duration=${durationSec ?? "?"}s)`
+      );
+      count++;
+      totalQuestions += questionCount;
+      continue;
+    }
+
+    // Cascades (ListeningSet -> Section -> Question -> AnswerVariant) wipe
+    // any prior rows for this slug — acceptable pre-launch, same reasoning
+    // as the Exercise subtree above.
+    await db.listeningSet.deleteMany({ where: { slug } });
+    await db.listeningSet.create({
+      data: {
+        slug,
+        title,
+        kind,
+        audioUrl,
+        transcriptMd: parsed.transcriptMd,
+        durationSec: durationSec ?? undefined,
+        sections: {
+          create: parsed.questions.sections.map((section, sectionIndex) => ({
+            label: section.label,
+            title: section.title,
+            kind: section.kind,
+            instructions: section.instructions,
+            orderIndex: sectionIndex,
+            questions: {
+              create: section.questions.map((q) => ({
+                number: q.number,
+                prompt: q.prompt,
+                options: q.options ?? undefined,
+                answerRaw: q.answerRaw,
+                keyNote: q.keyNote,
+                isOpenEnded: q.isOpenEnded,
+                variants: {
+                  create: q.variants.map((v) => ({ text: v.text, normalized: v.normalized })),
+                },
+              })),
+            },
+          })),
+        },
+      },
+    });
+
+    console.log(
+      `[seed] listening set upserted: ${slug} "${title}" (${questionCount} questions, duration=${durationSec ?? "?"}s)`
+    );
+    count++;
+    totalQuestions += questionCount;
+  }
+
+  return { count, questions: totalQuestions };
 }
 
 async function main() {
@@ -214,6 +324,13 @@ async function main() {
 
   console.log(
     `[seed] done. created=${created} updated=${updated} skipped=${skipped} totalVocabWordsWritten=${totalWords} totalExerciseQuestionsWritten=${totalQuestions}${dryRun ? " (dry-run, no writes)" : ""}`
+  );
+
+  // Listening sets are independent of the phase/lesson walk above (and of
+  // `--phase` filtering) — always seed all of `content/listening/*.md`.
+  const listeningResult = await seedListeningSets(repoRoot, dryRun);
+  console.log(
+    `[seed] listening sets: ${listeningResult.count} set(s), ${listeningResult.questions} question(s)${dryRun ? " (dry-run, no writes)" : ""}`
   );
 
   await db.$disconnect();

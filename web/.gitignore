@@ -42,3 +42,7 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# python (TTS pipeline venv — see scripts/tts/requirements.txt for setup)
+scripts/tts/.venv
+scripts/tts/__pycache__
