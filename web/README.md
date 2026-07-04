@@ -48,7 +48,7 @@ See `.env.example`. All five are required for the app to run in any mode:
 
 | Variable | Local dev value (today) | Production (once Neon/Resend exist) |
 |---|---|---|
-| `DATABASE_URL` | `postgresql://…@localhost:5432/learning_english` | Neon **pooled** connection string |
+| `DATABASE_URL` | `postgresql://…@localhost:5432/learning_english` | Neon **pooled** connection string — append `?pgbouncer=true` (Prisma requires this against Neon's connection pooler) |
 | `DIRECT_URL` | same local Postgres URL | Neon **direct** (unpooled) connection string — used by `prisma migrate`/seed scripts |
 | `SESSION_SECRET` | `openssl rand -hex 32` output, kept in `.env.local` (never committed) | A separate, real secret — do not reuse the dev one |
 | `RESEND_API_KEY` | placeholder (`re_...`), never used because `OTP_DEV_ECHO=true` | Real Resend API key, after domain verification |
@@ -65,8 +65,8 @@ cd web
 npm install
 cp .env.example .env.local   # then fill in the local Postgres URL + a generated SESSION_SECRET
 npx prisma migrate dev       # creates schema against DATABASE_URL
-npm run seed                 # ingest lessons + vocab + exercises from content/lessons/**
-npm run seed:placement       # seed the placement test (content/placement/)
+npm run seed                 # ingest lessons + vocab + exercises from repo-root phase_*/**
+npm run seed:placement       # seed the placement test (from ielts_practice_tests/test_01/)
 npm run seed:ielts           # seed the 30 IELTS practice tests (ielts_practice_tests/)
 npm run dev                  # http://localhost:3000
 ```
@@ -82,11 +82,12 @@ npm run build && npm run start   # or: npx next start -p <port>
 
 Content lives outside the database as source-of-truth Markdown/JSON:
 
-- `web/content/lessons/**` — 52 lessons across 5 phases (lecture + vocab +
-  exercise `.md` per lesson).
-- `web/content/placement/` — the single placement test (listening/reading/
-  writing sections + band table).
-- `ielts_practice_tests/test_*/` (repo root) — 30 IELTS practice tests.
+- `phase_*/lesson_*/` (repo root) — 52 lessons across 5 phases (`lecture.md` +
+  `vocabulary.md` + `exercise.md` per lesson). The repo root is a content
+  repo; `web/` never edits these files, only reads them at seed time.
+- `ielts_practice_tests/test_01/` (repo root) — the placement test's source:
+  Passages 1-2 + Task 2 writing prompt + the reading band-conversion table.
+- `ielts_practice_tests/test_*/` (repo root) — all 30 IELTS practice tests.
 - `web/content/listening/*.md` — listening-set transcripts (2 today:
   `practice_01`, `placement_01`).
 
@@ -96,8 +97,8 @@ files — re-running the seed only touches lessons whose files actually
 changed), so the standard workflow after any content edit is:
 
 ```bash
-npm run seed              # re-ingest web/content/lessons/**
-npm run seed:placement    # re-ingest web/content/placement/
+npm run seed              # re-ingest repo-root phase_*/**
+npm run seed:placement    # re-ingest ielts_practice_tests/test_01/
 npm run seed:ielts        # re-ingest ielts_practice_tests/**
 npm run seed:validate -- --strict   # sanity-check the corpus (0 errors across all lessons)
 ```
