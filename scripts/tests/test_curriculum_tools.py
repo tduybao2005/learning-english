@@ -75,5 +75,47 @@ class ScanTests(unittest.TestCase):
         self.assertFalse(data["ielts_tests"][0]["files"]["answer_key.md"])
 
 
+class FrontmatterTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        make_fixture(self.tmp)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp)
+
+    def run_script(self, name, *args):
+        return subprocess.run(
+            [sys.executable, str(SCRIPTS / name), "--root", str(self.tmp), *args],
+            capture_output=True, text=True)
+
+    def test_adds_frontmatter_and_is_idempotent(self):
+        result = self.run_script("add_frontmatter.py")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        lecture = self.tmp / "phase_1_foundation/lesson_01_simple_present/lecture.md"
+        text = lecture.read_text(encoding="utf-8")
+        self.assertTrue(text.startswith("---\n"))
+        self.assertIn("type: lecture", text)
+        self.assertIn("phase: 1", text)
+        self.assertIn("cefr: A1-A2", text)
+        self.assertIn('topic: "simple present"', text)
+        # original first heading is preserved right after the frontmatter block
+        self.assertIn("# BÀI 1: THÌ HIỆN TẠI ĐƠN", text)
+        reading = (self.tmp / "ielts_practice_tests/test_01/reading.md").read_text(encoding="utf-8")
+        self.assertIn("type: ielts_reading", reading)
+        self.assertIn("test: 1", reading)
+        # second run changes nothing
+        before = text
+        result2 = self.run_script("add_frontmatter.py")
+        self.assertEqual(result2.returncode, 0, result2.stderr)
+        self.assertEqual(lecture.read_text(encoding="utf-8"), before)
+
+    def test_dry_run_writes_nothing(self):
+        lecture = self.tmp / "phase_1_foundation/lesson_01_simple_present/lecture.md"
+        before = lecture.read_text(encoding="utf-8")
+        result = self.run_script("add_frontmatter.py", "--dry-run")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(lecture.read_text(encoding="utf-8"), before)
+
+
 if __name__ == "__main__":
     unittest.main()
