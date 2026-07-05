@@ -18,7 +18,9 @@ app is planned under `web/`; see docs/superpowers/plans/).
 ## Layout
 
 - `phase_<N>_<name>/lesson_<NN>_<slug>/` — `lecture.md` + `vocabulary.md` +
-  `exercise.md` (answer key embedded under `## ANSWER KEY (ĐÁP ÁN)`).
+  `exercise.md` (answer key embedded; heading varies — search `ANSWER KEY` or
+  `ĐÁP ÁN` in H1–H3, see docs/content-model.md; phase-5 writing/speaking
+  exercises use inline `Gợi ý` model answers instead).
   Phases 1–5 map to CEFR A1-A2 → C1.
 - `phase_<N>_<name>/exam/` — `phase<N>_exam.md` + `phase<N>_answer_key.md`.
 - `ielts_practice_tests/test_<NN>/` — `reading.md`, `writing.md`,

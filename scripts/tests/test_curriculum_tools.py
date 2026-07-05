@@ -158,6 +158,17 @@ class BuildIndexTests(unittest.TestCase):
         self.assertIn("missing frontmatter", bad.stderr)
         self.assertIn("stale", bad.stderr)
 
+    def test_vietnamese_answer_key_heading_is_not_warned(self):
+        # Later phases head their embedded key e.g. '# ĐÁP ÁN (ANSWER KEY)' (H1)
+        exercise = self.tmp / "phase_1_foundation/lesson_01_simple_present/exercise.md"
+        exercise.write_text(
+            "# EXERCISE - BÀI 1\n\n## SECTION A\n\n1. Chọn đáp án đúng.\n\n# ĐÁP ÁN (ANSWER KEY)\n\n1. cooks\n",
+            encoding="utf-8")
+        self.run_script("add_frontmatter.py")
+        result = self.run_script("build_index.py")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertNotIn("exercise without", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

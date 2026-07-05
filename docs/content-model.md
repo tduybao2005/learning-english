@@ -36,10 +36,18 @@ followed by 3 practice exercises.
 
 **`exercise.md`**: `## SECTION <A..H>: <NAME>` sections (heading text varies
 per lesson); **question numbering is global and continuous across sections**;
-ends with an embedded `## ANSWER KEY (ĐÁP ÁN)` holding per-section answers.
+ends with an embedded answer key holding per-section answers.
 
 ### Answer-key conventions (critical for graders/parsers)
 
+- **The answer-key heading varies by phase** (match `ANSWER KEY` or `ĐÁP ÁN`
+  in any H1–H3 heading, not one literal string): `## ANSWER KEY (ĐÁP ÁN)`
+  (phase 1), `## ĐÁP ÁN (ANSWER KEY)` / `# ĐÁP ÁN (ANSWER KEY)` (phases 2–4),
+  `# ANSWER KEY — ĐÁP ÁN` (some phase-3 lessons).
+- **Phase-5 writing/speaking exercises have no answer-key section by design**
+  — they are productive tasks with inline `Gợi ý` model answers and a
+  `## BAND SCORE GUIDANCE` self-assessment instead (flagged as warnings by
+  `scripts/build_index.py --check`; that is expected).
 - Alternatives separated by `/`: `finishes / ends` — any listed variant is fully correct.
 - Parenthetical acceptance notes: `made / gave (both acceptable)`.
 - MCQ keys: `16. B (is having)`.

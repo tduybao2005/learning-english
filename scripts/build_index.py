@@ -7,13 +7,15 @@ Usage:
 
 Errors (exit 1): content file missing frontmatter; manifest stale (--check).
 Warnings (exit 0): incomplete lessons/exams/IELTS tests; exercise.md without
-an embedded '## ANSWER KEY' heading. Stdlib only.
+an embedded answer-key heading ('## ANSWER KEY (ĐÁP ÁN)' or
+'## ĐÁP ÁN (ANSWER KEY)'). Stdlib only.
 """
 from __future__ import annotations
 
 import argparse
 import datetime
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -21,6 +23,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from curriculum_lib import classify, has_frontmatter, scan_repo  # noqa: E402
 
 CONTENT_GLOBS = ("phase_*/*/*.md", "ielts_practice_tests/test_*/*.md")
+
+# Heading text/level varies by phase: '## ANSWER KEY (ĐÁP ÁN)',
+# '## ĐÁP ÁN (ANSWER KEY)', '# ĐÁP ÁN (ANSWER KEY)', '# ANSWER KEY — ĐÁP ÁN'.
+# Uppercase tokens keep instruction prose ('Chọn đáp án...') from matching.
+ANSWER_KEY_HEADING_RE = re.compile(r"^#{1,3}\s.*(ANSWER KEY|ĐÁP ÁN)", re.MULTILINE)
 
 
 def validate(root: Path, data: dict) -> tuple[list[str], list[str]]:
@@ -33,8 +40,8 @@ def validate(root: Path, data: dict) -> tuple[list[str], list[str]]:
             text = path.read_text(encoding="utf-8")
             if not has_frontmatter(text):
                 errors.append(f"missing frontmatter: {rel}")
-            if rel.name == "exercise.md" and "## ANSWER KEY" not in text:
-                warnings.append(f"exercise without '## ANSWER KEY' heading: {rel}")
+            if rel.name == "exercise.md" and not ANSWER_KEY_HEADING_RE.search(text):
+                warnings.append(f"exercise without embedded answer-key heading: {rel}")
     for phase in data["phases"]:
         for lesson in phase["lessons"]:
             for fname, ok in lesson["files"].items():
