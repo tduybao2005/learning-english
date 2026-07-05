@@ -117,5 +117,47 @@ class FrontmatterTests(unittest.TestCase):
         self.assertEqual(lecture.read_text(encoding="utf-8"), before)
 
 
+class BuildIndexTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        make_fixture(self.tmp)
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp)
+
+    def run_script(self, name, *args):
+        return subprocess.run(
+            [sys.executable, str(SCRIPTS / name), "--root", str(self.tmp), *args],
+            capture_output=True, text=True)
+
+    def test_generates_manifest_and_status(self):
+        self.run_script("add_frontmatter.py")
+        result = self.run_script("build_index.py")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        manifest = json.loads((self.tmp / "index/manifest.json").read_text(encoding="utf-8"))
+        self.assertIn("generated_at", manifest)
+        self.assertEqual(len(manifest["phases"]), 1)
+        self.assertFalse(manifest["ielts_tests"][0]["complete"])
+        status = (self.tmp / "docs/STATUS.md").read_text(encoding="utf-8")
+        self.assertIn("lesson_01_simple_present", status)
+        self.assertIn("test_01", status)
+        # incomplete IELTS test surfaces as a warning, not an error
+        self.assertIn("WARN:", result.stdout)
+
+    def test_check_passes_when_fresh_and_fails_on_drift(self):
+        self.run_script("add_frontmatter.py")
+        self.run_script("build_index.py")
+        ok = self.run_script("build_index.py", "--check")
+        self.assertEqual(ok.returncode, 0, ok.stdout + ok.stderr)
+        # add a new lesson (no frontmatter, manifest now stale)
+        new = self.tmp / "phase_1_foundation" / "lesson_02_present_continuous"
+        new.mkdir()
+        (new / "lecture.md").write_text("# BÀI 2\n", encoding="utf-8")
+        bad = self.run_script("build_index.py", "--check")
+        self.assertEqual(bad.returncode, 1)
+        self.assertIn("missing frontmatter", bad.stderr)
+        self.assertIn("stale", bad.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
