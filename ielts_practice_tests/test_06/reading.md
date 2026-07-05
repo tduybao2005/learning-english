@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_06/reading"
+type: ielts_reading
+test: 6
+cefr: C1
+title: "IELTS Academic Reading — Test 06"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 06
 
 **Time allowed: 60 minutes | Total questions: 40**

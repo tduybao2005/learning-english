@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_11_sentence_structure/lecture"
+type: lecture
+phase: 1
+lesson: lesson_11_sentence_structure
+topic: "sentence structure"
+cefr: A1-A2
+title: "BÀI 11: CẤU TRÚC CÂU (SENTENCE STRUCTURE)"
+lang: vi-en
+---
+
 # BÀI 11: CẤU TRÚC CÂU (SENTENCE STRUCTURE)
 
 ---

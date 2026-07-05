@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_08_collocations/lecture"
+type: lecture
+phase: 3
+lesson: lesson_08_collocations
+topic: "collocations"
+cefr: B1-B2
+title: "BÀI 8: COLLOCATIONS — TỪ KẾT HỢP TỰ NHIÊN"
+lang: vi-en
+---
+
 # BÀI 8: COLLOCATIONS — TỪ KẾT HỢP TỰ NHIÊN
 
 ## Mục tiêu bài học

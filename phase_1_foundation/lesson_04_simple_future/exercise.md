@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_04_simple_future/exercise"
+type: exercise
+phase: 1
+lesson: lesson_04_simple_future
+topic: "simple future"
+cefr: A1-A2
+title: "EXERCISE - BÀI 4: THÌ TƯƠNG LAI (WILL / GOING TO / PRESENT CONTINUOUS)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 4: THÌ TƯƠNG LAI (WILL / GOING TO / PRESENT CONTINUOUS)
 ## Bài tập tổng hợp
 

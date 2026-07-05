@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_05_advanced_passive/exercise"
+type: exercise
+phase: 4
+lesson: lesson_05_advanced_passive
+topic: "advanced passive"
+cefr: B2-C1
+title: "EXERCISE — Bài 5: Advanced Passive Voice"
+lang: vi-en
+---
+
 # EXERCISE — Bài 5: Advanced Passive Voice
 
 ## SECTION A: Impersonal Passive Type A (10 items)

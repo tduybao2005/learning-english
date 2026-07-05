@@ -1,3 +1,12 @@
+---
+id: "phase_3_intermediate/exam/phase3_exam"
+type: phase_exam
+phase: 3
+cefr: B1-B2
+title: "KIỂM TRA CUỐI GIAI ĐOẠN 3 — INTERMEDIATE (B1→B2)"
+lang: vi-en
+---
+
 # KIỂM TRA CUỐI GIAI ĐOẠN 3 — INTERMEDIATE (B1→B2)
 **Thời gian:** 120 phút | **Tổng điểm:** 100 điểm
 

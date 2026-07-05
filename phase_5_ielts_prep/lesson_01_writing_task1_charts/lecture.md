@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_01_writing_task1_charts/lecture"
+type: lecture
+phase: 5
+lesson: lesson_01_writing_task1_charts
+topic: "writing task1 charts"
+cefr: C1
+title: "BÀI 1: IELTS WRITING TASK 1 — BIỂU ĐỒ & ĐỒ THỊ"
+lang: vi-en
+---
+
 # BÀI 1: IELTS WRITING TASK 1 — BIỂU ĐỒ & ĐỒ THỊ
 
 **Giai đoạn:** Phase 5 — IELTS Preparation  

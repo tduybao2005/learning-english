@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_04_simple_future/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_04_simple_future
+topic: "simple future"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 4: FUTURE PLANS, PREDICTIONS & LIFE EVENTS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 4: FUTURE PLANS, PREDICTIONS & LIFE EVENTS
 ## Từ vựng: Kế hoạch tương lai, Dự đoán & Sự kiện cuộc đời
 

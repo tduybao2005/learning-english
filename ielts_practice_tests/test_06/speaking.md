@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_06/speaking"
+type: ielts_speaking
+test: 6
+cefr: C1
+title: "IELTS SPEAKING — TEST 06"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 06
 
 **Topics:** Sport & Fitness / Health & Wellbeing / Community & Neighbourhood

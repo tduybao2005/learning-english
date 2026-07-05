@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_26/reading"
+type: ielts_reading
+test: 26
+cefr: C1
+title: "IELTS Academic Reading — Test 26"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 26
 **Time allowed: 60 minutes**
 **Total questions: 40**

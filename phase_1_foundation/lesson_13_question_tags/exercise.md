@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_13_question_tags/exercise"
+type: exercise
+phase: 1
+lesson: lesson_13_question_tags
+topic: "question tags"
+cefr: A1-A2
+title: "EXERCISE - BÀI 13: CÂU HỎI ĐUÔI — THÌ HIỆN TẠI ĐƠN (QUESTION TAGS — SIMPLE PRESENT)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 13: CÂU HỎI ĐUÔI — THÌ HIỆN TẠI ĐƠN (QUESTION TAGS — SIMPLE PRESENT)
 ## Bài tập tổng hợp
 

@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_01_past_continuous/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_01_past_continuous
+topic: "past continuous"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

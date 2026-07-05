@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_04_writing_task2_discussion_essay/lecture"
+type: lecture
+phase: 5
+lesson: lesson_04_writing_task2_discussion_essay
+topic: "writing task2 discussion essay"
+cefr: C1
+title: "BÀI 4: IELTS TASK 2 — CÁC LOẠI BÀI LUẬN KHÁC"
+lang: vi-en
+---
+
 # BÀI 4: IELTS TASK 2 — CÁC LOẠI BÀI LUẬN KHÁC
 
 **Mục tiêu bài học:**

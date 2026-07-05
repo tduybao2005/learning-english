@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_10/reading"
+type: ielts_reading
+test: 10
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 10"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 10
 
 **Time allowed:** 60 minutes

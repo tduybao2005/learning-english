@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_07_idioms_colloquialisms/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_07_idioms_colloquialisms
+topic: "idioms colloquialisms"
+cefr: B2-C1
+title: "BÀI 7: VOCABULARY — IDIOMS & COLLOQUIALISMS"
+lang: vi-en
+---
+
 # BÀI 7: VOCABULARY — IDIOMS & COLLOQUIALISMS
 ## Bảng tra cứu & Bài tập từ vựng
 

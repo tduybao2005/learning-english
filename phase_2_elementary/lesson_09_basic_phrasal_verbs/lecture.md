@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_09_basic_phrasal_verbs/lecture"
+type: lecture
+phase: 2
+lesson: lesson_09_basic_phrasal_verbs
+topic: "basic phrasal verbs"
+cefr: A2-B1
+title: "BÀI 9: ĐỘNG TỪ CỤM (PHRASAL VERBS) CƠ BẢN"
+lang: vi-en
+---
+
 # BÀI 9: ĐỘNG TỪ CỤM (PHRASAL VERBS) CƠ BẢN
 
 ## Phrasal Verb là gì?

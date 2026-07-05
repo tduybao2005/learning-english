@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_02/speaking"
+type: ielts_speaking
+test: 2
+cefr: C1
+title: "IELTS SPEAKING — TEST 02"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 02
 
 **Topics:** Environment & Travel / Books & Reading / Leisure & Social Life

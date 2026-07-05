@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_05/speaking"
+type: ielts_speaking
+test: 5
+cefr: C1
+title: "IELTS SPEAKING — TEST 05"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 05
 
 **Overview:** The IELTS Speaking test is 11–14 minutes, conducted as a face-to-face interview.

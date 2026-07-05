@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_02_conditionals_type1_2/lecture"
+type: lecture
+phase: 3
+lesson: lesson_02_conditionals_type1_2
+topic: "conditionals type1 2"
+cefr: B1-B2
+title: "BÀI 2: CÂU ĐIỀU KIỆN LOẠI 1 & 2 (CONDITIONALS TYPE 1 & 2)"
+lang: vi-en
+---
+
 # BÀI 2: CÂU ĐIỀU KIỆN LOẠI 1 & 2 (CONDITIONALS TYPE 1 & 2)
 
 ---

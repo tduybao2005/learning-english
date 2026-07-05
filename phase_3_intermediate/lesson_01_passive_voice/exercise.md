@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_01_passive_voice/exercise"
+type: exercise
+phase: 3
+lesson: lesson_01_passive_voice
+topic: "passive voice"
+cefr: B1-B2
+title: "BÀI TẬP BÀI 1: THỂ BỊ ĐỘNG (PASSIVE VOICE)"
+lang: vi-en
+---
+
 # BÀI TẬP BÀI 1: THỂ BỊ ĐỘNG (PASSIVE VOICE)
 ## Tổng số: 45 bài tập
 

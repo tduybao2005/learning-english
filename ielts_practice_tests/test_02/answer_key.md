@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_02/answer_key"
+type: ielts_answer_key
+test: 2
+cefr: C1
+title: "ĐÁP ÁN — TEST 02"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 02
 
 **Chủ đề:** Coral Reef Ecosystems / History of Urban Planning / Economics of Happiness

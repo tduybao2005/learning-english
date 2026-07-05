@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_07_advanced_phrasal_verbs/lecture"
+type: lecture
+phase: 3
+lesson: lesson_07_advanced_phrasal_verbs
+topic: "advanced phrasal verbs"
+cefr: B1-B2
+title: "BÀI 7: ĐỘNG TỪ CỤM NÂNG CAO (ADVANCED PHRASAL VERBS)"
+lang: vi-en
+---
+
 # BÀI 7: ĐỘNG TỪ CỤM NÂNG CAO (ADVANCED PHRASAL VERBS)
 
 ## Mục tiêu bài học

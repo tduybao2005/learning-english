@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_01/speaking"
+type: ielts_speaking
+test: 1
+cefr: C1
+title: "IELTS Academic Speaking — Test 01"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 01
 
 **Time allowed: 11–14 minutes (approximately)**

@@ -1,3 +1,12 @@
+---
+id: "phase_1_foundation/exam/phase1_exam"
+type: phase_exam
+phase: 1
+cefr: A1-A2
+title: "KIỂM TRA CUỐI GIAI ĐOẠN 1 — FOUNDATION (A1 → A2)"
+lang: vi-en
+---
+
 # KIỂM TRA CUỐI GIAI ĐOẠN 1 — FOUNDATION (A1 → A2)
 
 **Thời gian:** 90 phút | **Tổng điểm:** 100 điểm | **Ngày làm bài:** ___________

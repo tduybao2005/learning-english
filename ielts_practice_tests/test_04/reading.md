@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_04/reading"
+type: ielts_reading
+test: 4
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 04"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 04
 
 **Time allowed: 60 minutes**

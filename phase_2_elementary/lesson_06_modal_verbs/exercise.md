@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_06_modal_verbs/exercise"
+type: exercise
+phase: 2
+lesson: lesson_06_modal_verbs
+topic: "modal verbs"
+cefr: A2-B1
+title: "EXERCISE — BÀI 6: ĐỘNG TỪ TÌNH THÁI (MODAL VERBS)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 6: ĐỘNG TỪ TÌNH THÁI (MODAL VERBS)
 
 **Tổng số bài tập: 51 câu**

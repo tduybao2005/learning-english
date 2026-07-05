@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_11/speaking"
+type: ielts_speaking
+test: 11
+cefr: C1
+title: "IELTS Practice Test 11 — Speaking"
+lang: vi-en
+---
+
 # IELTS Practice Test 11 — Speaking
 
 *Context: Reading passages cover (1) benefits of reading fiction, (2) history of trade unions, (3) neuroscience of habits.*

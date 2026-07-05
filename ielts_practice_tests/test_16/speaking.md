@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_16/speaking"
+type: ielts_speaking
+test: 16
+cefr: C1
+title: "IELTS Speaking — Test 16"
+lang: vi-en
+---
+
 # IELTS Speaking — Test 16
 
 **Time allowed: 11–14 minutes (approx.)**

@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_10_advanced_comparisons/exercise"
+type: exercise
+phase: 3
+lesson: lesson_10_advanced_comparisons
+topic: "advanced comparisons"
+cefr: B1-B2
+title: "BÀI TẬP BÀI 10: SO SÁNH NÂNG CAO (ADVANCED COMPARISONS)"
+lang: vi-en
+---
+
 # BÀI TẬP BÀI 10: SO SÁNH NÂNG CAO (ADVANCED COMPARISONS)
 
 ---

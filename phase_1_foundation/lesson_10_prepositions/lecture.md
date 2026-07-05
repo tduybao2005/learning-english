@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_10_prepositions/lecture"
+type: lecture
+phase: 1
+lesson: lesson_10_prepositions
+topic: "prepositions"
+cefr: A1-A2
+title: "BÀI 10: GIỚI TỪ (PREPOSITIONS)"
+lang: vi-en
+---
+
 # BÀI 10: GIỚI TỪ (PREPOSITIONS)
 
 ## Mục tiêu bài học

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_02_present_continuous/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_02_present_continuous
+topic: "present continuous"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 2: ACTIVITIES, ACTIONS, FEELINGS & EMOTIONS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 2: ACTIVITIES, ACTIONS, FEELINGS & EMOTIONS
 ## Từ vựng: Hoạt động, Hành động, Cảm xúc & Tình cảm
 

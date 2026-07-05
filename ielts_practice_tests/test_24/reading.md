@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_24/reading"
+type: ielts_reading
+test: 24
+cefr: C1
+title: "IELTS Academic Reading — Test 24"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 24
 
 **Time allowed: 60 minutes**

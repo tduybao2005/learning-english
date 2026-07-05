@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_07/answer_key"
+type: ielts_answer_key
+test: 7
+cefr: C1
+title: "IELTS ACADEMIC — TEST 07 ANSWER KEY"
+lang: vi-en
+---
+
 # IELTS ACADEMIC — TEST 07 ANSWER KEY
 
 ---

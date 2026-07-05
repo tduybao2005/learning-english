@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_07_question_formation/exercise"
+type: exercise
+phase: 2
+lesson: lesson_07_question_formation
+topic: "question formation"
+cefr: A2-B1
+title: "EXERCISE — BÀI 7: HÌNH THÀNH CÂU HỎI (QUESTION FORMATION)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 7: HÌNH THÀNH CÂU HỎI (QUESTION FORMATION)
 
 **Tổng số bài tập: 51 câu**

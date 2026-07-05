@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_09/speaking"
+type: ielts_speaking
+test: 9
+cefr: C1
+title: "IELTS SPEAKING — TEST 09"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 09
 
 **Format:** Three parts | Total time: 11-14 minutes

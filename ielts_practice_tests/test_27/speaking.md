@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_27/speaking"
+type: ielts_speaking
+test: 27
+cefr: C1
+title: "IELTS Academic Speaking — Test 27"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 27
 **Time allowed: 11–14 minutes (approximately)**
 

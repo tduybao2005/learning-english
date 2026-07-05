@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_07_pronouns/lecture"
+type: lecture
+phase: 1
+lesson: lesson_07_pronouns
+topic: "pronouns"
+cefr: A1-A2
+title: "BÀI 7: ĐẠI TỪ (PRONOUNS)"
+lang: vi-en
+---
+
 # BÀI 7: ĐẠI TỪ (PRONOUNS)
 
 ## Mục tiêu bài học

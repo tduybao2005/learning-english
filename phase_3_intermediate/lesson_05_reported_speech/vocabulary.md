@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_05_reported_speech/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_05_reported_speech
+topic: "reported speech"
+cefr: B1-B2
+title: "TỪ VỰNG — Bài 5: Câu Tường Thuật (Reported Speech)"
+lang: vi-en
+---
+
 # TỪ VỰNG — Bài 5: Câu Tường Thuật (Reported Speech)
 ## Chủ đề: Động từ tường thuật, Trạng từ dẫn câu, Biểu đạt ngôn ngữ trong học thuật
 

@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_03_participle_clauses/lecture"
+type: lecture
+phase: 4
+lesson: lesson_03_participle_clauses
+topic: "participle clauses"
+cefr: B2-C1
+title: "BÀI 3: MỆNH ĐỀ PHÂN TỪ (PARTICIPLE CLAUSES)"
+lang: vi-en
+---
+
 # BÀI 3: MỆNH ĐỀ PHÂN TỪ (PARTICIPLE CLAUSES)
 
 **Trình độ:** C1 | **Mục tiêu IELTS:** 7.0 – 8.0

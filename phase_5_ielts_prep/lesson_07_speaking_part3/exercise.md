@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_07_speaking_part3/exercise"
+type: exercise
+phase: 5
+lesson: lesson_07_speaking_part3
+topic: "speaking part3"
+cefr: C1
+title: "EXERCISE — Bài 7: IELTS Speaking Part 3"
+lang: vi-en
+---
+
 # EXERCISE — Bài 7: IELTS Speaking Part 3
 **Phase 5 IELTS Prep | Mục tiêu: IELTS 6.5–8.0**
 **Hướng dẫn sử dụng:** Chọn 5–10 câu ngẫu nhiên mỗi ngày. Ghi âm câu trả lời (60–90 giây mỗi câu). Nghe lại và tự đánh giá bằng rubric ở Section 3.

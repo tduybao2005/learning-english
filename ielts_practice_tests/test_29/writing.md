@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_29/writing"
+type: ielts_writing
+test: 29
+cefr: C1
+title: "IELTS Practice Test 29 — Writing"
+lang: vi-en
+---
+
 # IELTS Practice Test 29 — Writing
 
 *Time allowed: 60 minutes*

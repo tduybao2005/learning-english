@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_02_past_perfect/lecture"
+type: lecture
+phase: 2
+lesson: lesson_02_past_perfect
+topic: "past perfect"
+cefr: A2-B1
+title: "BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH (PAST PERFECT TENSE)"
+lang: vi-en
+---
+
 # BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH (PAST PERFECT TENSE)
 
 ---

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_03_simple_past/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_03_simple_past
+topic: "simple past"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 3: PAST EVENTS & STORYTELLING"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 3: PAST EVENTS & STORYTELLING
 ## Từ vựng: Sự kiện quá khứ & Kể chuyện
 

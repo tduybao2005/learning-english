@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_12_basic_comparisons/exercise"
+type: exercise
+phase: 1
+lesson: lesson_12_basic_comparisons
+topic: "basic comparisons"
+cefr: A1-A2
+title: "EXERCISE - BÀI 12: SO SÁNH CƠ BẢN (BASIC COMPARISONS)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 12: SO SÁNH CƠ BẢN (BASIC COMPARISONS)
 ## Bài tập tổng hợp
 

@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_17/reading"
+type: ielts_reading
+test: 17
+cefr: C1
+title: "IELTS Academic Reading — Test 17"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 17
 
 **Time allowed: 60 minutes | Total questions: 40**

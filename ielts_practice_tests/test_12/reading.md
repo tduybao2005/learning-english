@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_12/reading"
+type: ielts_reading
+test: 12
+cefr: C1
+title: "IELTS Academic Reading — Test 12"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 12
 
 **Time allowed: 60 minutes**

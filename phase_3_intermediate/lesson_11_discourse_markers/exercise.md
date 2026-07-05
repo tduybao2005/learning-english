@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_11_discourse_markers/exercise"
+type: exercise
+phase: 3
+lesson: lesson_11_discourse_markers
+topic: "discourse markers"
+cefr: B1-B2
+title: "BÀI TẬP BÀI 11: TỪ NỐI VÀ LIÊN KẾT VĂN BẢN (DISCOURSE MARKERS)"
+lang: vi-en
+---
+
 # BÀI TẬP BÀI 11: TỪ NỐI VÀ LIÊN KẾT VĂN BẢN (DISCOURSE MARKERS)
 
 ---

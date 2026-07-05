@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_08/reading"
+type: ielts_reading
+test: 8
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 08"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 08
 
 **Time allowed: 60 minutes**

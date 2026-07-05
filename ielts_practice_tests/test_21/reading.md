@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_21/reading"
+type: ielts_reading
+test: 21
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 21"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 21
 **Topics: History of Medicine / Psychology of Creativity / Urban Agriculture**
 **Time allowed: 60 minutes | 40 questions**

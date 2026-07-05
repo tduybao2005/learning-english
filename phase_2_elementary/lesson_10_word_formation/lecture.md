@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_10_word_formation/lecture"
+type: lecture
+phase: 2
+lesson: lesson_10_word_formation
+topic: "word formation"
+cefr: A2-B1
+title: "BÀI 10: TẠO TỪ (WORD FORMATION)"
+lang: vi-en
+---
+
 # BÀI 10: TẠO TỪ (WORD FORMATION)
 
 ## Tại sao phải học Word Formation?

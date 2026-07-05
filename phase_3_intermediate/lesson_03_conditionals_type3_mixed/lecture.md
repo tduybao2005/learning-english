@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_03_conditionals_type3_mixed/lecture"
+type: lecture
+phase: 3
+lesson: lesson_03_conditionals_type3_mixed
+topic: "conditionals type3 mixed"
+cefr: B1-B2
+title: "BÀI 3: CÂU ĐIỀU KIỆN LOẠI 3 & HỖN HỢP (MIXED CONDITIONALS)"
+lang: vi-en
+---
+
 # BÀI 3: CÂU ĐIỀU KIỆN LOẠI 3 & HỖN HỢP (MIXED CONDITIONALS)
 
 ---

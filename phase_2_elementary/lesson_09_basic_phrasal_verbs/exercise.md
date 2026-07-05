@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_09_basic_phrasal_verbs/exercise"
+type: exercise
+phase: 2
+lesson: lesson_09_basic_phrasal_verbs
+topic: "basic phrasal verbs"
+cefr: A2-B1
+title: "EXERCISE — Bài 9: Phrasal Verbs Cơ Bản"
+lang: vi-en
+---
+
 # EXERCISE — Bài 9: Phrasal Verbs Cơ Bản
 
 ## SECTION A: Fill in the blank with the correct phrasal verb (15 items)

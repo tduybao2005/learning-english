@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_10_word_formation/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_10_word_formation
+topic: "word formation"
+cefr: A2-B1
+title: "VOCABULARY — Bài 10: Word Formation"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 10: Word Formation
 
 ## Bảng họ từ (Word Families) — 70 từ

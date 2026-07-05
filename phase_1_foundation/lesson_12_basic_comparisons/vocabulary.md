@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_12_basic_comparisons/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_12_basic_comparisons
+topic: "basic comparisons"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 12: ADJECTIVES FOR COMPARISON"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 12: ADJECTIVES FOR COMPARISON
 ## Từ vựng: Tính từ dùng trong so sánh
 

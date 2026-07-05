@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_16/reading"
+type: ielts_reading
+test: 16
+cefr: C1
+title: "IELTS Academic Reading — Test 16"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 16
 
 **Time allowed: 60 minutes**

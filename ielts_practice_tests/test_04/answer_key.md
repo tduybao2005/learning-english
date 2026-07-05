@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_04/answer_key"
+type: ielts_answer_key
+test: 4
+cefr: C1
+title: "ĐÁP ÁN — TEST 04"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 04
 
 ---

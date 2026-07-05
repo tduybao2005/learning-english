@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_09_academic_essay_writing/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_09_academic_essay_writing
+topic: "academic essay writing"
+cefr: B2-C1
+title: "VOCABULARY — Bài 9: Academic Essay Writing"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 9: Academic Essay Writing
 
 > **Cấp độ:** B2 → C1 | **Mục tiêu:** Nắm vững 80 cụm từ học thuật theo chức năng

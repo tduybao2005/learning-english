@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_07_idioms_colloquialisms/lecture"
+type: lecture
+phase: 4
+lesson: lesson_07_idioms_colloquialisms
+topic: "idioms colloquialisms"
+cefr: B2-C1
+title: "BÀI 7: THÀNH NGỮ & TIẾNG LÓNG (IDIOMS & COLLOQUIALISMS)"
+lang: vi-en
+---
+
 # BÀI 7: THÀNH NGỮ & TIẾNG LÓNG (IDIOMS & COLLOQUIALISMS)
 ## Phase 4 Advanced | IELTS 7.0–8.0
 

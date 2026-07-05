@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_28/reading"
+type: ielts_reading
+test: 28
+cefr: C1
+title: "IELTS Academic Reading — Test 28"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 28
 
 **Time allowed: 60 minutes**

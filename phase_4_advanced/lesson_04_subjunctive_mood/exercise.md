@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_04_subjunctive_mood/exercise"
+type: exercise
+phase: 4
+lesson: lesson_04_subjunctive_mood
+topic: "subjunctive mood"
+cefr: B2-C1
+title: "EXERCISE — Bài 4: Giả Định Cách (Subjunctive Mood)"
+lang: vi-en
+---
+
 # EXERCISE — Bài 4: Giả Định Cách (Subjunctive Mood)
 
 ## SECTION A: Write sentences using Subjunctive (10 items)

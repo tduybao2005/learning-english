@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_07_advanced_phrasal_verbs/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_07_advanced_phrasal_verbs
+topic: "advanced phrasal verbs"
+cefr: B1-B2
+title: "BÀI 7: VOCABULARY — 100 ADVANCED PHRASAL VERBS"
+lang: vi-en
+---
+
 # BÀI 7: VOCABULARY — 100 ADVANCED PHRASAL VERBS
 
 ## Bảng Từ Vựng Đầy Đủ

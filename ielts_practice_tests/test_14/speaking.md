@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_14/speaking"
+type: ielts_speaking
+test: 14
+cefr: C1
+title: "IELTS Speaking — Test 14"
+lang: vi-en
+---
+
 # IELTS Speaking — Test 14
 
 **Time allowed: 11–14 minutes**

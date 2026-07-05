@@ -1,3 +1,12 @@
+---
+id: "phase_4_advanced/exam/phase4_answer_key"
+type: phase_exam_answer_key
+phase: 4
+cefr: B2-C1
+title: "ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 4"
+lang: vi-en
+---
+
 # ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 4
 **Phase 4 Advanced | Mục tiêu: IELTS 6.5–7.5 | Cấp độ C1**
 

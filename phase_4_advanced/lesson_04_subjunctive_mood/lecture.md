@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_04_subjunctive_mood/lecture"
+type: lecture
+phase: 4
+lesson: lesson_04_subjunctive_mood
+topic: "subjunctive mood"
+cefr: B2-C1
+title: "BÀI 4: GIẢ ĐỊNH CÁCH (SUBJUNCTIVE MOOD)"
+lang: vi-en
+---
+
 # BÀI 4: GIẢ ĐỊNH CÁCH (SUBJUNCTIVE MOOD)
 
 **Trình độ:** C1 | **Mục tiêu IELTS:** 7.0 – 8.0

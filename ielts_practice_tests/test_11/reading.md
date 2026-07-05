@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_11/reading"
+type: ielts_reading
+test: 11
+cefr: C1
+title: "IELTS Academic Reading Practice Test 11"
+lang: vi-en
+---
+
 # IELTS Academic Reading Practice Test 11
 
 **Time allowed: 60 minutes | Total questions: 40**

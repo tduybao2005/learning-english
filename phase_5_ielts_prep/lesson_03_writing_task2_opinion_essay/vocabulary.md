@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_03_writing_task2_opinion_essay/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_03_writing_task2_opinion_essay
+topic: "writing task2 opinion essay"
+cefr: C1
+title: "VOCABULARY — Bài 3: IELTS Writing Task 2 Opinion Essay"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 3: IELTS Writing Task 2 Opinion Essay
 
 ---

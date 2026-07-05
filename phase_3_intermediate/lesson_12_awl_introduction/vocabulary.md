@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_12_awl_introduction/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_12_awl_introduction
+topic: "awl introduction"
+cefr: B1-B2
+title: "VOCABULARY — Bài 12: Academic Word List (AWL) — Giới Thiệu"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 12: Academic Word List (AWL) — Giới Thiệu
 
 ## Giới thiệu AWL

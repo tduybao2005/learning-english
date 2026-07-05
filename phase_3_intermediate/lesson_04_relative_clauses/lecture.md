@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_04_relative_clauses/lecture"
+type: lecture
+phase: 3
+lesson: lesson_04_relative_clauses
+topic: "relative clauses"
+cefr: B1-B2
+title: "BÀI 4: MỆNH ĐỀ QUAN HỆ (RELATIVE CLAUSES)"
+lang: vi-en
+---
+
 # BÀI 4: MỆNH ĐỀ QUAN HỆ (RELATIVE CLAUSES)
 
 ---

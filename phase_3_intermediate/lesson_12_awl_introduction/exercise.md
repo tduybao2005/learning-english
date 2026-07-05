@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_12_awl_introduction/exercise"
+type: exercise
+phase: 3
+lesson: lesson_12_awl_introduction
+topic: "awl introduction"
+cefr: B1-B2
+title: "EXERCISE — Bài 12: Academic Word List (AWL) Giới Thiệu"
+lang: vi-en
+---
+
 # EXERCISE — Bài 12: Academic Word List (AWL) Giới Thiệu
 
 ## SECTION A: AWL word recognition — Underline the AWL words (10 sentences)

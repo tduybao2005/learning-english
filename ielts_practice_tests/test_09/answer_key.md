@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_09/answer_key"
+type: ielts_answer_key
+test: 9
+cefr: C1
+title: "ĐÁP ÁN — TEST 09"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 09
 
 **Lưu ý:** Đây là đáp án tham khảo. Trong kỳ thi IELTS thực tế, một số câu có thể chấp nhận nhiều đáp án khác nhau. Luôn kiểm tra lại với hướng dẫn chính thức của Cambridge IELTS.

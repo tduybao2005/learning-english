@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_29/speaking"
+type: ielts_speaking
+test: 29
+cefr: C1
+title: "IELTS Practice Test 29 — Speaking"
+lang: vi-en
+---
+
 # IELTS Practice Test 29 — Speaking
 
 *Time allowed: 11–14 minutes*

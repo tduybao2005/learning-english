@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_09_adverbs/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_09_adverbs
+topic: "adverbs"
+cefr: A1-A2
+title: "BÀI 9: TỪ VỰNG - TRẠNG TỪ (ADVERBS) THEO 5 LOẠI"
+lang: vi-en
+---
+
 # BÀI 9: TỪ VỰNG - TRẠNG TỪ (ADVERBS) THEO 5 LOẠI
 
 ## BẢNG TỪ VỰNG CHÍNH (65 từ)

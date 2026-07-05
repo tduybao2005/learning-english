@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_03_future_perfect_continuous/lecture"
+type: lecture
+phase: 2
+lesson: lesson_03_future_perfect_continuous
+topic: "future perfect continuous"
+cefr: A2-B1
+title: "BÀI 3: TƯƠNG LAI TIẾP DIỄN & TƯƠNG LAI HOÀN THÀNH"
+lang: vi-en
+---
+
 # BÀI 3: TƯƠNG LAI TIẾP DIỄN & TƯƠNG LAI HOÀN THÀNH
 
 ---

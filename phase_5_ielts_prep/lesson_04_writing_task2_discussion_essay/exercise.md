@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_04_writing_task2_discussion_essay/exercise"
+type: exercise
+phase: 5
+lesson: lesson_04_writing_task2_discussion_essay
+topic: "writing task2 discussion essay"
+cefr: C1
+title: "EXERCISE — Bài 4: Task 2 Essay Types"
+lang: vi-en
+---
+
 # EXERCISE — Bài 4: Task 2 Essay Types
 
 ---

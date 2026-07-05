@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_01_simple_present/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_01_simple_present
+topic: "simple present"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 1: DAILY ROUTINES & HABITS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 1: DAILY ROUTINES & HABITS
 ## Từ vựng: Thói quen hàng ngày & Tần suất
 

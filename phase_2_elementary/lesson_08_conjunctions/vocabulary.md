@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_08_conjunctions/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_08_conjunctions
+topic: "conjunctions"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 8: LIÊN TỪ (CONJUNCTIONS)"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 8: LIÊN TỪ (CONJUNCTIONS)
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

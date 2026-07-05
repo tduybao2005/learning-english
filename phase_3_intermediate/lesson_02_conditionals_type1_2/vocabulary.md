@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_02_conditionals_type1_2/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_02_conditionals_type1_2
+topic: "conditionals type1 2"
+cefr: B1-B2
+title: "TỪ VỰNG BÀI 2: CÂU ĐIỀU KIỆN LOẠI 1 & 2"
+lang: vi-en
+---
+
 # TỪ VỰNG BÀI 2: CÂU ĐIỀU KIỆN LOẠI 1 & 2
 ## Chủ đề: Vấn đề Môi trường, Xã hội & Giải pháp (IELTS Topics)
 

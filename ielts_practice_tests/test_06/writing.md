@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_06/writing"
+type: ielts_writing
+test: 6
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 06"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 06
 
 ---

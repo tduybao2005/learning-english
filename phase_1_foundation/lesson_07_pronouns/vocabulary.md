@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_07_pronouns/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_07_pronouns
+topic: "pronouns"
+cefr: A1-A2
+title: "BÀI 7: TỪ VỰNG - PEOPLE & RELATIONSHIPS (Con Người & Các Mối Quan Hệ)"
+lang: vi-en
+---
+
 # BÀI 7: TỪ VỰNG - PEOPLE & RELATIONSHIPS (Con Người & Các Mối Quan Hệ)
 
 ## BẢNG TỪ VỰNG CHÍNH (65 từ)

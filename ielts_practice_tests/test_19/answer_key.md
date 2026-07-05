@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_19/answer_key"
+type: ielts_answer_key
+test: 19
+cefr: C1
+title: "ĐÁP ÁN — TEST 19"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 19
 
 **Chủ đề:** Benefits of Bilingualism / Development of Democracy / Quantum Computing

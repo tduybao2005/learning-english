@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_08_collocations/exercise"
+type: exercise
+phase: 3
+lesson: lesson_08_collocations
+topic: "collocations"
+cefr: B1-B2
+title: "BÀI 8: EXERCISE — COLLOCATIONS"
+lang: vi-en
+---
+
 # BÀI 8: EXERCISE — COLLOCATIONS
 ## Tổng: 45 câu | Thời gian gợi ý: 60–75 phút
 

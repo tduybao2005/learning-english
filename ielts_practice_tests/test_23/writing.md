@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_23/writing"
+type: ielts_writing
+test: 23
+cefr: C1
+title: "IELTS Academic Writing — Test 23"
+lang: vi-en
+---
+
 # IELTS Academic Writing — Test 23
 
 **Time allowed: 60 minutes**

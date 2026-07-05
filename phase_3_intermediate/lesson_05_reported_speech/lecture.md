@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_05_reported_speech/lecture"
+type: lecture
+phase: 3
+lesson: lesson_05_reported_speech
+topic: "reported speech"
+cefr: B1-B2
+title: "BÀI 5: CÂU TƯỜNG THUẬT (REPORTED SPEECH)"
+lang: vi-en
+---
+
 # BÀI 5: CÂU TƯỜNG THUẬT (REPORTED SPEECH)
 
 ---

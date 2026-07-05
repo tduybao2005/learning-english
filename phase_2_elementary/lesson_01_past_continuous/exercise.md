@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_01_past_continuous/exercise"
+type: exercise
+phase: 2
+lesson: lesson_01_past_continuous
+topic: "past continuous"
+cefr: A2-B1
+title: "EXERCISE — BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN (PAST CONTINUOUS TENSE)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN (PAST CONTINUOUS TENSE)
 
 **Tổng số bài tập: 40**

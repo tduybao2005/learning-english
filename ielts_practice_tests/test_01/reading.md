@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_01/reading"
+type: ielts_reading
+test: 1
+cefr: C1
+title: "IELTS Academic Reading — Test 01"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 01
 
 **Time allowed: 60 minutes**

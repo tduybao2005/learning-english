@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_29/reading"
+type: ielts_reading
+test: 29
+cefr: C1
+title: "IELTS Practice Test 29 — Reading"
+lang: vi-en
+---
+
 # IELTS Practice Test 29 — Reading
 
 *Time allowed: 60 minutes | Total questions: 40*

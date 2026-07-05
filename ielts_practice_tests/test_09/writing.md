@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_09/writing"
+type: ielts_writing
+test: 9
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 09"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 09
 
 **Time allowed:** 60 minutes

@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_06/answer_key"
+type: ielts_answer_key
+test: 6
+cefr: C1
+title: "ĐÁP ÁN — TEST 06"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 06
 
 **Chủ đề:** Science of Sleep & Health / History of Vaccination / Economic Migration Patterns

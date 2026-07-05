@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_04_subject_verb_agreement/exercise"
+type: exercise
+phase: 2
+lesson: lesson_04_subject_verb_agreement
+topic: "subject verb agreement"
+cefr: A2-B1
+title: "EXERCISE — BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)
 
 **Tổng số bài tập: 53 câu**

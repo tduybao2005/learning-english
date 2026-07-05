@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_08_conjunctions/exercise"
+type: exercise
+phase: 2
+lesson: lesson_08_conjunctions
+topic: "conjunctions"
+cefr: A2-B1
+title: "EXERCISE — BÀI 8: LIÊN TỪ (CONJUNCTIONS)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 8: LIÊN TỪ (CONJUNCTIONS)
 
 **Tổng số bài tập: 51 câu**

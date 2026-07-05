@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_04_writing_task2_discussion_essay/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_04_writing_task2_discussion_essay
+topic: "writing task2 discussion essay"
+cefr: C1
+title: "VOCABULARY — Bài 4: Task 2 Discussion & Other Essay Types"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 4: Task 2 Discussion & Other Essay Types
 
 **Mục tiêu:** Master 80 phrases across all Task 2 essay types to reach Band 7+ Lexical Resource

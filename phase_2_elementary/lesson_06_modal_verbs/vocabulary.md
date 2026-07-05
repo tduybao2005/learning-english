@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_06_modal_verbs/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_06_modal_verbs
+topic: "modal verbs"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 6: ĐỘNG TỪ TÌNH THÁI (MODAL VERBS)"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 6: ĐỘNG TỪ TÌNH THÁI (MODAL VERBS)
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

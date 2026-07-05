@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_05_articles/exercise"
+type: exercise
+phase: 2
+lesson: lesson_05_articles
+topic: "articles"
+cefr: A2-B1
+title: "EXERCISE — BÀI 5: MẠO TỪ (ARTICLES)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 5: MẠO TỪ (ARTICLES)
 
 **Tổng số bài tập: 58 câu**

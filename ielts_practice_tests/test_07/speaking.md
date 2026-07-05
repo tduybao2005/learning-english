@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_07/speaking"
+type: ielts_speaking
+test: 7
+cefr: C1
+title: "IELTS SPEAKING — TEST 07"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 07
 
 **Topics: Environment & Nature | Science & Discovery | Personal Habits**

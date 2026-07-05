@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_06_speaking_part1_2/exercise"
+type: exercise
+phase: 5
+lesson: lesson_06_speaking_part1_2
+topic: "speaking part1 2"
+cefr: C1
+title: "EXERCISE — Bài 6: IELTS Speaking Part 1 & 2"
+lang: vi-en
+---
+
 # EXERCISE — Bài 6: IELTS Speaking Part 1 & 2
 
 *Hướng dẫn: Luyện nói to (không viết). Record lại câu trả lời của bạn bằng điện thoại. Nghe lại và đánh giá theo checklist cuối bài.*

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_11_sentence_structure/exercise"
+type: exercise
+phase: 1
+lesson: lesson_11_sentence_structure
+topic: "sentence structure"
+cefr: A1-A2
+title: "EXERCISE - BÀI 11: CẤU TRÚC CÂU (SENTENCE STRUCTURE)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 11: CẤU TRÚC CÂU (SENTENCE STRUCTURE)
 ## Bài tập tổng hợp
 

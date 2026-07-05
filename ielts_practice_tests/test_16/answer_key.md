@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_16/answer_key"
+type: ielts_answer_key
+test: 16
+cefr: C1
+title: "IELTS Practice Test 16 — Answer Key"
+lang: vi-en
+---
+
 # IELTS Practice Test 16 — Answer Key
 
 ---

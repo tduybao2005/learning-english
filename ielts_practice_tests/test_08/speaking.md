@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_08/speaking"
+type: ielts_speaking
+test: 8
+cefr: C1
+title: "IELTS SPEAKING — TEST 08"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 08
 
 **Topics: Sleep & Health Habits | Science & The Ocean | Emotions & Wellbeing**

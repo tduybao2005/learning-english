@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_30/writing"
+type: ielts_writing
+test: 30
+cefr: C1
+title: "IELTS Practice Test 30 — Writing"
+lang: vi-en
+---
+
 # IELTS Practice Test 30 — Writing
 
 **Time allowed: 60 minutes**

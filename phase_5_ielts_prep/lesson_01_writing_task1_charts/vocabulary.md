@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_01_writing_task1_charts/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_01_writing_task1_charts
+topic: "writing task1 charts"
+cefr: C1
+title: "TỪ VỰNG BÀI 1: IELTS WRITING TASK 1 — BIỂU ĐỒ & ĐỒ THỊ"
+lang: vi-en
+---
+
 # TỪ VỰNG BÀI 1: IELTS WRITING TASK 1 — BIỂU ĐỒ & ĐỒ THỊ
 
 **Mục tiêu:** 80 từ/cụm từ thiết yếu cho Task 1  

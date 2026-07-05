@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_02_past_perfect/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_02_past_perfect
+topic: "past perfect"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)
