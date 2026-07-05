@@ -51,7 +51,7 @@ quarto render <file.md> --to pdf                   # PDF of one file (Quarto 1.6
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`
   and commit the regenerated `index/manifest.json` + `docs/STATUS.md`.
-- Work happens on branch `tdb`; PRs target `main`.
+- Work happens directly on `main`.
 
 ## Grading a learner's answers
 
