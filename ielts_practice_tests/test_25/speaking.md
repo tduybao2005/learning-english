@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_25/speaking"
+type: ielts_speaking
+test: 25
+cefr: C1
+title: "IELTS Academic Speaking — Test 25"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 25
 
 **Time allowed: 11–14 minutes (approximately)**

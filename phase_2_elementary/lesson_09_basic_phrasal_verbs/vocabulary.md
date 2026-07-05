@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_09_basic_phrasal_verbs/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_09_basic_phrasal_verbs
+topic: "basic phrasal verbs"
+cefr: A2-B1
+title: "VOCABULARY — Bài 9: Phrasal Verbs Cơ Bản"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 9: Phrasal Verbs Cơ Bản
 
 ## Bảng từ vựng 60 Phrasal Verbs

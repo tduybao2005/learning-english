@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_01_past_continuous/lecture"
+type: lecture
+phase: 2
+lesson: lesson_01_past_continuous
+topic: "past continuous"
+cefr: A2-B1
+title: "BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN (PAST CONTINUOUS TENSE)"
+lang: vi-en
+---
+
 # BÀI 1: THÌ QUÁ KHỨ TIẾP DIỄN (PAST CONTINUOUS TENSE)
 
 ---

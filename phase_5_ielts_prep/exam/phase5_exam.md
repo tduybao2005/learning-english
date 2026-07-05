@@ -1,3 +1,12 @@
+---
+id: "phase_5_ielts_prep/exam/phase5_exam"
+type: phase_exam
+phase: 5
+cefr: C1
+title: "KIỂM TRA CUỐI GIAI ĐOẠN 5 — MINI IELTS SIMULATION"
+lang: vi-en
+---
+
 # KIỂM TRA CUỐI GIAI ĐOẠN 5 — MINI IELTS SIMULATION
 **Phase 5 IELTS Prep | Mục tiêu: IELTS Band 6.5–7.5**
 

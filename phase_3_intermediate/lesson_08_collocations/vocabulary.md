@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_08_collocations/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_08_collocations
+topic: "collocations"
+cefr: B1-B2
+title: "BÀI 8: VOCABULARY — COLLOCATIONS THEO NHÓM"
+lang: vi-en
+---
+
 # BÀI 8: VOCABULARY — COLLOCATIONS THEO NHÓM
 
 ## Bảng Từ Vựng: 80 Collocations Quan Trọng Nhất

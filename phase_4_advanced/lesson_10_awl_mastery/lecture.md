@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_10_awl_mastery/lecture"
+type: lecture
+phase: 4
+lesson: lesson_10_awl_mastery
+topic: "awl mastery"
+cefr: B2-C1
+title: "BÀI 10: THÀNH THẠO AWL — ACADEMIC WORD LIST MASTERY"
+lang: vi-en
+---
+
 # BÀI 10: THÀNH THẠO AWL — ACADEMIC WORD LIST MASTERY
 
 > **Cấp độ:** B2 → C1 | **Mục tiêu IELTS:** 7.0 – 8.0

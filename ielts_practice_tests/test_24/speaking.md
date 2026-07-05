@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_24/speaking"
+type: ielts_speaking
+test: 24
+cefr: C1
+title: "IELTS Academic Speaking — Test 24"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 24
 
 **Time allowed: 11–14 minutes (approximately)**

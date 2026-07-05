@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_10_prepositions/exercise"
+type: exercise
+phase: 1
+lesson: lesson_10_prepositions
+topic: "prepositions"
+cefr: A1-A2
+title: "EXERCISE - BÀI 10: GIỚI TỪ (PREPOSITIONS)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 10: GIỚI TỪ (PREPOSITIONS)
 ## Bài tập tổng hợp
 

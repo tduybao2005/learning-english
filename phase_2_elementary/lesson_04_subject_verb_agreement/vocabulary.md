@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_04_subject_verb_agreement/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_04_subject_verb_agreement
+topic: "subject verb agreement"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

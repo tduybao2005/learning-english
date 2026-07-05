@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_07_speaking_part3/lecture"
+type: lecture
+phase: 5
+lesson: lesson_07_speaking_part3
+topic: "speaking part3"
+cefr: C1
+title: "BÀI 7: IELTS SPEAKING PHẦN 3 — THẢO LUẬN CHUYÊN SÂU"
+lang: vi-en
+---
+
 # BÀI 7: IELTS SPEAKING PHẦN 3 — THẢO LUẬN CHUYÊN SÂU
 **Phase 5 IELTS Prep | Mục tiêu: IELTS 6.5–8.0**
 

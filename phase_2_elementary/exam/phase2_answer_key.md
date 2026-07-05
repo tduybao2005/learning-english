@@ -1,3 +1,12 @@
+---
+id: "phase_2_elementary/exam/phase2_answer_key"
+type: phase_exam_answer_key
+phase: 2
+cefr: A2-B1
+title: "ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 2"
+lang: vi-en
+---
+
 # ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 2
 
 ## PHẦN A — NGỮ PHÁP

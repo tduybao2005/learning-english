@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_08_cohesive_devices/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_08_cohesive_devices
+topic: "cohesive devices"
+cefr: B2-C1
+title: "BÀI 8: VOCABULARY — ADVANCED COHESIVE DEVICES"
+lang: vi-en
+---
+
 # BÀI 8: VOCABULARY — ADVANCED COHESIVE DEVICES
 ## 80 Biểu thức liên kết nâng cao & Bảng tra cứu
 

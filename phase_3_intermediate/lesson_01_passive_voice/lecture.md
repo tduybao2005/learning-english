@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_01_passive_voice/lecture"
+type: lecture
+phase: 3
+lesson: lesson_01_passive_voice
+topic: "passive voice"
+cefr: B1-B2
+title: "BÀI 1: THỂ BỊ ĐỘNG (PASSIVE VOICE)"
+lang: vi-en
+---
+
 # BÀI 1: THỂ BỊ ĐỘNG (PASSIVE VOICE)
 
 ---

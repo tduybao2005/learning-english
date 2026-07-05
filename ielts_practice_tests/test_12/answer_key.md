@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_12/answer_key"
+type: ielts_answer_key
+test: 12
+cefr: C1
+title: "IELTS Practice Test 12 — Answer Key"
+lang: vi-en
+---
+
 # IELTS Practice Test 12 — Answer Key
 
 ---

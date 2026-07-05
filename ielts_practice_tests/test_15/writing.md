@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_15/writing"
+type: ielts_writing
+test: 15
+cefr: C1
+title: "IELTS Academic Writing — Test 15"
+lang: vi-en
+---
+
 # IELTS Academic Writing — Test 15
 
 **Time allowed:** 60 minutes | **Task 1:** 20 minutes (min. 150 words) | **Task 2:** 40 minutes (min. 250 words)

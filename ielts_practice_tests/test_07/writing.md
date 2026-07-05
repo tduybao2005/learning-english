@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_07/writing"
+type: ielts_writing
+test: 7
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 07"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 07
 
 **Time allowed: 60 minutes**

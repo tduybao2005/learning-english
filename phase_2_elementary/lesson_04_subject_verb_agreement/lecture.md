@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_04_subject_verb_agreement/lecture"
+type: lecture
+phase: 2
+lesson: lesson_04_subject_verb_agreement
+topic: "subject verb agreement"
+cefr: A2-B1
+title: "BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)"
+lang: vi-en
+---
+
 # BÀI 4: HOÀ HỢP CHỦ VỊ (SUBJECT-VERB AGREEMENT)
 
 ---

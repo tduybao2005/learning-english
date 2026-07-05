@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_17/speaking"
+type: ielts_speaking
+test: 17
+cefr: C1
+title: "IELTS SPEAKING — TEST 17"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 17
 
 **Topics:** Cities & Urban Life / Photography & Visual Arts / Social Media

@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_14/writing"
+type: ielts_writing
+test: 14
+cefr: C1
+title: "IELTS Academic Writing — Test 14"
+lang: vi-en
+---
+
 # IELTS Academic Writing — Test 14
 
 **Time allowed: 60 minutes**

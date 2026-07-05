@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_13/speaking"
+type: ielts_speaking
+test: 13
+cefr: C1
+title: "IELTS Speaking — Test 13"
+lang: vi-en
+---
+
 # IELTS Speaking — Test 13
 
 **Total time: 11–14 minutes**

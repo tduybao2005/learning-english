@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_17/answer_key"
+type: ielts_answer_key
+test: 17
+cefr: C1
+title: "ĐÁP ÁN — TEST 17"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 17
 
 **Chủ đề:** Green Spaces in Cities / History of Photography / Economics of Inequality

@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_06_gerunds_infinitives/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_06_gerunds_infinitives
+topic: "gerunds infinitives"
+cefr: B1-B2
+title: "VOCABULARY — Bài 6: Gerunds vs Infinitives"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 6: Gerunds vs Infinitives
 
 ## Bảng phân loại động từ — 70 từ

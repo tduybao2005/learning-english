@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_04_relative_clauses/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_04_relative_clauses
+topic: "relative clauses"
+cefr: B1-B2
+title: "TỪ VỰNG — Bài 4: Mệnh Đề Quan Hệ"
+lang: vi-en
+---
+
 # TỪ VỰNG — Bài 4: Mệnh Đề Quan Hệ
 ## Chủ đề: Con người & Nghề nghiệp, Nơi chốn & Công trình, Khái niệm Trừu tượng, Nghiên cứu & Thông tin
 

@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_06_vocabulary_nuances/lecture"
+type: lecture
+phase: 4
+lesson: lesson_06_vocabulary_nuances
+topic: "vocabulary nuances"
+cefr: B2-C1
+title: "BÀI 6: SẮC THÁI TỪ NGỮ — VOCABULARY NUANCES"
+lang: vi-en
+---
+
 # BÀI 6: SẮC THÁI TỪ NGỮ — VOCABULARY NUANCES
 
 ## Tại sao phải học Vocabulary Nuances?

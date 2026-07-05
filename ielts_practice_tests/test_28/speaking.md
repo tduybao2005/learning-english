@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_28/speaking"
+type: ielts_speaking
+test: 28
+cefr: C1
+title: "IELTS Academic Speaking — Test 28"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 28
 
 **Time allowed: 11–14 minutes**

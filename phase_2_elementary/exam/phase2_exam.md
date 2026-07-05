@@ -1,3 +1,12 @@
+---
+id: "phase_2_elementary/exam/phase2_exam"
+type: phase_exam
+phase: 2
+cefr: A2-B1
+title: "KIỂM TRA CUỐI GIAI ĐOẠN 2 — ELEMENTARY (A2→B1)"
+lang: vi-en
+---
+
 # KIỂM TRA CUỐI GIAI ĐOẠN 2 — ELEMENTARY (A2→B1)
 **Thời gian:** 90 phút | **Tổng điểm:** 100 điểm
 

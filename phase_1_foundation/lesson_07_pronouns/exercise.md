@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_07_pronouns/exercise"
+type: exercise
+phase: 1
+lesson: lesson_07_pronouns
+topic: "pronouns"
+cefr: A1-A2
+title: "BÀI 7: BÀI TẬP - ĐẠI TỪ (PRONOUNS)"
+lang: vi-en
+---
+
 # BÀI 7: BÀI TẬP - ĐẠI TỪ (PRONOUNS)
 **Tổng: 38 câu | Thời gian khuyến nghị: 45 phút**
 

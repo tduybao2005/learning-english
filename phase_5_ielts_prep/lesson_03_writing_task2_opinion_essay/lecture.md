@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_03_writing_task2_opinion_essay/lecture"
+type: lecture
+phase: 5
+lesson: lesson_03_writing_task2_opinion_essay
+topic: "writing task2 opinion essay"
+cefr: C1
+title: "BÀI 3: IELTS WRITING TASK 2 — OPINION ESSAY (Argumentative Essay)"
+lang: vi-en
+---
+
 # BÀI 3: IELTS WRITING TASK 2 — OPINION ESSAY (Argumentative Essay)
 
 ---

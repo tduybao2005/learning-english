@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_07/reading"
+type: ielts_reading
+test: 7
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 07"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 07
 
 **Time allowed: 60 minutes**

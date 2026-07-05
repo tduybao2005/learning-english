@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_04/speaking"
+type: ielts_speaking
+test: 4
+cefr: C1
+title: "IELTS SPEAKING — TEST 04"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 04
 
 **Topics: Food & Cooking | Family Background | Languages Spoken**

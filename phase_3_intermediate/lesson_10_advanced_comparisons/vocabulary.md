@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_10_advanced_comparisons/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_10_advanced_comparisons
+topic: "advanced comparisons"
+cefr: B1-B2
+title: "TỪ VỰNG BÀI 10: SO SÁNH NÂNG CAO (ADVANCED COMPARISONS)"
+lang: vi-en
+---
+
 # TỪ VỰNG BÀI 10: SO SÁNH NÂNG CAO (ADVANCED COMPARISONS)
 
 ---

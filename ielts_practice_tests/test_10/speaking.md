@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_10/speaking"
+type: ielts_speaking
+test: 10
+cefr: C1
+title: "IELTS SPEAKING — TEST 10"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 10
 
 **Format:** Three parts | Total time: 11-14 minutes

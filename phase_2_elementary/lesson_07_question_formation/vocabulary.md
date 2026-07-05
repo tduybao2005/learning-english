@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_07_question_formation/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_07_question_formation
+topic: "question formation"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 7: HÌNH THÀNH CÂU HỎI (QUESTION FORMATION)"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 7: HÌNH THÀNH CÂU HỎI (QUESTION FORMATION)
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

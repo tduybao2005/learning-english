@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_05_reported_speech/exercise"
+type: exercise
+phase: 3
+lesson: lesson_05_reported_speech
+topic: "reported speech"
+cefr: B1-B2
+title: "EXERCISE — Bài 5: Câu Tường Thuật"
+lang: vi-en
+---
+
 # EXERCISE — Bài 5: Câu Tường Thuật
 
 ## SECTION A: Change direct speech to reported speech (15 items)

@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_05_reading_strategies/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_05_reading_strategies
+topic: "reading strategies"
+cefr: C1
+title: "VOCABULARY — Bài 5: IELTS Reading Strategies"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 5: IELTS Reading Strategies
 **Phase 5 IELTS Prep | Mục tiêu: IELTS 6.5–8.0**
 

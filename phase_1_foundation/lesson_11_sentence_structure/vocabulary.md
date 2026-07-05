@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_11_sentence_structure/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_11_sentence_structure
+topic: "sentence structure"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 11: CONJUNCTIONS, CONNECTORS & SENTENCE PATTERNS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 11: CONJUNCTIONS, CONNECTORS & SENTENCE PATTERNS
 ## Từ vựng: Liên từ, Từ nối & Mẫu câu
 

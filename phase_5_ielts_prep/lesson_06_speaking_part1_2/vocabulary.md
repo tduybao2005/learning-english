@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_06_speaking_part1_2/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_06_speaking_part1_2
+topic: "speaking part1 2"
+cefr: C1
+title: "VOCABULARY — Bài 6: Speaking Part 1 & 2"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 6: Speaking Part 1 & 2
 
 ---

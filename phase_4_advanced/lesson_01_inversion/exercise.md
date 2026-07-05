@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_01_inversion/exercise"
+type: exercise
+phase: 4
+lesson: lesson_01_inversion
+topic: "inversion"
+cefr: B2-C1
+title: "EXERCISE — BÀI 1: ĐẢO NGỮ (INVERSION)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 1: ĐẢO NGỮ (INVERSION)
 ## 48 Bài Tập Toàn Diện
 

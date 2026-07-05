@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_05_advanced_passive/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_05_advanced_passive
+topic: "advanced passive"
+cefr: B2-C1
+title: "VOCABULARY — Bài 5: Advanced Passive Voice"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 5: Advanced Passive Voice
 
 ## Bảng từ — 70 từ/cụm từ dùng với Advanced Passive

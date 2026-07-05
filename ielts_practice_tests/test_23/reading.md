@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_23/reading"
+type: ielts_reading
+test: 23
+cefr: C1
+title: "IELTS Academic Reading — Test 23"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 23
 
 **Time allowed: 60 minutes**

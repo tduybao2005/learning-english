@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_05_reading_strategies/lecture"
+type: lecture
+phase: 5
+lesson: lesson_05_reading_strategies
+topic: "reading strategies"
+cefr: C1
+title: "BÀI 5: CHIẾN LƯỢC ĐỌC HIỂU IELTS"
+lang: vi-en
+---
+
 # BÀI 5: CHIẾN LƯỢC ĐỌC HIỂU IELTS
 
 **Mục tiêu bài học:**

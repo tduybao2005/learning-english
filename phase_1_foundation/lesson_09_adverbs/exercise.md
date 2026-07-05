@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_09_adverbs/exercise"
+type: exercise
+phase: 1
+lesson: lesson_09_adverbs
+topic: "adverbs"
+cefr: A1-A2
+title: "BÀI 9: BÀI TẬP - TRẠNG TỪ (ADVERBS)"
+lang: vi-en
+---
+
 # BÀI 9: BÀI TẬP - TRẠNG TỪ (ADVERBS)
 **Tổng: 38 câu | Thời gian khuyến nghị: 45 phút**
 

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_01_simple_present/lecture"
+type: lecture
+phase: 1
+lesson: lesson_01_simple_present
+topic: "simple present"
+cefr: A1-A2
+title: "BÀI 1: THÌ HIỆN TẠI ĐƠN (SIMPLE PRESENT TENSE)"
+lang: vi-en
+---
+
 # BÀI 1: THÌ HIỆN TẠI ĐƠN (SIMPLE PRESENT TENSE)
 
 ---

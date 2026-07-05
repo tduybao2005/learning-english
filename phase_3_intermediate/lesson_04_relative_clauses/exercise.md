@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_04_relative_clauses/exercise"
+type: exercise
+phase: 3
+lesson: lesson_04_relative_clauses
+topic: "relative clauses"
+cefr: B1-B2
+title: "BÀI TẬP — Bài 4: Mệnh Đề Quan Hệ (Relative Clauses)"
+lang: vi-en
+---
+
 # BÀI TẬP — Bài 4: Mệnh Đề Quan Hệ (Relative Clauses)
 ## Tổng số: 55 bài tập
 

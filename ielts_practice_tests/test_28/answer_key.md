@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_28/answer_key"
+type: ielts_answer_key
+test: 28
+cefr: C1
+title: "IELTS Practice Test 28 — Answer Key"
+lang: vi-en
+---
+
 # IELTS Practice Test 28 — Answer Key
 
 ---

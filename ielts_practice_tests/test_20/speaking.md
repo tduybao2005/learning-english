@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_20/speaking"
+type: ielts_speaking
+test: 20
+cefr: C1
+title: "IELTS Academic Speaking — Test 20"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 20
 
 **Time allowed: 11–14 minutes**

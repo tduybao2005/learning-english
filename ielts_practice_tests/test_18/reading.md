@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_18/reading"
+type: ielts_reading
+test: 18
+cefr: C1
+title: "IELTS Academic Reading Test 18"
+lang: vi-en
+---
+
 # IELTS Academic Reading Test 18
 
 **Time: 60 minutes | Questions: 40**

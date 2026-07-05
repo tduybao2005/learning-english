@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_03_conditionals_type3_mixed/exercise"
+type: exercise
+phase: 3
+lesson: lesson_03_conditionals_type3_mixed
+topic: "conditionals type3 mixed"
+cefr: B1-B2
+title: "BÀI TẬP — Bài 3: Câu Điều Kiện Loại 3 & Hỗn Hợp"
+lang: vi-en
+---
+
 # BÀI TẬP — Bài 3: Câu Điều Kiện Loại 3 & Hỗn Hợp
 ## Tổng số: 59 bài tập
 

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_09_adverbs/lecture"
+type: lecture
+phase: 1
+lesson: lesson_09_adverbs
+topic: "adverbs"
+cefr: A1-A2
+title: "BÀI 9: TRẠNG TỪ (ADVERBS)"
+lang: vi-en
+---
+
 # BÀI 9: TRẠNG TỪ (ADVERBS)
 
 ## Mục tiêu bài học

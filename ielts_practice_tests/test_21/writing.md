@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_21/writing"
+type: ielts_writing
+test: 21
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 21"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 21
 **Topics: Life Expectancy / Preventive Healthcare**
 **Time allowed: 60 minutes total**

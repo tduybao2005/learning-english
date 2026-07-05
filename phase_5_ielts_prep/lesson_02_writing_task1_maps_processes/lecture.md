@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_02_writing_task1_maps_processes/lecture"
+type: lecture
+phase: 5
+lesson: lesson_02_writing_task1_maps_processes
+topic: "writing task1 maps processes"
+cefr: C1
+title: "BÀI 2: IELTS WRITING TASK 1 — BẢN ĐỒ & SƠ ĐỒ QUY TRÌNH"
+lang: vi-en
+---
+
 # BÀI 2: IELTS WRITING TASK 1 — BẢN ĐỒ & SƠ ĐỒ QUY TRÌNH
 
 **Giai đoạn:** Phase 5 — IELTS Preparation  

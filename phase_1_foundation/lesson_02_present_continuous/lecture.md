@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_02_present_continuous/lecture"
+type: lecture
+phase: 1
+lesson: lesson_02_present_continuous
+topic: "present continuous"
+cefr: A1-A2
+title: "BÀI 2: THÌ HIỆN TẠI TIẾP DIỄN (PRESENT CONTINUOUS TENSE)"
+lang: vi-en
+---
+
 # BÀI 2: THÌ HIỆN TẠI TIẾP DIỄN (PRESENT CONTINUOUS TENSE)
 
 ---

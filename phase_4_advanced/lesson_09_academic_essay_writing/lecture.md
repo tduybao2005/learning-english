@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_09_academic_essay_writing/lecture"
+type: lecture
+phase: 4
+lesson: lesson_09_academic_essay_writing
+topic: "academic essay writing"
+cefr: B2-C1
+title: "BÀI 9: VIẾT BÀI LUẬN HỌC THUẬT (ACADEMIC ESSAY WRITING)"
+lang: vi-en
+---
+
 # BÀI 9: VIẾT BÀI LUẬN HỌC THUẬT (ACADEMIC ESSAY WRITING)
 
 > **Cấp độ:** B2 → C1 | **Mục tiêu IELTS:** 6.5 – 8.0

@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_05/writing"
+type: ielts_writing
+test: 5
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 05"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 05
 
 ## Task 1 (20 minutes — minimum 150 words)

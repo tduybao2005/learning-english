@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_06_vocabulary_nuances/exercise"
+type: exercise
+phase: 4
+lesson: lesson_06_vocabulary_nuances
+topic: "vocabulary nuances"
+cefr: B2-C1
+title: "EXERCISE — Bài 6: Vocabulary Nuances — Connotation, Register & Word Choice"
+lang: vi-en
+---
+
 # EXERCISE — Bài 6: Vocabulary Nuances — Connotation, Register & Word Choice
 **Cấp độ:** C1 Advanced | **Mục tiêu:** IELTS 6.5–8.0
 **Thời gian khuyến nghị:** 60–75 phút (tất cả các phần)

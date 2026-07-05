@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_06_nouns/lecture"
+type: lecture
+phase: 1
+lesson: lesson_06_nouns
+topic: "nouns"
+cefr: A1-A2
+title: "BÀI 6: DANH TỪ (NOUNS)"
+lang: vi-en
+---
+
 # BÀI 6: DANH TỪ (NOUNS)
 
 ---

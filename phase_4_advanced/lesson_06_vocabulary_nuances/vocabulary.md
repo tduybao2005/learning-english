@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_06_vocabulary_nuances/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_06_vocabulary_nuances
+topic: "vocabulary nuances"
+cefr: B2-C1
+title: "VOCABULARY — Bài 6: Vocabulary Nuances"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 6: Vocabulary Nuances
 
 ## Bảng từ — 80 cặp/nhóm từ với sắc thái khác nhau

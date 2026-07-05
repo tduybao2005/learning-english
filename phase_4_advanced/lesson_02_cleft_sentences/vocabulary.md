@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_02_cleft_sentences/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_02_cleft_sentences
+topic: "cleft sentences"
+cefr: B2-C1
+title: "VOCABULARY — BÀI 2: CÂU CHẺ & ACADEMIC STANCE MARKERS"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 2: CÂU CHẺ & ACADEMIC STANCE MARKERS
 
 ## BẢNG TỪ VỰNG CHÍNH (70 TỪ)

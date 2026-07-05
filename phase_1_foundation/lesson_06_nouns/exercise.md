@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_06_nouns/exercise"
+type: exercise
+phase: 1
+lesson: lesson_06_nouns
+topic: "nouns"
+cefr: A1-A2
+title: "EXERCISE - BÀI 6: DANH TỪ (NOUNS)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 6: DANH TỪ (NOUNS)
 ## Bài tập tổng hợp
 

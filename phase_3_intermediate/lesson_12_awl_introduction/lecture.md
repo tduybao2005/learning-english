@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_12_awl_introduction/lecture"
+type: lecture
+phase: 3
+lesson: lesson_12_awl_introduction
+topic: "awl introduction"
+cefr: B1-B2
+title: "BÀI 12: ACADEMIC WORD LIST (AWL) — 200 TỪ ĐẦU"
+lang: vi-en
+---
+
 # BÀI 12: ACADEMIC WORD LIST (AWL) — 200 TỪ ĐẦU
 
 ---

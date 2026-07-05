@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_08_conjunctions/lecture"
+type: lecture
+phase: 2
+lesson: lesson_08_conjunctions
+topic: "conjunctions"
+cefr: A2-B1
+title: "BÀI 8: LIÊN TỪ (CONJUNCTIONS)"
+lang: vi-en
+---
+
 # BÀI 8: LIÊN TỪ (CONJUNCTIONS)
 
 ---

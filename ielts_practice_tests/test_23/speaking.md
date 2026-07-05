@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_23/speaking"
+type: ielts_speaking
+test: 23
+cefr: C1
+title: "IELTS Academic Speaking — Test 23"
+lang: vi-en
+---
+
 # IELTS Academic Speaking — Test 23
 
 **Time allowed: 11–14 minutes (approximately)**

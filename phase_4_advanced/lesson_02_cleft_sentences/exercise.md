@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_02_cleft_sentences/exercise"
+type: exercise
+phase: 4
+lesson: lesson_02_cleft_sentences
+topic: "cleft sentences"
+cefr: B2-C1
+title: "BÀI 2: MỆNH ĐỀ CHẺ (CLEFT SENTENCES) — BÀI TẬP THỰC HÀNH"
+lang: vi-en
+---
+
 # BÀI 2: MỆNH ĐỀ CHẺ (CLEFT SENTENCES) — BÀI TẬP THỰC HÀNH
 
 **Trình độ:** C1 | **Mục tiêu IELTS:** 7.0 – 8.0

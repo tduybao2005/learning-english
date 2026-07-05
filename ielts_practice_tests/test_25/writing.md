@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_25/writing"
+type: ielts_writing
+test: 25
+cefr: C1
+title: "IELTS Academic Writing — Test 25"
+lang: vi-en
+---
+
 # IELTS Academic Writing — Test 25
 
 **Time allowed: 60 minutes**

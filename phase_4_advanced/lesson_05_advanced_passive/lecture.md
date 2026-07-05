@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_05_advanced_passive/lecture"
+type: lecture
+phase: 4
+lesson: lesson_05_advanced_passive
+topic: "advanced passive"
+cefr: B2-C1
+title: "BÀI 5: THỂ BỊ ĐỘNG NÂNG CAO (ADVANCED PASSIVE VOICE)"
+lang: vi-en
+---
+
 # BÀI 5: THỂ BỊ ĐỘNG NÂNG CAO (ADVANCED PASSIVE VOICE)
 
 ## 1. Ôn lại Passive cơ bản

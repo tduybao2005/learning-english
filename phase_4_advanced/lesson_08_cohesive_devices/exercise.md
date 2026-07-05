@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_08_cohesive_devices/exercise"
+type: exercise
+phase: 4
+lesson: lesson_08_cohesive_devices
+topic: "cohesive devices"
+cefr: B2-C1
+title: "EXERCISE — Bài 8: Cohesive Devices"
+lang: vi-en
+---
+
 # EXERCISE — Bài 8: Cohesive Devices
 
 ## SECTION A: Choose the correct cohesive device (15 items)

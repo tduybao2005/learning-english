@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_06_nouns/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_06_nouns
+topic: "nouns"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 6: HOME, OBJECTS, FOOD & ABSTRACT CONCEPTS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 6: HOME, OBJECTS, FOOD & ABSTRACT CONCEPTS
 ## Từ vựng: Nhà cửa, Đồ vật, Thức ăn & Khái niệm trừu tượng
 

@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_10_awl_mastery/exercise"
+type: exercise
+phase: 4
+lesson: lesson_10_awl_mastery
+topic: "awl mastery"
+cefr: B2-C1
+title: "EXERCISE — Bài 10: AWL Mastery"
+lang: vi-en
+---
+
 # EXERCISE — Bài 10: AWL Mastery
 
 > **Cấp độ:** B2 → C1 | **Mục tiêu IELTS:** 7.0 – 8.0

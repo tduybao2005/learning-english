@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_22/writing"
+type: ielts_writing
+test: 22
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 22"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 22
 **Topics: Plastic Waste Disposal / Personal vs Government Responsibility**
 **Time allowed: 60 minutes total**

@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_01_inversion/lecture"
+type: lecture
+phase: 4
+lesson: lesson_01_inversion
+topic: "inversion"
+cefr: B2-C1
+title: "BÀI 1: ĐẢO NGỮ (INVERSION) — Cấu Trúc Nhấn Mạnh Cao Cấp"
+lang: vi-en
+---
+
 # BÀI 1: ĐẢO NGỮ (INVERSION) — Cấu Trúc Nhấn Mạnh Cao Cấp
 
 ---

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_05_present_perfect/vocabulary"
+type: vocabulary
+phase: 1
+lesson: lesson_05_present_perfect
+topic: "present perfect"
+cefr: A1-A2
+title: "VOCABULARY - BÀI 5: LIFE EXPERIENCES & ACHIEVEMENTS"
+lang: vi-en
+---
+
 # VOCABULARY - BÀI 5: LIFE EXPERIENCES & ACHIEVEMENTS
 ## Từ vựng: Kinh nghiệm sống & Thành tích
 

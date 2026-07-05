@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_01_inversion/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_01_inversion
+topic: "inversion"
+cefr: B2-C1
+title: "VOCABULARY — BÀI 1: ĐẢO NGỮ & NEGATIVE EMPHASIS WORDS"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 1: ĐẢO NGỮ & NEGATIVE EMPHASIS WORDS
 
 ## BẢNG TỪ VỰNG CHÍNH (70 TỪ)

@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_01_passive_voice/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_01_passive_voice
+topic: "passive voice"
+cefr: B1-B2
+title: "TỪ VỰNG BÀI 1: THỂ BỊ ĐỘNG"
+lang: vi-en
+---
+
 # TỪ VỰNG BÀI 1: THỂ BỊ ĐỘNG
 ## Chủ đề: Khoa học, Nghiên cứu, Quy trình, Sản xuất & Động từ Bị động IELTS
 

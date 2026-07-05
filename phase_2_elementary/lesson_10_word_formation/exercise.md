@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_10_word_formation/exercise"
+type: exercise
+phase: 2
+lesson: lesson_10_word_formation
+topic: "word formation"
+cefr: A2-B1
+title: "EXERCISE — Bài 10: Word Formation"
+lang: vi-en
+---
+
 # EXERCISE — Bài 10: Word Formation
 
 ## SECTION A: Use the correct form of the word in brackets (15 items)

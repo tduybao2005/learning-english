@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_01_simple_present/score_report_2026-06-29"
+type: score_report
+phase: 1
+lesson: lesson_01_simple_present
+topic: "simple present"
+cefr: A1-A2
+title: "BÁO CÁO CHẤM ĐIỂM"
+lang: vi-en
+---
+
 # BÁO CÁO CHẤM ĐIỂM
 
 **Bài tập:** Lesson 01 — Thì Hiện Tại Đơn (Simple Present Tense)

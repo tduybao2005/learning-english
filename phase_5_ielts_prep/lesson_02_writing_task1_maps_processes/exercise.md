@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_02_writing_task1_maps_processes/exercise"
+type: exercise
+phase: 5
+lesson: lesson_02_writing_task1_maps_processes
+topic: "writing task1 maps processes"
+cefr: C1
+title: "EXERCISE — Bài 2: IELTS Task 1 Maps & Processes"
+lang: vi-en
+---
+
 # EXERCISE — Bài 2: IELTS Task 1 Maps & Processes
 
 ---

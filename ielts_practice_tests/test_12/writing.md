@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_12/writing"
+type: ielts_writing
+test: 12
+cefr: C1
+title: "IELTS Academic Writing — Test 12"
+lang: vi-en
+---
+
 # IELTS Academic Writing — Test 12
 
 **Time allowed: 60 minutes**

@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_08_adjectives/exercise"
+type: exercise
+phase: 1
+lesson: lesson_08_adjectives
+topic: "adjectives"
+cefr: A1-A2
+title: "BÀI 8: BÀI TẬP - TÍNH TỪ (ADJECTIVES)"
+lang: vi-en
+---
+
 # BÀI 8: BÀI TẬP - TÍNH TỪ (ADJECTIVES)
 **Tổng: 40 câu | Thời gian khuyến nghị: 50 phút**
 

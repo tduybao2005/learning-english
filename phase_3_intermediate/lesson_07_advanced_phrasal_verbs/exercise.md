@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_07_advanced_phrasal_verbs/exercise"
+type: exercise
+phase: 3
+lesson: lesson_07_advanced_phrasal_verbs
+topic: "advanced phrasal verbs"
+cefr: B1-B2
+title: "BÀI 7: EXERCISE — ADVANCED PHRASAL VERBS"
+lang: vi-en
+---
+
 # BÀI 7: EXERCISE — ADVANCED PHRASAL VERBS
 ## Tổng: 45 câu | Thời gian gợi ý: 60–75 phút
 

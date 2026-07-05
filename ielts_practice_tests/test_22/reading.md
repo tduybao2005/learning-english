@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_22/reading"
+type: ielts_reading
+test: 22
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 22"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 22
 **Topics: Evolution of Cities / Behavioural Economics / Ocean Plastics**
 **Time allowed: 60 minutes | 40 questions**

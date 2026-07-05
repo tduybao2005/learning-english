@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_03/speaking"
+type: ielts_speaking
+test: 3
+cefr: C1
+title: "IELTS SPEAKING — TEST 03"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 03
 
 **Topics: Technology & Work | Career Plans | Free Time**

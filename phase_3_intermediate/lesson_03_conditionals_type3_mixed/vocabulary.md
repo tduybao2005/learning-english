@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_03_conditionals_type3_mixed/vocabulary"
+type: vocabulary
+phase: 3
+lesson: lesson_03_conditionals_type3_mixed
+topic: "conditionals type3 mixed"
+cefr: B1-B2
+title: "TỪ VỰNG — Bài 3: Câu Điều Kiện Loại 3 & Hỗn Hợp"
+lang: vi-en
+---
+
 # TỪ VỰNG — Bài 3: Câu Điều Kiện Loại 3 & Hỗn Hợp
 ## Chủ đề: Sự kiện lịch sử, Quyết định & Hối tiếc, Tình huống giả thuyết, Nguyên nhân & Hệ quả
 

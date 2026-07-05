@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_30/reading"
+type: ielts_reading
+test: 30
+cefr: C1
+title: "IELTS Practice Test 30 — Reading"
+lang: vi-en
+---
+
 # IELTS Practice Test 30 — Reading
 
 **Time allowed: 60 minutes**

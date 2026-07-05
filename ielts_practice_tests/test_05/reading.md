@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_05/reading"
+type: ielts_reading
+test: 5
+cefr: C1
+title: "IELTS Academic Reading — Test 05"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 05
 
 **Time allowed: 60 minutes**

@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_02_past_perfect/exercise"
+type: exercise
+phase: 2
+lesson: lesson_02_past_perfect
+topic: "past perfect"
+cefr: A2-B1
+title: "EXERCISE — BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH (PAST PERFECT TENSE)"
+lang: vi-en
+---
+
 # EXERCISE — BÀI 2: THÌ QUÁ KHỨ HOÀN THÀNH (PAST PERFECT TENSE)
 
 **Tổng số bài tập: 40**

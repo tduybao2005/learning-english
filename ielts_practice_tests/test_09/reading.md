@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_09/reading"
+type: ielts_reading
+test: 9
+cefr: C1
+title: "IELTS Academic Reading — Test 09"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 09
 
 **Time allowed: 60 minutes | Total questions: 40**

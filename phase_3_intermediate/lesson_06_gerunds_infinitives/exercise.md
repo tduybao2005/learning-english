@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_06_gerunds_infinitives/exercise"
+type: exercise
+phase: 3
+lesson: lesson_06_gerunds_infinitives
+topic: "gerunds infinitives"
+cefr: B1-B2
+title: "EXERCISE — Bài 6: Gerunds vs Infinitives"
+lang: vi-en
+---
+
 # EXERCISE — Bài 6: Gerunds vs Infinitives
 
 ## SECTION A: Gerund or Infinitive? (20 items)

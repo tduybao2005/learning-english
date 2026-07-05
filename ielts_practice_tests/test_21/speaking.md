@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_21/speaking"
+type: ielts_speaking
+test: 21
+cefr: C1
+title: "IELTS SPEAKING — TEST 21"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 21
 **Topics: Gardens & Nature / Health & Medicine / Creative Hobbies / Creativity**
 **Total time: 11–14 minutes**

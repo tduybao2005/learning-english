@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_12/speaking"
+type: ielts_speaking
+test: 12
+cefr: C1
+title: "IELTS Speaking — Test 12"
+lang: vi-en
+---
+
 # IELTS Speaking — Test 12
 
 **Total time: 11–14 minutes**

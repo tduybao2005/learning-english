@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_02/reading"
+type: ielts_reading
+test: 2
+cefr: C1
+title: "IELTS ACADEMIC READING — TEST 02"
+lang: vi-en
+---
+
 # IELTS ACADEMIC READING — TEST 02
 **Topics: Coral Reef Ecosystems / Urban Planning / The Economics of Happiness**
 *Target Band: 6.5–8.0 | Time Allowed: 60 minutes | 40 Questions*

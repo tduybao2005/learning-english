@@ -1,3 +1,12 @@
+---
+id: "phase_5_ielts_prep/exam/phase5_answer_key"
+type: phase_exam_answer_key
+phase: 5
+cefr: C1
+title: "ĐÁP ÁN & HƯỚNG DẪN — KIỂM TRA CUỐI GIAI ĐOẠN 5"
+lang: vi-en
+---
+
 # ĐÁP ÁN & HƯỚNG DẪN — KIỂM TRA CUỐI GIAI ĐOẠN 5
 **Phase 5 IELTS Prep | Mini IELTS Simulation**
 

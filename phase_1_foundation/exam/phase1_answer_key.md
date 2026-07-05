@@ -1,3 +1,12 @@
+---
+id: "phase_1_foundation/exam/phase1_answer_key"
+type: phase_exam_answer_key
+phase: 1
+cefr: A1-A2
+title: "ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 1"
+lang: vi-en
+---
+
 # ĐÁP ÁN — KIỂM TRA CUỐI GIAI ĐOẠN 1
 
 ## PHẦN A — NGỮ PHÁP (Đáp án mẫu cho 25 câu)

@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_06_gerunds_infinitives/lecture"
+type: lecture
+phase: 3
+lesson: lesson_06_gerunds_infinitives
+topic: "gerunds infinitives"
+cefr: B1-B2
+title: "BÀI 6: DANH ĐỘNG TỪ vs ĐỘNG TỪ NGUYÊN MẪU (GERUNDS vs INFINITIVES)"
+lang: vi-en
+---
+
 # BÀI 6: DANH ĐỘNG TỪ vs ĐỘNG TỪ NGUYÊN MẪU (GERUNDS vs INFINITIVES)
 
 ## 1. Gerund (V-ing dùng như Danh từ)

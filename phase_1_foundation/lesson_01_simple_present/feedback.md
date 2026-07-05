@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_01_simple_present/feedback"
+type: feedback
+phase: 1
+lesson: lesson_01_simple_present
+topic: "simple present"
+cefr: A1-A2
+title: "feedback"
+lang: vi-en
+---
+
 - Trong lecture ở PHẦN 3: VỊ TRÍ CỦA TRẠNG TỪ TẦN SUẤT (ADVERBS OF FREQUENCY) m chỉ mới chỉ quy tắc:
 Quy tắc:
 

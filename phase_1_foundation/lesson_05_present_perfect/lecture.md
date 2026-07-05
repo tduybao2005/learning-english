@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_05_present_perfect/lecture"
+type: lecture
+phase: 1
+lesson: lesson_05_present_perfect
+topic: "present perfect"
+cefr: A1-A2
+title: "BÀI 5: THÌ HIỆN TẠI HOÀN THÀNH (PRESENT PERFECT TENSE)"
+lang: vi-en
+---
+
 # BÀI 5: THÌ HIỆN TẠI HOÀN THÀNH (PRESENT PERFECT TENSE)
 
 ---

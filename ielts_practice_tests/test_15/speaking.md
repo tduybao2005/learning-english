@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_15/speaking"
+type: ielts_speaking
+test: 15
+cefr: C1
+title: "IELTS Practice Test 15 — Speaking"
+lang: vi-en
+---
+
 # IELTS Practice Test 15 — Speaking
 
 *Context: Reading passages cover (1) nanotechnology, (2) colonial history and language, (3) the science of happiness.*

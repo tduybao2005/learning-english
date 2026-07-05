@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_27/reading"
+type: ielts_reading
+test: 27
+cefr: C1
+title: "IELTS Academic Reading — Test 27"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 27
 **Time allowed: 60 minutes**
 **Total questions: 40**

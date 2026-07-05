@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_06_speaking_part1_2/lecture"
+type: lecture
+phase: 5
+lesson: lesson_06_speaking_part1_2
+topic: "speaking part1 2"
+cefr: C1
+title: "BÀI 6: IELTS SPEAKING PHẦN 1 & 2"
+lang: vi-en
+---
+
 # BÀI 6: IELTS SPEAKING PHẦN 1 & 2
 
 ---

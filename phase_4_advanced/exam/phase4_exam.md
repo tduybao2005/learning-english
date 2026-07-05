@@ -1,3 +1,12 @@
+---
+id: "phase_4_advanced/exam/phase4_exam"
+type: phase_exam
+phase: 4
+cefr: B2-C1
+title: "KIỂM TRA CUỐI GIAI ĐOẠN 4 — ADVANCED (B2 → C1)"
+lang: vi-en
+---
+
 # KIỂM TRA CUỐI GIAI ĐOẠN 4 — ADVANCED (B2 → C1)
 
 > **Thời gian:** 120 phút | **Tổng điểm:** 100 điểm

@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_30/speaking"
+type: ielts_speaking
+test: 30
+cefr: C1
+title: "IELTS Practice Test 30 — Speaking"
+lang: vi-en
+---
+
 # IELTS Practice Test 30 — Speaking
 
 ---

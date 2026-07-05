@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_10/answer_key"
+type: ielts_answer_key
+test: 10
+cefr: C1
+title: "ĐÁP ÁN — TEST 10"
+lang: vi-en
+---
+
 # ĐÁP ÁN — TEST 10
 
 **Lưu ý:** Đây là đáp án tham khảo. Trong kỳ thi IELTS thực tế, một số câu sentence completion có thể chấp nhận các từ đồng nghĩa hoặc cụm từ gần nghĩa. Luôn kiểm tra lại với hướng dẫn Cambridge IELTS chính thức.

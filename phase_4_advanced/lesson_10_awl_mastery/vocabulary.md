@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_10_awl_mastery/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_10_awl_mastery
+topic: "awl mastery"
+cefr: B2-C1
+title: "VOCABULARY — Bài 10: AWL Mastery"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 10: AWL Mastery
 
 > **Cấp độ:** B2 → C1 | **Mục tiêu:** Nắm vững AWL Sublists 3–5 (80 entries)

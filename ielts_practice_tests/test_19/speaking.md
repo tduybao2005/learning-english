@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_19/speaking"
+type: ielts_speaking
+test: 19
+cefr: C1
+title: "IELTS SPEAKING — TEST 19"
+lang: vi-en
+---
+
 # IELTS SPEAKING — TEST 19
 
 **Topics:** Languages & Multilingualism / Travel & Cultural Experience / Traditions & Celebrations

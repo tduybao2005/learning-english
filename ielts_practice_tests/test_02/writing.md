@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_02/writing"
+type: ielts_writing
+test: 2
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 02"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 02
 
 ---

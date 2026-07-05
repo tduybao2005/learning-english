@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_07_idioms_colloquialisms/exercise"
+type: exercise
+phase: 4
+lesson: lesson_07_idioms_colloquialisms
+topic: "idioms colloquialisms"
+cefr: B2-C1
+title: "BÀI 7: EXERCISE — IDIOMS & COLLOQUIALISMS"
+lang: vi-en
+---
+
 # BÀI 7: EXERCISE — IDIOMS & COLLOQUIALISMS
 ## IELTS Speaking Idiom Practice
 

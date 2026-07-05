@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_05_articles/vocabulary"
+type: vocabulary
+phase: 2
+lesson: lesson_05_articles
+topic: "articles"
+cefr: A2-B1
+title: "VOCABULARY — BÀI 5: MẠO TỪ (ARTICLES)"
+lang: vi-en
+---
+
 # VOCABULARY — BÀI 5: MẠO TỪ (ARTICLES)
 
 ## DANH SÁCH TỪ VỰNG (65 TỪ)

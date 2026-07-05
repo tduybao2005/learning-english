@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_12_basic_comparisons/lecture"
+type: lecture
+phase: 1
+lesson: lesson_12_basic_comparisons
+topic: "basic comparisons"
+cefr: A1-A2
+title: "BÀI 12: SO SÁNH CƠ BẢN (BASIC COMPARISONS)"
+lang: vi-en
+---
+
 # BÀI 12: SO SÁNH CƠ BẢN (BASIC COMPARISONS)
 
 ---

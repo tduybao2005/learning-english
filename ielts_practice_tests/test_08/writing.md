@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_08/writing"
+type: ielts_writing
+test: 8
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 08"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 08
 
 **Time allowed: 60 minutes**

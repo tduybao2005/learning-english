@@ -1,3 +1,14 @@
+---
+id: "phase_5_ielts_prep/lesson_07_speaking_part3/vocabulary"
+type: vocabulary
+phase: 5
+lesson: lesson_07_speaking_part3
+topic: "speaking part3"
+cefr: C1
+title: "VOCABULARY — Bài 7: IELTS Speaking Part 3"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 7: IELTS Speaking Part 3
 **Phase 5 IELTS Prep | Mục tiêu: IELTS 6.5–8.0**
 

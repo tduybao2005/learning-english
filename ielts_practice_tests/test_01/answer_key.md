@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_01/answer_key"
+type: ielts_answer_key
+test: 1
+cefr: C1
+title: "IELTS Practice Test 01 — Answer Key"
+lang: vi-en
+---
+
 # IELTS Practice Test 01 — Answer Key
 
 ---

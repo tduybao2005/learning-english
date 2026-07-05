@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_04/writing"
+type: ielts_writing
+test: 4
+cefr: C1
+title: "IELTS ACADEMIC WRITING — TEST 04"
+lang: vi-en
+---
+
 # IELTS ACADEMIC WRITING — TEST 04
 
 **Time allowed: 60 minutes**

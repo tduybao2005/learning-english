@@ -1,3 +1,14 @@
+---
+id: "phase_2_elementary/lesson_05_articles/lecture"
+type: lecture
+phase: 2
+lesson: lesson_05_articles
+topic: "articles"
+cefr: A2-B1
+title: "BÀI 5: MẠO TỪ (ARTICLES) — A, AN, THE"
+lang: vi-en
+---
+
 # BÀI 5: MẠO TỪ (ARTICLES) — A, AN, THE
 
 ---

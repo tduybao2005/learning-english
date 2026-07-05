@@ -1,3 +1,14 @@
+---
+id: "phase_1_foundation/lesson_03_simple_past/exercise"
+type: exercise
+phase: 1
+lesson: lesson_03_simple_past
+topic: "simple past"
+cefr: A1-A2
+title: "EXERCISE - BÀI 3: THÌ QUÁ KHỨ ĐƠN (SIMPLE PAST TENSE)"
+lang: vi-en
+---
+
 # EXERCISE - BÀI 3: THÌ QUÁ KHỨ ĐƠN (SIMPLE PAST TENSE)
 ## Bài tập tổng hợp
 

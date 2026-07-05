@@ -1,3 +1,12 @@
+---
+id: "ielts_practice_tests/test_25/reading"
+type: ielts_reading
+test: 25
+cefr: C1
+title: "IELTS Academic Reading — Test 25"
+lang: vi-en
+---
+
 # IELTS Academic Reading — Test 25
 
 **Time allowed: 60 minutes**

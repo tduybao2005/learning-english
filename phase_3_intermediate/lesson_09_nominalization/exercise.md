@@ -1,3 +1,14 @@
+---
+id: "phase_3_intermediate/lesson_09_nominalization/exercise"
+type: exercise
+phase: 3
+lesson: lesson_09_nominalization
+topic: "nominalization"
+cefr: B1-B2
+title: "BÀI TẬP BÀI 9: DANH TỪ HÓA (NOMINALIZATION)"
+lang: vi-en
+---
+
 # BÀI TẬP BÀI 9: DANH TỪ HÓA (NOMINALIZATION)
 
 ---

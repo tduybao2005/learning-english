@@ -1,3 +1,14 @@
+---
+id: "phase_4_advanced/lesson_04_subjunctive_mood/vocabulary"
+type: vocabulary
+phase: 4
+lesson: lesson_04_subjunctive_mood
+topic: "subjunctive mood"
+cefr: B2-C1
+title: "VOCABULARY — Bài 4: Giả Định Cách (Subjunctive Mood)"
+lang: vi-en
+---
+
 # VOCABULARY — Bài 4: Giả Định Cách (Subjunctive Mood)
 
 ## Bảng từ vựng — 70 từ/cụm từ dùng với Subjunctive
