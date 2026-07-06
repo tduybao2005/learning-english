@@ -9,6 +9,13 @@ import { EmptyState } from "@/components/EmptyState";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
+/** Dashboard-only goal label: IELTS → "Band {value}", CEFR → "{value}" (no
+ * "Chưa đặt mục tiêu" fallback here — callers already branch on user having a
+ * goal before calling this). */
+function formatGoalLabel(goalType: "IELTS" | "CEFR", goalValue: string): string {
+  return goalType === "IELTS" ? `Band ${goalValue}` : goalValue;
+}
+
 export default async function DashboardPage({
   searchParams,
 }: {
@@ -44,6 +51,13 @@ export default async function DashboardPage({
   );
   const subtitleParts = totalLessons > 0 ? [`${totalDone}/${totalLessons} bài đã hoàn thành`] : [];
 
+  const remainingPercent =
+    totalLessons > 0 ? 100 - Math.round((totalDone / totalLessons) * 100) : null;
+  const goalSubtitle =
+    user.goalType && user.goalValue && remainingPercent !== null
+      ? `Mục tiêu ${formatGoalLabel(user.goalType, user.goalValue)} · còn ${remainingPercent}% chặng đường`
+      : subtitleParts.join(" · ");
+
   type NextUp = { phaseTitle: string; phaseSlug: string; lesson: (typeof phases)[number]["lessons"][number] } | null;
   let nextUp: NextUp = null;
   for (const phase of phases) {
@@ -67,12 +81,19 @@ export default async function DashboardPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 lg:grid lg:grid-cols-[1fr_320px] lg:items-start lg:gap-6">
       <div className="max-w-3xl lg:max-w-none">
-        <h2 className="mb-1 text-h2 font-extrabold tracking-tight">
-          {user.name ? `Chào ${user.name} 👋` : "Chào bạn 👋"}
-        </h2>
-        {subtitleParts.length > 0 ? (
-          <p className="mb-6 text-caption text-muted-foreground">{subtitleParts.join(" · ")}</p>
-        ) : null}
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <h2 className="mb-1 text-h1 font-extrabold tracking-tight">
+              {user.name ? `Chào ${user.name} 👋` : "Chào bạn 👋"}
+            </h2>
+            {goalSubtitle ? (
+              <p className="text-caption text-muted-foreground">{goalSubtitle}</p>
+            ) : null}
+          </div>
+          <span className="shrink-0 rounded-full bg-streak-bg px-3 py-1.5 text-sm font-bold text-streak-foreground">
+            🔥 0 ngày
+          </span>
+        </div>
 
         {prompt === "placement" ? (
           <div className="mb-6 flex flex-col gap-3 rounded-xl border border-primary/30 bg-primary/5 p-4 sm:flex-row sm:items-center sm:justify-between">
@@ -105,7 +126,7 @@ export default async function DashboardPage({
           <div className="rounded-xl bg-primary p-4 text-primary-foreground shadow-primary-glow">
             <p className="mb-2 text-xs font-medium opacity-80">Việc hôm nay</p>
             <p className="mb-3 font-semibold">
-              {nextUp.phaseTitle} · {nextUp.lesson.title}
+              Bài {nextUp.lesson.orderIndex} · {nextUp.lesson.title}
             </p>
             <Link
               href={`/learn/${nextUp.phaseSlug}/${nextUp.lesson.slug}`}
@@ -117,11 +138,21 @@ export default async function DashboardPage({
         ) : null}
 
         <div className="rounded-xl border border-border bg-card p-4">
-          <p className="mb-2 text-xs font-medium text-muted-foreground">Tuần này</p>
-          <p className="text-sm">
-            Bài đã hoàn thành:{" "}
-            <span className="font-semibold text-foreground">{lessonsCompletedThisWeek}</span>
-          </p>
+          <p className="mb-3 text-xs font-medium text-muted-foreground">Tuần này</p>
+          <div className="flex flex-col gap-2 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">XP kiếm được</span>
+              <span className="font-semibold text-foreground">0</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Bài hoàn thành</span>
+              <span className="font-semibold text-foreground">{lessonsCompletedThisWeek}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">Từ vựng mới</span>
+              <span className="font-semibold text-foreground">0</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
