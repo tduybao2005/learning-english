@@ -179,6 +179,11 @@ export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref
           const isSelected = option.id === selectedId;
           const isCorrectPick = isSelected && answered && isCorrect;
           const isWrong = isSelected && answered && !isCorrect;
+          // The quiz is one-shot (no retry): when the learner picks wrong, reveal
+          // which option WAS correct so they still learn the answer — unlike the
+          // exercise runner (Task 8), where a wrong pick just invites a retry and
+          // the correct option is deliberately never shown.
+          const isCorrectReveal = answered && isCorrect && !isSelected;
 
           return (
             <button
@@ -189,25 +194,26 @@ export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref
               className={cn(
                 "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
                 isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
-                !isSelected && "border-border hover:bg-muted",
+                !isSelected && !isCorrectReveal && "border-border hover:bg-muted",
                 isWrong && "animate-shake border-destructive bg-destructive-bg",
-                isCorrectPick && "animate-pop border-success bg-success-bg",
+                (isCorrectPick || isCorrectReveal) && "border-success bg-success-bg",
+                isCorrectPick && "animate-pop",
               )}
             >
               <span
                 className={cn(
                   "flex size-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
                   isWrong && "bg-destructive/15 text-destructive",
-                  isCorrectPick && "bg-success text-success-foreground",
+                  (isCorrectPick || isCorrectReveal) && "bg-success text-success-foreground",
                   isSelected && !isWrong && !isCorrectPick && "bg-primary text-primary-foreground",
-                  !isSelected && "bg-muted text-muted-foreground",
+                  !isSelected && !isCorrectReveal && "bg-muted text-muted-foreground",
                 )}
               >
                 {label}
               </span>
               <span>{option.text}</span>
               {isWrong && <span className="ml-auto text-destructive">✕</span>}
-              {isCorrectPick && <span className="ml-auto text-success">✓</span>}
+              {(isCorrectPick || isCorrectReveal) && <span className="ml-auto text-success">✓</span>}
             </button>
           );
         })}

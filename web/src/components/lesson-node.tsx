@@ -12,7 +12,7 @@ const NODE_META: Record<
     icon: "✓",
     pill: "border-success/40 bg-success-bg",
     badge: "bg-success text-success-foreground",
-    label: "text-[oklch(0.4_0.1_150)]",
+    label: "text-foreground",
     clickable: true,
   },
   UNLOCKED: {
