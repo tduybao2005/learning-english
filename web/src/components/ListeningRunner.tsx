@@ -129,7 +129,7 @@ export function ListeningRunner({
 
         {isCorrect && (
           <div className="mt-3 text-sm">
-            <p className="font-medium text-emerald-600 dark:text-emerald-400">Chính xác!</p>
+            <p className="font-medium text-success">Chính xác!</p>
             {state.result?.correctAnswer && (
               <p className="text-muted-foreground">
                 Đáp án: <span className="font-medium text-foreground">{state.result.correctAnswer}</span>

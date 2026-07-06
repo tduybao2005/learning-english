@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import { Pause, Play, RotateCcw, RotateCw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -95,6 +95,16 @@ export function AudioPlayer({
       seekTo(ratio * duration);
     }
 
+    function handleTrackKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        seekBy(-5);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        seekBy(5);
+      }
+    }
+
     return (
       <div className="flex flex-col gap-4 rounded-2xl bg-primary p-5 text-primary-foreground shadow-primary-glow">
         <audio ref={audioRef} src={src} preload="metadata" />
@@ -102,11 +112,13 @@ export function AudioPlayer({
         <div className="flex flex-col gap-1.5">
           <div
             role="slider"
+            tabIndex={0}
             aria-label="Tua bài nghe"
             aria-valuemin={0}
             aria-valuemax={duration || 0}
             aria-valuenow={Math.min(current, duration || 0)}
             onClick={handleTrackClick}
+            onKeyDown={handleTrackKeyDown}
             className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-white/25"
           >
             <div className="h-full rounded-full bg-white" style={{ width: `${percent}%` }} />
