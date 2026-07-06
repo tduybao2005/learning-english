@@ -253,7 +253,7 @@ export function MatchGame({
         <span>
           Vòng {roundIndex + 1}/{totalRounds}
         </span>
-        <span>
+        <span className="font-mono text-caption">
           ⏱ {formatTime(elapsed)}
           {bestTimeLabel !== null && <> · Kỷ lục {bestTimeLabel}</>}
         </span>
@@ -273,8 +273,8 @@ export function MatchGame({
                 onClick={() => handleClickLeft(pair.wordId)}
                 className={cn(
                   "rounded-lg border-2 p-3 text-left font-medium transition-colors",
-                  isMatched && "border-transparent bg-muted text-muted-foreground opacity-50",
-                  !isMatched && isWrong && "animate-shake border-destructive bg-destructive/10 text-destructive",
+                  isMatched && "animate-pop border-success/40 bg-success-bg text-success opacity-40",
+                  !isMatched && isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
                   !isMatched && !isWrong && isSelected && "border-primary bg-primary/10",
                   !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40",
                 )}
@@ -297,8 +297,8 @@ export function MatchGame({
                 onClick={() => handleClickRight(pair.wordId)}
                 className={cn(
                   "rounded-lg border-2 p-3 text-left font-medium transition-colors",
-                  isMatched && "border-transparent bg-muted text-muted-foreground opacity-50",
-                  !isMatched && isWrong && "animate-shake border-destructive bg-destructive/10 text-destructive",
+                  isMatched && "animate-pop border-success/40 bg-success-bg text-success opacity-40",
+                  !isMatched && isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
                   !isMatched && !isWrong && isSelected && "border-primary bg-primary/10",
                   !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40",
                 )}

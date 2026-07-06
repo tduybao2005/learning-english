@@ -46,8 +46,8 @@ export default async function VocabQuizPage({
         ← Quay lại từ vựng
       </Link>
 
-      <p className="text-sm font-medium text-primary">{lesson.phase.title}</p>
-      <h1 className="mb-6 text-xl font-bold">Trắc nghiệm — {lesson.title}</h1>
+      <p className="text-caption font-semibold text-primary">{lesson.phase.title}</p>
+      <h1 className="mb-6 text-h2 font-extrabold">Trắc nghiệm — {lesson.title}</h1>
 
       {words.length === 0 ? (
         <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">

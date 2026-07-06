@@ -5,10 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { getVocabStats } from "@/lib/vocab";
-import { StatsRing } from "@/components/vocab/StatsRing";
-import { buttonVariants } from "@/components/ui/button";
 import { LessonTabs } from "@/components/LessonTabs";
-import { cn } from "@/lib/utils";
 
 export default async function VocabHubPage({
   params,
@@ -55,6 +52,7 @@ export default async function VocabHubPage({
     groups[idx].count += 1;
   }
 
+  const percent = stats.total === 0 ? 0 : Math.round((stats.learned / stats.total) * 100);
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
 
   return (
@@ -72,28 +70,67 @@ export default async function VocabHubPage({
         </p>
       ) : (
         <>
-          <div className="mb-6 flex flex-col items-center gap-5 rounded-xl border border-border bg-card p-6 sm:flex-row sm:justify-between">
-            <StatsRing learned={stats.learned} total={stats.total} />
-            <div className="grid w-full grid-cols-1 gap-2 sm:w-auto sm:grid-cols-3">
-              <Link
-                href={`${base}/vocab/flashcards`}
-                className={cn(buttonVariants(), "justify-center")}
-              >
-                🗂️ Flashcards
-              </Link>
-              <Link
-                href={`${base}/vocab/quiz`}
-                className={cn(buttonVariants({ variant: "outline" }), "justify-center")}
-              >
-                ❓ Trắc nghiệm
-              </Link>
-              <Link
-                href={`${base}/vocab/match`}
-                className={cn(buttonVariants({ variant: "outline" }), "justify-center")}
-              >
-                🔗 Nối từ
-              </Link>
+          <div className="mb-6 rounded-full bg-primary px-5 py-3 text-primary-foreground">
+            <div className="mb-2 flex items-center justify-between text-sm font-semibold">
+              <span>Tiến độ ghi nhớ</span>
+              <span>
+                {stats.learned}/{stats.total}
+              </span>
             </div>
+            <div className="h-1.5 w-full overflow-hidden rounded-full bg-white/25">
+              <div className="h-full rounded-full bg-white" style={{ width: `${percent}%` }} />
+            </div>
+          </div>
+
+          <p className="mb-3 text-caption font-semibold text-muted-foreground">
+            Chọn chế độ luyện tập
+          </p>
+          <div className="mb-6 flex flex-col gap-2">
+            <Link
+              href={`${base}/vocab/flashcards`}
+              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-lg">
+                🃏
+              </span>
+              <span className="flex-1">
+                <span className="block text-sm font-semibold">Thẻ ghi nhớ</span>
+                <span className="block text-caption text-muted-foreground">
+                  Lật thẻ để ôn nghĩa từ
+                </span>
+              </span>
+              <span className="text-muted-foreground">›</span>
+            </Link>
+            <Link
+              href={`${base}/vocab/quiz`}
+              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-streak-bg text-lg">
+                ⚡
+              </span>
+              <span className="flex-1">
+                <span className="block text-sm font-semibold">Quiz trắc nghiệm</span>
+                <span className="block text-caption text-muted-foreground">
+                  4 đáp án · tính streak
+                </span>
+              </span>
+              <span className="text-muted-foreground">›</span>
+            </Link>
+            <Link
+              href={`${base}/vocab/match`}
+              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-destructive-bg text-lg">
+                🧩
+              </span>
+              <span className="flex-1">
+                <span className="block text-sm font-semibold">Ghép cặp</span>
+                <span className="block text-caption text-muted-foreground">
+                  Nối từ với nghĩa tương ứng
+                </span>
+              </span>
+              <span className="text-muted-foreground">›</span>
+            </Link>
           </div>
 
           <h2 className="mb-2 text-sm font-medium text-muted-foreground">

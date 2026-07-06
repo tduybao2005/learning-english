@@ -116,7 +116,7 @@ export function Flashcards({ words, backHref }: { words: FlashcardWord[]; backHr
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full rounded-full bg-primary transition-all"
+            className="h-full animate-progress-fill rounded-full bg-primary transition-all"
             style={{ width: `${percent}%` }}
           />
         </div>
@@ -125,45 +125,36 @@ export function Flashcards({ words, backHref }: { words: FlashcardWord[]; backHr
       <button
         type="button"
         onClick={() => setFlipped((f) => !f)}
-        className="w-full text-left [perspective:1000px]"
+        className="w-full text-left perspective-flip"
         aria-label={flipped ? "Lật lại mặt trước" : "Nhấn để lật thẻ và xem nghĩa"}
         data-testid="flashcard"
         data-flipped={flipped}
       >
-        <div
-          className={cn(
-            "relative min-h-56 w-full transition-transform duration-500 [transform-style:preserve-3d]",
-            flipped && "[transform:rotateY(180deg)]",
-          )}
-        >
+        <div className={cn("relative h-64 w-full flip-inner", flipped && "flip-inner-flipped")}>
           {/* Front: word + IPA */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card p-6 [backface-visibility:hidden]">
-            <p className="text-center text-2xl font-bold">{card.word}</p>
+          <div className="absolute inset-0 backface-hidden rounded-2xl border bg-card flex flex-col items-center justify-center gap-2 p-6">
+            <p className="text-center text-h1 font-extrabold">{card.word}</p>
             {card.ipa !== "" && <p className="text-muted-foreground">/{card.ipa}/</p>}
-            <p className="mt-4 text-xs text-muted-foreground">Nhấn để xem nghĩa</p>
+            <p className="mt-4 text-caption text-muted-foreground">Nhấn để xem nghĩa ↻</p>
           </div>
 
           {/* Back: meaning + example */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-xl border border-primary/40 bg-primary/5 p-6 text-center [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <div className="absolute inset-0 backface-hidden rounded-2xl border bg-primary text-primary-foreground rotate-y-180 flex flex-col items-center justify-center gap-2 p-6 text-center">
             <p className="text-lg font-semibold">
               {card.meaningVi !== "" ? card.meaningVi : "(chưa có nghĩa)"}
             </p>
             {card.exampleEn !== "" && (
-              <p className="text-sm text-muted-foreground italic">{card.exampleEn}</p>
+              <p className="text-sm italic opacity-90">{card.exampleEn}</p>
             )}
           </div>
         </div>
       </button>
 
       <div className="flex justify-center gap-3">
-        <Button variant="destructive" disabled={!flipped} onClick={() => handleReport(false)}>
+        <Button variant="outline" disabled={!flipped} onClick={() => handleReport(false)}>
           Chưa nhớ ✗
         </Button>
-        <Button
-          className="bg-emerald-600 text-white hover:bg-emerald-600/80"
-          disabled={!flipped}
-          onClick={() => handleReport(true)}
-        >
+        <Button variant="success" disabled={!flipped} onClick={() => handleReport(true)}>
           Đã nhớ ✓
         </Button>
       </div>

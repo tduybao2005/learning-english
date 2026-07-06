@@ -152,7 +152,10 @@ export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref
           <span>
             Câu {index + 1}/{total}
           </span>
-          <span>🔥 Chuỗi đúng: {streak}</span>
+          <span className="rounded-full bg-streak-bg px-2.5 py-1 text-caption font-bold text-streak-foreground">
+            <span className={streak >= 2 ? "inline-block animate-flame" : "inline-block"}>🔥</span>{" "}
+            Chuỗi đúng: {streak}
+          </span>
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
           <div
@@ -170,10 +173,12 @@ export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref
       </div>
 
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" data-testid="quiz-options">
-        {round.options.map((option) => {
+        {round.options.map((option, i) => {
+          const label = String.fromCharCode(65 + i);
           const isCorrect = option.id === round.correctOptionId;
           const isSelected = option.id === selectedId;
-          const showFeedback = answered && (isSelected || isCorrect);
+          const isCorrectPick = isSelected && answered && isCorrect;
+          const isWrong = isSelected && answered && !isCorrect;
 
           return (
             <button
@@ -182,13 +187,27 @@ export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref
               disabled={answered}
               onClick={() => handleSelect(option.id)}
               className={cn(
-                "rounded-xl border-2 p-4 text-left font-medium transition-colors",
-                !showFeedback && "border-border bg-card hover:border-primary/40",
-                showFeedback && isCorrect && "border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
-                showFeedback && isSelected && !isCorrect && "border-destructive bg-destructive/10 text-destructive",
+                "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
+                isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
+                !isSelected && "border-border hover:bg-muted",
+                isWrong && "animate-shake border-destructive bg-destructive-bg",
+                isCorrectPick && "animate-pop border-success bg-success-bg",
               )}
             >
-              {option.text}
+              <span
+                className={cn(
+                  "flex size-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
+                  isWrong && "bg-destructive/15 text-destructive",
+                  isCorrectPick && "bg-success text-success-foreground",
+                  isSelected && !isWrong && !isCorrectPick && "bg-primary text-primary-foreground",
+                  !isSelected && "bg-muted text-muted-foreground",
+                )}
+              >
+                {label}
+              </span>
+              <span>{option.text}</span>
+              {isWrong && <span className="ml-auto text-destructive">✕</span>}
+              {isCorrectPick && <span className="ml-auto text-success">✓</span>}
             </button>
           );
         })}
