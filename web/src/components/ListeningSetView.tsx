@@ -52,18 +52,19 @@ export function ListeningSetView({
 
   return (
     <div className="flex flex-col gap-6">
-      <AudioPlayer src={audioUrl} />
+      <AudioPlayer src={audioUrl} variant="full" />
 
       <ListeningRunner slug={slug} questions={questions} onFinished={() => setCompleted(true)} />
 
-      <div className="rounded-xl border border-border bg-card">
-        <button
-          type="button"
-          disabled={!completed}
-          onClick={() => setTranscriptOpen((open) => !open)}
+      <details className="rounded-xl border border-border bg-card" open={completed && transcriptOpen}>
+        <summary
+          onClick={(e) => {
+            e.preventDefault();
+            if (completed) setTranscriptOpen((open) => !open);
+          }}
           aria-expanded={transcriptOpen}
           className={cn(
-            "flex w-full items-center justify-between gap-2 rounded-xl px-4 py-3 text-left text-sm font-medium",
+            "flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-4 font-semibold [&::-webkit-details-marker]:hidden",
             completed ? "hover:bg-muted/50" : "cursor-not-allowed text-muted-foreground",
           )}
         >
@@ -79,13 +80,13 @@ export function ListeningSetView({
           <ChevronDown
             className={cn("size-4 shrink-0 transition-transform", transcriptOpen && "rotate-180")}
           />
-        </button>
+        </summary>
         {completed && transcriptOpen && (
           <div className="border-t border-border px-4 py-4">
             <TranscriptBody transcriptMd={transcriptMd} />
           </div>
         )}
-      </div>
+      </details>
     </div>
   );
 }

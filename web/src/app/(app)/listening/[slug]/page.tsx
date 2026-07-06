@@ -34,11 +34,14 @@ export default async function ListeningSetPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <Link href="/listening" className="mb-4 inline-block text-sm text-muted-foreground hover:text-foreground">
+      <Link
+        href="/listening"
+        className="mb-4 inline-block text-caption text-muted-foreground hover:text-foreground"
+      >
         ← Quay lại luyện nghe
       </Link>
 
-      <h1 className="mb-6 text-2xl font-bold">{listeningSet.title}</h1>
+      <h1 className="mb-6 text-h1 font-bold">{listeningSet.title}</h1>
 
       <ListeningSetView
         slug={listeningSet.slug}

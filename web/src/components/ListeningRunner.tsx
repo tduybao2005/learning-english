@@ -72,7 +72,7 @@ export function ListeningRunner({
 
   if (state.phase === "finished") {
     return (
-      <div className="flex flex-col items-center gap-2 rounded-xl border border-emerald-500/50 bg-emerald-500/5 p-8 text-center">
+      <div className="flex flex-col items-center gap-2 rounded-xl border border-success/50 bg-success-bg p-8 text-center">
         <div className="text-4xl">🎉</div>
         <h2 className="text-lg font-bold">Hoàn thành phần câu hỏi!</h2>
         <p className="text-sm text-muted-foreground">Bây giờ bạn có thể xem transcript bên dưới.</p>
@@ -97,7 +97,10 @@ export function ListeningRunner({
           {isIncorrect && <span>Lần thử: {state.tries}</span>}
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
-          <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${percent}%` }} />
+          <div
+            className="h-full rounded-full bg-primary animate-progress-fill transition-all"
+            style={{ width: `${percent}%` }}
+          />
         </div>
       </div>
 
@@ -105,13 +108,14 @@ export function ListeningRunner({
         className={cn(
           "rounded-xl border p-5 transition-colors",
           isIncorrect && "border-destructive/50 bg-destructive/5",
-          isCorrect && "border-emerald-500/50 bg-emerald-500/5",
+          isCorrect && "border-success/50 bg-success-bg",
           !isIncorrect && !isCorrect && "border-border bg-card",
         )}
       >
         <QuestionCard
           key={question.id}
           question={question}
+          status={state.phase}
           disabled={isChecking || isCorrect}
           onChangeInput={(value) => dispatch({ type: "SET_INPUT", value })}
         />

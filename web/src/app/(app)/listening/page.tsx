@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Headphones } from "lucide-react";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
@@ -42,13 +41,13 @@ export default async function ListeningHubPage() {
               href={`/listening/${set.slug}`}
               className="flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50"
             >
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Headphones className="size-5" />
+              <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-muted text-lg">
+                🎧
               </div>
               <div className="flex-1">
                 <p className="font-medium">{set.title}</p>
                 {set.durationSec && (
-                  <p className="text-xs text-muted-foreground">{formatDuration(set.durationSec)}</p>
+                  <p className="text-caption text-muted-foreground">{formatDuration(set.durationSec)}</p>
                 )}
               </div>
             </Link>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Pause, Play, RotateCcw, RotateCw } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -21,8 +21,20 @@ function formatTime(sec: number): string {
  * controls: play/pause, ±10s seek buttons, a seek bar, and a 0.75/1/1.25
  * speed picker. Kept as a thin controller over the native element (no custom
  * audio engine) — `<audio>` already handles buffering/streaming/decoding.
+ *
+ * Two visual variants share the same playback logic/state/refs:
+ * - `"compact"` (default): Task 10's pale card look, used by the placement
+ *   wizard.
+ * - `"full"`: a fully primary-colored card used by the listening hub pages
+ *   (Task 12), with a custom progress track and larger controls.
  */
-export function AudioPlayer({ src }: { src: string }) {
+export function AudioPlayer({
+  src,
+  variant = "compact",
+}: {
+  src: string;
+  variant?: "compact" | "full";
+}) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [current, setCurrent] = useState(0);
@@ -71,6 +83,85 @@ export function AudioPlayer({ src }: { src: string }) {
     const audio = audioRef.current;
     if (audio) audio.playbackRate = next;
     setSpeed(next);
+  }
+
+  if (variant === "full") {
+    const percent = duration > 0 ? Math.min((current / duration) * 100, 100) : 0;
+
+    function handleTrackClick(e: MouseEvent<HTMLDivElement>) {
+      if (!duration) return;
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+      seekTo(ratio * duration);
+    }
+
+    return (
+      <div className="flex flex-col gap-4 rounded-2xl bg-primary p-5 text-primary-foreground shadow-primary-glow">
+        <audio ref={audioRef} src={src} preload="metadata" />
+
+        <div className="flex flex-col gap-1.5">
+          <div
+            role="slider"
+            aria-label="Tua bài nghe"
+            aria-valuemin={0}
+            aria-valuemax={duration || 0}
+            aria-valuenow={Math.min(current, duration || 0)}
+            onClick={handleTrackClick}
+            className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-white/25"
+          >
+            <div className="h-full rounded-full bg-white" style={{ width: `${percent}%` }} />
+          </div>
+          <div className="flex items-center justify-between font-mono text-xs opacity-80">
+            <span>{formatTime(current)}</span>
+            <span>{formatTime(duration)}</span>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => seekBy(-10)}
+            aria-label="Lùi 10 giây"
+            className="flex size-9 items-center justify-center rounded-full bg-white/15"
+          >
+            <RotateCcw className="size-4" />
+          </button>
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={playing ? "Tạm dừng" : "Phát"}
+            className="flex size-14 items-center justify-center rounded-full bg-white text-primary"
+          >
+            {playing ? <Pause className="size-6" /> : <Play className="size-6" />}
+          </button>
+          <button
+            type="button"
+            onClick={() => seekBy(10)}
+            aria-label="Tiến 10 giây"
+            className="flex size-9 items-center justify-center rounded-full bg-white/15"
+          >
+            <RotateCw className="size-4" />
+          </button>
+        </div>
+
+        <div className="flex justify-center gap-1.5">
+          {SPEEDS.map((s) => (
+            <button
+              key={s}
+              type="button"
+              onClick={() => changeSpeed(s)}
+              aria-pressed={speed === s}
+              className={cn(
+                "rounded-full px-2.5 py-0.5 text-xs font-semibold transition-colors",
+                speed === s ? "bg-white text-primary" : "bg-white/15 text-primary-foreground/90",
+              )}
+            >
+              {s}x
+            </button>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (
