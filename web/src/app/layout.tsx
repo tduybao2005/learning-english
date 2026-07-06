@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Be_Vietnam_Pro, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+import { Providers } from "./providers";
+
+const beVietnamPro = Be_Vietnam_Pro({
+  variable: "--font-be-vietnam-pro",
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -23,11 +26,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    // suppressHydrationWarning: next-themes mutates <html> class before hydration.
+    <html lang="vi" suppressHydrationWarning>
+      <body className={`${beVietnamPro.variable} ${geistMono.variable} antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
