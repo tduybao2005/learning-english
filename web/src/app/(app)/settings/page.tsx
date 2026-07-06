@@ -1,13 +1,12 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ChevronDown } from "lucide-react";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { buttonVariants } from "@/components/ui/button";
 import { SettingsGoalForm } from "@/components/SettingsGoalForm";
 import { LogoutButton } from "@/components/LogoutButton";
-import { cn } from "@/lib/utils";
+import { ThemeToggleRow } from "@/components/ThemeToggleRow";
 
 function formatGoal(goalType: "IELTS" | "CEFR" | null, goalValue: string | null): string {
   if (!goalType || !goalValue) return "Chưa đặt mục tiêu";
@@ -24,6 +23,9 @@ export default async function SettingsPage() {
     select: { band: true },
   });
 
+  const displayName = user.name ?? user.email;
+  const avatarLetter = (user.name ?? user.email).charAt(0).toUpperCase();
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
       <h1 className="mb-1 text-2xl font-bold">Cài đặt</h1>
@@ -32,66 +34,56 @@ export default async function SettingsPage() {
       </p>
 
       <div className="flex flex-col gap-4">
-        <Card>
-          <CardHeader>
-            <CardTitle>Tài khoản</CardTitle>
-          </CardHeader>
-          <CardContent className="flex flex-col gap-3 text-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Email</span>
-              <span className="font-medium">{user.email}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Mục tiêu hiện tại</span>
-              <span className="font-medium">{formatGoal(user.goalType, user.goalValue)}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Band ước tính gần nhất</span>
-              <span className="font-medium">
+        <div className="rounded-2xl bg-primary p-4 text-primary-foreground shadow-primary-glow">
+          <div className="flex items-center gap-3">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white/20 text-lg font-bold">
+              {avatarLetter}
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold">{displayName}</p>
+              {user.name ? (
+                <p className="truncate text-xs text-primary-foreground/80">{user.email}</p>
+              ) : null}
+              <p className="text-xs text-primary-foreground/80">
+                Band ước tính gần nhất:{" "}
                 {latestAttempt?.band != null ? latestAttempt.band.toFixed(1) : "Chưa làm bài kiểm tra"}
-              </span>
+              </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Thay đổi mục tiêu học tập</CardTitle>
-            <CardDescription>
-              Cập nhật mục tiêu để chúng tôi điều chỉnh gợi ý lộ trình học.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <details className="group rounded-xl border border-border bg-card">
+          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 [&::-webkit-details-marker]:hidden">
+            <span className="flex items-center gap-3">
+              <span aria-hidden className="flex size-9 items-center justify-center rounded-lg bg-secondary text-base">
+                🎯
+              </span>
+              <span>
+                <p className="text-sm font-semibold">Mục tiêu học</p>
+                <p className="text-xs text-muted-foreground">{formatGoal(user.goalType, user.goalValue)}</p>
+              </span>
+            </span>
+            <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="border-t border-border px-4 py-4">
             <SettingsGoalForm initialGoalType={user.goalType} initialGoalValue={user.goalValue} />
-          </CardContent>
-        </Card>
+          </div>
+        </details>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Bài kiểm tra đầu vào</CardTitle>
-            <CardDescription>
-              Làm lại bài kiểm tra để đánh giá lại trình độ và nhận lộ trình học phù hợp hơn.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Link
-              href="/onboarding/placement"
-              className={cn(buttonVariants({ variant: "outline" }))}
-            >
-              Làm lại bài kiểm tra đầu vào
-            </Link>
-          </CardContent>
-        </Card>
+        <Link
+          href="/onboarding/placement"
+          className="flex min-h-14 items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-shadow hover:shadow-md"
+        >
+          <span aria-hidden className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
+            🔄
+          </span>
+          <span className="flex-1 text-sm font-semibold">Làm lại kiểm tra đầu vào</span>
+          <span className="text-muted-foreground">›</span>
+        </Link>
 
-        <Card>
-          <CardHeader>
-            <CardTitle>Đăng xuất</CardTitle>
-            <CardDescription>Kết thúc phiên đăng nhập hiện tại trên thiết bị này.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <LogoutButton />
-          </CardContent>
-        </Card>
+        <ThemeToggleRow />
+
+        <LogoutButton variant="destructive" className="w-full" />
       </div>
     </div>
   );

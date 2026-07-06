@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
  * `/login`. Reused by the settings page and the app-wide nav header. */
 export function LogoutButton({ className, variant = "outline" }: {
   className?: string;
-  variant?: "outline" | "ghost";
+  variant?: "outline" | "ghost" | "destructive";
 }) {
   const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
