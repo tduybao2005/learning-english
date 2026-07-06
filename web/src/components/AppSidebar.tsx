@@ -35,7 +35,7 @@ export function AppSidebar({
   const avatarLetter = (displayName || "?").charAt(0).toUpperCase();
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-64 flex-col border-r border-border bg-card lg:flex">
+    <aside className="fixed inset-y-0 left-0 z-10 hidden w-[232px] flex-col border-r border-border bg-card lg:flex">
       <Link href="/dashboard" className="flex items-center gap-2 px-5 py-5">
         <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
           H
@@ -53,7 +53,7 @@ export function AppSidebar({
               className={cn(
                 "flex min-h-11 items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-secondary text-secondary-foreground"
+                  ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
               )}
             >
