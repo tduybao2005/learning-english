@@ -36,7 +36,7 @@ export default async function IeltsTestPage({
       </Link>
 
       <div className="mb-6 flex items-center gap-3">
-        <h1 className="text-2xl font-bold">Đề luyện thi IELTS — Đề {test.number}</h1>
+        <h1 className="text-h1 font-extrabold">Đề {test.number}</h1>
         {!test.isComplete && (
           <span className="rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
             Chưa đủ nội dung
@@ -58,13 +58,22 @@ export default async function IeltsTestPage({
         </TabsList>
 
         <TabsContent value="reading" className="mt-4">
-          <TabBody content={test.readingMd} emptyLabel="Đề này chưa có phần Reading." />
+          <p className="mb-3 text-caption text-muted-foreground">40 câu · 60 phút</p>
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <TabBody content={test.readingMd} emptyLabel="Đề này chưa có phần Reading." />
+          </div>
         </TabsContent>
         <TabsContent value="writing" className="mt-4">
-          <TabBody content={test.writingMd} emptyLabel="Đề này chưa có phần Writing." />
+          <p className="mb-3 text-caption text-muted-foreground">2 bài · 60 phút</p>
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <TabBody content={test.writingMd} emptyLabel="Đề này chưa có phần Writing." />
+          </div>
         </TabsContent>
         <TabsContent value="speaking" className="mt-4">
-          <TabBody content={test.speakingMd} emptyLabel="Đề này chưa có phần Speaking." />
+          <p className="mb-3 text-caption text-muted-foreground">3 phần · 11-14 phút</p>
+          <div className="rounded-2xl border border-border bg-card p-5">
+            <TabBody content={test.speakingMd} emptyLabel="Đề này chưa có phần Speaking." />
+          </div>
         </TabsContent>
       </Tabs>
 
