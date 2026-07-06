@@ -3,6 +3,15 @@
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
+import type { RunnerPhase } from "@/components/runner/reducer";
+
+/**
+ * Subset of `RunnerPhase` this component actually receives: the parent
+ * (`ExerciseRunner.tsx`) early-returns on `"finished"` before ever rendering
+ * `QuestionCard`, so that phase never reaches here. Typed against the full
+ * `RunnerPhase` anyway so `status={state.phase}` type-checks without a cast.
+ */
+export type QuestionStatus = RunnerPhase;
 
 export type SafeQuestionKind =
   | "FILL_BLANK"
@@ -46,10 +55,12 @@ function splitOnBlanks(prompt: string): string[] {
 function FillBlankInputs({
   prompt,
   disabled,
+  status,
   onChangeJoined,
 }: {
   prompt: string;
   disabled: boolean;
+  status: QuestionStatus;
   onChangeJoined: (value: string) => void;
 }) {
   const segments = splitOnBlanks(prompt);
@@ -66,6 +77,9 @@ function FillBlankInputs({
     onChangeJoined(blankCount >= 2 ? next.join(" / ") : (next[0] ?? ""));
   }
 
+  const isWrong = status === "incorrect";
+  const isCorrectPick = status === "correct";
+
   return (
     <p className="text-base leading-relaxed">
       {segments.map((segment, i) => (
@@ -78,7 +92,9 @@ function FillBlankInputs({
               disabled={disabled}
               onChange={(e) => update(i, e.target.value)}
               className={cn(
-                "mx-1 inline-block w-28 rounded border border-input bg-transparent px-1.5 py-0.5 text-center text-base outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
+                "mx-1 inline-block w-28 rounded-lg border border-input bg-transparent px-2 py-1 text-center font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
+                isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
+                isCorrectPick && "animate-pop border-success bg-success-bg text-success",
               )}
             />
           )}
@@ -92,11 +108,13 @@ function MultipleChoiceOptions({
   prompt,
   options,
   disabled,
+  status,
   onChangeJoined,
 }: {
   prompt: string;
   options: { label: string; text: string }[];
   disabled: boolean;
+  status: QuestionStatus;
   onChangeJoined: (value: string) => void;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
@@ -105,28 +123,45 @@ function MultipleChoiceOptions({
     <div>
       <p className="mb-3 text-base leading-relaxed">{prompt}</p>
       <div className="flex flex-col gap-2">
-        {options.map((opt) => (
-          <button
-            key={opt.label}
-            type="button"
-            disabled={disabled}
-            onClick={() => {
-              setSelected(opt.label);
-              onChangeJoined(opt.label);
-            }}
-            className={cn(
-              "flex items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-colors disabled:opacity-60",
-              selected === opt.label
-                ? "border-primary bg-primary/10 text-foreground"
-                : "border-border hover:bg-muted",
-            )}
-          >
-            <span className="flex size-5 shrink-0 items-center justify-center rounded-full border border-current text-xs font-medium">
-              {opt.label}
-            </span>
-            <span>{opt.text}</span>
-          </button>
-        ))}
+        {options.map((opt) => {
+          const isSelected = selected === opt.label;
+          const isWrong = isSelected && status === "incorrect";
+          const isCorrectPick = isSelected && status === "correct";
+
+          return (
+            <button
+              key={opt.label}
+              type="button"
+              disabled={disabled}
+              onClick={() => {
+                setSelected(opt.label);
+                onChangeJoined(opt.label);
+              }}
+              className={cn(
+                "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
+                isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
+                !isSelected && "border-border hover:bg-muted",
+                isWrong && "animate-shake border-destructive bg-destructive-bg",
+                isCorrectPick && "animate-pop border-success bg-success-bg",
+              )}
+            >
+              <span
+                className={cn(
+                  "flex size-6 shrink-0 items-center justify-center rounded-lg text-xs font-bold",
+                  isWrong && "bg-destructive/15 text-destructive",
+                  isCorrectPick && "bg-success text-success-foreground",
+                  isSelected && !isWrong && !isCorrectPick && "bg-primary text-primary-foreground",
+                  !isSelected && "bg-muted text-muted-foreground",
+                )}
+              >
+                {opt.label}
+              </span>
+              <span>{opt.text}</span>
+              {isWrong && <span className="ml-auto text-destructive">✕</span>}
+              {isCorrectPick && <span className="ml-auto text-success">✓</span>}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -135,13 +170,18 @@ function MultipleChoiceOptions({
 function TextAreaAnswer({
   prompt,
   disabled,
+  status,
   onChangeJoined,
 }: {
   prompt: string;
   disabled: boolean;
+  status: QuestionStatus;
   onChangeJoined: (value: string) => void;
 }) {
   const [value, setValue] = useState("");
+  const isWrong = status === "incorrect";
+  const isCorrectPick = status === "correct";
+
   return (
     <div>
       <p className="mb-3 whitespace-pre-line text-base leading-relaxed">{prompt}</p>
@@ -154,7 +194,11 @@ function TextAreaAnswer({
         }}
         rows={3}
         placeholder="Nhập câu trả lời của bạn..."
-        className="w-full rounded-lg border border-input bg-transparent px-3 py-2 text-base outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60"
+        className={cn(
+          "w-full rounded-lg border border-input bg-transparent px-3 py-2 text-base outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
+          isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
+          isCorrectPick && "animate-pop border-success bg-success-bg text-success",
+        )}
       />
     </div>
   );
@@ -171,10 +215,16 @@ function TextAreaAnswer({
 export function QuestionCard({
   question,
   disabled,
+  // Optional so pre-existing consumers that don't yet track a runner phase
+  // (`ListeningRunner`, `PlacementWizard` — out of scope for this task) keep
+  // compiling unchanged; they get the same neutral styling as before this
+  // restyle, since "answering" never matches the wrong/correct branches below.
+  status = "answering",
   onChangeInput,
 }: {
   question: SafeQuestion;
   disabled: boolean;
+  status?: QuestionStatus;
   onChangeInput: (value: string) => void;
 }) {
   if (question.kind === "MULTIPLE_CHOICE" && question.options && question.options.length > 0) {
@@ -183,14 +233,19 @@ export function QuestionCard({
         prompt={question.prompt}
         options={question.options}
         disabled={disabled}
+        status={status}
         onChangeJoined={onChangeInput}
       />
     );
   }
 
   if (question.kind === "FILL_BLANK" && BLANK_RE.test(question.prompt)) {
-    return <FillBlankInputs prompt={question.prompt} disabled={disabled} onChangeJoined={onChangeInput} />;
+    return (
+      <FillBlankInputs prompt={question.prompt} disabled={disabled} status={status} onChangeJoined={onChangeInput} />
+    );
   }
 
-  return <TextAreaAnswer prompt={question.prompt} disabled={disabled} onChangeJoined={onChangeInput} />;
+  return (
+    <TextAreaAnswer prompt={question.prompt} disabled={disabled} status={status} onChangeJoined={onChangeInput} />
+  );
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { initRunnerState, runnerReducer } from "@/components/runner/reducer";
-import { QuestionCard, type SafeQuestion } from "@/components/runner/QuestionCard";
+import { QuestionCard, type SafeQuestion, type SafeQuestionKind } from "@/components/runner/QuestionCard";
 import { ExplanationSlot } from "@/components/runner/ExplanationSlot";
 
 export interface NextLessonInfo {
@@ -21,6 +21,20 @@ interface ExerciseRunnerProps {
   initialQuestionNumber: number;
   questions: SafeQuestion[];
   nextLesson: NextLessonInfo | null;
+  /** Where the top bar's close `✕` navigates back to (the lesson overview). */
+  backHref: string;
+}
+
+/** Kicker line shown above the prompt, keyed off the question's kind. */
+function kickerFor(kind: SafeQuestionKind): string {
+  switch (kind) {
+    case "MULTIPLE_CHOICE":
+      return "Chọn đáp án đúng";
+    case "FILL_BLANK":
+      return "Điền vào chỗ trống";
+    default:
+      return "Trả lời câu hỏi";
+  }
 }
 
 /**
@@ -35,6 +49,7 @@ export function ExerciseRunner({
   initialQuestionNumber,
   questions,
   nextLesson,
+  backHref,
 }: ExerciseRunnerProps) {
   const [session, setSession] = useState({ attemptId, initialQuestionNumber });
 
@@ -64,6 +79,7 @@ export function ExerciseRunner({
       questions={questions}
       nextLesson={nextLesson}
       onRedo={handleRedo}
+      backHref={backHref}
     />
   );
 }
@@ -74,12 +90,14 @@ function ExerciseRunnerSession({
   questions,
   nextLesson,
   onRedo,
+  backHref,
 }: {
   attemptId: string;
   initialQuestionNumber: number;
   questions: SafeQuestion[];
   nextLesson: NextLessonInfo | null;
   onRedo: () => void;
+  backHref: string;
 }) {
   const [state, dispatch] = useReducer(runnerReducer, undefined, () =>
     initRunnerState(
@@ -110,25 +128,25 @@ function ExerciseRunnerSession({
   if (state.phase === "finished") {
     return (
       <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center">
-        <div className="text-5xl">🎉</div>
-        <h2 className="text-xl font-bold">Hoàn thành bài tập!</h2>
+        <div className="flex size-16 items-center justify-center rounded-full bg-success text-2xl text-success-foreground animate-pop">
+          ✓
+        </div>
+        <h2 className="text-h2 font-extrabold">Hoàn thành bài tập!</h2>
         {nextLesson ? (
-          <p className="text-muted-foreground">
-            Mở khóa: <span className="font-medium text-foreground">{nextLesson.title}</span>
-          </p>
+          <span className="rounded-full bg-streak-bg px-3 py-1.5 text-sm font-semibold text-streak-foreground">
+            Đã mở khoá: {nextLesson.title}
+          </span>
         ) : (
           <p className="text-muted-foreground">Bạn đã hoàn thành toàn bộ lộ trình hiện có!</p>
         )}
-        <div className="mt-3 flex gap-3">
-          {nextLesson && (
-            <Link
-              href={`/learn/${nextLesson.phaseSlug}/${nextLesson.slug}`}
-              className={cn(buttonVariants({ variant: "default" }))}
-            >
-              Bài tiếp theo
-            </Link>
-          )}
-          <Button variant="outline" onClick={onRedo}>
+        <div className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <Link
+            href="/dashboard"
+            className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+          >
+            Về lộ trình học
+          </Link>
+          <Button variant="outline" className="w-full sm:w-auto" onClick={onRedo}>
             Làm lại
           </Button>
         </div>
@@ -145,23 +163,37 @@ function ExerciseRunnerSession({
 
   return (
     <div className="flex flex-col gap-4">
-      <div>
-        <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground">
-          <span>
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-3">
+          <Link
+            href={backHref}
+            aria-label="Đóng bài tập"
+            className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}
+          >
+            ✕
+          </Link>
+          <div className="h-2 flex-1 rounded-full bg-muted">
+            <div
+              className="h-full rounded-full bg-primary animate-progress-fill"
+              style={{ width: `${percent}%` }}
+            />
+          </div>
+          <span className="shrink-0 text-caption font-medium text-muted-foreground">
             Câu {state.index + 1}/{total}
           </span>
-          {isIncorrect && <span>Lần thử: {state.tries}</span>}
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
-          <div className="h-full rounded-full bg-primary transition-all" style={{ width: `${percent}%` }} />
-        </div>
+        {isIncorrect && (
+          <p className="text-right text-caption text-muted-foreground">Lần thử: {state.tries}</p>
+        )}
       </div>
+
+      <p className="text-caption font-semibold text-primary">{kickerFor(question.kind)}</p>
 
       <div
         className={cn(
           "rounded-xl border p-5 transition-colors",
           isIncorrect && "border-destructive/50 bg-destructive/5",
-          isCorrect && "border-emerald-500/50 bg-emerald-500/5",
+          isCorrect && "border-success/50 bg-success-bg",
           !isIncorrect && !isCorrect && "border-border bg-card",
         )}
       >
@@ -169,19 +201,26 @@ function ExerciseRunnerSession({
           key={question.id}
           question={question}
           disabled={isChecking || isCorrect}
+          status={state.phase}
           onChangeInput={(value) => dispatch({ type: "SET_INPUT", value })}
         />
 
         {isIncorrect && (
-          <div className="mt-3">
+          <div className="mt-3 flex flex-col gap-3">
             <p className="text-sm font-medium text-destructive">Chưa đúng, thử lại.</p>
+            {state.result?.keyNote && (
+              <div className="rounded-xl border border-destructive/30 bg-destructive-bg p-4">
+                <p className="mb-1 text-caption font-bold text-destructive">💡 Ghi nhớ</p>
+                <p className="text-sm leading-relaxed">{state.result.keyNote}</p>
+              </div>
+            )}
             <ExplanationSlot explanation={state.result?.explanation ?? null} />
           </div>
         )}
 
         {isCorrect && (
           <div className="mt-3 text-sm">
-            <p className="font-medium text-emerald-600 dark:text-emerald-400">Chính xác!</p>
+            <p className="font-medium text-success">Chính xác!</p>
             {state.result?.correctAnswer && (
               <p className="text-muted-foreground">
                 Đáp án: <span className="font-medium text-foreground">{state.result.correctAnswer}</span>
@@ -193,9 +232,16 @@ function ExerciseRunnerSession({
 
         <div className="mt-4 flex justify-end">
           {isCorrect ? (
-            <Button onClick={() => dispatch({ type: "CONTINUE" })}>Tiếp tục</Button>
+            <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
+              Tiếp tục
+            </Button>
           ) : (
-            <Button onClick={handleSubmit} disabled={isChecking || state.input.trim() === ""}>
+            <Button
+              className="w-full sm:w-auto"
+              variant={isIncorrect ? "outline" : "default"}
+              onClick={handleSubmit}
+              disabled={isChecking || state.input.trim() === ""}
+            >
               {isIncorrect ? "Thử lại" : "Kiểm tra"}
             </Button>
           )}

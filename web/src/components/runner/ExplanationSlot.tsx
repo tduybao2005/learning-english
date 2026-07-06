@@ -11,7 +11,7 @@ export function ExplanationSlot({ explanation }: { explanation: string | null })
   if (!explanation) return null;
 
   return (
-    <div className="mt-2 rounded-lg border border-border bg-muted/50 p-3 text-sm text-muted-foreground">
+    <div className="mt-2 rounded-xl border border-dashed border-primary/40 bg-primary/5 p-4 text-sm text-muted-foreground">
       {explanation}
     </div>
   );

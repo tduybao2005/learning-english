@@ -154,7 +154,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   return NextResponse.json({
     correct: matchResult.correct,
     matchType: matchResult.correct ? matchResult.matchType : undefined,
-    keyNote: matchResult.correct ? question.keyNote : undefined,
+    keyNote: question.keyNote,
     correctAnswer: matchResult.correct ? question.answerRaw : undefined,
     explanation,
     completedLesson: isCompleting ? { nextLessonSlug: nextLesson?.slug ?? null } : undefined,

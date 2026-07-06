@@ -91,6 +91,7 @@ export default async function ExercisePage({
         initialQuestionNumber={attempt.currentQuestionNumber}
         questions={questions}
         nextLesson={nextLesson}
+        backHref={base}
       />
     </div>
   );
