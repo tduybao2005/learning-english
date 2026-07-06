@@ -7,6 +7,7 @@ import { getLessonStates } from "@/lib/progress";
 import { getVocabStats } from "@/lib/vocab";
 import { StatsRing } from "@/components/vocab/StatsRing";
 import { buttonVariants } from "@/components/ui/button";
+import { LessonTabs } from "@/components/LessonTabs";
 import { cn } from "@/lib/utils";
 
 export default async function VocabHubPage({
@@ -55,40 +56,15 @@ export default async function VocabHubPage({
   }
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
-  const tabs = [
-    { href: base, label: "Bài giảng", active: false },
-    { href: `${base}/vocab`, label: "Từ vựng", active: true },
-    { href: `${base}/exercise`, label: "Bài tập", active: false },
-  ];
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <Link
-        href="/dashboard"
-        className="mb-4 inline-block text-sm text-muted-foreground hover:text-foreground"
-      >
-        ← Quay lại lộ trình học
-      </Link>
-
-      <p className="text-sm font-medium text-primary">{lesson.phase.title}</p>
-      <h1 className="mb-4 text-2xl font-bold">{lesson.title}</h1>
-
-      <div className="mb-6 flex gap-1 border-b border-border">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className={cn(
-              "border-b-2 px-3 py-2 text-sm font-medium",
-              tab.active
-                ? "border-primary text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {tab.label}
-          </Link>
-        ))}
-      </div>
+      <LessonTabs
+        phaseTitle={lesson.phase.title}
+        lessonTitle={lesson.title}
+        basePath={base}
+        active="vocab"
+      />
 
       {words.length === 0 ? (
         <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">

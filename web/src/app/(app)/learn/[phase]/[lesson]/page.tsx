@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { MarkdownContent } from "@/components/MarkdownContent";
-import { cn } from "@/lib/utils";
+import { LessonTabs } from "@/components/LessonTabs";
 
 export default async function LecturePage({
   params,
@@ -30,40 +29,15 @@ export default async function LecturePage({
   if (state === "LOCKED") redirect("/dashboard");
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
-  const tabs = [
-    { href: base, label: "Bài giảng", active: true },
-    { href: `${base}/vocab`, label: "Từ vựng", active: false },
-    { href: `${base}/exercise`, label: "Bài tập", active: false },
-  ];
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <Link
-        href="/dashboard"
-        className="mb-4 inline-block text-sm text-muted-foreground hover:text-foreground"
-      >
-        ← Quay lại lộ trình học
-      </Link>
-
-      <p className="text-sm font-medium text-primary">{lesson.phase.title}</p>
-      <h1 className="mb-4 text-2xl font-bold">{lesson.title}</h1>
-
-      <div className="mb-6 flex gap-1 border-b border-border">
-        {tabs.map((tab) => (
-          <Link
-            key={tab.href}
-            href={tab.href}
-            className={cn(
-              "border-b-2 px-3 py-2 text-sm font-medium",
-              tab.active
-                ? "border-primary text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground",
-            )}
-          >
-            {tab.label}
-          </Link>
-        ))}
-      </div>
+      <LessonTabs
+        phaseTitle={lesson.phase.title}
+        lessonTitle={lesson.title}
+        basePath={base}
+        active="lecture"
+      />
 
       <MarkdownContent content={lesson.lectureMd} />
     </div>
