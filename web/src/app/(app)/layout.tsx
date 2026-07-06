@@ -1,4 +1,5 @@
 import { AppHeader } from "@/components/AppHeader";
+import { AppSidebar } from "@/components/AppSidebar";
 
 /** Shared layout for every authenticated route (`/dashboard`, `/learn/*`,
  * `/ielts/*`, `/listening/*`, `/settings`): adds the nav header so the
@@ -10,8 +11,9 @@ import { AppHeader } from "@/components/AppHeader";
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <AppHeader />
-      <main className="flex-1">{children}</main>
+      <AppSidebar />
+      <AppHeader className="lg:hidden" />
+      <main className="flex-1 lg:pl-64">{children}</main>
     </div>
   );
 }
