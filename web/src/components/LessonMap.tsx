@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import type { LessonState } from "@/lib/progress";
+import { LessonNode } from "@/components/lesson-node";
 
 export type LessonMapLesson = {
   id: string;
@@ -19,76 +18,7 @@ export type LessonMapPhase = {
   lessons: LessonMapLesson[];
 };
 
-const STATE_META: Record<
-  LessonState,
-  { icon: string; className: string; clickable: boolean }
-> = {
-  COMPLETED: {
-    icon: "✓",
-    className:
-      "border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400",
-    clickable: true,
-  },
-  UNLOCKED: {
-    icon: "▶",
-    className: "border-primary bg-primary text-primary-foreground",
-    clickable: true,
-  },
-  SKIPPED: {
-    icon: "⏭",
-    className:
-      "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400",
-    clickable: true,
-  },
-  LOCKED: {
-    icon: "🔒",
-    className:
-      "border-border bg-muted text-muted-foreground cursor-not-allowed opacity-70",
-    clickable: false,
-  },
-};
-
-function LessonPill({
-  phaseSlug,
-  lesson,
-  state,
-}: {
-  phaseSlug: string;
-  lesson: LessonMapLesson;
-  state: LessonState;
-}) {
-  const meta = STATE_META[state];
-  const label = `${meta.icon} Bài ${lesson.orderIndex}`;
-
-  if (!meta.clickable) {
-    return (
-      <span
-        className={cn(
-          "inline-flex select-none items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium",
-          meta.className,
-        )}
-        title="Hoàn thành bài trước để mở khóa"
-      >
-        {label}
-      </span>
-    );
-  }
-
-  return (
-    <Link
-      href={`/learn/${phaseSlug}/${lesson.slug}`}
-      className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium transition-colors hover:opacity-80",
-        meta.className,
-      )}
-      title={lesson.title}
-    >
-      {label}
-    </Link>
-  );
-}
-
-/** Vertical phase timeline: each phase is a card with a progress bar and a wrapping row of lesson pills. */
+/** Vertical phase timeline: each phase is a card with a progress bar and a wrapping row of lesson nodes. */
 export function LessonMap({
   phases,
   states,
@@ -97,8 +27,8 @@ export function LessonMap({
   states: Map<string, LessonState>;
 }) {
   return (
-    <div className="relative space-y-8 pl-6">
-      <div aria-hidden className="absolute top-2 bottom-2 left-[7px] w-px bg-border" />
+    <div className="relative space-y-8 pl-10">
+      <div aria-hidden className="absolute top-2 bottom-2 left-[14px] w-0.5 bg-border" />
       {phases.map((phase) => {
         const doneCount = phase.lessons.filter((lesson) => {
           const state = states.get(lesson.id);
@@ -106,36 +36,58 @@ export function LessonMap({
         }).length;
         const total = phase.lessons.length;
         const percent = total === 0 ? 0 : Math.round((doneCount / total) * 100);
+        const isActive = phase.lessons.some((l) => states.get(l.id) === "UNLOCKED");
+        const isCompleted = total > 0 && doneCount === total;
 
         return (
           <div key={phase.id} className="relative">
             <div
               aria-hidden
-              className="absolute -left-6 top-1.5 size-3.5 rounded-full border-2 border-background bg-primary"
-            />
-            <div className="rounded-xl border border-border bg-card p-4">
-              <div className="mb-1 flex items-baseline justify-between gap-2">
-                <h2 className="text-base font-semibold">{phase.title}</h2>
-                <span className="text-xs text-muted-foreground">{phase.cefrLabel}</span>
-              </div>
-              <div className="mb-3 flex items-center gap-2">
-                <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-primary transition-all"
-                    style={{ width: `${percent}%` }}
-                  />
-                </div>
-                <span className="shrink-0 text-xs text-muted-foreground">
-                  {doneCount}/{total} bài
+              className={cn(
+                "absolute -left-10 top-1.5 flex size-7 items-center justify-center rounded-full text-xs font-bold",
+                isCompleted
+                  ? "bg-success text-success-foreground"
+                  : isActive
+                    ? "bg-primary ring-4 ring-primary/20"
+                    : "bg-muted",
+              )}
+            >
+              {isCompleted ? "✓" : !isActive ? "🔒" : null}
+            </div>
+            <div
+              className={cn(
+                "rounded-xl border p-4",
+                isActive
+                  ? "border-primary bg-primary/5 shadow-primary-glow"
+                  : "border-border bg-card",
+                !isActive && !isCompleted ? "opacity-70" : "",
+              )}
+            >
+              <div className="mb-3 flex items-baseline justify-between gap-2">
+                <h2 className="font-bold">
+                  GĐ {phase.orderIndex} · {phase.title}
+                </h2>
+                <span className="shrink-0 text-primary font-bold">
+                  {doneCount}/{total}
                 </span>
+              </div>
+              <div className="mb-3 h-1.5 overflow-hidden rounded-full bg-muted">
+                <div
+                  className={cn(
+                    "h-full rounded-full animate-progress-fill",
+                    isCompleted ? "bg-success" : "bg-primary",
+                  )}
+                  style={{ width: `${percent}%` }}
+                />
               </div>
               <div className="flex flex-wrap gap-2">
                 {phase.lessons.map((lesson) => (
-                  <LessonPill
+                  <LessonNode
                     key={lesson.id}
-                    phaseSlug={phase.slug}
-                    lesson={lesson}
                     state={states.get(lesson.id) ?? "LOCKED"}
+                    label={`Bài ${lesson.orderIndex}`}
+                    title={lesson.title}
+                    href={`/learn/${phase.slug}/${lesson.slug}`}
                   />
                 ))}
               </div>
