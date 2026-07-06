@@ -1,6 +1,14 @@
 "use client";
 
-import { Suspense, useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react";
+import {
+  Suspense,
+  useEffect,
+  useRef,
+  useState,
+  type ClipboardEvent,
+  type FormEvent,
+  type KeyboardEvent,
+} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -102,6 +110,23 @@ function VerifyForm() {
     }
   }
 
+  function handleDigitPaste(event: ClipboardEvent<HTMLInputElement>) {
+    event.preventDefault();
+    const pasted = event.clipboardData.getData("text").replace(/\D/g, "").slice(0, OTP_LENGTH);
+    if (!pasted) return;
+
+    setDigits((prev) => {
+      const next = [...prev];
+      for (let i = 0; i < OTP_LENGTH; i++) {
+        next[i] = i < pasted.length ? pasted[i] : prev[i];
+      }
+      return next;
+    });
+
+    const focusIndex = pasted.length - 1;
+    inputRefs.current[focusIndex]?.focus();
+  }
+
   return (
     <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6">
       <button
@@ -130,7 +155,9 @@ function VerifyForm() {
               value={digit}
               onChange={(e) => handleDigitChange(index, e.target.value)}
               onKeyDown={(e) => handleDigitKeyDown(index, e)}
+              onPaste={handleDigitPaste}
               autoFocus={index === 0}
+              aria-label={`Chữ số ${index + 1} trên 6`}
               className="size-12 rounded-xl border border-input bg-card text-center text-h2 font-bold outline-none transition-colors focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50"
             />
           ))}
