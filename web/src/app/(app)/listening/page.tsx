@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
+import { EmptyState } from "@/components/EmptyState";
 
 function formatDuration(sec: number | null): string {
   if (!sec) return "";
@@ -30,9 +31,11 @@ export default async function ListeningHubPage() {
       </p>
 
       {sets.length === 0 ? (
-        <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
-          Chưa có bài nghe nào.
-        </p>
+        <EmptyState
+          icon="🎧"
+          title="Chưa có bài nghe nào"
+          description="Quay lại sau để luyện nghe nhé."
+        />
       ) : (
         <div className="flex flex-col gap-3">
           {sets.map((set) => (

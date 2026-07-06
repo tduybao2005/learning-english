@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { LessonMap } from "@/components/LessonMap";
+import { EmptyState } from "@/components/EmptyState";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -88,7 +89,15 @@ export default async function DashboardPage({
           </div>
         ) : null}
 
-        <LessonMap phases={phases} states={states} />
+        {phases.length === 0 ? (
+          <EmptyState
+            icon="🌱"
+            title="Chưa có gì ở đây"
+            description="Hoàn thành bài học đầu tiên để bắt đầu chuỗi streak của bạn 🔥"
+          />
+        ) : (
+          <LessonMap phases={phases} states={states} />
+        )}
       </div>
 
       <div className="mt-6 flex flex-col gap-4 lg:mt-0">

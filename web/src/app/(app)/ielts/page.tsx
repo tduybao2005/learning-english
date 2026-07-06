@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
+import { EmptyState } from "@/components/EmptyState";
 import { cn } from "@/lib/utils";
 
 export default async function IeltsHubPage() {
@@ -24,9 +25,11 @@ export default async function IeltsHubPage() {
       </p>
 
       {tests.length === 0 ? (
-        <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
-          Chưa có đề luyện thi nào.
-        </p>
+        <EmptyState
+          icon="📝"
+          title="Chưa có đề luyện thi nào"
+          description="Quay lại sau để luyện đề IELTS nhé."
+        />
       ) : (
         <div className="grid grid-cols-4 gap-3 sm:grid-cols-6">
           {tests.map((test) => (
