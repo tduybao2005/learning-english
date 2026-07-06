@@ -17,7 +17,7 @@ function formatTime(sec: number): string {
 }
 
 /**
- * Sticky audio player wrapping a native `<audio>` element with shadcn-styled
+ * Audio player wrapping a native `<audio>` element with shadcn-styled
  * controls: play/pause, ±10s seek buttons, a seek bar, and a 0.75/1/1.25
  * speed picker. Kept as a thin controller over the native element (no custom
  * audio engine) — `<audio>` already handles buffering/streaming/decoding.
@@ -74,11 +74,16 @@ export function AudioPlayer({ src }: { src: string }) {
   }
 
   return (
-    <div className="sticky top-0 z-10 flex flex-col gap-3 rounded-xl border border-border bg-card/95 p-4 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-card/80">
+    <div className="flex flex-col gap-3 rounded-2xl border border-primary/25 bg-secondary/50 p-4">
       <audio ref={audioRef} src={src} preload="metadata" />
 
       <div className="flex flex-wrap items-center gap-3">
-        <Button size="icon" onClick={togglePlay} aria-label={playing ? "Tạm dừng" : "Phát"}>
+        <Button
+          size="icon-lg"
+          className="rounded-full"
+          onClick={togglePlay}
+          aria-label={playing ? "Tạm dừng" : "Phát"}
+        >
           {playing ? <Pause /> : <Play />}
         </Button>
         <Button size="icon" variant="outline" onClick={() => seekBy(-10)} aria-label="Lùi 10 giây">
@@ -122,6 +127,8 @@ export function AudioPlayer({ src }: { src: string }) {
           ))}
         </div>
       </div>
+
+      <p className="text-caption text-muted-foreground">🎧 Bạn có thể nghe lại nhiều lần</p>
     </div>
   );
 }

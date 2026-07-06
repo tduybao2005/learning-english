@@ -4,14 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { GoalPicker, type GoalPickerValue } from "@/components/GoalPicker";
 
 export default function OnboardingPathPage() {
@@ -53,32 +45,34 @@ export default function OnboardingPathPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-lg">
-        <CardHeader>
-          <CardTitle>Chọn mục tiêu học tập</CardTitle>
-          <CardDescription>
-            Chọn mục tiêu để chúng tôi cá nhân hoá lộ trình học của bạn.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <GoalPicker value={selected} onChange={setSelected} />
-          {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
-        </CardContent>
-        <CardFooter className="flex flex-col gap-2">
-          <Button
-            type="button"
-            className="w-full"
-            disabled={isSubmitting}
-            onClick={handleSubmit}
-          >
-            {isSubmitting ? "Đang lưu..." : "Tiếp tục"}
-          </Button>
-          <Button type="button" variant="ghost" className="w-full" onClick={handleSkip}>
-            Bỏ qua
-          </Button>
-        </CardFooter>
-      </Card>
+    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6 py-8">
+      <div className="mb-8 h-1.5 w-full rounded-full bg-muted">
+        <div className="h-full w-1/2 rounded-full bg-primary" />
+      </div>
+
+      <h1 className="text-h1 font-extrabold">Mục tiêu của bạn?</h1>
+      <p className="mt-2 text-body text-muted-foreground">
+        Chọn mục tiêu để chúng tôi cá nhân hoá lộ trình học của bạn.
+      </p>
+
+      <div className="mt-6">
+        <GoalPicker value={selected} onChange={setSelected} />
+        {error ? <p className="mt-3 text-sm text-destructive">{error}</p> : null}
+      </div>
+
+      <div className="mt-8 flex flex-col gap-2">
+        <Button
+          type="button"
+          className="w-full"
+          disabled={isSubmitting}
+          onClick={handleSubmit}
+        >
+          {isSubmitting ? "Đang lưu..." : "Tiếp tục"}
+        </Button>
+        <Button type="button" variant="ghost" className="w-full" onClick={handleSkip}>
+          Bỏ qua
+        </Button>
+      </div>
     </div>
   );
 }

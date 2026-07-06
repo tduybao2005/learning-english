@@ -49,19 +49,19 @@ function Stepper({ current }: { current: Step }) {
           <div className="flex flex-col items-center gap-1">
             <div
               className={cn(
-                "flex size-8 items-center justify-center rounded-full border-2 text-sm font-semibold",
+                "flex size-8 items-center justify-center rounded-full text-sm font-semibold",
                 i < currentIndex
-                  ? "border-primary bg-primary text-primary-foreground"
+                  ? "bg-success text-success-foreground"
                   : i === currentIndex
-                    ? "border-primary text-primary"
-                    : "border-border text-muted-foreground",
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground",
               )}
             >
-              {i + 1}
+              {i < currentIndex ? "✓" : i + 1}
             </div>
             <span
               className={cn(
-                "text-xs font-medium",
+                "text-caption font-medium",
                 i <= currentIndex ? "text-foreground" : "text-muted-foreground",
               )}
             >
@@ -95,7 +95,7 @@ function QuestionBatch({
     <div className="flex flex-col gap-3">
       {questions.map((q) => (
         <div key={q.id} className="rounded-xl border border-border bg-card p-4">
-          <p className="mb-2 text-xs font-semibold text-muted-foreground">Câu {q.number}</p>
+          <p className="mb-2 text-caption font-semibold text-primary">Câu {q.number}</p>
           <QuestionCard
             question={q}
             disabled={false}
@@ -254,6 +254,9 @@ export function PlacementWizard({
             </p>
           </div>
           <div className="rounded-xl border border-border bg-card p-4 sm:p-6">
+            <span className="mb-2 inline-block rounded-md bg-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground">
+              ĐOẠN VĂN
+            </span>
             <MarkdownContent content={readingMd} />
           </div>
           {readingSections.map((section) => (

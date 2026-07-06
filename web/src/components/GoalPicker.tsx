@@ -52,11 +52,11 @@ export function GoalPicker({
 
   return (
     <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as GoalTab)}>
-      <TabsList className="w-full">
-        <TabsTrigger value="IELTS" className="flex-1">
+      <TabsList className="w-full rounded-full bg-muted p-1">
+        <TabsTrigger value="IELTS" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
           Mục tiêu IELTS
         </TabsTrigger>
-        <TabsTrigger value="CEFR" className="flex-1">
+        <TabsTrigger value="CEFR" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
           Cấp độ CEFR
         </TabsTrigger>
       </TabsList>
@@ -65,24 +65,37 @@ export function GoalPicker({
         <p className="mb-3 text-sm text-muted-foreground">
           Chọn band điểm IELTS bạn muốn đạt được:
         </p>
-        <div role="radiogroup" className="flex flex-wrap gap-2">
-          {IELTS_BANDS.map((band) => (
-            <button
-              key={band}
-              type="button"
-              role="radio"
-              aria-checked={value?.goalType === "IELTS" && value.goalValue === band}
-              onClick={() => onChange({ goalType: "IELTS", goalValue: band })}
-              className={cn(
-                "rounded-full border px-4 py-1.5 text-sm font-medium transition-colors",
-                value?.goalType === "IELTS" && value.goalValue === band
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-input bg-background text-foreground hover:bg-muted",
-              )}
-            >
-              {band}
-            </button>
-          ))}
+        <div role="radiogroup" className="grid grid-cols-3 gap-2">
+          {IELTS_BANDS.map((band) => {
+            const selected = value?.goalType === "IELTS" && value.goalValue === band;
+            return (
+              <button
+                key={band}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => onChange({ goalType: "IELTS", goalValue: band })}
+                className={cn(
+                  "flex aspect-square flex-col items-center justify-center gap-0.5 rounded-2xl border bg-card text-h2 font-bold transition-colors",
+                  selected
+                    ? "border-primary bg-primary text-primary-foreground shadow-primary-glow"
+                    : "border-input hover:bg-muted",
+                )}
+              >
+                {band}
+                {band === "6.5" ? (
+                  <span
+                    className={cn(
+                      "text-caption font-medium",
+                      selected ? "text-primary-foreground/80" : "text-muted-foreground",
+                    )}
+                  >
+                    Phổ biến
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
         </div>
       </TabsContent>
 
@@ -91,24 +104,38 @@ export function GoalPicker({
           Chọn cấp độ CEFR phù hợp với bạn:
         </p>
         <div role="radiogroup" className="flex flex-col gap-2">
-          {CEFR_LEVELS.map((level) => (
-            <button
-              key={level.value}
-              type="button"
-              role="radio"
-              aria-checked={value?.goalType === "CEFR" && value.goalValue === level.value}
-              onClick={() => onChange({ goalType: "CEFR", goalValue: level.value })}
-              className={cn(
-                "rounded-lg border p-3 text-left transition-colors",
-                value?.goalType === "CEFR" && value.goalValue === level.value
-                  ? "border-primary bg-primary/5"
-                  : "border-input bg-background hover:bg-muted",
-              )}
-            >
-              <div className="font-semibold">{level.value}</div>
-              <div className="text-sm text-muted-foreground">{level.description}</div>
-            </button>
-          ))}
+          {CEFR_LEVELS.map((level) => {
+            const selected = value?.goalType === "CEFR" && value.goalValue === level.value;
+            return (
+              <button
+                key={level.value}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => onChange({ goalType: "CEFR", goalValue: level.value })}
+                className={cn(
+                  "flex items-start gap-3 rounded-lg border p-3 text-left transition-colors",
+                  selected
+                    ? "border-primary bg-secondary/60"
+                    : "border-input bg-background hover:bg-muted",
+                )}
+              >
+                <div
+                  className={cn(
+                    "flex size-9 shrink-0 items-center justify-center rounded-lg font-bold",
+                    selected ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground",
+                  )}
+                >
+                  {level.value}
+                </div>
+                <div className="flex-1">
+                  <div className="font-semibold">{level.value}</div>
+                  <div className="text-sm text-muted-foreground">{level.description}</div>
+                </div>
+                {selected ? <div className="mt-1 size-2 shrink-0 rounded-full bg-primary" /> : null}
+              </button>
+            );
+          })}
         </div>
       </TabsContent>
     </Tabs>
