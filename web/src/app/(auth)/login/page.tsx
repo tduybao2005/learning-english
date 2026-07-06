@@ -5,14 +5,6 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -46,33 +38,32 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center p-4">
-      <Card className="w-full max-w-sm">
-        <CardHeader>
-          <CardTitle>Đăng nhập</CardTitle>
-          <CardDescription>
-            Nhập email của bạn, chúng tôi sẽ gửi một mã đăng nhập gồm 6 chữ số.
-          </CardDescription>
-        </CardHeader>
-        <form onSubmit={handleSubmit}>
-          <CardContent className="flex flex-col gap-3">
-            <Input
-              type="email"
-              placeholder="ban@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              autoFocus
-            />
-            {error ? <p className="text-sm text-destructive">{error}</p> : null}
-          </CardContent>
-          <CardFooter>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Đang gửi..." : "Gửi mã"}
-            </Button>
-          </CardFooter>
-        </form>
-      </Card>
+    <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6">
+      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-primary-foreground shadow-primary-glow">
+        H
+      </div>
+      <h1 className="text-h1 font-extrabold">Chào mừng trở lại 👋</h1>
+      <p className="mt-2 text-body text-muted-foreground">
+        Nhập email của bạn, chúng tôi sẽ gửi một mã đăng nhập gồm 6 chữ số.
+      </p>
+      <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3">
+        <label htmlFor="email" className="text-sm font-medium">
+          Email
+        </label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="ban@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          autoFocus
+        />
+        {error ? <p className="text-sm text-destructive">{error}</p> : null}
+        <Button type="submit" disabled={isSubmitting} className="mt-2 w-full">
+          {isSubmitting ? "Đang gửi..." : "Gửi mã đăng nhập"}
+        </Button>
+      </form>
     </div>
   );
 }
