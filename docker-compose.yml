@@ -30,6 +30,7 @@ services:
       SESSION_SECRET: ${SESSION_SECRET}
       RESEND_API_KEY: ${RESEND_API_KEY:-}
       OTP_DEV_ECHO: ${OTP_DEV_ECHO:-true}
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
     ports:
       - "${WEB_PORT:-3000}:3000"
 

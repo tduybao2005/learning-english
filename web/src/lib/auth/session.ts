@@ -7,6 +7,14 @@ import { db } from "@/lib/db";
 export const SESSION_COOKIE_NAME = "session";
 const SESSION_MAX_AGE_SECONDS = 60 * 60 * 24 * 30; // 30 days
 
+/**
+ * Browsers silently drop `Secure` cookies on plain-HTTP origins (anything
+ * other than `localhost`), including LAN IPs like http://192.168.x.x:3000.
+ * Default to secure; opt out explicitly via SESSION_COOKIE_SECURE=false for
+ * LAN/plain-HTTP testing (see docker-compose.yml).
+ */
+const SESSION_COOKIE_SECURE = process.env.SESSION_COOKIE_SECURE !== "false";
+
 function getSecretKey(): Uint8Array {
   const secret = process.env.SESSION_SECRET;
   if (!secret) throw new Error("SESSION_SECRET is not set");
@@ -24,7 +32,7 @@ export async function createSession(userId: string): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.set(SESSION_COOKIE_NAME, token, {
     httpOnly: true,
-    secure: true,
+    secure: SESSION_COOKIE_SECURE,
     sameSite: "lax",
     path: "/",
     maxAge: SESSION_MAX_AGE_SECONDS,
