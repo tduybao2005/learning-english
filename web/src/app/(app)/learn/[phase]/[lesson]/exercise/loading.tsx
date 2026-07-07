@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
  * bar, a question-prompt block and a few answer-option blocks. */
 export default function ExerciseLoading() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
+    <div className="mx-auto max-w-3xl lg:max-w-5xl px-4 py-8">
       <Skeleton className="mb-4 h-4 w-40" />
       <Skeleton className="mb-2 h-4 w-32" />
       <Skeleton className="mb-4 h-7 w-72" />
