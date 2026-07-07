@@ -57,11 +57,13 @@ function FillBlankInputs({
   disabled,
   status,
   onChangeJoined,
+  emphasizePrompt,
 }: {
   prompt: string;
   disabled: boolean;
   status: QuestionStatus;
   onChangeJoined: (value: string) => void;
+  emphasizePrompt: boolean;
 }) {
   const segments = splitOnBlanks(prompt);
   const blankCount = segments.length - 1;
@@ -81,7 +83,7 @@ function FillBlankInputs({
   const isCorrectPick = status === "correct";
 
   return (
-    <p className="text-base leading-relaxed lg:mb-6 lg:text-center lg:text-h2 lg:font-bold">
+    <p className={cn("text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>
       {segments.map((segment, i) => (
         <span key={i}>
           {segment}
@@ -110,18 +112,20 @@ function MultipleChoiceOptions({
   disabled,
   status,
   onChangeJoined,
+  emphasizePrompt,
 }: {
   prompt: string;
   options: { label: string; text: string }[];
   disabled: boolean;
   status: QuestionStatus;
   onChangeJoined: (value: string) => void;
+  emphasizePrompt: boolean;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
     <div>
-      <p className="mb-3 text-base leading-relaxed lg:mb-6 lg:text-center lg:text-h2 lg:font-bold">{prompt}</p>
+      <p className={cn("mb-3 text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>{prompt}</p>
       <div className="flex flex-col gap-2">
         {options.map((opt) => {
           const isSelected = selected === opt.label;
@@ -221,11 +225,13 @@ export function QuestionCard({
   // restyle, since "answering" never matches the wrong/correct branches below.
   status = "answering",
   onChangeInput,
+  emphasizePrompt = false,
 }: {
   question: SafeQuestion;
   disabled: boolean;
   status?: QuestionStatus;
   onChangeInput: (value: string) => void;
+  emphasizePrompt?: boolean;
 }) {
   if (question.kind === "MULTIPLE_CHOICE" && question.options && question.options.length > 0) {
     return (
@@ -235,13 +241,14 @@ export function QuestionCard({
         disabled={disabled}
         status={status}
         onChangeJoined={onChangeInput}
+        emphasizePrompt={emphasizePrompt}
       />
     );
   }
 
   if (question.kind === "FILL_BLANK" && BLANK_RE.test(question.prompt)) {
     return (
-      <FillBlankInputs prompt={question.prompt} disabled={disabled} status={status} onChangeJoined={onChangeInput} />
+      <FillBlankInputs prompt={question.prompt} disabled={disabled} status={status} onChangeJoined={onChangeInput} emphasizePrompt={emphasizePrompt} />
     );
   }
 

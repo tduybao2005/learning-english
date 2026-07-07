@@ -204,6 +204,7 @@ function ExerciseRunnerSession({
             disabled={isChecking || isCorrect}
             status={state.phase}
             onChangeInput={(value) => dispatch({ type: "SET_INPUT", value })}
+            emphasizePrompt
           />
 
           {isCorrect && (
