@@ -27,8 +27,8 @@ export default async function SettingsPage() {
   const avatarLetter = (user.name ?? user.email).charAt(0).toUpperCase();
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
-      <h1 className="mb-1 text-2xl font-bold">Cài đặt</h1>
+    <div className="mx-auto max-w-2xl px-4 py-8 lg:max-w-3xl">
+      <h1 className="mb-1 text-h1 font-extrabold">Cài đặt</h1>
       <p className="mb-6 text-sm text-muted-foreground">
         Quản lý thông tin tài khoản và mục tiêu học tập của bạn.
       </p>
