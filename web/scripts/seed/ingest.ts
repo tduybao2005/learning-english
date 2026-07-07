@@ -8,6 +8,7 @@ import { parseVocab } from "./parse-vocab";
 import { parseExercise } from "./parse-exercise";
 import { parseListening } from "./parse-listening";
 import { loadOverrides, scopedOverrides } from "./overrides-loader";
+import { stripFrontmatter } from "./strip-frontmatter";
 
 function parseArgs(argv: string[]) {
   let dryRun = false;
@@ -177,9 +178,9 @@ async function main() {
     const vocabMdPath = path.join(lesson.dir, "vocabulary.md");
     const exerciseMdPath = path.join(lesson.dir, "exercise.md");
 
-    const lectureMd = readOptional(lectureMdPath);
-    const vocabMd = readOptional(vocabMdPath);
-    const exerciseMd = readOptional(exerciseMdPath);
+    const lectureMd = stripFrontmatter(readOptional(lectureMdPath));
+    const vocabMd = stripFrontmatter(readOptional(vocabMdPath));
+    const exerciseMd = stripFrontmatter(readOptional(exerciseMdPath));
 
     if (!fs.existsSync(vocabMdPath)) {
       console.warn(`[seed] WARN: ${lesson.phaseSlug}/${lesson.lessonSlug} has no vocabulary.md — 0 vocab words will be stored`);

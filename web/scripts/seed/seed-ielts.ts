@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 
 import { db } from "../../src/lib/db";
+import { stripFrontmatter } from "./strip-frontmatter";
 
 /**
  * Seeds `IeltsTest` rows from `ielts_practice_tests/test_NN/` at the repo
@@ -68,10 +69,10 @@ async function main() {
 
   for (const { name, number } of testDirs) {
     const dir = path.join(TESTS_DIR, name);
-    const readingMd = readFileOrEmpty(path.join(dir, "reading.md"));
-    const writingMd = readFileOrEmpty(path.join(dir, "writing.md"));
-    const speakingMd = readFileOrEmpty(path.join(dir, "speaking.md"));
-    const answerKeyMd = readFileOrEmpty(path.join(dir, "answer_key.md"));
+    const readingMd = stripFrontmatter(readFileOrEmpty(path.join(dir, "reading.md")));
+    const writingMd = stripFrontmatter(readFileOrEmpty(path.join(dir, "writing.md")));
+    const speakingMd = stripFrontmatter(readFileOrEmpty(path.join(dir, "speaking.md")));
+    const answerKeyMd = stripFrontmatter(readFileOrEmpty(path.join(dir, "answer_key.md")));
 
     const isComplete = [readingMd, writingMd, speakingMd, answerKeyMd].every(isSubstantial);
     if (isComplete) completeCount++;

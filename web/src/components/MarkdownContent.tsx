@@ -79,12 +79,18 @@ const components: Components = {
   ),
 };
 
+// Duplicated from scripts/seed/strip-frontmatter.ts on purpose: app code must
+// not import from scripts/. This is a defensive strip for stale DB rows
+// seeded before that stripping existed — remove once all rows are re-seeded.
+const FRONT_MATTER_RE = /^---\n[\s\S]*?\n---\n?/;
+
 /** Renders lecture Markdown (table- and blockquote-heavy) with Tailwind-styled typography. */
 export function MarkdownContent({ content }: { content: string }) {
+  const body = content.replace(FRONT_MATTER_RE, "");
   return (
     <div className="text-body leading-relaxed text-foreground">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-        {content}
+        {body}
       </ReactMarkdown>
     </div>
   );

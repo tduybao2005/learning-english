@@ -4,6 +4,7 @@ import path from "path";
 import { db } from "../../src/lib/db";
 import { normalize } from "../../src/lib/grading/normalize";
 import type { BandTableRow } from "../../src/lib/band";
+import { stripFrontmatter } from "./strip-frontmatter";
 
 /**
  * Seeds the `default` `PlacementTest` row from
@@ -551,9 +552,9 @@ function buildReadingSections(): ReadingSectionSeed[] {
 // ---------------------------------------------------------------------------
 
 async function main() {
-  const readingMdRaw = fs.readFileSync(path.join(TEST01_DIR, "reading.md"), "utf8");
-  const writingMdRaw = fs.readFileSync(path.join(TEST01_DIR, "writing.md"), "utf8");
-  const answerKeyMdRaw = fs.readFileSync(path.join(TEST01_DIR, "answer_key.md"), "utf8");
+  const readingMdRaw = stripFrontmatter(fs.readFileSync(path.join(TEST01_DIR, "reading.md"), "utf8"));
+  const writingMdRaw = stripFrontmatter(fs.readFileSync(path.join(TEST01_DIR, "writing.md"), "utf8"));
+  const answerKeyMdRaw = stripFrontmatter(fs.readFileSync(path.join(TEST01_DIR, "answer_key.md"), "utf8"));
 
   const readingMd = extractReadingMd(readingMdRaw);
   const writingPromptMd = extractWritingPromptMd(writingMdRaw);
