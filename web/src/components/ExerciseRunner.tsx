@@ -187,9 +187,11 @@ function ExerciseRunnerSession({
         )}
       </div>
 
-      <p className="text-caption font-semibold text-primary lg:text-center">{kickerFor(question.kind)}</p>
+      <div className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-[720px]">
+        <p className="text-caption font-semibold text-primary lg:text-center">
+          {kickerFor(question.kind)}
+        </p>
 
-      <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
         <div
           className={cn(
             "rounded-xl border p-5 transition-colors",
@@ -218,6 +220,24 @@ function ExerciseRunnerSession({
               {state.result?.keyNote && <p className="text-muted-foreground">{state.result.keyNote}</p>}
             </div>
           )}
+
+          {/* Card footer: the single primary action lives INSIDE the card. */}
+          <div className="mt-4 flex justify-end border-t border-border/60 pt-4">
+            {isCorrect ? (
+              <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
+                Tiếp tục
+              </Button>
+            ) : (
+              <Button
+                className="w-full sm:w-auto"
+                variant={isIncorrect ? "outline" : "default"}
+                onClick={handleSubmit}
+                disabled={isChecking || state.input.trim() === ""}
+              >
+                {isIncorrect ? "Thử lại" : "Kiểm tra"}
+              </Button>
+            )}
+          </div>
         </div>
 
         {isIncorrect && (
@@ -231,23 +251,6 @@ function ExerciseRunnerSession({
             )}
             <ExplanationSlot explanation={state.result?.explanation ?? null} />
           </div>
-        )}
-      </div>
-
-      <div className="flex justify-end gap-3">
-        {isCorrect ? (
-          <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
-            Tiếp tục
-          </Button>
-        ) : (
-          <Button
-            className="w-full sm:w-auto"
-            variant={isIncorrect ? "outline" : "default"}
-            onClick={handleSubmit}
-            disabled={isChecking || state.input.trim() === ""}
-          >
-            {isIncorrect ? "Thử lại" : "Kiểm tra"}
-          </Button>
         )}
       </div>
     </div>
