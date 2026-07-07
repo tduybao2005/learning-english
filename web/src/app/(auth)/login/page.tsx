@@ -38,8 +38,8 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6">
-      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-primary-foreground shadow-primary-glow">
+    <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6 lg:min-h-0">
+      <div className="mb-6 flex size-12 items-center justify-center rounded-2xl bg-primary text-xl font-bold text-primary-foreground shadow-primary-glow lg:hidden">
         H
       </div>
       <h1 className="text-h1 font-extrabold">Chào mừng trở lại 👋</h1>
@@ -64,6 +64,15 @@ export default function LoginPage() {
           {isSubmitting ? "Đang gửi..." : "Gửi mã đăng nhập"}
         </Button>
       </form>
+      <div className="mt-6 flex items-center gap-3" aria-hidden>
+        <div className="h-px flex-1 bg-border" />
+        <span className="text-caption text-muted-foreground">hoặc</span>
+        <div className="h-px flex-1 bg-border" />
+      </div>
+      <Button type="button" variant="outline" className="mt-4 w-full" disabled>
+        Tiếp tục với Google
+      </Button>
+      <p className="mt-1.5 text-center text-caption text-muted-foreground">Sắp ra mắt</p>
     </div>
   );
 }

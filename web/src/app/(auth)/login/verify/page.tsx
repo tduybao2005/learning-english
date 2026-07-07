@@ -128,7 +128,7 @@ function VerifyForm() {
   }
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6">
+    <div className="mx-auto flex min-h-screen w-full max-w-sm flex-col justify-center px-6 lg:min-h-0">
       <button
         type="button"
         onClick={() => router.push("/login")}
