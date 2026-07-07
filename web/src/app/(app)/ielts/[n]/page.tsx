@@ -16,8 +16,10 @@ function TabBody({ content, emptyLabel }: { content: string; emptyLabel: string 
 
 export default async function IeltsTestPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ n: string }>;
+  searchParams: Promise<{ skill?: string }>;
 }) {
   const user = await getSessionUser();
   if (!user) redirect("/login");
@@ -25,6 +27,9 @@ export default async function IeltsTestPage({
   const { n } = await params;
   const number = Number(n);
   if (!Number.isInteger(number)) notFound();
+
+  const { skill } = await searchParams;
+  const defaultSkill = skill === "writing" || skill === "speaking" ? skill : "reading";
 
   const test = await db.ieltsTest.findUnique({ where: { number } });
   if (!test) notFound();
@@ -44,7 +49,7 @@ export default async function IeltsTestPage({
         )}
       </div>
 
-      <Tabs defaultValue="reading" className="mb-6">
+      <Tabs defaultValue={defaultSkill} className="mb-6">
         <TabsList className="w-full">
           <TabsTrigger value="reading" className="flex-1">
             Reading
