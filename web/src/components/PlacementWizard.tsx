@@ -43,7 +43,7 @@ function wordCount(text: string): number {
 function Stepper({ current }: { current: Step }) {
   const currentIndex = STEPS.findIndex((s) => s.key === current);
   return (
-    <div className="mb-8 flex items-center">
+    <div className="mb-8 flex items-center lg:mx-auto lg:w-full lg:max-w-xl">
       {STEPS.map((step, i) => (
         <div key={step.key} className="flex flex-1 items-center last:flex-none">
           <div className="flex flex-col items-center gap-1">
@@ -225,13 +225,15 @@ export function PlacementWizard({
             </p>
           </div>
           {listening ? (
-            <>
-              <AudioPlayer src={listening.audioUrl} />
+            <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[380px_minmax(0,1fr)] lg:items-start lg:gap-8">
+              <div className="lg:sticky lg:top-8">
+                <AudioPlayer src={listening.audioUrl} />
+              </div>
               <QuestionBatch
                 questions={listening.questions}
                 onChange={(id, value) => setListeningAnswers((prev) => ({ ...prev, [id]: value }))}
               />
-            </>
+            </div>
           ) : (
             <p className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
               Phần nghe hiện chưa sẵn sàng — bạn có thể tiếp tục sang phần Đọc.
@@ -253,26 +255,30 @@ export function PlacementWizard({
               Đọc hai đoạn văn bên dưới và trả lời các câu hỏi tương ứng.
             </p>
           </div>
-          <div className="rounded-xl border border-border bg-card p-4 sm:p-6">
-            <span className="mb-2 inline-block rounded-md bg-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground">
-              ĐOẠN VĂN
-            </span>
-            <MarkdownContent content={readingMd} />
-          </div>
-          {readingSections.map((section) => (
-            <div key={section.label} className="flex flex-col gap-3">
-              <div>
-                <h2 className="text-sm font-bold">{section.title}</h2>
-                {section.instructions ? (
-                  <p className="text-sm text-muted-foreground">{section.instructions}</p>
-                ) : null}
-              </div>
-              <QuestionBatch
-                questions={section.questions}
-                onChange={(id, value) => setReadingAnswers((prev) => ({ ...prev, [id]: value }))}
-              />
+          <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
+            <div className="rounded-xl border border-border bg-card p-4 sm:p-6 lg:sticky lg:top-8 lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
+              <span className="mb-2 inline-block rounded-md bg-muted px-2 py-0.5 text-caption font-semibold text-muted-foreground">
+                ĐOẠN VĂN
+              </span>
+              <MarkdownContent content={readingMd} />
             </div>
-          ))}
+            <div className="flex flex-col gap-6">
+              {readingSections.map((section) => (
+                <div key={section.label} className="flex flex-col gap-3">
+                  <div>
+                    <h2 className="text-sm font-bold">{section.title}</h2>
+                    {section.instructions ? (
+                      <p className="text-sm text-muted-foreground">{section.instructions}</p>
+                    ) : null}
+                  </div>
+                  <QuestionBatch
+                    questions={section.questions}
+                    onChange={(id, value) => setReadingAnswers((prev) => ({ ...prev, [id]: value }))}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="flex justify-end">
             <Button onClick={handleFinishReading} disabled={submitting}>
               {submitting ? "Đang nộp..." : "Nộp bài & Tiếp tục"}
@@ -282,7 +288,7 @@ export function PlacementWizard({
       )}
 
       {step === "writing" && (
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 lg:mx-auto lg:w-full lg:max-w-3xl">
           <div>
             <h1 className="mb-1 text-xl font-bold">Phần Viết (Writing)</h1>
             <p className="text-sm text-muted-foreground">
