@@ -33,7 +33,7 @@ export default async function ListeningSetPage({
   }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
+    <div className="mx-auto max-w-3xl px-4 py-8 lg:max-w-5xl">
       <Link
         href="/listening"
         className="mb-4 inline-block text-caption text-muted-foreground hover:text-foreground"
