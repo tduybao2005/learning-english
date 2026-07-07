@@ -130,7 +130,7 @@ export function Flashcards({ words, backHref }: { words: FlashcardWord[]; backHr
         data-testid="flashcard"
         data-flipped={flipped}
       >
-        <div className={cn("relative h-64 w-full flip-inner", flipped && "flip-inner-flipped")}>
+        <div className={cn("relative h-64 lg:h-80 w-full flip-inner", flipped && "flip-inner-flipped")}>
           {/* Front: word + IPA */}
           <div className="absolute inset-0 backface-hidden rounded-2xl border bg-card flex flex-col items-center justify-center gap-2 p-6">
             <p className="text-center text-h1 font-extrabold">{card.word}</p>
@@ -151,7 +151,7 @@ export function Flashcards({ words, backHref }: { words: FlashcardWord[]; backHr
       </button>
 
       <div className="flex justify-center gap-3">
-        <Button variant="outline" disabled={!flipped} onClick={() => handleReport(false)}>
+        <Button variant="destructive" disabled={!flipped} onClick={() => handleReport(false)}>
           Chưa nhớ ✗
         </Button>
         <Button variant="success" disabled={!flipped} onClick={() => handleReport(true)}>
