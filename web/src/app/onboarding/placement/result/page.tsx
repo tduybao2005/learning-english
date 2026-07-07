@@ -131,7 +131,22 @@ export default async function PlacementResultPage() {
           </div>
         </div>
 
-        <div className="w-full rounded-xl border border-primary/25 bg-primary/5 p-5 text-left">
+        {/* Mobile keeps today's prose card; desktop (lg+) uses the compact card per mockup 04-d */}
+        <div className="w-full rounded-xl border border-primary/30 bg-primary/5 p-5 lg:hidden">
+          <p className="text-sm">
+            Dựa trên kết quả này, chúng tôi đề xuất bạn bắt đầu học từ{" "}
+            <span className="font-semibold">{phase?.title ?? "bài học đầu tiên"}</span>
+            {startLesson ? (
+              <>
+                {" "}
+                — bài <span className="font-semibold">&ldquo;{startLesson.title}&rdquo;</span>
+              </>
+            ) : null}
+            . Các bài học trước đó sẽ được đánh dấu là đã bỏ qua (bạn vẫn có thể quay lại xem bất cứ lúc
+            nào).
+          </p>
+        </div>
+        <div className="hidden w-full rounded-xl border border-primary/25 bg-primary/5 p-5 text-left lg:block">
           <p className="text-caption text-muted-foreground">Điểm bắt đầu được gợi ý</p>
           <p className="mt-1 font-bold text-primary">
             {phase?.title ?? "Bài học đầu tiên"}
