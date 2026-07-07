@@ -78,21 +78,25 @@ export default async function ExercisePage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <LessonTabs
-        phaseTitle={lesson.phase.title}
-        lessonTitle={lesson.title}
-        basePath={base}
-        active="exercise"
-      />
-      <ExerciseRunner
-        exerciseId={lesson.exercise.id}
-        attemptId={attempt.id}
-        initialQuestionNumber={attempt.currentQuestionNumber}
-        questions={questions}
-        nextLesson={nextLesson}
-        backHref={base}
-      />
+    <div className="mx-auto max-w-3xl px-4 py-8 lg:fixed lg:inset-0 lg:z-50 lg:m-0 lg:max-w-none lg:overflow-y-auto lg:bg-background lg:px-0 lg:py-0">
+      <div className="lg:hidden">
+        <LessonTabs
+          phaseTitle={lesson.phase.title}
+          lessonTitle={lesson.title}
+          basePath={base}
+          active="exercise"
+        />
+      </div>
+      <div className="lg:mx-auto lg:max-w-5xl lg:px-8 lg:py-10">
+        <ExerciseRunner
+          exerciseId={lesson.exercise.id}
+          attemptId={attempt.id}
+          initialQuestionNumber={attempt.currentQuestionNumber}
+          questions={questions}
+          nextLesson={nextLesson}
+          backHref={base}
+        />
+      </div>
     </div>
   );
 }

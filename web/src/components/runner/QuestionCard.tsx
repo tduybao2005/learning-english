@@ -81,7 +81,7 @@ function FillBlankInputs({
   const isCorrectPick = status === "correct";
 
   return (
-    <p className="text-base leading-relaxed">
+    <p className="text-base leading-relaxed lg:mb-6 lg:text-center lg:text-h2 lg:font-bold">
       {segments.map((segment, i) => (
         <span key={i}>
           {segment}
@@ -121,7 +121,7 @@ function MultipleChoiceOptions({
 
   return (
     <div>
-      <p className="mb-3 text-base leading-relaxed">{prompt}</p>
+      <p className="mb-3 text-base leading-relaxed lg:mb-6 lg:text-center lg:text-h2 lg:font-bold">{prompt}</p>
       <div className="flex flex-col gap-2">
         {options.map((opt) => {
           const isSelected = selected === opt.label;

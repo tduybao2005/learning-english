@@ -127,7 +127,7 @@ function ExerciseRunnerSession({
 
   if (state.phase === "finished") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center">
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center lg:mx-auto lg:max-w-xl">
         <div className="flex size-16 items-center justify-center rounded-full bg-success text-2xl text-success-foreground animate-pop">
           ✓
         </div>
@@ -187,26 +187,40 @@ function ExerciseRunnerSession({
         )}
       </div>
 
-      <p className="text-caption font-semibold text-primary">{kickerFor(question.kind)}</p>
+      <p className="text-caption font-semibold text-primary lg:text-center">{kickerFor(question.kind)}</p>
 
-      <div
-        className={cn(
-          "rounded-xl border p-5 transition-colors",
-          isIncorrect && "border-destructive/50 bg-destructive/5",
-          isCorrect && "border-success/50 bg-success-bg",
-          !isIncorrect && !isCorrect && "border-border bg-card",
-        )}
-      >
-        <QuestionCard
-          key={question.id}
-          question={question}
-          disabled={isChecking || isCorrect}
-          status={state.phase}
-          onChangeInput={(value) => dispatch({ type: "SET_INPUT", value })}
-        />
+      <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">
+        <div
+          className={cn(
+            "rounded-xl border p-5 transition-colors",
+            isIncorrect && "border-destructive/50 bg-destructive/5",
+            isCorrect && "border-success/50 bg-success-bg",
+            !isIncorrect && !isCorrect && "border-border bg-card",
+          )}
+        >
+          <QuestionCard
+            key={question.id}
+            question={question}
+            disabled={isChecking || isCorrect}
+            status={state.phase}
+            onChangeInput={(value) => dispatch({ type: "SET_INPUT", value })}
+          />
+
+          {isCorrect && (
+            <div className="mt-3 text-sm">
+              <p className="font-medium text-success">Chính xác!</p>
+              {state.result?.correctAnswer && (
+                <p className="text-muted-foreground">
+                  Đáp án: <span className="font-medium text-foreground">{state.result.correctAnswer}</span>
+                </p>
+              )}
+              {state.result?.keyNote && <p className="text-muted-foreground">{state.result.keyNote}</p>}
+            </div>
+          )}
+        </div>
 
         {isIncorrect && (
-          <div className="mt-3 flex flex-col gap-3">
+          <div className="flex flex-col gap-3">
             <p className="text-sm font-medium text-destructive">Chưa đúng, thử lại.</p>
             {state.result?.keyNote && (
               <div className="rounded-xl border border-destructive/30 bg-destructive-bg p-4">
@@ -217,35 +231,23 @@ function ExerciseRunnerSession({
             <ExplanationSlot explanation={state.result?.explanation ?? null} />
           </div>
         )}
+      </div>
 
-        {isCorrect && (
-          <div className="mt-3 text-sm">
-            <p className="font-medium text-success">Chính xác!</p>
-            {state.result?.correctAnswer && (
-              <p className="text-muted-foreground">
-                Đáp án: <span className="font-medium text-foreground">{state.result.correctAnswer}</span>
-              </p>
-            )}
-            {state.result?.keyNote && <p className="text-muted-foreground">{state.result.keyNote}</p>}
-          </div>
+      <div className="flex justify-end gap-3">
+        {isCorrect ? (
+          <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
+            Tiếp tục
+          </Button>
+        ) : (
+          <Button
+            className="w-full sm:w-auto"
+            variant={isIncorrect ? "outline" : "default"}
+            onClick={handleSubmit}
+            disabled={isChecking || state.input.trim() === ""}
+          >
+            {isIncorrect ? "Thử lại" : "Kiểm tra"}
+          </Button>
         )}
-
-        <div className="mt-4 flex justify-end">
-          {isCorrect ? (
-            <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
-              Tiếp tục
-            </Button>
-          ) : (
-            <Button
-              className="w-full sm:w-auto"
-              variant={isIncorrect ? "outline" : "default"}
-              onClick={handleSubmit}
-              disabled={isChecking || state.input.trim() === ""}
-            >
-              {isIncorrect ? "Thử lại" : "Kiểm tra"}
-            </Button>
-          )}
-        </div>
       </div>
     </div>
   );
