@@ -2,12 +2,28 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { Components } from "react-markdown";
 
+import { slugifyHeading } from "@/lib/toc";
+
+/** Flattens react-markdown heading children (strings, <strong>, <code>, …)
+ * to plain text so the anchor id matches `extractToc`'s. */
+function childrenToText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(childrenToText).join("");
+  if (children && typeof children === "object" && "props" in children) {
+    return childrenToText((children as React.ReactElement<{ children?: React.ReactNode }>).props.children);
+  }
+  return "";
+}
+
 const components: Components = {
   h1: ({ children }) => (
     <h1 className="mt-8 mb-4 text-2xl font-bold first:mt-0">{children}</h1>
   ),
   h2: ({ children }) => (
-    <h2 className="mt-10 mb-3 border-b border-border pb-2 text-xl font-bold tracking-tight">
+    <h2
+      id={slugifyHeading(childrenToText(children))}
+      className="mt-10 mb-3 scroll-mt-8 border-b border-border pb-2 text-xl font-bold tracking-tight"
+    >
       {children}
     </h2>
   ),

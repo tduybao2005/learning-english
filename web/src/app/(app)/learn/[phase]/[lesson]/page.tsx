@@ -5,6 +5,8 @@ import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { LessonTabs } from "@/components/LessonTabs";
+import { extractToc } from "@/lib/toc";
+import { LectureToc } from "@/components/LectureToc";
 
 export default async function LecturePage({
   params,
@@ -30,16 +32,22 @@ export default async function LecturePage({
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
 
-  return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <LessonTabs
-        phaseTitle={lesson.phase.title}
-        lessonTitle={lesson.title}
-        basePath={base}
-        active="lecture"
-      />
+  const toc = extractToc(lesson.lectureMd);
 
-      <MarkdownContent content={lesson.lectureMd} />
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-8 lg:grid lg:max-w-5xl lg:grid-cols-[minmax(0,680px)_220px] lg:justify-center lg:gap-10">
+      <div>
+        <LessonTabs
+          phaseTitle={lesson.phase.title}
+          lessonTitle={lesson.title}
+          basePath={base}
+          active="lecture"
+        />
+
+        <MarkdownContent content={lesson.lectureMd} />
+      </div>
+
+      <LectureToc entries={toc} />
     </div>
   );
 }
