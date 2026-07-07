@@ -45,12 +45,12 @@ export default function OnboardingPathPage() {
   }
 
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6 py-8">
+    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6 py-8 lg:max-w-3xl">
       <div className="mb-8 h-1.5 w-full rounded-full bg-muted">
         <div className="h-full w-1/2 rounded-full bg-primary" />
       </div>
 
-      <h1 className="text-h1 font-extrabold">Mục tiêu của bạn?</h1>
+      <h1 className="text-h1 font-extrabold lg:text-display">Mục tiêu của bạn?</h1>
       <p className="mt-2 text-body text-muted-foreground">
         Chọn mục tiêu để chúng tôi cá nhân hoá lộ trình học của bạn.
       </p>

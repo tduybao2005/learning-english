@@ -65,7 +65,7 @@ export function GoalPicker({
         <p className="mb-3 text-sm text-muted-foreground">
           Chọn band điểm IELTS bạn muốn đạt được:
         </p>
-        <div role="radiogroup" className="grid grid-cols-3 gap-2">
+        <div role="radiogroup" className="grid grid-cols-3 gap-2 lg:grid-cols-6 lg:gap-3">
           {IELTS_BANDS.map((band) => {
             const selected = value?.goalType === "IELTS" && value.goalValue === band;
             return (
