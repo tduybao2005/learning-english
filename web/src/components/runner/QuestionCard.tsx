@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { stripErrorScaffold } from "@/lib/grading/error-span";
 import type { RunnerPhase } from "@/components/runner/reducer";
 
 /**
@@ -28,6 +29,7 @@ export interface SafeQuestion {
   options: { label: string; text: string }[] | null;
   kind: SafeQuestionKind;
   isOpenEnded: boolean;
+  errorSpan?: { start: number; end: number } | null;
 }
 
 // Deliberately NOT the `g` flag: this module-level regex is shared across
@@ -92,6 +94,7 @@ function FillBlankInputs({
               type="text"
               value={values[i]}
               disabled={disabled}
+              data-answer-field
               onChange={(e) => update(i, e.target.value)}
               className={cn(
                 "mx-1 inline-block w-28 rounded-lg border border-input bg-transparent px-2 py-1 text-center font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
@@ -137,6 +140,7 @@ function MultipleChoiceOptions({
               key={opt.label}
               type="button"
               disabled={disabled}
+              data-mcq-option
               onClick={() => {
                 setSelected(opt.label);
                 onChangeJoined(opt.label);
@@ -192,6 +196,7 @@ function TextAreaAnswer({
       <textarea
         value={value}
         disabled={disabled}
+        data-answer-field
         onChange={(e) => {
           setValue(e.target.value);
           onChangeJoined(e.target.value);
@@ -204,6 +209,66 @@ function TextAreaAnswer({
           isCorrectPick && "animate-pop border-success bg-success-bg text-success",
         )}
       />
+    </div>
+  );
+}
+
+function ErrorCorrectionAnswer({
+  question,
+  disabled,
+  status,
+  onChangeJoined,
+  emphasizePrompt,
+}: {
+  question: SafeQuestion;
+  disabled: boolean;
+  status: QuestionStatus;
+  onChangeJoined: (value: string) => void;
+  emphasizePrompt: boolean;
+}) {
+  const [value, setValue] = useState("");
+  const isWrong = status === "incorrect";
+  const isCorrectPick = status === "correct";
+
+  const sentence = stripErrorScaffold(question.prompt);
+  const span = question.errorSpan ?? null;
+
+  return (
+    <div>
+      <p className={cn("text-base font-bold leading-relaxed", emphasizePrompt && "lg:text-h2")}>
+        {span ? (
+          <>
+            {sentence.slice(0, span.start)}
+            <span className="underline decoration-destructive decoration-wavy underline-offset-4">
+              {sentence.slice(span.start, span.end)}
+            </span>
+            {sentence.slice(span.end)}
+          </>
+        ) : (
+          sentence
+        )}
+      </p>
+      <p className="mt-1 text-caption text-muted-foreground">Viết lại cả câu cho đúng.</p>
+
+      <label className="mt-4 block text-caption font-semibold text-muted-foreground">
+        Câu đúng
+        <input
+          type="text"
+          value={value}
+          disabled={disabled}
+          data-answer-field
+          onChange={(e) => {
+            setValue(e.target.value);
+            onChangeJoined(e.target.value);
+          }}
+          placeholder="Gõ lại cả câu đã sửa..."
+          className={cn(
+            "mt-1.5 w-full rounded-lg border border-input bg-transparent px-3 py-2.5 text-base font-normal text-foreground outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
+            isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
+            isCorrectPick && "animate-pop border-success bg-success-bg text-success",
+          )}
+        />
+      </label>
     </div>
   );
 }
@@ -249,6 +314,18 @@ export function QuestionCard({
   if (question.kind === "FILL_BLANK" && BLANK_RE.test(question.prompt)) {
     return (
       <FillBlankInputs prompt={question.prompt} disabled={disabled} status={status} onChangeJoined={onChangeInput} emphasizePrompt={emphasizePrompt} />
+    );
+  }
+
+  if (question.kind === "ERROR_CORRECTION") {
+    return (
+      <ErrorCorrectionAnswer
+        question={question}
+        disabled={disabled}
+        status={status}
+        onChangeJoined={onChangeInput}
+        emphasizePrompt={emphasizePrompt}
+      />
     );
   }
 

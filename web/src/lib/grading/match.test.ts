@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { matchAnswer, type QuestionKind } from "./match";
+import { matchAnswer, type MatchQuestion, type QuestionKind } from "./match";
+import { normalize } from "./normalize";
 
 function variants(...texts: string[]) {
   return texts.map((text) => ({ normalized: text }));
@@ -190,6 +191,31 @@ describe("matchAnswer", () => {
       });
       expect(result).toEqual({ correct: false });
     });
+  });
+});
+
+const ecQuestion = (variants: string[]): MatchQuestion => ({
+  kind: "ERROR_CORRECTION",
+  isOpenEnded: false,
+  variants: variants.map((v) => ({ normalized: normalize(v) })),
+});
+
+describe("ERROR_CORRECTION whole-sentence answers", () => {
+  const q = ecQuestion(["doesn't like"]);
+  it("accepts the full corrected sentence containing the fix", () => {
+    expect(matchAnswer("She doesn't like vegetables. She prefers fruit.", q).correct).toBe(true);
+  });
+  it("accepts the expanded contraction inside the sentence", () => {
+    expect(matchAnswer("She does not like vegetables.", q).correct).toBe(true);
+  });
+  it("still accepts the bare corrected phrase", () => {
+    expect(matchAnswer("doesn't like", q).correct).toBe(true);
+  });
+  it("rejects the original uncorrected sentence", () => {
+    expect(matchAnswer("She don't like vegetables. She prefer fruit.", q).correct).toBe(false);
+  });
+  it("does not match a variant inside a longer word", () => {
+    expect(matchAnswer("she prefersx", ecQuestion(["prefers"])).correct).toBe(false);
   });
 });
 

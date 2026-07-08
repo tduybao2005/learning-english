@@ -158,7 +158,7 @@ function levenshteinDistance(a: string, b: string): number {
   return prev[n];
 }
 
-function similarity(a: string, b: string): number {
+export function similarity(a: string, b: string): number {
   const maxLen = Math.max(a.length, b.length);
   if (maxLen === 0) return 1;
   return 1 - levenshteinDistance(a, b) / maxLen;
@@ -191,6 +191,23 @@ export function matchAnswer(input: string, question: MatchQuestion): MatchResult
     for (const variantText of variantTexts) {
       if (similarity(normalizedInput, variantText) >= FUZZY_SIMILARITY_THRESHOLD) {
         return { correct: true, matchType: "FUZZY" };
+      }
+    }
+  }
+
+  // ERROR_CORRECTION: the learner retypes the WHOLE corrected sentence, but
+  // seeded variants usually hold only the corrected word/phrase. Accept any
+  // contraction form of the input that contains a variant as a whole phrase.
+  // Reported as VARIANT (Prisma MatchType enum — no migration).
+  if (question.kind === "ERROR_CORRECTION") {
+    for (const form of forms) {
+      for (const variantText of variantTexts) {
+        if (
+          variantText.length > 0 &&
+          new RegExp(`(?:^| )${escapeRegExp(variantText)}(?: |$)`).test(form)
+        ) {
+          return { correct: true, matchType: "VARIANT" };
+        }
       }
     }
   }

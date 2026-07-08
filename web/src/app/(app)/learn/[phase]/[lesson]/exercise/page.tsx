@@ -8,6 +8,7 @@ import { getOrderedQuestions } from "@/lib/exercises";
 import { ExerciseRunner, type NextLessonInfo } from "@/components/ExerciseRunner";
 import type { SafeQuestion } from "@/components/runner/QuestionCard";
 import { LessonTabs } from "@/components/LessonTabs";
+import { findErrorSpan, stripErrorScaffold } from "@/lib/grading/error-span";
 
 export default async function ExercisePage({
   params,
@@ -64,6 +65,12 @@ export default async function ExercisePage({
     options: q.options as { label: string; text: string }[] | null,
     kind: q.kind,
     isOpenEnded: q.isOpenEnded,
+    // Variants stay server-side: only the computed char offsets ship to the
+    // client so the runner can wavy-underline the suspect words.
+    errorSpan:
+      q.kind === "ERROR_CORRECTION"
+        ? findErrorSpan(stripErrorScaffold(q.prompt), q.variants[0]?.normalized ?? "")
+        : undefined,
   }));
 
   const attempt = await getOrCreateOpenAttempt(user.id, lesson.exercise.id);

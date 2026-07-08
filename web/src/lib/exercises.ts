@@ -8,6 +8,9 @@ export interface OrderedQuestion {
   options: unknown;
   kind: QuestionKind;
   isOpenEnded: boolean;
+  /** Normalized answer variants — SERVER-SIDE ONLY (e.g. computing the
+   * error-correction underline span). Never forward these to the client. */
+  variants: { normalized: string }[];
 }
 
 /**
@@ -41,7 +44,14 @@ export async function getOrderedQuestions(exerciseId: string): Promise<OrderedQu
       kind: true,
       questions: {
         orderBy: { number: "asc" },
-        select: { id: true, number: true, prompt: true, options: true, isOpenEnded: true },
+        select: {
+          id: true,
+          number: true,
+          prompt: true,
+          options: true,
+          isOpenEnded: true,
+          variants: { select: { normalized: true } },
+        },
       },
     },
   });
