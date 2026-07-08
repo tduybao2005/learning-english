@@ -1,0 +1,139 @@
+/* ============================================================
+   Học tiếng Anh — Design System tokens (Tailwind v4)
+   Dán vào web/src/app/globals.css
+   ============================================================ */
+@import "tailwindcss";
+@import "tw-animate-css"; /* nếu dự án dùng; nếu không, bỏ dòng này */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.985 0.004 286);
+  --foreground: oklch(0.24 0.02 286);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.02 286);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.02 286);
+  --muted: oklch(0.965 0.006 286);
+  --muted-foreground: oklch(0.55 0.02 286);
+  --border: oklch(0.92 0.008 286);
+  --input: oklch(0.92 0.008 286);
+  --ring: oklch(0.55 0.19 274);
+
+  --primary: oklch(0.55 0.19 274);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.965 0.006 286);
+  --secondary-foreground: oklch(0.30 0.02 286);
+  --accent: oklch(0.68 0.18 29);
+  --accent-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.66 0.15 150);
+  --success-foreground: oklch(0.99 0 0);
+  --success-bg: oklch(0.96 0.04 150);
+  --destructive: oklch(0.62 0.16 18);
+  --destructive-foreground: oklch(0.99 0 0);
+  --destructive-bg: oklch(0.96 0.035 18);
+  --streak: oklch(0.78 0.15 78);
+  --streak-foreground: oklch(0.30 0.05 70);
+  --streak-bg: oklch(0.96 0.05 82);
+
+  --radius: 0.625rem; /* 10px */
+}
+
+.dark {
+  --background: oklch(0.20 0.02 286);
+  --foreground: oklch(0.95 0.006 286);
+  --card: oklch(0.245 0.02 286);
+  --card-foreground: oklch(0.95 0.006 286);
+  --popover: oklch(0.245 0.02 286);
+  --popover-foreground: oklch(0.95 0.006 286);
+  --muted: oklch(0.28 0.02 286);
+  --muted-foreground: oklch(0.68 0.015 286);
+  --border: oklch(0.32 0.015 286);
+  --input: oklch(0.34 0.015 286);
+  --ring: oklch(0.70 0.15 276);
+
+  --primary: oklch(0.70 0.15 276);
+  --primary-foreground: oklch(0.18 0.02 286);
+  --secondary: oklch(0.28 0.02 286);
+  --secondary-foreground: oklch(0.92 0.006 286);
+  --accent: oklch(0.74 0.15 32);
+  --accent-foreground: oklch(0.18 0.02 286);
+
+  --success: oklch(0.72 0.14 152);
+  --success-bg: oklch(0.30 0.05 152);
+  --destructive: oklch(0.70 0.14 20);
+  --destructive-bg: oklch(0.30 0.05 20);
+  --streak: oklch(0.82 0.14 80);
+  --streak-foreground: oklch(0.92 0.05 82);
+  --streak-bg: oklch(0.32 0.05 82);
+}
+
+/* Ánh xạ token -> Tailwind v4 để dùng bg-*, text-*, border-* */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-bg: var(--success-bg);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-bg: var(--destructive-bg);
+  --color-streak: var(--streak);
+  --color-streak-foreground: var(--streak-foreground);
+  --color-streak-bg: var(--streak-bg);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 10px);
+
+  --font-sans: var(--font-be-vietnam-pro), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-brand: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-flip: flip 320ms var(--ease-brand);
+  --animate-pop: pop 320ms ease;
+  --animate-shake: shake 360ms ease;
+  --animate-fill: fill 900ms var(--ease-brand);
+  --animate-flame: flame 1.6s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.4s infinite linear;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* ---- Keyframes ---- */
+@keyframes flip  { from { transform: rotateY(90deg); opacity: 0 } to { transform: rotateY(0); opacity: 1 } }
+@keyframes pop   { 0%{transform:scale(1)} 40%{transform:scale(1.14)} 100%{transform:scale(1)} }
+@keyframes shake { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(3px)} }
+@keyframes fill  { from { width: 0 } }
+@keyframes flame { 0%,100%{transform:scale(1) rotate(-2deg)} 50%{transform:scale(1.08) rotate(2deg)} }
+@keyframes shimmer { from { background-position: -500px 0 } to { background-position: 500px 0 } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}

@@ -27,6 +27,13 @@ app is planned under `web/`; see docs/superpowers/plans/).
   `speaking.md`, `answer_key.md` (test_01–test_30, all complete).
 - `scripts/` — stdlib-Python tooling; `docs/` — knowledge base;
   `docs/plans/` — historical plans (frozen, don't update).
+- `docs/design/` — the app's visual design system exports (self-contained,
+  survive Claude-account changes): `code-export/` (design-system tokens +
+  reference component code + screen shots + a ready-to-paste
+  `CLAUDE_CODE_PROMPT.md`), `ux-refinements-export/`, `webapp-export/`. When
+  doing any UI/design work, read the relevant `*_PROMPT.md` and its
+  `*.dc.html` + `screens/` first and follow that system (indigo-violet
+  primary + coral accent, Vietnamese UI copy).
 
 ## Commands
 
