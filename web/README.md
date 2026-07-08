@@ -42,15 +42,18 @@ the above is in place.
 
 ## Environment variables
 
-See `.env.example`. All five are required for the app to run in any mode:
+See `.env.example`. All five are required for the app to run in any mode —
+**including local dev**: since there is no dev-echo fallback, `npm run dev`
+login requires a real Resend account with a verified sending domain (see
+"Current deployment status" above).
 
 | Variable | Local dev value (today) | Production (once Neon/Resend exist) |
 |---|---|---|
 | `DATABASE_URL` | `postgresql://…@localhost:5432/learning_english` | Neon **pooled** connection string — append `?pgbouncer=true` (Prisma requires this against Neon's connection pooler) |
 | `DIRECT_URL` | same local Postgres URL | Neon **direct** (unpooled) connection string — used by `prisma migrate`/seed scripts |
 | `SESSION_SECRET` | `openssl rand -hex 32` output, kept in `.env.local` (never committed) | A separate, real secret — do not reuse the dev one |
-| `RESEND_API_KEY` | placeholder (`re_...`), not used | Real Resend API key — required; OTP emails fail loudly in logs without it |
-| `OTP_EMAIL_FROM` | N/A — not used in local dev (Resend disabled) | From address on the Resend-verified domain, e.g. `Learning English <no-reply@yourdomain.com>` — required |
+| `RESEND_API_KEY` | Real Resend API key — required; OTP emails fail loudly in logs without it | Same |
+| `OTP_EMAIL_FROM` | From address on the Resend-verified domain, e.g. `Learning English <no-reply@yourdomain.com>` — required | Same |
 
 `web/src/middleware.ts` (edge runtime) only reads `SESSION_SECRET` and only
 imports `jose` — it validates the JWT signature statelessly, with no Prisma

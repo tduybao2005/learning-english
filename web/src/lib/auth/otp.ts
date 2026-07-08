@@ -28,7 +28,7 @@ function hashCode(code: string): string {
  * - at least 60s between consecutive issues
  *
  * Returns the plaintext `code` on success (used internally by email.ts to
- * send/dev-echo it) — never expose this value in an API response body.
+ * send it) — never expose this value in an API response body.
  */
 export async function issueOtp(email: string): Promise<IssueOtpResult> {
   const now = new Date();
