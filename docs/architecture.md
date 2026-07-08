@@ -10,7 +10,7 @@ but not yet built — see `docs/superpowers/plans/2026-07-02-english-learning-we
 
 ```mermaid
 flowchart TD
-    A[Content layer<br/>phase_1..5 lessons + exams<br/>ielts_practice_tests/test_01..30] --> B[Metadata layer<br/>YAML frontmatter per file<br/>index/manifest.json]
+    A[Content layer<br/>phase_1..5 lessons + exams<br/>ielts_practice_tests/test_01..30<br/>toeic_practice_tests/test_01..30] --> B[Metadata layer<br/>YAML frontmatter per file<br/>index/manifest.json]
     A --> C[Consumers]
     B --> C
     subgraph Tooling
@@ -48,6 +48,7 @@ flowchart TD
 | `phase_<N>_<name>/lesson_*/` | lessons: lecture + vocabulary + exercise |
 | `phase_<N>_<name>/exam/` | end-of-phase exam + answer key |
 | `ielts_practice_tests/test_<NN>/` | full IELTS tests (reading/writing/speaking/key) |
+| `toeic_practice_tests/test_<NN>/` | TOEIC tests (listening placeholder/reading/speaking/writing/key) |
 | `index/manifest.json` | generated inventory of everything above |
 | `scripts/` | stdlib-Python tooling (see docs/data-flow.md) |
 | `docs/` | this knowledge base + generated STATUS.md + WORKFLOW.md |

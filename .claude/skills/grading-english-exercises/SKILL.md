@@ -37,6 +37,7 @@ Locate the answer key → score on a fixed rubric → explain every error in Eng
 | Lesson exercise | `phase_*/lesson_*/exercise.md` | Embedded `## ANSWER KEY (ĐÁP ÁN)` section in same file | Points + band table (this file) |
 | Phase exam | `phase_*/exam/phaseN_exam.md` | `phase_*/exam/phaseN_answer_key.md` (separate file) | Points + band table (reuse exam's rubric if present) |
 | IELTS test | `ielts_practice_tests/test_NN/{reading,writing,speaking}.md` | `ielts_practice_tests/test_NN/answer_key.md` | **IELTS band 0–9, never 0–100%** — reading: native raw→band table; writing/speaking: estimated band from descriptor rubric + checklist |
+| TOEIC test | `toeic_practice_tests/test_NN/{listening,reading,speaking,writing}.md` | `toeic_practice_tests/test_NN/answer_key.md` | **TOEIC scaled score, never percentages/IELTS bands** — Listening & Reading: raw→scaled 5–495 each via that test's own table (total 10–990); Speaking & Writing: 0–200 each via ETS-style rubric. Listening has no audio yet in this repo → report "chưa thi", not 0 |
 
 ---
 
@@ -65,6 +66,13 @@ Locate the answer key → score on a fixed rubric → explain every error in Eng
 - **Reading:** Count raw correct out of 40, then read the raw-score → band conversion table printed inside *that* test's `answer_key.md` and report the band it yields. Use each test's own table verbatim — the tables differ between tests. Never use one test's table for another test.
 - **Writing & speaking:** Not objectively gradable, but still report an **estimated band (0–9)**. Map the response against the band-descriptor rubric in that test's `answer_key.md`. Where a test ships only a pass/fail self-assessment checklist, derive the estimate from how many checklist items pass. Always label writing/speaking bands explicitly as a **self-estimate**, not an official score, and list which checklist/descriptor items pass or fail.
 - **Overall Band:** Report each section's band and compute an **Overall Band** = average of available section bands, rounded to the nearest 0.5 (IELTS rounding). Note that listening is not included in this curriculum.
+
+**TOEIC practice tests — scaled score only (never percentages, never IELTS bands):**
+- **Listening:** This repo's Listening files are placeholders awaiting audio. Never score Listening as 0 — report **"Listening: chưa thi"** and omit it from any total.
+- **Reading:** Count raw correct out of 100 (Q101–200), then read the raw→scaled conversion table printed inside *that* test's `answer_key.md` and report the scaled score (5–495). Use each test's own table verbatim — tables differ between tests; never reuse one test's table for another.
+- **Listening & Reading total:** Report a combined L&R total (10–990) **only when both Listening and Reading have actually been taken/scored**. If Listening was not taken, report the Reading scaled score alone and do not compute a total.
+- **Speaking & Writing:** Score each 0–200 by mapping the response against the ETS-style descriptor rubric in that test's `answer_key.md`. Report Speaking and Writing scores separately — do not average or combine them with L&R.
+- Every score report records each of the four skills separately (Listening/Reading/Speaking/Writing); combine Listening+Reading into one total only when both are present.
 
 ---
 
@@ -178,3 +186,4 @@ Sub-total: 4/7 for these 6 items.
 | Lesson exercise | `phase_*/lesson_*/exercise.md` | Embedded `## ANSWER KEY` in same file | Points + band table |
 | Phase exam | `phase_*/exam/phaseN_exam.md` | `phase_*/exam/phaseN_answer_key.md` | Points + band table |
 | IELTS test | `ielts_practice_tests/test_NN/{reading,writing,speaking}.md` | `test_NN/answer_key.md` | Band 0–9 only — reading: native raw→band table; writing/speaking: estimated band (self-estimate) + Overall Band |
+| TOEIC test | `toeic_practice_tests/test_NN/{listening,reading,speaking,writing}.md` | `test_NN/answer_key.md` | Scaled score only — L&R 5–495 each (total 10–990 only if both present); Speaking/Writing 0–200 each via rubric; Listening not yet available → "chưa thi" |

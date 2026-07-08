@@ -25,6 +25,8 @@ app is planned under `web/`; see docs/superpowers/plans/).
 - `phase_<N>_<name>/exam/` — `phase<N>_exam.md` + `phase<N>_answer_key.md`.
 - `ielts_practice_tests/test_<NN>/` — `reading.md`, `writing.md`,
   `speaking.md`, `answer_key.md` (test_01–test_30, all complete).
+- `toeic_practice_tests/test_<NN>/` — `listening.md` (placeholder, no
+  content yet), `reading.md`, `speaking.md`, `writing.md`, `answer_key.md`.
 - `scripts/` — stdlib-Python tooling; `docs/` — knowledge base;
   `docs/plans/` — historical plans (frozen, don't update).
 - `docs/design/` — the app's visual design system exports (self-contained,
@@ -54,6 +56,10 @@ quarto render <file.md> --to pdf                   # PDF of one file (Quarto 1.6
   Variants separated by `/` are all correct.
 - **IELTS tests are scored on band 0–9** using that test's own raw→band
   table in its `answer_key.md` — never percentages, never another test's table.
+- **TOEIC L&R chấm theo scaled score 5–495 mỗi kỹ năng** bằng bảng quy đổi
+  của chính đề đó — không phần trăm, không band IELTS, không mượn bảng đề
+  khác. Speaking/Writing chấm 0–200 theo rubric trong `answer_key.md`.
+  Listening chưa có audio → ghi "chưa thi", không chấm 0.
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`
@@ -64,4 +70,5 @@ quarto render <file.md> --to pdf                   # PDF of one file (Quarto 1.6
 
 Use the `grading-english-exercises` skill. Locator table:
 lesson → key embedded in `exercise.md`; phase exam →
-`phase_*/exam/phase<N>_answer_key.md`; IELTS → `test_<NN>/answer_key.md`.
+`phase_*/exam/phase<N>_answer_key.md`; IELTS → `test_<NN>/answer_key.md`;
+TOEIC → `toeic_practice_tests/test_<NN>/answer_key.md`.

@@ -82,3 +82,31 @@ ends with an embedded answer key holding per-section answers.
   tests — never reuse across tests)**, writing/speaking self-assessment
   checklists.
 - Scoring is IELTS band 0–9, never percentages.
+
+## TOEIC practice tests — `toeic_practice_tests/test_<NN>/`
+
+Each test = 5 files (`type`: `toeic_listening`, `toeic_reading`,
+`toeic_speaking`, `toeic_writing`, `toeic_answer_key`; `cefr: B1-C1`):
+
+- **`listening.md`**: placeholder only — structured (PART 1–4 headings,
+  Q1–100) but no question content yet, awaiting audio. Not counted as
+  missing/incomplete; treat as "not yet available", not scored 0.
+- **`reading.md`**: 100 questions, Q101–200 — Part 5 Incomplete Sentences
+  (30 Qs, Q101–130), Part 6 Text Completion (16 Qs, Q131–146), Part 7
+  Reading Comprehension (54 Qs, Q147–200: single/double/triple passages).
+- **`speaking.md`**: 11 questions (ETS format: read aloud, describe a
+  picture, respond to questions, respond using information provided,
+  express an opinion), score 0–200, model answers under `#### Gợi ý
+  (Model answer)`.
+- **`writing.md`**: 8 questions (sentence-based-on-a-picture, respond to a
+  written request, opinion essay), score 0–200, model answers.
+- **`answer_key.md`**: Listening section notes "chưa có audio" (no
+  scoring yet); Reading answers Q101–200; **a per-test raw→scaled
+  conversion table for Listening and Reading, each 5–495 (total
+  10–990) — tables differ between tests, never reuse across tests**;
+  Speaking and Writing ETS-style descriptor rubrics, each 0–200.
+- Scoring is TOEIC scaled score (L&R 5–495 each via that test's own
+  table, total 10–990; Speaking/Writing 0–200 via rubric) — never
+  percentages, never IELTS bands, never another test's table. If the
+  learner has only done Reading (Listening has no audio), report only
+  the Reading scaled score and note Listening as not yet taken.

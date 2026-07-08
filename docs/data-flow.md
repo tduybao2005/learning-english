@@ -2,8 +2,9 @@
 
 ## 1. Authoring flow
 
-Author writes/edits lesson or test Markdown under `phase_*/` or
-`ielts_practice_tests/` → runs `python3 scripts/add_frontmatter.py`
+Author writes/edits lesson or test Markdown under `phase_*/`,
+`ielts_practice_tests/`, or `toeic_practice_tests/` → runs
+`python3 scripts/add_frontmatter.py`
 (no-op for existing files; adds metadata to new ones) → runs
 `python3 scripts/build_index.py` (refreshes `index/manifest.json` +
 `docs/STATUS.md`) → commits content + regenerated artifacts together.
@@ -15,7 +16,8 @@ Learner studies `lecture.md` + `vocabulary.md` → answers `exercise.md`
 (or a phase exam / IELTS test) → invokes the `grading-english-exercises`
 skill → the skill locates the answer key (embedded `## ANSWER KEY` for
 lessons; `phase<N>_answer_key.md` for exams; `test_<NN>/answer_key.md` for
-IELTS), scores per its rubric, and writes `score_report_<YYYY-MM-DD>.md`
+IELTS; `toeic_practice_tests/test_<NN>/answer_key.md` for TOEIC), scores
+per its rubric, and writes `score_report_<YYYY-MM-DD>.md`
 into the same folder. Exercise files are never modified by grading.
 Learner feedback about content goes into a `feedback.md` in the lesson dir.
 
