@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useState } from "react";
+import { useReducer, useRef, useState } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { initRunnerState, runnerReducer } from "@/components/runner/reducer";
 import { QuestionCard, type SafeQuestion, type SafeQuestionKind } from "@/components/runner/QuestionCard";
 import { ExplanationSlot } from "@/components/runner/ExplanationSlot";
+import { useRunnerShortcuts } from "@/components/runner/useRunnerShortcuts";
 
 export interface NextLessonInfo {
   slug: string;
@@ -108,6 +109,15 @@ function ExerciseRunnerSession({
 
   const total = questions.length;
   const question = questions[state.index];
+  const cardRef = useRef<HTMLDivElement | null>(null);
+
+  useRunnerShortcuts({
+    containerRef: cardRef,
+    onPrimaryAction: () => {
+      if (state.phase === "correct") dispatch({ type: "CONTINUE" });
+      else void handleSubmit(); // guards handle checking/empty
+    },
+  });
 
   async function handleSubmit() {
     if (state.phase !== "answering" && state.phase !== "incorrect") return;
@@ -187,7 +197,7 @@ function ExerciseRunnerSession({
         )}
       </div>
 
-      <div className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-[720px]">
+      <div ref={cardRef} className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-[720px]">
         <p className="text-caption font-semibold text-primary lg:text-center">
           {kickerFor(question.kind)}
         </p>
