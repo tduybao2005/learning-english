@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
@@ -118,6 +118,15 @@ function ExerciseRunnerSession({
       else void handleSubmit(); // guards handle checking/empty
     },
   });
+
+  // On every question change, drop the caret into the FIRST answer field so
+  // fill-in questions are immediately typeable after "Tiếp tục" — no manual
+  // click or Ctrl+→ needed. MCQ questions have no `[data-answer-field]`, so
+  // this is a no-op for them. Keyed on the question id: QuestionCard remounts
+  // per question, so the field exists by the time this effect runs.
+  useEffect(() => {
+    cardRef.current?.querySelector<HTMLElement>("[data-answer-field]")?.focus();
+  }, [question?.id]);
 
   async function handleSubmit() {
     if (state.phase !== "answering" && state.phase !== "incorrect") return;
