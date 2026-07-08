@@ -95,6 +95,7 @@ function FillBlankInputs({
               value={values[i]}
               disabled={disabled}
               data-answer-field
+              spellCheck={false}
               onChange={(e) => update(i, e.target.value)}
               className={cn(
                 "mx-1 inline-block w-28 rounded-lg border border-input bg-transparent px-2 py-1 text-center font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
@@ -128,7 +129,7 @@ function MultipleChoiceOptions({
 
   return (
     <div>
-      <p className={cn("mb-3 text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>{prompt}</p>
+      <p className={cn("mb-3 cursor-default text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>{prompt}</p>
       <div className="flex flex-col gap-2">
         {options.map((opt) => {
           const isSelected = selected === opt.label;
@@ -197,6 +198,7 @@ function TextAreaAnswer({
         value={value}
         disabled={disabled}
         data-answer-field
+        spellCheck={false}
         onChange={(e) => {
           setValue(e.target.value);
           onChangeJoined(e.target.value);
@@ -231,22 +233,11 @@ function ErrorCorrectionAnswer({
   const isCorrectPick = status === "correct";
 
   const sentence = stripErrorScaffold(question.prompt);
-  const span = question.errorSpan ?? null;
 
   return (
     <div>
       <p className={cn("text-base font-bold leading-relaxed", emphasizePrompt && "lg:text-h2")}>
-        {span ? (
-          <>
-            {sentence.slice(0, span.start)}
-            <span className="underline decoration-destructive decoration-wavy underline-offset-4">
-              {sentence.slice(span.start, span.end)}
-            </span>
-            {sentence.slice(span.end)}
-          </>
-        ) : (
-          sentence
-        )}
+        {sentence}
       </p>
       <p className="mt-1 text-caption text-muted-foreground">Viết lại cả câu cho đúng.</p>
 
@@ -257,6 +248,7 @@ function ErrorCorrectionAnswer({
           value={value}
           disabled={disabled}
           data-answer-field
+          spellCheck={false}
           onChange={(e) => {
             setValue(e.target.value);
             onChangeJoined(e.target.value);
