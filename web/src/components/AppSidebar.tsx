@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: "/listening", label: "Luyện nghe", icon: Headphones },
   { href: "/ielts", label: "Đề IELTS", icon: GraduationCap },
   { href: "/vocab", label: "Từ vựng", icon: BookOpen },
-  { href: "/settings", label: "Cài đặt", icon: Settings },
 ] as const;
 
 /** Fixed left sidebar for the ≥1024px desktop shell (design doc §13): logo,
@@ -67,7 +66,7 @@ export function AppSidebar({
       <div className="border-t border-border p-3">
         <Link
           href="/settings"
-          className="flex items-center gap-3 rounded-xl bg-muted p-3 transition-colors hover:bg-secondary"
+          className="group flex items-center gap-3 rounded-xl border border-transparent bg-muted p-3 transition-colors hover:border-primary hover:bg-secondary"
         >
           <span
             aria-hidden
@@ -81,6 +80,7 @@ export function AppSidebar({
               {band != null ? `Band ${band.toFixed(1)}` : "Chưa xếp hạng"}
             </span>
           </span>
+          <Settings className="ml-auto size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
         </Link>
       </div>
     </aside>
