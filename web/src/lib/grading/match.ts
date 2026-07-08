@@ -204,7 +204,9 @@ export function matchAnswer(input: string, question: MatchQuestion): MatchResult
       for (const variantText of variantTexts) {
         if (
           variantText.length > 0 &&
-          new RegExp(`(?:^| )${escapeRegExp(variantText)}(?: |$)`).test(form)
+          new RegExp(
+            `(?:^|[^A-Za-z0-9'])${escapeRegExp(variantText)}(?:[^A-Za-z0-9']|$)`
+          ).test(form)
         ) {
           return { correct: true, matchType: "VARIANT" };
         }

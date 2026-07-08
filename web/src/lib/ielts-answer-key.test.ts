@@ -32,4 +32,18 @@ describe("sliceAnswerKeyBySkill", () => {
     const md = "# Key\n1. A\n2. B\n";
     expect(sliceAnswerKeyBySkill(md, "writing")).toBe(md);
   });
+  it("includes multiple consecutive same-depth headings belonging to the same skill", () => {
+    const md = `## WRITING
+> pointer line
+## Checklist Tự Đánh Giá Writing
+- item one
+## SPEAKING
+Part 1 sample
+`;
+    const out = sliceAnswerKeyBySkill(md, "writing");
+    expect(out).toContain("pointer line");
+    expect(out).toContain("item one");
+    expect(out).toContain("Checklist");
+    expect(out).not.toContain("Part 1 sample");
+  });
 });

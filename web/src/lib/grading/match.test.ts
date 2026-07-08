@@ -217,6 +217,11 @@ describe("ERROR_CORRECTION whole-sentence answers", () => {
   it("does not match a variant inside a longer word", () => {
     expect(matchAnswer("she prefersx", ecQuestion(["prefers"])).correct).toBe(false);
   });
+  it("accepts a variant immediately followed by internal punctuation", () => {
+    expect(
+      matchAnswer("I like apples, oranges and bananas.", ecQuestion(["apples"])).correct
+    ).toBe(true);
+  });
 });
 
 describe("QuestionKind type", () => {
