@@ -4,7 +4,8 @@ import type { Prisma } from "@prisma/client";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { matchAnswer, type QuestionKind } from "@/lib/grading/match";
+import { matchAnswer, type MatchResult, type QuestionKind } from "@/lib/grading/match";
+import { gradeSentence } from "@/lib/grading/sentence-grading";
 import { explainer } from "@/lib/ai/grader";
 import { getNextLesson } from "@/lib/progress";
 import { getOrderedQuestions } from "@/lib/exercises";
@@ -48,11 +49,31 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     return NextResponse.json({ ok: false, reason: "not_found" }, { status: 404 });
   }
 
-  const matchResult = matchAnswer(answerText, {
-    kind: question.section.kind as QuestionKind,
-    isOpenEnded: question.isOpenEnded,
-    variants: question.variants.map((v) => ({ normalized: v.normalized })),
-  });
+  const kind = question.section.kind as QuestionKind;
+
+  // TRANSFORMATION and ERROR_CORRECTION ask the learner to retype the ONE
+  // correct full sentence, so they are graded STRICTLY against that sentence
+  // (no fuzzy/typo leniency). The canonical sentence is the variant text for
+  // TRANSFORMATION, and the keyNote for ERROR_CORRECTION (whose variant holds
+  // only the corrected word). A near-miss with just a missing capital / final
+  // period comes back as wrong-with-a-reason.
+  let matchResult: MatchResult;
+  let minorReason: string | null = null;
+  if (kind === "TRANSFORMATION" || kind === "ERROR_CORRECTION") {
+    const canonicals =
+      kind === "ERROR_CORRECTION" && question.keyNote
+        ? [question.keyNote]
+        : question.variants.map((v) => v.text);
+    const graded = gradeSentence(answerText, canonicals);
+    minorReason = graded.reason;
+    matchResult = graded.correct ? { correct: true, matchType: "EXACT" } : { correct: false };
+  } else {
+    matchResult = matchAnswer(answerText, {
+      kind,
+      isOpenEnded: question.isOpenEnded,
+      variants: question.variants.map((v) => ({ normalized: v.normalized })),
+    });
+  }
 
   const existingAnswer = await db.attemptAnswer.findUnique({
     where: { attemptId_questionId: { attemptId, questionId } },
@@ -66,6 +87,10 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   if (!matchResult.correct) {
     wrongAnswers = [...priorWrongAnswers, answerText];
+  }
+  // Skip the AI explainer when we already have a precise minor-issue reason
+  // (missing capital / period) — the reason itself is the feedback.
+  if (!matchResult.correct && !minorReason) {
     explanation = await explainer.explain({
       questionPrompt: question.prompt,
       questionKind: question.section.kind,
@@ -156,6 +181,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     matchType: matchResult.correct ? matchResult.matchType : undefined,
     keyNote: question.keyNote,
     correctAnswer: matchResult.correct ? question.answerRaw : undefined,
+    reason: minorReason ?? undefined,
     explanation,
     completedLesson: isCompleting ? { nextLessonSlug: nextLesson?.slug ?? null } : undefined,
   });

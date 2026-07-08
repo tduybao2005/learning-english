@@ -122,7 +122,7 @@ function replacePhrase(s: string, from: string, to: string): string {
  * without needing to enumerate every combination for multi-contraction
  * sentences.
  */
-function contractionForms(normalized: string): string[] {
+export function contractionForms(normalized: string): string[] {
   let contracted = normalized;
   let expanded = normalized;
   for (const [full, short] of CONTRACTION_PAIRS) {

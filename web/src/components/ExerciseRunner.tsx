@@ -125,7 +125,11 @@ function ExerciseRunnerSession({
   // this is a no-op for them. Keyed on the question id: QuestionCard remounts
   // per question, so the field exists by the time this effect runs.
   useEffect(() => {
-    cardRef.current?.querySelector<HTMLElement>("[data-answer-field]")?.focus();
+    const field = cardRef.current?.querySelector<HTMLElement>("[data-answer-field]");
+    if (field) field.focus();
+    // MCQ (and other no-input kinds) have no answer field: drop any caret that
+    // lingered in the previous question's input so no stray cursor shows.
+    else (document.activeElement as HTMLElement | null)?.blur();
   }, [question?.id]);
 
   async function handleSubmit() {
@@ -261,14 +265,25 @@ function ExerciseRunnerSession({
 
         {isIncorrect && (
           <div className="flex flex-col gap-3">
-            <p className="text-sm font-medium text-destructive">Chưa đúng, thử lại.</p>
-            {state.result?.keyNote && (
-              <div className="rounded-xl border border-destructive/30 bg-destructive-bg p-4">
-                <p className="mb-1 text-caption font-bold text-destructive">💡 Ghi nhớ</p>
-                <p className="text-sm leading-relaxed">{state.result.keyNote}</p>
+            {state.result?.reason ? (
+              // A near-miss (missing capital / final period): show the precise
+              // fix without revealing the full answer, so the learner corrects
+              // it themselves.
+              <div className="rounded-xl border border-streak-foreground/30 bg-streak-bg p-4">
+                <p className="text-sm font-medium text-streak-foreground">{state.result.reason}</p>
               </div>
+            ) : (
+              <>
+                <p className="text-sm font-medium text-destructive">Chưa đúng, thử lại.</p>
+                {state.result?.keyNote && (
+                  <div className="rounded-xl border border-destructive/30 bg-destructive-bg p-4">
+                    <p className="mb-1 text-caption font-bold text-destructive">💡 Ghi nhớ</p>
+                    <p className="text-sm leading-relaxed">{state.result.keyNote}</p>
+                  </div>
+                )}
+                <ExplanationSlot explanation={state.result?.explanation ?? null} />
+              </>
             )}
-            <ExplanationSlot explanation={state.result?.explanation ?? null} />
           </div>
         )}
       </div>

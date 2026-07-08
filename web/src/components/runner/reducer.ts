@@ -20,6 +20,9 @@ export interface AnswerResult {
   matchType?: string;
   keyNote?: string | null;
   correctAnswer?: string | null;
+  /** A precise "almost-right" hint (missing capital/period) for strictly
+   * graded sentence kinds — shown instead of the generic wrong message. */
+  reason?: string | null;
   explanation?: string | null;
   completedLesson?: { nextLessonSlug: string | null } | null;
 }
