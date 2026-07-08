@@ -5,7 +5,6 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { getVocabStats } from "@/lib/vocab";
-import { LessonTabs } from "@/components/LessonTabs";
 
 export default async function VocabHubPage({
   params,
@@ -57,12 +56,14 @@ export default async function VocabHubPage({
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <LessonTabs
-        phaseTitle={lesson.phase.title}
-        lessonTitle={lesson.title}
-        basePath={base}
-        active="vocab"
-      />
+      <Link
+        href="/vocab"
+        className="mb-4 inline-block text-caption text-muted-foreground transition-colors hover:text-foreground"
+      >
+        ← Quay lại Từ vựng
+      </Link>
+      <p className="text-caption font-semibold text-primary">{lesson.phase.title}</p>
+      <h1 className="mb-6 text-h1 font-extrabold tracking-tight text-foreground">{lesson.title}</h1>
 
       {words.length === 0 ? (
         <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
