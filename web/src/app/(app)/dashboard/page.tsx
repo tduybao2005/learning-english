@@ -80,7 +80,7 @@ export default async function DashboardPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 lg:grid lg:grid-cols-[1fr_320px] lg:items-start lg:gap-6">
-      <div className="max-w-3xl lg:max-w-none">
+      <div className="min-w-0 max-w-3xl lg:max-w-none">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <h2 className="mb-1 text-h1 font-extrabold tracking-tight">
