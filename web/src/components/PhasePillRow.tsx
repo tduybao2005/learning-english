@@ -53,7 +53,7 @@ export function PhasePillRow({ lessons, total }: { lessons: PillLesson[]; total:
       ) : (
         <div
           ref={scrollerRef}
-          className="relative flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,black_calc(100%-40px),transparent)]"
+          className="relative flex gap-2 overflow-x-auto overscroll-x-contain pb-2"
         >
           {pills}
         </div>
