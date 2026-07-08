@@ -19,6 +19,7 @@ TEST_DIR_RE = re.compile(r"^test_(\d{2})$")
 
 LESSON_FILES = ("lecture.md", "vocabulary.md", "exercise.md")
 IELTS_FILES = ("reading.md", "writing.md", "speaking.md", "answer_key.md")
+TOEIC_FILES = ("listening.md", "reading.md", "speaking.md", "writing.md", "answer_key.md")
 
 
 def read_title(path: Path) -> str:
@@ -88,6 +89,20 @@ def classify(rel_path: Path) -> dict | None:
             meta["type"] = "ielts_extra"
         return meta
 
+    if top == "toeic_practice_tests":
+        tm = TEST_DIR_RE.match(sub)
+        if not tm:
+            return None
+        meta["test"] = int(tm.group(1))
+        meta["cefr"] = "B1-C1"
+        if name in TOEIC_FILES:
+            meta["type"] = "toeic_" + name[: -len(".md")]
+        elif name.startswith("score_report"):
+            meta["type"] = "score_report"
+        else:
+            meta["type"] = "toeic_extra"
+        return meta
+
     return None
 
 
@@ -132,20 +147,27 @@ def scan_repo(root: Path) -> dict:
             "exam": exam,
         })
 
+    ielts_tests = _scan_tests(root, "ielts_practice_tests", IELTS_FILES)
+    toeic_tests = _scan_tests(root, "toeic_practice_tests", TOEIC_FILES)
+
+    return {"phases": phases, "ielts_tests": ielts_tests, "toeic_tests": toeic_tests}
+
+
+def _scan_tests(root: Path, dirname: str, files: tuple[str, ...]) -> list[dict]:
+    """Inventory of test_<NN> dirs under root/dirname with completeness flags."""
     tests = []
-    tests_root = root / "ielts_practice_tests"
+    tests_root = root / dirname
     if tests_root.is_dir():
         for tdir in sorted(tests_root.glob("test_*")):
             tm = TEST_DIR_RE.match(tdir.name)
             if not (tdir.is_dir() and tm):
                 continue
-            present = {f: (tdir / f).is_file() for f in IELTS_FILES}
+            present = {f: (tdir / f).is_file() for f in files}
             tests.append({
-                "dir": f"ielts_practice_tests/{tdir.name}",
+                "dir": f"{dirname}/{tdir.name}",
                 "number": int(tm.group(1)),
                 "files": present,
                 "complete": all(present.values()),
                 "score_reports": sorted(p.name for p in tdir.glob("score_report_*.md")),
             })
-
-    return {"phases": phases, "ielts_tests": tests}
+    return tests

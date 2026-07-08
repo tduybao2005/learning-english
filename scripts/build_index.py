@@ -22,7 +22,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from curriculum_lib import classify, has_frontmatter, scan_repo  # noqa: E402
 
-CONTENT_GLOBS = ("phase_*/*/*.md", "ielts_practice_tests/test_*/*.md")
+CONTENT_GLOBS = ("phase_*/*/*.md", "ielts_practice_tests/test_*/*.md",
+                  "toeic_practice_tests/test_*/*.md")
 
 # Heading text/level varies by phase: '## ANSWER KEY (ĐÁP ÁN)',
 # '## ĐÁP ÁN (ANSWER KEY)', '# ĐÁP ÁN (ANSWER KEY)', '# ANSWER KEY — ĐÁP ÁN'.
@@ -57,6 +58,10 @@ def validate(root: Path, data: dict) -> tuple[list[str], list[str]]:
         for fname, ok in test["files"].items():
             if not ok:
                 warnings.append(f"incomplete IELTS test: {test['dir']} missing {fname}")
+    for test in data["toeic_tests"]:
+        for fname, ok in test["files"].items():
+            if not ok:
+                warnings.append(f"incomplete TOEIC test: {test['dir']} missing {fname}")
     return errors, warnings
 
 
@@ -107,6 +112,23 @@ def render_status(data: dict) -> str:
         name = test["dir"].split("/", 1)[1]
         cells = [mark(test["files"][f]) for f in
                  ("reading.md", "writing.md", "speaking.md", "answer_key.md")]
+        reports = ", ".join(test["score_reports"]) or "—"
+        out.append(f"| {name} | {' | '.join(cells)} | {reports} |")
+    out.append("")
+
+    toeic_complete = sum(1 for t in data["toeic_tests"] if t["complete"])
+    out += [
+        "## TOEIC practice tests",
+        "",
+        f"{toeic_complete}/{len(data['toeic_tests'])} tests complete (5/5 files).",
+        "",
+        "| Test | listening | reading | speaking | writing | answer key | Score reports |",
+        "|---|:-:|:-:|:-:|:-:|:-:|---|",
+    ]
+    for test in data["toeic_tests"]:
+        name = test["dir"].split("/", 1)[1]
+        cells = [mark(test["files"][f]) for f in
+                 ("listening.md", "reading.md", "speaking.md", "writing.md", "answer_key.md")]
         reports = ", ".join(test["score_reports"]) or "—"
         out.append(f"| {name} | {' | '.join(cells)} | {reports} |")
     out.append("")

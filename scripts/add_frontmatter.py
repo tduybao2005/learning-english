@@ -14,7 +14,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from curriculum_lib import classify, has_frontmatter, read_title  # noqa: E402
 
-CONTENT_GLOBS = ("phase_*/*/*.md", "ielts_practice_tests/test_*/*.md")
+CONTENT_GLOBS = ("phase_*/*/*.md", "ielts_practice_tests/test_*/*.md",
+                  "toeic_practice_tests/test_*/*.md")
 
 
 def frontmatter_for(root: Path, rel: Path) -> str | None:
