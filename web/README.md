@@ -15,10 +15,10 @@ one were built and verified entirely against:
 
 - A **local Postgres** instance (not Neon) — `DATABASE_URL`/`DIRECT_URL` both
   point at `localhost:5432` in `.env.local`.
-- `OTP_DEV_ECHO=true` — OTP codes are printed to the server's stdout instead
-  of actually being emailed, because **no real Resend account/domain was ever
-  set up**. `RESEND_API_KEY` in `.env.local` is a placeholder key that has
-  never sent a real email.
+- OTP emails are sent for real via Resend; `RESEND_API_KEY` **and**
+  `OTP_EMAIL_FROM` (an address on the Resend-verified domain) must be set in
+  `web/.env.local` / root `.env`, otherwise `/api/auth/request-otp` logs an
+  error server-side and no code is delivered.
 - **No Vercel project exists.** `next build && next start` (a local
   production build) is the closest thing to a "production smoke test" this
   app has had.
@@ -30,9 +30,7 @@ Neon/Vercel/Resend setup until the app itself was fully built and verified.
 1. Create a Neon Postgres project, set `DATABASE_URL` (pooled) and
    `DIRECT_URL` (direct) to it, run `prisma migrate deploy` against it, then
    run the seed procedure below against that same `DIRECT_URL`.
-2. Verify a sending domain in Resend, set a real `RESEND_API_KEY`, and set
-   `OTP_DEV_ECHO=false` (or just remove it) so OTP codes are actually emailed
-   instead of logged.
+2. Verify a sending domain in Resend, set `RESEND_API_KEY` and `OTP_EMAIL_FROM`.
 3. Create a Vercel project pointed at this repo/`web/` directory, set the
    three env vars above (plus `SESSION_SECRET`) in its dashboard, and deploy
    (`npx vercel deploy --prod`, or via a connected Git integration).
@@ -51,8 +49,8 @@ See `.env.example`. All five are required for the app to run in any mode:
 | `DATABASE_URL` | `postgresql://…@localhost:5432/learning_english` | Neon **pooled** connection string — append `?pgbouncer=true` (Prisma requires this against Neon's connection pooler) |
 | `DIRECT_URL` | same local Postgres URL | Neon **direct** (unpooled) connection string — used by `prisma migrate`/seed scripts |
 | `SESSION_SECRET` | `openssl rand -hex 32` output, kept in `.env.local` (never committed) | A separate, real secret — do not reuse the dev one |
-| `RESEND_API_KEY` | placeholder (`re_...`), never used because `OTP_DEV_ECHO=true` | Real Resend API key, after domain verification |
-| `OTP_DEV_ECHO` | `true` — OTP codes are printed to server stdout as `[OTP_DEV_ECHO] OTP code for <email>: <code>`, and `sendOtpEmail` still attempts to send via Resend (silently fails today since the key is a placeholder) | `false` (or unset) — real emails only, no console echo |
+| `RESEND_API_KEY` | placeholder (`re_...`), not used | Real Resend API key — required; OTP emails fail loudly in logs without it |
+| `OTP_EMAIL_FROM` | N/A — not used in local dev (Resend disabled) | From address on the Resend-verified domain, e.g. `Learning English <no-reply@yourdomain.com>` — required |
 
 `web/src/middleware.ts` (edge runtime) only reads `SESSION_SECRET` and only
 imports `jose` — it validates the JWT signature statelessly, with no Prisma

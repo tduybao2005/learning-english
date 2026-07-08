@@ -7,7 +7,7 @@ help:
 	@echo "make up          - build (if needed) and start db + web"
 	@echo "make down        - stop containers (keeps the database volume)"
 	@echo "make restart     - down, then up"
-	@echo "make logs        - tail web logs (OTP codes print here, OTP_DEV_ECHO=true)"
+	@echo "make logs        - tail web logs"
 	@echo "make migrate     - apply Prisma migrations against the compose db"
 	@echo "make seed        - seed lessons + vocab + exercises"
 	@echo "make seed-all    - seed + seed the placement test + the 30 IELTS tests"
