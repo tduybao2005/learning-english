@@ -32,6 +32,7 @@ build: env
 up: env
 	$(COMPOSE) up -d db
 	$(COMPOSE) up -d --build web
+	$(COMPOSE) up -d cloudflare
 	@echo "Web: http://localhost:$$(grep '^WEB_PORT=' .env | cut -d= -f2 || echo 3000)"
 	@echo "First time? Run: make migrate && make seed-all"
 

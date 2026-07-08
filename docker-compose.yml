@@ -34,5 +34,15 @@ services:
     ports:
       - "${WEB_PORT:-3000}:3000"
 
+  cloudflare:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --no-autoupdate run
+    env_file: .env
+    #networks:
+      #- internal
+    depends_on:
+      - web
+    restart: unless-stopped
+
 volumes:
   db_data:
