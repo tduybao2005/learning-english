@@ -1,10 +1,13 @@
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
+import { cn } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { LessonTabs } from "@/components/LessonTabs";
+import { buttonVariants } from "@/components/ui/button";
 import { extractToc } from "@/lib/toc";
 import { LectureToc } from "@/components/LectureToc";
 
@@ -45,6 +48,21 @@ export default async function LecturePage({
         />
 
         <MarkdownContent content={lesson.lectureMd} />
+
+        <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-8">
+          <p className="text-caption text-muted-foreground">
+            Đã đọc xong? Luyện tập ngay để mở khoá bài tiếp theo.
+          </p>
+          <Link
+            href={`${base}/exercise`}
+            className={cn(
+              buttonVariants({ variant: "default" }),
+              "w-full shadow-primary-glow transition-shadow hover:shadow-lg sm:w-auto",
+            )}
+          >
+            Làm bài tập →
+          </Link>
+        </div>
       </div>
 
       <LectureToc entries={toc} />
