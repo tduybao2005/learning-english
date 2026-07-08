@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { LessonState } from "@/lib/progress";
-import { LessonNode } from "@/components/lesson-node";
+import { PhasePillRow } from "@/components/PhasePillRow";
 
 export type LessonMapLesson = {
   id: string;
@@ -86,11 +86,6 @@ export function LessonMap({
           );
         }
 
-        const activeIdx = phase.lessons.findIndex((l) => states.get(l.id) === "UNLOCKED");
-        const windowStart = Math.max(0, activeIdx - 1);
-        const windowEnd = activeIdx + 3; // exclusive; activeIdx+2 inclusive
-        const windowedLessons = phase.lessons.slice(windowStart, windowEnd);
-
         return (
           <div
             key={phase.id}
@@ -113,17 +108,16 @@ export function LessonMap({
                 style={{ width: `${percent}%` }}
               />
             </div>
-            <div className="flex flex-wrap gap-2">
-              {windowedLessons.map((lesson) => (
-                <LessonNode
-                  key={lesson.id}
-                  state={states.get(lesson.id) ?? "LOCKED"}
-                  label={`Bài ${lesson.orderIndex}`}
-                  title={lesson.title}
-                  href={`/learn/${phase.slug}/${lesson.slug}`}
-                />
-              ))}
-            </div>
+            <PhasePillRow
+              total={total}
+              lessons={phase.lessons.map((lesson) => ({
+                id: lesson.id,
+                orderIndex: lesson.orderIndex,
+                title: lesson.title,
+                state: states.get(lesson.id) ?? "LOCKED",
+                href: `/learn/${phase.slug}/${lesson.slug}`,
+              }))}
+            />
           </div>
         );
       })}
