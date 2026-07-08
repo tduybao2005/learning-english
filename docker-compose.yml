@@ -27,10 +27,10 @@ services:
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english}
       DIRECT_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english}
-      SESSION_SECRET: ${SESSION_SECRET}
-      RESEND_API_KEY: ${RESEND_API_KEY:-}
-      OTP_EMAIL_FROM: ${OTP_EMAIL_FROM:-}
-      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET}
+      AUTH_URL: ${AUTH_URL:-http://localhost:3000}
     ports:
       - "${WEB_PORT:-3000}:3000"
 

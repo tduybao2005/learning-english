@@ -16,14 +16,14 @@ help:
 	@echo "make clean       - stop and DELETE the database volume (destructive)"
 
 # Creates .env from .env.example on first run, with a freshly generated
-# SESSION_SECRET. Every other target depends on this so `make up` etc. work
+# AUTH_SECRET. Every other target depends on this so `make up` etc. work
 # standalone on a fresh checkout without a separate setup step.
 env:
 	@test -f .env || { \
 		cp .env.example .env; \
 		SECRET=$$(openssl rand -hex 32); \
-		sed -i.bak "s/^SESSION_SECRET=.*/SESSION_SECRET=$$SECRET/" .env && rm -f .env.bak; \
-		echo "Created .env with a generated SESSION_SECRET."; \
+		sed -i.bak "s/^AUTH_SECRET=.*/AUTH_SECRET=$$SECRET/" .env && rm -f .env.bak; \
+		echo "Created .env with a generated AUTH_SECRET."; \
 	}
 
 build: env

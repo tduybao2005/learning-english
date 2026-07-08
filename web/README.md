@@ -1,7 +1,7 @@
 # Học tiếng Anh — web app
 
 A Next.js 15 / React 19 / TypeScript app for personalised English learning:
-passwordless email OTP auth, onboarding (learning-goal selection + a real
+Google OAuth (NextAuth v5) auth, onboarding (learning-goal selection + a real
 listening/reading/writing placement test), a lesson dashboard with lecture
 pages, a retry-until-correct exercise runner with lesson unlocking, vocab
 flashcards + two mini-games (quiz, word-match) with Leitner-box spaced
@@ -15,56 +15,59 @@ one were built and verified entirely against:
 
 - A **local Postgres** instance (not Neon) — `DATABASE_URL`/`DIRECT_URL` both
   point at `localhost:5432` in `.env.local`.
-- OTP emails are sent for real via Resend; `RESEND_API_KEY` **and**
-  `OTP_EMAIL_FROM` (an address on the Resend-verified domain) must be set in
-  `web/.env.local` / root `.env`, otherwise `/api/auth/request-otp` logs an
-  error server-side and no code is delivered.
+- Login is via Google OAuth (NextAuth v5); `AUTH_GOOGLE_ID` **and**
+  `AUTH_GOOGLE_SECRET` (from a Google Cloud OAuth 2.0 Client ID) must be set
+  in `web/.env.local` / root `.env`, otherwise sign-in fails.
 - **No Vercel project exists.** `next build && next start` (a local
   production build) is the closest thing to a "production smoke test" this
   app has had.
 
 This was an explicit, human-operator decision made back in Task 1 to defer
-Neon/Vercel/Resend setup until the app itself was fully built and verified.
+Neon/Vercel setup until the app itself was fully built and verified.
 **Before an actual production launch**, a human operator needs to:
 
 1. Create a Neon Postgres project, set `DATABASE_URL` (pooled) and
    `DIRECT_URL` (direct) to it, run `prisma migrate deploy` against it, then
    run the seed procedure below against that same `DIRECT_URL`.
-2. Verify a sending domain in Resend, set `RESEND_API_KEY` and `OTP_EMAIL_FROM`.
+2. Create a Google OAuth Client (Google Cloud Console → APIs & Services →
+   Credentials → OAuth 2.0 Client ID, Web application) with the production
+   `AUTH_URL` as an authorized redirect URI base
+   (`<AUTH_URL>/api/auth/callback/google`), and set `AUTH_GOOGLE_ID` /
+   `AUTH_GOOGLE_SECRET`.
 3. Create a Vercel project pointed at this repo/`web/` directory, set the
-   three env vars above (plus `SESSION_SECRET`) in its dashboard, and deploy
-   (`npx vercel deploy --prod`, or via a connected Git integration).
+   env vars above (plus `AUTH_SECRET` and `AUTH_URL`) in its dashboard, and
+   deploy (`npx vercel deploy --prod`, or via a connected Git integration).
 
-None of that is done by this codebase — there is no Neon project, no Resend
-domain, no Vercel project to point at. Everything below describes the setup
-that **does** exist today (local dev) and the procedure to follow **once**
-the above is in place.
+None of that is done by this codebase — there is no Neon project, no Google
+OAuth Client, no Vercel project to point at. Everything below describes the
+setup that **does** exist today (local dev) and the procedure to follow
+**once** the above is in place.
 
 ## Environment variables
 
-See `.env.example`. All five are required for the app to run in any mode —
-**including local dev**: since there is no dev-echo fallback, `npm run dev`
-login requires a real Resend account with a verified sending domain (see
-"Current deployment status" above).
+See `.env.example`. All are required for the app to run in any mode —
+**including local dev**: `npm run dev` login requires a real Google OAuth
+Client (see "Current deployment status" above).
 
-| Variable | Local dev value (today) | Production (once Neon/Resend exist) |
+| Variable | Local dev value (today) | Production (once Neon/Google OAuth Client exist) |
 |---|---|---|
 | `DATABASE_URL` | `postgresql://…@localhost:5432/learning_english` | Neon **pooled** connection string — append `?pgbouncer=true` (Prisma requires this against Neon's connection pooler) |
 | `DIRECT_URL` | same local Postgres URL | Neon **direct** (unpooled) connection string — used by `prisma migrate`/seed scripts |
-| `SESSION_SECRET` | `openssl rand -hex 32` output, kept in `.env.local` (never committed) | A separate, real secret — do not reuse the dev one |
-| `RESEND_API_KEY` | Real Resend API key — required; OTP emails fail loudly in logs without it | Same |
-| `OTP_EMAIL_FROM` | From address on the Resend-verified domain, e.g. `Learning English <no-reply@yourdomain.com>` — required | Same |
+| `AUTH_SECRET` | `openssl rand -hex 32` output, kept in `.env.local` (never committed) | A separate, real secret — do not reuse the dev one |
+| `AUTH_GOOGLE_ID` | Google OAuth 2.0 Client ID | Same, from the production OAuth Client |
+| `AUTH_GOOGLE_SECRET` | Google OAuth 2.0 Client secret | Same, from the production OAuth Client |
+| `AUTH_URL` | `http://localhost:3000` | Public origin of the deployed app |
 
-`web/src/middleware.ts` (edge runtime) only reads `SESSION_SECRET` and only
-imports `jose` — it validates the JWT signature statelessly, with no Prisma
-import, so it works unmodified against any of the above.
+`web/src/middleware.ts` (edge runtime) uses NextAuth's edge-safe
+`auth.config.ts` (no Prisma import), so it works unmodified against any of
+the above.
 
 ## Running locally
 
 ```bash
 cd web
 npm install
-cp .env.example .env.local   # then fill in the local Postgres URL + a generated SESSION_SECRET
+cp .env.example .env.local   # then fill in the local Postgres URL + a generated AUTH_SECRET + Google OAuth Client credentials
 npx prisma migrate dev       # creates schema against DATABASE_URL
 npm run seed                 # ingest lessons + vocab + exercises from repo-root phase_*/**
 npm run seed:placement       # seed the placement test (from ielts_practice_tests/test_01/)
@@ -174,7 +177,7 @@ up new listening-set content the same way it picks up lesson content).
 ## Testing / verification
 
 ```bash
-npm run test              # vitest — parsers, grading, OTP, progress, band, reducers, games
+npm run test              # vitest — parsers, grading, auth, progress, band, reducers, games
 npx tsc --noEmit           # typecheck
 npm run lint               # eslint
 npm run seed:validate -- --strict   # content corpus validation
