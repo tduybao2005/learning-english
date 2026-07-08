@@ -1,40 +1,42 @@
 import { Resend } from "resend";
 
 /**
- * Sends the OTP login code to `email` via Resend.
+ * Sends the OTP login code to `email` via Resend, from the verified domain
+ * configured in `OTP_EMAIL_FROM` (e.g. `Learning English <no-reply@yourdomain.com>`).
  *
- * Deployment note: Resend is deferred until a real account/domain is set up.
- * When `RESEND_API_KEY` is unset (local dev today), this gracefully no-ops
- * the actual send and just logs — it never throws, so local dev works
- * end-to-end without a Resend account. When a real key is added later, the
- * send path below runs unchanged.
- *
- * When `OTP_DEV_ECHO=true`, the code is also printed to the console
- * regardless of whether a real send happens, as a local dev convenience.
+ * Throws when configuration is missing or the send fails. The caller
+ * (`/api/auth/request-otp`) catches and logs the error while still returning
+ * 200 to the client, so failures stay invisible to outside probes
+ * (anti-enumeration) but loud in server logs.
  */
 export async function sendOtpEmail(email: string, code: string): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
-  const devEcho = process.env.OTP_DEV_ECHO === "true";
-
-  if (devEcho) {
-    console.log(`[OTP_DEV_ECHO] OTP code for ${email}: ${code}`);
-  }
+  const from = process.env.OTP_EMAIL_FROM;
 
   if (!apiKey) {
-    console.log(
-      `[email] RESEND_API_KEY is not set — skipping real send to ${email}. ` +
-        `(This is expected in local dev before a Resend account/domain is configured.)`
+    throw new Error(
+      "RESEND_API_KEY is not set — cannot send OTP email. Set it in .env (docker) or web/.env.local (npm run dev)."
     );
-    return;
+  }
+  if (!from) {
+    throw new Error(
+      'OTP_EMAIL_FROM is not set — cannot send OTP email. Expected e.g. "Learning English <no-reply@yourdomain.com>" on a Resend-verified domain.'
+    );
   }
 
   const resend = new Resend(apiKey);
   const { error } = await resend.emails.send({
-    // TODO: replace with a verified sending domain once Resend is configured.
-    from: "Learning English <onboarding@resend.dev>",
+    from,
     to: email,
     subject: "Mã đăng nhập của bạn",
-    html: `<p>Mã đăng nhập của bạn là: <strong>${code}</strong></p><p>Mã có hiệu lực trong 10 phút. Nếu bạn không yêu cầu mã này, vui lòng bỏ qua email này.</p>`,
+    html: [
+      '<div style="font-family:Arial,Helvetica,sans-serif;max-width:480px;margin:0 auto;padding:24px">',
+      '<h2 style="margin:0 0 16px;color:#111827">Mã đăng nhập của bạn</h2>',
+      '<p style="margin:0 0 24px;color:#374151">Nhập mã sau để đăng nhập vào Learning English:</p>',
+      `<p style="font-size:32px;letter-spacing:8px;font-weight:bold;text-align:center;color:#111827;background:#f3f4f6;border-radius:8px;padding:16px 0;margin:0 0 24px">${code}</p>`,
+      '<p style="margin:0;color:#6b7280;font-size:14px">Mã có hiệu lực trong 10 phút. Nếu bạn không yêu cầu mã này, vui lòng bỏ qua email này.</p>',
+      "</div>",
+    ].join(""),
   });
 
   if (error) {
