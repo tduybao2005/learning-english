@@ -5,6 +5,7 @@ import { ChevronDown } from "lucide-react";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { SettingsGoalForm } from "@/components/SettingsGoalForm";
+import { SettingsNameEditor } from "@/components/SettingsNameEditor";
 import { LogoutButton } from "@/components/LogoutButton";
 import { ThemeToggleRow } from "@/components/ThemeToggleRow";
 
@@ -23,7 +24,6 @@ export default async function SettingsPage() {
     select: { band: true },
   });
 
-  const displayName = user.name ?? user.email;
   const avatarLetter = (user.name ?? user.email).charAt(0).toUpperCase();
 
   return (
@@ -40,10 +40,7 @@ export default async function SettingsPage() {
               {avatarLetter}
             </span>
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold">{displayName}</p>
-              {user.name ? (
-                <p className="truncate text-xs text-primary-foreground/80">{user.email}</p>
-              ) : null}
+              <SettingsNameEditor initialName={user.name} email={user.email} />
               <p className="text-xs text-primary-foreground/80">
                 Band ước tính gần nhất:{" "}
                 {latestAttempt?.band != null ? latestAttempt.band.toFixed(1) : "Chưa làm bài kiểm tra"}

@@ -60,7 +60,7 @@ function VerifyForm() {
         return;
       }
 
-      router.push(data.needsOnboarding ? "/onboarding/path" : "/dashboard");
+      router.push(data.needsOnboarding ? "/onboarding/name" : "/dashboard");
     } catch {
       setError("Đã xảy ra lỗi. Vui lòng thử lại.");
     } finally {
