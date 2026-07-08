@@ -55,17 +55,6 @@ model User {
   placementAttempts PlacementAttempt[]
 }
 
-model OtpCode {
-  id         String    @id @default(cuid())
-  email      String
-  codeHash   String    // sha256(code + SESSION_SECRET)
-  expiresAt  DateTime  // now + 10 min
-  attempts   Int       @default(0)  // max 5
-  consumedAt DateTime?
-  createdAt  DateTime  @default(now())
-  @@index([email, createdAt])
-}
-
 model Phase {
   id         String   @id @default(cuid())
   slug       String   @unique  // "phase_1_foundation"
