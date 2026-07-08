@@ -4,14 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
+import type { IeltsSkill } from "@/lib/ielts-answer-key";
 
-const SKILLS = [
+const SKILLS: { key: IeltsSkill; label: string }[] = [
   { key: "reading", label: "Reading" },
   { key: "writing", label: "Writing" },
   { key: "speaking", label: "Speaking" },
-] as const;
-
-type IeltsSkill = (typeof SKILLS)[number]["key"];
+];
 
 const INITIAL_VISIBLE = 16;
 
@@ -21,8 +20,14 @@ const INITIAL_VISIBLE = 16;
  * (`?skill=` deep-link) — tests aren't filtered, since every test contains
  * all three skills. Client component purely for the tab + "xem tất cả" state.
  */
-export function IeltsHub({ tests }: { tests: { number: number; isComplete: boolean }[] }) {
-  const [skill, setSkill] = useState<IeltsSkill>("reading");
+export function IeltsHub({
+  tests,
+  initialSkill = "reading",
+}: {
+  tests: { number: number; isComplete: boolean }[];
+  initialSkill?: IeltsSkill;
+}) {
+  const [skill, setSkill] = useState<IeltsSkill>(initialSkill);
   const [showAll, setShowAll] = useState(false);
 
   const visible = showAll ? tests : tests.slice(0, INITIAL_VISIBLE);
@@ -34,8 +39,7 @@ export function IeltsHub({ tests }: { tests: { number: number; isComplete: boole
         <div>
           <h1 className="text-h1 font-extrabold">Đề luyện IELTS</h1>
           <p className="mt-1 text-body text-muted-foreground">
-            {tests.length} đề luyện thi đầy đủ kỹ năng: Reading, Writing, Speaking và đáp án tham
-            khảo.
+            Chọn kỹ năng, sau đó chọn đề để luyện riêng kỹ năng đó.
           </p>
         </div>
         <div

@@ -5,7 +5,11 @@ import { getSessionUser } from "@/lib/auth/session";
 import { EmptyState } from "@/components/EmptyState";
 import { IeltsHub } from "@/components/IeltsHub";
 
-export default async function IeltsHubPage() {
+export default async function IeltsHubPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ skill?: string }>;
+}) {
   const user = await getSessionUser();
   if (!user) redirect("/login");
 
@@ -16,6 +20,9 @@ export default async function IeltsHubPage() {
     select: { number: true, isComplete: true },
   });
 
+  const { skill } = await searchParams;
+  const initialSkill = skill === "writing" || skill === "speaking" ? skill : "reading";
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 lg:max-w-6xl">
       {tests.length === 0 ? (
@@ -25,7 +32,7 @@ export default async function IeltsHubPage() {
           description="Quay lại sau để luyện đề IELTS nhé."
         />
       ) : (
-        <IeltsHub tests={tests} />
+        <IeltsHub tests={tests} initialSkill={initialSkill} />
       )}
     </div>
   );
