@@ -577,9 +577,17 @@ async function main() {
   }
 
   // Delete + recreate on every run (same pre-launch policy as Exercise/
-  // ListeningSet elsewhere in the seed pipeline — cascades wipe any prior
-  // PlacementAttempt rows for the `default` test, acceptable since there
-  // are no real learner attempts against this test yet).
+  // ListeningSet elsewhere in the seed pipeline). PlacementAttempt has a
+  // non-cascading FK to PlacementTest, so any prior attempts against this
+  // test (dev runs, real learners) must be removed first — otherwise the
+  // deleteMany below fails with P2003 on PlacementAttempt_testId_fkey.
+  const existingTest = await db.placementTest.findUnique({
+    where: { slug: PLACEMENT_SLUG },
+    select: { id: true },
+  });
+  if (existingTest) {
+    await db.placementAttempt.deleteMany({ where: { testId: existingTest.id } });
+  }
   await db.placementTest.deleteMany({ where: { slug: PLACEMENT_SLUG } });
   const created = await db.placementTest.create({
     data: {
