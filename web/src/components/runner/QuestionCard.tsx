@@ -128,7 +128,11 @@ function MultipleChoiceOptions({
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div>
+    // MCQ has no text input, so any insertion caret here is spurious (e.g. the
+    // browser's caret-browsing mode planting one in the prompt text). Hide it
+    // with `caret-transparent` and block caret placement/selection with
+    // `select-none` so no stray "|" shows at the start of the question.
+    <div className="caret-transparent select-none">
       <p className={cn("mb-3 cursor-default text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>{prompt}</p>
       <div className="flex flex-col gap-2">
         {options.map((opt) => {
