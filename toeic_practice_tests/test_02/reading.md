@@ -120,20 +120,22 @@ cùng các đối tác, nhà cung cấp và khách hàng của khách sạn.
 
 Dear Team,
 
-Due to a scheduling conflict with the events team, the staff briefing
-originally set for Thursday has been moved to Friday at 9 a.m. Please make
-sure the weekly occupancy report is **(131)______** before then.
+A quick heads-up: the events team needs the ballroom on Thursday morning
+for a private setup, so our staff briefing is shifting to Friday at 9 a.m.
+instead. Between now and then, the weekly occupancy report needs to be
+**(131)______**.
 
-Management has also requested that we **(132)______** the guest feedback
-forms for the new breakfast menu. Our operations lead, Elena Rossi, will
-present a summary of the results during the meeting.
+There's one more item on the agenda. Management wants us to
+**(132)______** the guest feedback forms for the new breakfast menu before
+Friday, and Elena Rossi from operations has agreed to walk everyone
+through a summary of what guests said.
 
 **(133)______**
 
-Everyone attending should bring a printed **(134)______** of the current
-housekeeping checklist.
+One last thing — bring a printed **(134)______** of the current
+housekeeping checklist with you to the briefing.
 
-If you have any questions, please contact me directly.
+Questions before then can come straight to me.
 
 Best regards,
 Nathan Cole
@@ -157,18 +159,20 @@ Front Office Director
 **From:** Operations
 **Re:** New Partnership — Coastal Tours Co.
 
-We are pleased to announce that Harborview Grand Hotel has officially
-**(135)______** Coastal Tours Co. as its preferred excursion partner. The
-partnership will be managed by the Guest Services team.
+After several weeks of conversations, Harborview Grand Hotel has
+**(135)______** Coastal Tours Co. to serve as our preferred excursion
+partner going forward. Guest Services will be the team handling day-to-day
+coordination on our side.
 
-Partnership materials, including the tour brochures and pricing sheet,
-**(136)______** to all front desk staff by end of day.
+By end of day, the tour brochures and pricing sheet that make up the
+partnership materials **(136)______** to every front desk staff member.
 
 **(137)______**
 
-We look forward to a **(138)______** partnership with Coastal Tours Co.
+Here's hoping for a **(138)______** run with Coastal Tours Co. in the
+seasons ahead.
 
-Please direct any questions about bookings to the Guest Services desk.
+Booking questions should go to the Guest Services desk.
 
 **135.** (A) selected (B) collected (C) rejected (D) neglected
 
@@ -185,18 +189,19 @@ Please direct any questions about bookings to the Guest Services desk.
 
 **NOTICE TO ALL STAFF**
 
-Starting next Monday, Harborview Grand Hotel will begin using its
-**(139)______** redesigned guest registration form at check-in.
+The guest registration form is changing. From next Monday, check-in at
+Harborview Grand Hotel will use the **(139)______** redesigned version
+instead of the current one.
 
-The updated forms are available at the front desk printer station.
-Employees are asked to replace the old forms **(140)______** the new
-version by the end of the week.
+You'll find the updated forms stacked at the front desk printer station —
+please swap **(140)______** the new version and have the old stock cleared
+out by the end of the week.
 
 **(141)______**
 
-For questions, contact the front office team **(142)______**.
+Anything unclear? The front office team can be reached **(142)______**.
 
-Thank you for helping us maintain a smooth check-in experience.
+Thanks for helping keep check-in running smoothly.
 
 **139.** (A) recent (B) recently (C) recentness (D) recents
 
@@ -213,19 +218,19 @@ Thank you for helping us maintain a smooth check-in experience.
 
 **Harborview Grand Hotel Wins "Hotel of the Year"**
 
-Harborview Grand Hotel was **(143)______** with the "Hotel of the Year"
-award at last week's Hospitality Excellence Gala. The award recognizes
-hotels that have shown outstanding service and guest satisfaction.
+At last week's Hospitality Excellence Gala, Harborview Grand Hotel was
+**(143)______** with the "Hotel of the Year" award, given annually to
+properties that stand out for service quality and guest satisfaction.
 
-Founded twelve years ago, Harborview has grown from a small boutique
-property into a full-service resort with over eighty **(144)______**
-staff members.
+It's a long way from where the hotel started twelve years ago as a small
+boutique property — today it's a full-service resort with a staff of more
+than eighty **(144)______** professionals.
 
 **(145)______**
 
-General Manager Sofia Marchetti thanked the entire staff, noting that the
-award **(146)______** the dedication of every department, from housekeeping
-to guest relations.
+At the ceremony, General Manager Sofia Marchetti thanked the whole team,
+saying the award **(146)______** the effort of every department, from
+housekeeping to guest relations.
 
 **143.** (A) presented (B) presenting (C) presents (D) present
 
@@ -247,20 +252,26 @@ to guest relations.
 #### Passage 1 — Text-Message Chain (Questions 147–149)
 
 **Laura Bennett [8:02 a.m.]**
-Did housekeeping finish the deep clean on Suite 402 yet?
+Morning — quick one. Suite 402 has a guest arriving at 3, and I heard there
+was an issue with the carpet in there?
 
 **Marcus Diallo [8:05 a.m.]**
-Not yet. They found a stain on the carpet that needs extra treatment.
+Yeah, a stain near the window. Nothing serious, but it needs extra
+treatment before I can sign off on the room.
 
-**Laura Bennett [8:06 a.m.]**
-Can you have it ready by 2 p.m.? The guest checks in at 3.
+**Laura Bennett [8:20 a.m.]**
+Okay. How long will that add to the turnaround?
 
-**Marcus Diallo [8:10 a.m.]**
-Sure, I'll have it ready by 1:30. I'll also note the update in the shared
-housekeeping log so the front desk can see it.
+**Marcus Diallo [8:24 a.m.]**
+Maybe an hour and a half past our usual finish time. I'll flag it in the
+shared log the moment it's done so front desk isn't left guessing.
 
-**Laura Bennett [8:12 a.m.]**
-Great, that works. Shout if anything else comes up before then.
+**Laura Bennett [8:25 a.m.]**
+No rush on my end — just don't want the guest standing at the desk waiting.
+Thanks for staying on top of it.
+
+**Marcus Diallo [9:40 a.m.]**
+Carpet's dry and the room's clear. Logged it just now.
 
 **147.** What are the writers mainly discussing?
 (A) A billing dispute
@@ -268,11 +279,11 @@ Great, that works. Shout if anything else comes up before then.
 (C) A new hotel contract
 (D) A staff meeting schedule
 
-**148.** At 8:10 a.m., what does Mr. Diallo mean when he writes, "I'll have it ready by 1:30"?
-(A) He will arrive at the hotel at 1:30.
-(B) He will finish cleaning the suite before the guest checks in.
-(C) He will call the guest at 1:30.
-(D) He will schedule housekeeping training for 1:30.
+**148.** At 8:24 a.m., what does Mr. Diallo mean when he writes, "Maybe an hour and a half past our usual finish time"?
+(A) He will arrive at the hotel later than usual.
+(B) The room will be ready later than the normal turnaround, but still before the 3 p.m. arrival.
+(C) He will call the guest to apologize.
+(D) He will cancel the housekeeping training session.
 
 **149.** What will Mr. Diallo most likely do next?
 (A) Cancel the guest's reservation
@@ -282,20 +293,16 @@ Great, that works. Shout if anything else comes up before then.
 
 #### Passage 2 — Advertisement (Questions 150–152)
 
-**Harborview Grand Hotel — Weekend Getaway Package**
+**Need a break? Harborview Grand Hotel has one waiting for you.**
 
-Looking for a relaxing escape? Harborview Grand Hotel offers a Weekend
-Getaway Package that includes two nights in a Deluxe Ocean View room,
-breakfast for two, and complimentary access to our rooftop pool and spa.
+Two nights in a Deluxe Ocean View room. Breakfast each morning for two.
+Free run of the rooftop pool and spa. That's the Weekend Getaway Package,
+and right now it also comes with a 2 p.m. checkout so your last morning
+doesn't have to feel rushed.
 
-Package includes:
-- Two nights' accommodation
-- Daily breakfast for two guests
-- Rooftop pool and spa access
-- Late checkout until 2 p.m.
-
-Book today and mention this ad to receive 15% off the standard rate. Offer
-valid for stays booked before the end of the month.
+Ready to reserve? Bring up this ad when you book and we'll knock 15% off
+the standard rate — but only for stays booked before the month is out, so
+don't wait too long to lock in your dates.
 
 **150.** What is the purpose of the advertisement?
 (A) To recruit new employees
@@ -571,18 +578,22 @@ Priscilla Ogden
 
 #### Passage 9 — Text-Message Chain (Questions 172–173)
 
-**Jason [11:01 a.m.]**
-Are you setting up the welcome drinks for the 2 p.m. tour group arrival?
+**Jason [10:15 a.m.]**
+Reminder — the tour group from Coastal Tours Co. lands at 2. Do we still
+need to sort out the welcome drinks?
 
-**Priya [11:03 a.m.]**
-Yes, I'm placing the order now. Sparkling water and lemonade okay for
-everyone?
+**Priya [10:22 a.m.]**
+Already on it. Thinking sparkling water and lemonade rather than anything
+heavier, since they'll be tired from the bus.
 
-**Jason [11:04 a.m.]**
-Should be fine. Can you also get some pastries delivered by 1:45?
+**Jason [10:24 a.m.]**
+Good call. Any chance we could add pastries too? Something small to go with
+the drinks.
 
-**Priya [11:05 a.m.]**
-Will do. I'll have everything set up in the lobby by 1:30.
+**Priya [10:31 a.m.]**
+I can arrange that — just checked with the kitchen and they can have a
+tray ready. I'll pull everything together in the lobby about half an hour
+before the group is due.
 
 **172.** What is Priya planning to do?
 (A) Cancel the tour group's reservation
@@ -590,21 +601,22 @@ Will do. I'll have everything set up in the lobby by 1:30.
 (C) Reserve a conference room for tomorrow
 (D) Order office supplies
 
-**173.** What time does Priya expect to have everything ready?
-(A) 11:01 a.m.
-(B) 1:30 p.m.
-(C) 1:45 p.m.
-(D) 2:00 p.m.
+**173.** At 10:31 a.m., what does Priya mean when she writes, "I'll pull everything together in the lobby about half an hour before the group is due"?
+(A) She will have the refreshments ready around 1:30 p.m.
+(B) She will meet the tour group at the bus station.
+(C) She will cancel the pastry order.
+(D) She will move the setup to a different room.
 
 #### Passage 10 — Notice (Questions 174–175)
 
 **Staff Announcement**
 
-Harborview Grand Hotel will host its annual Staff Appreciation Dinner next
-Thursday at 6 p.m. in the Grand Ballroom. Employees are invited to bring a
-guest and enjoy a full dinner service prepared by our culinary team. Light
-entertainment will be provided. Please sign up at the Human Resources desk
-if you plan to attend.
+Mark your calendars: the Staff Appreciation Dinner is back next Thursday,
+6 p.m., in the Grand Ballroom. This year every employee may bring one
+guest, and the culinary team is preparing a full sit-down dinner along
+with a bit of live entertainment afterward. If you'd like a seat, swing by
+the Human Resources desk to add your name to the list — spots are limited,
+so don't put it off.
 
 **174.** What is the purpose of the announcement?
 (A) To invite staff to a company event
