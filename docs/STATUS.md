@@ -139,7 +139,8 @@ Exam: ✅ exam file, ✅ answer key (phase_5_ielts_prep/exam)
 
 ## TOEIC practice tests
 
-0/0 tests complete (5/5 files).
+1/1 tests complete (5/5 files).
 
 | Test | listening | reading | speaking | writing | answer key | Score reports |
 |---|:-:|:-:|:-:|:-:|:-:|---|
+| test_01 | ✅ | ✅ | ✅ | ✅ | ✅ | — |

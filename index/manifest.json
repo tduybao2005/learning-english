@@ -1106,6 +1106,20 @@
       "score_reports": []
     }
   ],
-  "toeic_tests": [],
+  "toeic_tests": [
+    {
+      "dir": "toeic_practice_tests/test_01",
+      "number": 1,
+      "files": {
+        "listening.md": true,
+        "reading.md": true,
+        "speaking.md": true,
+        "writing.md": true,
+        "answer_key.md": true
+      },
+      "complete": true,
+      "score_reports": []
+    }
+  ],
   "generated_at": "2026-07-09"
 }
