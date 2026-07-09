@@ -122,3 +122,26 @@ describe("parseListening — against the real authored practice_01.md", () => {
     }
   });
 });
+
+describe("parseListening — [PAUSE:n] directive stripping", () => {
+  it("removes [PAUSE:n] lines from the stored transcriptMd", () => {
+    const md = [
+      "---",
+      "slug: x",
+      'title: "X"',
+      "kind: PLACEMENT",
+      "voices: { NARRATOR: en-US-JennyNeural, A: en-US-GuyNeural }",
+      "---",
+      "## TRANSCRIPT",
+      "NARRATOR: Section 1.",
+      "[PAUSE:20]",
+      "A: Hello there.",
+      "[PAUSE:5.5]",
+      "## QUESTIONS",
+    ].join("\n");
+    const parsed = parseListening(md);
+    expect(parsed.transcriptMd).not.toContain("[PAUSE:");
+    expect(parsed.transcriptMd).toContain("NARRATOR: Section 1.");
+    expect(parsed.transcriptMd).toContain("A: Hello there.");
+  });
+});

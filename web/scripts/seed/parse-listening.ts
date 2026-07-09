@@ -48,6 +48,16 @@ export interface ParsedListening {
 const FRONT_MATTER_RE = /^---\n([\s\S]*?)\n---\n?/;
 const TRANSCRIPT_HEAD_RE = /^##[ \t]+TRANSCRIPT[ \t]*$/im;
 const QUESTIONS_HEAD_RE = /^##[ \t]+QUESTIONS\b.*$/im;
+// `[PAUSE:n]` is a TTS-only directive consumed by generate_audio.py (inserts
+// n seconds of silence) — never part of the stored transcript text.
+const PAUSE_LINE_RE = /^\[PAUSE:\d+(?:\.\d+)?\][ \t]*$/gm;
+
+function stripPauseLines(s: string): string {
+  return s
+    .replace(PAUSE_LINE_RE, "")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
 
 function stripQuotes(s: string): string {
   const m = s.match(/^"(.*)"$/);
@@ -104,7 +114,7 @@ export function parseListening(md: string, overrides?: Record<string, QuestionKi
 
   const questionsHeadM = QUESTIONS_HEAD_RE.exec(rest);
   const transcriptEnd = questionsHeadM ? questionsHeadM.index : rest.length;
-  const transcriptMd = rest.slice(transcriptStart, transcriptEnd).trim();
+  const transcriptMd = stripPauseLines(rest.slice(transcriptStart, transcriptEnd));
 
   const questionsMd = questionsHeadM ? rest.slice(questionsHeadM.index + questionsHeadM[0].length) : "";
   const questions = parseExercise(questionsMd, overrides);

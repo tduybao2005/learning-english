@@ -37,6 +37,7 @@ export interface ParsedQuestion {
   number: number;
   prompt: string;
   options: { label: string; text: string }[] | null;
+  imageUrl: string | null;
   answerRaw: string;
   keyNote: string | null;
   isOpenEnded: boolean;
@@ -183,9 +184,12 @@ function findSectionHeadings(md: string): HeadingRef[] {
 // ---------------------------------------------------------------------------
 
 // Options are usually "- A) ..." but a few lessons (phase_4 lesson_07) use
-// lowercase "a) b) c) d)" instead — accept both cases.
+// lowercase "a) b) c) d)" instead — accept both cases. Also accepts a
+// LABEL-ONLY option line with no trailing text ("- A)" alone) — TOEIC Part 1
+// (photograph) and Part 2 (question-response) options are spoken in the
+// audio only and never printed in the question body.
 function hasOptions(body: string): boolean {
-  return /^[ \t]*-?[ \t]*[A-Da-d][.)][ \t]+\S/m.test(body);
+  return /^[ \t]*-?[ \t]*[A-Da-d][.)]([ \t]+\S|[ \t]*$)/m.test(body);
 }
 
 // A quoted error token followed by an arrow ("X" →) is the signature of the
@@ -438,24 +442,38 @@ function normalizeBlanks(s: string): string {
     .replace(/_{3,}/g, "______");
 }
 
+// A standalone markdown image line ("![](/images/listening/toeic_p1_q1.jpg)")
+// inside a question's body — TOEIC Part 1 (photograph) questions carry one.
+const IMAGE_LINE = /^!\[[^\]]*\]\(([^)]+)\)[ \t]*$/m;
+
 function buildPrompt(raw: string, kind: QuestionKind): {
   prompt: string;
   options: { label: string; text: string }[] | null;
+  imageUrl: string | null;
 } {
   let text = raw;
   let options: { label: string; text: string }[] | null = null;
+  let imageUrl: string | null = null;
+
+  const imgM = text.match(IMAGE_LINE);
+  if (imgM) {
+    imageUrl = imgM[1].trim();
+    text = text.replace(IMAGE_LINE, "");
+  }
 
   if (kind === "MULTIPLE_CHOICE") {
     options = [];
     // Label case is normalized to uppercase — phase_4 lesson_07 uses
     // lowercase "a) b) c) d)" while every other MCQ lesson uses "A) B) C) D)".
-    const optRe = /^[ \t]*-?[ \t]*([A-Da-d])[.)][ \t]+(.+?)[ \t]*$/gm;
+    // Text is optional (`.*?`) — TOEIC Part 1/2 options are spoken in the
+    // audio only and printed as label-only lines ("- A)") with no text.
+    const optRe = /^[ \t]*-?[ \t]*([A-Da-d])[.)][ \t]*(.*?)[ \t]*$/gm;
     let om: RegExpExecArray | null;
     while ((om = optRe.exec(text))) {
       options.push({ label: om[1].toUpperCase(), text: om[2].trim() });
     }
     if (options.length === 0) options = null;
-    text = text.replace(/^[ \t]*-?[ \t]*[A-Da-d][.)][ \t]+.*$/gm, "");
+    text = text.replace(/^[ \t]*-?[ \t]*[A-Da-d][.)][ \t]*.*$/gm, "");
   }
 
   // Drop full-line bold sub-headings like "**A2 — Câu phủ định**".
@@ -468,7 +486,7 @@ function buildPrompt(raw: string, kind: QuestionKind): {
     .join("\n")
     .trim();
 
-  return { prompt, options };
+  return { prompt, options, imageUrl };
 }
 
 // ---------------------------------------------------------------------------
@@ -811,6 +829,7 @@ export function parseExercise(
         number: runningNumber,
         prompt,
         options: null,
+        imageUrl: null,
         answerRaw,
         keyNote: null,
         isOpenEnded: true,
@@ -842,7 +861,7 @@ export function parseExercise(
       seenNumbers.add(it.number);
       runningNumber = Math.max(runningNumber, it.number);
 
-      const { prompt, options } = buildPrompt(it.raw, kind);
+      const { prompt, options, imageUrl } = buildPrompt(it.raw, kind);
       const answers = keyAnswers.get(it.label) || [];
       if (answers.length > 0) consumed.add(it.label);
       const answerRaw = answers.join("\n").trim();
@@ -878,6 +897,7 @@ export function parseExercise(
         number: it.number,
         prompt,
         options,
+        imageUrl,
         answerRaw,
         keyNote,
         isOpenEnded: sectionOpen,

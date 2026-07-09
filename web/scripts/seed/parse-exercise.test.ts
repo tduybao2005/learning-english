@@ -173,3 +173,50 @@ describe("parseExercise — phase3 lesson_01_passive_voice (worst-case headings)
     expect(secF.questions.every((q) => q.isOpenEnded)).toBe(true);
   });
 });
+
+describe("parseExercise — TOEIC-style images and audio-only options", () => {
+  it("extracts an image line into imageUrl and strips it from the prompt", () => {
+    const md = [
+      "# Test",
+      "## SECTION A: MULTIPLE CHOICE",
+      "1. Chọn câu mô tả đúng nhất bức ảnh.",
+      "![](/images/listening/toeic_p1_q1.jpg)",
+      "- A)",
+      "- B)",
+      "- C)",
+      "- D)",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section A:",
+      "1. B",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const q = parsed.sections[0].questions[0];
+    expect(q.imageUrl).toBe("/images/listening/toeic_p1_q1.jpg");
+    expect(q.prompt).not.toContain("![");
+  });
+
+  it("parses options with empty text (TOEIC Part 2 style A/B/C)", () => {
+    const md = [
+      "# Test",
+      "## SECTION B: MULTIPLE CHOICE",
+      "7. Chọn câu trả lời phù hợp nhất.",
+      "- A)",
+      "- B)",
+      "- C)",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section B:",
+      "7. C",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const q = parsed.sections[0].questions[0];
+    expect(q.options).toEqual([
+      { label: "A", text: "" },
+      { label: "B", text: "" },
+      { label: "C", text: "" },
+    ]);
+    expect(parsed.sections[0].kind).toBe("MULTIPLE_CHOICE");
+    expect(q.variants.map((v) => v.text)).toEqual(["C"]);
+  });
+});
