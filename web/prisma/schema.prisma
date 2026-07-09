@@ -10,6 +10,7 @@ generator client {
 enum GoalType {
   IELTS
   CEFR
+  TOEIC
 }
 
 enum QuestionKind {
@@ -128,6 +129,7 @@ model Question {
   number      Int     // global number within the exercise (matches answer key)
   prompt      String  @db.Text
   options     Json?   // [{label:"A",text:"has"},...]
+  imageUrl    String? // TOEIC Part 1 photograph, path under /public
   answerRaw   String  @db.Text  // raw key line, audit + future AI context
   keyNote     String? @db.Text
   isOpenEnded Boolean @default(false)
@@ -211,6 +213,7 @@ model PlacementTest {
   readingMd       String @db.Text
   writingPromptMd String @db.Text
   listeningSetId  String?
+  toeicListeningSetId String? // TOEIC placement listening (bare FK like listeningSetId)
   bandTable       Json    // [{min:33,band:8.0},...] raw→band for reading & listening
   sections        Section[]
   attempts        PlacementAttempt[]
@@ -226,6 +229,7 @@ model PlacementAttempt {
   completedAt     DateTime?
   readingScore    Int?
   listeningScore  Int?
+  toeicListeningScore Int?  // 5–495 estimate, TOEIC-goal users only
   band            Float?    // computed from reading+listening only (writing deferred)
   writingText     String?   @db.Text  // stored, ungraded for now
   writingBand     Float?    // FUTURE: AI
