@@ -63,7 +63,7 @@ dịch vụ đám mây (IT & software), cùng khách hàng và nhân viên của
 **115.** The product owner is known for giving ______ answers during daily stand-up meetings.
 (A) direct (B) directly (C) direction (D) directness
 
-**116.** According to the incident report, the new failover system performed considerably ______ than the legacy one.
+**116.** Engineers who benchmarked both systems agreed the new failover setup was considerably ______ than the legacy one.
 (A) more reliable (B) reliable (C) most reliable (D) reliability
 
 **117.** A ______ to the sprint backlog was requested after the client changed the project requirements.
@@ -87,7 +87,7 @@ dịch vụ đám mây (IT & software), cùng khách hàng và nhân viên của
 **123.** The company hired an outside contractor to ______ the legacy authentication system.
 (A) audit (B) audible (C) audition (D) auditory
 
-**124.** Fewer support tickets each month can be traced back to the team's growing ______ to automated testing.
+**124.** As the team's growing ______ to automated testing took hold, the number of monthly support tickets steadily fell.
 (A) commit (B) committed (C) commitment (D) committing
 
 **125.** To avoid a late fee, the outstanding invoice must be paid ______ the fifteenth of next month.

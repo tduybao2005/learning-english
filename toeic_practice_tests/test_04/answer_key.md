@@ -33,7 +33,7 @@ lang: vi-en
 113. C — "between two hubs" diễn tả vị trí ở giữa hai điểm.
 114. A — cần hiện tại hoàn thành bị động vì hành động kéo dài từ lúc ra mắt đến hiện tại ("since its launch").
 115. A — tính từ "direct" bổ nghĩa danh từ "answers".
-116. A — cần dạng so sánh hơn đi với "than".
+116. A — cần dạng so sánh hơn đi với "than" ("was considerably more reliable than").
 117. A — cần danh từ số ít sau mạo từ "a", làm chủ ngữ câu bị động.
 118. C — cần danh từ song song với "technical skill" sau "with strong".
 119. A — "that" dẫn mệnh đề danh từ sau "revealed".
@@ -41,7 +41,7 @@ lang: vi-en
 121. B — cần trạng từ bổ nghĩa cho động từ "pick up".
 122. B — mệnh đề chính sau đảo ngữ điều kiện "Should + S + V" dùng "will be".
 123. A — "audit" (kiểm toán/rà soát) đúng collocation với "authentication system".
-124. C — cần danh từ làm bổ ngữ, "commitment" (sự cam kết) sau "growing".
+124. C — cần danh từ làm tân ngữ của giới từ "to", "commitment" (sự cam kết) sau "growing".
 125. A — "by the fifteenth" là collocation đúng chỉ hạn chót.
 126. A — tính từ "concise" bổ nghĩa danh từ "documentation", song song với "Clear".
 127. A — cần hiện tại hoàn thành "has passed" sau "unless" để khớp chủ ngữ số ít "it".
