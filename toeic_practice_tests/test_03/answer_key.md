@@ -34,9 +34,9 @@ lang: vi-en
 114. B — cần bị động vì container là đối tượng bị kiểm tra.
 115. A — tính từ "frequent" bổ nghĩa danh từ "updates".
 116. A — cần dạng so sánh hơn đi với "than" ("turned out more consistent than they had been...").
-117. A — cần danh từ số ít sau mạo từ "a" ("requested a change in the delivery details").
+117. A — cần danh từ số ít sau mạo từ "a" ("the warehouse team was asked to make a change before the truck left").
 118. C — cần danh từ song song với "safety" ("efficiency"), không dùng số nhiều.
-119. A — "that" dẫn mệnh đề danh từ sau "revealed".
+119. A — "that" dẫn mệnh đề danh từ làm bổ ngữ sau "it was clear" ("it was clear that the peak shipping season was responsible for most of the delays").
 120. A — "agreement" (thỏa thuận) đúng collocation "sign an agreement".
 121. B — cần trạng từ bổ nghĩa cho động từ "adapts".
 122. B — mệnh đề chính của câu điều kiện loại 1 dùng "will + verb".
@@ -45,9 +45,9 @@ lang: vi-en
 125. A — "settled by the end of the fiscal quarter" là collocation chỉ hạn chót chuẩn.
 126. A — tính từ "clear" bổ nghĩa danh từ "instructions" ("give clear instructions to every worker").
 127. A — cần động từ khiếm khuyết "must" diễn tả nghĩa vụ.
-128. A — "reputation depends largely on..." là collocation đúng; các lựa chọn khác không đi với "on".
+128. A — "depends largely on..." là collocation đúng ("whether clients continue to trust the shipping company depends largely on its on-time delivery rate"); các lựa chọn khác không đi với "on".
 129. B — trạng từ "remarkably" bổ nghĩa tính từ "frustrating" ("proved remarkably frustrating").
-130. A — "Each ... has completed the onboarding training" hợp với động từ số ít "has"; "All" cần "have".
+130. A — "each of them has completed the onboarding training" hợp với động từ số ít "has"; "all"/"every" không đi với cấu trúc "___ of them" theo cách này (hoặc cần "have"/không đứng trước "of").
 
 ### Part 6 (131–146)
 

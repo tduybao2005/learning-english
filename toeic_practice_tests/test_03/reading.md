@@ -66,13 +66,13 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **116.** According to internal reports, on-time delivery rates this quarter turned out ______ than they had been the previous quarter.
 (A) more consistent (B) consistent (C) most consistent (D) consistency
 
-**117.** Realizing the address was wrong, the customer immediately requested a ______ in the delivery details.
+**117.** Because the shipping label had the wrong unit number, the warehouse team was asked to make a ______ before the truck left.
 (A) change (B) changed (C) changing (D) changes
 
 **118.** The company prioritizes safety and ______ in its warehouse operations.
 (A) efficient (B) efficiently (C) efficiency (D) efficiencies
 
-**119.** Internal analysis revealed ______ most delays occurred during the peak shipping season, prompting a full schedule review.
+**119.** According to the logistics manager, it was clear ______ the peak shipping season was responsible for most of the delays.
 (A) that (B) what (C) which (D) who
 
 **120.** The freight company signed a ______ with the regional port authority.
@@ -99,14 +99,14 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **127.** Every driver ______ complete a safety checklist before departure.
 (A) must (B) musts (C) musted (D) musting
 
-**128.** Among clients across the region, the shipping company's reputation ______ largely on its on-time delivery rate.
+**128.** Whether clients across the region continue to trust the shipping company ______ largely on its on-time delivery rate.
 (A) depends (B) trusts (C) supposes (D) hopes
 
 **129.** For regular customers, the recent delivery delays proved ______ frustrating.
 (A) remark (B) remarkably (C) remarkable (D) remarks
 
-**130.** After the initial safety briefing, ______ of the new drivers has completed the onboarding training this month.
-(A) Each (B) All (C) Every (D) Much
+**130.** Although the new drivers started on different dates, ______ of them has completed the onboarding training this month.
+(A) each (B) all (C) every (D) much
 
 ---
 
