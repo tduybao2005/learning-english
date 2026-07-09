@@ -50,6 +50,10 @@ COPY --from=builder /app/web/scripts ./scripts
 COPY --from=builder /app/web/src ./src
 COPY --from=builder /app/web/next.config.ts ./next.config.ts
 COPY --from=builder /app/web/tsconfig.json ./tsconfig.json
+# Listening-set sources (web/content/listening/*.md) — ingest.ts seeds
+# ListeningSet from these at runtime; without them the seed silently skips
+# listening and the placement wizard shows "Phần nghe hiện chưa sẵn sàng".
+COPY --from=builder /app/web/content ./content
 
 # Curriculum content, laid out one level above web/ to match how the seed
 # scripts resolve it locally (see comment at the top of this file).
