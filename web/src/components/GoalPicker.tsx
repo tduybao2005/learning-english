@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 
 export const IELTS_BANDS = ["5.0", "5.5", "6.0", "6.5", "7.0", "7.5", "8.0"] as const;
 
+export const TOEIC_SCORES = ["500", "600", "700", "800", "900"] as const;
+
 export const CEFR_LEVELS = [
   {
     value: "A1",
@@ -30,7 +32,7 @@ export const CEFR_LEVELS = [
   },
 ] as const;
 
-export type GoalTab = "IELTS" | "CEFR";
+export type GoalTab = "IELTS" | "CEFR" | "TOEIC";
 
 export type GoalPickerValue = { goalType: GoalTab; goalValue: string };
 
@@ -58,6 +60,9 @@ export function GoalPicker({
         </TabsTrigger>
         <TabsTrigger value="CEFR" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
           Cấp độ CEFR
+        </TabsTrigger>
+        <TabsTrigger value="TOEIC" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
+          Mục tiêu TOEIC
         </TabsTrigger>
       </TabsList>
 
@@ -133,6 +138,44 @@ export function GoalPicker({
                   <div className="text-sm text-muted-foreground">{level.description}</div>
                 </div>
                 {selected ? <div className="mt-1 size-2 shrink-0 rounded-full bg-primary" /> : null}
+              </button>
+            );
+          })}
+        </div>
+      </TabsContent>
+
+      <TabsContent value="TOEIC" className="mt-4">
+        <p className="mb-3 text-sm text-muted-foreground">
+          Chọn điểm TOEIC bạn muốn đạt được:
+        </p>
+        <div role="radiogroup" className="grid grid-cols-3 gap-2 lg:grid-cols-5 lg:gap-3">
+          {TOEIC_SCORES.map((score) => {
+            const selected = value?.goalType === "TOEIC" && value.goalValue === score;
+            return (
+              <button
+                key={score}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => onChange({ goalType: "TOEIC", goalValue: score })}
+                className={cn(
+                  "flex aspect-square flex-col items-center justify-center gap-0.5 rounded-2xl border bg-card text-h2 font-bold transition-colors",
+                  selected
+                    ? "border-primary bg-primary text-primary-foreground shadow-primary-glow"
+                    : "border-input hover:bg-muted",
+                )}
+              >
+                {score}
+                {score === "700" ? (
+                  <span
+                    className={cn(
+                      "text-caption font-medium",
+                      selected ? "text-primary-foreground/80" : "text-muted-foreground",
+                    )}
+                  >
+                    Phổ biến
+                  </span>
+                ) : null}
               </button>
             );
           })}

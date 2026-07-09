@@ -9,11 +9,13 @@ import { EmptyState } from "@/components/EmptyState";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-/** Dashboard-only goal label: IELTS → "Band {value}", CEFR → "{value}" (no
- * "Chưa đặt mục tiêu" fallback here — callers already branch on user having a
- * goal before calling this). */
-function formatGoalLabel(goalType: "IELTS" | "CEFR", goalValue: string): string {
-  return goalType === "IELTS" ? `Band ${goalValue}` : goalValue;
+/** Dashboard-only goal label: IELTS → "Band {value}", TOEIC → "TOEIC {value}",
+ * CEFR → "{value}" (no "Chưa đặt mục tiêu" fallback here — callers already
+ * branch on user having a goal before calling this). */
+function formatGoalLabel(goalType: "IELTS" | "CEFR" | "TOEIC", goalValue: string): string {
+  if (goalType === "IELTS") return `Band ${goalValue}`;
+  if (goalType === "TOEIC") return `TOEIC ${goalValue}`;
+  return goalValue;
 }
 
 export default async function DashboardPage({

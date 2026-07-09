@@ -13,6 +13,10 @@ const pathSchema = z.discriminatedUnion("goalType", [
     goalType: z.literal("CEFR"),
     goalValue: z.enum(["A1", "A2", "B1", "B2", "C1"]),
   }),
+  z.object({
+    goalType: z.literal("TOEIC"),
+    goalValue: z.enum(["500", "600", "700", "800", "900"]),
+  }),
 ]);
 
 export async function POST(request: Request) {

@@ -19,7 +19,7 @@ export function SettingsGoalForm({
   initialGoalType,
   initialGoalValue,
 }: {
-  initialGoalType: "IELTS" | "CEFR" | null;
+  initialGoalType: "IELTS" | "CEFR" | "TOEIC" | null;
   initialGoalValue: string | null;
 }) {
   const router = useRouter();

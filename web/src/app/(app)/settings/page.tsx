@@ -9,9 +9,11 @@ import { SettingsNameEditor } from "@/components/SettingsNameEditor";
 import { LogoutButton } from "@/components/LogoutButton";
 import { ThemeToggleRow } from "@/components/ThemeToggleRow";
 
-function formatGoal(goalType: "IELTS" | "CEFR" | null, goalValue: string | null): string {
+function formatGoal(goalType: "IELTS" | "CEFR" | "TOEIC" | null, goalValue: string | null): string {
   if (!goalType || !goalValue) return "Chưa đặt mục tiêu";
-  return goalType === "IELTS" ? `IELTS band ${goalValue}` : `CEFR ${goalValue}`;
+  if (goalType === "IELTS") return `IELTS band ${goalValue}`;
+  if (goalType === "TOEIC") return `TOEIC ${goalValue}`;
+  return `CEFR ${goalValue}`;
 }
 
 export default async function SettingsPage() {
