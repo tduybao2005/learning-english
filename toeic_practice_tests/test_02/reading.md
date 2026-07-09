@@ -260,7 +260,7 @@ Sure, I'll have it ready by 1:30. I'll also note the update in the shared
 housekeeping log so the front desk can see it.
 
 **Laura Bennett [8:12 a.m.]**
-Perfect, thanks. Let me know if you need anything from me.
+Great, that works. Shout if anything else comes up before then.
 
 **147.** What are the writers mainly discussing?
 (A) A billing dispute
@@ -386,16 +386,18 @@ Line 4: human being. — **[4]** —
 
 Hi all,
 
-Management has pushed the guest satisfaction review meeting back from
-Wednesday to next Monday. This gives us a few extra days to compile the
-feedback from the breakfast menu survey.
+Just a heads-up: the guest satisfaction review meeting originally set for
+Wednesday has been moved to next Monday at management's request. That buys
+us a little extra breathing room to finish pulling together the breakfast
+menu survey feedback.
 
-Please use this time to double-check the survey response totals and review
-the comment cards from the past two weeks. I'd also like everyone to review
-the loyalty program enrollment numbers one more time for accuracy.
+With the extra days, could everyone go back through the survey response
+totals and the comment cards collected over the past two weeks and confirm
+the numbers match? It would also help to give the loyalty program
+enrollment figures one more pass before we lock anything in.
 
-We'll have a final internal review on Friday afternoon before presenting the
-results to the general manager.
+Everything gets a final look internally on Friday afternoon, ahead of the
+walkthrough with the general manager.
 
 Thanks,
 Elena
@@ -457,18 +459,19 @@ Thank you for bearing with us while the lot is repaired.
 
 **About Harborview Grand Hotel**
 
-Founded twelve years ago on a small stretch of coastline, Harborview Grand
-Hotel has grown into a full-service resort serving business travelers,
-families, and wedding parties from across the region. Our team of over
-eighty hospitality professionals specializes in guest relations, event
-planning, and fine dining.
+What started twelve years ago as a single property on a quiet stretch of
+coastline has since become a full-service resort welcoming business
+travelers, families, and wedding parties from all over the region. More
+than eighty hospitality professionals now make up our team, covering
+everything from guest relations to event planning to fine dining.
 
-We believe great hospitality starts with understanding people, not just
-providing rooms. That philosophy has guided every stay we've hosted, from
-weekend getaways to large corporate conferences.
+Rooms and amenities matter, but what actually keeps guests coming back is
+being known and remembered. It's the reason we treat a weekend getaway with
+the same care as a large corporate conference — the goal is always the
+person in front of us, not just the reservation on the screen.
 
-Interested in booking with us? Visit our Reservations page or call our main
-office to speak with a booking specialist.
+Ready to book a stay? Head to our Reservations page, or call our main
+office and a booking specialist will help you sort out the details.
 
 **163.** What type of property is Harborview Grand Hotel?
 (A) A law firm

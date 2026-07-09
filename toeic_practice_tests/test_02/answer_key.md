@@ -88,7 +88,7 @@ lang: vi-en
 162. B (11–15 tháng 8 là 5 ngày)
 163. B (trang web mô tả khách sạn full-service resort)
 164. A (đoạn 1: "business travelers, families, and wedding parties")
-165. B (đoạn 2: "understanding people, not just providing rooms")
+165. B (đoạn 2: khách sạn nhấn mạnh việc được nhớ tên/quan tâm cá nhân hơn là chỉ đặt phòng — ưu tiên hiểu và ghi nhớ khách)
 166. B (hóa đơn từ Bayview Linen Services — nhà cung cấp khăn/ga)
 167. B (phụ phí rush cho xử lý gấp)
 168. B ("Net 15 days from invoice date")
