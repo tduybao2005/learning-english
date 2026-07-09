@@ -19,7 +19,7 @@ lang: vi-en
 ### Part 5 (101–130)
 
 101. C — cần thì tương lai "will locate" vì có mốc thời hạn "by tomorrow morning".
-102. A — cần tính từ sau động từ nối "proved" để mô tả hệ thống.
+102. A — cần tính từ làm bổ ngữ cho tân ngữ sau "found ... remarkably ______" (object complement mô tả "conveyor belt").
 103. A — "confirm" (xác nhận) hợp ngữ cảnh kiểm tra manifest trước khi rời kho.
 104. B — "arrive on Tuesday afternoon" là collocation đúng với thời điểm cụ thể.
 105. C — cần trạng từ bổ nghĩa cho động từ "unloaded".
@@ -30,24 +30,24 @@ lang: vi-en
 110. A — "because" dẫn ra lý do chọn tuyến đường ven biển.
 111. B — cần tính từ/phân từ sau động từ nối "looked".
 112. A — "confirm the schedule" đúng collocation với "delivery schedule".
-113. A — "along the interstate highway" diễn tả vị trí dọc theo đường cao tốc.
+113. A — "positioned along the interstate highway" diễn tả vị trí dọc theo đường cao tốc.
 114. B — cần bị động vì container là đối tượng bị kiểm tra.
 115. A — tính từ "frequent" bổ nghĩa danh từ "updates".
-116. A — cần dạng so sánh hơn đi với "than".
-117. A — cần danh từ số ít sau mạo từ "a".
+116. A — cần dạng so sánh hơn đi với "than" ("turned out more consistent than they had been...").
+117. A — cần danh từ số ít sau mạo từ "a" ("requested a change in the delivery details").
 118. C — cần danh từ song song với "safety" ("efficiency"), không dùng số nhiều.
-119. A — "that" dẫn mệnh đề danh từ sau "showed".
+119. A — "that" dẫn mệnh đề danh từ sau "revealed".
 120. A — "agreement" (thỏa thuận) đúng collocation "sign an agreement".
 121. B — cần trạng từ bổ nghĩa cho động từ "adapts".
 122. B — mệnh đề chính của câu điều kiện loại 1 dùng "will + verb".
 123. A — "repair" (sửa chữa) đúng ngữ cảnh sửa băng chuyền hỏng.
-124. C — cần danh từ làm chủ ngữ, "commitment" (sự cam kết).
-125. A — "by the end of the fiscal quarter" là collocation chỉ hạn chót chuẩn.
-126. A — tính từ "clear" bổ nghĩa danh từ "instructions".
+124. C — cần danh từ sau tính từ sở hữu "firm's ongoing", "commitment" (sự cam kết), làm tân ngữ của giới từ "from".
+125. A — "settled by the end of the fiscal quarter" là collocation chỉ hạn chót chuẩn.
+126. A — tính từ "clear" bổ nghĩa danh từ "instructions" ("give clear instructions to every worker").
 127. A — cần động từ khiếm khuyết "must" diễn tả nghĩa vụ.
-128. A — "depends on" là collocation đúng; các lựa chọn khác không đi với "on".
-129. B — trạng từ "remarkably" bổ nghĩa tính từ "frustrating".
-130. A — "Each ... has completed" hợp với động từ số ít "has"; "All" cần "have".
+128. A — "reputation depends largely on..." là collocation đúng; các lựa chọn khác không đi với "on".
+129. B — trạng từ "remarkably" bổ nghĩa tính từ "frustrating" ("proved remarkably frustrating").
+130. A — "Each ... has completed the onboarding training" hợp với động từ số ít "has"; "All" cần "have".
 
 ### Part 6 (131–146)
 
@@ -114,11 +114,11 @@ lang: vi-en
 188. C (order form: "Total: $11,566.25")
 189. A (order form yêu cầu giao "no later than April 24"; delivery confirmation ghi "Delivery Date: April 23" — trước hạn 1 ngày, cần cả 2 văn bản)
 190. B (delivery confirmation: "Received By: Nora Fitzgerald")
-191. B (press release: khai trương trung tâm phân phối mới)
-192. B (event schedule: 10:00 facility tour → 11:00 "Ribbon-Cutting Ceremony")
-193. B (press release mời "local officials and media"; RSVP form ghi tổ chức "Fairview Chamber of Commerce" → được mời vì đại diện tổ chức địa phương)
-194. B (RSVP form: "submit this form by September 25")
-195. A (RSVP form: "Dietary Restrictions: None" + "Will you require parking? Yes")
+191. B (job posting: quảng cáo vị trí Dispatch Coordinator đang tuyển)
+192. C (job posting: "Valid forklift certification preferred but not required")
+193. A (job posting yêu cầu kinh nghiệm dispatch + chứng chỉ forklift là điểm cộng; email của Priya Anand nêu 3 năm kinh nghiệm dispatch và có chứng chỉ forklift — cần cả 2 văn bản)
+194. D (interview confirmation: "invite you for an interview on August 22 at 10:00 a.m.")
+195. A (interview confirmation: "Please bring a copy of your forklift certification")
 196. B (notice: "to remain in compliance with state transportation regulations")
 197. B (notice: "taken out of service until cleared")
 198. B (inspection schedule: Diego Ramos xuất hiện ở MFL-12 và MFL-24 — hai xe)

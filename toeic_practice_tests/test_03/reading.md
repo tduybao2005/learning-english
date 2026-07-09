@@ -21,7 +21,7 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **101.** The logistics team ______ the delayed containers by tomorrow morning.
 (A) locate (B) locates (C) will locate (D) locating
 
-**102.** The new tracking system proved remarkably ______, reducing late deliveries by half.
+**102.** After months of field testing, engineers found the redesigned conveyor belt remarkably ______, which cut breakdown reports by half.
 (A) reliable (B) reliability (C) reliably (D) rely
 
 **103.** Drivers must ______ the delivery manifest before leaving the warehouse.
@@ -54,7 +54,7 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **112.** The dispatcher will ______ the delivery schedule once the weather clears.
 (A) confirm (B) inform (C) perform (D) transform
 
-**113.** The new distribution center is located ______ the interstate highway.
+**113.** Positioned ______ the interstate highway, Meridian's newest sorting facility gives drivers rapid access to regional routes.
 (A) along (B) among (C) between (D) into
 
 **114.** The container ______ inspected by customs officers before it left the port.
@@ -63,16 +63,16 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **115.** The regional manager requested ______ updates on the shipment's location.
 (A) frequent (B) frequently (C) frequency (D) frequencies
 
-**116.** This quarter's delivery times were ______ than last quarter's.
+**116.** According to internal reports, on-time delivery rates this quarter turned out ______ than they had been the previous quarter.
 (A) more consistent (B) consistent (C) most consistent (D) consistency
 
-**117.** The customer requested a ______ in the delivery address at the last minute.
+**117.** Realizing the address was wrong, the customer immediately requested a ______ in the delivery details.
 (A) change (B) changed (C) changing (D) changes
 
 **118.** The company prioritizes safety and ______ in its warehouse operations.
 (A) efficient (B) efficiently (C) efficiency (D) efficiencies
 
-**119.** The report showed ______ most delays occurred during peak shipping season.
+**119.** Internal analysis revealed ______ most delays occurred during the peak shipping season, prompting a full schedule review.
 (A) that (B) what (C) which (D) who
 
 **120.** The freight company signed a ______ with the regional port authority.
@@ -87,25 +87,25 @@ và kho vận, cùng các đối tác, nhà cung cấp và khách hàng của h�
 **123.** The technician was called in to ______ the malfunctioning conveyor belt.
 (A) repair (B) prepare (C) compare (D) despair
 
-**124.** The firm's ______ to sustainable packaging has reduced its shipping costs.
+**124.** Reduced shipping costs at Meridian stem directly from the firm's ongoing ______ to sustainable packaging.
 (A) commit (B) committed (C) commitment (D) committing
 
-**125.** All outstanding invoices must be paid ______ the end of the fiscal quarter.
+**125.** Before accounts can be closed, all outstanding invoices are required to be settled ______ the end of the fiscal quarter.
 (A) by (B) until (C) since (D) from
 
-**126.** The warehouse supervisor gave ______ instructions before the night shift began.
+**126.** Before the night shift began, the warehouse supervisor made sure to give ______ instructions to every worker.
 (A) clear (B) clearly (C) clearance (D) clarity
 
 **127.** Every driver ______ complete a safety checklist before departure.
 (A) must (B) musts (C) musted (D) musting
 
-**128.** The shipping company's reputation ______ largely on its on-time delivery rate.
+**128.** Among clients across the region, the shipping company's reputation ______ largely on its on-time delivery rate.
 (A) depends (B) trusts (C) supposes (D) hopes
 
-**129.** The delivery delays were ______ frustrating for regular customers.
+**129.** For regular customers, the recent delivery delays proved ______ frustrating.
 (A) remark (B) remarkably (C) remarkable (D) remarks
 
-**130.** ______ of the new drivers has completed the onboarding training.
+**130.** After the initial safety briefing, ______ of the new drivers has completed the onboarding training this month.
 (A) Each (B) All (C) Every (D) Much
 
 ---
@@ -852,71 +852,102 @@ All items delivered in full. No damage reported.
 (C) Renata Volkov
 (D) Owen Castillo
 
-#### Passages 191–195 — Press Release, Event Schedule, and RSVP Form
+#### Passages 191–195 — Job Posting, Applicant Email, and Interview Confirmation
 
-**Press Release**
+**Job Posting**
 
-**Meridian Freight & Logistics to Open New Regional Distribution Center**
+**Meridian Freight & Logistics is Hiring: Dispatch Coordinator**
 
-Meridian Freight & Logistics will open its newest distribution center in
-Fairview on October 5, adding 60,000 square feet of warehouse and
-cross-docking space to serve the western half of the region. The facility
-will create approximately 45 new warehouse and dispatch positions. Local
-officials and media are invited to attend a ribbon-cutting event marking
-the opening.
+We are seeking a Dispatch Coordinator to join our transportation planning
+team in Fairview. Responsibilities include assigning drivers to routes,
+tracking shipments in real time, and communicating schedule changes to
+warehouse staff.
 
----
+**Requirements:**
+- At least 2 years of experience in freight dispatch or a related field
+- Familiarity with route-tracking software
+- Valid forklift certification preferred but not required
+- Ability to work occasional evening shifts
 
-**Event Schedule — October 5**
-
-9:00 a.m. — Registration and Coffee
-9:30 a.m. — Welcome Remarks by Renata Volkov, CEO
-10:00 a.m. — Facility Tour
-11:00 a.m. — Ribbon-Cutting Ceremony
-11:30 a.m. — Q&A with Operations Leadership
-12:00 p.m. — Lunch Reception
+Interested candidates should send a resume and cover email to
+hiring@meridianfreightlogistics.com by August 14.
 
 ---
 
-**RSVP Form**
+**Applicant Email**
 
-**Name:** Marcus Whelan
-**Organization:** Fairview Chamber of Commerce
-**Attending:** Yes
-**Dietary Restrictions:** None
-**Will you require parking?** Yes
+**To:** hiring@meridianfreightlogistics.com
+**From:** Priya Anand
+**Subject:** Application — Dispatch Coordinator
+**Date:** August 9
 
-Please submit this form by September 25 to confirm attendance.
+Hello,
 
-**191.** What is the press release mainly about?
-(A) A merger between two logistics companies
-(B) The opening of a new distribution center
-(C) A change in company leadership
-(D) A product recall
+I am writing to apply for the Dispatch Coordinator position posted on your
+careers page. For the past three years, I have worked as a dispatch
+assistant at a regional trucking company, where I used route-tracking
+software daily to monitor shipments and reroute drivers around delays.
 
-**192.** According to the event schedule, what happens immediately after the facility tour?
-(A) Registration
-(B) The ribbon-cutting ceremony
-(C) The welcome remarks
-(D) The lunch reception
+I have also held a forklift certification since last year, which I renewed
+this spring. I am available to work evening shifts when needed and would
+welcome the chance to discuss how my background fits this role.
 
-**193.** Based on the press release and the RSVP form, why was Mr. Whelan most likely invited to the event?
-(A) He works for Meridian Freight & Logistics and helped plan the facility.
-(B) He represents a local organization, and the press release invited local officials.
-(C) He is a member of Meridian's dispatch team.
-(D) He supplies pallets to the new facility.
+Thank you for your consideration.
 
-**194.** By when must the RSVP form be submitted?
-(A) October 5
-(B) September 25
-(C) October 25
-(D) September 5
+Priya Anand
 
-**195.** What does the RSVP form indicate about Mr. Whelan?
-(A) He requires parking and has no dietary restrictions.
-(B) He will not attend the event.
-(C) He is bringing a guest.
-(D) He requested a private meeting.
+---
+
+**Interview Confirmation**
+
+**To:** Priya Anand
+**From:** Meridian Freight & Logistics — Human Resources
+**Subject:** Interview Scheduled — Dispatch Coordinator
+**Date:** August 16
+
+Dear Ms. Anand,
+
+Thank you for applying for the Dispatch Coordinator position. We were
+impressed by your dispatch experience and would like to invite you for an
+interview on August 22 at 10:00 a.m. at our Fairview office.
+
+Please bring a copy of your forklift certification and be prepared to
+discuss your experience with route-tracking software in more detail.
+
+We look forward to meeting you.
+
+Human Resources
+Meridian Freight & Logistics
+
+**191.** What is the purpose of the job posting?
+(A) To announce a company merger
+(B) To advertise an open dispatch position
+(C) To recall a defective product
+(D) To promote a new warehouse
+
+**192.** According to the job posting, which qualification is preferred but not required?
+(A) Two years of dispatch experience
+(B) Familiarity with route-tracking software
+(C) A valid forklift certification
+(D) Availability for evening shifts
+
+**193.** Based on the job posting and Ms. Anand's email, why is Ms. Anand likely a strong candidate for the position?
+(A) Her dispatch experience and forklift certification match the posting's requirements.
+(B) She previously worked at Meridian Freight & Logistics.
+(C) She is willing to relocate to Fairview immediately.
+(D) She offered to work without pay during training.
+
+**194.** When is Ms. Anand's interview scheduled?
+(A) August 9
+(B) August 14
+(C) August 16
+(D) August 22
+
+**195.** What is Ms. Anand asked to bring to the interview?
+(A) A copy of her forklift certification
+(B) A letter of recommendation
+(C) A completed drug test
+(D) A copy of her driver's license
 
 #### Passages 196–200 — Fleet Safety Inspection Notice, Inspection Schedule, and Service Center Confirmation
 
