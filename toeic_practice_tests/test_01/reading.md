@@ -750,11 +750,11 @@ Precision Print Solutions
 (C) The paper type must change.
 (D) The price per unit decreases.
 
-**184.** By when must Ms. Tran confirm the rush option?
-(A) August 2
-(B) August 3
-(C) August 5
-(D) August 10
+**184.** Based on Ms. Tran's request in Email 1 and the turnaround time given in Email 2, why would BrightWave most likely need the rush option?
+(A) Because the standard 10-business-day turnaround exceeds the one-week deadline Ms. Tran mentioned.
+(B) Because the standard rate is higher than BrightWave's budget.
+(C) Because Precision Print Solutions no longer offers glossy paper.
+(D) Because BrightWave requested a larger quantity than usual.
 
 **185.** What is suggested about the relationship between the two companies?
 (A) This is their first transaction.
@@ -833,11 +833,11 @@ Center is available every 30 minutes.
 (C) Measuring Campaign Success
 (D) Agency Leaders Roundtable
 
-**189.** How many nights will Ms. Tran stay at the hotel, based on the booking confirmation?
-(A) One
-(B) Two
-(C) Three
-(D) Four
+**189.** Based on the invitation and the hotel booking confirmation, will Ms. Tran's check-in date allow her to attend the welcome reception?
+(A) No, because she checks in one day after the reception.
+(B) Yes, because she checks in on the same day as the welcome reception.
+(C) No, because the hotel is not near the venue.
+(D) Yes, but only if she extends her check-in by one day.
 
 **190.** What is available to help attendees travel between the hotel and the convention center?
 (A) A rental car service
@@ -892,11 +892,11 @@ Please submit this form by September 28 to confirm attendance.
 (C) The welcome remarks
 (D) The lunch reception
 
-**193.** Who most likely is Robert Chen?
-(A) A GreenLeaf Foods employee
-(B) A journalist
-(C) A BrightWave designer
-(D) A hotel manager
+**193.** Based on the press release and the RSVP form, why was Robert Chen most likely invited to the event?
+(A) He works for GreenLeaf Foods and helped develop the campaign.
+(B) He represents a media outlet, and the press release invited media representatives.
+(C) He is a member of BrightWave's creative team.
+(D) He supplies packaging materials to GreenLeaf Foods.
 
 **194.** By when must the RSVP form be submitted?
 (A) October 5
@@ -969,11 +969,11 @@ Please ensure all items are packed and labeled before our crew arrives at
 (C) The moving company
 (D) The building's landlord
 
-**199.** When will the new office be ready for staff?
-(A) October 20
-(B) October 30
-(C) November 1
-(D) November 3
+**199.** Based on the internal memo and the moving company confirmation, by when must employees' packed and labeled personal items be ready?
+(A) Before the movers arrive at 7:00 a.m. on November 1, since the memo requires packing by October 30, ahead of the move date.
+(B) By November 3, when the new office opens.
+(C) By October 20, when packing supplies are distributed.
+(D) By November 1, but only after the movers arrive.
 
 **200.** What time is the moving crew expected to arrive on the move date?
 (A) 7:00 a.m.

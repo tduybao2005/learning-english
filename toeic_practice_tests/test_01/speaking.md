@@ -58,7 +58,7 @@ Mô tả bức tranh trong 45 giây (30 giây chuẩn bị).
 > biểu đồ trên màn hình TV treo tường. Bên phải là một góc nhỏ với ghế sofa
 > và cây xanh, nơi hai người khác đang trò chuyện, tay cầm cốc cà phê.
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 In this picture, I can see an open-plan advertising office. In the center of
 the room, four employees are sitting around a large table, discussing
@@ -79,7 +79,7 @@ office looks bright, modern, and collaborative.
 > quà tặng (túi vải in logo) tại một gian hàng lớn có biển "BrightWave
 > Marketing". Phía xa là một sân khấu nhỏ nơi một diễn giả đang thuyết trình.
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 This picture shows an advertising trade show being held inside a large
 convention center. There are several colorful booths with banners, and
@@ -102,7 +102,7 @@ Chủ đề khảo sát: thói quen làm việc và quảng cáo.
 **Question:** How often do you notice advertisements while browsing the
 internet?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 I notice online advertisements almost every day. They usually appear on
 social media or news websites.
@@ -112,7 +112,7 @@ social media or news websites.
 **Question:** What type of advertisement do you find most memorable — video,
 image, or audio?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 I find video advertisements the most memorable. They combine sound and
 visuals, so they tend to stick in my mind longer.
@@ -122,7 +122,7 @@ visuals, so they tend to stick in my mind longer.
 **Question:** Describe a recent advertisement that caught your attention and
 explain why it stood out to you.
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 A recent advertisement that caught my attention was for a local coffee
 shop. It used humor and a catchy jingle, which made it stand out from other
@@ -154,7 +154,7 @@ trước khi nghe ba câu hỏi.
 **Question:** What time does the workshop begin, and who gives the welcome
 remarks?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 The workshop begins at 9:00 a.m. with registration and coffee. The welcome
 remarks are given at 9:30 a.m. by Laura Kim, the CEO.
@@ -164,7 +164,7 @@ remarks are given at 9:30 a.m. by Laura Kim, the CEO.
 **Question:** I'd like to attend the "Social Media Advertising Basics"
 session. What time does it start, and what happens right after it?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 The "Social Media Advertising Basics" session starts at 11:30 a.m. Right
 after it, at 1:00 p.m., there is a lunch break.
@@ -174,7 +174,7 @@ after it, at 1:00 p.m., there is a lunch break.
 **Question:** Can you tell me about the schedule for the afternoon, starting
 from lunch?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 Sure. Lunch is at 1:00 p.m. After that, at 2:00 p.m., there's a Q&A panel
 with the creative directors. Finally, the event closes with closing remarks
@@ -189,7 +189,7 @@ advertising budget on social media, while others believe traditional
 advertising, such as television and print, is still more effective. Which
 do you think is better, and why?
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 In my opinion, companies should focus most of their advertising budget on
 social media rather than traditional advertising. First, social media

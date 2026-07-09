@@ -28,7 +28,7 @@ không được bỏ từ khóa.
 
 **Keywords: presentation / while**
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 The employee gave a presentation while her colleagues took notes.
 
@@ -39,7 +39,7 @@ The employee gave a presentation while her colleagues took notes.
 
 **Keywords: because / logo**
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 The designer pointed at the screen because she wanted to revise the logo.
 
@@ -50,7 +50,7 @@ The designer pointed at the screen because she wanted to revise the logo.
 
 **Keywords: deliver / package**
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 The courier delivered a large package to the receptionist.
 
@@ -61,7 +61,7 @@ The courier delivered a large package to the receptionist.
 
 **Keywords: although / crowded**
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 Although the trade show was crowded, the visitors still lined up for the
 flyers.
@@ -73,7 +73,7 @@ flyers.
 
 **Keywords: because / late**
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 She was still working because the campaign deadline was approaching, so she
 stayed late.
@@ -104,7 +104,7 @@ Viết email trả lời trong khoảng 80 từ, đáp ứng đầy đủ yêu c
 
 **Yêu cầu:** Trả lời với 2 câu hỏi ĐÃ được giải đáp và 1 đề nghị (offer/suggestion).
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 Dear Ms. Whitfield,
 
@@ -139,7 +139,7 @@ Daniel Reyes
 
 **Yêu cầu:** Trả lời với 2 câu hỏi ĐÃ được giải đáp và 1 đề nghị (offer/suggestion).
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 Hi Jason,
 
@@ -164,7 +164,7 @@ work in a traditional office. Which viewpoint do you agree with? Use
 specific reasons and examples to support your opinion. Write at least 300
 words.
 
-##### Gợi ý (Model answer)
+#### Gợi ý (Model answer)
 
 In recent years, remote work has become increasingly common, and opinions
 remain divided over whether it truly increases productivity compared to
