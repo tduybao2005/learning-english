@@ -37,6 +37,7 @@ export default async function PlacementTestPage() {
     number: q.number,
     prompt: q.prompt,
     options: q.options as { label: string; text: string }[] | null,
+    imageUrl: q.imageUrl,
     kind: q.kind,
     isOpenEnded: q.isOpenEnded,
   }));

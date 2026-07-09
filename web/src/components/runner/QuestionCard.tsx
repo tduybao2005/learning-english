@@ -27,6 +27,7 @@ export interface SafeQuestion {
   number: number;
   prompt: string;
   options: { label: string; text: string }[] | null;
+  imageUrl?: string | null;
   kind: SafeQuestionKind;
   isOpenEnded: boolean;
   errorSpan?: { start: number; end: number } | null;
@@ -112,6 +113,7 @@ function FillBlankInputs({
 
 function MultipleChoiceOptions({
   prompt,
+  imageUrl,
   options,
   disabled,
   status,
@@ -119,6 +121,7 @@ function MultipleChoiceOptions({
   emphasizePrompt,
 }: {
   prompt: string;
+  imageUrl?: string | null;
   options: { label: string; text: string }[];
   disabled: boolean;
   status: QuestionStatus;
@@ -133,12 +136,22 @@ function MultipleChoiceOptions({
     // with `caret-transparent` and block caret placement/selection with
     // `select-none` so no stray "|" shows at the start of the question.
     <div className="caret-transparent select-none">
+      {imageUrl && (
+        // TOEIC Part 1 (photograph) questions carry a real photo — options
+        // are read aloud in the audio only, never printed as on-screen text.
+        <img
+          src={imageUrl}
+          alt="Ảnh minh họa cho câu hỏi"
+          className="mb-3 w-full max-w-md rounded-xl border border-border"
+        />
+      )}
       <p className={cn("mb-3 cursor-default text-base leading-relaxed", emphasizePrompt && "lg:mb-6 lg:text-center lg:text-h2 lg:font-bold")}>{prompt}</p>
       <div className="flex flex-col gap-2">
         {options.map((opt) => {
           const isSelected = selected === opt.label;
           const isWrong = isSelected && status === "incorrect";
           const isCorrectPick = isSelected && status === "correct";
+          const labelOnly = opt.text === "";
 
           return (
             <button
@@ -152,6 +165,7 @@ function MultipleChoiceOptions({
               }}
               className={cn(
                 "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
+                labelOnly && "justify-center",
                 isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
                 !isSelected && "border-border hover:bg-muted",
                 isWrong && "animate-shake border-destructive bg-destructive-bg",
@@ -169,7 +183,7 @@ function MultipleChoiceOptions({
               >
                 {opt.label}
               </span>
-              <span>{opt.text}</span>
+              {!labelOnly && <span>{opt.text}</span>}
               {isWrong && <span className="ml-auto text-destructive">✕</span>}
               {isCorrectPick && <span className="ml-auto text-success">✓</span>}
             </button>
@@ -298,6 +312,7 @@ export function QuestionCard({
     return (
       <MultipleChoiceOptions
         prompt={question.prompt}
+        imageUrl={question.imageUrl}
         options={question.options}
         disabled={disabled}
         status={status}

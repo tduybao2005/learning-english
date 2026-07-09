@@ -6,6 +6,7 @@ export interface OrderedPlacementQuestion {
   number: number;
   prompt: string;
   options: unknown;
+  imageUrl: string | null;
   kind: QuestionKind;
   isOpenEnded: boolean;
 }
@@ -38,7 +39,7 @@ export async function getOrderedPlacementSections(placementTestId: string): Prom
       kind: true,
       questions: {
         orderBy: { number: "asc" },
-        select: { id: true, number: true, prompt: true, options: true, isOpenEnded: true },
+        select: { id: true, number: true, prompt: true, options: true, imageUrl: true, isOpenEnded: true },
       },
     },
   });

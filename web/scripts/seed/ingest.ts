@@ -124,6 +124,7 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
                 number: q.number,
                 prompt: q.prompt,
                 options: q.options ?? undefined,
+                imageUrl: q.imageUrl,
                 answerRaw: q.answerRaw,
                 keyNote: q.keyNote,
                 isOpenEnded: q.isOpenEnded,
