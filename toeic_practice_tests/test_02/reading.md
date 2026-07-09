@@ -144,9 +144,9 @@ Front Office Director
 **132.** (A) revise (B) revive (C) resolve (D) reserve
 
 **133.** (A) The meeting room has been booked for one hour.
-(B) Our office moved to a new building last year.
-(C) The client praised last month's social media results.
-(D) Please remember to submit your timesheets.
+(B) The rooftop bar will introduce a new cocktail menu next month.
+(C) A regular guest sent flowers to the front desk last week.
+(D) Please remember to update your emergency contact information.
 
 **134.** (A) copy (B) copier (C) copying (D) copies
 
@@ -175,9 +175,9 @@ Please direct any questions about bookings to the Guest Services desk.
 **136.** (A) will send (B) will be sent (C) sent (D) sending
 
 **137.** (A) The Coastal Tours partnership is expected to boost guest satisfaction scores.
-(B) Our summer picnic will be held next Friday.
-(C) The printer on the third floor is out of order.
-(D) Please remember to lock the supply closet.
+(B) The rooftop pool will be repainted over the winter.
+(C) The valet stand near the entrance needs new signage.
+(D) Please remember to badge in before entering the server room.
 
 **138.** (A) success (B) successful (C) successfully (D) succeed
 
@@ -203,9 +203,9 @@ Thank you for helping us maintain a smooth check-in experience.
 **140.** (A) with (B) by (C) at (D) for
 
 **141.** (A) Old versions of the form must not be used after this date.
-(B) The cafeteria will be closed for renovation.
-(C) Parking permits are renewed annually.
-(D) The company picnic has been rescheduled.
+(B) The staff lounge will reopen after the flooring project.
+(C) Uniform fittings are scheduled every six months.
+(D) The holiday schedule has been posted on the break-room board.
 
 **142.** (A) direct (B) directly (C) direction (D) directing
 
@@ -232,9 +232,9 @@ to guest relations.
 **144.** (A) dedicate (B) dedicated (C) dedication (D) dedicatedly
 
 **145.** (A) The hotel's guest roster now includes several international travel agencies.
-(B) The gala was held downtown this year.
-(C) Ticket prices for the gala increased slightly.
-(D) The awards ceremony started at seven.
+(B) The gala's venue changed at the last minute this year.
+(C) Registration fees for the gala rose slightly from last year.
+(D) The award presentation began promptly at eight.
 
 **146.** (A) reflects (B) reflex (C) reflection (D) reflective
 
@@ -317,35 +317,39 @@ valid for stays booked before the end of the month.
 
 #### Passage 3 — Article (Questions 153–156)
 
-**The Shift Toward Contactless Check-In**
+**Why Guests Are Skipping the Front Desk**
 
 **Paragraph 1**
-Line 1: Over the past five years, hotels across nearly every market segment
-Line 2: have moved a growing share of their check-in process from staffed
-Line 3: front desks to mobile and kiosk-based systems.
-Line 4: This shift has been driven largely by the ability to reduce guest
-Line 5: wait times and give travelers more control over their arrival.
+Line 1: A decade ago, arriving at a hotel almost always meant standing in
+Line 2: line to hand a clerk a passport and a credit card. That routine is
+Line 3: quietly disappearing. Hotel chains have been racing to shrink or
+Line 4: replace it, chiefly because travelers keep telling surveyors that
+Line 5: waiting to check in is the single most frustrating part of arrival.
 
 **Paragraph 2**
-Line 1: Properties such as Harborview Grand Hotel have adapted by
-Line 2: installing self-service kiosks and building mobile check-in
-Line 3: features into their booking app.
-Line 4: According to a recent industry survey, nearly 65 percent of
-Line 5: upscale hotels now offer some form of contactless check-in.
-Line 6: — **[1]** —
+Line 1: Harborview Grand Hotel is one of many properties responding to that
+Line 2: pressure. Guests can now request their room key through the hotel's
+Line 3: app before ever reaching the building, and a bank of kiosks near the
+Line 4: entrance handles walk-ins who prefer not to use a phone.
+Line 5: A trade-group survey published this spring found that roughly
+Line 6: two-thirds of upscale properties now offer some version of this
+Line 7: setup. — **[1]** —
 
 **Paragraph 3**
-Line 1: Despite the growth of contactless technology, many hospitality
-Line 2: experts caution that a staffed front desk still plays a valuable
-Line 3: role, particularly for guests with special requests.
-Line 4: — **[2]** —
-Line 5: A friendly, in-person greeting can still create a strong first
-Line 6: impression and reassure travelers. — **[3]** —
+Line 1: Not everyone in the industry is ready to retire the front desk,
+Line 2: however. Consultants who study guest behavior note that travelers
+Line 3: with an unusual request — an accessible room, a late arrival, a
+Line 4: billing question — still tend to seek out a person rather than a
+Line 5: screen. — **[2]** —
+Line 6: Being greeted by name at the door, they argue, does something a
+Line 7: kiosk cannot: it signals that the property noticed the guest arrived
+Line 8: at all. — **[3]** —
 
 **Paragraph 4**
-Line 1: For this reason, most successful hotels now recommend a combined
-Line 2: approach, blending digital convenience with the warmth of
-Line 3: traditional hospitality. — **[4]** —
+Line 1: The properties getting the best reviews, then, tend not to choose
+Line 2: one model over the other. They let the app handle the paperwork and
+Line 3: save the staff's attention for the moments that actually call for a
+Line 4: human being. — **[4]** —
 
 **153.** What is the main purpose of the article?
 (A) To criticize traditional check-in methods
@@ -418,15 +422,16 @@ Elena
 
 **NOTICE: Employee Parking Closure**
 
-The employee parking lot behind Harborview Grand Hotel will be closed for
-resurfacing from August 11 to August 15. During this period, staff are
-asked to use the public garage on Bayview Street, located two blocks away.
+Crews will resurface the employee parking lot behind Harborview Grand
+Hotel from August 11 through August 15, so the lot will be off-limits to
+staff vehicles for that stretch. In the meantime, employees can park at the
+public garage on Bayview Street, a short two-block walk from the hotel.
 
-Harborview will cover parking fees at the Bayview Street garage for the
-duration of the closure. Please keep your parking receipts and submit them
-to the Human Resources desk for reimbursement.
+Any parking fees charged at the Bayview Street garage during the closure
+will be reimbursed by the hotel — simply hold on to your receipt and drop
+it off at the Human Resources desk once the work is finished.
 
-We apologize for any inconvenience and appreciate your patience.
+Thank you for bearing with us while the lot is repaired.
 
 **160.** Why was the notice written?
 (A) To announce a new hotel amenity
@@ -524,35 +529,38 @@ office to speak with a booking specialist.
 
 Dear Mr. Cole,
 
-On behalf of my family, I want to thank you and your team for the
-outstanding hospitality during our stay for my daughter's wedding. The
-banquet staff's attention to detail exceeded our expectations, and several
-of our guests have commented positively on the rooftop reception setup your
-team arranged.
+I don't often write letters like this, but my daughter's wedding weekend at
+your hotel deserves one. From the moment our guests started arriving on
+Friday, your banquet staff treated every small detail — the table
+settings, the timing of each course, even the lighting on the rooftop — as
+if it were their own family's celebration.
 
-We were particularly impressed with how quickly your team adapted when we
-requested last-minute changes to the seating chart. That kind of
-flexibility is exactly what we hoped for when we chose Harborview Grand
-Hotel for this occasion.
+What impressed me most was the seating chart. Two of our tables had to be
+swapped less than an hour before the ceremony because of a last-minute
+change among the guests, and your team rearranged everything without
+missing a beat. Nobody at the reception would have guessed anything had
+changed at all.
 
-We look forward to staying with you again for future family celebrations.
+My husband and I have already started talking about where to hold our
+anniversary dinner next year, and Harborview Grand Hotel is at the top of
+the list.
 
-Sincerely,
-Karen Whitfield
+Warm regards,
+Priscilla Ogden
 
-**169.** Why did Ms. Whitfield write the letter?
+**169.** Why did Ms. Ogden write the letter?
 (A) To request a refund
 (B) To express satisfaction with a stay
 (C) To cancel a reservation
 (D) To apply for a job
 
-**170.** What does Ms. Whitfield mention about the seating chart?
+**170.** What does Ms. Ogden mention about the seating chart?
 (A) It was canceled.
 (B) It was changed on short notice.
 (C) It was used only once.
 (D) It was arranged by a different hotel.
 
-**171.** What can be inferred about the future relationship between Ms. Whitfield and the hotel?
+**171.** What can be inferred about the future relationship between Ms. Ogden and the hotel?
 (A) She is unlikely to return.
 (B) She is expected to stay again.
 (C) She has already ended her relationship with the hotel.
@@ -688,51 +696,55 @@ Guest Relations Team
 
 **Email 1**
 
-**To:** sales@bayviewlinen.com
+**To:** orders@bayviewlinen.com
 **From:** Elena Rossi, Harborview Grand Hotel
-**Subject:** Quote Request — Bulk Linen Order
+**Subject:** Can you handle a rush linen order?
 **Date:** August 2
 
-Hello,
+Hi there,
 
-We would like a price quote for 500 bath towel sets and 200 queen bed sheet
-sets. We would also like to know your turnaround time and whether rush
-processing is available, as we may need the order completed within one
-week ahead of a large group booking.
+A large conference group just added 500 bath towel sets and 200 queen bed
+sheet sets to our next order, and I'm told the group checks in inside of a
+week. Before I confirm the order on our end, could you tell me what your
+normal turnaround looks like, and whether there's any way to move faster
+than that if needed?
 
-Please let us know your standard rate as well as any rush fees.
+Also, if rush service is possible, what would it cost on top of your usual
+pricing?
 
-Thank you,
+Thanks,
 Elena Rossi
+Purchasing, Harborview Grand Hotel
 
 ---
 
 **Email 2**
 
 **To:** Elena Rossi, Harborview Grand Hotel
-**From:** sales@bayviewlinen.com
-**Subject:** RE: Quote Request — Bulk Linen Order
+**From:** orders@bayviewlinen.com
+**Subject:** RE: Can you handle a rush linen order?
 **Date:** August 3
 
-Dear Ms. Rossi,
+Hi Elena,
 
-Thank you for reaching out. For 500 bath towel sets and 200 queen bed sheet
-sets, our standard rate totals $3,450.00, with a standard turnaround of 10
-business days.
+Good to hear from you again! For that quantity — 500 towel sets and 200
+queen sheet sets — our normal cycle runs about 10 business days from the
+day we confirm the order, which won't get you there in time for a
+one-week turnaround.
 
-If you need the order completed within one week, we can offer rush
-processing for an additional 10% fee. Please confirm by August 5 if you
-would like to proceed with the rush option, as our production schedule
-fills quickly in August.
+We can compress that down to three business days for a 12% surcharge on
+top of the $3,450 base price, but August fills up on our floor fast, so
+we'd need your go-ahead no later than August 6 to lock in a rush slot.
 
-We look forward to working with you again.
+Let me know how you'd like to proceed — either way, glad to have your
+business again this season.
 
-Best regards,
-Bayview Linen Services
+Cheers,
+Marco at Bayview Linen Services
 
 **181.** Why did Ms. Rossi send the first email?
 (A) To cancel an existing order
-(B) To request pricing information
+(B) To ask about turnaround time and rush pricing for an order
 (C) To complain about a previous order
 (D) To apply for a job
 
@@ -740,10 +752,10 @@ Bayview Linen Services
 (A) One week
 (B) 10 business days
 (C) One month
-(D) 15 business days
+(D) Three business days
 
 **183.** According to Email 2, what happens if Harborview wants the rush option?
-(A) An additional 10% fee applies.
+(A) A 12% surcharge is added to the base price.
 (B) The order must be doubled in size.
 (C) The linen type must change.
 (D) The price per unit decreases.
@@ -801,10 +813,10 @@ Front desk installation and final finishing
 **Client:** Harborview Grand Hotel
 **Project:** Lobby Renovation
 **Start Date:** September 9
-**Completion Date:** October 4
 **Total Contract Value:** $84,500
 **Payment Terms:** 50% deposit paid September 9; remaining 50% due within
-10 days of completion.
+10 days of the project's completion, as recorded on the crew's final work
+order.
 
 Thank you for choosing Meridian Construction Group. Please contact our
 office with any questions about the final invoice.
@@ -827,11 +839,11 @@ office with any questions about the final invoice.
 (C) New flooring installation
 (D) Front desk installation
 
-**189.** Based on the notice and the contractor invoice, on what date did Meridian Construction Group receive its deposit payment?
-(A) September 9, the same day the renovation project began.
-(B) September 13, at the end of Week 1.
-(C) October 4, when the project was completed.
-(D) September 30, at the start of Week 4.
+**189.** Based on the work schedule and the contractor invoice, by what calendar date is the remaining 50% balance due at the latest?
+(A) October 14, ten days after the work schedule's final week ends on October 4.
+(B) October 4, the day the final week of work begins.
+(C) September 19, ten days after the deposit was paid.
+(D) October 24, twenty days after the project's completion.
 
 **190.** According to the invoice, when is the remaining balance due?
 (A) Immediately upon signing the contract
@@ -843,77 +855,81 @@ office with any questions about the final invoice.
 
 **Press Release**
 
-**Harborview Grand Hotel to Launch "Coastal Table" Dining Concept**
+**A New Kitchen Takes Over the Harborview Dining Room**
 
-Harborview Grand Hotel will unveil its new fine-dining concept, "Coastal
-Table," at a press event on October 5. The concept highlights locally
-sourced seafood and seasonal ingredients from nearby farms. Media
-representatives are invited to attend a tasting event and preview of the
-new menu.
+Starting October 5, the restaurant inside Harborview Grand Hotel will
+reopen under a new name and a new idea: "Coastal Table," a menu built
+almost entirely around seafood and produce sourced within fifty miles of
+the property. Executive Chef Priya Nair says the goal is to change the
+menu weekly depending on what local boats and farms bring in that day.
+Reporters and food writers are welcome to come taste the opening menu
+before it goes public.
 
 ---
 
 **Event Schedule — October 5**
 
-10:00 a.m. — Registration and Coffee
-10:30 a.m. — Welcome Remarks by Sofia Marchetti, General Manager
-11:00 a.m. — "Coastal Table" Menu Presentation
-12:00 p.m. — Tasting Session
-12:30 p.m. — Q&A with the Executive Chef
-1:00 p.m. — Lunch Reception
+10:00 a.m. — Check-in and Coffee
+10:30 a.m. — Remarks from General Manager Sofia Marchetti
+11:00 a.m. — Chef Nair Walks Through the New Menu
+12:00 p.m. — Guided Tasting of Signature Dishes
+12:30 p.m. — Open Q&A with Chef Nair
+1:00 p.m. — Lunch Service
 
 ---
 
 **RSVP Form**
 
-**Name:** Robert Chen
-**Organization:** Daily Business Journal
+**Name:** Yuki Tanaka
+**Organization:** Coastal Living Magazine
 **Attending:** Yes
-**Dietary Restrictions:** Shellfish allergy
-**Will you require parking?** Yes
+**Dietary Restrictions:** Gluten-free
+**Will you require parking?** No — arriving by taxi
 
-Please submit this form by September 28 to confirm attendance.
+Kindly return this form by October 1 so a seat can be reserved.
 
-**191.** What is the press release mainly about?
-(A) A merger between two companies
-(B) The launch of a new dining concept
-(C) A change in hotel leadership
-(D) A menu recall
+**191.** What is the press release mainly announcing?
+(A) A merger between two hotel companies
+(B) A restaurant relaunching with a new concept and menu
+(C) The retirement of a longtime hotel manager
+(D) A recall of a seafood product
 
-**192.** According to the event schedule, what happens immediately after the menu presentation?
-(A) Registration
-(B) A tasting session
-(C) The welcome remarks
-(D) The lunch reception
+**192.** According to the event schedule, what takes place right after the chef's menu walk-through?
+(A) Check-in
+(B) A guided tasting
+(C) The GM's remarks
+(D) Lunch service
 
-**193.** Based on the press release and the RSVP form, why was Robert Chen most likely invited to the event?
-(A) He works for Harborview Grand Hotel and helped develop the menu.
-(B) He represents a media outlet, and the press release invited media representatives.
-(C) He is a member of the hotel's culinary team.
-(D) He supplies seafood to the hotel.
+**193.** Based on the press release and the RSVP form, why was Ms. Tanaka most likely invited to the event?
+(A) She works for Harborview Grand Hotel and helped design the menu.
+(B) She writes for a publication, and the release invited food writers and reporters.
+(C) She is one of Chef Nair's kitchen staff.
+(D) She supplies produce to the hotel's farms.
 
-**194.** By when must the RSVP form be submitted?
+**194.** By when must the RSVP form be returned?
 (A) October 5
 (B) September 28
 (C) October 28
-(D) September 5
+(D) October 1
 
-**195.** What does the RSVP form indicate about Mr. Chen?
-(A) He requires parking and has a shellfish allergy.
-(B) He will not attend the event.
-(C) He is bringing a guest.
-(D) He requested a private meeting.
+**195.** What does the RSVP form indicate about Ms. Tanaka?
+(A) She follows a gluten-free diet and does not need parking.
+(B) She will not attend the event.
+(C) She is bringing a guest.
+(D) She requested a private meeting.
 
 #### Passages 196–200 — Relocation Notice, Internal Memo, and Moving Company Confirmation
 
 **Notice**
 
-**Harborview Grand Hotel — Administrative Office Relocation**
+**The Back Office Is Moving to Harbor Street**
 
-Harborview Grand Hotel will relocate its administrative offices to a larger
-space at 210 Harbor Street beginning November 1. The move is intended to
-accommodate our growing back-office team. Employees will receive updated
-parking and building access information closer to the move date.
+Harborview Grand Hotel's administrative staff have simply outgrown their
+current space, so beginning November 1 the accounting, HR, and reservations
+teams will move into a larger suite at 210 Harbor Street. Nothing about
+guest-facing operations changes — this notice concerns administrative staff
+only. A separate memo about the timeline and about updated parking and
+building access will follow shortly.
 
 ---
 
@@ -923,13 +939,15 @@ parking and building access information closer to the move date.
 **From:** Operations
 **Re:** Relocation Timeline
 
-Packing supplies will be distributed the week of October 20. Employees
-should have personal items packed and labeled by October 30. The moving
-company will handle all office furniture and equipment; employees do not
-need to move anything themselves.
+A few logistics before the move: boxes and labels will be dropped off at
+each desk during the week of October 20, and everyone's personal items
+need to be packed and labeled no later than two days before the moving
+crew is scheduled to arrive. You will not need to lift a finger for the
+furniture, computers, or filing cabinets — that's entirely on the movers.
 
-The new office will be ready for staff on November 3, allowing two days for
-setup after the move.
+Plan to work remotely on November 3 and 4, since those two days are set
+aside for unpacking and setting up the new space before staff return on
+November 5.
 
 ---
 
@@ -942,20 +960,21 @@ setup after the move.
 **Crew Size:** 6 movers
 **Confirmation Number:** HC-30129
 
-Please ensure all items are packed and labeled before our crew arrives at
-7:00 a.m. on the move date.
+Our six-person crew will be on-site at 7:00 a.m. sharp on the move date, so
+please have desks cleared and boxes labeled the night before — anything
+left unpacked when we arrive may be set aside until the following week.
 
 **196.** Why is Harborview Grand Hotel relocating its administrative offices?
 (A) To reduce costs
-(B) To accommodate a growing back-office team
+(B) The administrative staff have outgrown their current space
 (C) To be closer to guests
 (D) To comply with a new regulation
 
-**197.** According to the memo, when should employees have their personal items packed?
-(A) October 20
-(B) October 30
-(C) November 1
-(D) November 3
+**197.** According to the memo, how soon before the movers arrive should employees have their personal items packed and labeled?
+(A) At least two days before
+(B) At least two weeks before
+(C) On the same day
+(D) The day after
 
 **198.** Who will move the office furniture and equipment?
 (A) Harborview employees
@@ -963,11 +982,11 @@ Please ensure all items are packed and labeled before our crew arrives at
 (C) The moving company
 (D) The building's landlord
 
-**199.** Based on the internal memo and the moving company confirmation, by when must employees' packed and labeled personal items be ready?
-(A) Before the movers arrive at 7:00 a.m. on November 1, since the memo requires packing by October 30, ahead of the move date.
-(B) By November 3, when the new office opens.
-(C) By October 20, when packing supplies are distributed.
-(D) By November 1, but only after the movers arrive.
+**199.** Based on the internal memo and the moving company confirmation, by what calendar date must employees have their personal items packed and labeled?
+(A) October 30, two days before the crew's confirmed November 1 arrival.
+(B) November 5, when staff return to the new office.
+(C) October 20, when packing supplies are distributed.
+(D) November 1, but only after the movers arrive.
 
 **200.** What time is the moving crew expected to arrive on the move date?
 (A) 7:00 a.m.
