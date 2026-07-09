@@ -16,9 +16,17 @@ interface ReadingSectionProp {
   questions: SafeQuestion[];
 }
 
+interface ListeningSectionProp {
+  label: string;
+  title: string;
+  instructions: string | null;
+  questions: SafeQuestion[];
+}
+
 interface ListeningProp {
   audioUrl: string;
-  questions: SafeQuestion[];
+  durationSec: number | null;
+  sections: ListeningSectionProp[];
 }
 
 type AnswerMap = Record<string, string>;
@@ -135,9 +143,13 @@ export function PlacementWizard({
     () => readingSections.flatMap((s) => s.questions),
     [readingSections],
   );
+  const listeningQuestions = useMemo(
+    () => listening?.sections.flatMap((s) => s.questions) ?? [],
+    [listening],
+  );
 
   async function submitSection(section: "LISTENING" | "READING") {
-    const questions = section === "LISTENING" ? listening?.questions ?? [] : readingQuestions;
+    const questions = section === "LISTENING" ? listeningQuestions : readingQuestions;
     const answerMap = section === "LISTENING" ? listeningAnswers : readingAnswers;
     const answers = questions.map((q) => ({ questionId: q.id, answerText: answerMap[q.id] ?? "" }));
 
@@ -220,8 +232,10 @@ export function PlacementWizard({
           <div>
             <h1 className="mb-1 text-xl font-bold">Phần Nghe (Listening)</h1>
             <p className="text-sm text-muted-foreground">
-              Nghe đoạn hội thoại và trả lời 10 câu hỏi bên dưới. Bạn có thể tua lại, không giới hạn số
-              lần nghe. Sau khi nộp bài, bạn sẽ không thể quay lại sửa câu trả lời.
+              Nghe đoạn hội thoại và trả lời {listeningQuestions.length} câu hỏi bên dưới
+              {listening?.durationSec ? ` (~${Math.round(listening.durationSec / 60)} phút audio)` : ""}. Bạn
+              có thể tua lại, không giới hạn số lần nghe. Sau khi nộp bài, bạn sẽ không thể quay lại sửa câu
+              trả lời.
             </p>
           </div>
           {listening ? (
@@ -229,10 +243,22 @@ export function PlacementWizard({
               <div className="lg:sticky lg:top-8">
                 <AudioPlayer src={listening.audioUrl} />
               </div>
-              <QuestionBatch
-                questions={listening.questions}
-                onChange={(id, value) => setListeningAnswers((prev) => ({ ...prev, [id]: value }))}
-              />
+              <div className="flex flex-col gap-6">
+                {listening.sections.map((section) => (
+                  <div key={section.label} className="flex flex-col gap-3">
+                    <div>
+                      <h2 className="text-sm font-bold">{section.title}</h2>
+                      {section.instructions ? (
+                        <p className="text-sm text-muted-foreground">{section.instructions}</p>
+                      ) : null}
+                    </div>
+                    <QuestionBatch
+                      questions={section.questions}
+                      onChange={(id, value) => setListeningAnswers((prev) => ({ ...prev, [id]: value }))}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           ) : (
             <p className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">
