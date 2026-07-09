@@ -1,7 +1,7 @@
 ---
 slug: placement_01
 title: "Placement Listening: Joining a Public Library"
-kind: PLACEMENT
+kind: PRACTICE
 voices: { A: en-GB-RyanNeural, B: en-US-AriaNeural, NARRATOR: en-US-JennyNeural }
 ---
 ## TRANSCRIPT
