@@ -41,7 +41,15 @@ FRONT_MATTER_RE = re.compile(r"^---\n(.*?)\n---\n?", re.DOTALL)
 TRANSCRIPT_HEAD_RE = re.compile(r"^##[ \t]+TRANSCRIPT[ \t]*$", re.MULTILINE)
 QUESTIONS_HEAD_RE = re.compile(r"^##[ \t]+QUESTIONS\b.*$", re.MULTILINE)
 LINE_RE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):[ \t]*(.+)$")
+# `[PAUSE:n]` on its own line -> n seconds of silence instead of a synthesized
+# turn (e.g. section reading/answer time). Kept in sync by hand with
+# `scripts/seed/parse-listening.ts`'s PAUSE_LINE_RE (that side strips these
+# lines from the stored transcript; this side turns them into audio).
+PAUSE_RE = re.compile(r"^\[PAUSE:(\d+(?:\.\d+)?)\]$")
+PAUSE_SPEAKER = "__PAUSE__"
 SILENCE_MS = 400
+TTS_RETRY_ATTEMPTS = 3
+TTS_RETRY_BACKOFF_SEC = 2.0
 
 
 def parse_front_matter(block: str) -> dict:
@@ -91,6 +99,10 @@ def parse_transcript_lines(md: str) -> list[tuple[str, str]]:
         line = raw_line.strip()
         if not line:
             continue
+        pause_m = PAUSE_RE.match(line)
+        if pause_m:
+            lines.append((PAUSE_SPEAKER, pause_m.group(1)))
+            continue
         m = LINE_RE.match(line)
         if not m:
             continue
@@ -100,11 +112,46 @@ def parse_transcript_lines(md: str) -> list[tuple[str, str]]:
 
 
 async def synth_line(text: str, voice: str, out_path: Path) -> None:
-    communicate = edge_tts.Communicate(text, voice)
-    await communicate.save(str(out_path))
+    """Synthesize one line, retrying on transient edge-tts/network failures —
+    important for a ~40-45 minute TOEIC file with hundreds of lines, where a
+    single flaky request would otherwise abort the whole run."""
+    last_exc: Exception | None = None
+    for attempt in range(1, TTS_RETRY_ATTEMPTS + 1):
+        try:
+            communicate = edge_tts.Communicate(text, voice)
+            await communicate.save(str(out_path))
+            return
+        except Exception as exc:  # noqa: BLE001 - retry any transient failure
+            last_exc = exc
+            if attempt < TTS_RETRY_ATTEMPTS:
+                print(f"[tts] retry {attempt}/{TTS_RETRY_ATTEMPTS - 1} after error: {exc}", file=sys.stderr)
+                await asyncio.sleep(TTS_RETRY_BACKOFF_SEC * attempt)
+    assert last_exc is not None
+    raise last_exc
 
 
-async def main_async(md_path: Path) -> Path:
+def print_dry_run_plan(fm: dict, lines: list[tuple[str, str]]) -> None:
+    print(f"[tts] dry-run plan for slug={fm['slug']!r} ({len(lines)} lines):")
+    total_pause_sec = 0.0
+    for i, (speaker, text) in enumerate(lines):
+        if speaker == PAUSE_SPEAKER:
+            total_pause_sec += float(text)
+            print(f"  {i + 1:>4}. [PAUSE {text}s]")
+            continue
+        voice = fm["voices"].get(speaker)
+        voice_str = voice if voice else "!! NO VOICE MAPPED !!"
+        print(f"  {i + 1:>4}. {speaker} -> {voice_str}: {text[:70]!r}")
+    missing = {
+        speaker
+        for speaker, text in lines
+        if speaker != PAUSE_SPEAKER and not fm["voices"].get(speaker)
+    }
+    if missing:
+        raise ValueError(f"no voice mapped for speaker(s): {sorted(missing)}")
+    print(f"[tts] total scripted pause time: {total_pause_sec:.1f}s")
+
+
+async def main_async(md_path: Path, dry_run: bool = False) -> Path | None:
     md = md_path.read_text(encoding="utf-8")
     fm_m = FRONT_MATTER_RE.match(md)
     if not fm_m:
@@ -114,12 +161,20 @@ async def main_async(md_path: Path) -> Path:
     if not lines:
         raise ValueError("no transcript lines found under '## TRANSCRIPT'")
 
+    if dry_run:
+        print_dry_run_plan(fm, lines)
+        return None
+
     silence = AudioSegment.silent(duration=SILENCE_MS)
     combined = AudioSegment.empty()
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
         for i, (speaker, text) in enumerate(lines):
+            if speaker == PAUSE_SPEAKER:
+                print(f"[tts] {i + 1}/{len(lines)} [PAUSE {text}s]")
+                combined += AudioSegment.silent(duration=int(float(text) * 1000))
+                continue
             voice = fm["voices"].get(speaker)
             if not voice:
                 raise ValueError(
@@ -155,9 +210,14 @@ async def main_async(md_path: Path) -> Path:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("md_path", type=Path, help="path to a content/listening/*.md file")
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="parse and print the synthesis plan (speaker/voice/pause per line) without synthesizing any audio",
+    )
     args = parser.parse_args()
     try:
-        asyncio.run(main_async(args.md_path))
+        asyncio.run(main_async(args.md_path, dry_run=args.dry_run))
     except Exception as exc:  # noqa: BLE001 - top-level CLI error reporting
         print(f"[tts] ERROR: {exc}", file=sys.stderr)
         sys.exit(1)
