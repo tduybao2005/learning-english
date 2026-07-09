@@ -65,7 +65,8 @@ import { stripFrontmatter } from "./strip-frontmatter";
 const REPO_ROOT = path.resolve(process.cwd(), "..");
 const TEST01_DIR = path.join(REPO_ROOT, "ielts_practice_tests", "test_01");
 const PLACEMENT_SLUG = "default";
-const LISTENING_SLUG = "placement_01";
+const LISTENING_SLUG = "placement_ielts";
+const TOEIC_LISTENING_SLUG = "placement_toeic";
 
 // ---------------------------------------------------------------------------
 // Shared helpers
@@ -575,6 +576,12 @@ async function main() {
       `[seed-placement] WARN: no ListeningSet with slug "${LISTENING_SLUG}" found — run 'npm run seed' first (seeds listening sets) so listeningSetId isn't null.`,
     );
   }
+  const toeicListeningSet = await db.listeningSet.findUnique({ where: { slug: TOEIC_LISTENING_SLUG } });
+  if (!toeicListeningSet) {
+    console.warn(
+      `[seed-placement] WARN: no ListeningSet with slug "${TOEIC_LISTENING_SLUG}" found — run 'npm run seed' first (seeds listening sets) so toeicListeningSetId isn't null.`,
+    );
+  }
 
   // Delete + recreate on every run (same pre-launch policy as Exercise/
   // ListeningSet elsewhere in the seed pipeline). PlacementAttempt has a
@@ -595,6 +602,7 @@ async function main() {
       readingMd,
       writingPromptMd,
       listeningSetId: listeningSet?.id ?? null,
+      toeicListeningSetId: toeicListeningSet?.id ?? null,
       bandTable: bandTable as unknown as object,
       sections: {
         create: sections.map((section, sectionIndex) => ({
@@ -622,7 +630,8 @@ async function main() {
   console.log(
     `[seed-placement] upserted PlacementTest "${created.slug}" (id=${created.id}): ` +
       `${sections.length} sections, ${totalQuestions} reading questions, ` +
-      `bandTable has ${bandTable.length} rows, listeningSetId=${listeningSet?.id ?? "null"}`,
+      `bandTable has ${bandTable.length} rows, listeningSetId=${listeningSet?.id ?? "null"}, ` +
+      `toeicListeningSetId=${toeicListeningSet?.id ?? "null"}`,
   );
 
   await db.$disconnect();

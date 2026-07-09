@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { rawToBand, startLessonFor, scaleRawScore, type BandTableRow } from "@/lib/band";
+import { placementListeningSetId } from "@/lib/placement-listening";
 import { ResetToStartButton } from "@/components/ResetToStartButton";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -25,10 +26,11 @@ export default async function PlacementResultPage() {
     redirect("/onboarding/placement");
   }
 
+  const listeningSetId = placementListeningSetId(test, user.goalType);
   const [readingTotal, listeningTotal] = await Promise.all([
     db.question.count({ where: { section: { placementTestId: test.id } } }),
-    test.listeningSetId
-      ? db.question.count({ where: { section: { listeningSetId: test.listeningSetId } } })
+    listeningSetId
+      ? db.question.count({ where: { section: { listeningSetId } } })
       : Promise.resolve(0),
   ]);
 
@@ -119,6 +121,18 @@ export default async function PlacementResultPage() {
                 {attempt.readingScore ?? 0}/{readingTotal} câu đúng
               </p>
             </div>
+
+            {attempt.toeicListeningScore !== null ? (
+              <div className="rounded-lg border border-dashed border-primary/30 bg-primary/5 p-3">
+                <div className="flex items-baseline justify-between">
+                  <span className="font-medium">🎯 Ước tính TOEIC Listening</span>
+                  <span className="font-bold">{attempt.toeicListeningScore}/495</span>
+                </div>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Đây là điểm ước tính, không phải điểm thi TOEIC chính thức.
+                </p>
+              </div>
+            ) : null}
 
             <div>
               <div className="flex items-baseline justify-between">

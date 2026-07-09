@@ -4,6 +4,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { matchAnswer, type QuestionKind } from "@/lib/grading/match";
+import { placementListeningSetId } from "@/lib/placement-listening";
 
 const bodySchema = z.object({
   section: z.enum(["LISTENING", "READING"]),
@@ -42,7 +43,8 @@ export async function POST(request: Request) {
   if (!test) {
     return NextResponse.json({ ok: false, reason: "not_found" }, { status: 404 });
   }
-  if (section === "LISTENING" && !test.listeningSetId) {
+  const listeningSetId = placementListeningSetId(test, user.goalType);
+  if (section === "LISTENING" && !listeningSetId) {
     return NextResponse.json({ ok: false, reason: "no_listening_set" }, { status: 404 });
   }
 
@@ -66,7 +68,7 @@ export async function POST(request: Request) {
     const belongsToSection =
       section === "READING"
         ? question.section.placementTestId === test.id
-        : question.section.listeningSetId === test.listeningSetId;
+        : question.section.listeningSetId === listeningSetId;
     if (!belongsToSection) continue;
 
     const result = matchAnswer(a.answerText, {
@@ -81,7 +83,7 @@ export async function POST(request: Request) {
   const total =
     section === "READING"
       ? await db.question.count({ where: { section: { placementTestId: test.id } } })
-      : await db.question.count({ where: { section: { listeningSetId: test.listeningSetId } } });
+      : await db.question.count({ where: { section: { listeningSetId } } });
 
   return NextResponse.json({ ok: true, rawScore, total, results });
 }

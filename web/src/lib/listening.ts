@@ -34,3 +34,43 @@ export async function getOrderedListeningQuestions(listeningSetId: string): Prom
     section.questions.map((q) => ({ ...q, kind: section.kind as QuestionKind })),
   );
 }
+
+export interface ListeningSectionWithQuestions {
+  label: string;
+  title: string;
+  instructions: string | null;
+  kind: QuestionKind;
+  questions: OrderedListeningQuestion[];
+}
+
+/**
+ * Same as `getOrderedListeningQuestions`, but grouped by section (with each
+ * section's label/title/instructions) instead of flattened — needed by the
+ * placement wizard so a multi-part listening test (IELTS 4 sections / TOEIC
+ * 4 parts) can render its section headers, mirroring
+ * `lib/placement.ts`'s `getOrderedPlacementSections`.
+ */
+export async function getOrderedListeningSections(listeningSetId: string): Promise<ListeningSectionWithQuestions[]> {
+  const sections = await db.section.findMany({
+    where: { listeningSetId },
+    orderBy: { orderIndex: "asc" },
+    select: {
+      label: true,
+      title: true,
+      instructions: true,
+      kind: true,
+      questions: {
+        orderBy: { number: "asc" },
+        select: { id: true, number: true, prompt: true, options: true, imageUrl: true, isOpenEnded: true },
+      },
+    },
+  });
+
+  return sections.map((section) => ({
+    label: section.label,
+    title: section.title,
+    instructions: section.instructions,
+    kind: section.kind as QuestionKind,
+    questions: section.questions.map((q) => ({ ...q, kind: section.kind as QuestionKind })),
+  }));
+}

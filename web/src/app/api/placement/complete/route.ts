@@ -5,7 +5,9 @@ import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { rawToBand, placementBand, startLessonFor, scaleRawScore, type BandTableRow } from "@/lib/band";
+import { rawToToeicListening } from "@/lib/toeic";
 import { getFirstLessonOfPhase, assignStartPoint } from "@/lib/progress";
+import { placementListeningSetId } from "@/lib/placement-listening";
 
 const bodySchema = z.object({
   readingScore: z.number().int().min(0),
@@ -46,14 +48,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, reason: "not_found" }, { status: 404 });
   }
 
+  const listeningSetId = placementListeningSetId(test, user.goalType);
+
   // Query the TRUE section totals server-side (never trust a client-
   // supplied total) — needed both to clamp the client-supplied scores into
   // a valid range and to scale them onto the band table's standard
   // 40-question total below.
   const [readingTotal, listeningTotal] = await Promise.all([
     db.question.count({ where: { section: { placementTestId: test.id } } }),
-    test.listeningSetId
-      ? db.question.count({ where: { section: { listeningSetId: test.listeningSetId } } })
+    listeningSetId
+      ? db.question.count({ where: { section: { listeningSetId } } })
       : Promise.resolve(0),
   ]);
   const readingScore = Math.min(parsed.data.readingScore, readingTotal);
@@ -71,6 +75,16 @@ export async function POST(request: Request) {
   const readingBand = rawToBand(scaledReading, table);
   const listeningBand = rawToBand(scaledListening, table);
   const band = placementBand(scaledReading, scaledListening, table);
+
+  // TOEIC-goal learners additionally get an estimated TOEIC Listening
+  // scaled score (5-495), computed from the UNSCALED raw listening score
+  // (out of its own total, not the 40-question band-table projection above)
+  // — an estimate only, ETS publishes no official conversion (see
+  // `rawToToeicListening`'s docstring).
+  const toeicListeningScore =
+    user.goalType === "TOEIC" && listeningTotal > 0
+      ? rawToToeicListening(Math.round((listeningScore / listeningTotal) * 100))
+      : null;
 
   const { phaseSlug } = startLessonFor(band);
   let startLesson = await getFirstLessonOfPhase(phaseSlug);
@@ -94,6 +108,7 @@ export async function POST(request: Request) {
         completedAt: new Date(),
         readingScore,
         listeningScore,
+        toeicListeningScore,
         band,
         writingText,
         answers: answers as Prisma.InputJsonValue,
@@ -108,6 +123,7 @@ export async function POST(request: Request) {
     band,
     readingBand,
     listeningBand,
+    toeicListeningScore,
     phaseSlug,
     startLessonSlug: startLesson.slug,
   });

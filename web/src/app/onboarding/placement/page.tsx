@@ -2,8 +2,9 @@ import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { getOrderedListeningQuestions } from "@/lib/listening";
+import { getOrderedListeningSections } from "@/lib/listening";
 import { getOrderedPlacementSections } from "@/lib/placement";
+import { placementListeningSetId } from "@/lib/placement-listening";
 import { PlacementWizard } from "@/components/PlacementWizard";
 import type { SafeQuestion } from "@/components/runner/QuestionCard";
 
@@ -23,23 +24,31 @@ export default async function PlacementTestPage() {
     );
   }
 
-  const listeningSet = test.listeningSetId
-    ? await db.listeningSet.findUnique({ where: { id: test.listeningSetId } })
+  const listeningSetId = placementListeningSetId(test, user.goalType);
+  const listeningSet = listeningSetId
+    ? await db.listeningSet.findUnique({ where: { id: listeningSetId } })
     : null;
 
-  const [listeningQuestionsRaw, readingSectionsRaw] = await Promise.all([
-    listeningSet ? getOrderedListeningQuestions(listeningSet.id) : Promise.resolve([]),
+  const [listeningSectionsRaw, readingSectionsRaw] = await Promise.all([
+    listeningSet ? getOrderedListeningSections(listeningSet.id) : Promise.resolve([]),
     getOrderedPlacementSections(test.id),
   ]);
 
-  const listeningQuestions: SafeQuestion[] = listeningQuestionsRaw.map((q) => ({
-    id: q.id,
-    number: q.number,
-    prompt: q.prompt,
-    options: q.options as { label: string; text: string }[] | null,
-    imageUrl: q.imageUrl,
-    kind: q.kind,
-    isOpenEnded: q.isOpenEnded,
+  const listeningSections = listeningSectionsRaw.map((section) => ({
+    label: section.label,
+    title: section.title,
+    instructions: section.instructions,
+    questions: section.questions.map(
+      (q): SafeQuestion => ({
+        id: q.id,
+        number: q.number,
+        prompt: q.prompt,
+        options: q.options as { label: string; text: string }[] | null,
+        imageUrl: q.imageUrl,
+        kind: q.kind,
+        isOpenEnded: q.isOpenEnded,
+      }),
+    ),
   }));
 
   const readingSections = readingSectionsRaw.map((section) => ({
@@ -63,7 +72,11 @@ export default async function PlacementTestPage() {
       <PlacementWizard
         listening={
           listeningSet
-            ? { audioUrl: listeningSet.audioUrl, questions: listeningQuestions }
+            ? {
+                audioUrl: listeningSet.audioUrl,
+                durationSec: listeningSet.durationSec,
+                sections: listeningSections,
+              }
             : null
         }
         readingMd={test.readingMd}
