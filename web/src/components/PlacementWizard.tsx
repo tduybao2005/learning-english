@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { MarkdownContent } from "@/components/MarkdownContent";
@@ -120,13 +119,16 @@ export function PlacementWizard({
   readingMd,
   readingSections,
   writingPromptMd,
+  onFinished,
 }: {
   listening: ListeningProp | null;
   readingMd: string;
   readingSections: ReadingSectionProp[];
   writingPromptMd: string;
+  /** Called after `/api/placement/complete` succeeds. The app navigates to
+   * `/onboarding/placement/result`; a design passes a no-op. Required. */
+  onFinished: () => void;
 }) {
-  const router = useRouter();
   const [step, setStep] = useState<Step>("listening");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -209,7 +211,7 @@ export function PlacementWizard({
         }),
       });
       if (!res.ok) throw new Error("complete failed");
-      router.push("/onboarding/placement/result");
+      onFinished();
     } catch {
       setError("Không thể hoàn tất bài kiểm tra. Vui lòng thử lại.");
       setSubmitting(false);

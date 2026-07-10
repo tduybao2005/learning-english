@@ -5,7 +5,7 @@ import { getSessionUser } from "@/lib/auth/session";
 import { getOrderedListeningSections } from "@/lib/listening";
 import { getOrderedPlacementSections } from "@/lib/placement";
 import { placementListeningSetId } from "@/lib/placement-listening";
-import { PlacementWizard } from "@/components/PlacementWizard";
+import { PlacementWizardConnected } from "@/components/PlacementWizardConnected";
 import type { SafeQuestion } from "@/components/runner/QuestionCard";
 
 export default async function PlacementTestPage() {
@@ -69,7 +69,7 @@ export default async function PlacementTestPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 lg:max-w-5xl">
-      <PlacementWizard
+      <PlacementWizardConnected
         listening={
           listeningSet
             ? {
