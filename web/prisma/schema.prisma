@@ -42,6 +42,13 @@ enum ListeningKind {
   PRACTICE
 }
 
+enum CefrLevel {
+  A2
+  B1
+  B2
+  C1
+}
+
 model User {
   id            String    @id @default(cuid())
   email         String    @unique
@@ -201,6 +208,7 @@ model ListeningSet {
   slug         String @unique
   title        String
   kind         ListeningKind
+  level        CefrLevel? // PRACTICE difficulty for the Luyện Nghe hub; null for PLACEMENT sets
   audioUrl     String        // "/audio/listening/placement_01.mp3"
   transcriptMd String @db.Text
   durationSec  Int?
