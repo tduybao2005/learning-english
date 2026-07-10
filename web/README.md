@@ -92,8 +92,10 @@ Content lives outside the database as source-of-truth Markdown/JSON:
 - `ielts_practice_tests/test_01/` (repo root) — the placement test's source:
   Passages 1-2 + Task 2 writing prompt + the reading band-conversion table.
 - `ielts_practice_tests/test_*/` (repo root) — all 30 IELTS practice tests.
-- `web/content/listening/*.md` — listening-set transcripts (2 today:
-  `practice_01`, `placement_01`).
+- `web/content/listening/*.md` — listening-set transcripts (16 today: 2
+  `PLACEMENT` sets — `placement_ielts`, `placement_toeic` — and 14 `PRACTICE`
+  sets spanning CEFR A2–C1, browsable from the level-grouped Luyện Nghe hub;
+  see "Listening audio" below for the authoring contract).
 
 **The database is a disposable cache of this content.** The seed scripts are
 idempotent (each `Lesson` row's `contentHash` is a hash of its 3 source
@@ -123,7 +125,7 @@ including seed logic in the app's request path or build step.
 | `Lesson` | 52 |
 | `VocabWord` | 3419 |
 | `Question` | 2168 |
-| `ListeningSet` | 2 |
+| `ListeningSet` | 16 |
 | `PlacementTest` | 1 |
 | `IeltsTest` | 30 |
 
@@ -148,7 +150,9 @@ which already has full content per the counts above.
 
 Listening-set mp3s are generated **locally, once, offline** — regeneration
 is never part of the build or deploy path; the mp3s themselves are committed
-to `web/public/audio/listening/`.
+to `web/public/audio/listening/` (48 kbps mono — kept for clarity on spelled
+names/numbers; ~0.36 MB/min, so the whole `PRACTICE` corpus adds roughly
+120–140 MB to the repo, accepted as a one-time cost).
 
 ```bash
 cd web/scripts/tts
@@ -156,7 +160,7 @@ python3 -m venv .venv        # one-time
 source .venv/bin/activate
 pip install -r requirements.txt
 cd ../..                     # back to web/
-python scripts/tts/generate_audio.py content/listening/practice_01.md
+python scripts/tts/generate_audio.py content/listening/practice_a2_01.md
 ```
 
 `requirements.txt` pins **`edge-tts==7.2.8`**, not the `6.*` originally
@@ -166,13 +170,95 @@ fails against Microsoft's current speech endpoint with an HTTP 403 (a
 actual client version; see `edge-tts`'s changelog around its 7.0 rewrite).
 7.2.8 is the first 7.x release confirmed working end-to-end in this
 environment. **Re-verify with `edge-tts --version` and a real
-`generate_audio.py` run before ever bumping this pin.**
+`generate_audio.py` run before ever bumping this pin.** Avoid running more
+than 2–3 `generate_audio.py` invocations concurrently (edge-tts throttling);
+each line gets a 3× retry already, and regeneration is idempotent per file.
 
-To add a new listening set: author a new `content/listening/<slug>.md` file
-(front matter `slug`/`title`/`kind`/`voices`, then a `## TRANSCRIPT` section
-of `SPEAKER: text` lines, optionally a `## QUESTIONS` section), run
-`generate_audio.py` against it, then `npm run seed` (the seed pipeline picks
-up new listening-set content the same way it picks up lesson content).
+### Authoring a new PRACTICE listening set
+
+`PRACTICE` sets (as opposed to the two hardcoded `PLACEMENT` sets used only
+by the onboarding wizard) are what the level-grouped Luyện Nghe hub
+(`/listening`) lists, and every one of them must satisfy a rigid structural
+contract so the sectioned runner and per-section transcript unlock work:
+
+1. **Front matter**: `slug` (must equal the filename), `title` (globally
+   unique — checked against every other listening set, including the two
+   placement sets), `kind: PRACTICE`, `level: A2|B1|B2|C1` (required for
+   `PRACTICE`; grouped under a "Khác" bucket in the hub if missing — the seed
+   script warns on this), and `voices: { A: <edge-tts voice>, ... }` mapping
+   every transcript speaker code, including `NARRATOR`, to a voice name.
+   `NARRATOR` is always `en-US-JennyNeural`; never reuse Jenny for a
+   character voice.
+2. **Shape**: exactly 4 `## SECTION N: <TITLE>` blocks × 10 questions each,
+   numbered 1–40 globally ascending, with a matching `### Section N:` block
+   in `## ANSWER KEY (ĐÁP ÁN)`. Section titles must be **exactly**
+   `FILL IN THE BLANK (Điền vào chỗ trống)` or
+   `MULTIPLE CHOICE (Trắc nghiệm)` — these exact strings drive `inferKind`
+   in `scripts/seed/parse-exercise.ts`; anything else (e.g. a "MIXED" title)
+   degrades to an unusable kind.
+3. **Transcript markers**: every section's transcript must open with a line
+   starting `NARRATOR: Section N. …` (this is what
+   `src/lib/transcript.ts#transcriptChunksForSections` splits on to unlock
+   each section's transcript as the learner completes it) and close with a
+   narrator outro line that does **not** start with `NARRATOR: Section` (a
+   line like `NARRATOR: That is the end of Section N…` is fine). A mid-section
+   pause/break line (used at B2/C1 to split a long section) must also avoid
+   starting with `NARRATOR: Section` — phrase it as e.g.
+   `NARRATOR: We now continue with the second half…` instead, or it gets
+   miscounted as an extra section marker.
+4. **Pauses**: `[PAUSE:n]` alone on its own line, in seconds, per the level's
+   budget (intro pause to read the questions + outro pause to check answers,
+   per section): A2 = 20+15s, B1 = 25+20s, B2 = 30+25s (plus one `[PAUSE:15]`
+   mid-Section-3), C1 = 40+30s (plus `[PAUSE:15]` mid-Section-3 **and**
+   mid-Section-4). The validator warns outside a [90, 600]s total budget or
+   on any single pause over 60s.
+5. **Answers**: FILL questions need exactly one `______` and answers ≤ 3
+   words, alternates `/`-separated (e.g. `45 / forty-five`), and must appear
+   in the transcript in question order; MCQ needs 3–4 `- A) text` options and
+   a key line like `21. B (short justification)` (the parenthetical becomes
+   the runner's `keyNote`). No `![](...)` images in `PRACTICE` sets — audio
+   only.
+6. **Duration bands** (validator WARN-only, since the word-count estimator is
+   heuristic): A2 15–18 min, B1 19–22 min, B2 23–27 min, C1 28–32 min real
+   `ffprobe` duration (slightly wider validator tolerance bands — see
+   `LEVEL_DURATION_TARGETS` in `scripts/seed/check-listening.ts`). Empirically,
+   generated audio runs **~7–10% shorter** than the validator's `est≈` figure
+   (measured across all 14 `PRACTICE` sets in this corpus), so target word
+   counts a bit above the naive per-level midpoint and re-check with a real
+   `ffprobe` run after generating.
+7. **No duplicate topics**: every `PRACTICE` set's topic/title must differ
+   from every other set, including the two placement sets (leisure-centre
+   signup, science-centre tour, green-space research, coral-reef lecture for
+   `placement_ielts`; office/announcement snippets for `placement_toeic`).
+   The validator's corpus check (`checkCorpus` in `check-listening.ts`) warns
+   above a 0.30 Jaccard-shingle similarity between any two `PRACTICE`
+   transcripts.
+
+**Workflow** for a new set:
+
+```bash
+# 1. Author content/listening/<slug>.md per the contract above
+npm run seed:validate-listening        # cheap structural check, no DB/audio needed
+source scripts/tts/.venv/bin/activate
+python scripts/tts/generate_audio.py content/listening/<slug>.md --dry-run  # sanity-check voice mapping
+python scripts/tts/generate_audio.py content/listening/<slug>.md           # generate the real mp3
+ffprobe -v error -show_entries format=duration -of csv=p=0 \
+  public/audio/listening/<slug>.mp3    # confirm it lands in the level's duration band
+npm run seed:validate-listening        # re-check now the mp3 exists (duration-band WARN)
+npm run seed                           # upsert the ListeningSet + questions
+npm run seed:placement                 # re-link PlacementTest FKs (npm run seed clears them — see below)
+```
+
+`npm run seed:validate-listening` never touches the database (`npm run
+seed:validate-listening -- --strict` also fails on WARNs, for a stricter
+pre-merge gate) — run it long before generating audio to catch structural
+mistakes cheaply. Re-running `npm run seed` also **prunes** any
+`ListeningSet` row whose `.md` file no longer exists in `content/listening/`
+(so renaming a slug retires the old one) and **clears** `PlacementTest`'s
+`listeningSetId`/`toeicListeningSetId` foreign keys every time listening
+sets are reseeded — always follow with `npm run seed:placement` to relink
+them, or the placement wizard's listening step shows "Phần nghe hiện chưa
+sẵn sàng".
 
 ## Testing / verification
 
@@ -200,8 +286,11 @@ npm run seed:validate -- --strict   # content corpus validation
 3. **Open-ended answer grading** — `isOpenEnded` questions currently
    auto-accept (MANUAL match type); replace with real AI grading.
 4. **Phase exams** (`phase_*/exam/`) — currently skipped by the seed.
-5. **More listening sets** — pipeline exists (see above), only 2 sets
-   authored so far.
+5. **Persisted listening progress** — the sectioned runner's progress is
+   client-only state; refreshing mid-set loses it. A `ListeningAttempt`
+   model + API would fix this but is deliberately out of scope for the
+   14-set leveled expansion (see the level-grouped hub and its 14
+   `PRACTICE` sets, A2×5/B1×3/B2×3/C1×3, ~15–32 min each).
 6. **Interactive IELTS reading** — auto-graded in-app instead of the current
    self-check markdown key.
 
