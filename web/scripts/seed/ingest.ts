@@ -77,11 +77,18 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
   const files = fs.readdirSync(contentDir).filter((f) => f.endsWith(".md")).sort();
   let count = 0;
   let totalQuestions = 0;
+  const seenSlugs: string[] = [];
 
   for (const file of files) {
     const md = fs.readFileSync(path.join(contentDir, file), "utf8");
     const parsed = parseListening(md);
-    const { slug, title, kind } = parsed.frontMatter;
+    const { slug, title, kind, level } = parsed.frontMatter;
+    seenSlugs.push(slug);
+    if (kind === "PRACTICE" && !level) {
+      console.warn(
+        `[seed] WARN: ${slug} is PRACTICE but has no front-matter 'level' — hub will group it under "Khác"`,
+      );
+    }
     const audioUrl = `/audio/listening/${slug}.mp3`;
     const mp3Path = path.join(repoRoot, "web", "public", "audio", "listening", `${slug}.mp3`);
     const durationSec = probeDurationSec(mp3Path);
@@ -109,6 +116,7 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
         slug,
         title,
         kind,
+        level: level ?? undefined,
         audioUrl,
         transcriptMd: parsed.transcriptMd,
         durationSec: durationSec ?? undefined,
@@ -143,6 +151,25 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
     );
     count++;
     totalQuestions += questionCount;
+  }
+
+  // Prune sets whose .md no longer exists (e.g. renamed slugs). Guarded on
+  // files.length so an empty/missing content dir can never mass-delete.
+  if (files.length > 0) {
+    if (dryRun) {
+      const orphans = await db.listeningSet.findMany({
+        where: { slug: { notIn: seenSlugs } },
+        select: { slug: true },
+      });
+      if (orphans.length > 0) {
+        console.log(`[seed] would prune listening set(s): ${orphans.map((o) => o.slug).join(", ")}`);
+      }
+    } else {
+      const pruned = await db.listeningSet.deleteMany({ where: { slug: { notIn: seenSlugs } } });
+      if (pruned.count > 0) {
+        console.log(`[seed] pruned ${pruned.count} listening set(s) no longer in content/listening`);
+      }
+    }
   }
 
   return { count, questions: totalQuestions };
