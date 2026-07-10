@@ -36,3 +36,9 @@ export { MarkdownContent } from "@/components/MarkdownContent";
 export { QuestionCard } from "@/components/runner/QuestionCard";
 export { ListeningRunner } from "@/components/ListeningRunner";
 export { ListeningSetView } from "@/components/ListeningSetView";
+
+// App shell. Presentational after the linkComponent/logoutSlot/pathname
+// extraction — no next/link, no next/navigation, no next-auth. The router-aware
+// wrapper (AppSidebarConnected) deliberately stays in the app.
+export { AppHeader } from "@/components/AppHeader";
+export { AppSidebar } from "@/components/AppSidebar";

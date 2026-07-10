@@ -1,7 +1,3 @@
-"use client";
-
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Home, Headphones, GraduationCap, BookOpen, Settings } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,19 +13,28 @@ const NAV_LINKS = [
  * vertical nav, a profile card pinned at the bottom that links to
  * `/settings` (where logout actually lives). Hidden below `lg:`, where
  * `AppHeader`'s horizontal nav is the only nav surface — the two never render
- * at the same time. Client component: active-route highlighting needs
- * `usePathname()`; `name`/`email`/`band` are passed down from the (async)
- * layout server component since session lookup can't happen here. */
+ * at the same time. `name`/`email`/`band` are passed down from the (async)
+ * layout server component since session lookup can't happen here.
+ *
+ * Presentational: the active route arrives as a plain string and links are
+ * injected, so this renders unchanged outside a Next runtime (design-system
+ * previews). `AppSidebarConnected` is the wrapper that reads `usePathname()`.
+ * `linkComponent` has no default on purpose — see `AppHeader`. */
 export function AppSidebar({
   name,
   email,
   band,
+  pathname,
+  linkComponent: Link,
 }: {
   name: string | null;
   email: string;
   band: number | null;
+  /** Current route, e.g. `/listening/practice_a2_02`. Drives nav highlighting. */
+  pathname: string;
+  /** Pass `NextLink` in the app; `"a"` anywhere without a router. Required. */
+  linkComponent: React.ElementType;
 }) {
-  const pathname = usePathname();
   const displayName = name ?? email;
   const avatarLetter = (displayName || "?").charAt(0).toUpperCase();
 
@@ -44,7 +49,7 @@ export function AppSidebar({
 
       <nav className="flex flex-1 flex-col gap-1 px-3">
         {NAV_LINKS.map(({ href, label, icon: Icon }) => {
-          const isActive = pathname === href || pathname?.startsWith(`${href}/`);
+          const isActive = pathname === href || pathname.startsWith(`${href}/`);
           return (
             <Link
               key={href}

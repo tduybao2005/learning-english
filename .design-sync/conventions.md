@@ -3,6 +3,12 @@
 Compiled from the app's real sources. React 19. Everything is exported on
 `window.HocTiengAnhDS`.
 
+- **App shell** — use these for any full screen, never rebuild them:
+  `AppSidebar` (fixed 232px rail, ≥1024px only) and `AppHeader` (`lg:hidden` in the app).
+  Both take a **required** `linkComponent` — pass `"a"` in a design. `AppHeader` also takes a
+  required `logoutSlot`; pass `<Button variant="ghost" size="sm">Đăng xuất</Button>`.
+  `AppSidebar` needs `pathname` (a plain string, e.g. `"/listening"`) to highlight the active
+  nav item. Standard page frame: sidebar + `<main className="lg:pl-[232px]">`.
 - **Primitives** (`src/components/ui`): `Button`, `Card`, `Input`, `Skeleton`, `Switch`, `Tabs`.
 - **Feature components** — prefer these over rebuilding them from primitives:
   `MarkdownContent` (lesson/lecture prose), `AudioPlayer` (`compact` | `full`),

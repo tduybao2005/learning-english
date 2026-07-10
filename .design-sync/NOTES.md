@@ -110,19 +110,33 @@ All six therefore use hand-written `cfg.dtsPropsFor` bodies, checked against the
 externals) — no `cfg.extraEntries` needed. Group comes from the src path, so the two under
 `src/components/runner/` land in a `runner` group.
 
+**App shell — synced (2), and it required app changes.** `AppHeader` and `AppSidebar` were
+extracted: `linkComponent` (required, no default) replaces `next/link`; `logoutSlot: ReactNode`
+replaces the `LogoutButton`/`next-auth` import; `pathname: string` replaces `usePathname()`.
+`AppSidebarConnected` ("use client") keeps the router in the app. `layout.tsx` is a **server**
+component, which is why logout is a ReactNode slot and not an `onLogout` callback — you cannot
+pass a function from a server component. Full write-up: `docs/design/APP_SHELL_EXTRACTION.md`.
+
+`linkComponent` intentionally has **no default**. A default of `"a"` would let a forgotten prop
+silently downgrade every link to a full page load — green build, green tests, no error. Verified
+the guard fires by compiling a deliberate omission (TS2739).
+
 **Still out of scope, by blocker:**
 
-- `next/link` only (9): `EmptyState`, `ErrorState`, `AppHeader`, `lesson-node`, `LessonTabs`,
-  `Flashcards`, `MatchGame`, `QuizGame`, `ExerciseRunner`. Fix once with a `LinkContext`
-  defaulting to `<a>`; the app injects `next/link`. Then `cfg.provider` = that provider.
-- Router / session / theme (7): `AppSidebar`, `PlacementWizard`, `ResetToStartButton`,
-  `SettingsGoalForm`, `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. Split each into a
-  presentational component taking `pathname` / `onNavigate` / `onLogout` / `onThemeChange`, plus
-  a thin container that stays in the app. Highest design impact (`AppHeader`/`AppSidebar` are on
-  every screen) and it makes them testable with the existing vitest setup.
+- `next/link` only (8): `EmptyState`, `ErrorState`, `lesson-node`, `LessonTabs`, `Flashcards`,
+  `MatchGame`, `QuizGame`, `ExerciseRunner`. Reuse the `linkComponent` prop pattern; if the list
+  grows, a `LinkContext` defaulting to `"a"` costs less threading (but forces `"use client"`).
+- Router / session / theme (5): `PlacementWizard`, `ResetToStartButton`, `SettingsGoalForm`,
+  `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. These are containers — they cause
+  effects. Split each into presentation + a thin connected wrapper, as done for the sidebar.
 - Prisma (3): `IeltsHub`, `LessonMap`, `PhasePillRow`, via `@/lib/progress` — the ONLY domain
   lib that imports `@prisma/client` + `@/lib/db`. Split it into `progress-types.ts` (pure) and
-  `progress.ts` (queries).
+  `progress.ts` (queries). `src/lib/progress.test.ts` exists, so this one IS test-protected.
+
+**The test suite does not protect the UI layer.** `vitest.config.ts` is `include: src/**/*.test.ts`
+(no `.tsx`) and `environment: "node"`. All 229 tests are pure logic. Green tests say nothing about
+`AppHeader`/`AppSidebar`. The real safety nets are `npx tsc --noEmit`, `npm run build`, and
+clicking a nav link with DevTools open (a document request = client-side navigation is broken).
 
 **Never stub** `next/navigation`, `next-auth`, or `next-themes` to make a preview render — the
 card would then show a component that does not exist in the app, and the design agent would

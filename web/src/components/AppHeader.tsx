@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { Home, Headphones, GraduationCap, Settings } from "lucide-react";
 
-import { LogoutButton } from "@/components/LogoutButton";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -17,8 +15,23 @@ const NAV_LINKS = [
  * without typing a URL directly. Horizontally scrollable on narrow viewports
  * instead of wrapping, so it never grows past one line on mobile. Confined to
  * `lg:hidden` by the `(app)` layout, where `AppSidebar`'s vertical nav takes
- * over — the two never render at the same time. */
-export function AppHeader({ className }: { className?: string }) {
+ * over — the two never render at the same time.
+ *
+ * Presentational: navigation and sign-out are injected, so this renders
+ * unchanged outside a Next runtime (design-system previews). `linkComponent`
+ * has no default on purpose — omitting it would silently downgrade every link
+ * to a full page load, which no test or build would catch. */
+export function AppHeader({
+  className,
+  linkComponent: Link,
+  logoutSlot,
+}: {
+  className?: string;
+  /** Pass `NextLink` in the app; `"a"` anywhere without a router. Required. */
+  linkComponent: React.ElementType;
+  /** Rendered at the far right — the app passes `<LogoutButton variant="ghost" />`. */
+  logoutSlot: React.ReactNode;
+}) {
   return (
     <header className={cn("sticky top-0 z-10 border-b border-border bg-card", className)}>
       <div className="mx-auto flex max-w-4xl items-center gap-2 overflow-x-auto px-4 py-3">
@@ -42,9 +55,7 @@ export function AppHeader({ className }: { className?: string }) {
           ))}
         </nav>
 
-        <div className="ml-auto shrink-0 pl-2">
-          <LogoutButton variant="ghost" />
-        </div>
+        <div className="ml-auto shrink-0 pl-2">{logoutSlot}</div>
       </div>
     </header>
   );
