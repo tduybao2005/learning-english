@@ -26,6 +26,7 @@ const entry = `@import "../src/app/globals.css";
 @import "./fonts.css";
 
 @source "../src/components/ui";
+@source "../src/components";
 @source "../../.design-sync/previews";
 
 /* Designs rendered from this DS receive ONLY this compiled stylesheet — there
@@ -58,6 +59,11 @@ const entry = `@import "../src/app/globals.css";
 @source inline("bg-{background,card,popover,muted,primary,secondary,accent,success,destructive,transparent}");
 @source inline("text-{foreground,card-foreground,muted-foreground,primary,primary-foreground,secondary-foreground,accent-foreground,success-foreground,destructive}");
 @source inline("border{,-0,-2,-t,-b,-border,-input}");
+/* semantic state pairs the conventions header promises (the components use them
+   only with opacity modifiers, so the bare classes need pinning) */
+@source inline("{bg,border,text}-{success,destructive,streak}");
+@source inline("bg-{success,destructive,streak}-bg");
+@source inline("text-{success,destructive,streak}-foreground");
 @source inline("ring-{1,2,3}");
 @source inline("shadow-{xs,sm,md,lg}");
 @source inline("opacity-{50,60,70,80}");

@@ -13,10 +13,28 @@
     "Input": "src/components/ui/input.tsx",
     "Skeleton": "src/components/ui/skeleton.tsx",
     "Switch": "src/components/ui/switch.tsx",
-    "Tabs": "src/components/ui/tabs.tsx"
+    "Tabs": "src/components/ui/tabs.tsx",
+    "AnswerKeyAccordion": "src/components/AnswerKeyAccordion.tsx",
+    "GoalPicker": "src/components/GoalPicker.tsx",
+    "ExplanationSlot": "src/components/runner/ExplanationSlot.tsx",
+    "AudioPlayer": "src/components/AudioPlayer.tsx",
+    "LectureToc": "src/components/LectureToc.tsx",
+    "MarkdownContent": "src/components/MarkdownContent.tsx",
+    "QuestionCard": "src/components/runner/QuestionCard.tsx",
+    "ListeningRunner": "src/components/ListeningRunner.tsx",
+    "ListeningSetView": "src/components/ListeningSetView.tsx"
   },
   "overrides": {
-    "Tabs": { "cardMode": "column" }
+    "Tabs": { "cardMode": "column" },
+    "AnswerKeyAccordion": { "cardMode": "column" },
+    "AudioPlayer": { "cardMode": "column" },
+    "GoalPicker": { "cardMode": "column" },
+    "MarkdownContent": { "cardMode": "column" },
+    "ExplanationSlot": { "cardMode": "column" },
+    "QuestionCard": { "cardMode": "column" },
+    "ListeningRunner": { "cardMode": "column" },
+    "ListeningSetView": { "cardMode": "column" },
+    "LectureToc": { "cardMode": "column", "viewport": "1180x360" }
   },
   "dtsPropsFor": {
     "Button": "/** Visual style. Defaults to \"default\" (indigo primary). */\n  variant?: \"default\" | \"accent\" | \"success\" | \"outline\" | \"secondary\" | \"ghost\" | \"destructive\" | \"link\";\n  /** Height/padding scale. `icon*` sizes render a square icon-only button. */\n  size?: \"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\";\n  disabled?: boolean;\n  type?: \"button\" | \"submit\" | \"reset\";\n  onClick?: React.MouseEventHandler<HTMLButtonElement>;\n  className?: string;\n  children?: React.ReactNode;",
@@ -24,6 +42,15 @@
     "Input": "type?: React.HTMLInputTypeAttribute;\n  placeholder?: string;\n  value?: string | number;\n  defaultValue?: string | number;\n  disabled?: boolean;\n  /** Set to render the destructive border + ring error state. */\n  \"aria-invalid\"?: boolean | \"true\" | \"false\";\n  onChange?: React.ChangeEventHandler<HTMLInputElement>;\n  className?: string;",
     "Skeleton": "/** Size and shape come entirely from utility classes, e.g. `h-4 w-3/4`, `size-10 rounded-full`. */\n  className?: string;\n  children?: React.ReactNode;",
     "Switch": "/** Controlled checked state. Use `defaultChecked` for uncontrolled. */\n  checked?: boolean;\n  defaultChecked?: boolean;\n  disabled?: boolean;\n  readOnly?: boolean;\n  required?: boolean;\n  name?: string;\n  onCheckedChange?: (checked: boolean, eventDetails: unknown) => void;\n  className?: string;",
-    "Tabs": "/** Value of the initially selected tab (uncontrolled). */\n  defaultValue?: string | number;\n  /** Controlled selected tab value. */\n  value?: string | number;\n  onValueChange?: (value: string | number, eventDetails: unknown) => void;\n  orientation?: \"horizontal\" | \"vertical\";\n  className?: string;\n  children?: React.ReactNode;"
+    "Tabs": "/** Value of the initially selected tab (uncontrolled). */\n  defaultValue?: string | number;\n  /** Controlled selected tab value. */\n  value?: string | number;\n  onValueChange?: (value: string | number, eventDetails: unknown) => void;\n  orientation?: \"horizontal\" | \"vertical\";\n  className?: string;\n  children?: React.ReactNode;",
+    "AnswerKeyAccordion": "/** Raw markdown of the answer key. Rendered collapsed inside a native <details>, on the `streak` warning surface. Empty string renders a \"chưa có đáp án\" fallback. */\n  answerKeyMd: string;",
+    "ExplanationSlot": "/** Explanation text shown under a graded question. Renders `null` when absent. */\n  explanation: string | null;",
+    "MarkdownContent": "/** Markdown body. Leading YAML front-matter is stripped automatically. GFM tables/strikethrough supported. */\n  content: string;",
+    "AudioPlayer": "/** Audio source URL. */\n  src: string;\n  /** `compact` is the inline row used inside runners; `full` is the standalone player. */\n  variant?: \"compact\" | \"full\";",
+    "LectureToc": "/** Headings extracted from the lecture markdown (see `extractToc`). */\n  entries: { id: string; text: string }[];",
+    "GoalPicker": "/** Currently selected goal, or null when nothing is chosen yet. Fully controlled. */\n  value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string } | null;\n  onChange: (value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string }) => void;",
+    "QuestionCard": "  question: {\n    id: string;\n    number: number;\n    prompt: string;\n    options: { label: string; text: string }[] | null;\n    imageUrl?: string | null;\n    kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n    isOpenEnded: boolean;\n    errorSpan?: { start: number; end: number } | null;\n  };\n  disabled: boolean;\n  /** Runner phase — drives the correct/incorrect styling. Defaults to \"answering\" (neutral). */\n  status?: \"answering\" | \"checking\" | \"correct\" | \"incorrect\" | \"finished\";\n  onChangeInput: (value: string) => void;\n  emphasizePrompt?: boolean;",
+    "ListeningRunner": "  slug: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];\n  onSectionComplete?: (sectionIndex: number) => void;\n  onFinished: () => void;",
+    "ListeningSetView": "  slug: string;\n  /** URL of the listening audio. */\n  audioUrl: string;\n  /** Transcript markdown; `Speaker: line` rows are colourised per speaker. */\n  transcriptMd: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];"
   }
 }

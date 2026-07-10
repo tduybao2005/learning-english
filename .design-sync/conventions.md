@@ -1,8 +1,16 @@
 # Học tiếng Anh — design system conventions
 
-Six primitives (`Button`, `Card`, `Input`, `Skeleton`, `Switch`, `Tabs`) compiled
-from the app's real `src/components/ui`. React 19. Everything is exported on
+Compiled from the app's real sources. React 19. Everything is exported on
 `window.HocTiengAnhDS`.
+
+- **Primitives** (`src/components/ui`): `Button`, `Card`, `Input`, `Skeleton`, `Switch`, `Tabs`.
+- **Feature components** — prefer these over rebuilding them from primitives:
+  `MarkdownContent` (lesson/lecture prose), `AudioPlayer` (`compact` | `full`),
+  `LectureToc` (sticky rail; needs a ≥1024px column — it is `hidden lg:block`),
+  `GoalPicker` (IELTS band / CEFR level / TOEIC score, fully controlled),
+  `AnswerKeyAccordion` (closed-by-default answer key on the amber `streak` surface),
+  `QuestionCard` + `ExplanationSlot` (a single exercise question and its explanation),
+  `ListeningRunner` and `ListeningSetView` (whole listening screens).
 
 ## Setup
 
@@ -40,8 +48,13 @@ responsive-friendly — `lg:text-h2` works.
 
 The underlying tokens are CSS custom properties — `--primary`, `--accent`, `--success`,
 `--destructive`, `--muted`, `--border`, `--ring`, `--radius`, plus the app's own
-`--success-bg`, `--destructive-bg`, `--streak`, `--streak-bg`. Reach for `var(--streak)`
-only for the gamification/streak surfaces that have no utility class.
+`--success-bg`, `--destructive-bg`, `--streak`, `--streak-bg`.
+
+Three semantic pairs carry state and have real utility classes — use them rather than
+inventing colours: **correct/positive** `bg-success-bg` + `border-success` + `text-success`;
+**wrong/destructive** `bg-destructive-bg` + `border-destructive` + `text-destructive`;
+**streak/warning** `bg-streak-bg` + `border-streak` + `text-streak-foreground` (the amber
+gamification surface, e.g. the answer-key accordion).
 
 **Critical constraint — the stylesheet is static.** Designs receive a pre-compiled
 `styles.css`; there is no Tailwind JIT at design time. Only these utility families

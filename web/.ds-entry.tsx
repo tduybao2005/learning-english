@@ -22,3 +22,17 @@ export { Input } from "@/components/ui/input";
 export { Skeleton } from "@/components/ui/skeleton";
 export { Switch } from "@/components/ui/switch";
 export { Tabs, TabsList, TabsTrigger, TabsContent, tabsListVariants } from "@/components/ui/tabs";
+
+// Feature components that are purely presentational: they depend only on `cn`
+// and pure helpers (@/lib/toc, transcript, grading/error-span). Nothing here
+// touches next/link, next/navigation, next-auth, next-themes, or Prisma, so
+// they bundle as-is with no stubs.
+export { AnswerKeyAccordion } from "@/components/AnswerKeyAccordion";
+export { GoalPicker } from "@/components/GoalPicker";
+export { ExplanationSlot } from "@/components/runner/ExplanationSlot";
+export { AudioPlayer } from "@/components/AudioPlayer";
+export { LectureToc } from "@/components/LectureToc";
+export { MarkdownContent } from "@/components/MarkdownContent";
+export { QuestionCard } from "@/components/runner/QuestionCard";
+export { ListeningRunner } from "@/components/ListeningRunner";
+export { ListeningSetView } from "@/components/ListeningSetView";

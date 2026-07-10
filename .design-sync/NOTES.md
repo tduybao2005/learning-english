@@ -76,19 +76,57 @@ All six therefore use hand-written `cfg.dtsPropsFor` bodies, checked against the
 
 ## Known render warns
 
-- None outstanding. `[GRID_OVERFLOW]` on `Tabs` was real (both stories wider than a grid
-  cell) and is fixed by `cfg.overrides.Tabs = {"cardMode": "column"}`.
+- None outstanding. `[GRID_OVERFLOW]` was real for `Tabs` and for most feature components
+  (they are page-width by nature); all are fixed with `cfg.overrides.<Name>.cardMode = "column"`.
 
-## If the feature components are ever synced
+## Traps the render check does NOT catch (found the hard way)
 
-- **`lucide-react` must be added to `cfg.extraEntries`.** Five feature components
-  (`AppSidebar`, `AppHeader`, …) import icons from it, and it is currently NOT in the bundle
-  (`grep -c lucide ds-bundle/_ds_bundle.js` → 0). Without it icons render as empty boxes.
-- Add the feature-component dirs to `@source` in `build-css.mjs` so their `cva()`/utility
-  classes compile; the safelist covers only the agent's own layout glue.
-- Never stub `next/navigation`, `next-auth`, or `next-themes` to make a preview render — the
-  card would then show a component that does not exist in the app. Extract the presentational
-  layer instead (see the tiering in the sync conversation / plan file).
+- **`⚠` as legitimate content is misread as a caught error.** `package-validate.mjs` treats a
+  cell whose text starts with `⚠` as a render error (`if (t.startsWith('⚠')) caught++`).
+  `AnswerKeyAccordion`'s `<summary>` legitimately opens with "⚠️ Đáp án & giải thích", so its
+  card reported `bad: 2` with **zero** actual pageerrors. The preview leads with a caption line
+  so the cell text no longer starts with `⚠`. Don't "fix" this by skipping the component.
+- **`hidden lg:block` components render as an empty card and still pass the render check.**
+  `LectureToc` is a desktop-only aside; at the default card viewport it is `display:none`, the
+  root is non-empty, and nothing flags it. Fixed with
+  `cfg.overrides.LectureToc.viewport = "1180x360"`. **Always look at the review sheets** — this
+  class of failure is invisible to every automated check.
+- **`QuestionCard` graded states cannot be shown on a multiple-choice question.** The selected
+  option lives in an internal `useState` with no prop to seed it, so a static graded MCQ renders
+  as plain-disabled. The `Correct`/`Incorrect` cells therefore use `FILL_BLANK`, where `status`
+  colours the input directly.
+- **`AnswerKeyAccordion` has no open state in previews** — it is a native `<details>` with no
+  `open` prop. Every static render is the closed summary bar.
+- **`cfg.overrides.*.viewport` changes require a full `package-build.mjs`**, not
+  `preview-rebuild.mjs` (which exits `[CONFIG_STALE]`). `cardMode` alone is fine in the
+  targeted loop.
+
+## Feature components — what is synced, what is not
+
+**Synced (9, no app changes needed).** `AnswerKeyAccordion`, `GoalPicker`, `ExplanationSlot`,
+`AudioPlayer`, `LectureToc`, `MarkdownContent`, `QuestionCard`, `ListeningRunner`,
+`ListeningSetView`. They depend only on `cn` and pure helpers. `lucide-react` and
+`react-markdown` are ordinary imports and esbuild inlines them (bundle ≈ 0.75 MB, 80 inlined
+externals) — no `cfg.extraEntries` needed. Group comes from the src path, so the two under
+`src/components/runner/` land in a `runner` group.
+
+**Still out of scope, by blocker:**
+
+- `next/link` only (9): `EmptyState`, `ErrorState`, `AppHeader`, `lesson-node`, `LessonTabs`,
+  `Flashcards`, `MatchGame`, `QuizGame`, `ExerciseRunner`. Fix once with a `LinkContext`
+  defaulting to `<a>`; the app injects `next/link`. Then `cfg.provider` = that provider.
+- Router / session / theme (7): `AppSidebar`, `PlacementWizard`, `ResetToStartButton`,
+  `SettingsGoalForm`, `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. Split each into a
+  presentational component taking `pathname` / `onNavigate` / `onLogout` / `onThemeChange`, plus
+  a thin container that stays in the app. Highest design impact (`AppHeader`/`AppSidebar` are on
+  every screen) and it makes them testable with the existing vitest setup.
+- Prisma (3): `IeltsHub`, `LessonMap`, `PhasePillRow`, via `@/lib/progress` — the ONLY domain
+  lib that imports `@prisma/client` + `@/lib/db`. Split it into `progress-types.ts` (pure) and
+  `progress.ts` (queries).
+
+**Never stub** `next/navigation`, `next-auth`, or `next-themes` to make a preview render — the
+card would then show a component that does not exist in the app, and the design agent would
+reproduce that fiction in every design it builds.
 
 ## Re-sync risks
 
