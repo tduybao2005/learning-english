@@ -21,7 +21,7 @@ export interface PlacementSectionWithQuestions {
 
 /**
  * Same true-pedagogical-order convention as `lib/exercises.ts`'s
- * `getOrderedQuestions` / `lib/listening.ts`'s `getOrderedListeningQuestions`
+ * `getOrderedQuestions` / `lib/listening.ts`'s `getOrderedListeningSections`
  * (Section.orderIndex asc, then Question.number asc within each section) —
  * just scoped to `placementTestId` instead, and grouped by section (rather
  * than flattened) since the placement wizard shows a whole section's

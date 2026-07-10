@@ -1,49 +1,67 @@
 "use client";
 
-import { useEffect, useReducer } from "react";
+import { useEffect, useMemo, useReducer, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { initRunnerState, runnerReducer } from "@/components/runner/reducer";
 import { QuestionCard, type SafeQuestion } from "@/components/runner/QuestionCard";
 import { ExplanationSlot } from "@/components/runner/ExplanationSlot";
+import {
+  completedSectionCount,
+  questionIndexInSection,
+  sectionIndexForQuestion,
+  sectionStartIndexes,
+} from "@/components/runner/sections";
+
+export interface SafeListeningSection {
+  label: string;
+  title: string;
+  instructions: string | null;
+  questions: SafeQuestion[];
+}
 
 /**
- * Question-answering flow for a listening set's practice questions.
- *
- * Reuses Task 9's runner pieces (`runnerReducer`/`initRunnerState` for the
- * answering -> checking -> correct|incorrect -> finished state machine,
- * `QuestionCard` for per-kind inputs, `ExplanationSlot` for the — currently
- * always-null — future AI slot) so the interaction model matches the lesson
- * exercise runner exactly. Unlike `ExerciseRunner`, there is no persisted
- * attempt/redo and no lesson-unlock side effect: answers are checked against
- * `POST /api/listening/[slug]/check` (stateless — see that route's docstring
- * for why listening sets don't get a full ExerciseAttempt flow), and
- * "finished" is purely client-side, reported via `onFinished` so the parent
- * page can unlock the transcript reveal.
+ * Question-answering flow for a listening set, rendered as "Phần 1..N"
+ * sections over the same flat forward-only reducer as before (reducer and
+ * the stateless POST /api/listening/[slug]/check are untouched). The section
+ * stepper is display-only: free section jumping would break the
+ * retry-until-correct completion invariant that gates transcript unlock.
+ * `onSectionComplete(i)` fires once per section, in order, so the parent can
+ * unlock that section's transcript chunk.
  */
 export function ListeningRunner({
   slug,
-  questions,
+  sections,
+  onSectionComplete,
   onFinished,
 }: {
   slug: string;
-  questions: SafeQuestion[];
+  sections: SafeListeningSection[];
+  onSectionComplete?: (sectionIndex: number) => void;
   onFinished: () => void;
 }) {
+  const flat = useMemo(() => sections.flatMap((s) => s.questions), [sections]);
+  const counts = useMemo(() => sections.map((s) => s.questions.length), [sections]);
+
   const [state, dispatch] = useReducer(runnerReducer, undefined, () =>
     initRunnerState(
-      questions.map((q) => q.id),
+      flat.map((q) => q.id),
       0,
     ),
   );
 
+  // Strict-mode-safe: remembers how many sections were already reported.
+  const reportedRef = useRef(0);
   useEffect(() => {
+    const done = completedSectionCount(counts, state.index, state.phase === "finished");
+    for (let s = reportedRef.current; s < done; s++) onSectionComplete?.(s);
+    reportedRef.current = Math.max(reportedRef.current, done);
     if (state.phase === "finished") onFinished();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once per finish, not on every onFinished identity change
-  }, [state.phase]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire on progress transitions, not callback identity changes
+  }, [state.index, state.phase]);
 
-  if (questions.length === 0) {
+  if (flat.length === 0) {
     return (
       <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
         Bài nghe này chưa có câu hỏi.
@@ -51,8 +69,8 @@ export function ListeningRunner({
     );
   }
 
-  const total = questions.length;
-  const question = questions[state.index];
+  const total = flat.length;
+  const question = flat[state.index];
 
   async function handleSubmit() {
     if (state.phase !== "answering" && state.phase !== "incorrect") return;
@@ -74,14 +92,17 @@ export function ListeningRunner({
     return (
       <div className="flex flex-col items-center gap-2 rounded-xl border border-success/50 bg-success-bg p-8 text-center">
         <div className="text-4xl">🎉</div>
-        <h2 className="text-lg font-bold">Hoàn thành phần câu hỏi!</h2>
-        <p className="text-sm text-muted-foreground">Bây giờ bạn có thể xem transcript bên dưới.</p>
+        <h2 className="text-lg font-bold">Hoàn thành cả {sections.length} phần!</h2>
+        <p className="text-sm text-muted-foreground">Bây giờ bạn có thể xem toàn bộ lời thoại.</p>
       </div>
     );
   }
 
   if (!question) return null;
 
+  const sIdx = sectionIndexForQuestion(counts, state.index);
+  const qInSection = questionIndexInSection(counts, state.index);
+  const section = sections[sIdx];
   const percent = Math.round((state.index / total) * 100);
   const isChecking = state.phase === "checking";
   const isIncorrect = state.phase === "incorrect";
@@ -89,12 +110,29 @@ export function ListeningRunner({
 
   return (
     <div className="flex flex-col gap-4">
+      <SectionStepper sections={sections} counts={counts} flatIndex={state.index} />
+
+      <div className="rounded-xl border border-border bg-card px-5 py-4">
+        <p className="text-caption font-bold tracking-wide text-primary">
+          PHẦN {sIdx + 1}/{sections.length}
+        </p>
+        <p className="mt-0.5 font-semibold">{section.title}</p>
+        {section.instructions && (
+          <p className="mt-1 text-sm text-muted-foreground">{section.instructions}</p>
+        )}
+      </div>
+
       <div>
         <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground">
           <span>
-            Câu {state.index + 1}/{total}
+            Phần {sIdx + 1} · Câu {qInSection + 1}/{counts[sIdx]}
           </span>
-          {isIncorrect && <span>Lần thử: {state.tries}</span>}
+          <span className="flex items-center gap-3">
+            {isIncorrect && <span>Lần thử: {state.tries}</span>}
+            <span>
+              Tổng: {state.index + 1}/{total}
+            </span>
+          </span>
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
           <div
@@ -150,5 +188,44 @@ export function ListeningRunner({
         </div>
       </div>
     </div>
+  );
+}
+
+function SectionStepper({
+  sections,
+  counts,
+  flatIndex,
+}: {
+  sections: SafeListeningSection[];
+  counts: number[];
+  flatIndex: number;
+}) {
+  const starts = sectionStartIndexes(counts);
+  const current = sectionIndexForQuestion(counts, flatIndex);
+  return (
+    <ol className="flex flex-wrap gap-2" aria-label="Tiến độ các phần">
+      {sections.map((_, i) => {
+        const answered = Math.min(Math.max(flatIndex - starts[i], 0), counts[i]);
+        const done = answered >= counts[i];
+        const isCurrent = i === current && !done;
+        return (
+          <li
+            key={i}
+            aria-current={isCurrent ? "step" : undefined}
+            className={cn(
+              "flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium",
+              done && "bg-success-bg text-success",
+              isCurrent && "bg-primary text-primary-foreground",
+              !done && !isCurrent && "bg-muted text-muted-foreground",
+            )}
+          >
+            <span>Phần {i + 1}</span>
+            <span className={cn(!isCurrent && !done && "opacity-70")}>
+              {done ? "✓" : `${answered}/${counts[i]}`}
+            </span>
+          </li>
+        );
+      })}
+    </ol>
   );
 }

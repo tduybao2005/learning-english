@@ -11,30 +11,6 @@ export interface OrderedListeningQuestion {
   isOpenEnded: boolean;
 }
 
-/**
- * Same true-pedagogical-order convention as `lib/exercises.ts`'s
- * `getOrderedQuestions` (Section.orderIndex asc, then Question.number asc
- * within each section) — just scoped to `listeningSetId` instead of
- * `exerciseId`, since `Section` has exactly one of the two FKs set.
- */
-export async function getOrderedListeningQuestions(listeningSetId: string): Promise<OrderedListeningQuestion[]> {
-  const sections = await db.section.findMany({
-    where: { listeningSetId },
-    orderBy: { orderIndex: "asc" },
-    select: {
-      kind: true,
-      questions: {
-        orderBy: { number: "asc" },
-        select: { id: true, number: true, prompt: true, options: true, imageUrl: true, isOpenEnded: true },
-      },
-    },
-  });
-
-  return sections.flatMap((section) =>
-    section.questions.map((q) => ({ ...q, kind: section.kind as QuestionKind })),
-  );
-}
-
 export interface ListeningSectionWithQuestions {
   label: string;
   title: string;
@@ -44,11 +20,15 @@ export interface ListeningSectionWithQuestions {
 }
 
 /**
- * Same as `getOrderedListeningQuestions`, but grouped by section (with each
- * section's label/title/instructions) instead of flattened — needed by the
- * placement wizard so a multi-part listening test (IELTS 4 sections / TOEIC
- * 4 parts) can render its section headers, mirroring
- * `lib/placement.ts`'s `getOrderedPlacementSections`.
+ * Same true-pedagogical-order convention as `lib/exercises.ts`'s
+ * `getOrderedQuestions` (Section.orderIndex asc, then Question.number asc
+ * within each section) — just scoped to `listeningSetId` instead of
+ * `exerciseId`, since `Section` has exactly one of the two FKs set. Grouped
+ * by section (with each section's label/title/instructions) rather than
+ * flattened — needed by the placement wizard so a multi-part listening test
+ * (IELTS 4 sections / TOEIC 4 parts) can render its section headers,
+ * mirroring `lib/placement.ts`'s `getOrderedPlacementSections`, and by the
+ * sectioned Luyện Nghe runner.
  */
 export async function getOrderedListeningSections(listeningSetId: string): Promise<ListeningSectionWithQuestions[]> {
   const sections = await db.section.findMany({
