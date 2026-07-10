@@ -28,6 +28,10 @@ const entry = `@import "../src/app/globals.css";
 @source "../src/components/ui";
 @source "../src/components";
 @source "../../.design-sync/previews";
+/* LevelBadge's per-level badgeClass strings live in this lib helper, outside the
+   components scan; without it the opacity-modified pills (bg-primary/10,
+   bg-accent/15, text-accent, bg-destructive/10) emit no CSS. */
+@source "../src/lib/listening-ui.ts";
 
 /* Designs rendered from this DS receive ONLY this compiled stylesheet — there
    is no Tailwind JIT at design time. Utilities the six components happen not to

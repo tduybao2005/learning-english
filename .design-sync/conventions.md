@@ -16,7 +16,13 @@ Compiled from the app's real sources. React 19. Everything is exported on
   `GoalPicker` (IELTS band / CEFR level / TOEIC score, fully controlled),
   `AnswerKeyAccordion` (closed-by-default answer key on the amber `streak` surface),
   `QuestionCard` + `ExplanationSlot` (a single exercise question and its explanation),
-  `ListeningRunner` and `ListeningSetView` (whole listening screens).
+  `ListeningRunner` and `ListeningSetView` (whole listening screens),
+  `LevelBadge` (CEFR pill: `level` is `"A2" | "B1" | "B2" | "C1"`, colour per level),
+  `EmptyState` (encouraging empty screen with optional CTA — takes a **required**
+  `linkComponent`, pass `"a"`), `ListeningSetCard` (one listening set as a link row —
+  also takes a **required** `linkComponent`, pass `"a"`),
+  `PlacementWizard` (the full multi-step placement test — listening/reading/writing;
+  takes a required `onFinished`, pass a no-op in a design).
 
 ## Setup
 

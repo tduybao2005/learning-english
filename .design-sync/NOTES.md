@@ -121,14 +121,37 @@ pass a function from a server component. Full write-up: `docs/design/APP_SHELL_E
 silently downgrade every link to a full page load — green build, green tests, no error. Verified
 the guard fires by compiling a deliberate omission (TS2739).
 
+**Presentational feature components — synced (4, Task 5).** `EmptyState`, `LevelBadge`,
+`ListeningSetCard`, `PlacementWizard` were extracted in Tasks 2–4 and added to the bundle
+(21 components total).
+
+- `EmptyState` and `ListeningSetCard` take a **required** `linkComponent` (no default, same
+  rationale as `AppHeader`) — previews pass `linkComponent="a"`.
+- `LevelBadge` reuses `LEVEL_META` from `src/lib/listening-ui.ts`, whose
+  `import type { CefrLevel } from "@prisma/client"` is **type-only and erased at compile**, so
+  no Prisma reaches the bundle (verified: the purity grep finds no `next-auth`/`useRouter`/
+  `usePathname`/`next/link`). Its per-level `badgeClass` strings live in that lib file, outside
+  the `@source "../src/components"` scan, so `build-css.mjs` gained a targeted
+  `@source "../src/lib/listening-ui.ts"` — without it `bg-primary/10`, `bg-accent/15`,
+  `text-accent`, `bg-destructive/10` emit no CSS and the pills render unstyled.
+- `PlacementWizard` **retains its two `fetch()` calls** (`/api/placement/submit-section` and
+  `/api/placement/complete`). They fire only on submit, so the static preview renders correctly,
+  but **interactive submit inside a design will fail** — this is a known limitation, not a bug.
+  It needs a tall viewport (`900x760`, `cardMode: single`, `primaryStory: ListeningStep`).
+- All four flattened to `[key: string]: unknown` from ts-morph (plain inline prop types still
+  degraded), so all four have hand-written `cfg.dtsPropsFor` bodies; the emitted `.d.ts`
+  typecheck clean under `tsc --noEmit`.
+
 **Still out of scope, by blocker:**
 
-- `next/link` only (8): `EmptyState`, `ErrorState`, `lesson-node`, `LessonTabs`, `Flashcards`,
-  `MatchGame`, `QuizGame`, `ExerciseRunner`. Reuse the `linkComponent` prop pattern; if the list
-  grows, a `LinkContext` defaulting to `"a"` costs less threading (but forces `"use client"`).
-- Router / session / theme (5): `PlacementWizard`, `ResetToStartButton`, `SettingsGoalForm`,
-  `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. These are containers — they cause
-  effects. Split each into presentation + a thin connected wrapper, as done for the sidebar.
+- `next/link` only (6): `ErrorState`, `lesson-node`, `LessonTabs`, `Flashcards`,
+  `MatchGame`, `QuizGame`, `ExerciseRunner`. (`EmptyState` and `ListeningSetCard` cleared this
+  blocker in Task 5 via the `linkComponent` prop.) If the list grows, a `LinkContext` defaulting
+  to `"a"` costs less threading (but forces `"use client"`).
+- Router / session / theme (5): `ResetToStartButton`, `SettingsGoalForm`,
+  `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. (`PlacementWizard` was synced in Task 5
+  — it renders statically; only its submit `fetch()`es are inert in a design.) These are
+  containers — they cause effects. Split each into presentation + a thin connected wrapper.
 - Prisma (3): `IeltsHub`, `LessonMap`, `PhasePillRow`, via `@/lib/progress` — the ONLY domain
   lib that imports `@prisma/client` + `@/lib/db`. Split it into `progress-types.ts` (pure) and
   `progress.ts` (queries). `src/lib/progress.test.ts` exists, so this one IS test-protected.

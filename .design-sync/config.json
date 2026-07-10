@@ -24,7 +24,11 @@
     "ListeningRunner": "src/components/ListeningRunner.tsx",
     "ListeningSetView": "src/components/ListeningSetView.tsx",
     "AppHeader": "src/components/AppHeader.tsx",
-    "AppSidebar": "src/components/AppSidebar.tsx"
+    "AppSidebar": "src/components/AppSidebar.tsx",
+    "EmptyState": "src/components/EmptyState.tsx",
+    "LevelBadge": "src/components/LevelBadge.tsx",
+    "ListeningSetCard": "src/components/ListeningSetCard.tsx",
+    "PlacementWizard": "src/components/PlacementWizard.tsx"
   },
   "overrides": {
     "Tabs": { "cardMode": "column" },
@@ -38,7 +42,10 @@
     "ListeningSetView": { "cardMode": "column" },
     "LectureToc": { "cardMode": "column", "viewport": "1180x360" },
     "AppHeader": { "cardMode": "single", "primaryStory": "Default", "viewport": "760x120" },
-    "AppSidebar": { "cardMode": "single", "primaryStory": "Dashboard", "viewport": "1180x560" }
+    "AppSidebar": { "cardMode": "single", "primaryStory": "Dashboard", "viewport": "1180x560" },
+    "EmptyState": { "cardMode": "column" },
+    "ListeningSetCard": { "cardMode": "column" },
+    "PlacementWizard": { "cardMode": "single", "primaryStory": "ListeningStep", "viewport": "900x760" }
   },
   "dtsPropsFor": {
     "Button": "/** Visual style. Defaults to \"default\" (indigo primary). */\n  variant?: \"default\" | \"accent\" | \"success\" | \"outline\" | \"secondary\" | \"ghost\" | \"destructive\" | \"link\";\n  /** Height/padding scale. `icon*` sizes render a square icon-only button. */\n  size?: \"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\";\n  disabled?: boolean;\n  type?: \"button\" | \"submit\" | \"reset\";\n  onClick?: React.MouseEventHandler<HTMLButtonElement>;\n  className?: string;\n  children?: React.ReactNode;",
@@ -57,6 +64,10 @@
     "ListeningRunner": "  slug: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];\n  onSectionComplete?: (sectionIndex: number) => void;\n  onFinished: () => void;",
     "AppHeader": "  className?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. No default: omitting it would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;\n  /** Rendered far right. The app passes <LogoutButton variant=\"ghost\" />. */\n  logoutSlot: React.ReactNode;",
     "AppSidebar": "  name: string | null;\n  email: string;\n  /** Placement band, e.g. 6.5. `null` renders \"Chưa xếp hạng\". */\n  band: number | null;\n  /** Current route, e.g. \"/listening\". Drives nav highlighting. */\n  pathname: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. No default — see AppHeader. */\n  linkComponent: React.ElementType;",
+    "EmptyState": "/** Emoji shown in the soft tile. Defaults to \"🌱\". */\n  icon?: string;\n  title: string;\n  description?: string;\n  /** CTA link target. Both ctaHref and ctaLabel must be set for the button to render. */\n  ctaHref?: string;\n  ctaLabel?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default. */\n  linkComponent: React.ElementType;",
+    "LevelBadge": "/** CEFR level; selects the label + semantic-token pill colour from LEVEL_META. */\n  level: \"A2\" | \"B1\" | \"B2\" | \"C1\";\n  className?: string;",
+    "ListeningSetCard": "  href: string;\n  title: string;\n  questionCount: number;\n  /** Pre-formatted, e.g. \"8:20\". Omit to hide. */\n  durationLabel?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default. */\n  linkComponent: React.ElementType;\n  className?: string;",
+    "PlacementWizard": "  /** Listening section data, or null when listening is not yet available. */\n  listening: {\n    audioUrl: string;\n    durationSec: number | null;\n    sections: {\n      label: string;\n      title: string;\n      instructions: string | null;\n      questions: {\n        id: string;\n        number: number;\n        prompt: string;\n        options: { label: string; text: string }[] | null;\n        kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n        isOpenEnded: boolean;\n      }[];\n    }[];\n  } | null;\n  /** Reading passage markdown. */\n  readingMd: string;\n  readingSections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];\n  writingPromptMd: string;\n  /** Called after `/api/placement/complete` succeeds. The app navigates to the result page; a design passes a no-op. Required. */\n  onFinished: () => void;",
     "ListeningSetView": "  slug: string;\n  /** URL of the listening audio. */\n  audioUrl: string;\n  /** Transcript markdown; `Speaker: line` rows are colourised per speaker. */\n  transcriptMd: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];"
   }
 }
