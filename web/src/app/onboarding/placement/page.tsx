@@ -68,7 +68,7 @@ export default async function PlacementTestPage() {
   }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 lg:max-w-5xl">
+    <div className="mx-auto w-full max-w-5xl px-6 pt-8 pb-24">
       <PlacementWizardConnected
         listening={
           listeningSet

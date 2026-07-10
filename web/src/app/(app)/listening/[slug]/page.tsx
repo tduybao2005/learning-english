@@ -6,8 +6,7 @@ import { getSessionUser } from "@/lib/auth/session";
 import { getOrderedListeningSections } from "@/lib/listening";
 import { ListeningSetView } from "@/components/ListeningSetView";
 import type { SafeListeningSection } from "@/components/ListeningRunner";
-import { LEVEL_META } from "@/lib/listening-ui";
-import { cn } from "@/lib/utils";
+import { LevelBadge } from "@/components/LevelBadge";
 
 export default async function ListeningSetPage({
   params,
@@ -41,27 +40,13 @@ export default async function ListeningSetPage({
   }));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 lg:max-w-5xl">
-      <Link
-        href="/listening"
-        className="mb-4 inline-block text-caption text-muted-foreground hover:text-foreground"
-      >
-        ← Quay lại luyện nghe
-      </Link>
-
-      <div className="mb-6 flex flex-wrap items-center gap-3">
-        <h1 className="text-h1 font-bold">{listeningSet.title}</h1>
-        {listeningSet.level && (
-          <span
-            className={cn(
-              "rounded-full px-2.5 py-0.5 text-xs font-bold",
-              LEVEL_META[listeningSet.level].badgeClass,
-            )}
-          >
-            {listeningSet.level} · {LEVEL_META[listeningSet.level].labelVi}
-          </span>
-        )}
+    <div className="mx-auto w-full max-w-5xl px-6 pt-4 pb-8">
+      <div className="mb-3 flex flex-wrap items-center gap-3">
+        {listeningSet.level && <LevelBadge level={listeningSet.level} />}
+        <h1 className="text-h1 font-heading">{listeningSet.title}</h1>
       </div>
+
+      <div className="mb-5 border-b border-border" />
 
       <ListeningSetView
         slug={listeningSet.slug}
@@ -69,6 +54,15 @@ export default async function ListeningSetPage({
         transcriptMd={listeningSet.transcriptMd}
         sections={safeSections}
       />
+
+      <div className="mt-8 border-t border-border pt-4">
+        <Link
+          href="/listening"
+          className="inline-flex items-center gap-1 text-caption text-muted-foreground hover:text-foreground"
+        >
+          ← Quay lại danh sách bài nghe
+        </Link>
+      </div>
     </div>
   );
 }

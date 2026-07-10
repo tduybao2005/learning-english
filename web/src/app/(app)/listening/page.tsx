@@ -33,22 +33,28 @@ export default async function ListeningHubPage() {
     },
   });
 
+  const unleveled = sets.filter((s) => s.level === null);
   const groups: { level: CefrLevel | null; sets: typeof sets }[] = [
+    // Every CEFR level shows, even with no sets — an empty one renders a
+    // "sắp ra mắt" card so the learner can see the road ahead.
     ...LEVEL_ORDER.map((level) => ({
       level: level as CefrLevel | null,
       sets: sets.filter((s) => s.level === level),
     })),
     // Defensive bucket for PRACTICE sets missing a level (seed WARNs on these).
-    { level: null, sets: sets.filter((s) => s.level === null) },
-  ].filter((g) => g.sets.length > 0);
+    // Unlike the CEFR groups, this one only appears when it has something in it.
+    ...(unleveled.length > 0 ? [{ level: null, sets: unleveled }] : []),
+  ];
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <h1 className="mb-1 text-2xl font-bold">Luyện nghe</h1>
-      <p className="mb-6 text-sm text-muted-foreground">
-        Chọn bài nghe theo cấp độ. Mỗi bài gồm 4 phần với 40 câu hỏi — hoàn thành từng phần để mở
-        khóa lời thoại.
-      </p>
+    <div className="mx-auto max-w-5xl px-6 py-8">
+      <header className="mb-8">
+        <h1 className="text-h1 font-heading">Luyện nghe</h1>
+        <p className="mt-2 text-body text-muted-foreground">
+          Chọn bài nghe theo cấp độ. Mỗi bài gồm 4 phần với 40 câu hỏi — hoàn thành từng phần để mở
+          khóa lời thoại.
+        </p>
+      </header>
 
       {sets.length === 0 ? (
         <EmptyState
@@ -58,20 +64,23 @@ export default async function ListeningHubPage() {
           linkComponent={NextLink}
         />
       ) : (
-        <div className="flex flex-col gap-8">
-          {groups.map((group) => (
-            <section key={group.level ?? "other"}>
-              <div className="mb-3 flex items-center gap-2">
-                {group.level ? (
-                  <h2>
-                    <LevelBadge level={group.level} />
-                  </h2>
-                ) : (
-                  <h2 className="font-semibold">Khác</h2>
-                )}
-                <span className="text-caption text-muted-foreground">· {group.sets.length} bài</span>
-              </div>
-              <div className="flex flex-col gap-3">
+        groups.map((group) => (
+          <section key={group.level ?? "other"} className="mt-10">
+            <div className="mb-4 flex items-center justify-between gap-3">
+              {group.level ? (
+                <h2>
+                  <LevelBadge level={group.level} className="px-3 py-1 text-sm" />
+                </h2>
+              ) : (
+                <h2 className="text-h2 font-heading">Khác</h2>
+              )}
+              <span className="text-caption text-muted-foreground">
+                {group.sets.length > 0 ? `${group.sets.length} bộ bài` : "Sắp ra mắt"}
+              </span>
+            </div>
+
+            {group.sets.length > 0 ? (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {group.sets.map((set) => (
                   <ListeningSetCard
                     key={set.slug}
@@ -83,9 +92,18 @@ export default async function ListeningHubPage() {
                   />
                 ))}
               </div>
-            </section>
-          ))}
-        </div>
+            ) : (
+              <div className="rounded-xl border border-border bg-card">
+                <EmptyState
+                  icon="🎧"
+                  title="Chưa có bài nghe cho cấp độ này"
+                  description="Các bài nghe đang được biên soạn. Trong lúc chờ, hãy luyện thêm ở cấp độ thấp hơn."
+                  linkComponent={NextLink}
+                />
+              </div>
+            )}
+          </section>
+        ))
       )}
     </div>
   );
