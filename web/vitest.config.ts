@@ -10,8 +10,10 @@ export default defineConfig({
     // `db`, `matchAnswer`, `getNextLesson` — via "@/..." specifiers.
     alias: { "@": path.resolve(__dirname, "./src") },
   },
+  // tsconfig sets jsx:"preserve" for Next; vitest needs a real transform.
+  esbuild: { jsx: "automatic" },
   test: {
-    include: ["src/**/*.test.ts", "scripts/**/*.test.ts"],
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx", "scripts/**/*.test.ts"],
     environment: "node",
     passWithNoTests: true,
   },
