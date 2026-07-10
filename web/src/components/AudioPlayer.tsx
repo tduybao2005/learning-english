@@ -22,11 +22,12 @@ function formatTime(sec: number): string {
  * speed picker. Kept as a thin controller over the native element (no custom
  * audio engine) — `<audio>` already handles buffering/streaming/decoding.
  *
- * Two visual variants share the same playback logic/state/refs:
- * - `"compact"` (default): Task 10's pale card look, used by the placement
- *   wizard.
- * - `"full"`: a fully primary-colored card used by the listening hub pages
- *   (Task 12), with a custom progress track and larger controls.
+ * Two visual variants share the same playback logic/state/refs. `variant` is
+ * purely presentational — both wrap one `<audio src>` and play the same file
+ * end to end; neither scopes playback to a section.
+ * - `"compact"` (default): a pale card, controls in one row.
+ * - `"full"`: a fully primary-colored card with a custom progress track and
+ *   larger controls. Used by the listening set page and the placement wizard.
  */
 export function AudioPlayer({
   src,

@@ -243,7 +243,7 @@ export function PlacementWizard({
           {listening ? (
             <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[380px_minmax(0,1fr)] lg:items-start lg:gap-8">
               <div className="lg:sticky lg:top-8">
-                <AudioPlayer src={listening.audioUrl} />
+                <AudioPlayer src={listening.audioUrl} variant="full" />
               </div>
               <div className="flex flex-col gap-6">
                 {listening.sections.map((section) => (
