@@ -49,8 +49,11 @@ function LockedNote({ label }: { label: string }) {
 }
 
 /**
- * Client-side glue for `/listening/[slug]`: sticky AudioPlayer above the
- * sectioned runner. Transcript unlock is per completed section when the
+ * Client-side glue for `/listening/[slug]`. Desktop: questions on the left,
+ * a sticky right rail holding the AudioPlayer above the transcript. Mobile:
+ * player first, then questions, then per-section transcript accordions — the
+ * player is one element, reordered by `lg:order-*`, never duplicated.
+ * Transcript unlock is per completed section when the
  * transcript splits cleanly on "NARRATOR: Section N." markers
  * (transcriptChunksForSections); otherwise (legacy/TOEIC "Part N" content)
  * it falls back to the previous all-questions gate.
@@ -75,9 +78,36 @@ export function ListeningSetView({
 
   return (
     <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-8">
-      <div className="flex min-w-0 flex-col gap-6">
+      {/* Right rail on desktop, but first in DOM order so mobile — which has no
+          right column — still gets the player above the questions. */}
+      <div className="flex flex-col gap-6 lg:sticky lg:top-8 lg:order-2 lg:max-h-[calc(100vh-4rem)]">
         <AudioPlayer src={audioUrl} variant="full" />
 
+        {/* Desktop: transcript under the player */}
+        <aside className="hidden min-h-0 overflow-y-auto rounded-xl border border-border bg-card p-4 lg:block">
+          <p className="mb-3 text-caption font-bold tracking-wide text-muted-foreground">📄 LỜI THOẠI</p>
+          {chunks ? (
+            <div className="flex flex-col gap-4">
+              {chunks.map((chunk, i) =>
+                sectionsDone > i ? (
+                  <div key={i}>
+                    <p className="mb-1 text-caption font-bold text-muted-foreground">Phần {i + 1}</p>
+                    <TranscriptBody transcriptMd={chunk} />
+                  </div>
+                ) : (
+                  <LockedNote key={i} label={`Phần ${i + 1}: hoàn thành để mở khóa.`} />
+                ),
+              )}
+            </div>
+          ) : allDone ? (
+            <TranscriptBody transcriptMd={transcriptMd} />
+          ) : (
+            <LockedNote label="Hoàn thành câu hỏi để mở khóa lời thoại." />
+          )}
+        </aside>
+      </div>
+
+      <div className="flex min-w-0 flex-col gap-6 lg:order-1">
         <ListeningRunner
           slug={slug}
           sections={sections}
@@ -149,29 +179,6 @@ export function ListeningSetView({
           </details>
         )}
       </div>
-
-      {/* Desktop: sticky aside */}
-      <aside className="sticky top-8 hidden max-h-[calc(100vh-4rem)] overflow-y-auto rounded-xl border border-border bg-card p-4 lg:block">
-        <p className="mb-3 text-caption font-bold tracking-wide text-muted-foreground">📄 LỜI THOẠI</p>
-        {chunks ? (
-          <div className="flex flex-col gap-4">
-            {chunks.map((chunk, i) =>
-              sectionsDone > i ? (
-                <div key={i}>
-                  <p className="mb-1 text-caption font-bold text-muted-foreground">Phần {i + 1}</p>
-                  <TranscriptBody transcriptMd={chunk} />
-                </div>
-              ) : (
-                <LockedNote key={i} label={`Phần ${i + 1}: hoàn thành để mở khóa.`} />
-              ),
-            )}
-          </div>
-        ) : allDone ? (
-          <TranscriptBody transcriptMd={transcriptMd} />
-        ) : (
-          <LockedNote label="Hoàn thành câu hỏi để mở khóa lời thoại." />
-        )}
-      </aside>
     </div>
   );
 }
