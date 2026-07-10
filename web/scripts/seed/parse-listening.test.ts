@@ -101,25 +101,14 @@ describe("parseListening — throws on malformed input", () => {
   });
 });
 
-describe("parseListening — against the real authored practice_01.md", () => {
-  const parsed = parseListening(fixture("web/content/listening/practice_01.md"));
+describe("parseListening — against the real authored practice_a2_01.md", () => {
+  const parsed = parseListening(fixture("web/content/listening/practice_a2_01.md"));
 
-  it("has slug practice_01, kind PRACTICE, 3 voices", () => {
-    expect(parsed.frontMatter.slug).toBe("practice_01");
-    expect(parsed.frontMatter.kind).toBe("PRACTICE");
-    expect(Object.keys(parsed.frontMatter.voices).sort()).toEqual(["A", "B", "NARRATOR"]);
-  });
-
-  it("has 5 FILL_BLANK questions in Section A and 5 MULTIPLE_CHOICE in Section B", () => {
-    const secA = parsed.questions.sections.find((s) => s.label === "A")!;
-    const secB = parsed.questions.sections.find((s) => s.label === "B")!;
-    expect(secA.kind).toBe("FILL_BLANK");
-    expect(secA.questions).toHaveLength(5);
-    expect(secB.kind).toBe("MULTIPLE_CHOICE");
-    expect(secB.questions).toHaveLength(5);
-    for (const q of [...secA.questions, ...secB.questions]) {
-      expect(q.variants.length).toBeGreaterThan(0);
-    }
+  it("has slug practice_a2_01, kind PRACTICE, level A2, 4 sections x 10 questions", () => {
+    expect(parsed.frontMatter.slug).toBe("practice_a2_01");
+    expect(parsed.frontMatter.level).toBe("A2");
+    expect(parsed.questions.sections).toHaveLength(4);
+    expect(parsed.questions.sections.reduce((n, s) => n + s.questions.length, 0)).toBe(40);
   });
 });
 
