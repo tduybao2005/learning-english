@@ -145,3 +145,38 @@ describe("parseListening — [PAUSE:n] directive stripping", () => {
     expect(parsed.transcriptMd).toContain("A: Hello there.");
   });
 });
+
+describe("front-matter level", () => {
+  const md = (levelLine: string) => `---
+slug: level_fixture
+title: "Level Fixture"
+kind: PRACTICE
+${levelLine}voices: { A: en-US-GuyNeural, NARRATOR: en-US-JennyNeural }
+---
+## TRANSCRIPT
+NARRATOR: Section 1. Listen to the recording.
+A: Hello there.
+## QUESTIONS
+## SECTION 1: FILL IN THE BLANK (Điền vào chỗ trống)
+1. Say ______ .
+## ANSWER KEY (ĐÁP ÁN)
+### Section 1:
+1. hello
+`;
+
+  it("parses a valid level", () => {
+    expect(parseListening(md("level: B1\n")).frontMatter.level).toBe("B1");
+  });
+
+  it("is null when absent", () => {
+    expect(parseListening(md("")).frontMatter.level).toBeNull();
+  });
+
+  it("normalizes lowercase input", () => {
+    expect(parseListening(md("level: b2\n")).frontMatter.level).toBe("B2");
+  });
+
+  it("throws on invalid values", () => {
+    expect(() => parseListening(md("level: D7\n"))).toThrow(/invalid front-matter level/);
+  });
+});

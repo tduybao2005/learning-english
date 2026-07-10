@@ -31,10 +31,15 @@ import { parseExercise, type ParsedExercise, type QuestionKind } from "./parse-e
  * reimplemented here.
  */
 
+export type CefrLevel = "A2" | "B1" | "B2" | "C1";
+const CEFR_LEVELS: readonly string[] = ["A2", "B1", "B2", "C1"];
+
 export interface ListeningFrontMatter {
   slug: string;
   title: string;
   kind: "PLACEMENT" | "PRACTICE";
+  /** CEFR difficulty for PRACTICE sets (hub grouping); null for PLACEMENT / legacy files. */
+  level: CefrLevel | null;
   /** speaker code (as used in TRANSCRIPT lines, e.g. "A", "NARRATOR") -> edge-tts voice name */
   voices: Record<string, string>;
 }
@@ -81,6 +86,7 @@ function parseFrontMatter(block: string): ListeningFrontMatter {
   let slug = "";
   let title = "";
   let kind: "PLACEMENT" | "PRACTICE" = "PRACTICE";
+  let levelRaw = "";
   let voices: Record<string, string> = {};
 
   for (const line of block.split("\n")) {
@@ -91,13 +97,25 @@ function parseFrontMatter(block: string): ListeningFrontMatter {
     if (key === "slug") slug = value;
     else if (key === "title") title = stripQuotes(value);
     else if (key === "kind") kind = value === "PLACEMENT" ? "PLACEMENT" : "PRACTICE";
+    else if (key === "level") levelRaw = value;
     else if (key === "voices") voices = parseVoices(value);
   }
 
   if (!slug) throw new Error("parseListening: front matter missing required 'slug'");
   if (!title) throw new Error("parseListening: front matter missing required 'title'");
 
-  return { slug, title, kind, voices };
+  let level: CefrLevel | null = null;
+  if (levelRaw) {
+    const up = levelRaw.toUpperCase();
+    if (!CEFR_LEVELS.includes(up)) {
+      throw new Error(
+        `parseListening: invalid front-matter level '${levelRaw}' (expected A2|B1|B2|C1)`,
+      );
+    }
+    level = up as CefrLevel;
+  }
+
+  return { slug, title, kind, level, voices };
 }
 
 export function parseListening(md: string, overrides?: Record<string, QuestionKind>): ParsedListening {
