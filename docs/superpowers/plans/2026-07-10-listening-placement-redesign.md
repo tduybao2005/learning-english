@@ -769,7 +769,12 @@ Prompt the design agent with, roughly: *"Thiết kế lại bố cục trang `/l
 
 - [ ] **Step 3: Redesign the listening set page**
 
-*"Thiết kế lại `/listening/[slug]`: `AudioPlayer` variant `full`, tiêu đề + `LevelBadge`, rồi `ListeningSetView`."*
+*"Thiết kế lại `/listening/[slug]`. Dùng `AppSidebar` (`pathname="/listening"`, `linkComponent="a"`) + `<main className="lg:pl-[232px]">`. Trong main: tiêu đề bài nghe kèm `LevelBadge`, rồi `ListeningSetView`. Đừng thêm `AudioPlayer` — `ListeningSetView` đã có sẵn một cái bên trong."*
+
+`ListeningSetView.tsx:79` renders its own sticky `<AudioPlayer variant="full">`. An
+earlier draft of this prompt asked for an `AudioPlayer` *beside* it, and the design
+agent duly produced two players. A direct instruction overrides the component's
+`.prompt.md`, so the prompt must not contradict it.
 
 - [ ] **Step 4: Redesign the placement listening step**
 
