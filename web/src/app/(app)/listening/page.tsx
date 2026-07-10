@@ -58,7 +58,9 @@ export default async function ListeningHubPage() {
             <section key={group.level ?? "other"}>
               <div className="mb-3 flex items-center gap-2">
                 {group.level ? (
-                  <LevelBadge level={group.level} />
+                  <h2>
+                    <LevelBadge level={group.level} />
+                  </h2>
                 ) : (
                   <h2 className="font-semibold">Khác</h2>
                 )}
