@@ -10,6 +10,7 @@
     "test": "dotenv -e .env.local -- vitest run",
     "seed": "dotenv -e .env.local -- tsx scripts/seed/ingest.ts",
     "seed:validate": "dotenv -e .env.local -- tsx scripts/seed/validate.ts",
+    "seed:validate-listening": "tsx scripts/seed/check-listening.ts",
     "seed:placement": "dotenv -e .env.local -- tsx scripts/seed/seed-placement.ts",
     "seed:ielts": "dotenv -e .env.local -- tsx scripts/seed/seed-ielts.ts",
     "postinstall": "prisma generate",
