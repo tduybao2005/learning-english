@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
@@ -30,6 +31,7 @@ export default async function IeltsHubPage({
           icon="📝"
           title="Chưa có đề luyện thi nào"
           description="Quay lại sau để luyện đề IELTS nhé."
+          linkComponent={NextLink}
         />
       ) : (
         <IeltsHub tests={tests} initialSkill={initialSkill} />

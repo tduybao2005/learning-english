@@ -117,6 +117,7 @@ export default async function DashboardPage({
             icon="🌱"
             title="Chưa có gì ở đây"
             description="Hoàn thành bài học đầu tiên để bắt đầu chuỗi streak của bạn 🔥"
+            linkComponent={Link}
           />
         ) : (
           <LessonMap phases={phases} states={states} />

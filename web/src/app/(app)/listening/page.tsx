@@ -51,7 +51,12 @@ export default async function ListeningHubPage() {
       </p>
 
       {sets.length === 0 ? (
-        <EmptyState icon="🎧" title="Chưa có bài nghe nào" description="Quay lại sau để luyện nghe nhé." />
+        <EmptyState
+          icon="🎧"
+          title="Chưa có bài nghe nào"
+          description="Quay lại sau để luyện nghe nhé."
+          linkComponent={NextLink}
+        />
       ) : (
         <div className="flex flex-col gap-8">
           {groups.map((group) => (

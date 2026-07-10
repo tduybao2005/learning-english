@@ -55,6 +55,7 @@ export default async function VocabHubPage() {
           icon="📖"
           title="Chưa có từ vựng nào"
           description="Quay lại sau khi nội dung từ vựng được thêm vào."
+          linkComponent={Link}
         />
       ) : (
         <div className="flex flex-col gap-6">

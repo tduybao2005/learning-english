@@ -1,3 +1,5 @@
+import NextLink from "next/link";
+
 import { EmptyState } from "@/components/EmptyState";
 
 export default function NotFound() {
@@ -8,6 +10,7 @@ export default function NotFound() {
       description="Trang bạn tìm không tồn tại hoặc đã được chuyển đi."
       ctaHref="/dashboard"
       ctaLabel="Về lộ trình học"
+      linkComponent={NextLink}
     />
   );
 }

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -11,12 +9,15 @@ export function EmptyState({
   description,
   ctaHref,
   ctaLabel,
+  linkComponent: Link,
 }: {
   icon?: string;
   title: string;
   description?: string;
   ctaHref?: string;
   ctaLabel?: string;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   return (
     <div className="flex flex-col items-center gap-4 px-6 py-16 text-center">
