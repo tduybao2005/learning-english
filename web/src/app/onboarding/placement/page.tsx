@@ -29,6 +29,16 @@ export default async function PlacementTestPage() {
     ? await db.listeningSet.findUnique({ where: { id: listeningSetId } })
     : null;
 
+  // The wizard degrades to a reading+writing test when this is null, which is
+  // indistinguishable from a deliberate config. Almost always it means the FK
+  // was cleared by a `npm run seed` that was not followed by `seed:placement`.
+  if (!listeningSet) {
+    console.warn(
+      `[placement] no listening set for goalType=${user.goalType ?? "null"} (resolved id=${listeningSetId ?? "null"}). ` +
+        `The listening step will be skipped. Run 'npm run seed:placement' to re-wire it.`,
+    );
+  }
+
   const [listeningSectionsRaw, readingSectionsRaw] = await Promise.all([
     listeningSet ? getOrderedListeningSections(listeningSet.id) : Promise.resolve([]),
     getOrderedPlacementSections(test.id),

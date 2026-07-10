@@ -213,6 +213,8 @@ model ListeningSet {
   transcriptMd String @db.Text
   durationSec  Int?
   sections     Section[]
+  placementTests      PlacementTest[] @relation("PlacementListening")
+  toeicPlacementTests PlacementTest[] @relation("PlacementToeicListening")
 }
 
 model PlacementTest {
@@ -220,8 +222,16 @@ model PlacementTest {
   slug            String @unique  // "default"
   readingMd       String @db.Text
   writingPromptMd String @db.Text
+  // Real FKs with `onDelete: SetNull`. `ingest.ts` deletes and recreates every
+  // ListeningSet on each seed run; without the constraint these columns kept
+  // pointing at the deleted rows' cuids and the placement listening step
+  // silently vanished. SetNull (not Restrict) because Restrict would make
+  // `npm run seed` fail on every run. A null here is honest — "not wired yet" —
+  // and both seed and the page warn about it loudly.
   listeningSetId  String?
-  toeicListeningSetId String? // TOEIC placement listening (bare FK like listeningSetId)
+  listeningSet    ListeningSet? @relation("PlacementListening", fields: [listeningSetId], references: [id], onDelete: SetNull)
+  toeicListeningSetId String? // TOEIC placement listening
+  toeicListeningSet   ListeningSet? @relation("PlacementToeicListening", fields: [toeicListeningSetId], references: [id], onDelete: SetNull)
   bandTable       Json    // [{min:33,band:8.0},...] raw→band for reading & listening
   sections        Section[]
   attempts        PlacementAttempt[]

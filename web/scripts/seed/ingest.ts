@@ -362,6 +362,20 @@ async function main() {
     `[seed] listening sets: ${listeningResult.count} set(s), ${listeningResult.questions} question(s)${dryRun ? " (dry-run, no writes)" : ""}`
   );
 
+  // seedListeningSets deletes and recreates every ListeningSet, and the
+  // PlacementTest FKs are `onDelete: SetNull` — so this run just cleared them.
+  // Say so here, where the damage happens; otherwise the only symptom is the
+  // placement wizard quietly skipping its listening step.
+  if (!dryRun) {
+    const test = await db.placementTest.findUnique({ where: { slug: "default" } });
+    if (test && (test.listeningSetId === null || test.toeicListeningSetId === null)) {
+      console.warn(
+        `[seed] WARN: PlacementTest "default" lost its listening link (listeningSetId=${test.listeningSetId ?? "null"}, toeicListeningSetId=${test.toeicListeningSetId ?? "null"}). ` +
+          `Reseeding listening sets clears these FKs. Run 'npm run seed:placement' now, or the placement test will show "Phần nghe hiện chưa sẵn sàng".`,
+      );
+    }
+  }
+
   await db.$disconnect();
 }
 
