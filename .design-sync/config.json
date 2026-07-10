@@ -1,0 +1,29 @@
+{
+  "projectId": "c65cc8d7-1c60-4c55-98e9-8c2555892ad3",
+  "shape": "package",
+  "pkg": "web",
+  "globalName": "HocTiengAnhDS",
+  "srcDir": "src",
+  "tsconfig": "tsconfig.json",
+  "cssEntry": ".ds-css/styles.compiled.css",
+  "readmeHeader": ".design-sync/conventions.md",
+  "componentSrcMap": {
+    "Button": "src/components/ui/button.tsx",
+    "Card": "src/components/ui/card.tsx",
+    "Input": "src/components/ui/input.tsx",
+    "Skeleton": "src/components/ui/skeleton.tsx",
+    "Switch": "src/components/ui/switch.tsx",
+    "Tabs": "src/components/ui/tabs.tsx"
+  },
+  "overrides": {
+    "Tabs": { "cardMode": "column" }
+  },
+  "dtsPropsFor": {
+    "Button": "/** Visual style. Defaults to \"default\" (indigo primary). */\n  variant?: \"default\" | \"accent\" | \"success\" | \"outline\" | \"secondary\" | \"ghost\" | \"destructive\" | \"link\";\n  /** Height/padding scale. `icon*` sizes render a square icon-only button. */\n  size?: \"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\";\n  disabled?: boolean;\n  type?: \"button\" | \"submit\" | \"reset\";\n  onClick?: React.MouseEventHandler<HTMLButtonElement>;\n  className?: string;\n  children?: React.ReactNode;",
+    "Card": "/** `sm` tightens the internal --card-spacing scale. */\n  size?: \"default\" | \"sm\";\n  className?: string;\n  children?: React.ReactNode;",
+    "Input": "type?: React.HTMLInputTypeAttribute;\n  placeholder?: string;\n  value?: string | number;\n  defaultValue?: string | number;\n  disabled?: boolean;\n  /** Set to render the destructive border + ring error state. */\n  \"aria-invalid\"?: boolean | \"true\" | \"false\";\n  onChange?: React.ChangeEventHandler<HTMLInputElement>;\n  className?: string;",
+    "Skeleton": "/** Size and shape come entirely from utility classes, e.g. `h-4 w-3/4`, `size-10 rounded-full`. */\n  className?: string;\n  children?: React.ReactNode;",
+    "Switch": "/** Controlled checked state. Use `defaultChecked` for uncontrolled. */\n  checked?: boolean;\n  defaultChecked?: boolean;\n  disabled?: boolean;\n  readOnly?: boolean;\n  required?: boolean;\n  name?: string;\n  onCheckedChange?: (checked: boolean, eventDetails: unknown) => void;\n  className?: string;",
+    "Tabs": "/** Value of the initially selected tab (uncontrolled). */\n  defaultValue?: string | number;\n  /** Controlled selected tab value. */\n  value?: string | number;\n  onValueChange?: (value: string | number, eventDetails: unknown) => void;\n  orientation?: \"horizontal\" | \"vertical\";\n  className?: string;\n  children?: React.ReactNode;"
+  }
+}
