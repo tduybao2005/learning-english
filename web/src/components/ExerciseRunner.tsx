@@ -85,6 +85,76 @@ export function ExerciseRunner({
   );
 }
 
+/** One already-answered question, captured client-side when the learner
+ * advances past it. Purely for read-only review — nothing here is re-sent. */
+interface PastAnswer {
+  index: number;
+  answerText: string;
+  correctAnswer?: string | null;
+  keyNote?: string | null;
+}
+
+/** Read-only view of an earlier question: the prompt, what the learner
+ * submitted, and the correct answer. Deliberately renders no input at all
+ * (QuestionCard is uncontrolled and would show an empty field), and never
+ * touches the attempt API. */
+function ReviewCard({
+  question,
+  past,
+  total,
+  onPrev,
+  onNext,
+  onExit,
+}: {
+  question: SafeQuestion;
+  past: PastAnswer;
+  total: number;
+  onPrev: (() => void) | null;
+  onNext: (() => void) | null;
+  onExit: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-3">
+        <span className="rounded-full bg-muted px-3 py-1 text-caption font-semibold text-muted-foreground">
+          Xem lại — Câu {past.index + 1}/{total}
+        </span>
+        <Button variant="ghost" size="sm" onClick={onExit}>
+          Quay lại câu hiện tại
+        </Button>
+      </div>
+
+      <div className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-[720px]">
+        <div className="rounded-xl border border-border bg-card p-5">
+          <p className="whitespace-pre-line text-base leading-relaxed">{question.prompt}</p>
+
+          <div className="mt-4 flex flex-col gap-1 border-t border-border/60 pt-4 text-sm">
+            <p className="text-muted-foreground">
+              Câu trả lời của bạn:{" "}
+              <span className="font-medium text-foreground">{past.answerText}</span>
+            </p>
+            {past.correctAnswer && (
+              <p className="text-muted-foreground">
+                Đáp án: <span className="font-medium text-success">{past.correctAnswer}</span>
+              </p>
+            )}
+            {past.keyNote && <p className="text-muted-foreground">{past.keyNote}</p>}
+          </div>
+        </div>
+
+        <div className="flex justify-between gap-3">
+          <Button variant="outline" size="sm" onClick={() => onPrev?.()} disabled={!onPrev}>
+            ← Câu trước
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => onNext?.()} disabled={!onNext}>
+            Câu sau →
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ExerciseRunnerSession({
   attemptId,
   initialQuestionNumber,
@@ -110,11 +180,27 @@ function ExerciseRunnerSession({
   const total = questions.length;
   const question = questions[state.index];
   const cardRef = useRef<HTMLDivElement | null>(null);
+  const [past, setPast] = useState<PastAnswer[]>([]);
+  const [reviewIndex, setReviewIndex] = useState<number | null>(null);
+
+  function handleContinue() {
+    setPast((prev) => [
+      ...prev,
+      {
+        index: state.index,
+        answerText: state.input,
+        correctAnswer: state.result?.correctAnswer ?? null,
+        keyNote: state.result?.keyNote ?? null,
+      },
+    ]);
+    dispatch({ type: "CONTINUE" });
+  }
 
   useRunnerShortcuts({
     containerRef: cardRef,
     onPrimaryAction: () => {
-      if (state.phase === "correct") dispatch({ type: "CONTINUE" });
+      if (reviewIndex !== null) return;
+      if (state.phase === "correct") handleContinue();
       else void handleSubmit(); // guards handle checking/empty
     },
   });
@@ -174,6 +260,20 @@ function ExerciseRunnerSession({
           </Button>
         </div>
       </div>
+    );
+  }
+
+  if (reviewIndex !== null && past[reviewIndex]) {
+    const entry = past[reviewIndex];
+    return (
+      <ReviewCard
+        question={questions[entry.index]}
+        past={entry}
+        total={total}
+        onPrev={reviewIndex > 0 ? () => setReviewIndex(reviewIndex - 1) : null}
+        onNext={reviewIndex < past.length - 1 ? () => setReviewIndex(reviewIndex + 1) : null}
+        onExit={() => setReviewIndex(null)}
+      />
     );
   }
 
@@ -245,9 +345,17 @@ function ExerciseRunnerSession({
           )}
 
           {/* Card footer: the single primary action lives INSIDE the card. */}
-          <div className="mt-4 flex justify-end border-t border-border/60 pt-4">
+          <div className="mt-4 flex items-center justify-between gap-3 border-t border-border/60 pt-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setReviewIndex(past.length - 1)}
+              disabled={past.length === 0}
+            >
+              ← Câu trước
+            </Button>
             {isCorrect ? (
-              <Button className="w-full sm:w-auto" onClick={() => dispatch({ type: "CONTINUE" })}>
+              <Button className="w-full sm:w-auto" onClick={handleContinue}>
                 Tiếp tục
               </Button>
             ) : (
