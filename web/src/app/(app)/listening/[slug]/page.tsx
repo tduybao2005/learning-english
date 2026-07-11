@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getOrderedListeningSections } from "@/lib/listening";
 import { ListeningSetView } from "@/components/ListeningSetView";
+import { ListeningBottomNav } from "@/components/ListeningBottomNav";
 import type { SafeListeningSection } from "@/components/runner/section-runner";
 import { LevelBadge } from "@/components/LevelBadge";
 
@@ -41,7 +42,7 @@ export default async function ListeningSetPage({
   }));
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 pt-8 pb-8">
+    <div className="mx-auto w-full max-w-5xl px-6 pt-8 pb-20">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         {listeningSet.level && <LevelBadge level={listeningSet.level} />}
         <h1 className="text-h1 font-heading">{listeningSet.title}</h1>
@@ -56,14 +57,7 @@ export default async function ListeningSetPage({
         sections={safeSections}
       />
 
-      <div className="mt-8 border-t border-border pt-4">
-        <Link
-          href="/listening"
-          className="inline-flex items-center gap-1 text-caption text-muted-foreground hover:text-foreground"
-        >
-          ← Quay lại danh sách bài nghe
-        </Link>
-      </div>
+      <ListeningBottomNav linkComponent={Link} subtitle={listeningSet.title} />
     </div>
   );
 }
