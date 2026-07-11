@@ -20,6 +20,7 @@ export default defineConfig({
   test: {
     include: ["src/**/*.test.ts", "src/**/*.test.tsx", "scripts/**/*.test.ts"],
     environment: "node",
+    setupFiles: ["./vitest.setup.ts"],
     passWithNoTests: true,
   },
 });
