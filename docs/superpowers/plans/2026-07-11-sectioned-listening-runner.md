@@ -32,7 +32,7 @@ Finally, on the listening set page the "← Quay lại" link sits at the page fo
 **Scope decisions this plan makes (open to veto at approval):**
 - Applies to **PRACTICE listening sets** (`/listening/[slug]`) only. The onboarding placement wizard already batches per-section and is left unchanged.
 - Section audio is **additive and optional**: a new nullable `Section.audioUrl`. When null, the runner falls back to the set-level `ListeningSet.audioUrl` and behaves as a single-audio sectioned run — so TOEIC/legacy sets that don't split keep working.
-- Section submit is **final per section** (reveal answers, then continue) — no per-question retry inside a submitted section, matching "không ép sửa đúng hết". To redo, the learner uses a **"Làm lại từ đầu"** control that resets the *entire* set: clears every answer/result and **re-locks all transcripts**, back to a blank section 1.
+- Section submit is **final per section** (reveal answers, then continue) — no per-question retry inside a submitted section, matching "không ép sửa đúng hết". To redo, the learner uses a **"Làm lại"** control that resets the *entire* set: clears every answer/result and **re-locks all transcripts**, back to a blank section 1.
 - Exercise back-navigation is **read-only review** of already-answered questions; the persisted forward flow and lesson-unlock side effects are unchanged.
 
 ---
@@ -138,7 +138,7 @@ Finally, on the listening set page the "← Quay lại" link sits at the page fo
 - [ ] **Step 1:** Failing test: renders **all** questions of the current section at once (assert N `QuestionCard`s), a single "Kiểm tra"/"Nộp phần" button, disabled until every question in the section has an answer.
 - [ ] **Step 2:** Failing test: on submit, calls `/check` once per question (mock `fetch`, assert call count = section question count, in parallel), then shows each question's correct/incorrect state + the correct answer for wrong ones, and a "Tiếp tục" button. No forced-correct: "Tiếp tục" is enabled regardless of score.
 - [ ] **Step 3:** Failing test: "Tiếp tục" fires `onSectionSubmitted(i)` (once) and `onSectionChange(i+1)`, advances to the next section's questions; after the last section shows the completion state.
-- [ ] **Step 4:** Failing test: a **"Làm lại từ đầu"** control resets to a blank section 1 (no answers, no revealed results) and fires an `onReset` callback (so the parent can re-lock transcripts). Simplest impl: a `resetKey` state bumped on reset that remounts the inner runner via React `key` (same trick as `ExerciseRunner`), plus `onReset()`.
+- [ ] **Step 4:** Failing test: a **"Làm lại"** control resets to a blank section 1 (no answers, no revealed results) and fires an `onReset` callback (so the parent can re-lock transcripts). Simplest impl: a `resetKey` state bumped on reset that remounts the inner runner via React `key` (same trick as `ExerciseRunner`), plus `onReset()`.
 - [ ] **Step 5:** Implement `SectionedListeningRunner.tsx`: batch submit via `Promise.all` over the existing per-question endpoint; reveal inline using the same success/destructive token treatment as `ExerciseRunner`; keep the `SectionStepper` (lift from `ListeningRunner.tsx`) display-only; wire the reset.
 - [ ] **Step 6:** Run all four green. `npx tsc --noEmit`. Commit.
 
@@ -154,7 +154,7 @@ Finally, on the listening set page the "← Quay lại" link sits at the page fo
 
 - [ ] **Step 1:** Extend the server `safeSections` mapping in `page.tsx` to include each section's `audioUrl` (still stripping `answerRaw`/`variants`). Add `audioUrl` to `SafeListeningSection`.
 - [ ] **Step 2:** In `ListeningSetView`, lift `currentSection` and `submittedSections` state. Right-rail `AudioPlayer` `src = sections[currentSection].audioUrl ?? audioUrl` (fallback to the set-level file). Render `SectionedListeningRunner` with `currentSection`, `onSectionChange={setCurrentSection}`, `onSectionSubmitted` → the existing per-section transcript-unlock state, and `onReset` → clear that state (re-lock every transcript) and reset `currentSection` to 0.
-- [ ] **Step 3:** Failing test: rendering with two sections whose `audioUrl` differ, then advancing, updates the audio `src`; submitting section 1 unlocks its transcript chunk; **"Làm lại từ đầu" re-locks it** and returns to section 1's audio. (jsdom: assert the `<audio src>` attribute and transcript text visibility before/after reset.)
+- [ ] **Step 3:** Failing test: rendering with two sections whose `audioUrl` differ, then advancing, updates the audio `src`; submitting section 1 unlocks its transcript chunk; **"Làm lại" re-locks it** and returns to section 1's audio. (jsdom: assert the `<audio src>` attribute and transcript text visibility before/after reset.)
 - [ ] **Step 4:** Delete `ListeningRunner.tsx` (now unused) and any now-dead exports. `grep -rn "ListeningRunner" web/src` → only the sectioned one remains.
 - [ ] **Step 5:** `npx tsc --noEmit && npm test && npm run build`. Commit.
 
