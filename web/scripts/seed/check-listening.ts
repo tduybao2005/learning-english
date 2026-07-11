@@ -171,6 +171,16 @@ export function checkListeningSet(input: ListeningSetInput, publicDir: string): 
         if (dur !== null && (dur < band.minSec || dur > band.maxSec))
           warn(`generated mp3 is ${(dur / 60).toFixed(1)}min — outside ${fm.level} band ${band.minSec / 60}–${band.maxSec / 60}min`);
       }
+      if (markerCount === sections.length) {
+        const sectionMp3Count = sections.filter((_, i) =>
+          fs.existsSync(path.join(publicDir, "audio", "listening", `${slug}_s${i + 1}.mp3`)),
+        ).length;
+        if (sectionMp3Count < sections.length) {
+          warn(
+            `only ${sectionMp3Count}/${sections.length} per-section mp3s found (${slug}_s1.mp3.. — re-run scripts/tts/generate_audio.py)`,
+          );
+        }
+      }
     }
   }
 

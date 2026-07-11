@@ -121,27 +121,41 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
         transcriptMd: parsed.transcriptMd,
         durationSec: durationSec ?? undefined,
         sections: {
-          create: parsed.questions.sections.map((section, sectionIndex) => ({
-            label: section.label,
-            title: section.title,
-            kind: section.kind,
-            instructions: section.instructions,
-            orderIndex: sectionIndex,
-            questions: {
-              create: section.questions.map((q) => ({
-                number: q.number,
-                prompt: q.prompt,
-                options: q.options ?? undefined,
-                imageUrl: q.imageUrl,
-                answerRaw: q.answerRaw,
-                keyNote: q.keyNote,
-                isOpenEnded: q.isOpenEnded,
-                variants: {
-                  create: q.variants.map((v) => ({ text: v.text, normalized: v.normalized })),
-                },
-              })),
-            },
-          })),
+          create: parsed.questions.sections.map((section, sectionIndex) => {
+            const sectionMp3Path = path.join(
+              repoRoot,
+              "web",
+              "public",
+              "audio",
+              "listening",
+              `${slug}_s${sectionIndex + 1}.mp3`,
+            );
+            const sectionAudioUrl = fs.existsSync(sectionMp3Path)
+              ? `/audio/listening/${slug}_s${sectionIndex + 1}.mp3`
+              : undefined;
+            return {
+              label: section.label,
+              title: section.title,
+              kind: section.kind,
+              instructions: section.instructions,
+              orderIndex: sectionIndex,
+              audioUrl: sectionAudioUrl,
+              questions: {
+                create: section.questions.map((q) => ({
+                  number: q.number,
+                  prompt: q.prompt,
+                  options: q.options ?? undefined,
+                  imageUrl: q.imageUrl,
+                  answerRaw: q.answerRaw,
+                  keyNote: q.keyNote,
+                  isOpenEnded: q.isOpenEnded,
+                  variants: {
+                    create: q.variants.map((v) => ({ text: v.text, normalized: v.normalized })),
+                  },
+                })),
+              },
+            };
+          }),
         },
       },
     });

@@ -50,6 +50,38 @@ PAUSE_SPEAKER = "__PAUSE__"
 SILENCE_MS = 400
 TTS_RETRY_ATTEMPTS = 3
 TTS_RETRY_BACKOFF_SEC = 2.0
+# Mirrors web/src/lib/transcript.ts SECTION_MARKER_RE — kept in sync by hand
+# (one is TS, one is Python). A line "NARRATOR: Section N. ..." marks the
+# start of section N; the preamble before marker 1 joins section 1.
+SECTION_MARKER_RE = re.compile(r"^Section\s+(\d+)\b")
+
+
+def split_lines_into_sections(
+    lines: list[tuple[str, str]]
+) -> list[list[tuple[str, str]]] | None:
+    """Group parsed transcript lines into per-section chunks, mirroring
+    `transcriptChunksForSections` in transcript.ts. Returns None (meaning:
+    don't split) unless every marker is present, numbered cleanly 1..N with
+    no gaps/duplicates, in order."""
+    markers: list[tuple[int, int]] = []  # (line index, section number)
+    for i, (speaker, text) in enumerate(lines):
+        if speaker != "NARRATOR":
+            continue
+        m = SECTION_MARKER_RE.match(text)
+        if m:
+            markers.append((i, int(m.group(1))))
+
+    if not markers:
+        return None
+    if [num for _, num in markers] != list(range(1, len(markers) + 1)):
+        return None
+
+    groups: list[list[tuple[str, str]]] = []
+    for gi, (line_idx, _num) in enumerate(markers):
+        start = 0 if gi == 0 else line_idx
+        end = markers[gi + 1][0] if gi + 1 < len(markers) else len(lines)
+        groups.append(lines[start:end])
+    return groups
 
 
 def parse_front_matter(block: str) -> dict:
@@ -150,6 +182,14 @@ def print_dry_run_plan(fm: dict, lines: list[tuple[str, str]]) -> None:
         raise ValueError(f"no voice mapped for speaker(s): {sorted(missing)}")
     print(f"[tts] total scripted pause time: {total_pause_sec:.1f}s")
 
+    groups = split_lines_into_sections(lines)
+    if groups is None:
+        print("[tts] not split into sections (no clean Section markers)")
+    else:
+        print(f"[tts] would split into {len(groups)} section(s):")
+        for i, group in enumerate(groups, start=1):
+            print(f"  section {i}: {len(group)} line(s) -> {fm['slug']}_s{i}.mp3")
+
 
 async def main_async(md_path: Path, dry_run: bool = False) -> Path | None:
     md = md_path.read_text(encoding="utf-8")
@@ -166,14 +206,14 @@ async def main_async(md_path: Path, dry_run: bool = False) -> Path | None:
         return None
 
     silence = AudioSegment.silent(duration=SILENCE_MS)
-    combined = AudioSegment.empty()
+    segments: list[AudioSegment] = []
 
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp = Path(tmpdir)
         for i, (speaker, text) in enumerate(lines):
             if speaker == PAUSE_SPEAKER:
                 print(f"[tts] {i + 1}/{len(lines)} [PAUSE {text}s]")
-                combined += AudioSegment.silent(duration=int(float(text) * 1000))
+                segments.append(AudioSegment.silent(duration=int(float(text) * 1000)))
                 continue
             voice = fm["voices"].get(speaker)
             if not voice:
@@ -184,10 +224,24 @@ async def main_async(md_path: Path, dry_run: bool = False) -> Path | None:
             seg_path = tmp / f"line_{i:03d}.mp3"
             print(f"[tts] {i + 1}/{len(lines)} ({speaker} -> {voice}): {text[:70]!r}")
             await synth_line(text, voice, seg_path)
-            seg = AudioSegment.from_file(seg_path, format="mp3")
-            combined += seg
-            if i < len(lines) - 1:
-                combined += silence
+            segments.append(AudioSegment.from_file(seg_path, format="mp3"))
+
+    def join(segs: list[AudioSegment]) -> AudioSegment:
+        out = AudioSegment.empty()
+        for i, seg in enumerate(segs):
+            out += seg
+            if i < len(segs) - 1:
+                out += silence
+        return out.set_channels(1)
+
+    def export(seg: AudioSegment, out_path: Path) -> None:
+        seg.export(str(out_path), format="mp3", bitrate="48k")
+        duration_sec = len(seg) / 1000.0
+        size_kb = out_path.stat().st_size / 1024.0
+        print(
+            f"[tts] wrote {out_path} "
+            f"duration={duration_sec:.1f}s ({duration_sec / 60:.2f} min) size={size_kb:.0f}KB"
+        )
 
     # This script lives at web/scripts/tts/generate_audio.py -> parents[2] is web/.
     web_root = Path(__file__).resolve().parents[2]
@@ -195,15 +249,24 @@ async def main_async(md_path: Path, dry_run: bool = False) -> Path | None:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{fm['slug']}.mp3"
 
-    combined = combined.set_channels(1)
-    combined.export(str(out_path), format="mp3", bitrate="48k")
+    combined = join(segments)
+    export(combined, out_path)
 
-    duration_sec = len(combined) / 1000.0
-    size_kb = out_path.stat().st_size / 1024.0
-    print(
-        f"[tts] wrote {out_path} "
-        f"duration={duration_sec:.1f}s ({duration_sec / 60:.2f} min) size={size_kb:.0f}KB"
-    )
+    groups = split_lines_into_sections(lines)
+    if groups is None:
+        print("[tts] not split into sections (no clean Section markers)")
+    else:
+        # Recompute segment boundaries the same way split_lines_into_sections
+        # partitioned `lines`, so we reuse the already-synthesized `segments`
+        # without re-synthesizing anything.
+        idx = 0
+        for i, group in enumerate(groups, start=1):
+            group_segs = segments[idx : idx + len(group)]
+            idx += len(group)
+            section_seg = join(group_segs)
+            section_path = out_dir / f"{fm['slug']}_s{i}.mp3"
+            export(section_seg, section_path)
+
     return out_path
 
 
