@@ -126,6 +126,10 @@ model Section {
   kind         QuestionKind
   instructions String?  @db.Text
   orderIndex   Int
+  // Per-section listening clip ("/audio/listening/{slug}_s{n}.mp3"). Null when
+  // the set wasn't split into per-section audio — the runner then falls back to
+  // ListeningSet.audioUrl (the whole-set combined file).
+  audioUrl     String?
   questions    Question[]
 }
 
