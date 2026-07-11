@@ -20,6 +20,7 @@ export interface SafeListeningSection {
   label: string;
   title: string;
   instructions: string | null;
+  audioUrl?: string | null;
   questions: SafeQuestion[];
 }
 

@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getOrderedListeningSections } from "@/lib/listening";
 import { ListeningSetView } from "@/components/ListeningSetView";
-import type { SafeListeningSection } from "@/components/ListeningRunner";
+import type { SafeListeningSection } from "@/components/runner/section-runner";
 import { LevelBadge } from "@/components/LevelBadge";
 
 export default async function ListeningSetPage({
@@ -28,6 +28,7 @@ export default async function ListeningSetPage({
     label: s.label,
     title: s.title,
     instructions: s.instructions,
+    audioUrl: s.audioUrl,
     questions: s.questions.map((q) => ({
       id: q.id,
       number: q.number,

@@ -16,6 +16,7 @@ export interface ListeningSectionWithQuestions {
   title: string;
   instructions: string | null;
   kind: QuestionKind;
+  audioUrl: string | null;
   questions: OrderedListeningQuestion[];
 }
 
@@ -39,6 +40,7 @@ export async function getOrderedListeningSections(listeningSetId: string): Promi
       title: true,
       instructions: true,
       kind: true,
+      audioUrl: true,
       questions: {
         orderBy: { number: "asc" },
         select: { id: true, number: true, prompt: true, options: true, imageUrl: true, isOpenEnded: true },
@@ -51,6 +53,7 @@ export async function getOrderedListeningSections(listeningSetId: string): Promi
     title: section.title,
     instructions: section.instructions,
     kind: section.kind as QuestionKind,
+    audioUrl: section.audioUrl,
     questions: section.questions.map((q) => ({ ...q, kind: section.kind as QuestionKind })),
   }));
 }

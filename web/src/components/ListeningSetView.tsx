@@ -5,7 +5,8 @@ import { ChevronDown, Lock } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { AudioPlayer } from "@/components/AudioPlayer";
-import { ListeningRunner, type SafeListeningSection } from "@/components/ListeningRunner";
+import { SectionedListeningRunner } from "@/components/SectionedListeningRunner";
+import type { SafeListeningSection } from "@/components/runner/section-runner";
 import { transcriptChunksForSections } from "@/lib/transcript";
 
 const TRANSCRIPT_LINE_RE = /^([A-Za-z_][A-Za-z0-9_]*):[ \t]*(.*)$/;
@@ -69,19 +70,34 @@ export function ListeningSetView({
   transcriptMd: string;
   sections: SafeListeningSection[];
 }) {
-  const [sectionsDone, setSectionsDone] = useState(0);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [sectionsUnlocked, setSectionsUnlocked] = useState<Set<number>>(() => new Set());
   const chunks = useMemo(
     () => transcriptChunksForSections(transcriptMd, sections.length),
     [transcriptMd, sections.length],
   );
-  const allDone = sectionsDone >= sections.length;
+  const allDone = sectionsUnlocked.size >= sections.length;
+  const currentAudioUrl = sections[currentSection]?.audioUrl ?? audioUrl;
+
+  function handleSectionSubmitted(sectionIndex: number) {
+    setSectionsUnlocked((prev) => {
+      const next = new Set(prev);
+      next.add(sectionIndex);
+      return next;
+    });
+  }
+
+  function handleReset() {
+    setCurrentSection(0);
+    setSectionsUnlocked(new Set());
+  }
 
   return (
     <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start lg:gap-8">
       {/* Right rail on desktop, but first in DOM order so mobile — which has no
           right column — still gets the player above the questions. */}
       <div className="flex flex-col gap-6 lg:sticky lg:top-8 lg:order-2 lg:max-h-[calc(100vh-4rem)]">
-        <AudioPlayer src={audioUrl} variant="full" />
+        <AudioPlayer src={currentAudioUrl} variant="full" />
 
         {/* Desktop: transcript under the player */}
         <aside className="hidden min-h-0 overflow-y-auto rounded-xl border border-border bg-card p-4 lg:block">
@@ -89,7 +105,7 @@ export function ListeningSetView({
           {chunks ? (
             <div className="flex flex-col gap-4">
               {chunks.map((chunk, i) =>
-                sectionsDone > i ? (
+                sectionsUnlocked.has(i) ? (
                   <div key={i}>
                     <p className="mb-1 text-caption font-bold text-muted-foreground">Phần {i + 1}</p>
                     <TranscriptBody transcriptMd={chunk} />
@@ -108,18 +124,19 @@ export function ListeningSetView({
       </div>
 
       <div className="flex min-w-0 flex-col gap-6 lg:order-1">
-        <ListeningRunner
+        <SectionedListeningRunner
           slug={slug}
           sections={sections}
-          onSectionComplete={(i) => setSectionsDone((c) => Math.max(c, i + 1))}
-          onFinished={() => setSectionsDone(sections.length)}
+          onSectionChange={setCurrentSection}
+          onSectionSubmitted={handleSectionSubmitted}
+          onReset={handleReset}
         />
 
         {/* Mobile: accordion(s) below the runner */}
         {chunks ? (
           <div className="flex flex-col gap-3 lg:hidden">
             {chunks.map((chunk, i) => {
-              const unlocked = sectionsDone > i;
+              const unlocked = sectionsUnlocked.has(i);
               return (
                 <details key={i} className="group rounded-xl border border-border bg-card">
                   <summary
