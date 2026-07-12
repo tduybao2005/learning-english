@@ -570,16 +570,20 @@ async function main() {
   // here would silently orphan `PlacementTest.listeningSetId` (a bare
   // `String?` with no Prisma `@relation`, so nothing would ever complain)
   // the next time listening sets are reseeded.
+  // Fail loudly rather than writing a null FK: a null listeningSetId is
+  // exactly what makes the placement listening step silently disappear, and
+  // the old `console.warn`-and-continue let that ship. `ingest.ts` now keeps
+  // listening-set ids stable, so once seeded these lookups stay valid.
   const listeningSet = await db.listeningSet.findUnique({ where: { slug: LISTENING_SLUG } });
   if (!listeningSet) {
-    console.warn(
-      `[seed-placement] WARN: no ListeningSet with slug "${LISTENING_SLUG}" found — run 'npm run seed' first (seeds listening sets) so listeningSetId isn't null.`,
+    throw new Error(
+      `[seed-placement] no ListeningSet with slug "${LISTENING_SLUG}" — run 'npm run seed' first so listeningSetId isn't null.`,
     );
   }
   const toeicListeningSet = await db.listeningSet.findUnique({ where: { slug: TOEIC_LISTENING_SLUG } });
   if (!toeicListeningSet) {
-    console.warn(
-      `[seed-placement] WARN: no ListeningSet with slug "${TOEIC_LISTENING_SLUG}" found — run 'npm run seed' first (seeds listening sets) so toeicListeningSetId isn't null.`,
+    throw new Error(
+      `[seed-placement] no ListeningSet with slug "${TOEIC_LISTENING_SLUG}" — run 'npm run seed' first so toeicListeningSetId isn't null.`,
     );
   }
 
@@ -601,8 +605,8 @@ async function main() {
       slug: PLACEMENT_SLUG,
       readingMd,
       writingPromptMd,
-      listeningSetId: listeningSet?.id ?? null,
-      toeicListeningSetId: toeicListeningSet?.id ?? null,
+      listeningSetId: listeningSet.id,
+      toeicListeningSetId: toeicListeningSet.id,
       bandTable: bandTable as unknown as object,
       sections: {
         create: sections.map((section, sectionIndex) => ({

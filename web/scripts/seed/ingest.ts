@@ -107,19 +107,33 @@ async function seedListeningSets(repoRoot: string, dryRun: boolean) {
       continue;
     }
 
-    // Cascades (ListeningSet -> Section -> Question -> AnswerVariant) wipe
-    // any prior rows for this slug — acceptable pre-launch, same reasoning
-    // as the Exercise subtree above.
-    await db.listeningSet.deleteMany({ where: { slug } });
-    await db.listeningSet.create({
+    // Upsert the set BY SLUG so its id stays STABLE across reseeds. The old
+    // delete+create minted a new id every run, and because
+    // PlacementTest.listeningSetId is `onDelete: SetNull`, that silently
+    // nulled the placement test's listening link on every `npm run seed`
+    // (only `seed:placement` re-wired it) — the placement listening step then
+    // vanished for everyone. Keeping the id means the FK survives; only the
+    // Section subtree below is rebuilt.
+    const scalarData = {
+      title,
+      kind,
+      level: level ?? undefined,
+      audioUrl,
+      transcriptMd: parsed.transcriptMd,
+      durationSec: durationSec ?? undefined,
+    };
+    const set = await db.listeningSet.upsert({
+      where: { slug },
+      create: { slug, ...scalarData },
+      update: scalarData,
+    });
+    // Rebuild the section subtree under the stable set id. Cascade
+    // (Section -> Question -> AnswerVariant) wipes prior children — acceptable
+    // pre-launch, same reasoning as the Exercise subtree above.
+    await db.section.deleteMany({ where: { listeningSetId: set.id } });
+    await db.listeningSet.update({
+      where: { id: set.id },
       data: {
-        slug,
-        title,
-        kind,
-        level: level ?? undefined,
-        audioUrl,
-        transcriptMd: parsed.transcriptMd,
-        durationSec: durationSec ?? undefined,
         sections: {
           create: parsed.questions.sections.map((section, sectionIndex) => {
             const sectionMp3Path = path.join(
