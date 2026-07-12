@@ -121,7 +121,13 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
   }
   const globalPosition = positionIndex + 1; // 1-based
   const isLastQuestion = globalPosition === totalQuestions;
-  const isCompleting = matchResult.correct && isLastQuestion;
+  // Completion = the learner has answered the FINAL question, right or wrong.
+  // The runner reveals the answer on a wrong attempt and lets the learner
+  // press "Tiếp tục" to move on, so reaching the last question (every prior
+  // one already has an AttemptAnswer) is the true "finished the exercise"
+  // signal. Requiring the last answer to be correct stranded learners who
+  // skipped it — they hit the finish screen but the lesson never unlocked.
+  const isCompleting = isLastQuestion;
 
   // Read-only lookup, safe to do outside the write transaction below — the
   // curriculum graph (Lesson/Phase) is static, not mutated concurrently.
@@ -142,11 +148,17 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       update: { tries: (existingAnswer?.tries ?? 0) + 1, ...attemptAnswerData },
     });
 
-    if (matchResult.correct) {
+    // Advancing the resume pointer stays tied to a CORRECT answer (a wrong
+    // answer keeps the learner on the same question until they retry or skip).
+    // Marking the attempt completed is separate: it fires on the last question
+    // regardless of correctness (see `isCompleting`).
+    if (matchResult.correct || isCompleting) {
       await tx.exerciseAttempt.update({
         where: { id: attemptId },
         data: {
-          currentQuestionNumber: Math.max(attempt.currentQuestionNumber, globalPosition + 1),
+          currentQuestionNumber: matchResult.correct
+            ? Math.max(attempt.currentQuestionNumber, globalPosition + 1)
+            : undefined,
           completedAt: isCompleting ? new Date() : undefined,
         },
       });

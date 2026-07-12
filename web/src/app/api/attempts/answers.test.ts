@@ -237,6 +237,40 @@ describe("exercise runner API (integration, real Postgres)", () => {
     },
   );
 
+  it(
+    "answering the final question INCORRECTLY still completes the lesson + unlocks the next " +
+      "(the runner lets learners skip past wrong answers to the end — reaching the last question is completion)",
+    async () => {
+      const created = await createAttempt(postRequest({ redo: true }), {
+        params: Promise.resolve({ id: exerciseId }),
+      });
+      const { attemptId } = await created.json();
+
+      await submitAnswer(postRequest({ questionId: q1Id, answerText: "cooks" }), {
+        params: Promise.resolve({ id: attemptId }),
+      });
+      // Final question answered WRONG — learner clicked "Tiếp tục" past it.
+      const finalRes = await submitAnswer(postRequest({ questionId: q2Id, answerText: "totally-wrong" }), {
+        params: Promise.resolve({ id: attemptId }),
+      });
+      const finalJson = await finalRes.json();
+
+      expect(finalJson.correct).toBe(false);
+      // Completion still fires so the finish screen can show the unlock.
+      expect(finalJson.completedLesson).toEqual({ nextLessonSlug: `test_lesson_b_${RUN_ID}` });
+
+      const attempt = await db.exerciseAttempt.findUnique({ where: { id: attemptId } });
+      expect(attempt?.completedAt).not.toBeNull();
+
+      const progressRows = await db.lessonProgress.findMany({
+        where: { userId, lessonId: { in: [lessonAId, lessonBId] } },
+      });
+      const byLesson = new Map(progressRows.map((r) => [r.lessonId, r]));
+      expect(byLesson.get(lessonAId)?.status).toBe("COMPLETED");
+      expect(byLesson.get(lessonBId)?.status).toBe("UNLOCKED");
+    },
+  );
+
   it("redo:true creates a new attempt while the old attempt's rows remain", async () => {
     const first = await createAttempt(postRequest({ redo: true }), {
       params: Promise.resolve({ id: exerciseId }),
