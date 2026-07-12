@@ -45,8 +45,6 @@ Thì Hiện Tại Đơn (Simple Present) là một trong những thì cơ bản 
 | He / She / It | is | She **is** a doctor. |
 | You / We / They | are | They **are** teachers. |
 
-**Thử ngay:**
-
 ```example
 id: sp-affirm-1
 prompt: My brother ___ (work) in a hospital.
@@ -89,8 +87,6 @@ answer: works
 **Ngoại lệ đặc biệt (học thuộc lòng):**
 - have → **has** (có)
 
-**Thử ngay:**
-
 ```example
 id: sp-es-1
 prompt: She always ___ (finish) her homework before dinner.
@@ -123,8 +119,6 @@ answer: studies
 - SAI: She doesn't works here. ❌
 - ĐÚNG: She doesn't work here. ✓
 
-**Thử ngay:**
-
 ```example
 id: sp-neg-1
 prompt: He ___ (not / eat) meat.
@@ -154,8 +148,6 @@ Ví dụ:
 - **When** do they start work? (Khi nào họ bắt đầu làm việc?)
 - **Why** does she study English? (Tại sao cô ấy học tiếng Anh?)
 - **How** do you feel? (Bạn cảm thấy thế nào?)
-
-**Thử ngay:**
 
 ```example
 id: sp-q-1
