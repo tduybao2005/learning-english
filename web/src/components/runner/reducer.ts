@@ -47,7 +47,10 @@ export type RunnerAction =
   | { type: "SET_INPUT"; value: string }
   | { type: "SUBMIT" }
   | { type: "RESULT"; result: AnswerResult }
-  | { type: "CONTINUE" };
+  | { type: "CONTINUE" }
+  /** After a wrong answer (answer now revealed), the learner opts to retry
+   * this same question: reset to `answering`, keep the index. */
+  | { type: "REDO_QUESTION" };
 
 export function initRunnerState(questionIds: string[], startIndex: number): RunnerState {
   const index = Math.min(Math.max(startIndex, 0), Math.max(questionIds.length - 1, 0));
@@ -84,8 +87,16 @@ export function runnerReducer(state: RunnerState, action: RunnerAction): RunnerS
       return { ...state, phase: "incorrect", tries: state.tries + 1, result: action.result };
     }
 
+    case "REDO_QUESTION": {
+      // Chỉ cho làm lại sau khi đã có kết quả (correct/incorrect).
+      if (state.phase !== "incorrect" && state.phase !== "correct") return state;
+      return { ...state, phase: "answering", input: "", result: null };
+    }
+
     case "CONTINUE": {
-      if (state.phase !== "correct") return state;
+      // Cho phép "Tiếp tục" cả khi đang sai: người học đã xem đáp án và chọn
+      // sang câu tiếp mà không tự làm lại.
+      if (state.phase !== "correct" && state.phase !== "incorrect") return state;
       const isLast = state.index >= state.questionIds.length - 1;
       if (isLast) {
         return {

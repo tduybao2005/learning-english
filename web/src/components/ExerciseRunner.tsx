@@ -192,6 +192,14 @@ function ExerciseRunnerSession({
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [past, setPast] = useState<PastAnswer[]>(initialPast ?? []);
   const [reviewIndex, setReviewIndex] = useState<number | null>(null);
+  // Bumped on "Làm lại" to force QuestionCard (uncontrolled) to remount and
+  // clear its local input, since the question id itself doesn't change.
+  const [redoTick, setRedoTick] = useState(0);
+
+  function handleRedoQuestion() {
+    setRedoTick((t) => t + 1);
+    dispatch({ type: "REDO_QUESTION" });
+  }
 
   function handleContinue() {
     setPast((prev) => [
@@ -210,7 +218,8 @@ function ExerciseRunnerSession({
     containerRef: cardRef,
     onPrimaryAction: () => {
       if (reviewIndex !== null) return;
-      if (state.phase === "correct") handleContinue();
+      // Sau khi đúng — hoặc sau khi sai và đã xem đáp án — Enter sang câu tiếp.
+      if (state.phase === "correct" || state.phase === "incorrect") handleContinue();
       else void handleSubmit(); // guards handle checking/empty
     },
   });
@@ -226,7 +235,7 @@ function ExerciseRunnerSession({
     // MCQ (and other no-input kinds) have no answer field: drop any caret that
     // lingered in the previous question's input so no stray cursor shows.
     else (document.activeElement as HTMLElement | null)?.blur();
-  }, [question?.id]);
+  }, [question?.id, redoTick]);
 
   async function handleSubmit() {
     if (state.phase !== "answering" && state.phase !== "incorrect") return;
@@ -334,7 +343,7 @@ function ExerciseRunnerSession({
           )}
         >
           <QuestionCard
-            key={question.id}
+            key={`${question.id}:${redoTick}`}
             question={question}
             disabled={isChecking || isCorrect}
             status={state.phase}
@@ -368,14 +377,23 @@ function ExerciseRunnerSession({
               <Button className="w-full sm:w-auto" onClick={handleContinue}>
                 Tiếp tục
               </Button>
+            ) : isIncorrect ? (
+              // Đã hiện đáp án: tự làm lại câu này, hoặc bỏ qua sang câu sau.
+              <div className="flex w-full gap-2 sm:w-auto">
+                <Button variant="outline" className="flex-1 sm:flex-none" onClick={handleRedoQuestion}>
+                  Làm lại
+                </Button>
+                <Button className="flex-1 sm:flex-none" onClick={handleContinue}>
+                  Tiếp tục
+                </Button>
+              </div>
             ) : (
               <Button
                 className="w-full sm:w-auto"
-                variant={isIncorrect ? "outline" : "default"}
                 onClick={handleSubmit}
                 disabled={isChecking || state.input.trim() === ""}
               >
-                {isIncorrect ? "Thử lại" : "Kiểm tra"}
+                Kiểm tra
               </Button>
             )}
           </div>
@@ -392,7 +410,15 @@ function ExerciseRunnerSession({
               </div>
             ) : (
               <>
-                <p className="text-sm font-medium text-destructive">Chưa đúng, thử lại.</p>
+                <p className="text-sm font-medium text-destructive">Chưa đúng.</p>
+                {state.result?.correctAnswer && (
+                  <div className="rounded-xl border border-success/30 bg-success-bg p-4">
+                    <p className="text-sm text-muted-foreground">
+                      Đáp án:{" "}
+                      <span className="font-medium text-success">{state.result.correctAnswer}</span>
+                    </p>
+                  </div>
+                )}
                 {state.result?.keyNote && (
                   <div className="rounded-xl border border-destructive/30 bg-destructive-bg p-4">
                     <p className="mb-1 text-caption font-bold text-destructive">💡 Ghi nhớ</p>

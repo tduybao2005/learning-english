@@ -180,7 +180,10 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     correct: matchResult.correct,
     matchType: matchResult.correct ? matchResult.matchType : undefined,
     keyNote: question.keyNote,
-    correctAnswer: matchResult.correct ? question.answerRaw : undefined,
+    // Hiện đáp án cả khi sai để người học học được (UI kèm nút "Làm lại" để
+    // tự nhập lại nếu muốn). Trước đây chỉ trả khi đúng, khiến người dùng bị
+    // bắt nhập lại vô hạn mà không biết đáp án.
+    correctAnswer: question.answerRaw,
     reason: minorReason ?? undefined,
     explanation,
     completedLesson: isCompleting ? { nextLessonSlug: nextLesson?.slug ?? null } : undefined,

@@ -102,6 +102,32 @@ describe("ExerciseRunner — xem lại câu trước (chỉ đọc)", () => {
     expect(back.disabled).toBe(true);
   });
 
+  it("khi trả lời sai: hiện đáp án và hai nút Làm lại / Tiếp tục", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async () =>
+        new Response(JSON.stringify({ correct: false, correctAnswer: "am", keyNote: null }), {
+          headers: { "content-type": "application/json" },
+        }),
+      ),
+    );
+
+    renderRunner();
+    const input = document.querySelector("[data-answer-field]") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "is" } });
+    fireEvent.click(screen.getByRole("button", { name: "Kiểm tra" }));
+
+    expect(await screen.findByText(/^Đáp án:/)).toBeTruthy();
+    expect(screen.getByText(/^Đáp án:/).textContent).toContain("am");
+    expect(screen.getByRole("button", { name: "Làm lại" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Tiếp tục" })).toBeTruthy();
+
+    // "Làm lại" đưa câu về trạng thái nhập lại được.
+    fireEvent.click(screen.getByRole("button", { name: "Làm lại" }));
+    expect(screen.getByRole("button", { name: "Kiểm tra" })).toBeTruthy();
+    expect(document.querySelector("[data-answer-field]")).not.toBeNull();
+  });
+
   it("bật '← Câu trước' ngay khi vào lại bài với câu đã trả lời trước đó (initialPast)", () => {
     render(
       <ExerciseRunner
