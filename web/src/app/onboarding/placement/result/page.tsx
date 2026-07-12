@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { rawToBand, startLessonFor, scaleRawScore, type BandTableRow } from "@/lib/band";
 import { placementListeningSetId } from "@/lib/placement-listening";
-import { ResetToStartButton } from "@/components/ResetToStartButton";
+import { ResetToStartButtonConnected } from "@/components/ResetToStartButtonConnected";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -179,7 +179,7 @@ export default async function PlacementResultPage() {
           >
             Bắt đầu học ngay 🚀
           </Link>
-          <ResetToStartButton />
+          <ResetToStartButtonConnected />
         </div>
       </div>
     </div>

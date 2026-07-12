@@ -1,72 +1,37 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-
 import { Button } from "@/components/ui/button";
 import { GoalPicker, type GoalPickerValue } from "@/components/GoalPicker";
 
 /**
- * "Change goal" form for the settings page. Reuses `GoalPicker` (the same
- * IELTS/CEFR chip UI from onboarding) and posts to the existing
- * `POST /api/onboarding/path` route (Task 6) — that route already does
- * exactly what's needed here (zod-validated discriminated union, then
- * `db.user.update({ goalType, goalValue })`), so there is no new API route
- * for this. Unlike onboarding, saving here does not redirect — it shows an
- * inline confirmation and refreshes the server-rendered goal display above.
+ * "Change goal" form for the settings page — presentational. Reuses
+ * `GoalPicker` (the same IELTS/CEFR chip UI from onboarding); the selection
+ * is a controlled `value`/`onChange` pair and saving is a callback.
+ *
+ * The `POST /api/onboarding/path` call and `router.refresh()` live in
+ * `SettingsGoalFormConnected`.
  */
 export function SettingsGoalForm({
-  initialGoalType,
-  initialGoalValue,
+  value,
+  onChange,
+  onSubmit,
+  pending = false,
+  status = "idle",
 }: {
-  initialGoalType: "IELTS" | "CEFR" | "TOEIC" | null;
-  initialGoalValue: string | null;
+  /** Currently selected goal; `null` when the user has none yet. */
+  value: GoalPickerValue | null;
+  onChange: (value: GoalPickerValue) => void;
+  /** Invoked by "Lưu thay đổi". The wrapper does the POST. */
+  onSubmit: () => void;
+  pending?: boolean;
+  /** Outcome of the last save: drives the confirmation / error line. */
+  status?: "idle" | "saved" | "error";
 }) {
-  const router = useRouter();
-  const [selected, setSelected] = useState<GoalPickerValue | null>(
-    initialGoalType && initialGoalValue
-      ? { goalType: initialGoalType, goalValue: initialGoalValue }
-      : null,
-  );
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [status, setStatus] = useState<"idle" | "saved" | "error">("idle");
-
-  async function handleSave() {
-    if (!selected) {
-      setStatus("error");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setStatus("idle");
-    try {
-      const res = await fetch("/api/onboarding/path", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(selected),
-      });
-
-      if (!res.ok) {
-        setStatus("error");
-        return;
-      }
-
-      setStatus("saved");
-      router.refresh();
-    } catch {
-      setStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
-
   return (
     <div>
-      <GoalPicker value={selected} onChange={setSelected} />
+      <GoalPicker value={value} onChange={onChange} />
 
       <div className="mt-4 flex items-center gap-3">
-        <Button type="button" disabled={isSubmitting} onClick={handleSave}>
-          {isSubmitting ? "Đang lưu..." : "Lưu thay đổi"}
+        <Button type="button" disabled={pending} onClick={onSubmit}>
+          {pending ? "Đang lưu..." : "Lưu thay đổi"}
         </Button>
         {status === "saved" ? (
           <p className="text-sm text-success">

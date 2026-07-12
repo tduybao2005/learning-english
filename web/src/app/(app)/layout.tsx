@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 
 import { AppHeader } from "@/components/AppHeader";
 import { AppSidebarConnected } from "@/components/AppSidebarConnected";
-import { LogoutButton } from "@/components/LogoutButton";
+import { LogoutButtonConnected } from "@/components/LogoutButtonConnected";
 import { getSessionUser } from "@/lib/auth/session";
 
 /** Shared layout for every authenticated route (`/dashboard`, `/learn/*`,
@@ -24,7 +24,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <AppHeader
         className="lg:hidden"
         linkComponent={NextLink}
-        logoutSlot={<LogoutButton variant="ghost" />}
+        logoutSlot={<LogoutButtonConnected variant="ghost" />}
       />
       <main className="flex-1 lg:pl-[232px]">{children}</main>
     </div>

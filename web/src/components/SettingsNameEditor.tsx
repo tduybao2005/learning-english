@@ -1,68 +1,84 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 /**
- * Inline display-name editor inside the settings banner (design item 7):
- * view mode shows the name + a ✏️ button; edit mode swaps to an input with
- * a live character counter, Lưu/Huỷ, "✓ Đã lưu" on success, and an error
- * when the name is empty. Styled for the primary (dark) banner background.
+ * Inline display-name editor inside the settings banner (design item 7) —
+ * presentational: view mode shows the name + a ✏️ button; edit mode swaps to
+ * an input with a live character counter, Lưu/Huỷ, "✓ Đã lưu" on success, and
+ * an error when the name is empty. Styled for the primary (dark) banner
+ * background.
+ *
+ * View/edit mode and the draft text are local UI state and stay here. The
+ * `POST /api/profile/name` call and `router.refresh()` live in
+ * `SettingsNameEditorConnected`; this component only reports the new name via
+ * `onSave` and reflects `pending` / `saved` / `error` back to the user.
+ *
+ * Marked `"use client"` because it holds state — it imports no router, auth
+ * or theme hook, so it still bundles into the design system.
  */
 export function SettingsNameEditor({
-  initialName,
+  name,
   email,
+  onSave,
+  pending = false,
+  saved = false,
+  error = false,
+  defaultEditing = false,
 }: {
-  initialName: string | null;
+  /** The persisted display name; `null` falls back to the email. */
+  name: string | null;
   email: string;
+  /** Invoked with the trimmed, non-empty name. The wrapper does the POST. */
+  onSave: (name: string) => void;
+  pending?: boolean;
+  /** Last save succeeded — shows "✓ Đã lưu" and closes edit mode. */
+  saved?: boolean;
+  /** Last save failed — shows the error line. */
+  error?: boolean;
+  /** Start in edit mode (design-system previews). */
+  defaultEditing?: boolean;
 }) {
-  const router = useRouter();
-  const [editing, setEditing] = useState(false);
-  const [name, setName] = useState(initialName ?? "");
-  const [phase, setPhase] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [editing, setEditing] = useState(defaultEditing);
+  const [draft, setDraft] = useState(name ?? "");
+  const [blank, setBlank] = useState(false);
 
-  async function save() {
-    const trimmed = name.trim();
+  // A successful save closes the editor. `saved` is owned by the wrapper, so
+  // this mirrors it into the local view/edit state.
+  useEffect(() => {
+    if (saved) setEditing(false);
+  }, [saved]);
+
+  function submit() {
+    const trimmed = draft.trim();
     if (!trimmed) {
-      setPhase("error");
+      setBlank(true);
       return;
     }
-    setPhase("saving");
-    try {
-      const res = await fetch("/api/profile/name", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: trimmed }),
-      });
-      if (!res.ok) throw new Error();
-      setPhase("saved");
-      setEditing(false);
-      router.refresh();
-    } catch {
-      setPhase("error");
-    }
+    setBlank(false);
+    onSave(trimmed);
   }
 
   if (!editing) {
     return (
       <div className="min-w-0">
         <p className="flex items-center gap-1.5 truncate text-sm font-semibold">
-          {initialName ?? email}
+          {name ?? email}
           <button
             type="button"
             aria-label="Sửa tên hiển thị"
             onClick={() => {
-              setName(initialName ?? "");
-              setPhase("idle");
+              setDraft(name ?? "");
+              setBlank(false);
               setEditing(true);
             }}
             className="rounded p-0.5 opacity-80 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50"
           >
             ✏️
           </button>
-          {phase === "saved" && <span className="text-xs font-normal">✓ Đã lưu</span>}
+          {saved && <span className="text-xs font-normal">✓ Đã lưu</span>}
         </p>
-        {initialName ? <p className="truncate text-xs text-primary-foreground/80">{email}</p> : null}
+        {name ? <p className="truncate text-xs text-primary-foreground/80">{email}</p> : null}
       </div>
     );
   }
@@ -72,22 +88,26 @@ export function SettingsNameEditor({
       <div className="flex items-center gap-2">
         <input
           type="text"
-          value={name}
+          value={draft}
           maxLength={50}
           autoFocus
-          onChange={(e) => setName(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && save()}
+          onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && submit()}
           className="w-full max-w-56 rounded-lg border border-white/30 bg-white/10 px-2 py-1 text-sm text-primary-foreground outline-none placeholder:text-primary-foreground/50 focus-visible:ring-2 focus-visible:ring-white/50"
         />
-        <button type="button" onClick={save} disabled={phase === "saving"} className="rounded-lg bg-white/20 px-2.5 py-1 text-xs font-semibold hover:bg-white/30">
-          {phase === "saving" ? "..." : "Lưu"}
+        <button type="button" onClick={submit} disabled={pending} className="rounded-lg bg-white/20 px-2.5 py-1 text-xs font-semibold hover:bg-white/30">
+          {pending ? "..." : "Lưu"}
         </button>
         <button type="button" onClick={() => setEditing(false)} className="text-xs text-primary-foreground/80 hover:text-primary-foreground">
           Huỷ
         </button>
       </div>
       <p className="mt-1 text-xs text-primary-foreground/70">
-        {phase === "error" ? "Tên không được để trống." : `${name.trim().length}/50 ký tự`}
+        {blank
+          ? "Tên không được để trống."
+          : error
+            ? "Không thể lưu tên. Vui lòng thử lại."
+            : `${draft.trim().length}/50 ký tự`}
       </p>
     </div>
   );

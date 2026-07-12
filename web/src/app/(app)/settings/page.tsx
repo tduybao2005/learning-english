@@ -4,10 +4,10 @@ import { ChevronDown } from "lucide-react";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { SettingsGoalForm } from "@/components/SettingsGoalForm";
-import { SettingsNameEditor } from "@/components/SettingsNameEditor";
-import { LogoutButton } from "@/components/LogoutButton";
-import { ThemeToggleRow } from "@/components/ThemeToggleRow";
+import { SettingsGoalFormConnected } from "@/components/SettingsGoalFormConnected";
+import { SettingsNameEditorConnected } from "@/components/SettingsNameEditorConnected";
+import { LogoutButtonConnected } from "@/components/LogoutButtonConnected";
+import { ThemeToggleRowConnected } from "@/components/ThemeToggleRowConnected";
 
 function formatGoal(goalType: "IELTS" | "CEFR" | "TOEIC" | null, goalValue: string | null): string {
   if (!goalType || !goalValue) return "Chưa đặt mục tiêu";
@@ -42,7 +42,7 @@ export default async function SettingsPage() {
               {avatarLetter}
             </span>
             <div className="min-w-0">
-              <SettingsNameEditor initialName={user.name} email={user.email} />
+              <SettingsNameEditorConnected initialName={user.name} email={user.email} />
               <p className="text-xs text-primary-foreground/80">
                 Band ước tính gần nhất:{" "}
                 {latestAttempt?.band != null ? latestAttempt.band.toFixed(1) : "Chưa làm bài kiểm tra"}
@@ -65,7 +65,7 @@ export default async function SettingsPage() {
             <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
           </summary>
           <div className="border-t border-border px-4 py-4">
-            <SettingsGoalForm initialGoalType={user.goalType} initialGoalValue={user.goalValue} />
+            <SettingsGoalFormConnected initialGoalType={user.goalType} initialGoalValue={user.goalValue} />
           </div>
         </details>
 
@@ -80,9 +80,9 @@ export default async function SettingsPage() {
           <span className="text-muted-foreground">›</span>
         </Link>
 
-        <ThemeToggleRow />
+        <ThemeToggleRowConnected />
 
-        <LogoutButton variant="destructive" className="w-full" />
+        <LogoutButtonConnected variant="destructive" className="w-full" />
       </div>
     </div>
   );
