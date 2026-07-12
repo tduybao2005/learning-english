@@ -45,6 +45,15 @@ Thì Hiện Tại Đơn (Simple Present) là một trong những thì cơ bản 
 | He / She / It | is | She **is** a doctor. |
 | You / We / They | are | They **are** teachers. |
 
+**Thử ngay:**
+
+```example
+id: sp-affirm-1
+prompt: My brother ___ (work) in a hospital.
+hint: "My brother" là ngôi thứ ba số ít → động từ thêm -s.
+answer: works
+```
+
 ---
 
 ### 1.2. Quy tắc thêm -s / -es (Rules for Adding -s/-es)
@@ -80,6 +89,22 @@ Thì Hiện Tại Đơn (Simple Present) là một trong những thì cơ bản 
 **Ngoại lệ đặc biệt (học thuộc lòng):**
 - have → **has** (có)
 
+**Thử ngay:**
+
+```example
+id: sp-es-1
+prompt: She always ___ (finish) her homework before dinner.
+hint: Động từ tận cùng bằng -sh → thêm -es (Quy tắc 2).
+answer: finishes
+```
+
+```example
+id: sp-y-1
+prompt: My sister ___ (study) English every evening.
+hint: Phụ âm + y → đổi -y thành -ies (Quy tắc 3).
+answer: studies
+```
+
 ---
 
 ### 1.3. Câu phủ định (Negative Sentences)
@@ -97,6 +122,15 @@ Thì Hiện Tại Đơn (Simple Present) là một trong những thì cơ bản 
 **Lỗi thường gặp:** Khi dùng "doesn't", động từ phía sau KHÔNG được thêm -s/-es nữa!
 - SAI: She doesn't works here. ❌
 - ĐÚNG: She doesn't work here. ✓
+
+**Thử ngay:**
+
+```example
+id: sp-neg-1
+prompt: He ___ (not / eat) meat.
+hint: Ngôi thứ ba số ít phủ định dùng "doesn't" + động từ nguyên thể (không thêm -s).
+answer: doesn't eat / does not eat
+```
 
 ---
 
@@ -120,6 +154,15 @@ Ví dụ:
 - **When** do they start work? (Khi nào họ bắt đầu làm việc?)
 - **Why** does she study English? (Tại sao cô ấy học tiếng Anh?)
 - **How** do you feel? (Bạn cảm thấy thế nào?)
+
+**Thử ngay:**
+
+```example
+id: sp-q-1
+prompt: ___ your sister like music? (Do / Does)
+hint: "your sister" là ngôi thứ ba số ít → dùng "Does".
+answer: Does
+```
 
 ---
 
