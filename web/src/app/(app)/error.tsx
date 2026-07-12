@@ -1,5 +1,6 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect } from "react";
 
 import { ErrorState } from "@/components/ErrorState";
@@ -19,5 +20,5 @@ export default function AppError({
     console.error(error);
   }, [error]);
 
-  return <ErrorState reset={reset} />;
+  return <ErrorState reset={reset} linkComponent={NextLink} />;
 }

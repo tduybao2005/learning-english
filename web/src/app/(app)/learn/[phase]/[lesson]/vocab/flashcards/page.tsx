@@ -55,7 +55,7 @@ export default async function FlashcardsPage({
             Bài học này chưa có từ vựng.
           </p>
         ) : (
-          <Flashcards words={words} backHref={backHref} />
+          <Flashcards words={words} backHref={backHref} linkComponent={Link} />
         )}
       </div>
     </div>

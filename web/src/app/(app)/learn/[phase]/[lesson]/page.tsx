@@ -51,6 +51,7 @@ export default async function LecturePage({
           lessonTitle={lesson.title}
           basePath={base}
           active="lecture"
+          linkComponent={Link}
         />
 
         {segments.map((segment, i) =>

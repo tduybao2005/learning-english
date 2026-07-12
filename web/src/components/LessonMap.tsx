@@ -26,9 +26,12 @@ export type LessonMapPhase = {
 export function LessonMap({
   phases,
   states,
+  linkComponent,
 }: {
   phases: LessonMapPhase[];
   states: Map<string, LessonState>;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   return (
     <div className="flex flex-col gap-4">
@@ -110,6 +113,7 @@ export function LessonMap({
             </div>
             <PhasePillRow
               total={total}
+              linkComponent={linkComponent}
               lessons={phase.lessons.map((lesson) => ({
                 id: lesson.id,
                 orderIndex: lesson.orderIndex,

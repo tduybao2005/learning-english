@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
@@ -19,11 +18,14 @@ export function LessonTabs({
   lessonTitle,
   basePath,
   active,
+  linkComponent: Link,
 }: {
   phaseTitle: string;
   lessonTitle: string;
   basePath: string;
   active: LessonTabKey;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   return (
     <>

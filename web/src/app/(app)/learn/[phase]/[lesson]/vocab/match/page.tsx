@@ -55,7 +55,7 @@ export default async function VocabMatchPage({
             Bài học này chưa có từ vựng.
           </p>
         ) : (
-          <MatchGame words={words} backHref={backHref} lessonId={lesson.id} />
+          <MatchGame words={words} backHref={backHref} lessonId={lesson.id} linkComponent={Link} />
         )}
       </div>
     </div>

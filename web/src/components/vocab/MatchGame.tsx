@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -45,10 +44,13 @@ export function MatchGame({
   words,
   backHref,
   lessonId,
+  linkComponent: Link,
 }: {
   words: VocabWordLite[];
   backHref: string;
   lessonId: string;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   const [rounds, setRounds] = useState<MatchRound[] | null>(null);
   const [roundIndex, setRoundIndex] = useState(0);

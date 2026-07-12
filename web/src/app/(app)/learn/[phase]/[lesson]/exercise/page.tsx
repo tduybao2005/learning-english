@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
@@ -45,6 +46,7 @@ export default async function ExercisePage({
           lessonTitle={lesson.title}
           basePath={base}
           active="exercise"
+          linkComponent={NextLink}
         />
         <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
           Bài học này chưa có bài tập.
@@ -121,6 +123,7 @@ export default async function ExercisePage({
           lessonTitle={lesson.title}
           basePath={base}
           active="exercise"
+          linkComponent={NextLink}
         />
       </div>
       <div className="lg:mx-auto lg:max-w-5xl lg:px-8 lg:py-10">
@@ -132,6 +135,7 @@ export default async function ExercisePage({
           nextLesson={nextLesson}
           backHref={base}
           initialPast={initialPast}
+          linkComponent={NextLink}
         />
       </div>
     </div>

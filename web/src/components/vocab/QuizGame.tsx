@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -32,7 +31,16 @@ interface ReviewResult {
  * produce the same "loading" output; the real (random) rounds are only
  * ever computed client-side, after hydration has already reconciled.
  */
-export function QuizGame({ words, backHref }: { words: VocabWordLite[]; backHref: string }) {
+export function QuizGame({
+  words,
+  backHref,
+  linkComponent: Link,
+}: {
+  words: VocabWordLite[];
+  backHref: string;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
+}) {
   const [rounds, setRounds] = useState<QuizRound[] | null>(null);
   const [index, setIndex] = useState(0);
   const [selectedId, setSelectedId] = useState<string | null>(null);

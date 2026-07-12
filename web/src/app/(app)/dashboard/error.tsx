@@ -1,5 +1,6 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect } from "react";
 
 import { ErrorState } from "@/components/ErrorState";
@@ -21,6 +22,7 @@ export default function DashboardError({
       title="Không thể tải trang chủ"
       description="Rất tiếc, có gì đó không ổn khi tải lộ trình học của bạn. Vui lòng thử lại."
       reset={reset}
+      linkComponent={NextLink}
     />
   );
 }

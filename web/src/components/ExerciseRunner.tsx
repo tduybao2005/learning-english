@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useReducer, useRef, useState } from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -28,6 +27,8 @@ interface ExerciseRunnerProps {
    * so "← Câu trước" works immediately on resume (without this, `past` starts
    * empty and the button is dead until the learner answers one more here). */
   initialPast?: PastAnswer[];
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }
 
 /** Kicker line shown above the prompt, keyed off the question's kind. */
@@ -56,6 +57,7 @@ export function ExerciseRunner({
   nextLesson,
   backHref,
   initialPast,
+  linkComponent,
 }: ExerciseRunnerProps) {
   const [session, setSession] = useState({ attemptId, initialQuestionNumber });
 
@@ -89,6 +91,7 @@ export function ExerciseRunner({
       // Hydrated history only applies to the attempt we resumed. A redo swaps
       // in a brand-new attempt, whose history must start empty.
       initialPast={session.attemptId === attemptId ? initialPast : undefined}
+      linkComponent={linkComponent}
     />
   );
 }
@@ -171,6 +174,7 @@ function ExerciseRunnerSession({
   onRedo,
   backHref,
   initialPast,
+  linkComponent: Link,
 }: {
   attemptId: string;
   initialQuestionNumber: number;
@@ -179,6 +183,8 @@ function ExerciseRunnerSession({
   onRedo: () => void;
   backHref: string;
   initialPast?: PastAnswer[];
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   const [state, dispatch] = useReducer(runnerReducer, undefined, () =>
     initRunnerState(

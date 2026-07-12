@@ -34,7 +34,7 @@ export default async function IeltsHubPage({
           linkComponent={NextLink}
         />
       ) : (
-        <IeltsHub tests={tests} initialSkill={initialSkill} />
+        <IeltsHub tests={tests} initialSkill={initialSkill} linkComponent={NextLink} />
       )}
     </div>
   );

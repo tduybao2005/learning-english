@@ -55,7 +55,7 @@ export default async function VocabQuizPage({
             Bài học này chưa có từ vựng.
           </p>
         ) : (
-          <QuizGame words={words} backHref={backHref} />
+          <QuizGame words={words} backHref={backHref} linkComponent={Link} />
         )}
       </div>
     </div>

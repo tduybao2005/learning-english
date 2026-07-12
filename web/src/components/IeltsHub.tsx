@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -23,9 +22,12 @@ const INITIAL_VISIBLE = 16;
 export function IeltsHub({
   tests,
   initialSkill = "reading",
+  linkComponent: Link,
 }: {
   tests: { number: number; isComplete: boolean }[];
   initialSkill?: IeltsSkill;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   const [skill, setSkill] = useState<IeltsSkill>(initialSkill);
   const [showAll, setShowAll] = useState(false);

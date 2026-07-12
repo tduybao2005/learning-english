@@ -1,5 +1,6 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect } from "react";
 
 import { ErrorState } from "@/components/ErrorState";
@@ -23,6 +24,7 @@ export default function LessonError({
       title="Không thể tải bài học"
       description="Rất tiếc, có gì đó không ổn khi tải nội dung bài học này. Vui lòng thử lại."
       reset={reset}
+      linkComponent={NextLink}
     />
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect } from "react";
 
 import { ErrorState } from "@/components/ErrorState";
@@ -24,6 +25,7 @@ export default function ExerciseError({
       title="Không thể tải bài tập"
       description="Rất tiếc, có gì đó không ổn khi tải bài tập này. Tiến độ đã lưu của bạn không bị mất — vui lòng thử lại."
       reset={reset}
+      linkComponent={NextLink}
     />
   );
 }

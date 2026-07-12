@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 
 export type LessonNodeState = "COMPLETED" | "UNLOCKED" | "LOCKED" | "SKIPPED";
@@ -49,12 +47,15 @@ export function LessonNode({
   href,
   title,
   className,
+  linkComponent: Link,
 }: {
   state: LessonNodeState;
   label: string;
   href?: string;
   title?: string;
   className?: string;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   const meta = NODE_META[state];
   const content = (

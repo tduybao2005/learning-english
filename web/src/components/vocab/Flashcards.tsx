@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -27,7 +26,16 @@ interface ReviewResult {
  * the session — not per-card — so a partially-abandoned session never writes
  * partial Leitner state.
  */
-export function Flashcards({ words, backHref }: { words: FlashcardWord[]; backHref: string }) {
+export function Flashcards({
+  words,
+  backHref,
+  linkComponent: Link,
+}: {
+  words: FlashcardWord[];
+  backHref: string;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
+}) {
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [results, setResults] = useState<ReviewResult[]>([]);

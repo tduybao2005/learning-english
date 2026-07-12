@@ -120,7 +120,7 @@ export default async function DashboardPage({
             linkComponent={Link}
           />
         ) : (
-          <LessonMap phases={phases} states={states} />
+          <LessonMap phases={phases} states={states} linkComponent={Link} />
         )}
       </div>
 

@@ -18,7 +18,16 @@ export type PillLesson = {
  * ALL lessons auto-centered on the current one, with a right-edge fade mask,
  * plus a toggle that expands to a wrapped grid for the full-phase overview.
  */
-export function PhasePillRow({ lessons, total }: { lessons: PillLesson[]; total: number }) {
+export function PhasePillRow({
+  lessons,
+  total,
+  linkComponent,
+}: {
+  lessons: PillLesson[];
+  total: number;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
+}) {
   const [showAll, setShowAll] = useState(false);
   const scrollerRef = useRef<HTMLDivElement | null>(null);
   const currentRef = useRef<HTMLDivElement | null>(null);
@@ -42,6 +51,7 @@ export function PhasePillRow({ lessons, total }: { lessons: PillLesson[]; total:
         label={`Bài ${lesson.orderIndex}`}
         title={lesson.title}
         href={lesson.href}
+        linkComponent={linkComponent}
       />
     </div>
   ));

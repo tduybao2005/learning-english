@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 
 /**
@@ -18,10 +16,13 @@ export function ErrorState({
   title = "Đã có lỗi xảy ra",
   description = "Rất tiếc, có gì đó không ổn khi tải trang này. Bạn có thể thử lại hoặc quay về trang chủ.",
   reset,
+  linkComponent: Link,
 }: {
   title?: string;
   description?: string;
   reset: () => void;
+  /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
+  linkComponent: React.ElementType;
 }) {
   return (
     <div className="flex flex-col items-center gap-4 px-6 py-16 text-center">
