@@ -51,3 +51,33 @@ export { EmptyState } from "@/components/EmptyState";
 export { LevelBadge } from "@/components/LevelBadge";
 export { ListeningSetCard } from "@/components/ListeningSetCard";
 export { PlacementWizard } from "@/components/PlacementWizard";
+
+// Link-injected screens and screen parts (Task 0.2): every one of these used to
+// import next/link and now takes a required `linkComponent` instead, so nothing
+// here pulls the Next router into the bundle. `LessonMap`/`PhasePillRow`/`IeltsHub`
+// look Prisma-coupled but are not: their `import type { LessonState }` /
+// `import type { IeltsSkill }` are type-only and erased at compile.
+export { ErrorState } from "@/components/ErrorState";
+export { ExerciseRunner } from "@/components/ExerciseRunner";
+export { IeltsHub } from "@/components/IeltsHub";
+export { InlineExample } from "@/components/InlineExample";
+export { LessonMap } from "@/components/LessonMap";
+export { LessonNode } from "@/components/lesson-node";
+export { LessonTabs } from "@/components/LessonTabs";
+export { ListeningBottomNav } from "@/components/ListeningBottomNav";
+export { PhasePillRow } from "@/components/PhasePillRow";
+
+// Vocab games. Pure client state + a batched fetch() on finish (inert in a
+// design, same known limitation as PlacementWizard); link-injected like the rest.
+export { Flashcards } from "@/components/vocab/Flashcards";
+export { MatchGame } from "@/components/vocab/MatchGame";
+export { QuizGame } from "@/components/vocab/QuizGame";
+
+// Settings / session widgets — presentational halves of the Task 0.3 split. The
+// effects (signOut, router.refresh, next-themes, the POSTs) live in the
+// *Connected wrappers, which stay in the app and are deliberately NOT synced.
+export { LogoutButton } from "@/components/LogoutButton";
+export { ResetToStartButton } from "@/components/ResetToStartButton";
+export { SettingsGoalForm } from "@/components/SettingsGoalForm";
+export { SettingsNameEditor } from "@/components/SettingsNameEditor";
+export { ThemeToggleRow } from "@/components/ThemeToggleRow";

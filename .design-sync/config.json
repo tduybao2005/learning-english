@@ -28,24 +28,145 @@
     "EmptyState": "src/components/EmptyState.tsx",
     "LevelBadge": "src/components/LevelBadge.tsx",
     "ListeningSetCard": "src/components/ListeningSetCard.tsx",
-    "PlacementWizard": "src/components/PlacementWizard.tsx"
+    "PlacementWizard": "src/components/PlacementWizard.tsx",
+    "ErrorState": "src/components/ErrorState.tsx",
+    "ExerciseRunner": "src/components/ExerciseRunner.tsx",
+    "IeltsHub": "src/components/IeltsHub.tsx",
+    "InlineExample": "src/components/InlineExample.tsx",
+    "LessonMap": "src/components/LessonMap.tsx",
+    "LessonNode": "src/components/lesson-node.tsx",
+    "LessonTabs": "src/components/LessonTabs.tsx",
+    "ListeningBottomNav": "src/components/ListeningBottomNav.tsx",
+    "PhasePillRow": "src/components/PhasePillRow.tsx",
+    "Flashcards": "src/components/vocab/Flashcards.tsx",
+    "MatchGame": "src/components/vocab/MatchGame.tsx",
+    "QuizGame": "src/components/vocab/QuizGame.tsx",
+    "LogoutButton": "src/components/LogoutButton.tsx",
+    "ResetToStartButton": "src/components/ResetToStartButton.tsx",
+    "SettingsGoalForm": "src/components/SettingsGoalForm.tsx",
+    "SettingsNameEditor": "src/components/SettingsNameEditor.tsx",
+    "ThemeToggleRow": "src/components/ThemeToggleRow.tsx"
   },
   "overrides": {
-    "Tabs": { "cardMode": "column" },
-    "AnswerKeyAccordion": { "cardMode": "column" },
-    "AudioPlayer": { "cardMode": "column" },
-    "GoalPicker": { "cardMode": "column" },
-    "MarkdownContent": { "cardMode": "column" },
-    "ExplanationSlot": { "cardMode": "column" },
-    "QuestionCard": { "cardMode": "column" },
-    "SectionedListeningRunner": { "cardMode": "column" },
-    "ListeningSetView": { "cardMode": "column" },
-    "LectureToc": { "cardMode": "column", "viewport": "1180x360" },
-    "AppHeader": { "cardMode": "single", "primaryStory": "Default", "viewport": "760x120" },
-    "AppSidebar": { "cardMode": "single", "primaryStory": "Dashboard", "viewport": "1180x560" },
-    "EmptyState": { "cardMode": "column" },
-    "ListeningSetCard": { "cardMode": "column" },
-    "PlacementWizard": { "cardMode": "single", "primaryStory": "ListeningStep", "viewport": "900x760" }
+    "Tabs": {
+      "cardMode": "column"
+    },
+    "AnswerKeyAccordion": {
+      "cardMode": "column"
+    },
+    "AudioPlayer": {
+      "cardMode": "column"
+    },
+    "GoalPicker": {
+      "cardMode": "column"
+    },
+    "MarkdownContent": {
+      "cardMode": "column"
+    },
+    "ExplanationSlot": {
+      "cardMode": "column"
+    },
+    "QuestionCard": {
+      "cardMode": "column"
+    },
+    "SectionedListeningRunner": {
+      "cardMode": "column"
+    },
+    "ListeningSetView": {
+      "cardMode": "column"
+    },
+    "LectureToc": {
+      "cardMode": "column",
+      "viewport": "1180x360"
+    },
+    "AppHeader": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "760x120"
+    },
+    "AppSidebar": {
+      "cardMode": "single",
+      "primaryStory": "Dashboard",
+      "viewport": "1180x560"
+    },
+    "EmptyState": {
+      "cardMode": "column"
+    },
+    "ListeningSetCard": {
+      "cardMode": "column"
+    },
+    "PlacementWizard": {
+      "cardMode": "single",
+      "primaryStory": "ListeningStep",
+      "viewport": "900x760"
+    },
+    "ErrorState": {
+      "cardMode": "column"
+    },
+    "ExerciseRunner": {
+      "cardMode": "single",
+      "primaryStory": "Answering",
+      "viewport": "900x760"
+    },
+    "IeltsHub": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "900x760"
+    },
+    "InlineExample": {
+      "cardMode": "column"
+    },
+    "LessonMap": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "900x760"
+    },
+    "LessonNode": {
+      "cardMode": "column"
+    },
+    "LessonTabs": {
+      "cardMode": "column"
+    },
+    "ListeningBottomNav": {
+      "cardMode": "single",
+      "primaryStory": "WithSubtitle",
+      "viewport": "900x260"
+    },
+    "PhasePillRow": {
+      "cardMode": "column"
+    },
+    "Flashcards": {
+      "cardMode": "single",
+      "primaryStory": "MidSession",
+      "viewport": "900x760"
+    },
+    "MatchGame": {
+      "cardMode": "single",
+      "primaryStory": "MidGame",
+      "viewport": "900x760"
+    },
+    "QuizGame": {
+      "cardMode": "single",
+      "primaryStory": "MidQuiz",
+      "viewport": "900x760"
+    },
+    "LogoutButton": {
+      "cardMode": "column"
+    },
+    "ResetToStartButton": {
+      "cardMode": "column"
+    },
+    "SettingsGoalForm": {
+      "cardMode": "single",
+      "primaryStory": "Default",
+      "viewport": "900x760"
+    },
+    "SettingsNameEditor": {
+      "cardMode": "column"
+    },
+    "ThemeToggleRow": {
+      "cardMode": "column"
+    }
   },
   "dtsPropsFor": {
     "Button": "/** Visual style. Defaults to \"default\" (indigo primary). */\n  variant?: \"default\" | \"accent\" | \"success\" | \"outline\" | \"secondary\" | \"ghost\" | \"destructive\" | \"link\";\n  /** Height/padding scale. `icon*` sizes render a square icon-only button. */\n  size?: \"default\" | \"xs\" | \"sm\" | \"lg\" | \"icon\" | \"icon-xs\" | \"icon-sm\" | \"icon-lg\";\n  disabled?: boolean;\n  type?: \"button\" | \"submit\" | \"reset\";\n  onClick?: React.MouseEventHandler<HTMLButtonElement>;\n  className?: string;\n  children?: React.ReactNode;",
@@ -68,6 +189,23 @@
     "LevelBadge": "/** CEFR level; selects the label + semantic-token pill colour from LEVEL_META. */\n  level: \"A2\" | \"B1\" | \"B2\" | \"C1\";\n  className?: string;",
     "ListeningSetCard": "  href: string;\n  title: string;\n  questionCount: number;\n  /** Pre-formatted, e.g. \"8:20\". Omit to hide. */\n  durationLabel?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default. */\n  linkComponent: React.ElementType;\n  className?: string;",
     "PlacementWizard": "  /** Listening section data, or null when listening is not yet available. */\n  listening: {\n    audioUrl: string;\n    durationSec: number | null;\n    sections: {\n      label: string;\n      title: string;\n      instructions: string | null;\n      questions: {\n        id: string;\n        number: number;\n        prompt: string;\n        options: { label: string; text: string }[] | null;\n        kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n        isOpenEnded: boolean;\n      }[];\n    }[];\n  } | null;\n  /** Reading passage markdown. */\n  readingMd: string;\n  readingSections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];\n  writingPromptMd: string;\n  /** Called after `/api/placement/complete` succeeds. The app navigates to the result page; a design passes a no-op. Required. */\n  onFinished: () => void;",
-    "ListeningSetView": "  slug: string;\n  /** URL of the listening audio. */\n  audioUrl: string;\n  /** Transcript markdown; `Speaker: line` rows are colourised per speaker. */\n  transcriptMd: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];"
+    "ListeningSetView": "  slug: string;\n  /** URL of the listening audio. */\n  audioUrl: string;\n  /** Transcript markdown; `Speaker: line` rows are colourised per speaker. */\n  transcriptMd: string;\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];",
+    "ErrorState": "/** Headline. Defaults to \"Đã có lỗi xảy ra\". */\n  title?: string;\n  /** Body copy under the headline. Has a Vietnamese default. */\n  description?: string;\n  /** Retry handler — the app passes the error boundary's `reset()`. */\n  reset: () => void;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "ExerciseRunner": "  exerciseId: string;\n  attemptId: string;\n  /** 1-based question number to resume on. */\n  initialQuestionNumber: number;\n  questions: {\n    id: string;\n    number: number;\n    prompt: string;\n    options: { label: string; text: string }[] | null;\n    imageUrl?: string | null;\n    kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n    isOpenEnded: boolean;\n    errorSpan?: { start: number; end: number } | null;\n  }[];\n  /** Shown on the finish screen as the newly unlocked lesson; `null` = end of curriculum. */\n  nextLesson: { slug: string; phaseSlug: string; title: string } | null;\n  /** Where the top bar's ✕ navigates back to (the lesson overview). */\n  backHref: string;\n  /** Questions answered in a PRIOR session, hydrated from the server so \"← Câu trước\" works on resume. */\n  initialPast?: { index: number; answerText: string; correctAnswer?: string | null; keyNote?: string | null }[];\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "IeltsHub": "  /** Every IELTS test, numbered. `isComplete: false` dims the tile. */\n  tests: { number: number; isComplete: boolean }[];\n  /** Skill tab selected on first render. Defaults to \"reading\". */\n  initialSkill?: \"reading\" | \"writing\" | \"speaking\";\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "InlineExample": "  /** Lesson the example belongs to; used to POST to `/api/lessons/<id>/example-check`. */\n  lessonId: string;\n  /** Answer-free example. The answer is never shipped to the client — checking and revealing both go through the server. */\n  example: { id: string; prompt: string; hint: string };",
+    "LessonMap": "  phases: {\n    id: string;\n    slug: string;\n    title: string;\n    cefrLabel: string;\n    orderIndex: number;\n    lessons: { id: string; slug: string; title: string; orderIndex: number }[];\n  }[];\n  /** Lesson id -> state. Drives the three phase row variants (completed / locked / active). */\n  states: Map<string, \"LOCKED\" | \"UNLOCKED\" | \"COMPLETED\" | \"SKIPPED\">;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "LessonNode": "  /** Pill variant: ✓ done, ▶ current, ⏭ skipped, 🔒 locked (not clickable). */\n  state: \"COMPLETED\" | \"UNLOCKED\" | \"LOCKED\" | \"SKIPPED\";\n  /** Pill text, e.g. \"Bài 3\". */\n  label: string;\n  /** Omit (or use state=\"LOCKED\") to render a non-interactive pill. */\n  href?: string;\n  /** Native tooltip — the app passes the full lesson title. */\n  title?: string;\n  className?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "LessonTabs": "  /** Kicker above the title, e.g. \"Giai đoạn 2 · A2\". */\n  phaseTitle: string;\n  lessonTitle: string;\n  /** The lecture page's own URL; the exercise tab appends \"/exercise\". */\n  basePath: string;\n  active: \"lecture\" | \"exercise\";\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "ListeningBottomNav": "  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;\n  /** Optional right-hand hint, e.g. \"Phần 2/4\". */\n  subtitle?: string;",
+    "PhasePillRow": "  /** Every lesson of the active phase, in order. */\n  lessons: {\n    id: string;\n    orderIndex: number;\n    title: string;\n    state: \"LOCKED\" | \"UNLOCKED\" | \"COMPLETED\" | \"SKIPPED\";\n    href: string;\n  }[];\n  /** Lesson count shown on the \"Xem tất cả N bài\" toggle. */\n  total: number;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "Flashcards": "  words: {\n    id: string;\n    word: string;\n    ipa: string;\n    meaningVi: string;\n    exampleEn: string;\n    groupName: string;\n  }[];\n  /** \"Quay lại từ vựng\" target on the finish screen. */\n  backHref: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "MatchGame": "  /** Words with an empty `meaningVi` are filtered out; fewer than 2 usable words renders the \"chưa đủ từ vựng\" fallback. */\n  words: { id: string; word: string; meaningVi: string }[];\n  /** \"Quay lại từ vựng\" target on the finish screen. */\n  backHref: string;\n  /** Namespaces the best-time entry in localStorage. */\n  lessonId: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "QuizGame": "  /** Words with an empty `meaningVi` are filtered out; too few renders the \"chưa đủ từ vựng\" fallback. */\n  words: { id: string; word: string; meaningVi: string }[];\n  /** \"Quay lại từ vựng\" target on the finish screen. */\n  backHref: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every link to a full page load. */\n  linkComponent: React.ElementType;",
+    "LogoutButton": "  /** Invoked on click. The connected wrapper calls NextAuth's `signOut`. */\n  onLogout: () => void;\n  /** Disables the button and swaps the label while signing out. */\n  pending?: boolean;\n  className?: string;\n  /** Defaults to \"outline\". */\n  variant?: \"outline\" | \"ghost\" | \"destructive\";",
+    "ResetToStartButton": "  /** Invoked on click. The wrapper posts to `/api/placement/reset-to-start`, then navigates. */\n  onReset: () => void;\n  pending?: boolean;\n  /** Failure message shown under the button; `null` when there is none. */\n  error?: string | null;",
+    "SettingsGoalForm": "  /** Currently selected goal; `null` when the user has none yet. */\n  value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string } | null;\n  onChange: (value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string }) => void;\n  /** Invoked by \"Lưu thay đổi\". The wrapper does the POST. */\n  onSubmit: () => void;\n  pending?: boolean;\n  /** Outcome of the last save: drives the confirmation / error line. */\n  status?: \"idle\" | \"saved\" | \"error\";",
+    "SettingsNameEditor": "  /** The persisted display name; `null` falls back to the email. */\n  name: string | null;\n  email: string;\n  /** Invoked with the trimmed, non-empty name. The wrapper does the POST. */\n  onSave: (name: string) => void;\n  pending?: boolean;\n  /** Last save succeeded — shows \"✓ Đã lưu\" and closes edit mode. */\n  saved?: boolean;\n  /** Last save failed — shows the error line. */\n  error?: boolean;\n  /** Start in edit mode. Exists so a design can show the edit state statically. */\n  defaultEditing?: boolean;",
+    "ThemeToggleRow": "  /** `true` when dark mode is on. */\n  checked: boolean;\n  onCheckedChange: (checked: boolean) => void;"
   }
 }

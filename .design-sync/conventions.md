@@ -16,13 +16,26 @@ Compiled from the app's real sources. React 19. Everything is exported on
   `GoalPicker` (IELTS band / CEFR level / TOEIC score, fully controlled),
   `AnswerKeyAccordion` (closed-by-default answer key on the amber `streak` surface),
   `QuestionCard` + `ExplanationSlot` (a single exercise question and its explanation),
-  `ListeningRunner` and `ListeningSetView` (whole listening screens),
+  `SectionedListeningRunner` and `ListeningSetView` (whole listening screens),
   `LevelBadge` (CEFR pill: `level` is `"A2" | "B1" | "B2" | "C1"`, colour per level),
   `EmptyState` (encouraging empty screen with optional CTA — takes a **required**
   `linkComponent`, pass `"a"`), `ListeningSetCard` (one listening set as a link row —
   also takes a **required** `linkComponent`, pass `"a"`),
   `PlacementWizard` (the full multi-step placement test — listening/reading/writing;
   takes a required `onFinished`, pass a no-op in a design).
+- **Screens and screen parts** — the app's real screens, so build pages by composing these
+  rather than inventing markup: `LessonMap` + `PhasePillRow` + `LessonNode` (the dashboard
+  lesson map: phase rows, the scrolling pill row, the 4-state lesson pill),
+  `LessonTabs` (lecture/exercise header), `ExerciseRunner` (the whole exercise screen),
+  `InlineExample` (an interactive example inside a lecture), `IeltsHub` (the IELTS test grid),
+  `ListeningBottomNav` (the fixed bottom back-bar on a listening set page),
+  `ErrorState` (the error-boundary body), and the vocab games `Flashcards`, `MatchGame`,
+  `QuizGame`. All of them take a **required** `linkComponent` — pass `"a"`.
+- **Settings widgets**: `SettingsNameEditor` (inline name editor on the primary banner —
+  `defaultEditing` renders the edit state), `SettingsGoalForm` (GoalPicker + save),
+  `ThemeToggleRow` (dark-mode switch row), `LogoutButton`, `ResetToStartButton`. These are
+  the presentational halves of the app's connected components: they take callbacks
+  (`onSave`, `onSubmit`, `onLogout`, `onReset`) and `pending` / `status` flags — pass no-ops.
 
 ## Setup
 

@@ -8,10 +8,9 @@ Repo-specific gotchas. Read this before any re-sync.
   `dist/`, no library entry, no Storybook. `shape: "package"` with `--entry ./web/.ds-entry.tsx`
   — a barrel that re-exports the six real primitives from `web/src/components/ui`. It
   reimplements nothing.
-- Only `Button, Card, Input, Skeleton, Switch, Tabs` are synced (pinned via `componentSrcMap`).
-  The other ~26 components in `web/src/components/` are coupled to `next/link`,
-  `next/navigation`, `next-auth`, `next-themes` and Prisma-shaped props. Bundling them would
-  require stubbing the framework — deliberately **out of scope**.
+- **All 38 app components are synced** (pinned via `componentSrcMap`). The only files in
+  `web/src/components/` NOT synced are the seven `*Connected.tsx` wrappers — see
+  "What is synced" below.
 - Compound parts (`CardHeader`, `TabsTrigger`, …) ship in the bundle for composition but are
   not registered as components.
 
@@ -86,6 +85,8 @@ All six therefore use hand-written `cfg.dtsPropsFor` bodies, checked against the
   `AnswerKeyAccordion`'s `<summary>` legitimately opens with "⚠️ Đáp án & giải thích", so its
   card reported `bad: 2` with **zero** actual pageerrors. The preview leads with a caption line
   so the cell text no longer starts with `⚠`. Don't "fix" this by skipping the component.
+  **`ErrorState` hit the exact same trap** (its icon tile *is* a ⚠️) and is fixed the same way —
+  a caption line above the component in every story.
 - **`hidden lg:block` components render as an empty card and still pass the render check.**
   `LectureToc` is a desktop-only aside; at the default card viewport it is `display:none`, the
   root is non-empty, and nothing flags it. Fixed with
@@ -104,7 +105,7 @@ All six therefore use hand-written `cfg.dtsPropsFor` bodies, checked against the
 ## Feature components — what is synced, what is not
 
 **Synced (9, no app changes needed).** `AnswerKeyAccordion`, `GoalPicker`, `ExplanationSlot`,
-`AudioPlayer`, `LectureToc`, `MarkdownContent`, `QuestionCard`, `ListeningRunner`,
+`AudioPlayer`, `LectureToc`, `MarkdownContent`, `QuestionCard`, `SectionedListeningRunner`,
 `ListeningSetView`. They depend only on `cn` and pure helpers. `lucide-react` and
 `react-markdown` are ordinary imports and esbuild inlines them (bundle ≈ 0.75 MB, 80 inlined
 externals) — no `cfg.extraEntries` needed. Group comes from the src path, so the two under
@@ -142,19 +143,48 @@ the guard fires by compiling a deliberate omission (TS2739).
   degraded), so all four have hand-written `cfg.dtsPropsFor` bodies; the emitted `.d.ts`
   typecheck clean under `tsc --noEmit`.
 
-**Still out of scope, by blocker:**
+**The remaining 17 — synced in Task 0.5. Nothing is out of scope any more.**
+`ErrorState`, `ExerciseRunner`, `IeltsHub`, `InlineExample`, `LessonMap`, `LessonNode`
+(`lesson-node.tsx`), `LessonTabs`, `ListeningBottomNav`, `PhasePillRow`, `Flashcards`,
+`MatchGame`, `QuizGame`, `LogoutButton`, `ResetToStartButton`, `SettingsGoalForm`,
+`SettingsNameEditor`, `ThemeToggleRow` — **38 components total.**
 
-- `next/link` only (6): `ErrorState`, `lesson-node`, `LessonTabs`, `Flashcards`,
-  `MatchGame`, `QuizGame`, `ExerciseRunner`. (`EmptyState` and `ListeningSetCard` cleared this
-  blocker in Task 5 via the `linkComponent` prop.) If the list grows, a `LinkContext` defaulting
-  to `"a"` costs less threading (but forces `"use client"`).
-- Router / session / theme (5): `ResetToStartButton`, `SettingsGoalForm`,
-  `SettingsNameEditor`, `LogoutButton`, `ThemeToggleRow`. (`PlacementWizard` was synced in Task 5
-  — it renders statically; only its submit `fetch()`es are inert in a design.) These are
-  containers — they cause effects. Split each into presentation + a thin connected wrapper.
-- Prisma (3): `IeltsHub`, `LessonMap`, `PhasePillRow`, via `@/lib/progress` — the ONLY domain
-  lib that imports `@prisma/client` + `@/lib/db`. Split it into `progress-types.ts` (pure) and
-  `progress.ts` (queries). `src/lib/progress.test.ts` exists, so this one IS test-protected.
+- The `next/link` blocker was cleared by injection, not by stubbing: every one of these takes a
+  required `linkComponent` (Task 0.2), exactly like `AppHeader`.
+- The router/session/theme blocker was cleared by the Task 0.3 split: each container is now a
+  presentational component + a thin `*Connected.tsx` wrapper that owns the effect.
+- **The "Prisma blocker" for `IeltsHub`/`LessonMap`/`PhasePillRow` never existed.** Their
+  `import type { LessonState } from "@/lib/progress"` / `import type { IeltsSkill }` are
+  **type-only and erased at compile** — no Prisma value ever reaches the bundle. (Verified by the
+  purity grep and by the clean bundle build. Same story as `LevelBadge`.) `@/lib/progress` was
+  therefore never split, and does not need to be.
+
+**Deliberately NOT synced: the seven `*Connected.tsx` wrappers** — `AppSidebarConnected`,
+`LogoutButtonConnected`, `PlacementWizardConnected`, `ResetToStartButtonConnected`,
+`SettingsGoalFormConnected`, `SettingsNameEditorConnected`, `ThemeToggleRowConnected`. They exist
+precisely to keep `next-auth` / `next-themes` / `next/navigation` / `next/link` out of the design
+bundle; syncing them would drag the framework back in. They are the ONLY files under
+`web/src/components/` that import any of those four.
+
+**States that cannot be previewed statically** (the preview files say so in-line; design these
+from the tokens, not from a card):
+
+- `ExerciseRunner` graded/finished/review — `phase` lives in an internal reducer and only moves
+  after `POST /api/attempts/:id/answers`. Use `QuestionCard`'s own `Correct`/`Incorrect` cells.
+- `InlineExample` correct/wrong/revealed — status only changes after the server check (the answer
+  is deliberately never shipped to the client).
+- `Flashcards` flipped face, `MatchGame` / `QuizGame` selected-matched-wrong tiles and their
+  finish screens — all internal `useState` with no seeding prop. (`Flashcards` with `words={[]}`
+  does render the finish screen, which is how its `Finished` cell exists.)
+- The vocab games shuffle their rounds in a `useEffect` (hydration safety), so their cards differ
+  between renders. That is expected; do not "fix" it.
+- `ListeningBottomNav` is `fixed inset-x-0 bottom-0`: it escaped its preview cell and tripped
+  `[GRID_OVERFLOW]`. Fixed with `cardMode: "single"` **plus** a `transform`ed wrapper in the
+  preview (a transform creates a containing block for `fixed`). That wrapper is a preview device
+  only.
+
+**Every one of the 17 has a hand-written `cfg.dtsPropsFor`** — ts-morph flattens plain inline prop
+types to `[key: string]: unknown`, which would leave the design agent with no API contract.
 
 **The test suite does not protect the UI layer.** `vitest.config.ts` is `include: src/**/*.test.ts`
 (no `.tsx`) and `environment: "node"`. All 229 tests are pure logic. Green tests say nothing about
