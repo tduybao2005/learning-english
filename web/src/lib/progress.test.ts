@@ -79,16 +79,60 @@ const fakeDb = {
     ),
   },
   lessonProgress: {
-    findMany: vi.fn(async ({ where }: { where: { userId: string } }) => {
-      return progressRows.filter((r) => r.userId === where.userId);
-    }),
+    findMany: vi.fn(
+      async ({
+        where,
+      }: {
+        where: { userId: string; lessonId?: { in: string[] } };
+      }) => {
+        return progressRows.filter(
+          (r) =>
+            r.userId === where.userId &&
+            (where.lessonId?.in === undefined || where.lessonId.in.includes(r.lessonId)),
+        );
+      },
+    ),
+    deleteMany: vi.fn(
+      async ({
+        where,
+      }: {
+        where: { userId: string; status?: { in: ProgressRow["status"][] } };
+      }) => {
+        progressRows = progressRows.filter(
+          (r) =>
+            !(
+              r.userId === where.userId &&
+              (where.status?.in === undefined || where.status.in.includes(r.status))
+            ),
+        );
+      },
+    ),
+    upsert: vi.fn(
+      async ({
+        where,
+        create,
+        update,
+      }: {
+        where: { userId_lessonId: { userId: string; lessonId: string } };
+        create: ProgressRow;
+        update: Partial<ProgressRow>;
+      }) => {
+        const { userId, lessonId } = where.userId_lessonId;
+        const existing = progressRows.find((r) => r.userId === userId && r.lessonId === lessonId);
+        if (existing) {
+          Object.assign(existing, update);
+        } else {
+          progressRows.push({ ...create });
+        }
+      },
+    ),
   },
 };
 
 vi.mock("@/lib/db", () => ({ db: fakeDb }));
 
 // Import after the mock is registered.
-const { getLessonStates, getNextLesson } = await import("./progress");
+const { getLessonStates, getNextLesson, assignStartPoint } = await import("./progress");
 
 beforeEach(() => {
   progressRows = [];
@@ -128,6 +172,42 @@ describe("getLessonStates", () => {
 
     expect(states.get("p1l1")).toBe("SKIPPED");
     expect(states.get("p1l2")).toBe("LOCKED");
+  });
+});
+
+describe("assignStartPoint", () => {
+  it("clears a stale UNLOCKED row that sits AFTER a newly-earlier start point", async () => {
+    // Lần trước placement mở phase_2/p2l1 (UNLOCKED) + skip phase_1.
+    // Lần này xếp lại về lesson đầu tiên toàn cục (p1l1).
+    progressRows = [
+      { userId: "u1", lessonId: "p1l1", status: "SKIPPED" },
+      { userId: "u1", lessonId: "p1l2", status: "SKIPPED" },
+      { userId: "u1", lessonId: "p1l3", status: "SKIPPED" },
+      { userId: "u1", lessonId: "p2l1", status: "UNLOCKED" },
+    ];
+
+    await assignStartPoint(fakeDb as never, "u1", "p1l1");
+
+    // Không còn row lạc ở phase_2:
+    expect(progressRows.find((r) => r.lessonId === "p2l1")).toBeUndefined();
+    // Lesson đầu tiên = UNLOCKED:
+    expect(progressRows.find((r) => r.lessonId === "p1l1")?.status).toBe("UNLOCKED");
+  });
+
+  it("never downgrades a COMPLETED lesson that sits after the start point", async () => {
+    progressRows = [{ userId: "u1", lessonId: "p2l1", status: "COMPLETED" }];
+
+    await assignStartPoint(fakeDb as never, "u1", "p1l1");
+
+    expect(progressRows.find((r) => r.lessonId === "p2l1")?.status).toBe("COMPLETED");
+  });
+
+  it("marks every lesson before the start point SKIPPED and the start UNLOCKED", async () => {
+    await assignStartPoint(fakeDb as never, "u1", "p2l1");
+
+    expect(progressRows.find((r) => r.lessonId === "p1l1")?.status).toBe("SKIPPED");
+    expect(progressRows.find((r) => r.lessonId === "p1l3")?.status).toBe("SKIPPED");
+    expect(progressRows.find((r) => r.lessonId === "p2l1")?.status).toBe("UNLOCKED");
   });
 });
 

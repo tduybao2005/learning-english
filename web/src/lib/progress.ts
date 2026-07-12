@@ -98,9 +98,10 @@ export async function getFirstLessonOfPhase(phaseSlug: string): Promise<Lesson |
  *    SKIPPED (and an already-COMPLETED start lesson is left alone rather
  *    than being redundantly "re-unlocked").
  *  - Idempotent / re-runnable: always clears this user's existing SKIPPED
- *    rows first, so re-taking the placement test (or resetting to phase 1)
- *    never leaves stale SKIPPED rows from a previous run lingering outside
- *    the new range — e.g. a first placement assigning phase_3 skips
+ *    AND UNLOCKED rows first, so re-taking the placement test (or resetting
+ *    to phase 1) never leaves stale SKIPPED/UNLOCKED rows from a previous
+ *    run lingering outside the new range — e.g. a first placement assigning
+ *    phase_3 skips
  *    phase_1/2's lessons; if the user later resets to "start from
  *    scratch" (startLessonId = the very first lesson, so `beforeLessons`
  *    is empty), those old phase_1/2 SKIPPED rows must be cleared, not left
@@ -125,7 +126,14 @@ export async function assignStartPoint(
   const beforeLessons = lessons.slice(0, startIndex);
   const startLesson = lessons[startIndex];
 
-  await client.lessonProgress.deleteMany({ where: { userId, status: "SKIPPED" } });
+  // Xoá mọi row do một lần xếp-điểm trước để lại (SKIPPED + UNLOCKED) để
+  // điểm-bắt-đầu mới là nguồn chân lý duy nhất: nếu chỉ xoá SKIPPED, một row
+  // UNLOCKED cũ nằm SAU điểm bắt đầu mới (vd đã mở phase_2 rồi xếp lại về
+  // phase_1) sẽ còn sót và mở khoá nhầm. COMPLETED là tiến độ học thật —
+  // không bao giờ xoá; các nhánh upsert bên dưới đã tôn trọng nó.
+  await client.lessonProgress.deleteMany({
+    where: { userId, status: { in: ["SKIPPED", "UNLOCKED"] } },
+  });
 
   const existingRows = await client.lessonProgress.findMany({
     where: { userId, lessonId: { in: [...beforeLessons.map((l) => l.id), startLesson.id] } },
