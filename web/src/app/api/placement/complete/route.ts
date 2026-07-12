@@ -8,16 +8,16 @@ import { rawToBand, placementBand, startLessonFor, scaleRawScore, type BandTable
 import { rawToToeicListening } from "@/lib/toeic";
 import { getFirstLessonOfPhase, assignStartPoint } from "@/lib/progress";
 import { placementListeningSetId } from "@/lib/placement-listening";
+import { gradePlacementSection, type GradableQuestion } from "@/lib/placement-grading";
+import type { QuestionKind } from "@/lib/grading/match";
 
 const bodySchema = z.object({
-  readingScore: z.number().int().min(0),
-  listeningScore: z.number().int().min(0),
+  // Câu trả lời thô của người học cho từng section. Điểm KHÔNG do client gửi
+  // nữa (trước đây `readingScore`/`listeningScore` bị tin tưởng → gửi điểm
+  // giả là nhảy giai đoạn); server tự chấm lại các câu này bằng `matchAnswer`.
+  listeningAnswers: z.record(z.string(), z.string()).default({}),
+  readingAnswers: z.record(z.string(), z.string()).default({}),
   writingText: z.string(),
-  // Per-question audit trail from both graded sections (built client-side
-  // by merging the `results` maps returned by the two prior
-  // `/api/placement/submit-section` calls) — stored verbatim as
-  // `PlacementAttempt.answers`.
-  answers: z.record(z.string(), z.object({ text: z.string(), isCorrect: z.boolean() })),
 });
 
 /**
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
   }
-  const { writingText, answers } = parsed.data;
+  const { writingText } = parsed.data;
 
   const test = await db.placementTest.findUnique({ where: { slug: "default" } });
   if (!test) {
@@ -50,18 +50,41 @@ export async function POST(request: Request) {
 
   const listeningSetId = placementListeningSetId(test, user.goalType);
 
-  // Query the TRUE section totals server-side (never trust a client-
-  // supplied total) — needed both to clamp the client-supplied scores into
-  // a valid range and to scale them onto the band table's standard
-  // 40-question total below.
-  const [readingTotal, listeningTotal] = await Promise.all([
-    db.question.count({ where: { section: { placementTestId: test.id } } }),
+  // Nạp bộ câu hỏi THẬT của mỗi section (Reading = Sections của placement
+  // test; Listening = Sections của ListeningSet đã liên kết) rồi tự chấm
+  // server-side. Điểm không bao giờ tin từ client — kẻ tấn công không biết
+  // answer key nên không thể gửi điểm giả để nhảy giai đoạn.
+  const [readingQs, listeningQs] = await Promise.all([
+    db.question.findMany({
+      where: { section: { placementTestId: test.id } },
+      include: { section: true, variants: true },
+    }),
     listeningSetId
-      ? db.question.count({ where: { section: { listeningSetId } } })
-      : Promise.resolve(0),
+      ? db.question.findMany({
+          where: { section: { listeningSetId } },
+          include: { section: true, variants: true },
+        })
+      : Promise.resolve([]),
   ]);
-  const readingScore = Math.min(parsed.data.readingScore, readingTotal);
-  const listeningScore = Math.min(parsed.data.listeningScore, listeningTotal);
+
+  const toGradable = (q: (typeof readingQs)[number]): GradableQuestion => ({
+    id: q.id,
+    kind: q.section.kind as QuestionKind,
+    isOpenEnded: q.isOpenEnded,
+    variants: q.variants.map((v) => ({ normalized: v.normalized })),
+  });
+
+  const readingGraded = gradePlacementSection(readingQs.map(toGradable), parsed.data.readingAnswers);
+  const listeningGraded = gradePlacementSection(
+    listeningQs.map(toGradable),
+    parsed.data.listeningAnswers,
+  );
+  const readingScore = readingGraded.rawScore;
+  const listeningScore = listeningGraded.rawScore;
+  const readingTotal = readingQs.length;
+  const listeningTotal = listeningQs.length;
+  // Audit map dựng hoàn toàn server-side từ kết quả chấm thật.
+  const answers = { ...listeningGraded.results, ...readingGraded.results };
 
   // The band table (`ielts_practice_tests/test_01/answer_key.md`) is
   // calibrated for a standard 40-question section; this placement test's

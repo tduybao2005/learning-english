@@ -29,7 +29,6 @@ interface ListeningProp {
 }
 
 type AnswerMap = Record<string, string>;
-type ResultMap = Record<string, { text: string; isCorrect: boolean }>;
 
 type Step = "listening" | "reading" | "writing";
 
@@ -137,10 +136,6 @@ export function PlacementWizard({
   const [readingAnswers, setReadingAnswers] = useState<AnswerMap>({});
   const [writingText, setWritingText] = useState("");
 
-  const [listeningScore, setListeningScore] = useState<{ raw: number; total: number } | null>(null);
-  const [readingScore, setReadingScore] = useState<{ raw: number; total: number } | null>(null);
-  const [combinedResults, setCombinedResults] = useState<ResultMap>({});
-
   const readingQuestions = useMemo(
     () => readingSections.flatMap((s) => s.questions),
     [readingSections],
@@ -150,6 +145,9 @@ export function PlacementWizard({
     [listening],
   );
 
+  // Nộp một section để server xác thực (bắt lỗi mạng sớm, trước bước sau).
+  // Điểm trả về không còn được dùng — chấm điểm thật diễn ra một lần ở
+  // `/api/placement/complete` từ chính các câu trả lời này.
   async function submitSection(section: "LISTENING" | "READING") {
     const questions = section === "LISTENING" ? listeningQuestions : readingQuestions;
     const answerMap = section === "LISTENING" ? listeningAnswers : readingAnswers;
@@ -161,12 +159,6 @@ export function PlacementWizard({
       body: JSON.stringify({ section, answers }),
     });
     if (!res.ok) throw new Error("submit-section failed");
-    const json: { rawScore: number; total: number; results: ResultMap } = await res.json();
-
-    setCombinedResults((prev) => ({ ...prev, ...json.results }));
-    if (section === "LISTENING") setListeningScore({ raw: json.rawScore, total: json.total });
-    else setReadingScore({ raw: json.rawScore, total: json.total });
-    return json;
   }
 
   async function handleFinishListening() {
@@ -174,7 +166,6 @@ export function PlacementWizard({
     setSubmitting(true);
     try {
       if (listening) await submitSection("LISTENING");
-      else setListeningScore({ raw: 0, total: 0 });
       setStep("reading");
     } catch {
       setError("Không thể nộp phần Nghe. Vui lòng thử lại.");
@@ -204,10 +195,10 @@ export function PlacementWizard({
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
-          readingScore: readingScore?.raw ?? 0,
-          listeningScore: listeningScore?.raw ?? 0,
+          // Gửi câu trả lời thô; server tự chấm (không tin điểm client).
+          listeningAnswers,
+          readingAnswers,
           writingText,
-          answers: combinedResults,
         }),
       });
       if (!res.ok) throw new Error("complete failed");
