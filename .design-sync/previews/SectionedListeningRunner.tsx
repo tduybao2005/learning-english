@@ -1,7 +1,7 @@
-import { ListeningRunner } from "web";
+import { SectionedListeningRunner } from "web";
 
-const noop = () => {};
-
+// The runner owns its own state (section index, answers, grading phase), so a
+// preview only has to hand it sections — it opens on section 1, "answering".
 const SECTIONS = [
   {
     label: "Section 1",
@@ -50,8 +50,15 @@ const SECTIONS = [
   },
 ];
 
-export const FirstQuestion = () => (
+export const FirstSection = () => (
   <div className="w-[36rem]">
-    <ListeningRunner slug="practice_a2_02" sections={SECTIONS} onFinished={noop} />
+    <SectionedListeningRunner slug="practice_a2_02" sections={SECTIONS} />
+  </div>
+);
+
+// Nothing to answer yet — the fallback card.
+export const NoQuestions = () => (
+  <div className="w-[36rem]">
+    <SectionedListeningRunner slug="practice_a2_02" sections={[]} />
   </div>
 );

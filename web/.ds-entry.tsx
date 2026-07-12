@@ -34,7 +34,7 @@ export { AudioPlayer } from "@/components/AudioPlayer";
 export { LectureToc } from "@/components/LectureToc";
 export { MarkdownContent } from "@/components/MarkdownContent";
 export { QuestionCard } from "@/components/runner/QuestionCard";
-export { ListeningRunner } from "@/components/ListeningRunner";
+export { SectionedListeningRunner } from "@/components/SectionedListeningRunner";
 export { ListeningSetView } from "@/components/ListeningSetView";
 
 // App shell. Presentational after the linkComponent/logoutSlot/pathname
