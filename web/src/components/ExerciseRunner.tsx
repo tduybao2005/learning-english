@@ -24,6 +24,10 @@ interface ExerciseRunnerProps {
   nextLesson: NextLessonInfo | null;
   /** Where the top bar's close `✕` navigates back to (the lesson overview). */
   backHref: string;
+  /** Questions already answered in a PRIOR session, hydrated from the server
+   * so "← Câu trước" works immediately on resume (without this, `past` starts
+   * empty and the button is dead until the learner answers one more here). */
+  initialPast?: PastAnswer[];
 }
 
 /** Kicker line shown above the prompt, keyed off the question's kind. */
@@ -51,6 +55,7 @@ export function ExerciseRunner({
   questions,
   nextLesson,
   backHref,
+  initialPast,
 }: ExerciseRunnerProps) {
   const [session, setSession] = useState({ attemptId, initialQuestionNumber });
 
@@ -81,13 +86,16 @@ export function ExerciseRunner({
       nextLesson={nextLesson}
       onRedo={handleRedo}
       backHref={backHref}
+      // Hydrated history only applies to the attempt we resumed. A redo swaps
+      // in a brand-new attempt, whose history must start empty.
+      initialPast={session.attemptId === attemptId ? initialPast : undefined}
     />
   );
 }
 
 /** One already-answered question, captured client-side when the learner
  * advances past it. Purely for read-only review — nothing here is re-sent. */
-interface PastAnswer {
+export interface PastAnswer {
   index: number;
   answerText: string;
   correctAnswer?: string | null;
@@ -162,6 +170,7 @@ function ExerciseRunnerSession({
   nextLesson,
   onRedo,
   backHref,
+  initialPast,
 }: {
   attemptId: string;
   initialQuestionNumber: number;
@@ -169,6 +178,7 @@ function ExerciseRunnerSession({
   nextLesson: NextLessonInfo | null;
   onRedo: () => void;
   backHref: string;
+  initialPast?: PastAnswer[];
 }) {
   const [state, dispatch] = useReducer(runnerReducer, undefined, () =>
     initRunnerState(
@@ -180,7 +190,7 @@ function ExerciseRunnerSession({
   const total = questions.length;
   const question = questions[state.index];
   const cardRef = useRef<HTMLDivElement | null>(null);
-  const [past, setPast] = useState<PastAnswer[]>([]);
+  const [past, setPast] = useState<PastAnswer[]>(initialPast ?? []);
   const [reviewIndex, setReviewIndex] = useState<number | null>(null);
 
   function handleContinue() {

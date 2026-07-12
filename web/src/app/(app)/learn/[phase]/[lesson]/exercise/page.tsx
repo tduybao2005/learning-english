@@ -75,6 +75,35 @@ export default async function ExercisePage({
 
   const attempt = await getOrCreateOpenAttempt(user.id, lesson.exercise.id);
 
+  // Hydrate the read-only review history from the server so "← Câu trước"
+  // works immediately when a learner resumes a partly-done attempt. Only the
+  // questions BEFORE the resume point that were answered correctly are shown;
+  // their answer text comes from AttemptAnswer, the correct answer / keyNote
+  // from the Question rows (never the client). Without this, `past` starts
+  // empty on every mount and the back button is dead until one more answer.
+  const answeredRows = await db.attemptAnswer.findMany({
+    where: { attemptId: attempt.id, isCorrect: true },
+    select: { questionId: true, answerText: true },
+  });
+  const answeredByQid = new Map(answeredRows.map((a) => [a.questionId, a.answerText]));
+  const answerMeta = answeredByQid.size
+    ? await db.question.findMany({
+        where: { id: { in: [...answeredByQid.keys()] } },
+        select: { id: true, answerRaw: true, keyNote: true },
+      })
+    : [];
+  const metaByQid = new Map(answerMeta.map((q) => [q.id, q]));
+  const currentIndex = attempt.currentQuestionNumber - 1;
+  const initialPast = ordered
+    .map((q, index) => ({ q, index }))
+    .filter(({ q, index }) => index < currentIndex && answeredByQid.has(q.id))
+    .map(({ q, index }) => ({
+      index,
+      answerText: answeredByQid.get(q.id) ?? "",
+      correctAnswer: metaByQid.get(q.id)?.answerRaw ?? null,
+      keyNote: metaByQid.get(q.id)?.keyNote ?? null,
+    }));
+
   const nextLessonRaw = await getNextLesson(lesson.id);
   let nextLesson: NextLessonInfo | null = null;
   if (nextLessonRaw) {
@@ -102,6 +131,7 @@ export default async function ExercisePage({
           questions={questions}
           nextLesson={nextLesson}
           backHref={base}
+          initialPast={initialPast}
         />
       </div>
     </div>

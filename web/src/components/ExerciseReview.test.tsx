@@ -101,4 +101,24 @@ describe("ExerciseRunner — xem lại câu trước (chỉ đọc)", () => {
     const back = screen.getByRole("button", { name: "← Câu trước" }) as HTMLButtonElement;
     expect(back.disabled).toBe(true);
   });
+
+  it("bật '← Câu trước' ngay khi vào lại bài với câu đã trả lời trước đó (initialPast)", () => {
+    render(
+      <ExerciseRunner
+        exerciseId="ex1"
+        attemptId="a1"
+        initialQuestionNumber={2}
+        questions={questions}
+        nextLesson={null}
+        backHref="/learn/x"
+        initialPast={[{ index: 0, answerText: "am", correctAnswer: "am", keyNote: null }]}
+      />,
+    );
+    const back = screen.getByRole("button", { name: "← Câu trước" }) as HTMLButtonElement;
+    expect(back.disabled).toBe(false);
+
+    fireEvent.click(back);
+    expect(screen.getByText(/Xem lại — Câu 1\/2/)).toBeTruthy();
+    expect(screen.getByText(/Câu trả lời của bạn:/).textContent).toContain("am");
+  });
 });
