@@ -84,9 +84,20 @@ const components: Components = {
 // seeded before that stripping existed — remove once all rows are re-seeded.
 const FRONT_MATTER_RE = /^---\n[\s\S]*?\n---\n?/;
 
-/** Renders lecture Markdown (table- and blockquote-heavy) with Tailwind-styled typography. */
-export function MarkdownContent({ content }: { content: string }) {
-  const body = content.replace(FRONT_MATTER_RE, "");
+/** Renders lecture Markdown (table- and blockquote-heavy) with Tailwind-styled typography.
+ *
+ * `stripFrontmatter={false}` is for callers passing a mid-document slice (see
+ * splitLectureSegments): such a chunk can legitimately open with a `---`
+ * thematic break, which FRONT_MATTER_RE would swallow along with the text
+ * after it. */
+export function MarkdownContent({
+  content,
+  stripFrontmatter = true,
+}: {
+  content: string;
+  stripFrontmatter?: boolean;
+}) {
+  const body = stripFrontmatter ? content.replace(FRONT_MATTER_RE, "") : content;
   return (
     <div className="text-body leading-relaxed text-foreground">
       <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>

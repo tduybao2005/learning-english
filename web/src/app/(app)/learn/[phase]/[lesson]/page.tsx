@@ -6,6 +6,8 @@ import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { MarkdownContent } from "@/components/MarkdownContent";
+import { InlineExample } from "@/components/InlineExample";
+import { splitLectureSegments } from "@/lib/lecture-examples";
 import { LessonTabs } from "@/components/LessonTabs";
 import { buttonVariants } from "@/components/ui/button";
 import { extractToc } from "@/lib/toc";
@@ -37,6 +39,10 @@ export default async function LecturePage({
 
   const toc = extractToc(lesson.lectureMd);
 
+  // Interactive ```example blocks are pulled out server-side: only the
+  // answer-free SafeExample crosses to the client.
+  const segments = splitLectureSegments(lesson.lectureMd);
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-8 lg:grid lg:max-w-5xl lg:grid-cols-[minmax(0,680px)_220px] lg:justify-center lg:gap-10">
       <div>
@@ -47,7 +53,17 @@ export default async function LecturePage({
           active="lecture"
         />
 
-        <MarkdownContent content={lesson.lectureMd} />
+        {segments.map((segment, i) =>
+          segment.type === "markdown" ? (
+            <MarkdownContent key={i} content={segment.content} stripFrontmatter={false} />
+          ) : (
+            <InlineExample
+              key={segment.example.id}
+              lessonId={lesson.id}
+              example={segment.example}
+            />
+          ),
+        )}
 
         <div className="mt-10 flex flex-col items-center gap-3 border-t border-border pt-8">
           <p className="text-caption text-muted-foreground">
