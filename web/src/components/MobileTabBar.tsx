@@ -1,14 +1,29 @@
-import { Home, Headphones, GraduationCap, Settings } from "lucide-react";
-import type { ElementType } from "react";
+import { Home, BookOpen, Headphones, GraduationCap, Settings } from "lucide-react";
+import type { ComponentType, ElementType } from "react";
 
 import { cn } from "@/lib/utils";
 
-const TABS = [
-  { href: "/dashboard", label: "Trang chủ", icon: Home },
+type Tab = {
+  href: string;
+  label: string;
+  icon: ComponentType<{ className?: string }>;
+  /** Extra routes this tab owns, on top of its own href. `/exams` owns
+   * `/ielts` because IELTS lives under the exams hub conceptually. */
+  alsoOwns?: readonly string[];
+};
+
+/** Labels mirror `AppSidebar`'s nav exactly — the two navs are the same
+ * information architecture at two viewports. */
+const TABS: readonly Tab[] = [
+  { href: "/dashboard", label: "Lộ trình", icon: Home },
+  { href: "/vocab", label: "Từ vựng", icon: BookOpen },
   { href: "/listening", label: "Luyện nghe", icon: Headphones },
-  { href: "/ielts", label: "IELTS", icon: GraduationCap },
+  { href: "/exams", label: "Đề thi", icon: GraduationCap, alsoOwns: ["/ielts"] },
   { href: "/settings", label: "Cài đặt", icon: Settings },
-] as const;
+];
+
+const owns = (path: string, route: string) =>
+  path === route || path.startsWith(`${route}/`);
 
 /** App-wide bottom tab bar for phones/tablets (<1024px) — the primary mobile
  * navigation, replacing the link row that used to live in `AppHeader`. Fixed to
@@ -36,9 +51,9 @@ export function MobileTabBar({
         className,
       )}
     >
-      <div className="mx-auto grid h-16 max-w-lg grid-cols-4">
-        {TABS.map(({ href, label, icon: Icon }) => {
-          const active = activePath === href || activePath.startsWith(`${href}/`);
+      <div className="mx-auto grid h-16 max-w-lg grid-cols-5">
+        {TABS.map(({ href, label, icon: Icon, alsoOwns }) => {
+          const active = [href, ...(alsoOwns ?? [])].some((route) => owns(activePath, route));
           return (
             <Link
               key={href}
@@ -49,8 +64,10 @@ export function MobileTabBar({
                 active ? "text-primary" : "text-muted-foreground hover:text-foreground",
               )}
             >
-              <Icon className="size-5" />
-              <span>{label}</span>
+              <Icon className="size-5 shrink-0" />
+              {/* 5 tabs at 375px = 75px each; without nowrap "Luyện nghe"
+                  wraps to two lines and the row loses its baseline. */}
+              <span className="whitespace-nowrap text-[0.6875rem] tracking-tight">{label}</span>
             </Link>
           );
         })}

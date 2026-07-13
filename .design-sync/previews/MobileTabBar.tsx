@@ -8,6 +8,9 @@ import { MobileTabBar } from "web";
 // cards are captured at 1200px wide, so without `className="lg:block!"` every story
 // would render as an EMPTY card. Both the transform frame and that class are preview
 // devices only — in a real screen the bar is phone/tablet-only.
+//
+// Five tabs: Lộ trình · Từ vựng · Luyện nghe · Đề thi · Cài đặt — the same labels as
+// AppSidebar. "Đề thi" also owns `/ielts` (IELTS lives under the exams hub).
 const Phone = ({ children }: { children: React.ReactNode }) => (
   <div
     className="relative w-[23.4375rem] rounded-xl border border-border bg-muted/40"
@@ -24,15 +27,22 @@ export const DashboardActive = () => (
   </Phone>
 );
 
+export const VocabActive = () => (
+  <Phone>
+    <MobileTabBar linkComponent="a" activePath="/vocab" className="lg:block!" />
+  </Phone>
+);
+
 export const ListeningActive = () => (
   <Phone>
     <MobileTabBar linkComponent="a" activePath="/listening/bai-01" className="lg:block!" />
   </Phone>
 );
 
-export const IeltsActive = () => (
+// `/ielts/7` is not `/exams`, but the exams tab declares it in `alsoOwns`.
+export const ExamsActiveOnIelts = () => (
   <Phone>
-    <MobileTabBar linkComponent="a" activePath="/ielts" className="lg:block!" />
+    <MobileTabBar linkComponent="a" activePath="/ielts/7" className="lg:block!" />
   </Phone>
 );
 
