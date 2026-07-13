@@ -42,4 +42,9 @@ describe("ExamsHub", () => {
     render(<ExamsHub examTypes={EXAMS} linkComponent="a" />);
     expect(screen.queryByText(/Band/)).toBeNull();
   });
+
+  it("notes that more exam types are coming", () => {
+    render(<ExamsHub examTypes={EXAMS} linkComponent="a" />);
+    expect(screen.getByText(/Loại đề mới sẽ được thêm/)).toBeTruthy();
+  });
 });

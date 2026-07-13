@@ -1,4 +1,4 @@
-import { GraduationCap, FileText } from "lucide-react";
+import { ChevronRight, GraduationCap, FileText } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -66,7 +66,9 @@ export function ExamsHub({
               <span className="min-w-0 flex-1">
                 <span className="block text-h2 font-bold">{exam.name}</span>
                 <span className="block text-caption text-muted-foreground">{exam.subtitle}</span>
-                <span className="mt-1 block text-body text-muted-foreground">
+                {/* The long line is desktop-only: on a phone the card is a row,
+                 * and the subtitle already carries the useful part. */}
+                <span className="mt-1 hidden text-body text-muted-foreground lg:block">
                   {exam.description}
                 </span>
               </span>
@@ -82,18 +84,30 @@ export function ExamsHub({
                   {exam.badge}
                 </span>
               ) : null}
+              {exam.href ? (
+                <ChevronRight
+                  aria-hidden
+                  className="size-5 shrink-0 text-muted-foreground lg:hidden"
+                />
+              ) : null}
             </>
           );
 
+          // Phone/tablet: a centred disclosure row. Desktop (lg:) keeps the
+          // shipped top-aligned card exactly as-is.
           const shared =
-            "flex min-h-11 w-full items-start gap-4 rounded-2xl border border-border p-4 text-left";
+            "flex min-h-11 w-full items-center gap-4 rounded-2xl border border-border p-4 text-left lg:items-start";
 
           return (
             <li key={exam.key}>
               {exam.href ? (
                 <Link
                   href={exam.href}
-                  className={cn(shared, "bg-card transition-colors hover:bg-muted/50")}
+                  className={cn(
+                    shared,
+                    "bg-card transition-colors hover:bg-muted/50",
+                    "max-lg:border-primary",
+                  )}
                 >
                   {body}
                 </Link>
@@ -106,6 +120,10 @@ export function ExamsHub({
           );
         })}
       </ul>
+
+      <p className="mt-4 text-caption text-muted-foreground lg:hidden">
+        Loại đề mới sẽ được thêm vào đây khi sẵn sàng.
+      </p>
     </div>
   );
 }
