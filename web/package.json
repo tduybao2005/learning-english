@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test": "dotenv -e .env.local -- vitest run",
+    "test:ci": "vitest run",
     "seed": "dotenv -e .env.local -- tsx scripts/seed/ingest.ts",
     "seed:validate": "dotenv -e .env.local -- tsx scripts/seed/validate.ts",
     "seed:validate-listening": "tsx scripts/seed/check-listening.ts",
@@ -21,6 +22,7 @@
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@prisma/client": "^6.19.3",
+    "canvas-confetti": "^1.9.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "jose": "^6.2.3",
@@ -43,6 +45,7 @@
     "@tailwindcss/postcss": "^4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/react": "^16.3.2",
+    "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
