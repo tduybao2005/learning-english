@@ -19,7 +19,12 @@ import { db } from "@/lib/db";
 import { slugifyWord, vocabAudioPath } from "@/lib/audio/vocab-audio";
 
 const run = promisify(execFile);
-const VOICE = "en-US-AriaNeural";
+/**
+ * Giọng đọc do người dùng chọn sau khi nghe thử 11 giọng (Anh–Anh, nữ).
+ * Đổi giọng => phải XOÁ `public/audio/vocab/` trước khi chạy lại, vì script bỏ
+ * qua từ nào đã có file.
+ */
+const VOICE = "en-GB-LibbyNeural";
 const OUT_DIR = path.join(process.cwd(), "public", "audio", "vocab");
 
 async function main() {
