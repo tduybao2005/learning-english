@@ -100,6 +100,11 @@ model VocabWord {
   ipa        String
   meaningVi  String
   exampleEn  String
+  /// Đường dẫn file phát âm dưới `public/`, ví dụ `/audio/vocab/take-off.mp3`.
+  /// Null = chưa có audio; UI ẩn nút loa. Được ghi bởi
+  /// `scripts/generate-vocab-audio.ts` — seed vocab là delete+create, nên phải
+  /// chạy lại script đó sau mỗi lần seed để khôi phục cột này.
+  audioUrl   String?
   orderIndex Int
   progress   VocabProgress[]
 
