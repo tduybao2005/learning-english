@@ -18,12 +18,10 @@ export default async function ExamsPage() {
     select: { number: true, isComplete: true },
   });
 
-  // There is no per-user IELTS attempt table yet (the schema has
-  // ExerciseAttempt and PlacementAttempt only), so "đã làm" has no source and
-  // is left off. The band shown is the placement band — the same value the
-  // sidebar profile card renders.
-  const band = user.placementBand ?? null;
-
+  // No band is shown here: the placement band says nothing about how the user
+  // performs on these tests, and there is no per-user IELTS attempt table yet
+  // (the schema has ExerciseAttempt and PlacementAttempt only), so "đã làm" has
+  // no source either. The hub stays purely a chooser.
   const examTypes: ExamType[] = [
     {
       key: "ielts",
@@ -31,7 +29,6 @@ export default async function ExamsPage() {
       subtitle: `${tests.length} đề · ${tests.filter((t) => t.isComplete).length} đề đủ nội dung`,
       description: "Reading, Writing và Speaking, chấm theo thang band 0–9.",
       href: "/ielts",
-      stat: band != null ? `Band ${band.toFixed(1)}` : null,
       icon: "graduation",
     },
     {
@@ -40,7 +37,7 @@ export default async function ExamsPage() {
       subtitle: "3 đề · sắp có",
       description: "Listening & Reading theo thang 5–495 mỗi kỹ năng.",
       href: null,
-      stat: "Sắp có",
+      badge: "Sắp có",
       icon: "file",
     },
   ];

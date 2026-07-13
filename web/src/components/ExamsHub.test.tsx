@@ -11,7 +11,6 @@ const EXAMS: ExamType[] = [
     subtitle: "30 đề · 30 đề đủ nội dung",
     description: "Reading, Writing và Speaking.",
     href: "/ielts",
-    stat: "Band 6.5",
   },
   {
     key: "toeic",
@@ -19,30 +18,28 @@ const EXAMS: ExamType[] = [
     subtitle: "3 đề · sắp có",
     description: "Listening & Reading.",
     href: null,
-    stat: "Sắp có",
+    badge: "Sắp có",
     icon: "file",
   },
 ];
 
 describe("ExamsHub", () => {
-  it("links the enabled exam type and shows its stat", () => {
+  it("links the enabled exam type", () => {
     render(<ExamsHub examTypes={EXAMS} linkComponent="a" />);
     const ielts = screen.getByRole("link", { name: /IELTS/ });
     expect(ielts.getAttribute("href")).toBe("/ielts");
-    expect(screen.getByText("Band 6.5")).toBeTruthy();
   });
 
   it("renders a coming-soon exam type as a non-link", () => {
     render(<ExamsHub examTypes={EXAMS} linkComponent="a" />);
     expect(screen.queryByRole("link", { name: /TOEIC/ })).toBeNull();
     expect(screen.getByText("TOEIC")).toBeTruthy();
-    expect(screen.getByText("3 đề · sắp có")).toBeTruthy();
+    expect(screen.getByText("Sắp có")).toBeTruthy();
   });
 
-  it("omits the stat when the user has no band", () => {
-    render(
-      <ExamsHub examTypes={[{ ...EXAMS[0], stat: null }]} linkComponent="a" />,
-    );
-    expect(screen.queryByText(/^Band /)).toBeNull();
+  // The hub is a chooser, not a scoreboard: no band is ever shown here.
+  it("shows no band", () => {
+    render(<ExamsHub examTypes={EXAMS} linkComponent="a" />);
+    expect(screen.queryByText(/Band/)).toBeNull();
   });
 });

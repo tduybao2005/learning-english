@@ -16,8 +16,9 @@ export type ExamType = {
   description: string;
   /** Target route. `null` ⇒ disabled/coming-soon: no link, no href. */
   href: string | null;
-  /** Small right-aligned stat, e.g. `"Band 6.5"`. Omit when there is none. */
-  stat?: string | null;
+  /** Small right-aligned status label, e.g. `"Sắp có"`. Omit when there is none.
+   * Not a score: the hub deliberately shows no band. */
+  badge?: string | null;
   /** Icon name from the DS set. */
   icon?: "graduation" | "file";
 };
@@ -69,7 +70,7 @@ export function ExamsHub({
                   {exam.description}
                 </span>
               </span>
-              {exam.stat ? (
+              {exam.badge ? (
                 <span
                   className={cn(
                     "shrink-0 rounded-full px-3 py-1 text-caption font-semibold",
@@ -78,7 +79,7 @@ export function ExamsHub({
                       : "bg-muted text-muted-foreground",
                   )}
                 >
-                  {exam.stat}
+                  {exam.badge}
                 </span>
               ) : null}
             </>
