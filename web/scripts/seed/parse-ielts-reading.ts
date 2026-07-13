@@ -36,6 +36,20 @@ import { normalize } from "../../src/lib/grading/normalize";
  * exist in the paper, and must not be forced through.
  */
 
+/**
+ * The 20 tests whose Reading key was checked against its own reading.md and
+ * found structurally sound by `scripts/check_ielts_keys.py` (repo root). ONLY
+ * these may be seeded with questions and graded; the other 10 have keys that
+ * answer questions their paper never asks.
+ *
+ * Written out explicitly, never derived at runtime: which tests are gradeable
+ * is a reviewed decision, not something a parser gets to change by accident.
+ * Re-run the Python gate before touching this list.
+ */
+export const VERIFIED_READING_TESTS: readonly number[] = [
+  2, 3, 4, 7, 8, 12, 13, 14, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+];
+
 /** The Prisma `QuestionKind` values this parser can emit. */
 export type IeltsQuestionKind = "MULTIPLE_CHOICE" | "FILL_BLANK";
 

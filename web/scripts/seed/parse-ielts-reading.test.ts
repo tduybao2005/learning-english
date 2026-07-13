@@ -1,7 +1,11 @@
 import { describe, it, expect } from "vitest";
 import fs from "fs";
 import path from "path";
-import { parseIeltsReading, ParsedIeltsReading } from "./parse-ielts-reading";
+import {
+  parseIeltsReading,
+  VERIFIED_READING_TESTS,
+  type ParsedIeltsReading,
+} from "./parse-ielts-reading";
 
 const repoRoot = path.resolve(process.cwd(), "..");
 
@@ -26,10 +30,8 @@ function parseTest(nn: string): ParsedIeltsReading {
  * cannot be judged on its own; only a whole group answering True/False to a
  * paper that never asked is contamination.
  */
-const USABLE = [
-  "02", "03", "04", "07", "08", "12", "13", "14", "16", "18",
-  "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
-];
+// Nguồn duy nhất: hằng số trong chính parser (seed cũng đọc từ đó).
+const USABLE = VERIFIED_READING_TESTS.map((n) => String(n).padStart(2, "0"));
 const BROKEN = ["01", "05", "06", "09", "10", "11", "15", "17", "19", "30"];
 
 describe("parseIeltsReading — the 20 known-good tests", () => {
