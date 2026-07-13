@@ -31,6 +31,18 @@ test("phát đúng file được truyền vào", () => {
   expect(play).toHaveBeenCalledTimes(1);
 });
 
+test("đổi sang từ khác thì phát file của từ MỚI, không phát lại file cũ", () => {
+  const { rerender } = render(<PronounceButton src="/audio/vocab/wake-up.mp3" label="wake up" />);
+  fireEvent.click(screen.getByRole("button", { name: /Phát âm/ }));
+
+  // Cùng một instance component (không remount) — chỉ prop `src` đổi, đúng như
+  // khi Flashcards sang thẻ tiếp theo.
+  rerender(<PronounceButton src="/audio/vocab/brush.mp3" label="brush" />);
+  fireEvent.click(screen.getByRole("button", { name: /Phát âm/ }));
+
+  expect(created).toEqual(["/audio/vocab/wake-up.mp3", "/audio/vocab/brush.mp3"]);
+});
+
 test("bấm không kích hoạt vùng bấm bao ngoài (chặn nổi bọt)", () => {
   const onParentClick = vi.fn();
   render(

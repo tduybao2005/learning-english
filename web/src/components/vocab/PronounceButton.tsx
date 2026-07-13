@@ -23,19 +23,22 @@ export function PronounceButton({
   label: string;
   className?: string;
 }) {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // Cache CÙNG VỚI `src` của nó: Flashcards/QuizGame giữ nguyên instance
+  // component này khi sang từ tiếp theo (chỉ prop `src` đổi), nên cache chỉ theo
+  // "đã tạo Audio chưa" sẽ phát lại file của từ TRƯỚC.
+  const audioRef = useRef<{ src: string; el: HTMLAudioElement } | null>(null);
 
   function handleClick(e: React.MouseEvent) {
     e.stopPropagation();
     e.preventDefault();
     if (typeof Audio === "undefined") return;
-    let el = audioRef.current;
-    if (!el) {
-      el = new Audio(src);
-      audioRef.current = el;
+    let cached = audioRef.current;
+    if (!cached || cached.src !== src) {
+      cached = { src, el: new Audio(src) };
+      audioRef.current = cached;
     }
-    el.currentTime = 0;
-    void el.play()?.catch(() => {});
+    cached.el.currentTime = 0;
+    void cached.el.play()?.catch(() => {});
   }
 
   return (

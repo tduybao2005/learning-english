@@ -18,7 +18,9 @@ export function playSfx(name: SfxName): void {
     if (!el) {
       el = new Audio(`/sounds/${name}.mp3`);
       el.preload = "auto";
-      el.volume = 0.6;
+      // Không hạ volume ở đây: file đã được chuẩn hoá sẵn về -14 LUFS trong
+      // `scripts/make-sfx.sh`. Nhân thêm hệ số ở đây từng làm SFX nhỏ tới mức
+      // người học không nhận ra là app có phát âm thanh.
       cache.set(name, el);
     }
     el.currentTime = 0;
