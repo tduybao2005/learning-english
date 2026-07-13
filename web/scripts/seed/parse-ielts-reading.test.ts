@@ -15,17 +15,24 @@ function parseTest(nn: string): ParsedIeltsReading {
 
 /**
  * The gate: `scripts/check_ielts_keys.py` (repo root) cross-checked every
- * answer_key.md against its own reading.md. 19 of 30 tests agree structurally;
- * the other 11 have keys answering questions the paper never asks. These two
+ * answer_key.md against its own reading.md. 20 of 30 tests agree structurally;
+ * the other 10 have keys answering questions the paper never asks. These two
  * lists are the same ones the plan and the seed use — keep them in sync.
+ *
+ * test_16 belongs in USABLE, and the reason is worth remembering: its Q40 answer
+ * is the word "false" — the gap in "participants could develop detailed ___
+ * memories". An earlier rule rejected any completion answer that looked like a
+ * True/False token and wrongly condemned the whole test. A completion answer
+ * cannot be judged on its own; only a whole group answering True/False to a
+ * paper that never asked is contamination.
  */
 const USABLE = [
-  "02", "03", "04", "07", "08", "12", "13", "14", "18",
+  "02", "03", "04", "07", "08", "12", "13", "14", "16", "18",
   "20", "21", "22", "23", "24", "25", "26", "27", "28", "29",
 ];
-const BROKEN = ["01", "05", "06", "09", "10", "11", "15", "16", "17", "19", "30"];
+const BROKEN = ["01", "05", "06", "09", "10", "11", "15", "17", "19", "30"];
 
-describe("parseIeltsReading — the 19 known-good tests", () => {
+describe("parseIeltsReading — the 20 known-good tests", () => {
   for (const nn of USABLE) {
     it(`test_${nn} parses to exactly 40 usable questions`, () => {
       const parsed = parseTest(nn);

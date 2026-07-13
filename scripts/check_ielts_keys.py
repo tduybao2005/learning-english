@@ -66,10 +66,30 @@ def legal(kind: str, ans: str) -> bool:
     if kind == "MCQ":
         return bool(LETTER.match(a.split()[0].rstrip(".")))
     if kind == "COMPLETION":
-        # Free text. The only thing we can assert is that it is NOT a value that
-        # belongs to another type — that is exactly the test_01 Q14-18 failure.
-        return a.upper() not in {"TRUE", "FALSE", "NOT GIVEN", "YES", "NO"}
+        # Free text: any word can be the answer, INCLUDING "false" — test_16 Q40
+        # is the gap in "detailed ___ memories" and the answer really is the word
+        # "false". Judging a completion answer on its own is therefore impossible;
+        # contamination is a property of the whole group, not one cell, so it is
+        # checked in `contaminated()` below instead.
+        return True
     return True  # unknown type: cannot judge, don't punish
+
+
+TF_TOKENS = {"TRUE", "FALSE", "NOT GIVEN", "YES", "NO"}
+
+
+def contaminated(kind: str, answers: list[str]) -> bool:
+    """Is this group's key answering a True/False task the paper never asked?
+
+    The test_01 signature: reading.md asks for headings or gap-fills across a
+    whole group, and the key answers TRUE/FALSE/NOT GIVEN for ALL of them — it is
+    keyed to a different paper. One stray "false" in a gap-fill group is a real
+    word, not contamination, so require a clear majority.
+    """
+    if kind in {"TFNG", "YNNG", "UNKNOWN"} or not answers:
+        return False
+    hits = sum(1 for a in answers if a.strip().strip("*").upper() in TF_TOKENS)
+    return hits > len(answers) / 2
 
 
 # Group headers are not written consistently across the 30 tests:
@@ -81,16 +101,20 @@ GROUP_RE = re.compile(r"^[#*\s]*Questions?\s+(\d+)\s*[–—-]\s*(\d+)", re.M)
 
 
 def parse_reading(md: str):
-    """-> {qnum: kind}. A group is a `Questions a-b` marker + its instructions."""
+    """-> ({qnum: kind}, [(lo, hi, kind)]). A group is a `Questions a-b` marker
+    plus its instruction prose. Groups are returned too, because contamination is
+    a property of a whole group, not of one answer."""
     out = {}
+    groups = []
     heads = list(GROUP_RE.finditer(md))
     for i, h in enumerate(heads):
         lo, hi = int(h.group(1)), int(h.group(2))
         body = md[h.end(): heads[i + 1].start() if i + 1 < len(heads) else len(md)]
         kind = next((k for k, pat in KIND_PATTERNS if pat.search(body)), "UNKNOWN")
+        groups.append((lo, hi, kind))
         for q in range(lo, hi + 1):
             out[q] = kind
-    return out
+    return out, groups
 
 
 # The answer column is not fixed. Tables come in several shapes, in both
@@ -142,7 +166,7 @@ def check(d: pathlib.Path, verbose: bool):
     if not r.exists() or not k.exists():
         return "NO_PARSE", ["thiếu reading.md hoặc answer_key.md"]
 
-    kinds = parse_reading(r.read_text(encoding="utf-8"))
+    kinds, groups = parse_reading(r.read_text(encoding="utf-8"))
     answers = parse_key(k.read_text(encoding="utf-8"))
     problems = []
 
@@ -156,6 +180,15 @@ def check(d: pathlib.Path, verbose: bool):
     unknown = sorted(q for q, kd in kinds.items() if kd == "UNKNOWN")
     if unknown:
         problems.append(f"không nhận ra dạng câu hỏi cho {len(unknown)} câu: {unknown[:8]}")
+
+    # Whole groups keyed to a different paper (the test_01 signature).
+    for lo, hi, kind in groups:
+        got = [answers[q] for q in range(lo, hi + 1) if q in answers]
+        if contaminated(kind, got):
+            problems.append(
+                f"Q{lo}–{hi}: đề hỏi {kind} nhưng key trả lời True/False "
+                f"→ key này viết cho một đề KHÁC"
+            )
 
     bad = []
     for q, kind in sorted(kinds.items()):

@@ -21,10 +21,17 @@ Listening thì đề còn chưa có file âm thanh. Hai tab đó giữ nguyên d
 ## Cổng dữ liệu — ĐÃ CHẠY, đây là kết quả
 
 `scripts/check_ielts_keys.py` (commit `fb27c4a`) đối chiếu từng `answer_key.md` với
-`reading.md` của chính nó. Kết quả: **19/30 đề đạt, 11 đề hỏng.**
+`reading.md` của chính nó. Kết quả: **20/30 đề đạt, 10 đề hỏng.**
 
-- **19 đề dùng được:** 02, 03, 04, 07, 08, 12, 13, 14, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
-- **11 đề hỏng:** 01, 05, 06, 09, 10, 11, 15, 16, 17, 19, 30
+- **20 đề dùng được:** 02, 03, 04, 07, 08, 12, 13, 14, 16, 18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29
+- **10 đề hỏng:** 01, 05, 06, 09, 10, 11, 15, 17, 19, 30
+
+**test_16 suýt bị kết án oan.** Đáp án Q40 của nó là từ `false` — chỗ trống trong
+câu *"participants could develop detailed ___ memories"*. Quy tắc đầu tiên của tôi
+bác mọi đáp án điền-từ trông giống TRUE/FALSE, nên loại nhầm cả đề. Đáp án điền từ
+**không thể xét riêng lẻ**; chỉ khi CẢ NHÓM trả lời True/False cho một đề không hề
+hỏi True/False thì mới là nhiễm bẩn. Đây là bài học: mỗi lần siết quy tắc, phải hỏi
+"quy tắc này có bắt oan đề nào đúng không?"
 
 Kiểu hỏng điển hình (test_01 Q14): `reading.md` hỏi *"chọn tiêu đề đúng, số La Mã i–x"*,
 `answer_key.md` trả lời `TRUE` kèm giải thích về cà phê — **key đang trả lời một câu hỏi
@@ -33,9 +40,9 @@ không tồn tại trong đề.** Không phải lỗi giao diện; là thiếu �
 **Giới hạn phải nhớ:** script chỉ kiểm tra *hình thức*. Nó KHÔNG bắt được lỗi nội dung —
 test_01 Q2 (key ghi `FALSE`, bài đọc nói `TRUE`) là một giá trị TFNG hợp lệ nên lọt lưới.
 Vì vậy **"ĐẠT" = đáng để người kiểm, KHÔNG = đã xác minh.** Chấp nhận rủi ro này có ý
-thức: 19 đề vẫn tốt hơn hẳn hiện trạng (accordion lộ sẵn đáp án, không chấm gì cả).
+thức: 20 đề vẫn tốt hơn hẳn hiện trạng (accordion lộ sẵn đáp án, không chấm gì cả).
 
-**Quyết định của người dùng:** ship 19 đề trước. 11 đề hỏng dò tay dần sau, và khi dò thì
+**Quyết định của người dùng:** ship 20 đề trước. 10 đề hỏng dò tay dần sau, và khi dò thì
 **sửa thẳng vào `answer_key.md`** (không tạo file corrections riêng).
 
 ## Tái dùng — ĐỪNG viết lại
@@ -93,7 +100,7 @@ sang TS**, đừng phát minh lại. Bốn cái bẫy đã làm tôi phải sử
 
 - [ ] Test trước: fixture từ `test_07` (bảng Anh), `test_02` (bảng Việt), `test_26` (số in đậm), `test_29` (marker `**Questions**`), `test_05` (danh sách).
 - [ ] Parse `reading.md` → `{number, prompt, kind, options}`; parse `answer_key.md` → `{number, answer, explanation}`.
-- [ ] **Bất biến bắt buộc:** với 19 đề trong danh sách, parser phải ra **đúng 40 câu, mỗi câu có đáp án và dạng hợp lệ**. Viết thành test chạy trên cả 19 đề. Nếu đề nào không đạt → parser sai, sửa parser, KHÔNG hạ chuẩn.
+- [ ] **Bất biến bắt buộc:** với 20 đề trong danh sách, parser phải ra **đúng 40 câu, mỗi câu có đáp án và dạng hợp lệ**. Viết thành test chạy trên cả 20 đề. Nếu đề nào không đạt → parser sai, sửa parser, KHÔNG hạ chuẩn.
 - [ ] `AnswerVariant`: tách biến thể theo `/` (hard rule: *"Variants separated by `/` are all correct"*). `normalized` dùng `normalize()`.
 - [ ] Commit.
 
@@ -101,10 +108,10 @@ sang TS**, đừng phát minh lại. Bốn cái bẫy đã làm tôi phải sử
 
 **Files:** `web/scripts/seed/seed-ielts.ts`
 
-- [ ] Với mỗi đề trong danh sách 19: parse Reading → tạo `Section`(`ieltsTestId`) + `Question` + `AnswerVariant`. `explanation` → `Question.keyNote`. `answerRaw` giữ nguyên dòng key gốc.
-- [ ] Đặt `readingKeyVerified = true` **chỉ** cho 19 đề đó. **Danh sách 19 đề này phải là hằng số tường minh trong code, kèm comment trỏ về `scripts/check_ielts_keys.py`** — không suy ra động lúc chạy.
+- [ ] Với mỗi đề trong danh sách 20: parse Reading → tạo `Section`(`ieltsTestId`) + `Question` + `AnswerVariant`. `explanation` → `Question.keyNote`. `answerRaw` giữ nguyên dòng key gốc.
+- [ ] Đặt `readingKeyVerified = true` **chỉ** cho 20 đề đó. **Danh sách 20 đề này phải là hằng số tường minh trong code, kèm comment trỏ về `scripts/check_ielts_keys.py`** — không suy ra động lúc chạy.
 - [ ] `bandTable` cho từng đề: `extractBandTable()` từ chính `answer_key.md` của đề đó. Lưu vào `IeltsTest` (thêm cột `bandTable Json?`). **Hard rule: không mượn bảng của đề khác.**
-- [ ] Chạy `make seed-all`, xác nhận 19 × 40 = 760 `Question` rows.
+- [ ] Chạy `make seed-all`, xác nhận 20 × 40 = 800 `Question` rows.
 - [ ] Commit.
 
 ## Task 4: API chấm bài
@@ -132,20 +139,20 @@ Theo frame "Đề 07: đang làm" / "đã nộp" cho **cả 3 khổ màn hình**
 - [ ] Reading: giữ bố cục 2 cột (bài đọc | câu hỏi) đã có, nhưng cột câu hỏi render **câu hỏi tương tác** thay vì markdown thuần. MCQ → lựa chọn bấm được; completion/short-answer → ô nhập. Tái dùng `QuestionCard`.
 - [ ] Nút **Nộp bài** (sticky ở mobile). Sau khi nộp: mỗi câu hiện ✓/✗; câu sai hiện **đáp án đúng + giải thích**; đầu trang hiện raw score + **band Reading** (ghi rõ "band Reading", không phải band tổng).
 - [ ] **Gỡ `AnswerKeyAccordion` khỏi tab Reading** (người dùng: *"đừng tách phần đáp án & giải thích ra nữa"*). Writing/Speaking vẫn giữ accordion — chúng không chấm được, accordion là cách duy nhất xem model answer.
-- [ ] 11 đề chưa xác minh (`readingKeyVerified = false`): **giữ nguyên trang như hiện tại** (markdown + accordion), không có nút nộp. Có thể thêm một dòng nhỏ giải thích vì sao.
+- [ ] 10 đề chưa xác minh (`readingKeyVerified = false`): **giữ nguyên trang như hiện tại** (markdown + accordion), không có nút nộp. Có thể thêm một dòng nhỏ giải thích vì sao.
 - [ ] Commit.
 
 ## Verification
 
 1. `cd web && npx tsc --noEmit && npm test && npm run lint && npm run build` — xanh.
-2. `python3 scripts/check_ielts_keys.py` vẫn ra 19/30 (chưa ai sửa key).
-3. Seed xong: 19 đề có 40 câu, 11 đề có 0 câu.
+2. `python3 scripts/check_ielts_keys.py` vẫn ra 20/30 (chưa ai sửa key).
+3. Seed xong: 20 đề có 40 câu, 10 đề có 0 câu.
 4. Dev server riêng ở port trống (**không rebuild container `web`** — nó phục vụ site thật): làm thử một đề **đã xác minh** → nộp → điểm và giải thích hiện đúng; mở một đề **chưa xác minh** → không có nút nộp, trang như cũ.
 5. **Kiểm tra rò rỉ đáp án:** mở Network/DevTools trước khi nộp — payload HTML/JSON của trang **không được chứa đáp án**. Đây là tiêu chí đạt/không đạt của cả tính năng.
 6. Playwright 375 / 768 / 1280 đối chiếu với frame "Đề 07".
 
 ## Việc để dành (không làm ở plan này)
 
-- Dò tay 11 đề hỏng (~440 câu) và sửa thẳng vào `answer_key.md`. Người dùng đã chốt cách ghi.
-- Xác minh nội dung 19 đề "ĐẠT" (~760 câu) — script không bắt được lỗi nội dung.
+- Dò tay 10 đề hỏng (~400 câu) và sửa thẳng vào `answer_key.md`. Người dùng đã chốt cách ghi.
+- Xác minh nội dung 20 đề "ĐẠT" (~800 câu) — script không bắt được lỗi nội dung.
 - AI chấm Writing theo rubric (`src/lib/ai/` đã có sẵn). Độ tin cậy khác hẳn Reading.

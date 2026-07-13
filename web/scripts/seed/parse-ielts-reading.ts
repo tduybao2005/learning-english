@@ -119,12 +119,32 @@ function legalAnswer(task: IeltsTaskType, ans: string): boolean {
     case "MCQ":
       return LETTER.test(head);
     case "COMPLETION":
-      // Free text; the only assertable thing is that it does not belong to
-      // another type — that is exactly the test_01 Q14-18 failure mode.
-      return !["TRUE", "FALSE", "NOT GIVEN", "YES", "NO"].includes(a.toUpperCase());
+      // Free text: ANY word can be the answer, including "false" — test_16 Q40
+      // is the gap in "detailed ___ memories" and the answer really is the word
+      // "false". A completion answer therefore cannot be judged on its own;
+      // a key written for a different paper is a property of the whole group,
+      // and is caught by `isContaminated` instead.
+      return true;
     default:
       return true; // unknown type: cannot judge, don't punish
   }
+}
+
+const TF_TOKENS = ["TRUE", "FALSE", "NOT GIVEN", "YES", "NO"];
+
+/**
+ * Is this group's key answering a True/False task the paper never asked?
+ *
+ * The test_01 signature: reading.md asks for headings (or gap-fills) across a
+ * whole group and the key answers TRUE/FALSE/NOT GIVEN for all of them — it was
+ * keyed to a different paper. One stray "false" inside a gap-fill group is a
+ * real word, not contamination, so require a clear majority.
+ */
+function isContaminated(task: IeltsTaskType, answers: string[]): boolean {
+  if (task === "TFNG" || task === "YNNG" || task === "UNKNOWN") return false;
+  if (answers.length === 0) return false;
+  const hits = answers.filter((a) => TF_TOKENS.includes(stripMd(a).toUpperCase())).length;
+  return hits > answers.length / 2;
 }
 
 function stripMd(s: string): string {
@@ -547,6 +567,22 @@ export function parseIeltsReading(readingMd: string, keyMd: string): ParsedIelts
       explanation: k.explanation,
       variants,
     });
+  }
+
+  // Contamination is judged per group, so walk contiguous runs of one task type.
+  for (let i = 0; i < numbers.length; ) {
+    const task = body.get(numbers[i])!.task;
+    let j = i;
+    while (j < numbers.length && body.get(numbers[j])!.task === task) j++;
+    const run = numbers.slice(i, j);
+    const got = run.map((n) => key.get(n)?.answer).filter((a): a is string => Boolean(a));
+    if (isContaminated(task, got)) {
+      problems.push(
+        `Q${run[0]}–${run[run.length - 1]}: the paper asks ${task} but the key answers ` +
+          `True/False — this key was written for a DIFFERENT paper`
+      );
+    }
+    i = j;
   }
 
   if (missing.length)
