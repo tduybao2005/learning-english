@@ -54,14 +54,23 @@ export function GoalPicker({
 
   return (
     <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as GoalTab)}>
-      <TabsList className="w-full rounded-full bg-muted p-1">
-        <TabsTrigger value="IELTS" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
+      <TabsList className="w-full rounded-full bg-muted p-1 max-lg:group-data-horizontal/tabs:h-11">
+        <TabsTrigger
+          value="IELTS"
+          className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm max-lg:px-1 max-lg:text-xs"
+        >
           Mục tiêu IELTS
         </TabsTrigger>
-        <TabsTrigger value="CEFR" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
+        <TabsTrigger
+          value="CEFR"
+          className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm max-lg:px-1 max-lg:text-xs"
+        >
           Cấp độ CEFR
         </TabsTrigger>
-        <TabsTrigger value="TOEIC" className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm">
+        <TabsTrigger
+          value="TOEIC"
+          className="flex-1 rounded-full font-bold data-active:bg-card data-active:shadow-sm max-lg:px-1 max-lg:text-xs"
+        >
           Mục tiêu TOEIC
         </TabsTrigger>
       </TabsList>

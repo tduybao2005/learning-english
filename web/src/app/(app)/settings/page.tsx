@@ -82,7 +82,7 @@ export default async function SettingsPage() {
 
         <ThemeToggleRowConnected />
 
-        <LogoutButtonConnected variant="destructive" className="w-full" />
+        <LogoutButtonConnected variant="destructive" className="w-full max-lg:min-h-11" />
       </div>
     </div>
   );
