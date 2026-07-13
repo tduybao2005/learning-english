@@ -33,6 +33,7 @@ function renderRunner() {
       questions={questions}
       nextLesson={null}
       backHref="/learn/x"
+      lessonTitle="Bài 1: Thì hiện tại đơn"
       linkComponent="a"
     />,
   );
@@ -138,6 +139,7 @@ describe("ExerciseRunner — xem lại câu trước (chỉ đọc)", () => {
         questions={questions}
         nextLesson={null}
         backHref="/learn/x"
+        lessonTitle="Bài 1: Thì hiện tại đơn"
         initialPast={[{ index: 0, answerText: "am", correctAnswer: "am", keyNote: null }]}
         linkComponent="a"
       />,

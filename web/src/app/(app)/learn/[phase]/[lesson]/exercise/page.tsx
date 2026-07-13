@@ -116,16 +116,12 @@ export default async function ExercisePage({
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8 lg:fixed lg:inset-0 lg:z-50 lg:m-0 lg:max-w-none lg:overflow-y-auto lg:bg-background lg:px-0 lg:py-0">
-      <div className="lg:hidden">
-        <LessonTabs
-          phaseTitle={lesson.phase.title}
-          lessonTitle={lesson.title}
-          basePath={base}
-          active="exercise"
-          linkComponent={NextLink}
-        />
-      </div>
+    // Focus mode at every width. Desktop already overlaid the app chrome
+    // (lg:fixed inset-0); below lg the page used to ALSO render LessonTabs, so a
+    // phone got: back link, tab row, a three-line shouting title, and only then
+    // the runner's own ✕ stranded in the middle. The runner names the lesson in
+    // its header instead — nothing here but the runner.
+    <div className="mx-auto max-w-3xl px-4 py-6 lg:fixed lg:inset-0 lg:z-50 lg:m-0 lg:max-w-none lg:overflow-y-auto lg:bg-background lg:px-0 lg:py-0">
       <div className="lg:mx-auto lg:max-w-5xl lg:px-8 lg:py-10">
         <ExerciseRunner
           exerciseId={lesson.exercise.id}
@@ -134,6 +130,7 @@ export default async function ExercisePage({
           questions={questions}
           nextLesson={nextLesson}
           backHref={base}
+          lessonTitle={lesson.title}
           initialPast={initialPast}
           linkComponent={NextLink}
         />

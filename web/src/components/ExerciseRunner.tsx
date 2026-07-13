@@ -23,6 +23,9 @@ interface ExerciseRunnerProps {
   nextLesson: NextLessonInfo | null;
   /** Where the top bar's close `✕` navigates back to (the lesson overview). */
   backHref: string;
+  /** Shown next to the `✕` below `lg:` — the runner is a focus mode there, so it
+   * owns the whole screen and nothing else names the lesson. */
+  lessonTitle: string;
   /** Questions already answered in a PRIOR session, hydrated from the server
    * so "← Câu trước" works immediately on resume (without this, `past` starts
    * empty and the button is dead until the learner answers one more here). */
@@ -56,6 +59,7 @@ export function ExerciseRunner({
   questions,
   nextLesson,
   backHref,
+  lessonTitle,
   initialPast,
   linkComponent,
 }: ExerciseRunnerProps) {
@@ -88,6 +92,7 @@ export function ExerciseRunner({
       nextLesson={nextLesson}
       onRedo={handleRedo}
       backHref={backHref}
+      lessonTitle={lessonTitle}
       // Hydrated history only applies to the attempt we resumed. A redo swaps
       // in a brand-new attempt, whose history must start empty.
       initialPast={session.attemptId === attemptId ? initialPast : undefined}
@@ -173,6 +178,7 @@ function ExerciseRunnerSession({
   nextLesson,
   onRedo,
   backHref,
+  lessonTitle,
   initialPast,
   linkComponent: Link,
 }: {
@@ -182,6 +188,7 @@ function ExerciseRunnerSession({
   nextLesson: NextLessonInfo | null;
   onRedo: () => void;
   backHref: string;
+  lessonTitle: string;
   initialPast?: PastAnswer[];
   /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
   linkComponent: React.ElementType;
@@ -320,6 +327,13 @@ function ExerciseRunnerSession({
           >
             ✕
           </Link>
+          {/* Below lg the runner is a focus mode: no sidebar, no lesson tabs, so
+              the header is the only thing naming the lesson. Truncated to one
+              line — seeded titles run long ("Bài 1: Thì hiện tại đơn (Simple
+              Present Tense)") and wrapped to three lines at 375px. */}
+          <span className="min-w-0 flex-1 truncate text-right text-caption font-medium text-muted-foreground lg:hidden">
+            {lessonTitle}
+          </span>
           {/* Desktop (lg+) keeps the bar and counter inline in the header — the
               approved desktop layout. Below lg they move into the body, right
               above the question card (see below). */}
@@ -395,13 +409,16 @@ function ExerciseRunnerSession({
             >
               ← Câu trước
             </Button>
+            {/* `flex-1`, never `w-full`: these sit in a flex row NEXT TO
+                "← Câu trước", so a full-width button overflowed the card on a
+                375px phone (it was only hidden by `sm:w-auto` above 640px). */}
             {isCorrect ? (
-              <Button className="w-full sm:w-auto" onClick={handleContinue}>
+              <Button className="min-w-0 flex-1 sm:flex-none" onClick={handleContinue}>
                 Tiếp tục
               </Button>
             ) : isIncorrect ? (
               // Đã hiện đáp án: tự làm lại câu này, hoặc bỏ qua sang câu sau.
-              <div className="flex w-full gap-2 sm:w-auto">
+              <div className="flex min-w-0 flex-1 gap-2 sm:flex-none">
                 <Button variant="outline" className="flex-1 sm:flex-none" onClick={handleRedoQuestion}>
                   Làm lại
                 </Button>
@@ -411,7 +428,7 @@ function ExerciseRunnerSession({
               </div>
             ) : (
               <Button
-                className="w-full sm:w-auto"
+                className="min-w-0 flex-1 sm:flex-none"
                 onClick={handleSubmit}
                 disabled={isChecking || state.input.trim() === ""}
               >
