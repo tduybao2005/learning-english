@@ -76,6 +76,15 @@ export default async function DashboardPage({
     }
   }
 
+  // Question count for the "Tiếp tục" card. Questions hang off the lesson's
+  // exercise through Section, so they cannot be a `_count` on Lesson — hence
+  // this separate query, run only for the one lesson the card shows.
+  const nextUpQuestionCount = nextUp
+    ? await db.question.count({
+        where: { section: { exercise: { lessonId: nextUp.lesson.id } } },
+      })
+    : 0;
+
   const now = new Date();
   const dayOfWeek = (now.getDay() + 6) % 7; // 0 = Monday
   const startOfWeek = new Date(now);
@@ -98,11 +107,6 @@ export default async function DashboardPage({
               <p className="text-caption text-muted-foreground">{goalSubtitle}</p>
             ) : null}
           </div>
-          {/* Streak is not a real field yet (hardcoded 0) — desktop keeps it
-              because that layout is approved; phone/tablet drop it. */}
-          <span className="shrink-0 rounded-full bg-streak-bg px-3 py-1.5 text-sm font-bold text-streak-foreground max-lg:hidden">
-            🔥 0 ngày
-          </span>
         </div>
 
         {prompt === "placement" ? (
@@ -132,6 +136,7 @@ export default async function DashboardPage({
               <p className="text-h2 font-extrabold">{nextUp.lesson.title}</p>
               <p className="text-caption text-muted-foreground">
                 {nextUp.phaseTitle} · {nextUp.lesson._count.words} từ vựng
+                {nextUpQuestionCount > 0 ? ` · ${nextUpQuestionCount} câu hỏi` : ""}
               </p>
             </div>
             <Link
@@ -147,7 +152,7 @@ export default async function DashboardPage({
           <EmptyState
             icon="🌱"
             title="Chưa có gì ở đây"
-            description="Hoàn thành bài học đầu tiên để bắt đầu chuỗi streak của bạn 🔥"
+            description="Nội dung bài học chưa được nạp vào hệ thống."
             linkComponent={Link}
           />
         ) : (
@@ -177,21 +182,15 @@ export default async function DashboardPage({
           </div>
         ) : null}
 
+        {/* Only "Bài hoàn thành" is shown: it is the one figure with a query
+            behind it. "XP kiếm được" and "Từ vựng mới" used to sit here as
+            hardcoded zeros — no XP model exists, and VocabProgress is not
+            timestamped, so neither could be computed. */}
         <div className="rounded-xl border border-border bg-card p-4">
           <p className="mb-3 text-xs font-medium text-muted-foreground">Tuần này</p>
-          <div className="flex flex-col gap-2 text-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">XP kiếm được</span>
-              <span className="font-semibold text-foreground">0</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Bài hoàn thành</span>
-              <span className="font-semibold text-foreground">{lessonsCompletedThisWeek}</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Từ vựng mới</span>
-              <span className="font-semibold text-foreground">0</span>
-            </div>
+          <div className="flex items-center justify-between text-sm">
+            <span className="text-muted-foreground">Bài hoàn thành</span>
+            <span className="font-semibold text-foreground">{lessonsCompletedThisWeek}</span>
           </div>
         </div>
       </div>
