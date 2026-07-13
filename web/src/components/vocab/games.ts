@@ -17,6 +17,8 @@ export interface VocabWordLite {
   id: string;
   word: string;
   meaningVi: string;
+  /** Null khi từ này chưa có file phát âm — khi đó không render nút loa. */
+  audioUrl: string | null;
 }
 
 /** Fisher-Yates shuffle. Never mutates the input array. */

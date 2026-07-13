@@ -31,7 +31,7 @@ export default async function VocabMatchPage({
   const words = await db.vocabWord.findMany({
     where: { lessonId: lesson.id },
     orderBy: { orderIndex: "asc" },
-    select: { id: true, word: true, meaningVi: true },
+    select: { id: true, word: true, meaningVi: true, audioUrl: true },
   });
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;

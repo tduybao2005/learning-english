@@ -21,7 +21,7 @@ function seededRng(sequence: number[]): () => number {
 }
 
 function makeWord(id: string, meaningVi = `nghĩa ${id}`): VocabWordLite {
-  return { id, word: `word-${id}`, meaningVi };
+  return { id, word: `word-${id}`, meaningVi, audioUrl: null };
 }
 
 describe("eligibleForGames", () => {

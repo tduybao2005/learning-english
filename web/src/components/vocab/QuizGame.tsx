@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { buildQuizRounds, type VocabWordLite, type QuizRound } from "@/components/vocab/games";
+import { playSfx } from "@/lib/audio/sfx";
+import { PronounceButton } from "@/components/vocab/PronounceButton";
 
 interface ReviewResult {
   wordId: string;
@@ -67,6 +69,8 @@ export function QuizGame({
   const done = index >= total;
   const round = rounds[index];
   const answered = selectedId !== null;
+  // Từ tiếng Anh của vòng hiện tại — dùng cho nút "Nghe lại" sau khi lộ đáp án.
+  const quizWord = round ? words.find((w) => w.id === round.wordId) : undefined;
 
   async function submitResults(finalResults: ReviewResult[]) {
     setSaveState("saving");
@@ -86,6 +90,9 @@ export function QuizGame({
     if (answered) return;
     setSelectedId(optionId);
     const correct = optionId === round.correctOptionId;
+    // Phát ngay trong handler của cú click: Safari/iOS chỉ cho phát audio khi
+    // còn trong ngữ cảnh user gesture.
+    playSfx(correct ? "correct" : "wrong");
     const nextStreak = correct ? streak + 1 : 0;
     setStreak(nextStreak);
     setBestStreak((b) => Math.max(b, nextStreak));
@@ -198,6 +205,7 @@ export function QuizGame({
               key={option.id}
               type="button"
               disabled={answered}
+              data-testid="quiz-option"
               onClick={() => handleSelect(option.id)}
               className={cn(
                 "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
@@ -226,6 +234,16 @@ export function QuizGame({
           );
         })}
       </div>
+
+      {/* Sau khi lộ đáp án: nghe lại từ tiếng Anh của câu này. `QuizRound` chỉ
+          mang `wordId`, nên tra ngược sang `words` để lấy chữ + file phát âm. */}
+      {answered && quizWord?.audioUrl && (
+        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <span>Nghe lại:</span>
+          <span className="font-semibold text-foreground">{quizWord.word}</span>
+          <PronounceButton src={quizWord.audioUrl} label={quizWord.word} />
+        </div>
+      )}
 
       {answered && (
         <div className="flex justify-center">
