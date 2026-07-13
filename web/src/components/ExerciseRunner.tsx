@@ -4,6 +4,7 @@ import { useEffect, useReducer, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { playSfx } from "@/lib/audio/sfx";
+import { celebrate } from "@/lib/celebrate";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { initRunnerState, runnerReducer } from "@/components/runner/reducer";
 import { QuestionCard, type SafeQuestion, type SafeQuestionKind } from "@/components/runner/QuestionCard";
@@ -251,6 +252,12 @@ function ExerciseRunnerSession({
     else (document.activeElement as HTMLElement | null)?.blur();
   }, [question?.id, redoTick]);
 
+  // Ăn mừng đúng MỘT lần khi vào phase "finished". Mỗi attempt chỉ chuyển sang
+  // "finished" một lần (redo remount cả component qua `key`), nên deps này đủ.
+  useEffect(() => {
+    if (state.phase === "finished") celebrate();
+  }, [state.phase]);
+
   async function handleSubmit() {
     if (state.phase !== "answering" && state.phase !== "incorrect") return;
     if (state.input.trim() === "") return;
@@ -278,23 +285,44 @@ function ExerciseRunnerSession({
         </div>
         <h2 className="text-h2 font-extrabold">Hoàn thành bài tập!</h2>
         {nextLesson ? (
-          <span className="rounded-full bg-streak-bg px-3 py-1.5 text-sm font-semibold text-streak-foreground">
-            Đã mở khoá: {nextLesson.title}
-          </span>
+          <>
+            <span className="animate-unlock-pop rounded-full bg-streak-bg px-3 py-1.5 text-sm font-semibold text-streak-foreground">
+              🔓 Đã mở khoá: {nextLesson.title}
+            </span>
+            <div className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Link
+                href={`/learn/${nextLesson.phaseSlug}/${nextLesson.slug}`}
+                className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+              >
+                Học bài tiếp theo →
+              </Link>
+              <Link
+                href="/dashboard"
+                className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
+              >
+                Về lộ trình học
+              </Link>
+              <Button variant="ghost" className="w-full sm:w-auto" onClick={onRedo}>
+                Làm lại
+              </Button>
+            </div>
+          </>
         ) : (
-          <p className="text-muted-foreground">Bạn đã hoàn thành toàn bộ lộ trình hiện có!</p>
+          <>
+            <p className="text-muted-foreground">Bạn đã hoàn thành toàn bộ lộ trình hiện có!</p>
+            <div className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <Link
+                href="/dashboard"
+                className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
+              >
+                Về lộ trình học
+              </Link>
+              <Button variant="outline" className="w-full sm:w-auto" onClick={onRedo}>
+                Làm lại
+              </Button>
+            </div>
+          </>
         )}
-        <div className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <Link
-            href="/dashboard"
-            className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
-          >
-            Về lộ trình học
-          </Link>
-          <Button variant="outline" className="w-full sm:w-auto" onClick={onRedo}>
-            Làm lại
-          </Button>
-        </div>
       </div>
     );
   }
