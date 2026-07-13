@@ -14,6 +14,7 @@
     "seed:validate-listening": "tsx scripts/seed/check-listening.ts",
     "seed:placement": "dotenv -e .env.local -- tsx scripts/seed/seed-placement.ts",
     "seed:ielts": "dotenv -e .env.local -- tsx scripts/seed/seed-ielts.ts",
+    "audio:vocab": "dotenv -e .env.local -- tsx scripts/generate-vocab-audio.ts",
     "postinstall": "prisma generate",
     "db:validate": "dotenv -e .env.local -- prisma validate",
     "db:migrate": "dotenv -e .env.local -- prisma migrate dev",

@@ -1,0 +1,64 @@
+# Stack TEST — cách ly hoàn toàn với docker-compose.yml (prod).
+#
+#   make test-up      # dựng db + web test, migrate + seed, mở http://localhost:3100
+#   make test-unit    # chạy vitest trong container trên DB sạch
+#   make test-down    # xoá sạch (DB nằm trên tmpfs nên không còn dấu vết)
+#
+# Khác prod ở đúng 4 điểm: compose project name riêng, port riêng (3100/5433),
+# Postgres ephemeral trên tmpfs (không có named volume), và KHÔNG có cloudflare
+# tunnel — bản đang thử không bao giờ lộ ra Internet.
+name: learning-english-test
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-learning_english}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-learning_english}
+      POSTGRES_DB: ${POSTGRES_DB:-learning_english_test}
+    ports:
+      - "${TEST_POSTGRES_PORT:-5433}:5432"
+    # Ephemeral: dữ liệu sống trong RAM, biến mất khi container dừng.
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-learning_english}"]
+      interval: 3s
+      timeout: 5s
+      retries: 20
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      target: runner
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english_test}
+      DIRECT_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english_test}
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET}
+      AUTH_URL: ${AUTH_URL:-http://localhost:3100}
+    ports:
+      - "${TEST_WEB_PORT:-3100}:3000"
+
+  # One-shot: `docker compose ... run --rm vitest`. Nằm trong profile "tools"
+  # nên `up` thường KHÔNG dựng nó. Cần DB thật: 2 file test là integration
+  # test (web/src/app/api/attempts/answers.test.ts) và mở kết nối Prisma.
+  vitest:
+    profiles: ["tools"]
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      target: test
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english_test}
+      DIRECT_URL: postgresql://${POSTGRES_USER:-learning_english}:${POSTGRES_PASSWORD:-learning_english}@db:5432/${POSTGRES_DB:-learning_english_test}
+      AUTH_SECRET: ${AUTH_SECRET:-test-secret}
+      AUTH_URL: http://localhost:3100

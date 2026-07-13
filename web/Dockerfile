@@ -70,3 +70,22 @@ USER nextjs
 EXPOSE 3000
 ENV PORT=3000
 CMD ["npm", "run", "start"]
+
+# ---------------------------------------------------------------------------
+# Test stage — used ONLY by docker-compose.test.yml (`target: test`).
+# Inherits `builder`, which already carries the full web/ tree (vitest.config.ts,
+# vitest.setup.ts, src/, scripts/) and the devDependencies from `npm ci`. The
+# prod `runner` stage above is untouched, so this adds nothing to the shipped
+# image.
+FROM builder AS test
+WORKDIR /app/web
+# Curriculum content, one level above web/ — the seed scripts resolve it as
+# path.resolve(process.cwd(), "..") (see the note at the top of this file).
+COPY phase_1_foundation /app/phase_1_foundation
+COPY phase_2_elementary /app/phase_2_elementary
+COPY phase_3_intermediate /app/phase_3_intermediate
+COPY phase_4_advanced /app/phase_4_advanced
+COPY phase_5_ielts_prep /app/phase_5_ielts_prep
+COPY ielts_practice_tests /app/ielts_practice_tests
+ENV NODE_ENV=test
+CMD ["npm", "run", "test:ci"]
