@@ -34,7 +34,13 @@ export default async function DashboardPage({
       include: {
         lessons: {
           orderBy: { orderIndex: "asc" },
-          select: { id: true, slug: true, title: true, orderIndex: true },
+          select: {
+            id: true,
+            slug: true,
+            title: true,
+            orderIndex: true,
+            _count: { select: { words: true } },
+          },
         },
       },
     }),
@@ -81,7 +87,7 @@ export default async function DashboardPage({
   });
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 lg:grid lg:grid-cols-[1fr_320px] lg:items-start lg:gap-6">
+    <div className="mx-auto max-w-6xl px-4 py-6 lg:py-8 lg:grid lg:grid-cols-[1fr_320px] lg:items-start lg:gap-6">
       <div className="min-w-0 max-w-3xl lg:max-w-none">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
@@ -92,7 +98,9 @@ export default async function DashboardPage({
               <p className="text-caption text-muted-foreground">{goalSubtitle}</p>
             ) : null}
           </div>
-          <span className="shrink-0 rounded-full bg-streak-bg px-3 py-1.5 text-sm font-bold text-streak-foreground">
+          {/* Streak is not a real field yet (hardcoded 0) — desktop keeps it
+              because that layout is approved; phone/tablet drop it. */}
+          <span className="shrink-0 rounded-full bg-streak-bg px-3 py-1.5 text-sm font-bold text-streak-foreground max-lg:hidden">
             🔥 0 ngày
           </span>
         </div>
@@ -112,6 +120,29 @@ export default async function DashboardPage({
           </div>
         ) : null}
 
+        {/* "Tiếp tục" card — phone/tablet only. On `lg:` the same lesson is
+            surfaced by the right-hand rail below, which must not change. */}
+        {nextUp ? (
+          <div className="mb-6 flex flex-col gap-3 rounded-xl border border-primary bg-card p-4 lg:hidden">
+            <p className="text-caption font-bold uppercase tracking-wider text-muted-foreground">
+              Tiếp tục
+            </p>
+            <div className="flex flex-col gap-1">
+              {/* Seeded titles already start with "Bài N:", so no prefix here. */}
+              <p className="text-h2 font-extrabold">{nextUp.lesson.title}</p>
+              <p className="text-caption text-muted-foreground">
+                {nextUp.phaseTitle} · {nextUp.lesson._count.words} từ vựng
+              </p>
+            </div>
+            <Link
+              href={`/learn/${nextUp.phaseSlug}/${nextUp.lesson.slug}`}
+              className={cn(buttonVariants(), "min-h-11 w-full")}
+            >
+              Vào học
+            </Link>
+          </div>
+        ) : null}
+
         {phases.length === 0 ? (
           <EmptyState
             icon="🌱"
@@ -120,11 +151,17 @@ export default async function DashboardPage({
             linkComponent={Link}
           />
         ) : (
-          <LessonMap phases={phases} states={states} linkComponent={Link} />
+          <>
+            <h3 className="mb-2 text-body font-bold lg:hidden">Lộ trình</h3>
+            <LessonMap phases={phases} states={states} linkComponent={Link} />
+          </>
         )}
       </div>
 
-      <div className="mt-6 flex flex-col gap-4 lg:mt-0">
+      {/* Desktop rail: unchanged, and hidden below `lg:` (the design has no
+          weekly-stats card, and its XP / new-words figures are hardcoded
+          zeros with no backing field). */}
+      <div className="mt-6 flex flex-col gap-4 max-lg:hidden lg:mt-0">
         {nextUp ? (
           <div className="rounded-xl bg-primary p-4 text-primary-foreground shadow-primary-glow">
             <p className="mb-2 text-xs font-medium opacity-80">Việc hôm nay</p>

@@ -34,7 +34,10 @@ export function LessonMap({
   linkComponent: React.ElementType;
 }) {
   return (
-    <div className="flex flex-col gap-4">
+    // One column on phones and at `lg:` (identical to the previous
+    // `flex flex-col gap-4`); two columns on tablets, where the collapsed
+    // phase rows are short enough to pair up.
+    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-1">
       {phases.map((phase) => {
         const doneCount = phase.lessons.filter((lesson) => {
           const state = states.get(lesson.id);
@@ -95,6 +98,7 @@ export function LessonMap({
             className={cn(
               "rounded-xl border p-4",
               "border-primary bg-primary/5 shadow-primary-glow",
+              "md:col-span-2 lg:col-span-1",
             )}
           >
             <div className="mb-3 flex items-baseline justify-between gap-2">
