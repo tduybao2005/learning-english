@@ -42,7 +42,8 @@ export default async function ListeningSetPage({
   }));
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 pt-8 pb-20">
+    // pb clears both fixed bars below lg (64px tab bar + 48px back bar); at lg: only the back bar remains.
+    <div className="mx-auto w-full max-w-5xl px-6 pt-8 pb-32 lg:pb-20">
       <div className="mb-3 flex flex-wrap items-center gap-3">
         {listeningSet.level && <LevelBadge level={listeningSet.level} />}
         <h1 className="text-h1 font-heading">{listeningSet.title}</h1>

@@ -8,7 +8,7 @@ Repo-specific gotchas. Read this before any re-sync.
   `dist/`, no library entry, no Storybook. `shape: "package"` with `--entry ./web/.ds-entry.tsx`
   — a barrel that re-exports the six real primitives from `web/src/components/ui`. It
   reimplements nothing.
-- **All 38 app components are synced** (pinned via `componentSrcMap`). The only files in
+- **All 39 app components are synced** (pinned via `componentSrcMap`). The only files in
   `web/src/components/` NOT synced are the seven `*Connected.tsx` wrappers — see
   "What is synced" below.
 - Compound parts (`CardHeader`, `TabsTrigger`, …) ship in the bundle for composition but are
@@ -147,7 +147,8 @@ the guard fires by compiling a deliberate omission (TS2739).
 `ErrorState`, `ExerciseRunner`, `IeltsHub`, `InlineExample`, `LessonMap`, `LessonNode`
 (`lesson-node.tsx`), `LessonTabs`, `ListeningBottomNav`, `PhasePillRow`, `Flashcards`,
 `MatchGame`, `QuizGame`, `LogoutButton`, `ResetToStartButton`, `SettingsGoalForm`,
-`SettingsNameEditor`, `ThemeToggleRow` — **38 components total.**
+`SettingsNameEditor`, `ThemeToggleRow` — plus `MobileTabBar` (the mobile bottom tab bar,
+added with the mobile shell) — **39 components total.**
 
 - The `next/link` blocker was cleared by injection, not by stubbing: every one of these takes a
   required `linkComponent` (Task 0.2), exactly like `AppHeader`.
@@ -178,6 +179,12 @@ from the tokens, not from a card):
   does render the finish screen, which is how its `Finished` cell exists.)
 - The vocab games shuffle their rounds in a `useEffect` (hydration safety), so their cards differ
   between renders. That is expected; do not "fix" it.
+- `MobileTabBar` is BOTH `fixed` and `lg:hidden`, and capture screenshots are taken at
+  1200px wide — so a naive preview renders an **empty card** (the `LectureToc` trap) even
+  though the render check passes. Its preview therefore uses the `transform`ed frame (for
+  `fixed`) **and** `className="lg:block!"` on every story. Both are preview devices; a real
+  screen must keep the bar phone/tablet-only. Note `ListeningBottomNav` now sits at
+  `bottom-16 lg:bottom-0` so it stacks above the tab bar on mobile.
 - `ListeningBottomNav` is `fixed inset-x-0 bottom-0`: it escaped its preview cell and tripped
   `[GRID_OVERFLOW]`. Fixed with `cardMode: "single"` **plus** a `transform`ed wrapper in the
   preview (a transform creates a containing block for `fixed`). That wrapper is a preview device
@@ -186,8 +193,9 @@ from the tokens, not from a card):
 **Every one of the 17 has a hand-written `cfg.dtsPropsFor`** — ts-morph flattens plain inline prop
 types to `[key: string]: unknown`, which would leave the design agent with no API contract.
 
-**The test suite does not protect the UI layer.** `vitest.config.ts` is `include: src/**/*.test.ts`
-(no `.tsx`) and `environment: "node"`. All 229 tests are pure logic. Green tests say nothing about
+**The test suite now DOES cover `.tsx`** (jsdom via a per-file `// @vitest-environment jsdom`
+pragma — see `EmptyState.test.tsx`, `ListeningSetCard.test.tsx`, `MobileTabBar.test.tsx`).
+Coverage is still thin, though: Green tests say nothing about
 `AppHeader`/`AppSidebar`. The real safety nets are `npx tsc --noEmit`, `npm run build`, and
 clicking a nav link with DevTools open (a document request = client-side navigation is broken).
 

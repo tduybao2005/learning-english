@@ -42,6 +42,10 @@ export { ListeningSetView } from "@/components/ListeningSetView";
 // wrapper (AppSidebarConnected) deliberately stays in the app.
 export { AppHeader } from "@/components/AppHeader";
 export { AppSidebar } from "@/components/AppSidebar";
+// The mobile bottom tab bar — primary navigation below lg, replacing the link
+// row AppHeader used to carry. Presentational (linkComponent + activePath are
+// injected); MobileTabBarConnected keeps usePathname in the app.
+export { MobileTabBar } from "@/components/MobileTabBar";
 
 // Presentational after the Task 2–4 extraction: EmptyState/ListeningSetCard take
 // an injected `linkComponent` (no next/link); LevelBadge reuses LEVEL_META whose
