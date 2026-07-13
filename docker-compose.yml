@@ -20,6 +20,10 @@ services:
     build:
       context: .
       dockerfile: web/Dockerfile
+      # BẮT BUỘC: web/Dockerfile có stage `test` nằm CUỐI file, mà Docker mặc
+      # định build stage cuối cùng => thiếu dòng này thì `make up` dựng ra image
+      # chạy vitest thay vì chạy app, và site sập.
+      target: runner
     restart: unless-stopped
     depends_on:
       db:

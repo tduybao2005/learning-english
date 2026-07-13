@@ -126,6 +126,8 @@ test-seed: test-env
 	$(TEST_COMPOSE) exec web npx tsx scripts/seed/ingest.ts
 	$(TEST_COMPOSE) exec web npx tsx scripts/seed/seed-placement.ts
 	$(TEST_COMPOSE) exec web npx tsx scripts/seed/seed-ielts.ts
+# Giống seed-all: seed vocab là delete+create nên phải ghi lại VocabWord.audioUrl.
+	$(TEST_COMPOSE) exec web npx tsx scripts/generate-vocab-audio.ts
 
 # Dựng DB sạch, migrate, seed, rồi chạy vitest one-shot trong container test.
 # Phải seed: src/app/api/attempts/answers.test.ts là integration test, nó tìm
