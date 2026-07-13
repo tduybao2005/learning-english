@@ -3,6 +3,7 @@
 import { useEffect, useReducer, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { playSfx } from "@/lib/audio/sfx";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { initRunnerState, runnerReducer } from "@/components/runner/reducer";
 import { QuestionCard, type SafeQuestion, type SafeQuestionKind } from "@/components/runner/QuestionCard";
@@ -263,6 +264,9 @@ function ExerciseRunnerSession({
       body: JSON.stringify({ questionId: question.id, answerText }),
     });
     const json = await res.json();
+    // Phát ngay ở đây, không trong useEffect: Safari/iOS chỉ cho phát audio khi
+    // còn trong ngữ cảnh của user gesture ("Kiểm tra").
+    playSfx(json.correct ? "correct" : "wrong");
     dispatch({ type: "RESULT", result: json });
   }
 
