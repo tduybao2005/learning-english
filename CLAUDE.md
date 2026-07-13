@@ -1,8 +1,11 @@
 # CLAUDE.md — Agent Guide
 
 Bilingual (Vietnamese/English) self-study English curriculum targeting IELTS
-6.5–8.0. **Pure Markdown content repo — no application code yet** (a Next.js
-app is planned under `web/`; see docs/superpowers/plans/).
+6.5–8.0, plus the **Next.js web app under `web/`** that serves it. The Markdown
+under `phase_*/`, `ielts_practice_tests/` and `toeic_practice_tests/` is the
+single source of truth; the app seeds it into Postgres and never writes back.
+Runtime is self-hosted Docker Compose behind a Cloudflare tunnel — see
+`docs/architecture.md`.
 
 ## Start here
 
@@ -39,12 +42,55 @@ app is planned under `web/`; see docs/superpowers/plans/).
 
 ## Commands
 
+Content tooling (repo root, stdlib Python):
+
 ```bash
 python3 -m unittest discover -s scripts/tests -v   # test the tooling
 python3 scripts/add_frontmatter.py                 # frontmatter new content (idempotent)
 python3 scripts/build_index.py                     # regenerate manifest + docs/STATUS.md
 python3 scripts/build_index.py --check             # validate; exit 1 on drift
 quarto render <file.md> --to pdf                   # PDF of one file (Quarto 1.6)
+```
+
+The app (`cd web/`, npm):
+
+```bash
+npm test                    # Vitest; tests are co-located next to the source
+npm run lint
+npm run db:migrate          # prisma migrate dev (local, against .env.local)
+```
+
+The self-hosted runtime (repo root, Docker Compose):
+
+```bash
+make bootstrap   # first run: build, start db+web, migrate, seed everything
+make up | down | logs | ps
+make migrate     # prisma migrate deploy inside the web container
+make seed-all    # ingest lessons/vocab/exercises + placement + IELTS + backfill audioUrl
+make dbsh        # psql into the db container
+```
+
+**Âm thanh** — SFX ở `web/public/sounds/` (sinh bằng `python3 web/scripts/make-sfx.py`),
+phát âm từ vựng ở `web/public/audio/vocab/<slug>.mp3` (giọng `en-GB-LibbyNeural`).
+Thêm từ vựng mới thì phải sinh audio **ở host** (container không có `edge-tts`):
+
+```bash
+cd web && npm run audio:vocab   # sinh mp3 còn thiếu + ghi VocabWord.audioUrl
+cd .. && make up                # build lại image kèm file mới
+```
+
+Seed vocab là delete+create, nên `VocabWord.audioUrl` bị xoá sau mỗi lần seed —
+`make seed-all` đã tự chạy lại bước backfill; đừng bỏ bước đó đi.
+
+**Môi trường test cách ly** (repo root) — dùng khi code tính năng mới hay đổi
+schema. Compose project riêng, port riêng, DB ephemeral, không có Cloudflare
+tunnel, **không đụng port/dữ liệu của stack prod** (`docs/test-environment.md`):
+
+```bash
+make test-up     # dựng db+web test, migrate, seed → http://localhost:3100
+make test-unit   # migrate + seed + vitest trong container, trên DB sạch
+make test-reset  # dựng lại từ DB trắng
+make test-down   # xoá stack test (DB tmpfs bay theo)
 ```
 
 ## Hard rules
@@ -56,6 +102,10 @@ quarto render <file.md> --to pdf                   # PDF of one file (Quarto 1.6
   Variants separated by `/` are all correct.
 - **IELTS tests are scored on band 0–9** using that test's own raw→band
   table in its `answer_key.md` — never percentages, never another test's table.
+- **Chỉ 20/30 đề IELTS chấm được trong app** (`VERIFIED_READING_TESTS` trong
+  `web/scripts/seed/parse-ielts-reading.ts`, dựa trên `scripts/check_ielts_keys.py`).
+  10 đề còn lại có answer key trả lời những câu mà chính đề không hỏi — trang giữ
+  ở dạng đọc, API trả 409. Đừng nới danh sách này nếu chưa chạy lại cổng kiểm tra.
 - **TOEIC L&R chấm theo scaled score 5–495 mỗi kỹ năng** bằng bảng quy đổi
   của chính đề đó — không phần trăm, không band IELTS, không mượn bảng đề
   khác. Speaking/Writing chấm 0–200 theo rubric trong `answer_key.md`.
