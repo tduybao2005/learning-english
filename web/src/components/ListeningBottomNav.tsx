@@ -18,14 +18,20 @@ export function ListeningBottomNav({
 }) {
   return (
     <nav className="fixed inset-x-0 bottom-16 z-40 border-t border-border bg-card/95 backdrop-blur lg:bottom-0 lg:pl-[232px]">
-      <div className="mx-auto flex h-12 max-w-5xl items-center justify-between gap-3 px-6">
+      <div className="mx-auto flex h-12 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/listening"
-          className="inline-flex items-center gap-1 text-caption font-medium text-muted-foreground hover:text-foreground"
+          className="inline-flex items-center gap-1 whitespace-nowrap text-caption font-medium text-muted-foreground hover:text-foreground"
         >
           ← Quay lại danh sách bài nghe
         </Link>
-        {subtitle && <span className="text-caption text-muted-foreground">{subtitle}</span>}
+        {/* The set title would wrap the 48px-tall bar onto two lines on a phone;
+            the back link is the only thing that has to be there. */}
+        {subtitle && (
+          <span className="hidden truncate text-caption text-muted-foreground sm:inline">
+            {subtitle}
+          </span>
+        )}
       </div>
     </nav>
   );

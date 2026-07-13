@@ -47,7 +47,7 @@ export default async function ListeningHubPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-8">
+    <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-8">
       <header className="mb-8">
         <h1 className="text-h1 font-heading">Luyện nghe</h1>
         <p className="mt-2 text-body text-muted-foreground">
