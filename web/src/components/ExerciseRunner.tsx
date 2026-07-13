@@ -316,23 +316,39 @@ function ExerciseRunnerSession({
           <Link
             href={backHref}
             aria-label="Đóng bài tập"
-            className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }))}
+            className={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }), "max-lg:size-11")}
           >
             ✕
           </Link>
-          <div className="h-2 flex-1 rounded-full bg-muted">
+          {/* Desktop (lg+) keeps the bar and counter inline in the header — the
+              approved desktop layout. Below lg they move into the body, right
+              above the question card (see below). */}
+          <div className="h-2 flex-1 rounded-full bg-muted max-lg:hidden">
             <div
               className="h-full rounded-full bg-primary animate-progress-fill"
               style={{ width: `${percent}%` }}
             />
           </div>
-          <span className="shrink-0 text-caption font-medium text-muted-foreground">
+          <span className="shrink-0 text-caption font-medium text-muted-foreground max-lg:hidden">
             Câu {state.index + 1}/{total}
           </span>
         </div>
         {isIncorrect && (
           <p className="text-right text-caption text-muted-foreground">Lần thử: {state.tries}</p>
         )}
+      </div>
+
+      {/* Mobile/tablet: progress lives in the body, directly above the card. */}
+      <div className="flex flex-col gap-2 lg:hidden">
+        <span className="text-caption font-semibold">
+          Câu {state.index + 1}/{total}
+        </span>
+        <div className="h-2 w-full rounded-full bg-muted">
+          <div
+            className="h-full rounded-full bg-primary animate-progress-fill"
+            style={{ width: `${percent}%` }}
+          />
+        </div>
       </div>
 
       <div ref={cardRef} className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-[720px]">
