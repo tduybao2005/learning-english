@@ -62,6 +62,8 @@ export { PlacementWizard } from "@/components/PlacementWizard";
 // look Prisma-coupled but are not: their `import type { LessonState }` /
 // `import type { IeltsSkill }` are type-only and erased at compile.
 export { ErrorState } from "@/components/ErrorState";
+// The /exams hub. Link-injected, driven by a plain ExamType[] descriptor array.
+export { ExamsHub } from "@/components/ExamsHub";
 export { ExerciseRunner } from "@/components/ExerciseRunner";
 export { IeltsHub } from "@/components/IeltsHub";
 export { InlineExample } from "@/components/InlineExample";

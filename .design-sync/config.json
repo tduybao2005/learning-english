@@ -46,7 +46,8 @@
     "SettingsGoalForm": "src/components/SettingsGoalForm.tsx",
     "SettingsNameEditor": "src/components/SettingsNameEditor.tsx",
     "ThemeToggleRow": "src/components/ThemeToggleRow.tsx",
-    "MobileTabBar": "src/components/MobileTabBar.tsx"
+    "MobileTabBar": "src/components/MobileTabBar.tsx",
+    "ExamsHub": "src/components/ExamsHub.tsx"
   },
   "overrides": {
     "Tabs": {
@@ -172,6 +173,9 @@
     },
     "ThemeToggleRow": {
       "cardMode": "column"
+    },
+    "ExamsHub": {
+      "cardMode": "column"
     }
   },
   "dtsPropsFor": {
@@ -190,7 +194,7 @@
     "QuestionCard": "  question: {\n    id: string;\n    number: number;\n    prompt: string;\n    options: { label: string; text: string }[] | null;\n    imageUrl?: string | null;\n    kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n    isOpenEnded: boolean;\n    errorSpan?: { start: number; end: number } | null;\n  };\n  disabled: boolean;\n  /** Runner phase — drives the correct/incorrect styling. Defaults to \"answering\" (neutral). */\n  status?: \"answering\" | \"checking\" | \"correct\" | \"incorrect\" | \"finished\";\n  onChangeInput: (value: string) => void;\n  emphasizePrompt?: boolean;",
     "SectionedListeningRunner": "  /** Listening-set slug; used to POST answers to `/api/listening/<slug>/check`. */\n  slug: string;\n  /** All sections, answered one at a time. An empty array renders the \"chưa có câu hỏi\" fallback. */\n  sections: {\n    label: string;\n    title: string;\n    instructions: string | null;\n    /** Per-section audio, when the set splits its audio by section. */\n    audioUrl?: string | null;\n    questions: {\n      id: string;\n      number: number;\n      prompt: string;\n      options: { label: string; text: string }[] | null;\n      kind: \"FILL_BLANK\" | \"MULTIPLE_CHOICE\" | \"TRANSFORMATION\" | \"ERROR_CORRECTION\" | \"TRANSLATION\" | \"OPEN_WRITING\";\n      isOpenEnded: boolean;\n    }[];\n  }[];\n  /** Fires once per section transition, with the newly-shown section index. */\n  onSectionChange?: (sectionIndex: number) => void;\n  /** Fires once when a section's answers have been graded. */\n  onSectionSubmitted?: (sectionIndex: number) => void;\n  /** Fires when the learner presses \"Làm lại\" on the finished screen. */\n  onReset?: () => void;",
     "AppHeader": "  className?: string;\n  /** Link component for the logo link. Pass `NextLink` in the app, `\"a\"` in a design. No default: omitting it would silently downgrade the link to a full page load. */\n  linkComponent: React.ElementType;",
-    "MobileTabBar": "/** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every tab to a full page load. */\n  linkComponent: React.ElementType;\n  /** Current pathname, e.g. \"/listening/bai-01\". A tab is active when the path equals or nests under its href. */\n  activePath: string;\n  className?: string;",
+    "MobileTabBar": "/** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every tab to a full page load. */\n  linkComponent: React.ElementType;\n  /** Current pathname, e.g. \"/listening/bai-01\". Five tabs: /dashboard \"Lộ trình\", /vocab \"Từ vựng\", /listening \"Luyện nghe\", /exams \"Đề thi\", /settings \"Cài đặt\". A tab is active when the path equals or nests under its href — and \"Đề thi\" additionally owns /ielts. */\n  activePath: string;\n  className?: string;",
     "AppSidebar": "  name: string | null;\n  email: string;\n  /** Placement band, e.g. 6.5. `null` renders \"Chưa xếp hạng\". */\n  band: number | null;\n  /** Current route, e.g. \"/listening\". Drives nav highlighting. */\n  pathname: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. No default — see AppHeader. */\n  linkComponent: React.ElementType;",
     "EmptyState": "/** Emoji shown in the soft tile. Defaults to \"🌱\". */\n  icon?: string;\n  title: string;\n  description?: string;\n  /** CTA link target. Both ctaHref and ctaLabel must be set for the button to render. */\n  ctaHref?: string;\n  ctaLabel?: string;\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default. */\n  linkComponent: React.ElementType;",
     "LevelBadge": "/** CEFR level; selects the label + semantic-token pill colour from LEVEL_META. */\n  level: \"A2\" | \"B1\" | \"B2\" | \"C1\";\n  className?: string;",
@@ -213,6 +217,7 @@
     "ResetToStartButton": "  /** Invoked on click. The wrapper posts to `/api/placement/reset-to-start`, then navigates. */\n  onReset: () => void;\n  pending?: boolean;\n  /** Failure message shown under the button; `null` when there is none. */\n  error?: string | null;",
     "SettingsGoalForm": "  /** Currently selected goal; `null` when the user has none yet. */\n  value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string } | null;\n  onChange: (value: { goalType: \"IELTS\" | \"CEFR\" | \"TOEIC\"; goalValue: string }) => void;\n  /** Invoked by \"Lưu thay đổi\". The wrapper does the POST. */\n  onSubmit: () => void;\n  pending?: boolean;\n  /** Outcome of the last save: drives the confirmation / error line. */\n  status?: \"idle\" | \"saved\" | \"error\";",
     "SettingsNameEditor": "  /** The persisted display name; `null` falls back to the email. */\n  name: string | null;\n  email: string;\n  /** Invoked with the trimmed, non-empty name. The wrapper does the POST. */\n  onSave: (name: string) => void;\n  pending?: boolean;\n  /** Last save succeeded — shows \"✓ Đã lưu\" and closes edit mode. */\n  saved?: boolean;\n  /** Last save failed — shows the error line. */\n  error?: boolean;\n  /** Start in edit mode. Exists so a design can show the edit state statically. */\n  defaultEditing?: boolean;",
-    "ThemeToggleRow": "  /** `true` when dark mode is on. */\n  checked: boolean;\n  onCheckedChange: (checked: boolean) => void;"
+    "ThemeToggleRow": "  /** `true` when dark mode is on. */\n  checked: boolean;\n  onCheckedChange: (checked: boolean) => void;",
+    "ExamsHub": "/** The exam families to list, in order. Adding a third exam is a data change. */\n  examTypes: {\n    /** Stable key, e.g. \"ielts\". */\n    key: string;\n    /** Display name, e.g. \"IELTS\". */\n    name: string;\n    /** One line under the name, e.g. \"30 đề · 30 đề đủ nội dung\". */\n    subtitle: string;\n    /** Supporting copy under the subtitle. */\n    description: string;\n    /** Target route. `null` renders the muted, non-interactive \"sắp có\" state (no link, no href). */\n    href: string | null;\n    /** Small right-aligned pill, e.g. \"Band 6.5\". Omit or `null` for none. */\n    stat?: string | null;\n    /** Icon tile glyph. Defaults to \"graduation\". */\n    icon?: \"graduation\" | \"file\";\n  }[];\n  /** Link component. Pass `NextLink` in the app, `\"a\"` in a design. Required — no default: a default would silently downgrade every card to a full page load. */\n  linkComponent: React.ElementType;\n  className?: string;"
   }
 }
