@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { PronounceButton } from "@/components/vocab/PronounceButton";
 
 export interface FlashcardWord {
   id: string;
@@ -12,6 +13,8 @@ export interface FlashcardWord {
   meaningVi: string;
   exampleEn: string;
   groupName: string;
+  /** Null khi từ này chưa có file phát âm — khi đó không render nút loa. */
+  audioUrl: string | null;
 }
 
 interface ReviewResult {
@@ -130,9 +133,18 @@ export function Flashcards({
         </div>
       </div>
 
-      <button
-        type="button"
+      {/* `role="button"` chứ không phải <button>: nút loa nằm bên trong thẻ, mà
+          lồng <button> trong <button> là HTML không hợp lệ. */}
+      <div
+        role="button"
+        tabIndex={0}
         onClick={() => setFlipped((f) => !f)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setFlipped((f) => !f);
+          }
+        }}
         className="w-full text-left perspective-flip"
         aria-label={flipped ? "Lật lại mặt trước" : "Nhấn để lật thẻ và xem nghĩa"}
         data-testid="flashcard"
@@ -141,7 +153,10 @@ export function Flashcards({
         <div className={cn("relative h-64 lg:h-80 w-full flip-inner", flipped && "flip-inner-flipped")}>
           {/* Front: word + IPA */}
           <div className="absolute inset-0 backface-hidden rounded-2xl border bg-card flex flex-col items-center justify-center gap-2 p-6">
-            <p className="text-center text-h1 font-extrabold">{card.word}</p>
+            <div className="flex items-center gap-2">
+              <p className="text-center text-h1 font-extrabold">{card.word}</p>
+              {card.audioUrl && <PronounceButton src={card.audioUrl} label={card.word} />}
+            </div>
             {card.ipa !== "" && <p className="text-muted-foreground">/{card.ipa}/</p>}
             <p className="mt-4 text-caption text-muted-foreground">Nhấn để xem nghĩa ↻</p>
           </div>
@@ -156,7 +171,7 @@ export function Flashcards({
             )}
           </div>
         </div>
-      </button>
+      </div>
 
       <div className="flex justify-center gap-3">
         <Button variant="destructive" disabled={!flipped} onClick={() => handleReport(false)}>

@@ -31,7 +31,15 @@ export default async function FlashcardsPage({
   const words = await db.vocabWord.findMany({
     where: { lessonId: lesson.id },
     orderBy: { orderIndex: "asc" },
-    select: { id: true, word: true, ipa: true, meaningVi: true, exampleEn: true, groupName: true },
+    select: {
+      id: true,
+      word: true,
+      ipa: true,
+      meaningVi: true,
+      exampleEn: true,
+      groupName: true,
+      audioUrl: true,
+    },
   });
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;

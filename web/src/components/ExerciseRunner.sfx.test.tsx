@@ -9,14 +9,16 @@ vi.mock("@/lib/audio/sfx", () => ({ playSfx }));
 vi.mock("@/lib/celebrate", () => ({ celebrate: vi.fn() }));
 
 import { ExerciseRunner } from "@/components/ExerciseRunner";
+import type { SafeQuestion } from "@/components/runner/QuestionCard";
 
-const questions = [
+const questions: SafeQuestion[] = [
   {
     id: "q1",
-    kind: "FILL_BLANK" as const,
+    number: 1,
+    kind: "FILL_BLANK",
     prompt: "She ___ (go) to school.",
-    orderIndex: 0,
-    options: [],
+    options: null,
+    isOpenEnded: false,
   },
 ];
 

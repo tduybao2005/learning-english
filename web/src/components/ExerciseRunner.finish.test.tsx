@@ -8,9 +8,10 @@ vi.mock("@/lib/celebrate", () => ({ celebrate }));
 vi.mock("@/lib/audio/sfx", () => ({ playSfx: vi.fn() }));
 
 import { ExerciseRunner } from "@/components/ExerciseRunner";
+import type { SafeQuestion } from "@/components/runner/QuestionCard";
 
-const questions = [
-  { id: "q1", kind: "FILL_BLANK" as const, prompt: "She ___ (go).", orderIndex: 0, options: [] },
+const questions: SafeQuestion[] = [
+  { id: "q1", number: 1, kind: "FILL_BLANK", prompt: "She ___ (go).", options: null, isOpenEnded: false },
 ];
 
 beforeEach(() => {
