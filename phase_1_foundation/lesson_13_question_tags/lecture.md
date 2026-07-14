@@ -36,6 +36,20 @@ Câu hỏi đuôi gồm hai phần:
 - Mời người nghe đồng ý hoặc xác nhận
 - Phổ biến trong tiếng Anh hội thoại; cũng xuất hiện trong bài thi
 
+```example
+id: l13-p1-1
+prompt: Your sister studies medicine, ___?
+hint: Mệnh đề chính khẳng định, chủ ngữ nữ số ít → tag phủ định.
+answer: doesn't she
+```
+
+```example
+id: l13-p1-2
+prompt: You don't drive to work, ___?
+hint: Mệnh đề chính phủ định → tag khẳng định.
+answer: do you
+```
+
 ---
 
 ## PHẦN 2: QUY TẮC TẠO CÂU HỎI ĐUÔI — SIMPLE PRESENT
@@ -63,6 +77,20 @@ Câu hỏi đuôi gồm hai phần:
 - He **speaks** French, **doesn't he?** (Anh ấy nói tiếng Pháp, phải không?)
 - It **rains** a lot here, **doesn't it?** (Ở đây mưa nhiều, phải không?)
 
+```example
+id: l13-p2-1
+prompt: Your brother plays the guitar, ___?
+hint: Khẳng định + ngôi thứ ba số ít → "doesn't" + đại từ.
+answer: doesn't he
+```
+
+```example
+id: l13-p2-2
+prompt: We need more chairs, ___?
+hint: Khẳng định + chủ ngữ "we" → "don't" + đại từ.
+answer: don't we
+```
+
 ---
 
 ### 2.2. Câu phủ định → Câu hỏi đuôi khẳng định
@@ -87,6 +115,20 @@ Câu hỏi đuôi gồm hai phần:
 - They **don't** speak Chinese, **do they?** (Họ không nói tiếng Trung, phải không?)
 - He **doesn't** work on Sundays, **does he?** (Anh ấy không làm việc vào Chủ nhật, phải không?)
 
+```example
+id: l13-p2-3
+prompt: Your parents don't watch football, ___?
+hint: Phủ định + chủ ngữ số nhiều → tag khẳng định.
+answer: do they
+```
+
+```example
+id: l13-p2-4
+prompt: The shop doesn't open on Tet, ___?
+hint: Phủ định + ngôi thứ ba số ít (the shop) → tag khẳng định.
+answer: does it
+```
+
 ---
 
 ## PHẦN 3: TRƯỜNG HỢP ĐẶC BIỆT — ĐỘNG TỪ "TO BE" (BE-VERB CLAUSES)
@@ -110,6 +152,27 @@ Khi mệnh đề chính dùng động từ "to be" (am / is / are), câu hỏi �
 **Trường hợp đặc biệt — "I am":**
 Câu hỏi đuôi cho "I am ..." (khẳng định) là **aren't I?** (không dùng "amn't I?"):
 - I **am** right, **aren't I?** (Tôi đúng, phải không?)
+
+```example
+id: l13-p3-1
+prompt: Your uncle is a fisherman, ___?
+hint: Câu khẳng định với "be" số ít → tag "isn't" + đại từ.
+answer: isn't he
+```
+
+```example
+id: l13-p3-2
+prompt: The shoes aren't expensive, ___?
+hint: Phủ định với "be" số nhiều → tag khẳng định.
+answer: are they
+```
+
+```example
+id: l13-p3-3
+prompt: I am late again, ___?
+hint: Ngoại lệ đặc biệt cho "I am".
+answer: aren't I
+```
 
 ---
 
@@ -136,6 +199,27 @@ Câu hỏi đuôi cho "I am ..." (khẳng định) là **aren't I?** (không dù
 - SAI: My mother works hard, doesn't **my mother**? ❌
 - ĐÚNG: My mother works hard, doesn't **she**? ✓
 
+```example
+id: l13-p4-1
+prompt: Mr. Hung teaches history, ___?
+hint: "Mr. Hung" → đại từ nam số ít trong tag.
+answer: doesn't he
+```
+
+```example
+id: l13-p4-2
+prompt: The lifts don't work today, ___?
+hint: "The lifts" số nhiều → đại từ "they".
+answer: do they
+```
+
+```example
+id: l13-p4-3
+prompt: Lan and her cousin live nearby, ___?
+hint: Hai người → đại từ số nhiều trong tag.
+answer: don't they
+```
+
 ---
 
 ## PHẦN 5: VÍ DỤ TỔNG HỢP (COMPREHENSIVE EXAMPLES)
@@ -150,6 +234,29 @@ Câu hỏi đuôi cho "I am ..." (khẳng định) là **aren't I?** (không dù
 8. **She is always** on time, **isn't she?** — Yes, she is.
 9. **My father never drinks** alcohol, **does he?** — No, he doesn't.
 10. **I am** your student, **aren't I?** — Yes, you are.
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l13-p5-1
+prompt: This soup tastes strange, ___?
+hint: Khẳng định + chủ ngữ "this soup" → tag phủ định với "does".
+answer: doesn't it
+```
+
+```example
+id: l13-p5-2
+prompt: Your neighbours aren't noisy, ___?
+hint: Phủ định với "be" số nhiều → tag khẳng định.
+answer: are they
+```
+
+```example
+id: l13-p5-3
+prompt: We don't need a visa for Thailand, ___?
+hint: Phủ định + "we" → tag khẳng định.
+answer: do we
+```
 
 ---
 
@@ -176,6 +283,43 @@ Người học hay mặc định dùng "is it?" vì không nhớ quy tắc — �
 - SAI: She is a teacher, **doesn't she?** ❌
 - ĐÚNG: She is a teacher, **isn't she?** ✓
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l13-p6-1
+prompt: (Sửa Lỗi 1) SAI: Your father drives a truck, is it? → Your father drives a truck, ___?
+hint: Động từ thường + ngôi thứ ba số ít → tag với "doesn't".
+answer: doesn't he
+```
+
+```example
+id: l13-p6-2
+prompt: (Sửa Lỗi 2) SAI: The children like ice cream, don't? → The children like ice cream, ___?
+hint: Tag phải có đại từ tương ứng.
+answer: don't they
+```
+
+```example
+id: l13-p6-3
+prompt: (Sửa Lỗi 3) SAI: Your teacher speaks Japanese, don't she? → Your teacher speaks Japanese, ___?
+hint: Ngôi thứ ba số ít dùng "doesn't".
+answer: doesn't she
+```
+
+```example
+id: l13-p6-4
+prompt: (Sửa Lỗi 4) SAI: We don't work on holidays, don't we? → We don't work on holidays, ___?
+hint: Phủ định → tag khẳng định.
+answer: do we
+```
+
+```example
+id: l13-p6-5
+prompt: (Sửa Lỗi 5) SAI: Your cousins are pilots, don't they? → Your cousins are pilots, ___?
+hint: Động từ "be" → tag dùng "aren't".
+answer: aren't they
+```
+
 ---
 
 ## LỖI THƯỜNG GẶP
@@ -188,6 +332,27 @@ Người học hay mặc định dùng "is it?" vì không nhớ quy tắc — �
 | She is a nurse, doesn't she? | She is a nurse, isn't she? | Động từ "be" trong tag phải là "isn't/aren't", không phải "doesn't". |
 | My friends lives here, doesn't he? | My friends live here, don't they? | "My friends" là số nhiều → "live" + tag "don't they?". |
 | I am tired, amn't I? | I am tired, aren't I? | Dạng thông dụng duy nhất cho "I am" là "aren't I?". |
+
+```example
+id: l13-err-1
+prompt: (Sửa lỗi) SAI: The bus stops here, is it? → The bus stops here, ___?
+hint: Động từ thường "stops" → tag dùng "doesn't it".
+answer: doesn't it
+```
+
+```example
+id: l13-err-2
+prompt: (Sửa lỗi) SAI: I am your partner, amn't I? → I am your partner, ___?
+hint: Ngoại lệ cho "I am".
+answer: aren't I
+```
+
+```example
+id: l13-err-3
+prompt: (Sửa lỗi) SAI: Your sisters isn't at home, is she? → Your sisters aren't at home, ___?
+hint: Chủ ngữ số nhiều → đại từ "they" trong tag.
+answer: are they
+```
 
 ---
 
