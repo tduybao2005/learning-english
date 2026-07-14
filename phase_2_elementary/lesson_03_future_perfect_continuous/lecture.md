@@ -40,6 +40,20 @@ S + will be + V-ing
 - She **won't be sleeping** when you arrive. *(Cô ấy sẽ không ngủ khi bạn đến.)*
 - **Will** they **be waiting** for us? *(Họ có đang chờ chúng ta không?)*
 
+```example
+id: l03-p1-1
+prompt: At 10 PM tonight, my brother ___ (drive) home from the airport.
+hint: Tương lai tiếp diễn: will be + V-ing.
+answer: will be driving
+```
+
+```example
+id: l03-p1-2
+prompt: The shop ___ (not / open) at six in the morning; come later.
+hint: Phủ định của tương lai tiếp diễn: won't be + V-ing.
+answer: won't be opening / will not be opening
+```
+
 ### 1.2 Cách Dùng Tương Lai Tiếp Diễn
 
 **Cách dùng 1: Hành động đang xảy ra tại một thời điểm cụ thể trong tương lai**
@@ -70,6 +84,27 @@ Dùng Future Continuous để hỏi về kế hoạch của người khác mà k
 - **Will** you **be using** the car tonight? *(Tối nay bạn có dùng xe không?)* — lịch sự hơn "Will you use?"
 - **Will** she **be attending** the meeting tomorrow? *(Cô ấy có tham dự cuộc họp ngày mai không?)*
 
+```example
+id: l03-p1-3
+prompt: This time next month, the students ___ (take) their final exams.
+hint: Cách dùng 1: hành động đang xảy ra tại thời điểm cụ thể trong tương lai.
+answer: will be taking
+```
+
+```example
+id: l03-p1-4
+prompt: I ___ (meet) my supervisor at four this afternoon, so I can't join you.
+hint: Cách dùng 2: việc đã nằm trong lịch trình → will be + V-ing.
+answer: will be meeting
+```
+
+```example
+id: l03-p1-5
+prompt: ___ you be visiting the museum this weekend? (trợ động từ)
+hint: Cách dùng 3: hỏi lịch sự về kế hoạch → đảo trợ động từ tương lai lên đầu.
+answer: Will
+```
+
 ---
 
 ## PHẦN 2: THÌ TƯƠNG LAI HOÀN THÀNH (FUTURE PERFECT)
@@ -90,6 +125,20 @@ S + will have + V3/V-ed (past participle)
 - I **will have finished** this book by Sunday. *(Tôi sẽ đọc xong quyển sách này trước Chủ nhật.)*
 - She **won't have graduated** by the end of next year. *(Cô ấy chưa tốt nghiệp vào cuối năm sau.)*
 - **Will** he **have completed** the project by Friday? *(Anh ấy có hoàn thành dự án trước Thứ Sáu không?)*
+
+```example
+id: l03-p2-1
+prompt: By six o'clock, the cleaners ___ (wash) all the windows.
+hint: Tương lai hoàn thành: will have + V3.
+answer: will have washed
+```
+
+```example
+id: l03-p2-2
+prompt: We ___ (not / pay) the deposit by tomorrow morning.
+hint: Phủ định của tương lai hoàn thành: won't have + V3.
+answer: won't have paid / will not have paid
+```
 
 ### 2.2 Cách Dùng Tương Lai Hoàn Thành
 
@@ -121,6 +170,20 @@ Hiện tại                    Thời điểm tương lai
 **Ví dụ 5:** **Will** you **have finished** dinner by 7 PM?
 *(Bạn có ăn tối xong trước 7 giờ tối không?)*
 
+```example
+id: l03-p2-3
+prompt: By the time the guests arrive, my aunt ___ (bake) two big cakes.
+hint: "By the time" + hiện tại đơn → mệnh đề chính dùng tương lai hoàn thành.
+answer: will have baked
+```
+
+```example
+id: l03-p2-4
+prompt: By the time you get up, I ___ (already / leave) for the office.
+hint: Hoàn tất trước một mốc tương lai; trạng từ đứng giữa "will have" và V3.
+answer: will have already left
+```
+
 ---
 
 ## PHẦN 3: DẤU HIỆU NHẬN BIẾT (KEYWORDS)
@@ -140,6 +203,27 @@ Hiện tại                    Thời điểm tương lai
 | by the time + mệnh đề | By the time you wake up, I'll have left. |
 | by then | By then, they will have solved the problem. |
 | before + thời gian | Before noon, she'll have arrived. |
+
+```example
+id: l03-p3-1
+prompt: In three hours, the ship ___ (sail) across the bay.
+hint: Dấu hiệu "in + khoảng thời gian" chỉ thời điểm đang diễn ra → tương lai tiếp diễn.
+answer: will be sailing
+```
+
+```example
+id: l03-p3-2
+prompt: By then, the committee ___ (choose) a new chairman.
+hint: Dấu hiệu "by then" → tương lai hoàn thành.
+answer: will have chosen
+```
+
+```example
+id: l03-p3-3
+prompt: At this time tomorrow, the farmers ___ (harvest) the rice.
+hint: Dấu hiệu "at this time tomorrow" → tương lai tiếp diễn.
+answer: will be harvesting
+```
 
 ---
 
@@ -165,6 +249,27 @@ Hiện tại                    Thời điểm tương lai
 4. "This time next year, I **will be working** in a company." — Đang làm tại thời điểm đó (Future Continuous)
 5. "By this time next year, I **will have graduated** and found a job." — Hoàn tất trước thời điểm đó (Future Perfect)
 
+```example
+id: l03-p4-1
+prompt: The phone is ringing — I ___ (answer) it! (quyết định ngay lúc nói)
+hint: Quyết định tức thời → thì tương lai đơn: will + V.
+answer: will answer / 'll answer
+```
+
+```example
+id: l03-p4-2
+prompt: Look at those clouds! It ___ (rain) soon. (dự đoán có bằng chứng)
+hint: Dự đoán dựa trên bằng chứng nhìn thấy → "be going to" + V.
+answer: is going to rain
+```
+
+```example
+id: l03-p4-3
+prompt: By the end of the course, we ___ (learn) five hundred new words.
+hint: Hoàn tất trước một mốc tương lai → tương lai hoàn thành.
+answer: will have learned / will have learnt
+```
+
 ---
 
 ## PHẦN 5: PHÂN BIỆT FUTURE CONTINUOUS vs FUTURE PERFECT
@@ -182,6 +287,20 @@ Hiện tại                    Thời điểm tương lai
 
 - This time next year, she **will be studying** law. *(Năm sau, cô ấy đang học luật.)*
 - **By** next year, she **will have decided** on her major. *(Trước năm sau, cô ấy sẽ quyết định chuyên ngành.)*
+
+```example
+id: l03-p5-1
+prompt: At three o'clock tomorrow, the mechanics ___ (fix) my motorbike.
+hint: "At + giờ" → nhấn mạnh hành động ĐANG diễn ra → tương lai tiếp diễn.
+answer: will be fixing
+```
+
+```example
+id: l03-p5-2
+prompt: By three o'clock tomorrow, the mechanics ___ (fix) my motorbike.
+hint: "By + giờ" → nhấn mạnh hành động ĐÃ hoàn tất → tương lai hoàn thành.
+answer: will have fixed
+```
 
 ---
 
@@ -209,6 +328,43 @@ Hiện tại                    Thời điểm tương lai
 ### Lỗi 5: Quên "be" trong Future Continuous
 - **SAI:** She will working at 5 PM.
 - **ĐÚNG:** She **will be** working at 5 PM.
+
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l03-p6-1
+prompt: (Sửa Lỗi 1) SAI: At this time on Sunday, we will hike in the mountains. → At this time on Sunday, we ___ in the mountains.
+hint: Hành động đang diễn ra tại thời điểm tương lai → will be + V-ing.
+answer: will be hiking
+```
+
+```example
+id: l03-p6-2
+prompt: (Sửa Lỗi 2) SAI: By the time the bus will come, we will have bought the tickets. → By the time the bus ___, we will have bought the tickets.
+hint: Sau "by the time" dùng thì hiện tại đơn, không dùng "will".
+answer: comes
+```
+
+```example
+id: l03-p6-3
+prompt: (Sửa Lỗi 3) SAI: By Friday, the builders will paint the whole wall. → By Friday, the builders ___ the whole wall.
+hint: "by + mốc thời gian" → tương lai hoàn thành.
+answer: will have painted
+```
+
+```example
+id: l03-p6-4
+prompt: (Sửa Lỗi 4) SAI: She will be understanding the rules by tomorrow. → She ___ the rules by tomorrow.
+hint: Stative verb không dùng dạng tiếp diễn → dùng tương lai đơn.
+answer: will understand
+```
+
+```example
+id: l03-p6-5
+prompt: (Sửa Lỗi 5) SAI: They will cooking dinner when we get home. → They ___ dinner when we get home.
+hint: Tương lai tiếp diễn không được thiếu "be".
+answer: will be cooking
+```
 
 ---
 
@@ -263,6 +419,29 @@ Hiện tại                    Thời điểm tương lai
 15. By the end of 2026, this student **will have completed** Phase 5 of their English learning journey.
     *(Đến cuối năm 2026, học sinh này sẽ hoàn thành Giai đoạn 5 của hành trình học tiếng Anh.)*
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l03-p7-1
+prompt: Don't ring the bell at seven — the baby ___ (sleep) then.
+hint: Hành động đang diễn ra tại thời điểm tương lai → will be + V-ing.
+answer: will be sleeping
+```
+
+```example
+id: l03-p7-2
+prompt: By next spring, my grandparents ___ (live) in this village for fifty years.
+hint: Hoàn tất/kéo dài tới một mốc tương lai → will have + V3.
+answer: will have lived
+```
+
+```example
+id: l03-p7-3
+prompt: ___ the volunteers have cleaned the beach by sunset? (trợ động từ)
+hint: Câu hỏi tương lai hoàn thành đảo trợ động từ tương lai lên đầu.
+answer: Will
+```
+
 ---
 
 ## PHẦN 8: BẢNG TÓM TẮT
@@ -293,6 +472,27 @@ Hiện tại                    Thời điểm tương lai
 | By the time you arrive, I am waiting for 2 hours. | By the time you arrive, I will have been waiting for 2 hours. | Phải dùng Future Perfect Continuous, không phải Present |
 | They will have been studied all day tomorrow. | They will have been studying all day tomorrow. | Cần dạng V-ing, không phải V3 |
 | At, she will have been working for 8 hours. | By 6 pm, she will have been working for 8 hours. | Dùng "by" (mốc thời gian), không dùng "at" hay "in" |
+
+```example
+id: l03-err-1
+prompt: (Sửa lỗi) SAI: By August, they will have been teach here for a decade. → By August, they will have been ___ here for a decade.
+hint: Sau "have been" phải là V-ing.
+answer: teaching
+```
+
+```example
+id: l03-err-2
+prompt: (Sửa lỗi) SAI: He will has been waiting for two hours by noon. → He will ___ been waiting for two hours by noon.
+hint: Sau "will" luôn dùng dạng nguyên thể của "have".
+answer: have
+```
+
+```example
+id: l03-err-3
+prompt: (Sửa lỗi) SAI: I will have been owning this bike for six years. → I ___ this bike for six years by then.
+hint: "own" là stative verb → dùng tương lai hoàn thành đơn (will have + V3).
+answer: will have owned
+```
 
 ---
 
