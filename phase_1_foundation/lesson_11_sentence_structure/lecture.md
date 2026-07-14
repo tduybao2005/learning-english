@@ -54,6 +54,20 @@ Ví dụ:
 - He gave **her** a present. (indirect object = her; direct object = a present)
 - They teach **students** every day.
 
+```example
+id: l11-p1-1
+prompt: In "My grandmother grows vegetables", the subject is ___.
+hint: Chủ ngữ là người/vật thực hiện hành động.
+answer: My grandmother
+```
+
+```example
+id: l11-p1-2
+prompt: In "The farmers harvested the rice", the object is ___.
+hint: Tân ngữ là thứ nhận tác động của hành động.
+answer: the rice
+```
+
 ### 1.4. Bổ ngữ — Complement (C)
 - Bổ sung thông tin cho chủ ngữ hoặc tân ngữ.
 - Thường dùng sau các linking verbs (be, seem, look, feel, become, appear, smell, taste, sound).
@@ -75,6 +89,20 @@ Ví dụ:
 - **Yesterday**, he arrived **late** (how) **because of the traffic** (why).
 - They sang **beautifully** at the concert last night.
 
+```example
+id: l11-p1-3
+prompt: In "My uncle became a pilot", the complement is ___.
+hint: Bổ ngữ đứng sau linking verb và mô tả chủ ngữ.
+answer: a pilot
+```
+
+```example
+id: l11-p1-4
+prompt: In "We waited at the gate", the adverbial is ___.
+hint: Trạng ngữ trả lời câu hỏi "ở đâu?".
+answer: at the gate
+```
+
 ---
 
 ## PHẦN 2: NĂM MÔ HÌNH CÂU CƠ BẢN (5 BASIC SENTENCE PATTERNS)
@@ -93,6 +121,13 @@ Câu đơn giản nhất — chỉ có chủ ngữ và nội động từ (intra
 Thêm ví dụ:
 - The sun rises. / Storms develop slowly. / Time flies.
 
+```example
+id: l11-p2-1
+prompt: The pattern of "The children laughed" is ___. (SV / SVO / SVC / SVA / SVOO)
+hint: Chỉ có chủ ngữ và nội động từ.
+answer: SV
+```
+
 ### Pattern 2: SVO (Subject + Verb + Object)
 Câu có ngoại động từ (transitive verb) và tân ngữ.
 
@@ -103,6 +138,13 @@ Câu có ngoại động từ (transitive verb) và tân ngữ.
 | They | built | a new school. |
 | He | drives | his car | to work. *(+ adverbial)* |
 | My sister | is studying | English. |
+
+```example
+id: l11-p2-2
+prompt: The pattern of "My mother bought a new fan" is ___. (SV / SVO / SVC / SVA / SVOO)
+hint: Có ngoại động từ và một tân ngữ.
+answer: SVO
+```
 
 ### Pattern 3: SVC (Subject + Verb + Complement)
 Câu dùng linking verb. Bổ ngữ mô tả hoặc xác định chủ ngữ.
@@ -117,6 +159,13 @@ Câu dùng linking verb. Bổ ngữ mô tả hoặc xác định chủ ngữ.
 
 **Linking Verbs phổ biến:** be, seem, look, feel, sound, taste, smell, appear, become, remain, stay, get (trong một số nghĩa)
 
+```example
+id: l11-p2-3
+prompt: The pattern of "The milk smells sour" is ___. (SV / SVO / SVC / SVA / SVOO)
+hint: "smell" là linking verb, theo sau là tính từ mô tả chủ ngữ.
+answer: SVC
+```
+
 ### Pattern 4: SVA (Subject + Verb + Adverbial)
 Một số động từ cần trạng ngữ để câu có nghĩa đầy đủ (put, live, go, come, stay...).
 
@@ -126,6 +175,13 @@ Một số động từ cần trạng ngữ để câu có nghĩa đầy đủ (
 | She | went | to the hospital. |
 | The keys | are | on the table. |
 | He | comes | from a small town in the south. |
+
+```example
+id: l11-p2-4
+prompt: The pattern of "The cat is under the chair" is ___. (SV / SVO / SVC / SVA / SVOO)
+hint: Động từ cần một trạng ngữ chỉ nơi chốn mới đủ nghĩa.
+answer: SVA
+```
 
 ### Pattern 5: SVOO (Subject + Verb + Indirect Object + Direct Object)
 Câu có hai tân ngữ — thường dùng với give, send, tell, show, teach, buy, make, bring, ask...
@@ -141,6 +197,20 @@ Câu có hai tân ngữ — thường dùng với give, send, tell, show, teach,
 - She gave **him** a gift. = She gave a gift **to him**.
 - I bought **her** some flowers. = I bought some flowers **for her**.
 
+```example
+id: l11-p2-5
+prompt: The pattern of "The guide showed us the map" is ___. (SV / SVO / SVC / SVA / SVOO)
+hint: Có hai tân ngữ: gián tiếp và trực tiếp.
+answer: SVOO
+```
+
+```example
+id: l11-p2-6
+prompt: (Viết lại) She sent me a postcard. = She sent a postcard ___ me.
+hint: Chuyển tân ngữ gián tiếp ra sau bằng giới từ phù hợp với "send".
+answer: to
+```
+
 ---
 
 ## PHẦN 3: LOẠI CÂU (SENTENCE TYPES BY STRUCTURE)
@@ -154,6 +224,13 @@ Ví dụ:
 - He reads and writes well. (S + V and V)
 - My mother and father work hard every day. (S and S + V)
 - The old man sat on the bench and watched the children play. (S + V and V)
+
+```example
+id: l11-p3-1
+prompt: "My cousin sings and dances very well." — This is a ___ sentence. (simple / compound / complex)
+hint: Chỉ có một mệnh đề độc lập, dù có hai động từ.
+answer: simple
+```
 
 ### 3.2. Câu ghép (Compound Sentence)
 - Gồm **hai hoặc nhiều mệnh đề độc lập** nối với nhau bằng:
@@ -175,6 +252,20 @@ Ví dụ:
 Dùng dấu chấm phẩy:
 - She loves cooking**;** her sister prefers eating out.
 - The meeting ended early**;** however, we still had a lot to discuss.
+
+```example
+id: l11-p3-2
+prompt: The market was closed, ___ we cooked at home. (liên từ FANBOYS chỉ kết quả)
+hint: Liên từ chỉ kết quả trong nhóm FANBOYS.
+answer: so
+```
+
+```example
+id: l11-p3-3
+prompt: My brother wanted to join us, ___ he had to work. (liên từ chỉ tương phản)
+hint: Liên từ kết hợp chỉ sự đối lập.
+answer: but
+```
 
 ### 3.3. Câu phức (Complex Sentence)
 - Gồm **một mệnh đề độc lập** + **một hoặc nhiều mệnh đề phụ thuộc** (dependent clause).
@@ -203,6 +294,20 @@ Ví dụ:
 - The woman **who** lives next door is a doctor.
 - I bought the book **that** you recommended.
 
+```example
+id: l11-p3-4
+prompt: ___ the alarm rang, everybody left the building. (liên từ chỉ thời gian)
+hint: Liên từ phụ thuộc chỉ thời điểm.
+answer: When / As soon as
+```
+
+```example
+id: l11-p3-5
+prompt: The man ___ repaired our roof is my neighbour. (đại từ quan hệ chỉ người)
+hint: Đại từ quan hệ dùng cho người, làm chủ ngữ của mệnh đề quan hệ.
+answer: who / that
+```
+
 ### 3.4. Câu ghép-phức (Compound-Complex Sentence)
 - Kết hợp cả câu ghép và câu phức: ít nhất 2 mệnh đề độc lập + 1 mệnh đề phụ thuộc.
 
@@ -210,6 +315,13 @@ Ví dụ:
 - **Although** she was nervous, she gave a great speech, **and** the audience applauded.
 - I wanted to study abroad, **but** I couldn't go **because** my family needed me.
 - **When** the rain stopped, we went outside, **and** the children started playing in the puddles.
+
+```example
+id: l11-p3-6
+prompt: "Because the road was flooded, the bus stopped, and we walked home." — This is a ___ sentence. (compound / complex / compound-complex)
+hint: Có 2 mệnh đề độc lập + 1 mệnh đề phụ thuộc.
+answer: compound-complex
+```
 
 ---
 
@@ -244,6 +356,34 @@ Ví dụ:
   - How **lovely** the flowers are!
   - How **quickly** time passes!
   - How **strange** that sounds!
+
+```example
+id: l11-p4-1
+prompt: ___ your parents live in Hue? (Do / Are)
+hint: Câu hỏi Yes/No với động từ thường ở hiện tại đơn.
+answer: Do
+```
+
+```example
+id: l11-p4-2
+prompt: (Câu mệnh lệnh phủ định) ___ touch the wet paint!
+hint: Mệnh lệnh phủ định bắt đầu bằng "Don't".
+answer: Don't / Do not
+```
+
+```example
+id: l11-p4-3
+prompt: ___ a wonderful idea this is! (What / How)
+hint: Trước cụm "a + tính từ + danh từ" dùng từ cảm thán nào?
+answer: What
+```
+
+```example
+id: l11-p4-4
+prompt: ___ fast that boy runs! (What / How)
+hint: Trước trạng từ/tính từ đứng một mình dùng từ cảm thán nào?
+answer: How
+```
 
 ---
 
@@ -284,6 +424,36 @@ Không phải câu hoàn chỉnh vì thiếu chủ ngữ hoặc động từ ch�
 - ❌ Rains a lot in this city. (Thiếu "It")
 - ✅ **It** rains a lot in this city.
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l11-p5-1
+prompt: (Sửa run-on) SAI: The bus was late I missed my class. → The bus was late, ___ I missed my class.
+hint: Thêm liên từ chỉ kết quả.
+answer: so
+```
+
+```example
+id: l11-p5-2
+prompt: (Sửa fragment) SAI: Although the price was high. → ___ the price was high, we bought the tickets.
+hint: Mệnh đề phụ cần có mệnh đề chính đi kèm; giữ nguyên liên từ.
+answer: Although
+```
+
+```example
+id: l11-p5-3
+prompt: (Sửa comma splice) SAI: The film was boring, we left early. → The film was boring, ___ we left early.
+hint: Cần một liên từ kết hợp, không chỉ dấu phẩy.
+answer: so
+```
+
+```example
+id: l11-p5-4
+prompt: (Sửa thiếu chủ ngữ) SAI: Is snowing in Sapa today. → ___ is snowing in Sapa today.
+hint: Câu tiếng Anh cần chủ ngữ giả cho thời tiết.
+answer: It
+```
+
 ---
 
 ## BÀI TẬP NHANH CUỐI BÀI
@@ -319,6 +489,27 @@ Không phải câu hoàn chỉnh vì thiếu chủ ngữ hoặc động từ ch�
 | Although she was tired, but she continued. | Although she was tired, she continued. | Không dùng "although" và "but" cùng lúc — chỉ chọn một liên từ duy nhất. |
 | What a beautiful is this flower! | What a beautiful flower this is! | Cấu trúc cảm thán: "What a/an + adj + noun + S + V!" — danh từ phải có mặt. |
 | He give her a gift yesterday. | He gave her a gift yesterday. | Phải chia động từ đúng thì; "give" thành "gave" ở Simple Past. |
+
+```example
+id: l11-err-1
+prompt: (Sửa lỗi) SAI: Although it was late, but they kept working. → Although it was late, they ___ working.
+hint: Không dùng "although" và "but" cùng lúc.
+answer: kept
+```
+
+```example
+id: l11-err-2
+prompt: (Sửa lỗi) SAI: Is raining heavily outside. → ___ is raining heavily outside.
+hint: Thiếu chủ ngữ giả.
+answer: It
+```
+
+```example
+id: l11-err-3
+prompt: (Sửa lỗi) SAI: What a clever is this dog! → What a clever ___ this is!
+hint: Cấu trúc: What + a + tính từ + DANH TỪ + S + V!
+answer: dog
+```
 
 ---
 
