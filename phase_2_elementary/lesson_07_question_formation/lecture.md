@@ -48,6 +48,34 @@ Câu hỏi tiếng Anh có cấu trúc phức tạp hơn câu hỏi tiếng Vi�
 > **Câu trả lời ngắn (Short answers):** Không bao giờ dùng "Yes, I am not." ❌ → "No, I'm not." ✓
 > Không bao giờ dùng "Yes, I know." để trả lời "Do you know?" → "Yes, I do." ✓
 
+```example
+id: l07-p1-1
+prompt: ___ your parents live in Hue? (trợ động từ hiện tại đơn)
+hint: Chủ ngữ số nhiều, động từ thường, thì hiện tại đơn.
+answer: Do
+```
+
+```example
+id: l07-p1-2
+prompt: ___ the postman deliver the parcel yesterday? (trợ động từ quá khứ đơn)
+hint: Thì quá khứ đơn với động từ thường dùng một trợ động từ duy nhất.
+answer: Did
+```
+
+```example
+id: l07-p1-3
+prompt: ___ your laptop still under warranty? (động từ "to be")
+hint: Với "to be", đảo chính động từ lên trước chủ ngữ số ít.
+answer: Is
+```
+
+```example
+id: l07-p1-4
+prompt: ___ you ever tasted durian? (thì hiện tại hoàn thành)
+hint: Thì hiện tại hoàn thành với "you" dùng trợ động từ nào?
+answer: Have
+```
+
 ---
 
 ## 2. CÂU HỎI WH- (WH- QUESTIONS)
@@ -79,6 +107,34 @@ Câu hỏi tiếng Anh có cấu trúc phức tạp hơn câu hỏi tiếng Vi�
 | How soon | bao lâu nữa | How soon can you finish? |
 | How well | mức độ tốt | How well do you know him? |
 
+```example
+id: l07-p2-1
+prompt: ___ did you leave your keys? — On the kitchen table. (từ để hỏi)
+hint: Hỏi về nơi chốn.
+answer: Where
+```
+
+```example
+id: l07-p2-2
+prompt: ___ are you learning Korean? — Because I want to study in Seoul. (từ để hỏi)
+hint: Hỏi về lý do.
+answer: Why
+```
+
+```example
+id: l07-p2-3
+prompt: ___ eggs do we need for this cake? — Six. (viết cả cụm hỏi số lượng)
+hint: Hỏi số lượng danh từ đếm được.
+answer: How many
+```
+
+```example
+id: l07-p2-4
+prompt: How ___ is it from here to the airport? — About 15 kilometres. (từ hỏi khoảng cách)
+hint: Hỏi về khoảng cách.
+answer: far
+```
+
 ---
 
 ## 3. WHO / WHAT LÀM CHỦ NGỮ — KHÔNG ĐẢO NGỮ
@@ -97,6 +153,27 @@ Câu hỏi tiếng Anh có cấu trúc phức tạp hơn câu hỏi tiếng Vi�
 
 > **Kiểm tra nhanh:** Nếu thay Who/What bằng "he/she/it/they" → câu vẫn có nghĩa mà không đảo ngữ → thì đó là chủ ngữ:
 > - "**Who** broke the window?" → "**He** broke the window." ✓ → WHO là chủ ngữ → không đảo ngữ
+
+```example
+id: l07-p3-1
+prompt: Who ___ (cook) this delicious soup? — My grandmother did. (Who làm chủ ngữ)
+hint: "Who" là chủ ngữ → chia động từ thẳng, không dùng "did".
+answer: cooked
+```
+
+```example
+id: l07-p3-2
+prompt: What ___ (cause) the power cut last night? — A fallen tree. (What làm chủ ngữ)
+hint: "What" là chủ ngữ → không đảo ngữ, không dùng trợ động từ.
+answer: caused
+```
+
+```example
+id: l07-p3-3
+prompt: Who ___ you invite to your birthday party? (Who làm tân ngữ — trợ động từ quá khứ)
+hint: "Who" là tân ngữ → phải có trợ động từ đảo lên.
+answer: did
+```
 
 ---
 
@@ -134,6 +211,27 @@ Khi đặt câu hỏi một cách lịch sự bằng cách nhúng vào một câ
 - Do you have any idea...?
 - I'm not sure whether/if...
 - Would you mind telling me...?
+
+```example
+id: l07-p4-1
+prompt: Trực tiếp: Where does the manager sit? → Gián tiếp: Could you tell me where the manager ___?
+hint: Câu hỏi gián tiếp dùng trật tự câu thường, không có "does".
+answer: sits
+```
+
+```example
+id: l07-p4-2
+prompt: Trực tiếp: Is the museum open on Mondays? → Gián tiếp: Do you know ___ the museum is open on Mondays?
+hint: Câu hỏi Yes/No nhúng vào cần một liên từ chỉ "liệu có".
+answer: if / whether
+```
+
+```example
+id: l07-p4-3
+prompt: Trực tiếp: When will the results come out? → Gián tiếp: I wonder when the results ___ come out.
+hint: Giữ nguyên trợ động từ nhưng đặt SAU chủ ngữ.
+answer: will
+```
 
 ---
 
@@ -174,6 +272,34 @@ Khi đặt câu hỏi một cách lịch sự bằng cách nhúng vào một câ
 | Nothing happened | , **did it**? | nothing (phủ định) → đuôi khẳng định, dùng "it" |
 | There's a problem | , **isn't there**? | there is → isn't there |
 
+```example
+id: l07-p5-1
+prompt: Your cousin works at the airport, ___? (viết cả câu hỏi đuôi)
+hint: Mệnh đề khẳng định, hiện tại đơn ngôi ba số ít → đuôi phủ định.
+answer: doesn't he
+```
+
+```example
+id: l07-p5-2
+prompt: They didn't lock the gate, ___? (viết cả câu hỏi đuôi)
+hint: Mệnh đề phủ định → đuôi khẳng định, giữ nguyên trợ động từ.
+answer: did they
+```
+
+```example
+id: l07-p5-3
+prompt: Let's take a short break, ___? (viết cả câu hỏi đuôi)
+hint: Câu bắt đầu bằng "Let's" có đuôi đặc biệt.
+answer: shall we
+```
+
+```example
+id: l07-p5-4
+prompt: I am next in the queue, ___? (viết cả câu hỏi đuôi)
+hint: "I am" có đuôi đặc biệt, không dùng "amn't".
+answer: aren't I
+```
+
 ---
 
 ## 6. CÂU HỎI VỌNG LẠI (ECHO QUESTIONS)
@@ -191,6 +317,20 @@ Dùng để bày tỏ sự ngạc nhiên hoặc yêu cầu lặp lại thông ti
 | "They've already finished." | "Have they?" | "Họ làm xong rồi à?" |
 | "I'm not coming." | "Aren't you?" | "Bạn không đến à?" |
 
+```example
+id: l07-p6-1
+prompt: "My uncle bought a new car." — "___ he?" (câu hỏi vọng lại)
+hint: Câu gốc ở quá khứ đơn với động từ thường → mượn trợ động từ tương ứng.
+answer: Did
+```
+
+```example
+id: l07-p6-2
+prompt: "We are moving to Da Nang." — "___ you?" (câu hỏi vọng lại)
+hint: Câu gốc dùng "are" → lặp lại chính trợ động từ đó.
+answer: Are
+```
+
 ---
 
 ## 7. CÂU HỎI + GIỚI TỪ ĐỨNG CUỐI (PREPOSITION AT THE END)
@@ -205,6 +345,27 @@ Trong tiếng Anh thông thường (informal), giới từ thường đứng **c
 | Which chair did she sit **on**? | On which chair did she sit? |
 | What are you thinking **about**? | About what are you thinking? |
 | Who did you go there **with**? | With whom did you go there? |
+
+```example
+id: l07-p7-1
+prompt: Who does this motorbike belong ___? (giới từ cuối câu)
+hint: Động từ "belong" luôn đi với một giới từ cố định.
+answer: to
+```
+
+```example
+id: l07-p7-2
+prompt: Which shelf did you put the books ___? (giới từ cuối câu)
+hint: Đặt vật LÊN một cái giá → giới từ chỉ vị trí bề mặt.
+answer: on
+```
+
+```example
+id: l07-p7-3
+prompt: What are you waiting ___? — The next bus. (giới từ cuối câu)
+hint: "wait" đi với giới từ cố định khi có tân ngữ.
+answer: for
+```
 
 ---
 
@@ -221,6 +382,29 @@ Trong tiếng Anh thông thường (informal), giới từ thường đứng **c
 7. **Echo:** "I run 5km every morning." — "**Do you**? That's impressive!"
 8. **Preposition end:** "What are you studying **for**?" — "My IELTS exam."
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l07-p8-1
+prompt: ___ often does your brother go to the gym? — Three times a week. (từ để hỏi)
+hint: Hỏi về tần suất.
+answer: How
+```
+
+```example
+id: l07-p8-2
+prompt: Could you tell me what time the library ___ (close)? (câu hỏi gián tiếp, hiện tại đơn)
+hint: Câu hỏi gián tiếp dùng trật tự thường → chia động từ theo chủ ngữ số ít.
+answer: closes
+```
+
+```example
+id: l07-p8-3
+prompt: Nobody phoned while I was out, ___? (viết cả câu hỏi đuôi)
+hint: "Nobody" mang nghĩa phủ định → đuôi khẳng định, đại từ là "they".
+answer: did they
+```
+
 ---
 
 ## LỖI THƯỜNG GẶP
@@ -235,6 +419,27 @@ Trong tiếng Anh thông thường (informal), giới từ thường đứng **c
 | He asked me that what I wanted. | He asked me what I wanted. | Câu hỏi gián tiếp không dùng "that" sau từ để hỏi |
 | It's cold today, isn't he? | It's cold today, isn't it? | Tag question dùng đại từ tương ứng với chủ ngữ: "it" |
 | You don't like coffee, do you not? | You don't like coffee, do you? | Tag question: phủ định → tag khẳng định ngắn, không lặp "not" |
+
+```example
+id: l07-err-1
+prompt: (Sửa lỗi) SAI: When you did arrive in Hanoi? → When ___ you arrive in Hanoi?
+hint: Trợ động từ phải đứng TRƯỚC chủ ngữ trong câu hỏi Wh-.
+answer: did
+```
+
+```example
+id: l07-err-2
+prompt: (Sửa lỗi) SAI: Do you are hungry? → ___ you hungry?
+hint: Với động từ "be", đảo "be" lên, không mượn "do".
+answer: Are
+```
+
+```example
+id: l07-err-3
+prompt: (Sửa lỗi) SAI: Can you tell me where is the pharmacy? → Can you tell me where the pharmacy ___?
+hint: Câu hỏi gián tiếp dùng trật tự S + V.
+answer: is
+```
 
 ---
 
