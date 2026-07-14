@@ -31,6 +31,20 @@ Sau khi hoàn thành bài này, bạn sẽ:
 
 Trạng từ trả lời các câu hỏi: **How? (Như thế nào?)**, **When? (Khi nào?)**, **Where? (Ở đâu?)**, **How often? (Bao lâu một lần?)**, **How much? (Bao nhiêu?)**
 
+```example
+id: l09-p1-1
+prompt: The old man walked ___ (slow) down the street.
+hint: Bổ nghĩa cho động từ hành động → dùng trạng từ.
+answer: slowly
+```
+
+```example
+id: l09-p1-2
+prompt: The exam was ___ (surprising / surprisingly) easy.
+hint: Bổ nghĩa cho tính từ "easy" → cần trạng từ mức độ.
+answer: surprisingly
+```
+
 ---
 
 ## 2. PHÂN LOẠI TRẠNG TỪ (Types of Adverbs)
@@ -47,6 +61,13 @@ Mô tả **cách** thực hiện hành động.
 **Vị trí:** Thường đứng **sau động từ** hoặc sau tân ngữ.
 > *She read the book **carefully**.* ✅
 > *She **carefully** read the book.* ✅ (cả hai đều chấp nhận được)
+
+```example
+id: l09-p2-1
+prompt: The nurse spoke to the patient ___ (gentle).
+hint: Trạng từ cách thức từ tính từ tận cùng -le.
+answer: gently
+```
 
 ### Loại 2: FREQUENCY (Tần suất) — HOW OFTEN?
 
@@ -73,6 +94,20 @@ Mô tả **mức độ thường xuyên** của hành động.
 ❌ *She doesn't never eat meat.*
 ✅ *She **never** eats meat.* hoặc ✅ *She **doesn't** eat meat.*
 
+```example
+id: l09-p2-2
+prompt: My father ___ (often / drink) tea after lunch. (viết cả trạng từ và động từ)
+hint: Trạng từ tần suất đứng TRƯỚC động từ thường.
+answer: often drinks
+```
+
+```example
+id: l09-p2-3
+prompt: My cousin ___ (be / usually) busy at the weekend. (viết cả "be" và trạng từ)
+hint: Trạng từ tần suất đứng SAU động từ "be".
+answer: is usually
+```
+
 ### Loại 3: TIME (Thời gian) — WHEN?
 
 Mô tả **khi nào** hành động xảy ra.
@@ -91,6 +126,13 @@ Mô tả **khi nào** hành động xảy ra.
 > *He left **early**.*
 > ***Early**, he left.* (ít phổ biến hơn nhưng vẫn đúng)
 
+```example
+id: l09-p2-4
+prompt: My aunt has ___ (đã… rồi) sold her old house. (trạng từ thời gian)
+hint: Trạng từ nghĩa "đã… rồi", đứng giữa "has" và V3.
+answer: already
+```
+
 ### Loại 4: PLACE (Nơi chốn) — WHERE?
 
 Mô tả **ở đâu** hành động xảy ra.
@@ -106,6 +148,13 @@ Mô tả **ở đâu** hành động xảy ra.
 
 **Vị trí:** Thường ở **cuối câu**, sau trạng từ cách thức.
 > *She sang **beautifully** **here** **last night**.* [Manner → Place → Time]
+
+```example
+id: l09-p2-5
+prompt: My brother studies ___ (ở nước ngoài) in Australia. (trạng từ nơi chốn)
+hint: Trạng từ nơi chốn nghĩa "ở nước ngoài".
+answer: abroad
+```
 
 ### Loại 5: DEGREE (Mức độ) — HOW MUCH?
 
@@ -130,6 +179,20 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 ⚠️ **Lưu ý:** "Very" không dùng với tính từ tuyệt đối:
 ❌ *That is very perfect.* | ✅ *That is absolutely perfect.*
 ❌ *She is very dead.* | ✅ *She is dead.*
+
+```example
+id: l09-p2-6
+prompt: The traffic today is ___ (cực kỳ) heavy. (trạng từ mức độ rất mạnh)
+hint: Trạng từ mức độ mạnh, đứng trước tính từ.
+answer: extremely
+```
+
+```example
+id: l09-p2-7
+prompt: Your answer is ___ (hoàn toàn) correct. (trạng từ mức độ tuyệt đối)
+hint: Với tính từ tuyệt đối, dùng "absolutely/completely" thay vì "very".
+answer: absolutely / completely / totally
+```
 
 ---
 
@@ -187,6 +250,34 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 - *She arrived **late**.* (Cô ấy đến muộn.) ✅
 - ***Lately**, she has been stressed.* (Gần đây, cô ấy bị căng thẳng.) → nghĩa khác!
 
+```example
+id: l09-p3-1
+prompt: The rain fell ___ (heavy) all afternoon.
+hint: Tính từ tận cùng -y → đổi thành -ily.
+answer: heavily
+```
+
+```example
+id: l09-p3-2
+prompt: The machine starts ___ (automatic) at seven o'clock.
+hint: Tính từ tận cùng -ic → thêm -ally.
+answer: automatically
+```
+
+```example
+id: l09-p3-3
+prompt: My sister cooks very ___ (good).
+hint: Trạng từ bất quy tắc của "good".
+answer: well
+```
+
+```example
+id: l09-p3-4
+prompt: The train arrived ___ (late / lately) because of the storm.
+hint: Nghĩa "đến muộn" — dạng trạng từ không đổi.
+answer: late
+```
+
 ---
 
 ## 4. VỊ TRÍ TRẠNG TỪ TRONG CÂU (Adverb Position)
@@ -209,6 +300,20 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 | Time | Cuối câu hoặc đầu câu | I'll call you **tomorrow**. **Yesterday**, I saw him. |
 | Place | Cuối câu | They live **nearby**. |
 | Degree | Trước adj/adv | It's **very** cold. |
+
+```example
+id: l09-p4-1
+prompt: (Sắp xếp) yesterday / in the garden / happily → The children played ___ .
+hint: Thứ tự Manner → Place → Time.
+answer: happily in the garden yesterday
+```
+
+```example
+id: l09-p4-2
+prompt: (Sắp xếp) last week / quietly / at the library → She studied ___ .
+hint: Cách thức trước, rồi nơi chốn, cuối cùng là thời gian.
+answer: quietly at the library last week
+```
 
 ---
 
@@ -240,6 +345,27 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 | The singer sounds **beautiful**. | She sings **beautifully**. |
 | He is a **fast** driver. | He drives **fast**. |
 | She is **hard**working. | She works **hard**. |
+
+```example
+id: l09-p5-1
+prompt: Your idea sounds ___ (perfect / perfectly) to me.
+hint: "sound" là linking verb → theo sau là tính từ.
+answer: perfect
+```
+
+```example
+id: l09-p5-2
+prompt: The guide explained everything ___ (clear).
+hint: "explain" là động từ hành động → cần trạng từ.
+answer: clearly
+```
+
+```example
+id: l09-p5-3
+prompt: After the medicine, my father felt ___ (good / well) again.
+hint: "feel" + tính từ; ở đây nghĩa "khoẻ mạnh trở lại".
+answer: well
+```
 
 ---
 
@@ -276,6 +402,43 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 ❌ *This is very perfect.*
 ✅ *This is **absolutely/completely** perfect.*
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l09-p6-1
+prompt: (Sửa Lỗi 1) SAI: He answered the question quick. → He answered the question ___.
+hint: Sau động từ hành động → dùng trạng từ.
+answer: quickly
+```
+
+```example
+id: l09-p6-2
+prompt: (Sửa Lỗi 2) SAI: My brother swims very good. → My brother swims very ___.
+hint: Trạng từ của "good".
+answer: well
+```
+
+```example
+id: l09-p6-3
+prompt: (Sửa Lỗi 3) SAI: She hardly practises, so she plays wonderfully. → She practises ___, so she plays wonderfully.
+hint: Nghĩa "chăm chỉ" → không dùng "hardly".
+answer: hard
+```
+
+```example
+id: l09-p6-4
+prompt: (Sửa Lỗi 4) SAI: They go often to the beach. → They ___ to the beach. (trạng từ + động từ)
+hint: Trạng từ tần suất đứng trước động từ thường.
+answer: often go
+```
+
+```example
+id: l09-p6-5
+prompt: (Sửa Lỗi 5) SAI: The bottle is very empty. → The bottle is ___ empty.
+hint: Tính từ tuyệt đối → dùng "completely/absolutely".
+answer: completely / absolutely / totally
+```
+
 ---
 
 ## 7. 15 VÍ DỤ ĐA DẠNG
@@ -295,6 +458,29 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 13. *The teacher explained the grammar **patiently** and **clearly**.* (hai trạng từ cách thức)
 14. ***Recently**, she has been working **extremely** hard on her thesis.* (thời gian + mức độ + cách thức)
 15. *She **usually** studies **here** in the library on **weekday** evenings.* (tần suất + nơi chốn + thời gian)
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l09-p7-1
+prompt: The dog barked ___ (angry) at the postman.
+hint: Tính từ tận cùng -y → trạng từ -ily.
+answer: angrily
+```
+
+```example
+id: l09-p7-2
+prompt: My grandmother ___ (never / complain) about the weather. (viết trạng từ + động từ)
+hint: Trạng từ tần suất đứng trước động từ thường; chủ ngữ số ít.
+answer: never complains
+```
+
+```example
+id: l09-p7-3
+prompt: This coffee is ___ (a bit) too strong for me. (trạng từ mức độ nhẹ)
+hint: Trạng từ mức độ nghĩa "hơi một chút".
+answer: a bit / slightly / a little
+```
 
 ---
 
@@ -325,6 +511,27 @@ Bổ nghĩa cho **tính từ** hoặc **trạng từ khác**, chỉ mức độ 
 | This is very perfect. | This is absolutely perfect. | "Perfect" là tính từ tuyệt đối, không dùng "very" mà dùng "absolutely/completely". |
 | He is always not on time. | He is never on time. | Không kết hợp "always" với "not"; dùng "never" hoặc "not always" tùy nghĩa. |
 | Please write careful. | Please write carefully. | Tính từ "careful" phải đổi thành trạng từ "carefully" khi bổ nghĩa cho động từ. |
+
+```example
+id: l09-err-1
+prompt: (Sửa lỗi) SAI: The team played terrible last Sunday. → The team played ___ last Sunday.
+hint: Sau động từ hành động → trạng từ (terrible → ?).
+answer: terribly
+```
+
+```example
+id: l09-err-2
+prompt: (Sửa lỗi) SAI: She is never not tired after work. → She is ___ tired after work.
+hint: Không kết hợp "never" với "not"; giữ lại một cách phủ định.
+answer: never
+```
+
+```example
+id: l09-err-3
+prompt: (Sửa lỗi) SAI: My uncle drives very careless. → My uncle drives very ___.
+hint: Cần trạng từ, không phải tính từ.
+answer: carelessly
+```
 
 ---
 
