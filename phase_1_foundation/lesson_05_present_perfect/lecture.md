@@ -43,6 +43,20 @@ Thì Hiện Tại Hoàn Thành (Present Perfect) là một trong những thì kh
 - I have → **I've** | He has → **He's** | She has → **She's**
 - We have → **We've** | They have → **They've** | You have → **You've**
 
+```example
+id: l05-p1-1
+prompt: My cousin ___ (win) two chess tournaments this year.
+hint: Chủ ngữ số ít → has + V3 (win → won).
+answer: has won
+```
+
+```example
+id: l05-p1-2
+prompt: We ___ (book) a table at that new restaurant.
+hint: Chủ ngữ "we" → have + V3.
+answer: have booked / 've booked
+```
+
 ### 1.2. Câu phủ định (Negative)
 
 **Công thức:** S + have / has + **not** + V3
@@ -52,6 +66,13 @@ Thì Hiện Tại Hoàn Thành (Present Perfect) là một trong những thì kh
 - They **haven't visited** their grandparents recently.
 
 **Rút gọn:** have not → **haven't** | has not → **hasn't**
+
+```example
+id: l05-p1-3
+prompt: The postman ___ (not / deliver) our parcel.
+hint: Chủ ngữ số ít, phủ định → hasn't + V3.
+answer: hasn't delivered / has not delivered
+```
 
 ### 1.3. Câu hỏi (Questions)
 
@@ -63,6 +84,20 @@ Thì Hiện Tại Hoàn Thành (Present Perfect) là một trong những thì kh
 - **How long** have you **lived** in Ho Chi Minh City?
 - **How many times** has she **been** to Japan?
 - **What** have they **done** about the problem?
+
+```example
+id: l05-p1-4
+prompt: ___ your brother finished his driving test? (Have / Has)
+hint: Chủ ngữ số ít → dùng "Has" ở đầu câu hỏi.
+answer: Has
+```
+
+```example
+id: l05-p1-5
+prompt: How long ___ you worked at this school? (have / has)
+hint: Câu hỏi Wh- với chủ ngữ "you" → dùng "have".
+answer: have
+```
 
 ---
 
@@ -82,6 +117,20 @@ Dùng Present Perfect để nói về những điều bạn đã từng làm (ho
 | He **has never** been abroad. | Anh ấy chưa bao giờ ra nước ngoài. |
 | We **have tried** traditional Vietnamese medicine before. | Chúng tôi đã từng thử y học cổ truyền Việt Nam. |
 
+```example
+id: l05-p2-1
+prompt: My mother ___ (never / ride) a motorbike in her life.
+hint: Kinh nghiệm phủ định → has + never + V3 (không dùng "not").
+answer: has never ridden
+```
+
+```example
+id: l05-p2-2
+prompt: ___ you ever swum in the sea at night? (Have / Has)
+hint: Hỏi về kinh nghiệm với "ever" → trợ động từ hợp với chủ ngữ "you".
+answer: Have
+```
+
 ### 2.2. Kết quả hiện tại (Recent Actions with Present Results)
 
 Hành động xảy ra gần đây và kết quả vẫn còn ảnh hưởng đến hiện tại.
@@ -99,6 +148,20 @@ Hành động xảy ra gần đây và kết quả vẫn còn ảnh hưởng đ�
 - I **have already** bought the tickets. (Tôi đã mua vé rồi — không cần mua nữa.)
 - **Have** you eaten dinner **yet**? (Bạn ăn tối chưa?)
 - They **haven't submitted** their reports **yet**. (Họ vẫn chưa nộp báo cáo.)
+
+```example
+id: l05-p2-3
+prompt: Be careful, the workers ___ (just / paint) the wall.
+hint: "just" đứng giữa trợ động từ và V3; chủ ngữ số nhiều dùng "have".
+answer: have just painted
+```
+
+```example
+id: l05-p2-4
+prompt: My sister ___ (already / pack) her suitcase.
+hint: Chủ ngữ số ít → has + already + V3.
+answer: has already packed
+```
 
 ### 2.3. Thời gian kéo dài đến hiện tại (Duration — For & Since)
 
@@ -126,6 +189,20 @@ Hành động/trạng thái bắt đầu trong quá khứ và vẫn tiếp tục
 
 **Lưu ý:** Khi nói về khoảng thời gian kéo dài với Present Perfect, thường dùng Present Perfect **Continuous** (xem Phần 5 bên dưới).
 
+```example
+id: l05-p2-5
+prompt: My uncle has owned this shop ___ 1999. (for / since)
+hint: Mốc thời gian bắt đầu cụ thể → dùng "since".
+answer: since
+```
+
+```example
+id: l05-p2-6
+prompt: I have waited for the results ___ two weeks. (for / since)
+hint: Khoảng thời gian kéo dài → dùng "for".
+answer: for
+```
+
 ### 2.4. Tin tức mới nhất / Sự kiện gần đây (Recent News)
 
 Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc biệt trong báo chí và tin tức.
@@ -140,6 +217,20 @@ Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc 
 | A new coffee shop **has opened** in our neighbourhood. | Một quán cà phê mới vừa mở trong khu phố chúng ta. |
 | The president **has resigned**. | Tổng thống vừa từ chức. |
 
+```example
+id: l05-p2-7
+prompt: Our team ___ (recently / launch) a new website.
+hint: Tin tức mới, chủ ngữ số ít → has + recently + V3.
+answer: has recently launched
+```
+
+```example
+id: l05-p2-8
+prompt: Fuel prices ___ (fall) slightly in the last few days.
+hint: Sự kiện gần đây, chủ ngữ số nhiều → have + V3 (fall → fallen).
+answer: have fallen
+```
+
 ---
 
 ## PHẦN 3: EVER / NEVER / ALREADY / YET / JUST — CHI TIẾT
@@ -150,16 +241,37 @@ Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc 
 - Have you **ever** tried pho? (Bạn đã từng ăn phở chưa?)
 - Has she **ever** won a competition? (Cô ấy đã từng thắng cuộc thi chưa?)
 
+```example
+id: l05-p3-1
+prompt: Have you ___ visited a rice terrace in Sapa? (từ chỉ kinh nghiệm trong câu hỏi)
+hint: Từ dùng để hỏi "đã từng… chưa?", đứng giữa chủ ngữ và V3.
+answer: ever
+```
+
 ### 3.2. NEVER (Chưa bao giờ)
 - Dùng trong **câu phủ định** về kinh nghiệm (không cần thêm not khi dùng never).
 - I **have never** tasted durian. (Tôi chưa bao giờ nếm sầu riêng.)
 - He **has never** been late for work. (Anh ấy chưa bao giờ đi làm trễ.)
+
+```example
+id: l05-p3-2
+prompt: They ___ (never / miss) a single class this term.
+hint: "never" mang nghĩa phủ định → have + never + V3, không thêm "not".
+answer: have never missed
+```
 
 ### 3.3. ALREADY (Rồi, đã xong)
 - Diễn đạt hành động đã hoàn thành sớm hơn dự kiến.
 - Câu **khẳng định**, vị trí: **trước V3** hoặc cuối câu.
 - I **have already** cleaned my room. (Tôi đã dọn phòng rồi.)
 - She **has already** eaten — we don't need to cook for her.
+
+```example
+id: l05-p3-3
+prompt: The guests ___ (already / arrive), so please open the gate.
+hint: Câu khẳng định: have + already + V3.
+answer: have already arrived
+```
 
 ### 3.4. YET (Chưa / Chưa à?)
 - Câu **phủ định**: diễn đạt điều chưa xảy ra nhưng được kỳ vọng.
@@ -168,11 +280,25 @@ Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc 
 - I **haven't** paid the bill **yet**. (Tôi chưa trả hóa đơn.)
 - **Have** they arrived **yet**? (Họ đến chưa?)
 
+```example
+id: l05-p3-4
+prompt: My father hasn't repaired the fence ___. (từ đứng cuối câu phủ định)
+hint: Từ nghĩa "chưa", đứng ở cuối câu phủ định hoặc câu hỏi.
+answer: yet
+```
+
 ### 3.5. JUST (Vừa mới)
 - Hành động xảy ra rất gần đây.
 - Vị trí: **trước V3**.
 - She **has just** left the office. (Cô ấy vừa rời văn phòng.)
 - The train **has just** departed. (Tàu vừa xuất phát.)
+
+```example
+id: l05-p3-5
+prompt: The teacher ___ (just / hand) back our essays.
+hint: "just" đứng giữa "has" và V3.
+answer: has just handed
+```
 
 ---
 
@@ -231,6 +357,34 @@ Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc 
 | write | wrote | **written** | viết |
 | win | won | **won** | thắng |
 
+```example
+id: l05-p4-1
+prompt: Someone has ___ (break) the window of the classroom.
+hint: Past participle của "break".
+answer: broken
+```
+
+```example
+id: l05-p4-2
+prompt: I have ___ (write) three emails to the company.
+hint: Past participle của "write".
+answer: written
+```
+
+```example
+id: l05-p4-3
+prompt: She has ___ (choose) a red dress for the wedding.
+hint: Past participle của "choose".
+answer: chosen
+```
+
+```example
+id: l05-p4-4
+prompt: The boys have ___ (drink) all the coconut water.
+hint: Past participle của "drink" (nhóm i/a/u).
+answer: drunk
+```
+
 ---
 
 ## PHẦN 5: PRESENT PERFECT vs SIMPLE PAST — PHÂN BIỆT QUAN TRỌNG
@@ -269,6 +423,27 @@ Dùng Present Perfect để thông báo điều gì đó mới xảy ra, đặc 
 | She already finished the report. | She **has** already finished the report. | "already" + kết quả → PP |
 | They didn't arrive yet. | They **haven't** arrived yet. | "yet" + phủ định → PP |
 
+```example
+id: l05-p5-1
+prompt: We ___ (meet) the new manager last Thursday.
+hint: Có mốc thời gian xác định → dùng Simple Past.
+answer: met
+```
+
+```example
+id: l05-p5-2
+prompt: My brother ___ (lose) his wallet, so he can't pay now.
+hint: Kết quả còn ảnh hưởng hiện tại, không có mốc thời gian → Present Perfect.
+answer: has lost
+```
+
+```example
+id: l05-p5-3
+prompt: ___ you spoken to the landlord yet? (Have / Did)
+hint: Có "yet" → dùng Present Perfect.
+answer: Have
+```
+
 ---
 
 ## PHẦN 6: PRESENT PERFECT CONTINUOUS vs PRESENT PERFECT
@@ -282,6 +457,20 @@ Dùng khi muốn nhấn mạnh **quá trình kéo dài** chứ không phải k�
 | I **have read** 50 pages. (Xong rồi, có kết quả) | I **have been reading** for 2 hours. (Vẫn đang đọc) |
 | She **has worked** there since 2020. | She **has been working** there since 2020. (Nhấn mạnh liên tục) |
 | He **has cleaned** the house. (Nhà đã sạch rồi) | He **has been cleaning** the house. (Vẫn đang dọn) |
+
+```example
+id: l05-p6-1
+prompt: My eyes hurt — I ___ (study) for six hours. (nhấn mạnh quá trình kéo dài)
+hint: Nhấn mạnh quá trình → have been + V-ing.
+answer: have been studying / 've been studying
+```
+
+```example
+id: l05-p6-2
+prompt: Look, I ___ (finish) all my exercises. (nhấn mạnh kết quả)
+hint: Nhấn mạnh kết quả hoàn tất → have + V3.
+answer: have finished / 've finished
+```
 
 ---
 
@@ -313,6 +502,50 @@ Dùng khi muốn nhấn mạnh **quá trình kéo dài** chứ không phải k�
 - ❌ I have lived here for 2020.
 - ✅ I have lived here **since** 2020.
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l05-p7-1
+prompt: (Sửa Lỗi 1) SAI: They have moved house last month. → They ___ house last month.
+hint: Có "last month" → dùng Simple Past.
+answer: moved
+```
+
+```example
+id: l05-p7-2
+prompt: (Sửa Lỗi 2) SAI: Did you ever ride an elephant? → ___ you ever ridden an elephant?
+hint: Hỏi kinh nghiệm với "ever" → dùng Present Perfect.
+answer: Have
+```
+
+```example
+id: l05-p7-3
+prompt: (Sửa Lỗi 3) SAI: We have washed already the car. → We have ___ the car. (already + V3)
+hint: "already" đứng trước V3.
+answer: already washed
+```
+
+```example
+id: l05-p7-4
+prompt: (Sửa Lỗi 4) SAI: My teacher have marked our tests. → My teacher ___ our tests.
+hint: Chủ ngữ số ít → "has" + V3.
+answer: has marked
+```
+
+```example
+id: l05-p7-5
+prompt: (Sửa Lỗi 5) SAI: He has take my umbrella. → He has ___ my umbrella.
+hint: Sau "has" phải là V3 của "take".
+answer: taken
+```
+
+```example
+id: l05-p7-6
+prompt: (Sửa Lỗi 6) SAI: She has taught here since ten years. → She has taught here ___ ten years.
+hint: Khoảng thời gian kéo dài → dùng "for".
+answer: for
+```
+
 ---
 
 ## PHẦN 8: VÍ DỤ PHONG PHÚ THEO CÁC TÌNH HUỐNG THỰC TẾ
@@ -336,6 +569,29 @@ Dùng khi muốn nhấn mạnh **quá trình kéo dài** chứ không phải k�
 - Researchers have found a possible cure for the disease.
 - The city has built three new hospitals in the past five years.
 - Vietnam's economy has grown significantly in recent years.
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l05-p8-1
+prompt: A: Do you want a coffee? B: No, thanks. I ___ (already / have) two cups today.
+hint: Hôm nay chưa kết thúc → Present Perfect với "already".
+answer: have already had / 've already had
+```
+
+```example
+id: l05-p8-2
+prompt: Our company ___ (open) two new branches in the past year.
+hint: Tin tức trong khoảng thời gian chưa kết thúc → has + V3.
+answer: has opened
+```
+
+```example
+id: l05-p8-3
+prompt: My grandparents ___ (live) in the same village since they got married.
+hint: Kéo dài đến hiện tại + "since" → have + V3.
+answer: have lived / 've lived
+```
 
 ---
 
@@ -370,6 +626,27 @@ Chia động từ đúng — PP hay QKĐ?
 | I have eaten already the cake. | I have already eaten the cake. | "Already" đứng giữa have/has và V3, không đứng giữa V3 và tân ngữ. |
 | They didn't arrive yet. | They haven't arrived yet. | "Yet" trong câu phủ định kết hợp với Present Perfect, không phải Simple Past. |
 | She has never been to Europe since her childhood. | She has never been to Europe. / She hasn't been to Europe since her childhood. | "Never" đã mang nghĩa phủ định; không dùng "never" kết hợp với "since" theo cách gây mâu thuẫn nghĩa. |
+
+```example
+id: l05-err-1
+prompt: (Sửa lỗi) SAI: I have bought this phone two years ago. → I ___ this phone two years ago.
+hint: "ago" là mốc quá khứ xác định → dùng Simple Past.
+answer: bought
+```
+
+```example
+id: l05-err-2
+prompt: (Sửa lỗi) SAI: My friends has left the party. → My friends ___ the party.
+hint: Chủ ngữ số nhiều → "have" + V3.
+answer: have left
+```
+
+```example
+id: l05-err-3
+prompt: (Sửa lỗi) SAI: The children didn't finish their lunch yet. → The children ___ their lunch yet.
+hint: Có "yet" → dùng Present Perfect phủ định.
+answer: haven't finished / have not finished
+```
 
 ---
 
