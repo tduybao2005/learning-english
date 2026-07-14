@@ -29,6 +29,20 @@ Sau khi hoàn thành bài này, bạn sẽ:
 
 Đây là một trong những điểm khác biệt lớn nhất giữa hai ngôn ngữ!
 
+```example
+id: l08-p1-1
+prompt: (Sắp xếp) car / new / a → My father has bought ___.
+hint: Tiếng Anh: tính từ đứng TRƯỚC danh từ.
+answer: a new car
+```
+
+```example
+id: l08-p1-2
+prompt: (Sắp xếp) garden / lovely / a → They have ___ behind the house.
+hint: Trật tự: mạo từ + tính từ + danh từ.
+answer: a lovely garden
+```
+
 ---
 
 ## 2. VỊ TRÍ CỦA TÍNH TỪ (Position of Adjectives)
@@ -65,11 +79,32 @@ Sau khi hoàn thành bài này, bạn sẽ:
 | a lonely old man | The old man seems lonely. |
 | a happy child | The child looks happy. |
 
+```example
+id: l08-p2-1
+prompt: We stayed in a ___ (comfort → tính từ) hotel near the beach.
+hint: Vị trí attributive: tính từ đứng trước danh từ "hotel".
+answer: comfortable
+```
+
+```example
+id: l08-p2-2
+prompt: This tea tastes ___ (bitter / bitterly).
+hint: "taste" là linking verb → theo sau là tính từ.
+answer: bitter
+```
+
 ### Một số tính từ CHỈ dùng ở vị trí predicative (sau be):
 - **asleep, awake, alive, alone, afraid, ashamed, ill, well**
 > ✅ *The baby is **asleep**.* | ❌ *the **asleep** baby*
 > ✅ *She is **afraid** of dogs.* | ❌ *the **afraid** girl*
 > ✅ *He is **ill** today.* | ❌ *the **ill** man* (dùng "sick man" thay thế)
+
+```example
+id: l08-p2-3
+prompt: My little sister is ___ (asleep / sleeping) in the next room.
+hint: Sau "be" có thể dùng tính từ chỉ dùng ở vị trí predicative.
+answer: asleep
+```
 
 ---
 
@@ -99,6 +134,27 @@ Khi có **nhiều tính từ** cùng bổ nghĩa cho một danh từ, chúng ph�
 5. *some **comfortable** (O) **new** (A) **blue** (C) **leather** (M) **running** (P) **shoes*** — mấy đôi giày chạy da màu xanh mới thoải mái
 
 **Ghi chú thực tế:** Thường không dùng quá 2-3 tính từ cùng lúc trong văn nói. 4+ tính từ chỉ xuất hiện trong văn viết hoặc văn học.
+
+```example
+id: l08-p3-1
+prompt: (Sắp xếp) wooden / square / brown → We bought a ___ table.
+hint: Shape → Colour → Material.
+answer: square brown wooden
+```
+
+```example
+id: l08-p3-2
+prompt: (Sắp xếp) Japanese / small / new → She drives a ___ car.
+hint: Size → Age → Origin.
+answer: small new Japanese
+```
+
+```example
+id: l08-p3-3
+prompt: (Sắp xếp) silk / lovely / white → My aunt wore a ___ scarf.
+hint: Opinion → Colour → Material.
+answer: lovely white silk
+```
 
 ---
 
@@ -140,6 +196,27 @@ Tính từ ghép gồm **hai từ hoặc nhiều từ kết hợp** với nhau, 
 > *a **five-year-old** boy* (tính từ ghép — có gạch ngang)
 > *He is **five years old**.* (bình thường — không gạch ngang, "years" số nhiều)
 
+```example
+id: l08-p4-1
+prompt: My grandmother is a very ___ (kind + heart) woman.
+hint: Tính từ ghép dạng Adj + N-ed, có gạch ngang.
+answer: kind-hearted
+```
+
+```example
+id: l08-p4-2
+prompt: They live in a ___ (new + build) apartment block.
+hint: Tính từ ghép dạng Adv + past participle.
+answer: newly-built / newly built
+```
+
+```example
+id: l08-p4-3
+prompt: We had to sit through a ___ (two + hour) meeting.
+hint: Số + danh từ số ÍT, có gạch ngang khi đứng trước danh từ.
+answer: two-hour
+```
+
 ---
 
 ## 5. TÍNH TỪ ĐUÔI -ED VÀ -ING (Participial Adjectives)
@@ -178,6 +255,27 @@ Tính từ ghép gồm **hai từ hoặc nhiều từ kết hợp** với nhau, 
 3. ✅ *The story is **moving/touching**.* (Câu chuyện cảm động.)
    ✅ *I was **moved/touched** by the story.* (Tôi xúc động vì câu chuyện.)
 
+```example
+id: l08-p5-1
+prompt: The last chapter of the novel was really ___ (surprise).
+hint: Sự vật gây ra cảm xúc → dùng đuôi -ing.
+answer: surprising
+```
+
+```example
+id: l08-p5-2
+prompt: My classmates were ___ (surprise) by the test results.
+hint: Người cảm nhận cảm xúc → dùng đuôi -ed.
+answer: surprised
+```
+
+```example
+id: l08-p5-3
+prompt: After the long flight we all felt ___ (exhaust).
+hint: Người cảm thấy → đuôi -ed.
+answer: exhausted
+```
+
 ---
 
 ## 6. TÍNH TỪ KHÔNG THỂ SO SÁNH (Absolute Adjectives)
@@ -200,6 +298,20 @@ Một số tính từ chỉ **trạng thái tuyệt đối** — không thể "h
 
 ❌ *She is very dead.* (Không nói được)
 ✅ *She is dead.* (Đơn giản, đủ)
+
+```example
+id: l08-p6-1
+prompt: His design is ___ perfect. (almost / more)
+hint: "perfect" là tính từ tuyệt đối → không so sánh hơn.
+answer: almost
+```
+
+```example
+id: l08-p6-2
+prompt: Every snowflake is ___ (unique / more unique).
+hint: Tính từ tuyệt đối không dùng dạng so sánh hơn.
+answer: unique
+```
 
 ---
 
@@ -242,6 +354,43 @@ Một số tính từ chỉ **trạng thái tuyệt đối** — không thể "h
 
 ❌ *They are goods students.*
 ✅ *They are **good** students.*
+
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l08-p7-1
+prompt: (Sửa Lỗi 1) SAI: She bought a dress blue. → She bought a ___ .
+hint: Tính từ đứng trước danh từ.
+answer: blue dress
+```
+
+```example
+id: l08-p7-2
+prompt: (Sửa Lỗi 2) SAI: He drives careful. → He drives ___ .
+hint: Sau động từ hành động phải dùng trạng từ.
+answer: carefully
+```
+
+```example
+id: l08-p7-3
+prompt: (Sửa Lỗi 3) SAI: a green big box → a ___ box (Size → Colour)
+hint: Kích thước đứng trước màu sắc.
+answer: big green
+```
+
+```example
+id: l08-p7-4
+prompt: (Sửa Lỗi 4) SAI: The journey was tired. → The journey was ___ .
+hint: Sự việc gây mệt → dùng đuôi -ing.
+answer: tiring
+```
+
+```example
+id: l08-p7-5
+prompt: (Sửa Lỗi 5) SAI: We met two friendlies neighbours. → We met two ___ neighbours.
+hint: Tính từ không thêm -s.
+answer: friendly
+```
 
 ---
 
@@ -292,6 +441,29 @@ Một số tính từ chỉ **trạng thái tuyệt đối** — không thể "h
 15. *The **satisfied** customer left a **glowing** review for the restaurant.*
     (Khách hàng hài lòng để lại đánh giá tuyệt vời cho nhà hàng.)
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l08-p8-1
+prompt: The documentary about the ocean was truly ___ (fascinate).
+hint: Sự vật gây hứng thú → đuôi -ing.
+answer: fascinating
+```
+
+```example
+id: l08-p8-2
+prompt: (Sắp xếp) leather / black / old → He always wears an ___ jacket.
+hint: Age → Colour → Material.
+answer: old black leather
+```
+
+```example
+id: l08-p8-3
+prompt: The rice fields look ___ (peaceful / peacefully) at sunset.
+hint: "look" là linking verb → dùng tính từ.
+answer: peaceful
+```
+
 ---
 
 ## TÓM TẮT BÀI HỌC
@@ -321,6 +493,27 @@ Một số tính từ chỉ **trạng thái tuyệt đối** — không thể "h
 | A Korean new car. | A new Korean car. | Thứ tự OSASCOMP: Age (new) phải đứng trước Origin (Korean). |
 | The asleep baby is cute. | The sleeping baby is cute. | "Asleep" chỉ dùng ở vị trí predicative (sau be); trước danh từ dùng "sleeping". |
 | She seems happily today. | She seems happy today. | "Seem" là linking verb, sau nó dùng tính từ (happy), không dùng trạng từ (happily). |
+
+```example
+id: l08-err-1
+prompt: (Sửa lỗi) SAI: The soup smells badly. → The soup smells ___.
+hint: "smell" là linking verb → dùng tính từ.
+answer: bad
+```
+
+```example
+id: l08-err-2
+prompt: (Sửa lỗi) SAI: I am boring with this game. → I am ___ with this game.
+hint: Người cảm thấy chán → dùng -ed adjective.
+answer: bored
+```
+
+```example
+id: l08-err-3
+prompt: (Sửa lỗi) SAI: They live in a house wooden. → They live in a ___ .
+hint: Tính từ chất liệu đứng trước danh từ.
+answer: wooden house
+```
 
 ---
 
