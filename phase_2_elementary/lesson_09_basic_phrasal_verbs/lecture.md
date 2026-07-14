@@ -19,6 +19,20 @@ Ví dụ: **look** (nhìn) + **up** = **look up** (tra cứu)
 - *She **looks up** new words in the dictionary.* (Cô ấy tra từ điển)
 - KHÔNG phải "nhìn lên" mà là "tra cứu"
 
+```example
+id: l09-p1-1
+prompt: My laptop broke ___ two days before the deadline. (particle)
+hint: "break + particle" = hỏng hóc.
+answer: down
+```
+
+```example
+id: l09-p1-2
+prompt: Please write ___ my phone number before you forget it. (particle)
+hint: "write + particle" = ghi chép lại.
+answer: down
+```
+
 ---
 
 ## Phân loại Phrasal Verbs
@@ -37,6 +51,27 @@ Tân ngữ LUÔN đứng SAU particle.
 
 ### 3. Intransitive (Không có tân ngữ)
 - *The car **broke down** on the highway.* (không có tân ngữ)
+
+```example
+id: l09-p2-1
+prompt: My gloves are dirty — I will take ___ off before dinner. (đại từ thay cho "the gloves")
+hint: Separable + đại từ → đại từ BẮT BUỘC đứng giữa động từ và particle.
+answer: them
+```
+
+```example
+id: l09-p2-2
+prompt: My aunt looks ___ her three grandchildren every afternoon. (particle)
+hint: "look + particle" = chăm sóc; đây là phrasal verb không tách được.
+answer: after
+```
+
+```example
+id: l09-p2-3
+prompt: (Sửa lỗi) SAI: Please switch on it now. → Please switch ___ on now.
+hint: Đại từ phải nằm giữa động từ và particle.
+answer: it
+```
 
 ---
 
@@ -58,6 +93,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **speed up** | tăng tốc | The driver sped up on the highway. |
 | **end up** | cuối cùng kết thúc ở | We ended up staying until midnight. |
 
+```example
+id: l09-p3-1
+prompt: My cousin decided to take ___ yoga after her back injury. (particle — nhóm UP)
+hint: "take + particle" = bắt đầu một sở thích mới.
+answer: up
+```
+
+```example
+id: l09-p3-2
+prompt: Only three guests turned ___ at the workshop. (particle — nhóm UP)
+hint: "turn + particle" = xuất hiện, đến nơi.
+answer: up
+```
+
 ### Nhóm DOWN (8 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
 |---|---|---|
@@ -69,6 +118,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **turn down** | từ chối; vặn nhỏ | She turned down the job offer. |
 | **write down** | ghi chép lại | Write down the homework. |
 | **cut down on** | giảm thiểu | I'm cutting down on sugar. |
+
+```example
+id: l09-p3-3
+prompt: My brother turned ___ a place at a famous university abroad. (particle — nhóm DOWN)
+hint: "turn + particle" = từ chối.
+answer: down
+```
+
+```example
+id: l09-p3-4
+prompt: The doctor told my father to cut ___ on salt. (particle — nhóm DOWN)
+hint: "cut ___ on" = giảm bớt.
+answer: down
+```
 
 ### Nhóm OUT (12 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
@@ -86,6 +149,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **come out** | ra ngoài; xuất hiện; (sự thật) lộ ra | The new album came out last week. |
 | **speak out** | lên tiếng công khai | She spoke out against injustice. |
 
+```example
+id: l09-p3-5
+prompt: Please fill ___ this form before you see the nurse. (particle — nhóm OUT)
+hint: "fill + particle" = điền vào biểu mẫu.
+answer: out
+```
+
+```example
+id: l09-p3-6
+prompt: We have run ___ petrol; the nearest station is 5 km away. (viết cả cụm hai từ — nhóm OUT)
+hint: "run ___ ___" = cạn kiệt, hết sạch.
+answer: out of
+```
+
 ### Nhóm ON (8 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
 |---|---|---|
@@ -97,6 +174,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **move on** | tiếp tục, bước tiếp | It's time to move on. |
 | **get on** | lên xe; quan hệ tốt | Do you get on with your colleagues? |
 | **rely on** | phụ thuộc vào, tin tưởng | You can rely on me. |
+
+```example
+id: l09-p3-7
+prompt: Do you get ___ well with your new flatmates? (particle — nhóm ON)
+hint: "get ___ with somebody" = hợp nhau, quan hệ tốt.
+answer: on
+```
+
+```example
+id: l09-p3-8
+prompt: Hold ___ a second — I'm looking for my glasses. (particle — nhóm ON)
+hint: "hold + particle" = chờ một chút.
+answer: on
+```
 
 ### Nhóm OFF (8 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
@@ -110,6 +201,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **lay off** | sa thải | The company laid off 200 workers. |
 | **come off** | thành công; rơi ra | Did the plan come off? |
 
+```example
+id: l09-p3-9
+prompt: The organisers called ___ the fireworks because of the wind. (particle — nhóm OFF)
+hint: "call + particle" = huỷ bỏ.
+answer: off
+```
+
+```example
+id: l09-p3-10
+prompt: Don't put ___ your visa application until the last week. (particle — nhóm OFF)
+hint: "put + particle" = trì hoãn.
+answer: off
+```
+
 ### Nhóm BACK (6 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
 |---|---|---|
@@ -120,6 +225,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **call back** | gọi lại | I'll call you back in 10 minutes. |
 | **hold back** | kìm lại; ngăn cản | Don't hold back your feelings. |
 
+```example
+id: l09-p3-11
+prompt: The manager is busy now; she will call you ___ this afternoon. (particle — nhóm BACK)
+hint: "call + particle" = gọi lại sau.
+answer: back
+```
+
+```example
+id: l09-p3-12
+prompt: I promise to pay you ___ as soon as I get my salary. (particle — nhóm BACK)
+hint: "pay + particle" = trả lại tiền đã mượn.
+answer: back
+```
+
 ### Nhóm AWAY (6 PVs)
 | Phrasal Verb | Nghĩa | Ví dụ |
 |---|---|---|
@@ -129,6 +248,20 @@ Tân ngữ LUÔN đứng SAU particle.
 | **give away** | cho đi; tiết lộ | She gave away all her old clothes. |
 | **run away** | bỏ chạy | The child ran away from home. |
 | **stay away from** | tránh xa | Stay away from junk food. |
+
+```example
+id: l09-p3-13
+prompt: Don't throw ___ those glass bottles; we can recycle them. (particle — nhóm AWAY)
+hint: "throw + particle" = vứt bỏ.
+answer: away
+```
+
+```example
+id: l09-p3-14
+prompt: My mother told me to put ___ my books before dinner. (particle — nhóm AWAY)
+hint: "put + particle" = cất gọn vào chỗ cũ.
+answer: away
+```
 
 ---
 
@@ -149,6 +282,27 @@ Particle OUT thường mang ý: tìm kiếm, rời đi, hoàn thành
 - Nếu tân ngữ là đại từ (it/them/him) → LUÔN đặt giữa (separable PV)
 - Động từ inseparable: look after, look into, run into, get along with, put up with
 
+```example
+id: l09-p4-1
+prompt: The neighbours are noisy, but we have to put ___ with them. (particle giữa)
+hint: Cụm ba từ "put ___ with" = chịu đựng.
+answer: up
+```
+
+```example
+id: l09-p4-2
+prompt: I ran ___ an old classmate at the market yesterday. (particle)
+hint: "run + particle" = tình cờ gặp; đây là phrasal verb không tách được.
+answer: into
+```
+
+```example
+id: l09-p4-3
+prompt: The lawyer promised to look ___ the case carefully. (particle)
+hint: "look + particle" = điều tra, xem xét kỹ.
+answer: into
+```
+
 ---
 
 ## Lỗi thường gặp của người Việt
@@ -157,6 +311,20 @@ Particle OUT thường mang ý: tìm kiếm, rời đi, hoàn thành
 ❌ *She put on it.* → SAI! → ✓ *She put it on.*
 ❌ *He gave up it.* → SAI! → ✓ *He gave it up.*
 ❌ *I will look up it.* → SAI! → ✓ *I will look it up.*
+
+```example
+id: l09-p5-1
+prompt: (Sửa lỗi) SAI: He threw away it without asking. → He threw ___ away without asking.
+hint: Đại từ phải đứng giữa động từ và particle.
+answer: it
+```
+
+```example
+id: l09-p5-2
+prompt: (Sửa lỗi) SAI: Can you fill out them now? → Can you fill ___ out now?
+hint: Đại từ "them" cũng phải nằm giữa động từ và particle.
+answer: them
+```
 
 ---
 
@@ -172,6 +340,27 @@ Particle OUT thường mang ý: tìm kiếm, rời đi, hoàn thành
 | I ran into she at the mall. | I ran into her at the mall. | Đại từ tân ngữ (her/him/them) sau preposition, không dùng subject pronouns |
 | They call off the meeting yesterday. | They called off the meeting yesterday. | Phrasal verb chia theo thì: call → called |
 | I put up with it cannot do. | I cannot put up with it. | Phrasal verb 3 từ (inseparable): object đứng cuối cùng |
+
+```example
+id: l09-err-1
+prompt: (Sửa lỗi) SAI: My father turn of the fan every night. → My father turns ___ the fan every night.
+hint: Particle đúng là hai chữ "f", không phải "of".
+answer: off
+```
+
+```example
+id: l09-err-2
+prompt: (Sửa lỗi) SAI: They call off the trip last Friday. → They ___ off the trip last Friday.
+hint: Chia thì ở động từ chính, không phải ở particle.
+answer: called
+```
+
+```example
+id: l09-err-3
+prompt: (Sửa lỗi) SAI: I bumped into he outside the cinema. → I bumped into ___ outside the cinema.
+hint: Sau particle/giới từ phải dùng đại từ tân ngữ.
+answer: him
+```
 
 ---
 
