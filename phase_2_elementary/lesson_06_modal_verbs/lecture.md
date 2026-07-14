@@ -63,6 +63,34 @@ lang: vi-en
 > - He **was able to** escape from the building. ✓ (thành công cụ thể)
 > - He **could** escape from the building. ⚠️ (không tự nhiên cho tình huống cụ thể)
 
+```example
+id: l06-p1-1
+prompt: My little sister ___ ride a bicycle without help now. (khả năng hiện tại)
+hint: Modal chỉ khả năng ở hiện tại.
+answer: can
+```
+
+```example
+id: l06-p1-2
+prompt: ___ you turn the volume down, please? (đề nghị lịch sự)
+hint: Modal lịch sự hơn "can" khi nhờ vả.
+answer: Could
+```
+
+```example
+id: l06-p1-3
+prompt: When my father was twenty, he ___ swim across the river easily. (khả năng chung trong quá khứ)
+hint: Modal chỉ khả năng chung chung trong quá khứ.
+answer: could
+```
+
+```example
+id: l06-p1-4
+prompt: After three attempts, the climbers ___ (be able to) reach the summit. (thành công cụ thể, quá khứ)
+hint: Thành công một lần cụ thể trong quá khứ → dùng "was/were able to", không dùng "could".
+answer: were able to
+```
+
 ---
 
 ## 2. MAY / MIGHT
@@ -85,6 +113,27 @@ lang: vi-en
 > **So sánh:**
 > - "She **may** come." → 50% có thể đến
 > - "She **might** come." → 30% có thể đến, ít chắc hơn
+
+```example
+id: l06-p2-1
+prompt: ___ I borrow your dictionary for a moment? (xin phép trang trọng)
+hint: Modal xin phép trang trọng, không phải "can".
+answer: May
+```
+
+```example
+id: l06-p2-2
+prompt: The roads are wet, so the buses ___ arrive late this morning. (khả năng khoảng 50%)
+hint: Modal chỉ khả năng khoảng 50%.
+answer: may
+```
+
+```example
+id: l06-p2-3
+prompt: I ___ join you for dinner, but I honestly doubt it. (khả năng thấp)
+hint: Modal chỉ khả năng thấp, ít chắc chắn hơn "may".
+answer: might
+```
 
 ---
 
@@ -116,6 +165,34 @@ lang: vi-en
 - When I was young, I **would** play by the river every day.
 - Every summer, we **would** visit our grandparents.
 
+```example
+id: l06-p3-1
+prompt: Someone is knocking at the door — I ___ open it. (quyết định tức thời)
+hint: Modal cho quyết định ngay lúc nói.
+answer: will
+```
+
+```example
+id: l06-p3-2
+prompt: Don't worry, I ___ never tell anyone your secret. (lời hứa)
+hint: Modal dùng để hứa hẹn.
+answer: will
+```
+
+```example
+id: l06-p3-3
+prompt: ___ you like a cup of green tea? (mời lịch sự)
+hint: Modal lịch sự dùng khi mời.
+answer: Would
+```
+
+```example
+id: l06-p3-4
+prompt: Every winter, my grandmother ___ knit scarves for us. (thói quen trong quá khứ)
+hint: Modal diễn tả thói quen lặp lại trong quá khứ (đồng nghĩa "used to").
+answer: would
+```
+
 ---
 
 ## 4. SHALL / SHOULD
@@ -140,6 +217,34 @@ lang: vi-en
 - She **should have** checked her work before submitting.
 - They **shouldn't have** left without saying goodbye.
 
+```example
+id: l06-p4-1
+prompt: ___ we take a taxi instead of walking? (gợi ý với "we")
+hint: Modal trang trọng dùng để gợi ý với I/We.
+answer: Shall
+```
+
+```example
+id: l06-p4-2
+prompt: You look pale — you ___ take a day off. (lời khuyên)
+hint: Modal khuyên nhủ thông dụng nhất.
+answer: should
+```
+
+```example
+id: l06-p4-3
+prompt: The train leaves at eight, so it ___ get here around ten. (kỳ vọng hợp lý)
+hint: Modal diễn tả kỳ vọng, dự kiến hợp lý.
+answer: should
+```
+
+```example
+id: l06-p4-4
+prompt: You ___ (should / book) the tickets a month ago; now they are sold out. (phê bình quá khứ)
+hint: Phê bình việc đáng lẽ phải làm trong quá khứ: should + have + V3.
+answer: should have booked
+```
+
 ---
 
 ## 5. MUST / HAVE TO
@@ -154,6 +259,20 @@ lang: vi-en
 - I **have to** finish this report by 5pm. *(sếp yêu cầu)*
 - Do you **have to** work on Saturdays?
 
+```example
+id: l06-p5-1
+prompt: I ___ call my mother tonight; I really miss her. (bắt buộc từ nội tâm)
+hint: Modal chỉ sự bắt buộc xuất phát từ chính người nói.
+answer: must
+```
+
+```example
+id: l06-p5-2
+prompt: Visitors ___ (have to) show their ID at the gate. (quy định của toà nhà)
+hint: Bắt buộc do quy định bên ngoài → dùng "have to".
+answer: have to
+```
+
 ### 5.3 PHÂN BIỆT QUAN TRỌNG: Must not vs Don't have to
 
 | Must not (mustn't) | Don't have to |
@@ -167,6 +286,20 @@ lang: vi-en
 > - ❌ "You must not come if you don't want to." (SAI — nghe như CẤM đến)
 > - ✓ "You **don't have to** come if you don't want to." (ĐÚNG — không bắt buộc)
 
+```example
+id: l06-p5-3
+prompt: You ___ (must / not) touch the wires — they are dangerous. (cấm tuyệt đối)
+hint: Cấm tuyệt đối → "mustn't".
+answer: mustn't touch / must not touch
+```
+
+```example
+id: l06-p5-4
+prompt: It's Sunday, so we ___ (not / have to) get up early. (không bắt buộc)
+hint: Không bắt buộc, tuỳ ý → "don't have to".
+answer: don't have to / do not have to
+```
+
 ### 5.4 Must — Suy luận chắc chắn (logical deduction)
 - She's been working all night — she **must** be exhausted.
 - He knows everything about football — he **must** love the sport.
@@ -176,6 +309,20 @@ lang: vi-en
 - She **can't** be 40 — she looks so young!
 - He **can't** have eaten all that food by himself.
 - That **can't** be right — the figures don't add up.
+
+```example
+id: l06-p5-5
+prompt: The lights are on, so my flatmate ___ be at home. (suy luận gần như chắc chắn đúng)
+hint: Suy luận khẳng định chắc chắn → modal chỉ sự bắt buộc dùng làm suy đoán.
+answer: must
+```
+
+```example
+id: l06-p5-6
+prompt: That ___ (can / not) be Lan on the phone — she is on a plane right now. (suy luận phủ định)
+hint: Suy luận phủ định gần như chắc chắn → "can't".
+answer: can't be / cannot be
+```
 
 ---
 
@@ -193,6 +340,27 @@ lang: vi-en
 
 > **Chú ý:** "had better" luôn rút gọn thành "'d better" trong văn nói:
 > - You'**d** better hurry up.
+
+```example
+id: l06-p6-1
+prompt: Drivers ___ (ought) respect the speed limit near schools. (lời khuyên trang trọng)
+hint: Lời khuyên trang trọng gồm hai từ, có "to".
+answer: ought to
+```
+
+```example
+id: l06-p6-2
+prompt: You ___ (had better) take an umbrella; the sky looks dark. (khuyên kèm cảnh báo)
+hint: Lời khuyên kèm cảnh báo hậu quả xấu.
+answer: had better / 'd better
+```
+
+```example
+id: l06-p6-3
+prompt: We ___ (had better / not) park here — there is a fine of 500,000 dong. (khuyên phủ định)
+hint: Dạng phủ định đặt "not" ngay sau cụm khuyên có cảnh báo.
+answer: had better not / 'd better not
+```
 
 ---
 
@@ -213,6 +381,27 @@ lang: vi-en
 > - **Be used to + V-ing** (quen với): I am used to waking up early. *(quen rồi)*
 > - **Get used to + V-ing** (đang dần quen với): I'm getting used to living alone.
 
+```example
+id: l06-p7-1
+prompt: My father ___ (used to) drive a truck before he retired. (thói quen quá khứ)
+hint: Thói quen quá khứ nay không còn: used to + V nguyên thể.
+answer: used to drive
+```
+
+```example
+id: l06-p7-2
+prompt: I ___ (not / use to) enjoy spicy food, but now I love it. (phủ định)
+hint: Phủ định của "used to" mượn trợ động từ "did".
+answer: didn't use to / did not use to
+```
+
+```example
+id: l06-p7-3
+prompt: My sister is now used to ___ (get) up at five o'clock. (đã quen với)
+hint: "be used to" đi với V-ing, khác hẳn "used to + V".
+answer: getting
+```
+
 ---
 
 ## 8. MODAL PERFECTS (ĐỘNG TỪ TÌNH THÁI + HAVE + V3)
@@ -230,6 +419,27 @@ Dùng để nói về **tình huống trong quá khứ** mà chúng ta suy đoá
 | needn't have done | không cần làm (nhưng đã làm) | You **needn't have worried** — everything was fine. |
 | would have done | điều kiện loại 3 (câu điều kiện) | I **would have come** if I had known. |
 
+```example
+id: l06-p8-1
+prompt: The floor is wet — it ___ (must / rain) during the night.
+hint: Suy đoán chắc chắn về quá khứ: must + have + V3.
+answer: must have rained
+```
+
+```example
+id: l06-p8-2
+prompt: She ___ (might / miss) the announcement; she was in the garden.
+hint: Suy đoán khả năng thấp về quá khứ: might + have + V3.
+answer: might have missed
+```
+
+```example
+id: l06-p8-3
+prompt: You ___ (should / not / shout) at the waiter. It was very rude.
+hint: Trách móc việc đã làm: shouldn't + have + V3.
+answer: shouldn't have shouted / should not have shouted
+```
+
 ---
 
 ## 9. MODAL + PASSIVE (ĐỘNG TỪ TÌNH THÁI + BỊ ĐỘNG)
@@ -244,6 +454,20 @@ Modal + be + past participle
 - Mistakes **might be made** when working under pressure.
 - The building **will be renovated** next year.
 - This problem **could be solved** with more resources.
+
+```example
+id: l06-p9-1
+prompt: Helmets ___ (must / wear) by every rider on this road. (bị động)
+hint: Modal + be + V3 cho câu bị động.
+answer: must be worn
+```
+
+```example
+id: l06-p9-2
+prompt: The results ___ (should / announce) tomorrow afternoon. (bị động)
+hint: Modal + be + V3; đừng quên "be".
+answer: should be announced
+```
 
 ---
 
@@ -268,6 +492,29 @@ Modal + be + past participle
 | had better | lời khuyên có cảnh báo | You'd better hurry. |
 | used to | thói quen quá khứ (không còn nữa) | I used to play football. |
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l06-p10-1
+prompt: ___ I open the window? It's rather hot in here. (xin phép trang trọng)
+hint: Modal xin phép trang trọng.
+answer: May
+```
+
+```example
+id: l06-p10-2
+prompt: Nurses ___ (have to) work night shifts sometimes. (quy định công việc)
+hint: Bắt buộc do bên ngoài → "have to".
+answer: have to
+```
+
+```example
+id: l06-p10-3
+prompt: He ___ be very tired; he has been coding for twelve hours. (suy luận chắc chắn)
+hint: Suy luận khẳng định chắc chắn.
+answer: must
+```
+
 ---
 
 ## LỖI THƯỜNG GẶP
@@ -282,6 +529,27 @@ Modal + be + past participle
 | May I to borrow your pen? | May I borrow your pen? | Sau "may" không dùng "to" |
 | She should to rest more. | She should rest more. | Sau "should" không dùng "to" |
 | He might to come later. | He might come later. | Sau "might" không dùng "to" |
+
+```example
+id: l06-err-1
+prompt: (Sửa lỗi) SAI: My brother can to play the guitar. → My brother ___ the guitar.
+hint: Sau modal dùng động từ nguyên thể không "to".
+answer: can play
+```
+
+```example
+id: l06-err-2
+prompt: (Sửa lỗi) SAI: She musts finish the form today. → She ___ the form today.
+hint: Modal không thêm -s ở ngôi thứ ba số ít.
+answer: must finish
+```
+
+```example
+id: l06-err-3
+prompt: (Sửa lỗi) SAI: You don't must park in front of the gate. → You ___ in front of the gate.
+hint: Cấm tuyệt đối dùng "mustn't", không dùng "don't must".
+answer: mustn't park / must not park
+```
 
 ---
 
