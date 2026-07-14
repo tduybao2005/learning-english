@@ -39,6 +39,20 @@ S + had + V3/V-ed (past participle)
 
 Dạng viết tắt: I'd / you'd / he'd / she'd / we'd / they'd + V3
 
+```example
+id: l02-p1-1
+prompt: The guests ___ (leave) the hotel before the manager returned.
+hint: Hành động xảy ra trước → had + V3 (leave → left → left).
+answer: had left
+```
+
+```example
+id: l02-p1-2
+prompt: By seven o'clock my mother ___ (cook) all the dishes for the party.
+hint: Hoàn tất trước một mốc quá khứ → had + V3.
+answer: had cooked
+```
+
 ### 1.2 Câu Phủ Định (Negative)
 
 ```
@@ -50,6 +64,13 @@ Viết tắt: **hadn't**
 **Ví dụ:**
 - I **hadn't eaten** anything all day, so I was very hungry. *(Tôi chưa ăn gì cả ngày nên tôi rất đói.)*
 - She **hadn't heard** the news when she arrived. *(Cô ấy chưa nghe tin khi đến nơi.)*
+
+```example
+id: l02-p1-3
+prompt: We ___ (not / book) a table, so the restaurant turned us away.
+hint: Phủ định của quá khứ hoàn thành: had + not + V3.
+answer: hadn't booked / had not booked
+```
 
 ### 1.3 Câu Hỏi (Interrogative)
 
@@ -63,6 +84,20 @@ Had + S + V3?
 **Ví dụ:**
 - **Had** she **met** him before the wedding? — Yes, she **had**. *(Cô ấy đã gặp anh ấy trước đám cưới chưa? — Rồi.)*
 - **Had** they **finished** the project? — No, they **hadn't**. *(Họ đã hoàn thành dự án chưa? — Chưa.)*
+
+```example
+id: l02-p1-4
+prompt: ___ the children washed their hands before they sat down? (trợ động từ)
+hint: Câu hỏi quá khứ hoàn thành đảo trợ động từ lên đầu câu.
+answer: Had
+```
+
+```example
+id: l02-p1-5
+prompt: Had the neighbours ___ (sell) their house before the new road was built?
+hint: Sau "had" luôn dùng V3 (sell → sold → sold).
+answer: sold
+```
 
 ---
 
@@ -87,6 +122,20 @@ Ví dụ:
 - Hành động xảy ra **TRƯỚC** → dùng **Past Perfect** (had + V3)
 - Hành động xảy ra **SAU** → dùng **Past Simple** (V-ed/V2)
 
+```example
+id: l02-p2-1
+prompt: The rain ___ (stop) before we reached the campsite.
+hint: Hành động xảy ra TRƯỚC trên trục thời gian → dùng quá khứ hoàn thành.
+answer: had stopped
+```
+
+```example
+id: l02-p2-2
+prompt: After the film had ended, everyone ___ (walk) out of the cinema.
+hint: Hành động xảy ra SAU → dùng quá khứ đơn.
+answer: walked
+```
+
 ---
 
 ## 3. CÁC CÁCH DÙNG (USES)
@@ -104,6 +153,13 @@ Ví dụ:
 **Ví dụ 3:** By the time he **got** home, his wife **had already cooked** dinner.
 *(Khi anh ấy về đến nhà, vợ anh ấy đã nấu bữa tối xong rồi.)*
 
+```example
+id: l02-p3-1
+prompt: When the firefighters got there, the flames ___ (destroy) half of the roof.
+hint: Việc xảy ra trước lúc lính cứu hoả tới → had + V3.
+answer: had destroyed
+```
+
 ### 3.2 Nguyên Nhân Của Một Tình Huống Trong Quá Khứ
 
 **Ví dụ 1:** She **was** tired because she **hadn't slept** well the night before.
@@ -114,6 +170,13 @@ Ví dụ:
 
 **Ví dụ 3:** I **didn't recognize** her because she **had changed** so much.
 *(Tôi không nhận ra cô ấy vì cô ấy đã thay đổi rất nhiều.)*
+
+```example
+id: l02-p3-2
+prompt: My little sister was crying because she ___ (lose) her favourite doll.
+hint: Giải thích nguyên nhân đã xảy ra trước → had + V3.
+answer: had lost
+```
 
 ### 3.3 Với "By the time" và "By + thời điểm"
 
@@ -127,6 +190,13 @@ Ví dụ:
 
 **Ví dụ 3:** **By the time** he **graduated**, he **had already worked** part-time for three years.
 *(Vào thời điểm anh ấy tốt nghiệp, anh ấy đã làm bán thời gian được ba năm rồi.)*
+
+```example
+id: l02-p3-3
+prompt: By the time the doctor came in, the patient ___ (fall) asleep.
+hint: "By the time" + quá khứ đơn → mệnh đề còn lại dùng quá khứ hoàn thành.
+answer: had fallen
+```
 
 ---
 
@@ -156,6 +226,27 @@ S + had + [already / just / never / ever] + V3
 - He **had just arrived** when it started to rain.
 - I **had never seen** such a beautiful sunset before.
 - **Had** you **ever tried** Vietnamese food before your trip?
+
+```example
+id: l02-p4-1
+prompt: The postman had ___ delivered the parcel when I woke up. (already / yet)
+hint: Trạng từ chỉ "đã rồi" đứng giữa had và V3.
+answer: already
+```
+
+```example
+id: l02-p4-2
+prompt: They hadn't paid the electricity bill ___. (already / yet)
+hint: Trong câu phủ định, trạng từ chỉ "chưa" đứng ở cuối câu.
+answer: yet
+```
+
+```example
+id: l02-p4-3
+prompt: I had ___ ridden a horse before that holiday in Da Lat. (ever / never)
+hint: Trạng từ mang nghĩa "chưa bao giờ" trong câu khẳng định về trải nghiệm.
+answer: never
+```
 
 ---
 
@@ -191,6 +282,20 @@ S + had + [already / just / never / ever] + V3
 | When she came, I ate. | When she came, I had eaten. | QKĐ = cùng thời điểm / QKHT = đã xong trước |
 | She told me the news. | She told me she had heard the news. | QKHT trong reported speech |
 
+```example
+id: l02-p5-1
+prompt: When the bell rang, the pupils ___ (already / pack) their books.
+hint: Việc xảy ra TRƯỚC tiếng chuông → quá khứ hoàn thành, trạng từ đứng giữa had và V3.
+answer: had already packed
+```
+
+```example
+id: l02-p5-2
+prompt: He opened the letter and ___ (sign) it immediately.
+hint: Chuỗi sự kiện theo đúng thứ tự tự nhiên → dùng quá khứ đơn, không cần QKHT.
+answer: signed
+```
+
 ---
 
 ## 6. PAST PERFECT TRONG CÂU ĐIỀU KIỆN LOẠI 3 (PREVIEW)
@@ -213,6 +318,20 @@ If + S + had + V3, S + would have + V3
 **Ví dụ 3:** What **would** you **have done** if you **had known** the truth?
 *(Bạn đã làm gì nếu bạn biết sự thật?)*
 
+```example
+id: l02-p6-1
+prompt: If we ___ (leave) earlier, we would have caught the last ferry.
+hint: Mệnh đề "if" của câu điều kiện loại 3 dùng had + V3.
+answer: had left
+```
+
+```example
+id: l02-p6-2
+prompt: If he had asked politely, I ___ (help) him with the luggage. (would have + V3)
+hint: Mệnh đề chính của câu điều kiện loại 3: would have + V3.
+answer: would have helped
+```
+
 ---
 
 ## 7. PAST PERFECT TRONG VĂN NÓI GIÁN TIẾP (REPORTED SPEECH — PREVIEW)
@@ -224,6 +343,20 @@ Khi chuyển từ câu trực tiếp sang gián tiếp (reported speech), các t
 **Ví dụ:**
 - Direct: "I **finished** the report." *(Tôi đã hoàn thành báo cáo.)*
 - Reported: He said he **had finished** the report. *(Anh ấy nói rằng anh ấy đã hoàn thành báo cáo.)*
+
+```example
+id: l02-p7-1
+prompt: Direct: "I lost my passport." → Reported: She said she ___ her passport.
+hint: Past Simple lùi thì thành quá khứ hoàn thành.
+answer: had lost
+```
+
+```example
+id: l02-p7-2
+prompt: Direct: "We booked the tickets." → Reported: They said they ___ the tickets.
+hint: Tường thuật lời nói ở quá khứ → had + V3.
+answer: had booked
+```
 
 ---
 
@@ -252,6 +385,43 @@ Khi chuyển từ câu trực tiếp sang gián tiếp (reported speech), các t
 ### Lỗi 5: Viết tắt sai
 - **SAI:** She've done it. *(she have → không thể viết tắt kiểu này)*
 - **ĐÚNG:** She'**d** done it. (she **had** → she'd)
+
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l02-p8-1
+prompt: (Sửa Lỗi 1) SAI: I had entered the kitchen. Then I had switched on the light. → I entered the kitchen and ___ on the light.
+hint: Chuỗi sự kiện rõ thứ tự → dùng quá khứ đơn, không cần QKHT.
+answer: switched
+```
+
+```example
+id: l02-p8-2
+prompt: (Sửa Lỗi 2) SAI: When we reached the gate, the match started. → When we reached the gate, the match ___ started.
+hint: Trận đấu bắt đầu TRƯỚC → cần trợ động từ của quá khứ hoàn thành.
+answer: had already / had
+```
+
+```example
+id: l02-p8-3
+prompt: (Sửa Lỗi 3) SAI: They have finished the wall before the rain came. → They ___ finished the wall before the rain came.
+hint: Nói về quá khứ → dùng "had", không dùng "have".
+answer: had
+```
+
+```example
+id: l02-p8-4
+prompt: (Sửa Lỗi 4) SAI: She had wrote three letters that morning. → She had ___ three letters that morning.
+hint: Sau "had" dùng V3, không dùng V2 (write → wrote → written).
+answer: written
+```
+
+```example
+id: l02-p8-5
+prompt: (Sửa Lỗi 5) SAI: He've gone home before the storm. → He ___ gone home before the storm. (dạng đầy đủ)
+hint: Chủ ngữ nào cũng dùng cùng một trợ động từ ở quá khứ hoàn thành.
+answer: had
+```
 
 ---
 
@@ -302,6 +472,29 @@ Khi chuyển từ câu trực tiếp sang gián tiếp (reported speech), các t
 15. **Had** they **ever considered** living abroad before they **decided** to move to Australia?
     *(Họ đã từng nghĩ đến việc sống ở nước ngoài trước khi quyết định chuyển đến Úc không?)*
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l02-p9-1
+prompt: The shop was empty because all the customers ___ (go) home.
+hint: Nguyên nhân xảy ra trước → had + V3 (go → went → gone).
+answer: had gone
+```
+
+```example
+id: l02-p9-2
+prompt: By the time the teacher checked, most pupils ___ (finish) the exercise.
+hint: "By the time" + quá khứ đơn → mệnh đề kia dùng quá khứ hoàn thành.
+answer: had finished
+```
+
+```example
+id: l02-p9-3
+prompt: She ___ (not / drive) a car before she moved to the countryside.
+hint: Chưa từng làm trước một mốc quá khứ → phủ định của QKHT.
+answer: hadn't driven / had not driven
+```
+
 ---
 
 ## 10. BẢNG TÓM TẮT
@@ -334,6 +527,27 @@ Khi chuyển từ câu trực tiếp sang gián tiếp (reported speech), các t
 | After I had eaten, I go to bed. | After I had eaten, I went to bed. | Mệnh đề chính phải dùng Past Simple, không dùng Present |
 | They have arrived before us. | They had arrived before us. | Đang nói về quá khứ → dùng Past Perfect, không phải Present Perfect |
 | I had study English for five years. | I had studied English for five years. | Cần dạng V3: studied |
+
+```example
+id: l02-err-1
+prompt: (Sửa lỗi) SAI: The bus had went without us. → The bus had ___ without us.
+hint: Sau "had" dùng V3 của "go".
+answer: gone
+```
+
+```example
+id: l02-err-2
+prompt: (Sửa lỗi) SAI: He didn't had locked the door. → He ___ locked the door.
+hint: Phủ định của quá khứ hoàn thành dùng "hadn't", không dùng "didn't".
+answer: hadn't / had not
+```
+
+```example
+id: l02-err-3
+prompt: (Sửa lỗi) SAI: After we had eaten, we go for a walk. → After we had eaten, we ___ for a walk.
+hint: Mệnh đề chính phải ở quá khứ đơn.
+answer: went
+```
 
 ---
 
