@@ -36,6 +36,20 @@ S + was/were + V-ing
 - I **was reading** a book at 8 PM last night. *(Tôi đang đọc sách lúc 8 giờ tối qua.)*
 - They **were playing** football when it started to rain. *(Họ đang chơi bóng khi trời bắt đầu mưa.)*
 
+```example
+id: l01-p1-1
+prompt: At 7 PM yesterday, my father ___ (repair) his motorbike in the yard.
+hint: Chủ ngữ số ít → dùng "was" + V-ing.
+answer: was repairing
+```
+
+```example
+id: l01-p1-2
+prompt: The tourists ___ (take) photos of the old temple all morning.
+hint: Chủ ngữ số nhiều → dùng "were" + V-ing.
+answer: were taking
+```
+
 ### 1.2 Câu Phủ Định (Negative)
 
 ```
@@ -47,6 +61,13 @@ Viết tắt: **wasn't / weren't**
 **Ví dụ:**
 - She **wasn't watching** TV; she was studying. *(Cô ấy không xem TV; cô ấy đang học bài.)*
 - We **weren't sleeping** when you called. *(Chúng tôi không ngủ khi bạn gọi.)*
+
+```example
+id: l01-p1-3
+prompt: My parents ___ (not / listen) to the radio when the storm began.
+hint: Chủ ngữ số nhiều phủ định → "weren't" + V-ing.
+answer: weren't listening / were not listening
+```
 
 ### 1.3 Câu Hỏi (Interrogative)
 
@@ -62,6 +83,20 @@ Was/Were + S + V-ing?
 - **Was** she **crying** when you saw her? — Yes, she **was**. *(Cô ấy có đang khóc khi bạn nhìn thấy cô ấy không? — Có.)*
 - **Were** they **waiting** for us? — No, they **weren't**. *(Họ có đang chờ chúng ta không? — Không.)*
 
+```example
+id: l01-p1-4
+prompt: ___ your sister packing her suitcase when you left? (Was / Were)
+hint: "your sister" là ngôi thứ ba số ít → chọn trợ động từ số ít.
+answer: Was
+```
+
+```example
+id: l01-p1-5
+prompt: ___ the workers building the new bridge last summer? (Was / Were)
+hint: Chủ ngữ số nhiều → chọn trợ động từ số nhiều.
+answer: Were
+```
+
 ---
 
 ## 2. QUY TẮC VIẾT V-ING (SPELLING RULES)
@@ -73,6 +108,41 @@ Was/Were + S + V-ing?
 | Phụ âm đơn + nguyên âm đơn + phụ âm → nhân đôi phụ âm cuối | run, sit, swim | running, sitting, swimming |
 | Kết thúc -ie → đổi thành -y + ing | lie, die, tie | lying, dying, tying |
 | Kết thúc -l (UK) → nhân đôi l | travel, cancel | travelling, cancelling |
+
+```example
+id: l01-p2-1
+prompt: My grandfather was ___ (listen) to the news at that moment.
+hint: Động từ thường → chỉ thêm -ing, không đổi gì khác.
+answer: listening
+```
+
+```example
+id: l01-p2-2
+prompt: The chef was ___ (bake) a chocolate cake when we arrived.
+hint: Động từ tận cùng bằng -e câm → bỏ -e rồi thêm -ing.
+answer: baking
+```
+
+```example
+id: l01-p2-3
+prompt: The puppy was ___ (dig) a hole under the fence.
+hint: Phụ âm đơn + nguyên âm đơn + phụ âm → nhân đôi phụ âm cuối.
+answer: digging
+```
+
+```example
+id: l01-p2-4
+prompt: The old man was ___ (lie) on the grass under a tree.
+hint: Động từ tận cùng bằng -ie → đổi -ie thành -y rồi thêm -ing.
+answer: lying
+```
+
+```example
+id: l01-p2-5
+prompt: The airline was ___ (cancel) flights because of the typhoon. (chính tả Anh-Anh)
+hint: Theo chính tả Anh-Anh, động từ tận cùng bằng -l thì nhân đôi chữ l.
+answer: cancelling
+```
 
 ---
 
@@ -98,6 +168,13 @@ Diễn tả một hành động **đang tiếp diễn** tại một thời đi�
 **Ví dụ 4:** What **were** you **doing** at 3 o'clock this afternoon?
 *(Bạn đang làm gì lúc 3 giờ chiều nay?)*
 
+```example
+id: l01-p3-1
+prompt: At 6 o'clock yesterday evening, we ___ (have) dinner at a seafood restaurant.
+hint: Hành động đang diễn ra tại một thời điểm cụ thể trong quá khứ → was/were + V-ing.
+answer: were having
+```
+
 ### 3.2 Cách Dùng 2: Hai Hành Động Song Song Trong Quá Khứ
 
 Khi hai hành động **đều đang xảy ra cùng lúc** trong quá khứ, cả hai đều dùng Past Continuous. Thường dùng **while** hoặc **as** để nối.
@@ -113,6 +190,13 @@ Khi hai hành động **đều đang xảy ra cùng lúc** trong quá khứ, c�
 **Ví dụ 3:** **As** I **was walking** to school, my friend **was riding** her bicycle beside me.
 *(Khi tôi đang đi bộ đến trường, bạn tôi đang đạp xe bên cạnh tôi.)*
 
+```example
+id: l01-p3-2
+prompt: My uncle was washing the car while my aunt ___ (water) the flowers.
+hint: Hai hành động song song nối bằng "while" → cả hai đều dùng quá khứ tiếp diễn.
+answer: was watering
+```
+
 ### 3.3 Cách Dùng 3: Bối Cảnh Câu Chuyện (Setting the Scene)
 
 Trong văn xuôi/kể chuyện, Past Continuous thường mở đầu để **miêu tả bối cảnh**, sau đó Past Simple kể sự kiện chính xảy ra.
@@ -124,6 +208,13 @@ Trong văn xuôi/kể chuyện, Past Continuous thường mở đầu để **mi
 **Ví dụ 2:**
 > It **was getting** dark. The streets **were becoming** quiet. A man **was walking** quickly down the alley when he suddenly **stopped**.
 *(Trời đang tối dần. Đường phố đang trở nên yên tĩnh. Một người đàn ông đang đi nhanh xuống con hẻm thì anh ta đột nhiên dừng lại.)*
+
+```example
+id: l01-p3-3
+prompt: Snow ___ (fall) softly on the empty square as the clock struck twelve.
+hint: Miêu tả bối cảnh câu chuyện → dùng quá khứ tiếp diễn.
+answer: was falling
+```
 
 ---
 
@@ -173,6 +264,27 @@ Quá khứ ←————————————————————→ Hi
 | **while** | Past Continuous (QKTD) | đang diễn ra song song |
 | **as** | Past Continuous (QKTD) | đang diễn ra song song/đồng thời |
 
+```example
+id: l01-p4-1
+prompt: While the guests ___ (chat) in the living room, the cake burned in the oven.
+hint: Sau "while" là hành động dài đang diễn ra → quá khứ tiếp diễn.
+answer: were chatting
+```
+
+```example
+id: l01-p4-2
+prompt: We were crossing the street when a taxi suddenly ___ (stop) in front of us.
+hint: Hành động ngắn xen vào (with "when") → dùng quá khứ đơn.
+answer: stopped
+```
+
+```example
+id: l01-p4-3
+prompt: As the train ___ (leave) the station, I realised I had left my bag behind.
+hint: Sau "as" là hành động dài đang diễn ra → quá khứ tiếp diễn.
+answer: was leaving
+```
+
 ---
 
 ## 5. ĐỘNG TỪ TRẠNG THÁI (STATIVE VERBS) — KHÔNG DÙNG TIẾP DIỄN
@@ -202,6 +314,27 @@ Nhắc lại từ Phase 1: Các động từ **trạng thái** (diễn tả cả
 > - **think** (believe) → stative: "I thought he was right." (Tôi nghĩ anh ấy đúng.)
 > - **think** (consider) → action: "I was thinking about you." (Tôi đang nghĩ về bạn.)
 
+```example
+id: l01-p5-1
+prompt: She ___ (believe) every word of his story at that moment.
+hint: "believe" là stative verb → không dùng dạng tiếp diễn, chuyển sang quá khứ đơn.
+answer: believed
+```
+
+```example
+id: l01-p5-2
+prompt: The soup ___ (taste) strange, so nobody finished it.
+hint: Động từ tri giác chỉ trạng thái → dùng quá khứ đơn, không dùng -ing.
+answer: tasted
+```
+
+```example
+id: l01-p5-3
+prompt: My cousins ___ (have) lunch when I rang the doorbell.
+hint: "have" chỉ hành động (ăn) → được dùng ở quá khứ tiếp diễn.
+answer: were having
+```
+
 ---
 
 ## 6. PHÂN BIỆT QUÁ KHỨ TIẾP DIỄN vs QUÁ KHỨ ĐƠN
@@ -223,6 +356,27 @@ Nhắc lại từ Phase 1: Các động từ **trạng thái** (diễn tả cả
 
 3. The children **played** in the park. *(Những đứa trẻ đã chơi trong công viên.)* — sự kiện đã kết thúc.
    The children **were playing** in the park. *(Những đứa trẻ đang chơi trong công viên.)* — bối cảnh, đang diễn ra.
+
+```example
+id: l01-p6-1
+prompt: Last Sunday my family ___ (clean) the whole house and then rested.
+hint: Hành động đã hoàn tất, có "last Sunday" → dùng quá khứ đơn.
+answer: cleaned
+```
+
+```example
+id: l01-p6-2
+prompt: At that moment the audience ___ (clap) enthusiastically.
+hint: "At that moment" nhấn mạnh quá trình đang diễn ra → quá khứ tiếp diễn.
+answer: was clapping
+```
+
+```example
+id: l01-p6-3
+prompt: I ___ (wait) for the results all day long yesterday.
+hint: "all day long" nhấn mạnh quá trình kéo dài → quá khứ tiếp diễn.
+answer: was waiting
+```
 
 ---
 
@@ -249,6 +403,43 @@ Nhắc lại từ Phase 1: Các động từ **trạng thái** (diễn tả cả
 ### Lỗi 5: Sai quy tắc nhân đôi phụ âm
 - **SAI:** He was runing in the park.
 - **ĐÚNG:** He was **running** in the park.
+
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l01-p7-1
+prompt: (Sửa Lỗi 1) SAI: When the guests arrived, my mother decorated the table. → When the guests arrived, my mother ___ the table.
+hint: Hành động đang diễn ra khi khách đến → quá khứ tiếp diễn.
+answer: was decorating
+```
+
+```example
+id: l01-p7-2
+prompt: (Sửa Lỗi 2) SAI: While she was typing, the lights were going out. → While she was typing, the lights ___ out.
+hint: Sự kiện ngắn xen vào → dùng quá khứ đơn.
+answer: went
+```
+
+```example
+id: l01-p7-3
+prompt: (Sửa Lỗi 3) SAI: We were understanding the instructions perfectly. → We ___ the instructions perfectly.
+hint: "understand" là stative verb → dùng quá khứ đơn.
+answer: understood
+```
+
+```example
+id: l01-p7-4
+prompt: (Sửa Lỗi 4) SAI: My friends was waiting outside the cinema. → My friends ___ waiting outside the cinema.
+hint: Chủ ngữ số nhiều phải đi với trợ động từ số nhiều.
+answer: were
+```
+
+```example
+id: l01-p7-5
+prompt: (Sửa Lỗi 5) SAI: The kettle was boiling and the water was geting hot. → The kettle was boiling and the water was ___ hot.
+hint: Phụ âm đơn + nguyên âm đơn + phụ âm → nhân đôi phụ âm cuối trước -ing.
+answer: getting
+```
 
 ---
 
@@ -300,6 +491,29 @@ Nhắc lại từ Phase 1: Các động từ **trạng thái** (diễn tả cả
 15. I **dropped** my phone **while** I **was running** to catch the bus.
     *(Tôi đánh rơi điện thoại trong khi đang chạy để bắt xe buýt.)*
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l01-p8-1
+prompt: The neighbours ___ (argue) loudly when the police knocked on their door.
+hint: Hành động dài đang diễn ra thì bị "when + quá khứ đơn" xen vào.
+answer: were arguing
+```
+
+```example
+id: l01-p8-2
+prompt: While the band ___ (perform), the rain started to pour down.
+hint: Sau "while" → quá khứ tiếp diễn, chủ ngữ số ít.
+answer: was performing
+```
+
+```example
+id: l01-p8-3
+prompt: I ___ (not / feel) well yesterday, so I stayed in bed. (dùng thì phù hợp)
+hint: "feel" ở đây chỉ trạng thái sức khoẻ → quá khứ đơn phủ định.
+answer: didn't feel / did not feel
+```
+
 ---
 
 ## 9. BẢNG TÓM TẮT CUỐI BÀI
@@ -334,6 +548,27 @@ Nhắc lại từ Phase 1: Các động từ **trạng thái** (diễn tả cả
 | While I read, he called me. | While I was reading, he called me. | "While" đi với Past Continuous, không đi với Past Simple |
 | I was liking the movie. | I liked the movie. | "Like" là stative verb, không dùng dạng -ing |
 | She stoped running when she saw him. | She stopped running when she saw him. | Động từ tận cùng CVC → double consonant: stop → stopped (bối cảnh Past Simple) |
+
+```example
+id: l01-err-1
+prompt: (Sửa lỗi) SAI: The gardener was cut the grass at noon. → The gardener was ___ the grass at noon.
+hint: Sau was/were phải là động từ dạng V-ing.
+answer: cutting
+```
+
+```example
+id: l01-err-2
+prompt: (Sửa lỗi) SAI: Did they were shopping downtown? → ___ they shopping downtown?
+hint: Câu hỏi quá khứ tiếp diễn đảo was/were lên trước, không dùng "did".
+answer: Were
+```
+
+```example
+id: l01-err-3
+prompt: (Sửa lỗi) SAI: He didn't was studying at midnight. → He ___ studying at midnight.
+hint: Phủ định của quá khứ tiếp diễn dùng was/were + not.
+answer: wasn't / was not
+```
 
 ---
 
