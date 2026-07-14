@@ -46,6 +46,20 @@ Plural subject (chủ ngữ số nhiều) + Plural verb (động từ số nhi�
 - She **works** hard every day. *(Cô ấy làm việc chăm chỉ mỗi ngày.)*
 - They **work** hard every day. *(Họ làm việc chăm chỉ mỗi ngày.)*
 
+```example
+id: l04-p1-1
+prompt: My neighbour ___ (grow) orchids on his balcony.
+hint: Chủ ngữ số ít → động từ số ít (thêm -s).
+answer: grows
+```
+
+```example
+id: l04-p1-2
+prompt: Those lamps ___ (belong) to my landlord.
+hint: Chủ ngữ số nhiều → động từ số nhiều (giữ nguyên thể).
+answer: belong
+```
+
 ---
 
 ## 2. TRƯỜNG HỢP KHÓ 1: NEITHER...NOR / EITHER...OR / NOT ONLY...BUT ALSO
@@ -67,6 +81,20 @@ Neither [S1] nor [S2] + verb → verb chia theo S2
 - Neither the students nor the **teacher** **was** at the meeting. *(teacher = số ít → was)*
 - Neither the **teacher** nor the students **were** informed. *(students = số nhiều → were)*
 
+```example
+id: l04-p2-1
+prompt: Either my parents or my uncle ___ (be) going to pick me up.
+hint: Với "either...or", động từ chia theo chủ ngữ gần nhất ("my uncle" — hiện tại).
+answer: is
+```
+
+```example
+id: l04-p2-2
+prompt: Neither the driver nor the passengers ___ (be) hurt in the crash. (quá khứ)
+hint: Chia theo chủ ngữ gần nhất là "the passengers" (số nhiều, quá khứ).
+answer: were
+```
+
 ### 2.2 Not only...but also
 
 **Quy tắc tương tự:** Động từ chia theo chủ ngữ gần nhất (sau "but also").
@@ -76,6 +104,13 @@ Neither [S1] nor [S2] + verb → verb chia theo S2
 - Not only the **teacher** but also the students **are** present. *(students = số nhiều → are)*
 
 > **MẸO:** Luôn nhìn vào chủ ngữ **ngay trước động từ** để chia.
+
+```example
+id: l04-p2-3
+prompt: Not only the coach but also the players ___ (want) to change the tactics.
+hint: "Not only...but also" cũng chia theo chủ ngữ gần nhất (số nhiều).
+answer: want
+```
 
 ---
 
@@ -110,6 +145,27 @@ Danh từ tập hợp chỉ một nhóm người/vật. Cách dùng khác nhau g
 
 > **LỜI KHUYÊN:** Trong bài thi IELTS, dùng **số ít** với collective nouns sẽ an toàn hơn (AE style phổ biến hơn trong học thuật).
 
+```example
+id: l04-p3-1
+prompt: The jury ___ (have) reached a unanimous verdict. (cả nhóm hành động như một khối)
+hint: Danh từ tập hợp hành động như một đơn vị → động từ số ít.
+answer: has
+```
+
+```example
+id: l04-p3-2
+prompt: The police ___ (be) still questioning the witnesses.
+hint: "Police" luôn đi với động từ số nhiều.
+answer: are
+```
+
+```example
+id: l04-p3-3
+prompt: The board of directors ___ (meet) every Tuesday morning. (văn phong học thuật, số ít)
+hint: Trong học thuật, danh từ tập hợp nên dùng động từ số ít.
+answer: meets
+```
+
 ---
 
 ## 4. TRƯỜNG HỢP KHÓ 3: INDEFINITE PRONOUNS (ĐẠI TỪ KHÔNG XÁC ĐỊNH)
@@ -138,6 +194,27 @@ Danh từ tập hợp chỉ một nhóm người/vật. Cách dùng khác nhau g
 
 > **LƯU Ý:** Trong tiếng Anh thông thường hiện đại, người ta đôi khi dùng "they/their" với "someone/everybody" để tránh phân biệt giới tính:
 > - "Someone left **their** umbrella." *(Ai đó để quên ô của họ.)* — phổ biến và được chấp nhận
+
+```example
+id: l04-p4-1
+prompt: Everybody in the two groups ___ (need) a name badge.
+hint: Đại từ bất định "everybody" luôn chia số ít.
+answer: needs
+```
+
+```example
+id: l04-p4-2
+prompt: Each of the rooms ___ (have) its own air conditioner.
+hint: "Each of..." luôn chia số ít.
+answer: has
+```
+
+```example
+id: l04-p4-3
+prompt: Neither of the applicants ___ (be) suitable for the position.
+hint: "Neither of..." chia số ít.
+answer: is
+```
 
 ---
 
@@ -170,6 +247,27 @@ Một số danh từ kết thúc bằng -s nhưng lại là danh từ **số ít
 
 > **Phân biệt:** "Statistics **is** a challenging field." (môn học) vs "The statistics **show** a clear trend." (số liệu thống kê = số nhiều)
 
+```example
+id: l04-p5-1
+prompt: Economics ___ (attract) a lot of ambitious freshmen.
+hint: Tên môn học tận cùng bằng -s vẫn là số ít.
+answer: attracts
+```
+
+```example
+id: l04-p5-2
+prompt: The news about the flood ___ (be) worrying our relatives.
+hint: "News" luôn dùng động từ số ít.
+answer: is
+```
+
+```example
+id: l04-p5-3
+prompt: Gymnastics ___ (build) strength and balance.
+hint: Tên môn thể thao tận cùng -s → động từ số ít.
+answer: builds
+```
+
 ---
 
 ## 6. TRƯỜNG HỢP KHÓ 5: DANH TỪ CHỈ DÙNG SỐ NHIỀU (ALWAYS PLURAL)
@@ -191,6 +289,27 @@ Một số danh từ **luôn dùng động từ số nhiều**, ngay cả khi kh
 - **The police are** searching the area. *(cảnh sát → số nhiều)*
 - **People are** becoming more aware of the environment. *(mọi người → số nhiều)*
 - **The scissors are** in the drawer. *(kéo → số nhiều)*
+
+```example
+id: l04-p6-1
+prompt: My new trousers ___ (fit) me perfectly.
+hint: Danh từ chỉ vật có hai phần (trousers) luôn dùng động từ số nhiều.
+answer: fit
+```
+
+```example
+id: l04-p6-2
+prompt: These clothes ___ (smell) of smoke.
+hint: "Clothes" luôn là số nhiều.
+answer: smell
+```
+
+```example
+id: l04-p6-3
+prompt: Many people ___ (prefer) tea to coffee in the morning.
+hint: "People" luôn đi với động từ số nhiều.
+answer: prefer
+```
 
 ---
 
@@ -220,6 +339,27 @@ Các cụm từ chen giữa chủ ngữ và động từ **KHÔNG ảnh hưởng
 - The teacher **and** his students **are** going. *(and = chủ ngữ số nhiều → are)* ✓
 - The teacher, along with his students, **is** going. *(along with = không đổi chủ ngữ → is)* ✓
 
+```example
+id: l04-p7-1
+prompt: The director, as well as the actors, ___ (be) waiting backstage.
+hint: "As well as" không tạo chủ ngữ ghép → chia theo chủ ngữ chính (số ít).
+answer: is
+```
+
+```example
+id: l04-p7-2
+prompt: The chairman, together with his assistants, ___ (be) late for the ceremony yesterday.
+hint: Chia theo chủ ngữ chính "the chairman" (số ít, quá khứ).
+answer: was
+```
+
+```example
+id: l04-p7-3
+prompt: The captain and the goalkeeper ___ (be) both injured.
+hint: "And" tạo chủ ngữ ghép số nhiều.
+answer: are
+```
+
 ---
 
 ## 8. TRƯỜNG HỢP KHÓ 7: RELATIVE CLAUSE (MỆNH ĐỀ QUAN HỆ)
@@ -238,6 +378,27 @@ Khi danh từ có mệnh đề quan hệ đi kèm, động từ trong mệnh đ�
 - She is one of the teachers who **teach** biology. *(teachers = số nhiều → teach)*
 - She is the only one of the teachers who **teaches** biology. *(only one = số ít → teaches)*
 
+```example
+id: l04-p8-1
+prompt: The workers who ___ (be) on strike gathered outside the factory.
+hint: Động từ trong mệnh đề quan hệ chia theo danh từ nó bổ nghĩa (số nhiều, quá khứ).
+answer: were
+```
+
+```example
+id: l04-p8-2
+prompt: The parcel that ___ (be) on the table belongs to my flatmate.
+hint: "The parcel" số ít → động từ trong mệnh đề quan hệ chia số ít.
+answer: is
+```
+
+```example
+id: l04-p8-3
+prompt: He is one of the engineers who ___ (design) this bridge.
+hint: "one of the engineers who" → động từ chia theo "engineers" (số nhiều).
+answer: design
+```
+
 ---
 
 ## 9. MỘT SỐ TRƯỜNG HỢP ĐẶC BIỆT KHÁC
@@ -255,6 +416,27 @@ Khi danh từ có mệnh đề quan hệ đi kèm, động từ trong mệnh đ�
 
 ### Danh từ đếm được có số ít dùng như tiêu đề:
 - "**Three Musketeers is** a great novel." *(tên sách/phim → số ít)*
+
+```example
+id: l04-p9-1
+prompt: A lot of rubbish ___ (be) left on the beach after the festival.
+hint: "A lot of" + danh từ không đếm được → động từ số ít.
+answer: is / was
+```
+
+```example
+id: l04-p9-2
+prompt: Some of the volunteers ___ (come) from other provinces.
+hint: "Some of" + danh từ đếm được số nhiều → động từ số nhiều.
+answer: come
+```
+
+```example
+id: l04-p9-3
+prompt: Three hundred kilometres ___ (be) a long way to cycle in one day.
+hint: Khoảng cách coi như một tổng thể → động từ số ít.
+answer: is
+```
 
 ---
 
@@ -311,6 +493,29 @@ Khi danh từ có mệnh đề quan hệ đi kèm, động từ trong mệnh đ�
 > - **A number of + noun** → số nhiều (A number of students **are** here.)
 > - **The number of + noun** → số ít (The number of students **is** 30.)
 
+**Tổng hợp — thử ngay:**
+
+```example
+id: l04-p10-1
+prompt: A number of tourists ___ (be) waiting at the ticket office.
+hint: "A number of" → chủ ngữ số nhiều.
+answer: are
+```
+
+```example
+id: l04-p10-2
+prompt: The number of accidents on this road ___ (have) fallen sharply.
+hint: "The number of" → chủ ngữ số ít.
+answer: has
+```
+
+```example
+id: l04-p10-3
+prompt: Nobody in the two offices ___ (know) where the key is.
+hint: Đại từ bất định → luôn chia số ít.
+answer: knows
+```
+
 ---
 
 ## 11. BẢNG TÓM TẮT
@@ -340,6 +545,27 @@ Khi danh từ có mệnh đề quan hệ đi kèm, động từ trong mệnh đ�
 | A number of students is absent today. | A number of students are absent today. | "A number of" → số nhiều; "The number of" → số ít |
 | The news are not good today. | The news is not good today. | "News" trông như số nhiều nhưng luôn dùng số ít |
 | Both he and she is wrong. | Both he and she are wrong. | "Both...and" luôn tạo chủ ngữ số nhiều |
+
+```example
+id: l04-err-1
+prompt: (Sửa lỗi) SAI: Somebody have parked in my space. → Somebody ___ parked in my space.
+hint: Đại từ bất định chia số ít.
+answer: has
+```
+
+```example
+id: l04-err-2
+prompt: (Sửa lỗi) SAI: Physics are taught by Mr Nam. → Physics ___ taught by Mr Nam.
+hint: Tên môn học tận cùng -s vẫn là số ít.
+answer: is
+```
+
+```example
+id: l04-err-3
+prompt: (Sửa lỗi) SAI: Both my sister and my cousin is coming. → Both my sister and my cousin ___ coming.
+hint: "Both...and" tạo chủ ngữ số nhiều.
+answer: are
+```
 
 ---
 
