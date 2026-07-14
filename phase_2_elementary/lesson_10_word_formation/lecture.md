@@ -19,6 +19,20 @@ Biết cách tạo từ giúp bạn:
 - Tránh lỗi dùng sai loại từ (động từ vs danh từ vs tính từ)
 - Đạt điểm cao hơn trong IELTS Writing (Word Formation)
 
+```example
+id: l10-p0-1
+prompt: The manager praised the ___ (create) of the young designers. (điền danh từ)
+hint: Sau mạo từ "the" cần một danh từ.
+answer: creativity
+```
+
+```example
+id: l10-p0-2
+prompt: My neighbour is a very ___ (care) driver. (điền tính từ)
+hint: Trước danh từ cần một tính từ; hậu tố mang nghĩa "đầy, có".
+answer: careful
+```
+
 ---
 
 ## PHẦN 1: TIỀN TỐ (PREFIXES)
@@ -46,6 +60,34 @@ Tiền tố đứng TRƯỚC gốc từ và thay đổi nghĩa:
 | **anti-** | chống lại | antibiotic, antisocial, anti-clockwise |
 | **auto-** | tự động, tự | automatic, autobiography, automobile |
 
+```example
+id: l10-p1-1
+prompt: Her handwriting is almost ___ (readable) on this form. (thêm tiền tố phủ định)
+hint: Tiền tố phủ định thông dụng nhất, đứng trước tính từ gốc Anh.
+answer: unreadable
+```
+
+```example
+id: l10-p1-2
+prompt: Parking on the pavement is ___ (legal) in this city. (thêm tiền tố phủ định)
+hint: Trước phụ âm "l" dùng tiền tố phủ định nào?
+answer: illegal
+```
+
+```example
+id: l10-p1-3
+prompt: The instructions were so confusing that I ___ (understand) them. (thêm tiền tố "sai/nhầm", quá khứ)
+hint: Tiền tố mang nghĩa "sai, nhầm".
+answer: misunderstood
+```
+
+```example
+id: l10-p1-4
+prompt: Many workers feel ___ (paid) for such long hours. (thêm tiền tố "không đủ")
+hint: Tiền tố mang nghĩa "dưới mức, không đủ".
+answer: underpaid
+```
+
 ---
 
 ## PHẦN 2: HẬU TỐ DANH TỪ (NOUN SUFFIXES)
@@ -67,6 +109,34 @@ Thêm hậu tố này vào verb/adjective để tạo danh từ:
 | **-age** | bộ sưu tập, quá trình | package, storage, percentage |
 | **-ure** | kết quả, hành động | failure, pressure, mixture, closure |
 
+```example
+id: l10-p2-1
+prompt: The company announced the ___ (decide) yesterday morning. (điền danh từ)
+hint: Hậu tố -sion tạo danh từ từ động từ "decide".
+answer: decision
+```
+
+```example
+id: l10-p2-2
+prompt: The ___ (kind) of the villagers surprised the travellers. (điền danh từ)
+hint: Hậu tố -ness tạo danh từ chỉ phẩm chất.
+answer: kindness
+```
+
+```example
+id: l10-p2-3
+prompt: My cousin works as a ___ (translate) for a publishing house. (điền danh từ chỉ người)
+hint: Hậu tố chỉ người làm nghề đó.
+answer: translator
+```
+
+```example
+id: l10-p2-4
+prompt: Their long ___ (friend) began at primary school. (điền danh từ)
+hint: Hậu tố -ship chỉ trạng thái, mối quan hệ.
+answer: friendship
+```
+
 ---
 
 ## PHẦN 3: HẬU TỐ TÍNH TỪ (ADJECTIVE SUFFIXES)
@@ -84,6 +154,34 @@ Thêm hậu tố này vào verb/adjective để tạo danh từ:
 | **-y** | có tính chất | sunny, cloudy, healthy, risky |
 | **-ern** | thuộc phương hướng | northern, southern, eastern, western |
 
+```example
+id: l10-p3-1
+prompt: Riding without a helmet is extremely ___ (danger). (điền tính từ)
+hint: Hậu tố -ous tạo tính từ.
+answer: dangerous
+```
+
+```example
+id: l10-p3-2
+prompt: This old torch is completely ___ (use) without batteries. (điền tính từ nghĩa "vô dụng")
+hint: Hậu tố -less mang nghĩa "không có".
+answer: useless
+```
+
+```example
+id: l10-p3-3
+prompt: The government is preparing a new ___ (nation) campaign. (điền tính từ)
+hint: Hậu tố -al tạo tính từ "thuộc về".
+answer: national
+```
+
+```example
+id: l10-p3-4
+prompt: These chairs are cheap but surprisingly ___ (comfort). (điền tính từ)
+hint: Hậu tố -able chỉ khả năng, đặc tính.
+answer: comfortable
+```
+
 ---
 
 ## PHẦN 4: HẬU TỐ ĐỘNG TỪ (VERB SUFFIXES)
@@ -93,6 +191,27 @@ Thêm hậu tố này vào verb/adjective để tạo danh từ:
 | **-ize / -ise** | làm cho trở thành | modernize, organize, realize, globalize |
 | **-en** | làm cho trở nên | shorten, widen, strengthen, darken |
 | **-ify** | làm cho | simplify, identify, classify, beautify |
+
+```example
+id: l10-p4-1
+prompt: The council wants to ___ (wide) the road next year. (điền động từ)
+hint: Hậu tố -en biến tính từ thành động từ.
+answer: widen
+```
+
+```example
+id: l10-p4-2
+prompt: Could you ___ (simple) the instructions for the new staff? (điền động từ)
+hint: Hậu tố -ify biến tính từ thành động từ.
+answer: simplify
+```
+
+```example
+id: l10-p4-3
+prompt: The library plans to ___ (modern) its computer system. (điền động từ)
+hint: Hậu tố -ize/-ise nghĩa "làm cho trở thành".
+answer: modernize / modernise
+```
 
 ---
 
@@ -106,6 +225,27 @@ Thêm hậu tố này vào verb/adjective để tạo danh từ:
 - Adjective kết thúc -le: gentle → gently | simple → simply
 - Adjective kết thúc -y: happy → happily | angry → angrily
 - Adjective kết thúc -ic: dramatic → dramatically | economic → economically
+
+```example
+id: l10-p5-1
+prompt: The nurse spoke to the patient very ___ (gentle). (điền trạng từ)
+hint: Tính từ tận cùng bằng -le → bỏ -e, thêm -y.
+answer: gently
+```
+
+```example
+id: l10-p5-2
+prompt: The children waited ___ (noisy) outside the classroom. (điền trạng từ)
+hint: Tính từ tận cùng bằng -y → đổi y thành i rồi thêm -ly.
+answer: noisily
+```
+
+```example
+id: l10-p5-3
+prompt: Prices have risen ___ (dramatic) since last year. (điền trạng từ)
+hint: Tính từ tận cùng bằng -ic → thêm -ally.
+answer: dramatically
+```
 
 ---
 
@@ -136,6 +276,27 @@ Một gốc từ có thể tạo ra nhiều loại từ:
 | apply | application / applicant | apply | applicable | — |
 | know | knowledge | know | knowledgeable | knowledgeably |
 
+```example
+id: l10-p6-1
+prompt: Air ___ (pollute) is worse in the dry season. (điền danh từ)
+hint: Danh từ của "pollute" dùng hậu tố -tion.
+answer: pollution
+```
+
+```example
+id: l10-p6-2
+prompt: Our team worked ___ (success) on the pilot project. (điền trạng từ)
+hint: Từ danh từ "success" → tính từ → rồi thêm -ly.
+answer: successfully
+```
+
+```example
+id: l10-p6-3
+prompt: Small farms cannot ___ (competitive) with big companies. (điền động từ)
+hint: Trong họ từ này, dạng động từ là gốc của "competition".
+answer: compete
+```
+
 ---
 
 ## QUY TẮC SPELLING KHI THÊM SUFFIX
@@ -153,6 +314,27 @@ Một gốc từ có thể tạo ra nhiều loại từ:
 4. **Kết thúc -y sau nguyên âm:** giữ nguyên y
    - play → player | enjoy → enjoyable
 
+```example
+id: l10-p7-1
+prompt: The two companies signed a ___ (combine) agreement. (điền danh từ)
+hint: Bỏ -e câm trước hậu tố bắt đầu bằng nguyên âm.
+answer: combination
+```
+
+```example
+id: l10-p7-2
+prompt: The tour was thoroughly ___ (enjoy). (điền tính từ)
+hint: -y sau nguyên âm thì giữ nguyên khi thêm hậu tố.
+answer: enjoyable
+```
+
+```example
+id: l10-p7-3
+prompt: Nobody expected the sudden ___ (happy) of the whole village. (điền danh từ)
+hint: -y sau phụ âm → đổi thành i trước hậu tố -ness.
+answer: happiness
+```
+
 ---
 
 ## LỖI THƯỜNG GẶP
@@ -161,6 +343,27 @@ Một gốc từ có thể tạo ra nhiều loại từ:
 ❌ *The develop of technology is fast.* → ✓ *The development of technology is fast.*
 ❌ *He works hardly.* → ✓ *He works hard.* (hard là cả adj và adv)
 ❌ *She spoke very fastly.* → ✓ *She spoke very fast.* (fast không có -ly)
+
+```example
+id: l10-p8-1
+prompt: (Sửa lỗi) SAI: This film is very bore. → This film is very ___.
+hint: Sau "be + very" cần tính từ; phim gây buồn ngủ cho người xem.
+answer: boring
+```
+
+```example
+id: l10-p8-2
+prompt: (Sửa lỗi) SAI: The govern announced a new tax. → The ___ announced a new tax.
+hint: Sau "The" cần danh từ; hậu tố -ment.
+answer: government
+```
+
+```example
+id: l10-p8-3
+prompt: (Sửa lỗi) SAI: He drives very fastly. → He drives very ___.
+hint: Từ này không bao giờ thêm -ly khi làm trạng từ.
+answer: fast
+```
 
 ---
 
@@ -176,6 +379,27 @@ Một gốc từ có thể tạo ra nhiều loại từ:
 | He showed great courageousness. | He showed great courage. | "Courageousness" quá phức tạp; dùng danh từ gốc "courage" |
 | The informations were incorrect. | The information was incorrect. | "Information" là uncountable noun, không có số nhiều |
 | She has good knowledges about history. | She has good knowledge of history. | "Knowledge" là uncountable; và dùng "knowledge of" không phải "knowledge about" |
+
+```example
+id: l10-err-1
+prompt: (Sửa lỗi) SAI: My uncle is very success in business. → My uncle is very ___ in business.
+hint: Sau "be + very" cần tính từ, không phải danh từ.
+answer: successful
+```
+
+```example
+id: l10-err-2
+prompt: (Sửa lỗi) SAI: The teacher gave us many informations. → The teacher gave us a lot of ___.
+hint: Danh từ không đếm được, không có dạng số nhiều.
+answer: information
+```
+
+```example
+id: l10-err-3
+prompt: (Sửa lỗi) SAI: She sings beautiful on stage. → She sings ___ on stage.
+hint: Bổ nghĩa cho động từ cần trạng từ.
+answer: beautifully
+```
 
 ---
 
