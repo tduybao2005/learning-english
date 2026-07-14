@@ -3,6 +3,16 @@
 /** Ba hiệu ứng âm thanh của app. File nằm ở `public/sounds/<name>.mp3`. */
 export type SfxName = "correct" | "wrong" | "complete";
 
+/**
+ * Đổi số này MỖI KHI sinh lại file trong `public/sounds/` (make-sfx.py).
+ *
+ * File tĩnh của Next được trả kèm `cache-control: max-age=14400`, nên trình
+ * duyệt giữ bản cũ tới 4 tiếng và KHÔNG hỏi lại server — sau lần deploy đầu,
+ * người dùng vẫn nghe đúng bộ âm cũ và tưởng tính năng hỏng. Query string này
+ * là thứ duy nhất buộc nó tải lại (tên file không đổi được vì đã dùng ở nhiều nơi).
+ */
+const SFX_VERSION = 2;
+
 /** Cache theo tên: tạo `Audio` một lần rồi tua lại, tránh tải lại file mỗi câu. */
 const cache = new Map<SfxName, HTMLAudioElement>();
 
@@ -16,7 +26,7 @@ export function playSfx(name: SfxName): void {
   try {
     let el = cache.get(name);
     if (!el) {
-      el = new Audio(`/sounds/${name}.mp3`);
+      el = new Audio(`/sounds/${name}.mp3?v=${SFX_VERSION}`);
       el.preload = "auto";
       // Không hạ volume ở đây: file đã được chuẩn hoá sẵn về -14 LUFS trong
       // `scripts/make-sfx.sh`. Nhân thêm hệ số ở đây từng làm SFX nhỏ tới mức

@@ -5,6 +5,9 @@ import { Volume2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
+/** Tăng mỗi khi sinh lại toàn bộ `public/audio/vocab/` (ví dụ đổi giọng đọc). */
+const VOICE_VERSION = 2; // 2 = en-GB-LibbyNeural (1 = en-US-AriaNeural)
+
 /**
  * Nút loa phát file phát âm của một từ. `src` đến từ `VocabWord.audioUrl` (do
  * `scripts/generate-vocab-audio.ts` ghi) — nơi gọi chịu trách nhiệm KHÔNG render
@@ -34,7 +37,11 @@ export function PronounceButton({
     if (typeof Audio === "undefined") return;
     let cached = audioRef.current;
     if (!cached || cached.src !== src) {
-      cached = { src, el: new Audio(src) };
+      // `?v=` giống lý do ở `sfx.ts`: file tĩnh được cache 4 tiếng và không
+      // revalidate, nên khi ĐỔI GIỌNG (Aria -> Libby) người học vẫn nghe giọng
+      // cũ. Tên file không đổi (nó suy từ chữ của từ), nên version phải nằm ở
+      // query string. Tăng `VOICE_VERSION` mỗi lần sinh lại toàn bộ audio.
+      cached = { src, el: new Audio(`${src}?v=${VOICE_VERSION}`) };
       audioRef.current = cached;
     }
     cached.el.currentTime = 0;

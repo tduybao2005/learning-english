@@ -27,7 +27,8 @@ beforeEach(() => {
 test("phát đúng file được truyền vào", () => {
   render(<PronounceButton src="/audio/vocab/take-off.mp3" label="Take off" />);
   fireEvent.click(screen.getByRole("button", { name: /Phát âm/ }));
-  expect(created).toEqual(["/audio/vocab/take-off.mp3"]);
+  // URL kèm `?v=` để phá cache khi đổi giọng — xem VOICE_VERSION.
+  expect(created).toEqual(["/audio/vocab/take-off.mp3?v=2"]);
   expect(play).toHaveBeenCalledTimes(1);
 });
 
@@ -40,7 +41,7 @@ test("đổi sang từ khác thì phát file của từ MỚI, không phát lạ
   rerender(<PronounceButton src="/audio/vocab/brush.mp3" label="brush" />);
   fireEvent.click(screen.getByRole("button", { name: /Phát âm/ }));
 
-  expect(created).toEqual(["/audio/vocab/wake-up.mp3", "/audio/vocab/brush.mp3"]);
+  expect(created).toEqual(["/audio/vocab/wake-up.mp3?v=2", "/audio/vocab/brush.mp3?v=2"]);
 });
 
 test("bấm không kích hoạt vùng bấm bao ngoài (chặn nổi bọt)", () => {
