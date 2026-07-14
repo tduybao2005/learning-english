@@ -44,6 +44,27 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 - The weather **was** terrible last summer. (Thời tiết mùa hè năm ngoái rất tệ.)
 - We **were** students at the same university. (Chúng tôi từng là sinh viên cùng trường.)
 
+```example
+id: l03-p1-1
+prompt: My father ___ (repair) the roof last Sunday.
+hint: Động từ quy tắc trong quá khứ đơn → thêm -ed cho mọi chủ ngữ.
+answer: repaired
+```
+
+```example
+id: l03-p1-2
+prompt: We ___ (see) a beautiful rainbow after the storm.
+hint: Động từ bất quy tắc: see → V2.
+answer: saw
+```
+
+```example
+id: l03-p1-3
+prompt: The children ___ (be) very excited about the trip.
+hint: Chủ ngữ số nhiều → dạng quá khứ của "to be" dành cho You/We/They.
+answer: were
+```
+
 ---
 
 ### 1.2. Quy tắc thêm -ed (Rules for Adding -ed)
@@ -64,6 +85,34 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 - prefer → prefer**r**ed | commit → commit**t**ed
 - listen → listen**ed** ← (KHÔNG nhân đôi vì trọng âm ở đầu: LIS-ten)
 
+```example
+id: l03-p1-4
+prompt: The guide ___ (point) at the old citadel.
+hint: Quy tắc 1: động từ quy tắc thường chỉ thêm -ed.
+answer: pointed
+```
+
+```example
+id: l03-p1-5
+prompt: My grandfather ___ (smile) when he saw the photo.
+hint: Quy tắc 2: động từ tận cùng -e → chỉ thêm -d.
+answer: smiled
+```
+
+```example
+id: l03-p1-6
+prompt: The little boy ___ (worry) about his lost puppy.
+hint: Quy tắc 3: phụ âm + y → đổi thành -ied.
+answer: worried
+```
+
+```example
+id: l03-p1-7
+prompt: The bus ___ (stop) suddenly at the crossroads.
+hint: Quy tắc 4 (CVC, trọng âm cuối) → nhân đôi phụ âm rồi thêm -ed.
+answer: stopped
+```
+
 ---
 
 ### 1.3. Câu phủ định (Negative)
@@ -78,6 +127,20 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 **Lỗi thường gặp:** Sau "didn't", dùng V NGUYÊN THỂ, không dùng V-ed!
 - SAI: She didn't **went** to work. ❌
 - ĐÚNG: She didn't **go** to work. ✓
+
+```example
+id: l03-p1-8
+prompt: We ___ (not / bring) an umbrella, so we got wet.
+hint: Phủ định quá khứ: didn't + động từ nguyên thể (không dùng V2).
+answer: didn't bring / did not bring
+```
+
+```example
+id: l03-p1-9
+prompt: The shop ___ (not / be) open on Tet holiday.
+hint: Phủ định của "to be" số ít trong quá khứ.
+answer: wasn't / was not
+```
 
 ---
 
@@ -94,6 +157,20 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 - **Why** did they leave early? (Tại sao họ rời đi sớm vậy?)
 - **What** did you eat for breakfast? (Bạn đã ăn gì cho bữa sáng?)
 - **How** did you learn English? (Bạn đã học tiếng Anh như thế nào?)
+
+```example
+id: l03-p1-10
+prompt: ___ your team win the match on Saturday? (Do / Did)
+hint: Câu hỏi ở quá khứ đơn dùng trợ động từ "Did".
+answer: Did
+```
+
+```example
+id: l03-p1-11
+prompt: How much ___ you pay for that bicycle? (trợ động từ quá khứ)
+hint: Câu hỏi Wh- ở quá khứ: Wh- + did + S + V.
+answer: did
+```
 
 ---
 
@@ -167,6 +244,34 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 | win | won | won | thắng |
 | write | wrote | written | viết |
 
+```example
+id: l03-p2-1
+prompt: My uncle ___ (teach) me how to swim when I was six.
+hint: Bất quy tắc nhóm -aught: teach → V2.
+answer: taught
+```
+
+```example
+id: l03-p2-2
+prompt: The postman ___ (bring) a heavy parcel this morning.
+hint: Bất quy tắc nhóm -ought: bring → V2.
+answer: brought
+```
+
+```example
+id: l03-p2-3
+prompt: She ___ (write) three letters to her cousin last month.
+hint: Bất quy tắc: write → V2.
+answer: wrote
+```
+
+```example
+id: l03-p2-4
+prompt: The boys ___ (drink) all the lemonade in five minutes.
+hint: Nhóm i/a/u: drink → V2.
+answer: drank
+```
+
 ---
 
 ## PHẦN 3: DẤU HIỆU NHẬN BIẾT (SIGNAL WORDS)
@@ -183,6 +288,27 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 | in the past | trong quá khứ | **In the past**, people traveled by horse. |
 | the other day | hôm nọ | **The other day**, I bumped into an old friend. |
 
+```example
+id: l03-p3-1
+prompt: My family ___ (move) to Da Nang three years ago.
+hint: "ago" là dấu hiệu quá khứ đơn → động từ quy tắc thêm -ed.
+answer: moved
+```
+
+```example
+id: l03-p3-2
+prompt: In 2018, our school ___ (open) a new library.
+hint: "In 2018" là mốc quá khứ xác định → dùng quá khứ đơn.
+answer: opened
+```
+
+```example
+id: l03-p3-3
+prompt: The other day I ___ (find) an old coin in the garden.
+hint: "The other day" → quá khứ đơn; find là động từ bất quy tắc.
+answer: found
+```
+
 ---
 
 ## PHẦN 4: PHÂN BIỆT WAS VÀ WERE
@@ -194,6 +320,27 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 | You | **were** tired | **weren't** tired | **Were** you alone? |
 | We | **were** young | **weren't** young | **Were** we wrong? |
 | They | **were** students | **weren't** students | **Were** they kind? |
+
+```example
+id: l03-p4-1
+prompt: The streets ___ (be) empty because of the heavy rain.
+hint: Chủ ngữ số nhiều → dùng "were".
+answer: were
+```
+
+```example
+id: l03-p4-2
+prompt: My coffee ___ (be / not) hot enough this morning.
+hint: Chủ ngữ số ít, phủ định → wasn't.
+answer: wasn't / was not
+```
+
+```example
+id: l03-p4-3
+prompt: ___ you nervous before the interview? (Was / Were)
+hint: Chủ ngữ "you" luôn đi với "were", kể cả khi chỉ một người.
+answer: Were
+```
 
 ---
 
@@ -225,6 +372,43 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 - SAI: Yesterday I am very tired. ❌
 - ĐÚNG: Yesterday I **was** very tired. ✓
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l03-p5-1
+prompt: (Sửa Lỗi 1) SAI: We didn't saw the film. → We didn't ___ the film.
+hint: Sau "didn't" dùng động từ nguyên thể.
+answer: see
+```
+
+```example
+id: l03-p5-2
+prompt: (Sửa Lỗi 2) SAI: She cleaneds the kitchen last night. → She ___ the kitchen last night.
+hint: Quá khứ đơn không bao giờ thêm -s/-es.
+answer: cleaned
+```
+
+```example
+id: l03-p5-3
+prompt: (Sửa Lỗi 3) SAI: The tickets was expensive. → The tickets ___ expensive.
+hint: Chủ ngữ số nhiều → "were".
+answer: were
+```
+
+```example
+id: l03-p5-4
+prompt: (Sửa Lỗi 4) SAI: He catched a big fish. → He ___ a big fish.
+hint: Động từ bất quy tắc: catch → caught.
+answer: caught
+```
+
+```example
+id: l03-p5-5
+prompt: (Sửa Lỗi 5) SAI: Last week the shop is closed for repairs. → Last week the shop ___ closed for repairs.
+hint: Có "last week" → phải dùng dạng quá khứ của "to be".
+answer: was
+```
+
 ---
 
 ## PHẦN 6: VÍ DỤ TỔNG HỢP (15 ví dụ kể chuyện)
@@ -248,6 +432,29 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 13. She **watched** TV for a while and **fell** asleep on the sofa.
 14. When she **woke up** at midnight, she **turned** off the TV and **went** to bed.
 15. Despite the difficult start, Lan **thought** it **was** a productive day overall.
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l03-p6-1
+prompt: On Sunday morning Nam ___ (ride) his bicycle to the lake.
+hint: Bất quy tắc: ride → V2.
+answer: rode
+```
+
+```example
+id: l03-p6-2
+prompt: He ___ (not / stay) long because the sky turned grey.
+hint: Phủ định quá khứ: didn't + nguyên thể.
+answer: didn't stay / did not stay
+```
+
+```example
+id: l03-p6-3
+prompt: ___ he tell you about the accident? (Do / Did)
+hint: Câu hỏi ở quá khứ đơn dùng "Did".
+answer: Did
+```
 
 ---
 
@@ -281,6 +488,27 @@ Thì Quá Khứ Đơn (Simple Past) dùng để nói về những sự kiện đ
 | Did he went to Hanoi? | Did he go to Hanoi? | Sau "Did" trong câu hỏi, dùng động từ nguyên thể, không dùng V2. |
 | She studyed hard last night. | She studied hard last night. | Kết thúc "phụ âm + y" đổi thành -ied: study → studied. |
 | He didn't ate anything. | He didn't eat anything. | Sau "didn't", không dùng V2, dùng động từ nguyên thể: eat. |
+
+```example
+id: l03-err-1
+prompt: (Sửa lỗi) SAI: Did she brought her passport? → Did she ___ her passport?
+hint: Sau "Did" luôn là động từ nguyên thể.
+answer: bring
+```
+
+```example
+id: l03-err-2
+prompt: (Sửa lỗi) SAI: The keys was on the table. → The keys ___ on the table.
+hint: Chủ ngữ số nhiều → "were".
+answer: were
+```
+
+```example
+id: l03-err-3
+prompt: (Sửa lỗi) SAI: He runned to the station. → He ___ to the station.
+hint: Bất quy tắc: run → ran.
+answer: ran
+```
 
 ---
 
