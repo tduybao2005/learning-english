@@ -52,6 +52,20 @@ hint: "My brother" là ngôi thứ ba số ít → động từ thêm -s.
 answer: works
 ```
 
+```example
+id: sp-affirm-2
+prompt: My cousins ___ (live) near the beach.
+hint: Chủ ngữ số nhiều → động từ giữ nguyên thể, không thêm -s.
+answer: live
+```
+
+```example
+id: sp-affirm-3
+prompt: Our teacher ___ (be) very patient with beginners.
+hint: Ngôi thứ ba số ít của động từ "to be".
+answer: is
+```
+
 ---
 
 ### 1.2. Quy tắc thêm -s / -es (Rules for Adding -s/-es)
@@ -88,6 +102,13 @@ answer: works
 - have → **has** (có)
 
 ```example
+id: sp-rule1-1
+prompt: My neighbour ___ (drive) a taxi in the city centre.
+hint: Động từ thường → chỉ thêm -s (Quy tắc 1).
+answer: drives
+```
+
+```example
 id: sp-es-1
 prompt: She always ___ (finish) her homework before dinner.
 hint: Động từ tận cùng bằng -sh → thêm -es (Quy tắc 2).
@@ -95,10 +116,31 @@ answer: finishes
 ```
 
 ```example
+id: sp-es-2
+prompt: The baby ___ (cry) whenever the room gets dark.
+hint: Phụ âm + y → đổi -y thành -ies (Quy tắc 3).
+answer: cries
+```
+
+```example
 id: sp-y-1
 prompt: My sister ___ (study) English every evening.
 hint: Phụ âm + y → đổi -y thành -ies (Quy tắc 3).
 answer: studies
+```
+
+```example
+id: sp-rule4-1
+prompt: Our coach ___ (stay) at the stadium until late.
+hint: Nguyên âm + y → chỉ thêm -s (Quy tắc 4), không đổi thành -ies.
+answer: stays
+```
+
+```example
+id: sp-have-1
+prompt: My grandmother ___ (have) a small garden behind her house.
+hint: Ngoại lệ đặc biệt: have → has với ngôi thứ ba số ít.
+answer: has
 ```
 
 ---
@@ -121,9 +163,16 @@ answer: studies
 
 ```example
 id: sp-neg-1
-prompt: He ___ (not / eat) meat.
+prompt: My uncle ___ (not / drink) coffee at night.
 hint: Ngôi thứ ba số ít phủ định dùng "doesn't" + động từ nguyên thể (không thêm -s).
-answer: doesn't eat / does not eat
+answer: doesn't drink / does not drink
+```
+
+```example
+id: sp-neg-2
+prompt: We ___ (not / watch) television on school nights.
+hint: Chủ ngữ "we" dùng "don't" + động từ nguyên thể.
+answer: don't watch / do not watch
 ```
 
 ---
@@ -156,6 +205,20 @@ hint: "your sister" là ngôi thứ ba số ít → dùng "Does".
 answer: Does
 ```
 
+```example
+id: sp-q-2
+prompt: ___ your parents travel abroad every summer? (Do / Does)
+hint: Chủ ngữ số nhiều → dùng "Do".
+answer: Do
+```
+
+```example
+id: sp-q-3
+prompt: ___ time does the last bus arrive? (Wh- word)
+hint: Hỏi về thời điểm trong ngày → dùng "What time".
+answer: What
+```
+
 ---
 
 ## PHẦN 2: CÁC CÁCH DÙNG (USES OF SIMPLE PRESENT)
@@ -183,6 +246,20 @@ answer: Does
 5. He **never drinks** alcohol. (Anh ấy không bao giờ uống rượu.)
 6. They **sometimes go** to the cinema on weekends. (Họ đôi khi đi xem phim vào cuối tuần.)
 
+```example
+id: l01-p2-1
+prompt: My roommate ___ (jog) around the lake twice a week.
+hint: Thói quen lặp lại + chủ ngữ số ít → chia động từ thêm -s.
+answer: jogs
+```
+
+```example
+id: l01-p2-2
+prompt: We ___ (visit) our grandparents every Tet holiday.
+hint: Chủ ngữ "we" → giữ động từ nguyên thể.
+answer: visit
+```
+
 ---
 
 ### 2.2. Diễn tả sự thật hiển nhiên / quy luật khoa học
@@ -197,6 +274,20 @@ Simple Present dùng để nói về những điều luôn đúng, không thay �
 5. Plants **need** sunlight to grow. (Cây cần ánh sáng mặt trời để phát triển.)
 6. Ice **melts** when it gets warm. (Nước đá tan khi trời ấm.)
 
+```example
+id: l01-p2-3
+prompt: The moon ___ (orbit) the Earth once a month.
+hint: Sự thật khoa học + chủ ngữ số ít → thêm -s.
+answer: orbits
+```
+
+```example
+id: l01-p2-4
+prompt: Metals ___ (expand) when they are heated.
+hint: Chủ ngữ số nhiều "metals" → động từ giữ nguyên thể.
+answer: expand
+```
+
 ---
 
 ### 2.3. Diễn tả lịch trình đã được ấn định (Scheduled events)
@@ -209,6 +300,20 @@ Dùng cho những sự kiện đã được lên lịch chính thức, như th�
 3. The meeting **begins** at 9 o'clock on Monday. (Cuộc họp bắt đầu lúc 9 giờ vào thứ Hai.)
 4. School **opens** at 7:30 am. (Trường mở cửa lúc 7:30 sáng.)
 5. The shop **closes** at 10 pm. (Cửa hàng đóng cửa lúc 10 giờ tối.)
+
+```example
+id: l01-p2-5
+prompt: The flight to Da Nang ___ (depart) at 6:15 tomorrow morning.
+hint: Lịch trình cố định → dùng hiện tại đơn, chủ ngữ số ít thêm -s.
+answer: departs
+```
+
+```example
+id: l01-p2-6
+prompt: Our English classes ___ (begin) next Monday.
+hint: Chủ ngữ số nhiều "classes" → động từ giữ nguyên thể.
+answer: begin
+```
 
 ---
 
@@ -224,6 +329,20 @@ Các động từ chỉ trạng thái (stative verbs) thường dùng ở Simple
 5. I **have** two sisters. (Tôi có hai chị gái.)
 6. She **understands** the problem. (Cô ấy hiểu vấn đề.)
 
+```example
+id: l01-p2-7
+prompt: My little brother ___ (hate) rainy weather.
+hint: Động từ trạng thái + ngôi thứ ba số ít → thêm -s (không dùng dạng -ing).
+answer: hates
+```
+
+```example
+id: l01-p2-8
+prompt: They ___ (need) more time to finish the report.
+hint: "need" là stative verb → dùng hiện tại đơn, chủ ngữ số nhiều giữ nguyên thể.
+answer: need
+```
+
 ---
 
 ### 2.5. Diễn tả hướng dẫn / chỉ dẫn (Instructions & Directions)
@@ -234,6 +353,20 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
 1. **First, you boil** the water. Then you **add** the noodles. (Đầu tiên, đun sôi nước. Sau đó, cho mì vào.)
 2. You **turn left** at the traffic light and **walk** for 200 meters. (Bạn rẽ trái tại đèn giao thông và đi bộ 200 mét.)
 3. You **press** the button to start the machine. (Bạn nhấn nút để khởi động máy.)
+
+```example
+id: l01-p2-9
+prompt: First, you ___ (peel) the onions. Then you slice them thinly.
+hint: Câu hướng dẫn với "you" → động từ nguyên thể.
+answer: peel
+```
+
+```example
+id: l01-p2-10
+prompt: You ___ (cross) the bridge and turn right at the market.
+hint: Chỉ đường với "you" → động từ giữ nguyên thể.
+answer: cross
+```
 
 ---
 
@@ -263,6 +396,27 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
   - "I **always** do my homework." → thói quen mạnh mẽ: luôn luôn làm (habit — every single time)
   - "I **don't always** do my homework." → không phải lúc nào cũng làm — đôi khi có, đôi khi không (not every time / không phải lúc nào cũng)
 
+```example
+id: l01-p3-1
+prompt: My father ___ (usually / walk) to the office. (viết cả trạng từ và động từ)
+hint: Trạng từ tần suất đứng TRƯỚC động từ thường.
+answer: usually walks
+```
+
+```example
+id: l01-p3-2
+prompt: The children ___ (be / never) noisy in the library. (viết cả "to be" và trạng từ)
+hint: Trạng từ tần suất đứng SAU động từ "to be".
+answer: are never
+```
+
+```example
+id: l01-p3-3
+prompt: I ___ (not / often) cook at home during the week. (viết trợ động từ phủ định + trạng từ)
+hint: Trong câu phủ định, trạng từ đứng SAU "don't/doesn't".
+answer: don't often / do not often
+```
+
 ---
 
 ## PHẦN 4: PHÂN BIỆT SIMPLE PRESENT VÀ PRESENT CONTINUOUS
@@ -283,6 +437,27 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
 
 - He **runs** in the park every morning. (Anh ấy chạy bộ trong công viên mỗi sáng - thói quen.)
 - He **is running** in the park. (Anh ấy đang chạy bộ trong công viên - lúc này.)
+
+```example
+id: l01-p4-1
+prompt: My mother ___ (sell) fruit at the market every day.
+hint: Có "every day" → thói quen → dùng hiện tại đơn.
+answer: sells
+```
+
+```example
+id: l01-p4-2
+prompt: Look! The kids ___ (play) football in the yard right now.
+hint: Có "right now" → hành động đang diễn ra → dùng hiện tại tiếp diễn (are + V-ing).
+answer: are playing
+```
+
+```example
+id: l01-p4-3
+prompt: My aunt writes novels for a living, but this month she ___ (rest) at home.
+hint: "this month" + việc tạm thời → hiện tại tiếp diễn (is + V-ing).
+answer: is resting
+```
 
 ---
 
@@ -317,6 +492,43 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
 - ĐÚNG: I **always go** to bed at 10. ✓
 - SAI: She is late never. ❌
 - ĐÚNG: She is **never late**. ✓
+
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l01-p5-1
+prompt: (Sửa Lỗi 1) SAI: My uncle teach maths at a high school. → My uncle ___ maths at a high school.
+hint: Ngôi thứ ba số ít bắt buộc thêm -es (teach → teaches).
+answer: teaches
+```
+
+```example
+id: l01-p5-2
+prompt: (Sửa Lỗi 2) SAI: Does your friend plays the guitar? → Does your friend ___ the guitar?
+hint: Sau "Does", động từ giữ nguyên thể.
+answer: play
+```
+
+```example
+id: l01-p5-3
+prompt: (Sửa Lỗi 3) SAI: We are live in Da Nang. → We ___ in Da Nang.
+hint: Không dùng "are" với động từ thường ở hiện tại đơn.
+answer: live
+```
+
+```example
+id: l01-p5-4
+prompt: (Sửa Lỗi 4) SAI: Do your sister work at a bank? → ___ your sister work at a bank?
+hint: Ngôi thứ ba số ít dùng "Does", không dùng "Do".
+answer: Does
+```
+
+```example
+id: l01-p5-5
+prompt: (Sửa Lỗi 5) SAI: They eat never fast food. → They ___ fast food. (viết trạng từ + động từ)
+hint: Trạng từ tần suất đứng TRƯỚC động từ thường.
+answer: never eat
+```
 
 ---
 
@@ -353,6 +565,29 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
 14. **The Earth takes** 365 days to orbit the sun. *(Sự thật)*
 
 15. **First, you mix** the flour and eggs together. Then you **add** milk and **stir** well. *(Hướng dẫn)*
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l01-p6-1
+prompt: The museum ___ (not / open) on Mondays.
+hint: Chủ ngữ số ít + phủ định → "doesn't" + động từ nguyên thể.
+answer: doesn't open / does not open
+```
+
+```example
+id: l01-p6-2
+prompt: How often ___ your brother go swimming? (Do / Does)
+hint: "your brother" là ngôi thứ ba số ít.
+answer: does / Does
+```
+
+```example
+id: l01-p6-3
+prompt: Rice ___ (grow) well in wet, warm climates.
+hint: Sự thật hiển nhiên + chủ ngữ số ít → thêm -s.
+answer: grows
+```
 
 ---
 
@@ -396,6 +631,27 @@ Thường gặp trong sách dạy nấu ăn, hướng dẫn sử dụng.
 | She is work every day. | She works every day. | Không dùng "is" với động từ thường ở Simple Present. |
 | Water freeze at 0°C. | Water freezes at 0°C. | Quy luật khoa học cũng cần chia động từ cho ngôi thứ ba. |
 | He have two cats. | He has two cats. | Động từ "have" biến đổi thành "has" với he/she/it — ngoại lệ đặc biệt. |
+
+```example
+id: l01-err-1
+prompt: (Sửa lỗi) SAI: My laptop cost too much money. → My laptop ___ too much money.
+hint: Chủ ngữ số ít → động từ thêm -s.
+answer: costs
+```
+
+```example
+id: l01-err-2
+prompt: (Sửa lỗi) SAI: She have a beautiful voice. → She ___ a beautiful voice.
+hint: Ngoại lệ: have → has với he/she/it.
+answer: has
+```
+
+```example
+id: l01-err-3
+prompt: (Sửa lỗi) SAI: He don't understand the question. → He ___ the question.
+hint: Ngôi thứ ba số ít phủ định dùng "doesn't" + nguyên thể.
+answer: doesn't understand / does not understand
+```
 
 ---
 
