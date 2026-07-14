@@ -29,6 +29,20 @@ Sau khi hoàn thành bài này, bạn sẽ:
 
 Trong tiếng Việt, chúng ta cũng dùng đại từ nhưng hệ thống rất khác. Tiếng Việt dùng "anh, chị, em, tôi, nó, chúng tôi..." tùy theo mối quan hệ xã hội. Tiếng Anh đơn giản hơn — chỉ cần quan tâm đến **giới tính** và **số ít/nhiều**.
 
+```example
+id: l07-p1-1
+prompt: Lan is my neighbour. ___ works at a bank. (đại từ thay cho Lan)
+hint: Thay danh từ nữ số ít bằng đại từ chủ ngữ tương ứng.
+answer: She
+```
+
+```example
+id: l07-p1-2
+prompt: The books are new. ___ cost a lot of money. (đại từ thay cho the books)
+hint: Danh từ số nhiều chỉ vật → đại từ chủ ngữ số nhiều.
+answer: They
+```
+
 ---
 
 ## 2. ĐẠI TỪ NHÂN XƯNG CHỦ NGỮ (Subject Pronouns)
@@ -73,6 +87,27 @@ Dùng khi đại từ là **chủ ngữ** của câu (người/vật thực hi�
 9. **It** takes 2 hours to get there. *(Mất 2 tiếng để đến đó.)*
 10. **She** is reading a novel. *(Cô ấy đang đọc tiểu thuyết.)*
 
+```example
+id: l07-p2-1
+prompt: My grandfather is 80. ___ still rides a bicycle. (đại từ chủ ngữ)
+hint: Người nam số ít → đại từ chủ ngữ tương ứng.
+answer: He
+```
+
+```example
+id: l07-p2-2
+prompt: ___ is snowing in the mountains today. (đại từ chủ ngữ)
+hint: Nói về thời tiết → dùng đại từ trung tính.
+answer: It
+```
+
+```example
+id: l07-p2-3
+prompt: My sister and ___ share a bedroom. (đại từ chủ ngữ ngôi thứ nhất)
+hint: Chủ ngữ ngôi thứ nhất số ít, luôn viết hoa.
+answer: I
+```
+
 ---
 
 ## 3. ĐẠI TỪ NHÂN XƯNG TÂN NGỮ (Object Pronouns)
@@ -114,6 +149,27 @@ Dùng khi đại từ là **tân ngữ** — đứng sau động từ hoặc sau
 9. He bought **them** tickets. *(Anh ấy mua vé cho họ.)*
 10. Talk to **her**, not to **me**! *(Nói chuyện với cô ấy, không phải với tôi!)*
 
+```example
+id: l07-p3-1
+prompt: My parents are abroad; I miss ___ a lot. (đại từ tân ngữ)
+hint: Sau động từ dùng đại từ tân ngữ số nhiều.
+answer: them
+```
+
+```example
+id: l07-p3-2
+prompt: This letter is from Minh — please give it to ___. (đại từ tân ngữ chỉ Minh)
+hint: Sau giới từ "to" dùng đại từ tân ngữ nam số ít.
+answer: him
+```
+
+```example
+id: l07-p3-3
+prompt: The teacher asked ___ to clean the board. (đại từ tân ngữ ngôi thứ nhất số ít)
+hint: Sau động từ dùng "me", không dùng "I".
+answer: me
+```
+
 ---
 
 ## 4. TÍNH TỪ SỞ HỮU (Possessive Adjectives)
@@ -138,6 +194,27 @@ Dùng khi đại từ là **tân ngữ** — đứng sau động từ hoặc sau
 ⚠️ **Lưu ý quan trọng:** "its" (tính từ sở hữu) KHÔNG có dấu apostrophe. "It's" = "it is" (viết tắt).
 - ✅ *The cat licked **its** paw.* (Con mèo liếm chân của nó.)
 - ❌ *The cat licked **it's** paw.* (Sai!)
+
+```example
+id: l07-p4-1
+prompt: Nam forgot ___ umbrella at school. (tính từ sở hữu)
+hint: Tính từ sở hữu của "he", đứng trước danh từ.
+answer: his
+```
+
+```example
+id: l07-p4-2
+prompt: The bird is building ___ nest in the tree. (tính từ sở hữu)
+hint: Tính từ sở hữu của "it" — không có dấu nháy.
+answer: its
+```
+
+```example
+id: l07-p4-3
+prompt: We are proud of ___ school. (tính từ sở hữu)
+hint: Tính từ sở hữu của "we".
+answer: our
+```
 
 ---
 
@@ -165,6 +242,20 @@ Dùng **một mình**, KHÔNG có danh từ theo sau. Thay thế cho cả tính 
 3. *Her dress is blue. **Mine** is red.* *(Váy của cô ấy màu xanh. Của tôi màu đỏ.)*
 4. *Their idea is good, but **ours** is better.* *(Ý tưởng của họ tốt, nhưng của chúng tôi còn tốt hơn.)*
 5. *This isn't **his** — it's **hers**.* *(Cái này không phải của anh ấy — là của cô ấy.)*
+
+```example
+id: l07-p5-1
+prompt: These shoes are too small for me; they are not ___. (đại từ sở hữu ngôi thứ nhất)
+hint: Đại từ sở hữu đứng một mình, không có danh từ theo sau.
+answer: mine
+```
+
+```example
+id: l07-p5-2
+prompt: Our garden is small, but ___ is enormous. (đại từ sở hữu của "they")
+hint: Đại từ sở hữu của "their".
+answer: theirs
+```
 
 ---
 
@@ -201,6 +292,27 @@ Dùng khi chủ ngữ và tân ngữ là cùng một người/vật.
 - help oneself = tự lấy/phục vụ bản thân: *Please help **yourself** to some food.*
 - make oneself at home = tự nhiên như ở nhà: *Please make **yourself** at home.*
 
+```example
+id: l07-p6-1
+prompt: The little girl dressed ___ without any help. (đại từ phản thân)
+hint: Chủ ngữ nữ số ít tự làm cho chính mình.
+answer: herself
+```
+
+```example
+id: l07-p6-2
+prompt: We painted the whole house ___. (đại từ phản thân nhấn mạnh)
+hint: Đại từ phản thân của "we" (số nhiều).
+answer: ourselves
+```
+
+```example
+id: l07-p6-3
+prompt: Children, please help ___ to some fruit. (đại từ phản thân)
+hint: "you" số nhiều → dạng phản thân số nhiều.
+answer: yourselves
+```
+
 ---
 
 ## 7. ĐẠI TỪ CHỈ ĐỊNH (Demonstrative Pronouns)
@@ -225,6 +337,20 @@ Dùng khi chủ ngữ và tân ngữ là cùng một người/vật.
 **Dùng trong điện thoại:**
 > *Hello, **this** is Nam speaking.* (Chào, đây là Nam.)
 > *Is **that** Lan?* (Có phải Lan không?)
+
+```example
+id: l07-p7-1
+prompt: ___ mangoes here in my basket are very sweet. (This / These)
+hint: Số nhiều + ở gần → dùng dạng số nhiều chỉ gần.
+answer: These
+```
+
+```example
+id: l07-p7-2
+prompt: Look at ___ mountain over there — it's covered in snow. (this / that)
+hint: Số ít + ở xa.
+answer: that
+```
 
 ---
 
@@ -262,6 +388,34 @@ Dùng để nói về người hoặc vật không xác định cụ thể.
 > ***Everyone** is ready.* *(Mọi người đã sẵn sàng.)* [động từ số ít "is"]
 > ***Everything** is fine.* *(Mọi thứ đều ổn.)*
 > ***Everywhere** was crowded.* *(Khắp nơi đều đông đúc.)*
+
+```example
+id: l07-p8-1
+prompt: ___ left a bag on the bus this morning. (Someone / Anyone)
+hint: Câu khẳng định → dùng "Some-".
+answer: Someone
+```
+
+```example
+id: l07-p8-2
+prompt: I didn't buy ___ at the market today. (something / anything)
+hint: Câu phủ định → dùng "any-".
+answer: anything
+```
+
+```example
+id: l07-p8-3
+prompt: ___ knows where the key is; we are all confused. (Nobody / Anybody)
+hint: Phủ định hoàn toàn với động từ khẳng định.
+answer: Nobody
+```
+
+```example
+id: l07-p8-4
+prompt: Everybody in the class ___ (be) excited about the trip.
+hint: "Everybody" là số ít về ngữ pháp.
+answer: is
+```
 
 ---
 
@@ -311,6 +465,50 @@ Trong tiếng Việt dùng "nó" cho cả người lẫn vật, nhưng trong ti�
 ❌ *There isn't **no one** here.* (Double negative — sai)
 ✅ *There **is no one** here.* hoặc ✅ *There **isn't anyone** here.*
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l07-p9-1
+prompt: (Sửa Lỗi 1) SAI: My father is a farmer. She grows rice. → My father is a farmer. ___ grows rice.
+hint: "father" là nam → dùng đại từ chủ ngữ nam.
+answer: He
+```
+
+```example
+id: l07-p9-2
+prompt: (Sửa Lỗi 2) SAI: My cousin is clever. It always wins the quiz. → My cousin is clever. ___ always wins the quiz.
+hint: Không dùng "it" cho người; chọn đại từ chỉ người (nam).
+answer: He
+```
+
+```example
+id: l07-p9-3
+prompt: (Sửa Lỗi 3) SAI: Me and my sister cooked lunch. → My sister and ___ cooked lunch.
+hint: Chủ ngữ → dùng đại từ chủ ngữ.
+answer: I
+```
+
+```example
+id: l07-p9-4
+prompt: (Sửa Lỗi 4) SAI: That umbrella is her. → That umbrella is ___.
+hint: Đứng một mình → dùng đại từ sở hữu.
+answer: hers
+```
+
+```example
+id: l07-p9-5
+prompt: (Sửa Lỗi 5) SAI: Everyone are waiting outside. → Everyone ___ waiting outside.
+hint: "Everyone" đi với động từ số ít.
+answer: is
+```
+
+```example
+id: l07-p9-6
+prompt: (Sửa Lỗi 6) SAI: I didn't see nobody in the corridor. → I didn't see ___ in the corridor.
+hint: Tránh phủ định kép: sau "didn't" dùng "any-".
+answer: anybody / anyone
+```
+
 ---
 
 ## 10. BẢNG TỔNG HỢP TẤT CẢ ĐẠI TỪ
@@ -324,6 +522,20 @@ Trong tiếng Việt dùng "nó" cho cả người lẫn vật, nhưng trong ti�
 | it | it | its | — | itself |
 | we | us | our | ours | ourselves |
 | they | them | their | theirs | themselves |
+
+```example
+id: l07-p10-1
+prompt: They cooked dinner ___ last night. (đại từ phản thân)
+hint: Cột "phản thân" của hàng "they".
+answer: themselves
+```
+
+```example
+id: l07-p10-2
+prompt: Is this pen ___? I found it under your desk. (đại từ sở hữu của "you")
+hint: Cột "đại từ sở hữu" của hàng "you".
+answer: yours
+```
 
 ---
 
@@ -343,6 +555,29 @@ Trong tiếng Việt dùng "nó" cho cả người lẫn vật, nhưng trong ti�
 
 5. *She taught **herself** to play the guitar. Now **she** can play **it** beautifully.*
    (Cô ấy tự học chơi guitar. Bây giờ cô ấy có thể chơi rất hay.)
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l07-p11-1
+prompt: Hoa lost her phone, so I lent ___ mine for the evening. (đại từ tân ngữ)
+hint: Sau động từ "lent" dùng đại từ tân ngữ nữ.
+answer: her
+```
+
+```example
+id: l07-p11-2
+prompt: The twins tidied the room by ___. (đại từ phản thân)
+hint: Cụm "by oneself" với chủ ngữ số nhiều.
+answer: themselves
+```
+
+```example
+id: l07-p11-3
+prompt: Nothing ___ (be) more important than health.
+hint: "Nothing" đi với động từ số ít.
+answer: is
+```
 
 ---
 
@@ -374,6 +609,27 @@ Trong tiếng Việt dùng "nó" cho cả người lẫn vật, nhưng trong ti�
 | My friend is funny. It always makes me laugh. | My friend is funny. He/She always makes me laugh. | "It" không dùng để chỉ người; dùng "he" hoặc "she" tùy giới tính. |
 | There isn't no one here. | There is no one here. | Không dùng double negative ("isn't" + "no one"); chọn một trong hai cách phủ định. |
 | This is mine bag. | This is my bag. | "Mine" là đại từ sở hữu, không đứng trước danh từ; dùng "my" khi có danh từ theo sau. |
+
+```example
+id: l07-err-1
+prompt: (Sửa lỗi) SAI: This is yours ticket. → This is ___ ticket.
+hint: Trước danh từ phải dùng tính từ sở hữu.
+answer: your
+```
+
+```example
+id: l07-err-2
+prompt: (Sửa lỗi) SAI: Him and I play badminton. → ___ and I play badminton.
+hint: Chủ ngữ → dùng đại từ chủ ngữ.
+answer: He
+```
+
+```example
+id: l07-err-3
+prompt: (Sửa lỗi) SAI: Somebody have taken my seat. → Somebody ___ taken my seat.
+hint: "Somebody" là số ít → dùng "has".
+answer: has
+```
 
 ---
 
