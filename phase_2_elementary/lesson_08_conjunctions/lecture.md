@@ -39,6 +39,27 @@ Dùng để nối hai mệnh đề **độc lập** (ngang bằng nhau).
 - **Có dấu phẩy** khi nối hai mệnh đề độc lập: "She studied hard**, but** she failed."
 - **Không có dấu phẩy** khi chỉ nối hai từ/cụm từ: "She is smart **and** hardworking."
 
+```example
+id: l08-p1-1
+prompt: The bus was full, ___ we decided to walk. (FANBOYS chỉ kết quả)
+hint: Liên từ chỉ kết quả trong nhóm FANBOYS.
+answer: so
+```
+
+```example
+id: l08-p1-2
+prompt: My sister wanted to buy the dress, ___ it was too expensive. (FANBOYS chỉ tương phản)
+hint: Liên từ chỉ sự tương phản đơn giản.
+answer: but
+```
+
+```example
+id: l08-p1-3
+prompt: You may pay in cash ___ by card. (FANBOYS chỉ lựa chọn)
+hint: Liên từ chỉ sự lựa chọn.
+answer: or
+```
+
 ---
 
 ## 2. LIÊN TỪ PHỤ — THỜI GIAN (SUBORDINATING — TIME)
@@ -64,6 +85,27 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 > - **When** I was a child**,** I loved cartoons. *(mệnh đề phụ trước → có phẩy)*
 > - I loved cartoons **when** I was a child. *(mệnh đề phụ sau → không cần phẩy)*
 
+```example
+id: l08-p2-1
+prompt: Please stay in the hall ___ your name is called. (cho đến khi)
+hint: Liên từ chỉ "cho đến khi".
+answer: until / till
+```
+
+```example
+id: l08-p2-2
+prompt: ___ the rain stopped, the children ran outside. (viết cả cụm liên từ nghĩa "ngay khi")
+hint: Cụm liên từ ba từ mang nghĩa "ngay khi".
+answer: As soon as
+```
+
+```example
+id: l08-p2-3
+prompt: My father always washes his hands ___ he touches the food. (trước khi)
+hint: Liên từ chỉ hành động xảy ra trước.
+answer: before
+```
+
 ---
 
 ## 3. LIÊN TỪ PHỤ — NGUYÊN NHÂN (SUBORDINATING — CAUSE)
@@ -83,6 +125,27 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 > - ✓ "The match was cancelled due to **the rain**." (due to + danh từ — ĐÚNG)
 > - ✓ "The match was cancelled **because** it rained." (because + mệnh đề — ĐÚNG)
 
+```example
+id: l08-p3-1
+prompt: The pupils stayed at home ___ the school was closed. (liên từ + mệnh đề)
+hint: Liên từ chỉ nguyên nhân, theo sau là cả mệnh đề S + V.
+answer: because / as / since
+```
+
+```example
+id: l08-p3-2
+prompt: The concert was postponed ___ the storm. (viết cụm hai từ đi với danh từ)
+hint: Cụm chỉ nguyên nhân, theo sau là danh từ, không phải mệnh đề.
+answer: due to / owing to
+```
+
+```example
+id: l08-p3-3
+prompt: She resigned ___ the long working hours. (viết cụm ba từ đi với danh từ, bắt đầu bằng "because")
+hint: Cụm ba từ chỉ nguyên nhân, theo sau là danh từ.
+answer: because of
+```
+
 ---
 
 ## 4. LIÊN TỪ PHỤ — TƯƠNG PHẢN (SUBORDINATING — CONTRAST)
@@ -95,16 +158,44 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 | though | tuy...nhưng (thông thường) | **Though** it was cold, we went swimming. |
 | even though | mặc dù (nhấn mạnh hơn) | **Even though** she was tired, she kept working. |
 
+```example
+id: l08-p4-1
+prompt: ___ the ticket was cheap, the seats were surprisingly comfortable. (liên từ + mệnh đề)
+hint: Liên từ tương phản trang trọng đi với cả mệnh đề.
+answer: Although / Though / Even though
+```
+
 ### 4.2 Despite / In spite of + danh từ / danh động từ
 
 - **Despite** the rain, they continued the match.
 - **In spite of** being tired, she finished the report.
 - **Despite** his age, he runs marathons.
 
+```example
+id: l08-p4-2
+prompt: ___ the heavy traffic, we arrived on time. (một từ, theo sau là danh từ)
+hint: Từ tương phản đi với danh từ, tuyệt đối không có "of".
+answer: Despite
+```
+
+```example
+id: l08-p4-3
+prompt: ___ having a broken arm, he still played the piano. (cụm ba từ, theo sau là V-ing)
+hint: Cụm tương phản ba từ, kết thúc bằng "of".
+answer: In spite of
+```
+
 ### 4.3 Whereas / While — So sánh tương phản
 
 - He is outgoing, **whereas** his sister is shy.
 - **While** some people love cities, others prefer the countryside.
+
+```example
+id: l08-p4-4
+prompt: My brother enjoys football, ___ I prefer badminton. (so sánh tương phản hai vế)
+hint: Liên từ dùng để đối chiếu hai sự việc khác nhau.
+answer: whereas / while
+```
 
 ### 4.4 However / Nevertheless / Nonetheless (trạng từ liên kết)
 
@@ -121,6 +212,20 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 > ❌ "**Although** he studied hard, **but** he failed." *(KHÔNG ĐƯỢC dùng cả hai)*
 > ✓ "**Although** he studied hard, he failed." *(chỉ dùng although)*
 > ✓ "He studied hard, **but** he failed." *(chỉ dùng but)*
+
+```example
+id: l08-p4-5
+prompt: The salary is modest; ___, the job offers valuable experience. (trạng từ liên kết)
+hint: Trạng từ liên kết tương phản, đứng sau dấu chấm phẩy và trước dấu phẩy.
+answer: however / nevertheless / nonetheless
+```
+
+```example
+id: l08-p4-6
+prompt: (Sửa lỗi) SAI: Although the food was cold, but everyone ate it. → ___ the food was cold, everyone ate it.
+hint: Không dùng đồng thời hai từ nối; giữ lại liên từ tương phản.
+answer: Although / Though / Even though
+```
 
 ---
 
@@ -139,6 +244,27 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 > - "**Unless** you hurry, you'll miss the train."
 > - = "**If** you **don't** hurry, you'll miss the train."
 
+```example
+id: l08-p5-1
+prompt: ___ you water these plants, they will die. (nếu không / trừ khi — một từ)
+hint: Liên từ mang nghĩa "if...not" gói gọn trong một từ.
+answer: Unless
+```
+
+```example
+id: l08-p5-2
+prompt: Take some cash with you ___ the card machine is broken. (viết cụm hai từ nghĩa "phòng khi")
+hint: Cụm hai từ chỉ sự đề phòng.
+answer: in case
+```
+
+```example
+id: l08-p5-3
+prompt: You can borrow my camera ___ you return it tomorrow. (viết cụm ba từ nghĩa "miễn là", bắt đầu bằng "as")
+hint: Cụm ba từ mang nghĩa "miễn là", bắt đầu bằng "as".
+answer: as long as
+```
+
 ---
 
 ## 6. LIÊN TỪ PHỤ — MỤC ĐÍCH (SUBORDINATING — PURPOSE)
@@ -150,6 +276,20 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 | in order to | nguyên mẫu | She woke up early **in order to** catch the train. |
 | so as to | nguyên mẫu | He spoke quietly **so as to** avoid waking the baby. |
 | to (simple) | nguyên mẫu | I went to the shop **to** buy some milk. |
+
+```example
+id: l08-p6-1
+prompt: He left the office early ___ he could catch the last train. (viết cụm hai từ chỉ mục đích + mệnh đề)
+hint: Cụm chỉ mục đích, theo sau là cả mệnh đề có modal.
+answer: so that
+```
+
+```example
+id: l08-p6-2
+prompt: She saves money every month ___ buy a small flat. (viết cụm ba từ chỉ mục đích + động từ nguyên mẫu)
+hint: Cụm ba từ chỉ mục đích, theo sau là động từ nguyên mẫu.
+answer: in order to
+```
 
 ---
 
@@ -163,6 +303,27 @@ Dùng để nối mệnh đề phụ chỉ thời gian với mệnh đề chính
 | consequently | trạng từ (do đó) | He didn't study**; consequently,** he failed. |
 | as a result | cụm trạng từ | It rained heavily. **As a result,** the match was cancelled. |
 | thus | trạng từ (vì vậy — trang trọng) | The budget was cut**; thus,** the project was delayed. |
+
+```example
+id: l08-p7-1
+prompt: The film was ___ boring that half the audience left. (so / such)
+hint: Trước tính từ đứng một mình dùng từ nào?
+answer: so
+```
+
+```example
+id: l08-p7-2
+prompt: It was ___ a long journey that the children fell asleep. (so / such)
+hint: Trước cụm "a + tính từ + danh từ" dùng từ nào?
+answer: such
+```
+
+```example
+id: l08-p7-3
+prompt: The road was flooded; ___, the lorries had to turn back. (trạng từ chỉ kết quả)
+hint: Trạng từ liên kết chỉ kết quả, đứng sau dấu chấm phẩy.
+answer: therefore / consequently / thus
+```
 
 ---
 
@@ -184,6 +345,34 @@ Các liên từ này luôn **xuất hiện theo cặp**:
   - "Either the teachers or the principal **is** responsible."
   - "Either the principal or the teachers **are** responsible."
 
+```example
+id: l08-p8-1
+prompt: She speaks both Thai ___ Lao fluently. (vế còn lại của cặp liên từ)
+hint: Cặp "both ... ___".
+answer: and
+```
+
+```example
+id: l08-p8-2
+prompt: He neither washed the dishes ___ took out the rubbish. (vế còn lại của cặp liên từ)
+hint: Cặp "neither ... ___".
+answer: nor
+```
+
+```example
+id: l08-p8-3
+prompt: The hotel is not only cheap ___ very clean. (viết cả cụm nối hai từ)
+hint: Cặp "not only ... ___ ___".
+answer: but also
+```
+
+```example
+id: l08-p8-4
+prompt: Neither the players nor the coach ___ (be) happy with the result.
+hint: "Neither...nor" chia động từ theo chủ ngữ gần nhất (số ít).
+answer: is / was
+```
+
 ---
 
 ## 9. QUY TẮC DẤU CÂU VỚI LIÊN TỪ
@@ -196,11 +385,48 @@ Các liên từ này luôn **xuất hiện theo cặp**:
 | However / Nevertheless | dấu chấm phẩy trước, dấu phẩy sau | "I was tired**; however,** I continued." |
 | Therefore / Consequently | dấu chấm phẩy trước, dấu phẩy sau | "It rained**; therefore,** the match was cancelled." |
 
+```example
+id: l08-p9-1
+prompt: ___ the lift was broken, we climbed the stairs. (liên từ phụ đứng đầu câu, có dấu phẩy)
+hint: Mệnh đề phụ chỉ nguyên nhân đứng trước → có dấu phẩy sau nó.
+answer: Because / As / Since
+```
+
+```example
+id: l08-p9-2
+prompt: The shop was closed; ___, we could not buy any bread. (trạng từ liên kết chỉ kết quả)
+hint: Trạng từ liên kết đi sau dấu chấm phẩy và trước dấu phẩy.
+answer: therefore / consequently / thus
+```
+
 ---
 
 ## 10. VÍ DỤ TỔNG HỢP TRONG VĂN VIẾT
 
 "**Although** the government has introduced many environmental policies, pollution levels continue to rise. **This is because** industries prioritise profit over sustainability. **However**, there are some encouraging signs. **Both** businesses **and** individuals are becoming more aware of their environmental impact. **Unless** drastic changes are made soon, **the consequences** will be severe. **Therefore**, it is essential that everyone takes action — **not only** for ourselves **but also** for future generations."
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l08-p10-1
+prompt: ___ the new law was passed, air quality has improved slightly. (từ khi)
+hint: Liên từ chỉ mốc bắt đầu trong quá khứ.
+answer: Since
+```
+
+```example
+id: l08-p10-2
+prompt: Recycling is cheap; ___, many households still ignore it. (trạng từ tương phản)
+hint: Trạng từ liên kết tương phản sau dấu chấm phẩy.
+answer: however / nevertheless / nonetheless
+```
+
+```example
+id: l08-p10-3
+prompt: ___ people change their habits, the rivers will stay polluted. (trừ khi)
+hint: Liên từ điều kiện phủ định, gói cả "if...not".
+answer: Unless
+```
 
 ---
 
@@ -216,6 +442,27 @@ Các liên từ này luôn **xuất hiện theo cặp**:
 | Neither he nor she are wrong. | Neither he nor she is wrong. | "Neither...nor" chia động từ theo danh từ gần nhất: "she" → is |
 | He is not only smart, also kind. | He is not only smart but also kind. | "Not only...but also" — không thể bỏ "but" |
 | While I love coffee, but I prefer tea. | While I love coffee, I prefer tea. | "While" (tương phản) đã là conjunction, không cần thêm "but" |
+
+```example
+id: l08-err-1
+prompt: (Sửa lỗi) SAI: Because the shop closed early, so we went home. → Because the shop closed early, we ___ home.
+hint: Không dùng "because" và "so" cùng lúc; bỏ "so", giữ động từ.
+answer: went
+```
+
+```example
+id: l08-err-2
+prompt: (Sửa lỗi) SAI: Despite of his injury, he finished the race. → ___ his injury, he finished the race.
+hint: "Despite" không đi với "of".
+answer: Despite
+```
+
+```example
+id: l08-err-3
+prompt: (Sửa lỗi) SAI: She is not only a singer, also a dancer. → She is not only a singer ___ a dancer.
+hint: Cặp "not only ... but also" không được bỏ "but".
+answer: but also
+```
 
 ---
 
