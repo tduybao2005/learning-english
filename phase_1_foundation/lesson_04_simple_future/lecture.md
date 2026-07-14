@@ -12,6 +12,22 @@ lang: vi-en
 # BÀI 4: THÌ TƯƠNG LAI ĐƠN (SIMPLE FUTURE)
 ## will / going to / Present Continuous for Future
 
+**Khởi động — thử ngay:**
+
+```example
+id: l04-p0-1
+prompt: The bell is ringing. — Don't move, I ___ (get) the door.
+hint: Quyết định nảy ra ngay lúc nói → dùng "will" + động từ nguyên thể.
+answer: will get / 'll get
+```
+
+```example
+id: l04-p0-2
+prompt: I have already booked a ticket; I ___ (be) going to Hue on Friday. (am / is / are)
+hint: Cấu trúc "be going to" chia "be" theo chủ ngữ "I".
+answer: am
+```
+
 ---
 
 ## GIỚI THIỆU
@@ -74,6 +90,41 @@ Dự đoán dựa trên ý kiến, cảm giác cá nhân — không có bằng c
 - If you study hard, you **will** pass the exam. (Nếu bạn học chăm chỉ, bạn sẽ vượt qua kỳ thi.)
 - If it rains, we **will** stay at home. (Nếu trời mưa, chúng tôi sẽ ở nhà.)
 
+```example
+id: l04-p1-1
+prompt: This box is heavy. — I ___ (carry) it upstairs for you.
+hint: Cách dùng 1: đề nghị/quyết định tức thì → will + nguyên thể.
+answer: will carry / 'll carry
+```
+
+```example
+id: l04-p1-2
+prompt: I'm sure our team ___ (play) better next season.
+hint: Cách dùng 2: dự đoán theo cảm nhận cá nhân ("I'm sure") → dùng will.
+answer: will play / 'll play
+```
+
+```example
+id: l04-p1-3
+prompt: I promise I ___ (not / tell) your parents about it.
+hint: Cách dùng 3: lời hứa phủ định → will not / won't.
+answer: won't tell / will not tell
+```
+
+```example
+id: l04-p1-4
+prompt: ___ you open the window, please? (Will / Are)
+hint: Cách dùng 4: yêu cầu lịch sự bắt đầu bằng "Will".
+answer: Will
+```
+
+```example
+id: l04-p1-5
+prompt: If you leave now, you ___ (catch) the last ferry.
+hint: Cách dùng 5: câu điều kiện loại 1 → mệnh đề chính dùng will.
+answer: will catch / 'll catch
+```
+
 ---
 
 ## PHẦN 2: GOING TO — KẾ HOẠCH VÀ DỰ ĐOÁN CÓ BẰNG CHỨNG
@@ -101,6 +152,20 @@ Bạn đã NGHĨ, ĐÃ QUYẾT ĐỊNH rồi — không phải lúc này mới n
 - She **is going to** start a new diet on Monday. ← Đã định sẵn
 - We **are going to** open a restaurant downtown. ← Kế hoạch kinh doanh
 
+```example
+id: l04-p2-1
+prompt: My sister ___ (be) going to take a driving course in August. (am / is / are)
+hint: Chia "be" trong "be going to" theo chủ ngữ số ít.
+answer: is
+```
+
+```example
+id: l04-p2-2
+prompt: We ___ (paint) the living room this weekend — we bought the paint yesterday. (going to)
+hint: Kế hoạch đã quyết định từ trước → are going to + nguyên thể.
+answer: are going to paint
+```
+
 **Cách dùng 2: Dự đoán dựa trên bằng chứng rõ ràng (Prediction with Evidence)**
 
 Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy điều gì đó sắp xảy ra.
@@ -109,6 +174,20 @@ Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy đi�
 - He's driving too fast! He **is going to** crash! (Anh ta lái quá nhanh! Anh ta sắp đâm xe!) ← Thấy rõ nguy hiểm
 - The baby **is going to** fall if you don't catch her! ← Có thể thấy nguy cơ
 - She **is going to** win — she's miles ahead! ← Có bằng chứng hiện tại
+
+```example
+id: l04-p2-3
+prompt: The sky is completely black. It ___ (pour) with rain any minute. (going to)
+hint: Có bằng chứng trước mắt → is going to + động từ nguyên thể.
+answer: is going to pour
+```
+
+```example
+id: l04-p2-4
+prompt: Careful! That glass ___ (fall) off the table! (going to)
+hint: Dự đoán có bằng chứng ngay trước mắt → is going to + nguyên thể.
+answer: is going to fall
+```
 
 ---
 
@@ -140,6 +219,27 @@ Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy đi�
 5. **(WILL — Dự đoán)** "She's very talented. She **will** be famous one day."
    **(GOING TO — Bằng chứng)** "She's gaining millions of followers. She**'s going to** be a big star."
 
+```example
+id: l04-p3-1
+prompt: Someone is knocking at the gate. — OK, I ___ (see) who it is.
+hint: Phản ứng tức thì → dùng will, không dùng going to.
+answer: will see / 'll see
+```
+
+```example
+id: l04-p3-2
+prompt: Nam has saved money all year; he ___ (buy) a laptop next month. (going to)
+hint: Kế hoạch đã định từ trước → is going to + nguyên thể.
+answer: is going to buy
+```
+
+```example
+id: l04-p3-3
+prompt: Perhaps our city ___ (have) a metro line in ten years.
+hint: Dự đoán chủ quan ("perhaps") → dùng will.
+answer: will have
+```
+
 ---
 
 ## PHẦN 4: PRESENT CONTINUOUS CHO TƯƠNG LAI
@@ -162,6 +262,20 @@ Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy đi�
 | Dự đoán (không có bằng chứng) | **will** |
 | Dự đoán (có bằng chứng trước mắt) | **going to** |
 
+```example
+id: l04-p4-1
+prompt: I ___ (have) dinner with my old classmates on Friday — the table is already booked.
+hint: Cuộc hẹn đã đặt trước → hiện tại tiếp diễn (am + V-ing).
+answer: am having / 'm having
+```
+
+```example
+id: l04-p4-2
+prompt: My parents ___ (fly) to Japan on Tuesday; their tickets arrived last week.
+hint: Kế hoạch đã đặt chỗ, chủ ngữ số nhiều → are + V-ing.
+answer: are flying
+```
+
 ---
 
 ## PHẦN 5: CÁC HÌNH THỨC TƯƠNG LAI KHÁC (BRIEF INTRODUCTION)
@@ -171,11 +285,32 @@ Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy đi�
 - **Shall** I open the window? (Tôi mở cửa sổ nhé?)
 - **Shall** we go for a walk? (Chúng ta đi dạo nhé?)
 
+```example
+id: l04-p5-1
+prompt: ___ I call a taxi for you? (Shall / Will)
+hint: Đề nghị lịch sự với "I" trong tiếng Anh-Anh.
+answer: Shall
+```
+
 ### Be about to
 - Diễn tả điều sắp xảy ra NGAY LẬP TỨC (in seconds/minutes):
 - The train **is about to** leave. Quick! (Tàu sắp chạy rồi. Nhanh lên!)
 - She**'s about to** give birth. (Cô ấy sắp sinh rồi.)
 - We**'re about to** start. Please take your seats. (Chúng tôi sắp bắt đầu. Xin mời ngồi vào chỗ.)
+
+```example
+id: l04-p5-2
+prompt: Hurry up! The concert ___ (be) about to begin. (is / are)
+hint: "be about to" chia theo chủ ngữ số ít.
+answer: is
+```
+
+```example
+id: l04-p5-3
+prompt: Turn off your phone — the pilot ___ (be) about to take off. (is / are)
+hint: Việc xảy ra ngay lập tức → "be about to", chủ ngữ số ít.
+answer: is
+```
 
 ---
 
@@ -191,6 +326,20 @@ Bạn NHÌN THẤY hoặc CÓ BẰNG CHỨNG ngay trước mắt cho thấy đi�
 | tonight | tối nay | Are you **going to** study **tonight**? |
 | this weekend | cuối tuần này | We**'re meeting** friends **this weekend**. *(PC)* |
 | on Saturday | vào thứ Bảy | I**'m having** a haircut **on Saturday**. *(PC)* |
+
+```example
+id: l04-p6-1
+prompt: Don't worry, the results ___ (arrive) soon.
+hint: "soon" + dự đoán → will + nguyên thể.
+answer: will arrive / 'll arrive
+```
+
+```example
+id: l04-p6-2
+prompt: In the future, most cars ___ (run) on electricity.
+hint: "In the future" + dự đoán chung → dùng will.
+answer: will run
+```
 
 ---
 
@@ -218,6 +367,43 @@ Người Việt hay nói "Tôi sẽ..." và dịch thẳng thành "I will..." ch
 - Nhìn trời có mây đen → It **is going to** rain. *(có bằng chứng)*
 - Cảm giác chung → I think it **will** rain tomorrow. *(không có bằng chứng ngay lúc này)*
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l04-p7-1
+prompt: (Sửa Lỗi 1) SAI: I will visit my aunt on Sunday — we agreed last week. → I ___ visit my aunt on Sunday. (going to)
+hint: Kế hoạch có từ trước → dùng "am going to", không dùng will.
+answer: am going to / 'm going to
+```
+
+```example
+id: l04-p7-2
+prompt: (Sửa Lỗi 2) SAI: He will finishes the report tonight. → He will ___ the report tonight.
+hint: Sau "will" luôn là động từ nguyên thể.
+answer: finish
+```
+
+```example
+id: l04-p7-3
+prompt: (Sửa Lỗi 3) SAI: They are going to to build a bridge. → They are going to ___ a bridge.
+hint: Sau "going to" chỉ cần một động từ nguyên thể, không thêm "to".
+answer: build
+```
+
+```example
+id: l04-p7-4
+prompt: (Sửa Lỗi 4) SAI: I fly to Bangkok next month. → I ___ fly to Bangkok next month. (going to)
+hint: Không dùng hiện tại đơn cho kế hoạch tương lai.
+answer: am going to / 'm going to
+```
+
+```example
+id: l04-p7-5
+prompt: (Sửa Lỗi 5) SAI: Look at his hands — he will drop the tray! → Look at his hands — he ___ drop the tray! (going to)
+hint: Có bằng chứng trước mắt → dùng "is going to".
+answer: is going to / 's going to
+```
+
 ---
 
 ## PHẦN 8: VÍ DỤ TỔNG HỢP (15 ví dụ)
@@ -237,6 +423,29 @@ Người Việt hay nói "Tôi sẽ..." và dịch thẳng thành "I will..." ch
 13. When I grow up, I **will** become a doctor. *(Will — mong muốn/dự đoán tương lai xa)*
 14. Are you **going to** watch the match tonight? *(Going to — kế hoạch)*
 15. The shuttle bus **leaves** at 6 am tomorrow and **arrives** at 9 am. *(Simple Present — lịch trình cố định)*
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l04-p8-1
+prompt: The film ___ (start) at 8 pm every evening this month.
+hint: Lịch chiếu cố định → dùng hiện tại đơn.
+answer: starts
+```
+
+```example
+id: l04-p8-2
+prompt: That ladder looks unsafe. He ___ (hurt) himself! (going to)
+hint: Bằng chứng ngay trước mắt → is going to + nguyên thể.
+answer: is going to hurt
+```
+
+```example
+id: l04-p8-3
+prompt: Someone left the tap on. — Really? I ___ (turn) it off now.
+hint: Quyết định tức thì → will + nguyên thể.
+answer: will turn / 'll turn
+```
 
 ---
 
@@ -269,6 +478,27 @@ Người Việt hay nói "Tôi sẽ..." và dịch thẳng thành "I will..." ch
 | Shall she help us? | Will she help us? | "Shall" chỉ dùng với I và We để đề nghị, không dùng với she/he/they. |
 | I am going to probably pass. | I will probably pass. | Dự đoán dựa trên ý kiến cá nhân → dùng will, thường đi kèm "probably". |
 | She will to call you later. | She will call you later. | Sau "will" không thêm "to" — dùng thẳng động từ nguyên thể. |
+
+```example
+id: l04-err-1
+prompt: (Sửa lỗi) SAI: We will to meet you at the airport. → We will ___ you at the airport.
+hint: Sau "will" không có "to".
+answer: meet
+```
+
+```example
+id: l04-err-2
+prompt: (Sửa lỗi) SAI: Shall he bring the documents? → ___ he bring the documents?
+hint: "Shall" chỉ dùng với I/We; với "he" phải dùng trợ động từ khác.
+answer: Will
+```
+
+```example
+id: l04-err-3
+prompt: (Sửa lỗi) SAI: My cousin will studies abroad next year — he has a scholarship. → My cousin ___ study abroad next year. (going to)
+hint: Kế hoạch đã chắc chắn → "is going to" + nguyên thể.
+answer: is going to / 's going to
+```
 
 ---
 
