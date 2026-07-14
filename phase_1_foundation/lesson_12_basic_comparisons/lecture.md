@@ -35,6 +35,13 @@ Dùng khi muốn nói hai người/vật **bằng nhau** về một tính chất
 | This coffee is **as strong as** the one I had yesterday. | Cà phê này mạnh bằng cái tôi uống hôm qua. |
 | She speaks English **as fluently as** a native speaker. | Cô ấy nói tiếng Anh lưu loát như người bản xứ. |
 
+```example
+id: l12-p1-1
+prompt: My bicycle is ___ (old) as yours. (dùng cấu trúc so sánh bằng)
+hint: as + tính từ nguyên thể + as.
+answer: as old
+```
+
 ### 1.2. Phủ định: not as + adj/adv + as (= less than)
 
 **Công thức:** S + V + **not as + adjective/adverb + as** + noun/pronoun
@@ -47,12 +54,33 @@ Dùng khi A không bằng B, hay A kém hơn B.
 | I am **not as experienced as** she is. | Tôi không có kinh nghiệm bằng cô ấy. |
 | Public transport is **not as convenient as** having a car. | Giao thông công cộng không thuận tiện bằng có xe riêng. |
 
+```example
+id: l12-p1-2
+prompt: My room is ___ (not / big) as my sister's room. (viết đầy đủ cụm)
+hint: Cấu trúc phủ định: not as + tính từ + as.
+answer: not as big
+```
+
 ### 1.3. So sánh bằng với danh từ: as many/much...as
 
 - **as many + countable noun + as:** She has **as many books as** I do.
 - **as much + uncountable noun + as:** He earns **as much money as** she does.
 - **Twice/three times as...as:** This laptop is **twice as expensive as** that one. (đắt gấp đôi)
 - **Half as...as:** This phone is **half as powerful as** the new model. (chỉ bằng một nửa)
+
+```example
+id: l12-p1-3
+prompt: Lan has as ___ friends as Hoa. (many / much)
+hint: "friends" là danh từ đếm được.
+answer: many
+```
+
+```example
+id: l12-p1-4
+prompt: I don't drink as ___ tea as my father. (many / much)
+hint: "tea" là danh từ không đếm được.
+answer: much
+```
 
 ---
 
@@ -79,6 +107,27 @@ Dùng khi A không bằng B, hay A kém hơn B.
 **Kết thúc bằng -e → chỉ thêm -r:**
 - nice → **nicer** | large → **larger** | safe → **safer** | wise → **wiser**
 
+```example
+id: l12-p2-1
+prompt: My village is ___ (quiet) than the town.
+hint: Tính từ ngắn → thêm -er.
+answer: quieter
+```
+
+```example
+id: l12-p2-2
+prompt: Today is ___ (hot) than yesterday.
+hint: CVC → nhân đôi phụ âm cuối rồi thêm -er.
+answer: hotter
+```
+
+```example
+id: l12-p2-3
+prompt: This road is ___ (safe) than the old one.
+hint: Tận cùng -e → chỉ thêm -r.
+answer: safer
+```
+
 ### 2.2. Tính từ hai âm tiết kết thúc bằng **-y** → đổi y thành **-ier**
 
 | Tính từ | So sánh hơn |
@@ -94,6 +143,13 @@ Dùng khi A không bằng B, hay A kém hơn B.
 | healthy | health**ier** |
 | dirty | dirt**ier** |
 
+```example
+id: l12-p2-4
+prompt: My cousin is ___ (lucky) than me.
+hint: Tính từ hai âm tiết tận cùng -y → -ier.
+answer: luckier
+```
+
 ### 2.3. Tính từ từ hai âm tiết trở lên (không kết thúc -y) → **more** + adjective
 
 | Tính từ | So sánh hơn |
@@ -108,6 +164,13 @@ Dùng khi A không bằng B, hay A kém hơn B.
 | careful | **more** careful |
 | useful | **more** useful |
 | famous | **more** famous |
+
+```example
+id: l12-p2-5
+prompt: A train journey is ___ (relaxing) than a long drive.
+hint: Tính từ dài → dùng "more" + tính từ.
+answer: more relaxing
+```
 
 ### 2.4. Tính từ bất quy tắc — PHẢI HỌC THUỘC
 
@@ -128,6 +191,20 @@ Dùng khi A không bằng B, hay A kém hơn B.
 - My office is **farther from** the city centre than I expected.
 - She knows **more** about this topic **than** I do.
 
+```example
+id: l12-p2-6
+prompt: My handwriting is ___ (bad) than my brother's.
+hint: Tính từ bất quy tắc: bad → ?
+answer: worse
+```
+
+```example
+id: l12-p2-7
+prompt: This dictionary is ___ (good) than the one I had before.
+hint: Tính từ bất quy tắc: good → ?
+answer: better
+```
+
 ### 2.5. Nhấn mạnh so sánh hơn: much / far / a lot / even / a bit + comparative
 
 - This car is **much more expensive than** that one. (đắt hơn nhiều)
@@ -135,6 +212,13 @@ Dùng khi A không bằng B, hay A kém hơn B.
 - She is **a lot taller than** her sister. (cao hơn nhiều)
 - He is **even smarter than** his professor. (còn thông minh hơn cả)
 - This version is **a bit cheaper than** the original. (rẻ hơn một chút)
+
+```example
+id: l12-p2-8
+prompt: This bag is ___ heavier than mine. (much / very)
+hint: Nhấn mạnh so sánh hơn dùng much/far/a lot, không dùng "very".
+answer: much
+```
 
 ---
 
@@ -157,6 +241,20 @@ Dùng khi A không bằng B, hay A kém hơn B.
 
 **Kết thúc -e:** nice → the **nicest** | large → the **largest**
 
+```example
+id: l12-p3-1
+prompt: That is ___ (small) puppy in the litter.
+hint: Tính từ ngắn → the + adj-est.
+answer: the smallest
+```
+
+```example
+id: l12-p3-2
+prompt: July is ___ (hot) month of the year here.
+hint: CVC → nhân đôi phụ âm cuối; nhớ mạo từ "the".
+answer: the hottest
+```
+
 ### 3.2. Tính từ -y → the + **-iest**
 
 | Tính từ | So sánh nhất |
@@ -166,6 +264,13 @@ Dùng khi A không bằng B, hay A kém hơn B.
 | easy | the eas**iest** |
 | pretty | the prett**iest** |
 | heavy | the heav**iest** |
+
+```example
+id: l12-p3-3
+prompt: Grandma is ___ (early) riser in our house.
+hint: Tận cùng -y → the + adj-iest.
+answer: the earliest
+```
 
 ### 3.3. Tính từ từ 2 âm tiết trở lên → the **most** + adjective
 
@@ -177,6 +282,13 @@ Dùng khi A không bằng B, hay A kém hơn B.
 | interesting | the **most** interesting |
 | important | the **most** important |
 
+```example
+id: l12-p3-4
+prompt: This is ___ (delicious) cake I have ever eaten.
+hint: Tính từ dài → the most + tính từ.
+answer: the most delicious
+```
+
 ### 3.4. In vs Of với so sánh nhất
 
 - **in** + địa điểm / nhóm / tổ chức: the tallest **in** the class / **in** Vietnam / **in** the world
@@ -187,6 +299,20 @@ Ví dụ:
 - She is the most talented **of** all the students I have ever taught.
 - Ho Chi Minh City is the biggest city **in** Vietnam.
 - Of all the films he has made, this is the best **of** his career.
+
+```example
+id: l12-p3-5
+prompt: My father is the tallest man ___ our family. (in / of)
+hint: Nhóm/địa điểm → dùng "in".
+answer: in
+```
+
+```example
+id: l12-p3-6
+prompt: This is the cheapest ___ the four hotels. (in / of)
+hint: Danh sách có số lượng cụ thể → dùng "of".
+answer: of
+```
 
 ---
 
@@ -205,6 +331,27 @@ Ví dụ:
 - He makes the **fewest** errors in the whole class.
 - Of all the options, this one causes the **least** damage to the environment.
 
+```example
+id: l12-p4-1
+prompt: Our village has ___ shops than the town. (fewer / less)
+hint: "shops" đếm được → dùng "fewer".
+answer: fewer
+```
+
+```example
+id: l12-p4-2
+prompt: I have ___ free time than I did last year. (fewer / less)
+hint: "time" không đếm được → dùng "less".
+answer: less
+```
+
+```example
+id: l12-p4-3
+prompt: Nam made the ___ spelling mistakes in the whole class. (fewest / least)
+hint: Danh từ đếm được, so sánh nhất "ít nhất".
+answer: fewest
+```
+
 ---
 
 ## PHẦN 5: CÁC CẤU TRÚC SO SÁNH ĐẶC BIỆT
@@ -214,15 +361,36 @@ Ví dụ:
 - **The more** you practise, **the more** fluent you become. (Càng luyện nhiều, càng trở nên lưu loát.)
 - **The older** she gets, **the wiser** she becomes.
 
+```example
+id: l12-p5-1
+prompt: The earlier you leave, ___ (soon) you will arrive. (viết cả "the")
+hint: Cấu trúc "càng… càng…": the + so sánh hơn.
+answer: the sooner
+```
+
 ### 5.2. Comparative + and + comparative (Ngày càng...)
 - Prices are getting **more and more expensive**. (Giá cả ngày càng đắt.)
 - The situation is getting **worse and worse**. (Tình hình ngày càng tệ hơn.)
 - She is becoming **more and more confident**. (Cô ấy ngày càng tự tin hơn.)
 
+```example
+id: l12-p5-2
+prompt: The streets are getting ___ (busy) and busier every year. (viết dạng so sánh hơn)
+hint: Cấu trúc "comparative + and + comparative".
+answer: busier
+```
+
 ### 5.3. One of the + superlative + plural noun
 - Ha Long Bay is **one of the most beautiful** places **in** the world. (Một trong những nơi đẹp nhất...)
 - She is **one of the best** teachers **in** our school.
 - This is **one of the most challenging** problems I have ever solved.
+
+```example
+id: l12-p5-3
+prompt: Hoi An is one of the most peaceful ___ (town) in Vietnam.
+hint: Sau "one of the + so sánh nhất" phải là danh từ số nhiều.
+answer: towns
+```
 
 ---
 
@@ -256,6 +424,57 @@ Ví dụ:
 - ❌ She is the tallest of the school.
 - ✅ She is the tallest **in** the school. *(địa điểm → in)*
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l12-p6-1
+prompt: (Sửa Lỗi 1) SAI: My bag is more heavy than yours. → My bag is ___ than yours.
+hint: Tính từ hai âm tiết tận cùng -y → -ier, không dùng "more".
+answer: heavier
+```
+
+```example
+id: l12-p6-2
+prompt: (Sửa Lỗi 2) SAI: This exercise is difficulter than the last one. → This exercise is ___ than the last one.
+hint: Tính từ dài → dùng "more".
+answer: more difficult
+```
+
+```example
+id: l12-p6-3
+prompt: (Sửa Lỗi 3) SAI: He is fastest runner in the team. → He is ___ runner in the team.
+hint: So sánh nhất luôn có "the".
+answer: the fastest
+```
+
+```example
+id: l12-p6-4
+prompt: (Sửa Lỗi 4) SAI: My house is bigger then hers. → My house is bigger ___ hers.
+hint: So sánh hơn dùng "than", không phải "then".
+answer: than
+```
+
+```example
+id: l12-p6-5
+prompt: (Sửa Lỗi 5) SAI: Her English is more better than mine. → Her English is ___ than mine.
+hint: "better" đã là so sánh hơn, không thêm "more".
+answer: better
+```
+
+```example
+id: l12-p6-6
+prompt: (Sửa Lỗi 6) SAI: We have less chairs than we need. → We have ___ chairs than we need.
+hint: "chairs" đếm được → dùng "fewer".
+answer: fewer
+```
+
+```example
+id: l12-p6-7
+prompt: (Sửa Lỗi 7) SAI: She is the youngest of her class. → She is the youngest ___ her class.
+hint: Nhóm/địa điểm → dùng "in".
+answer: in
+```
+
 ---
 
 ## PHẦN 7: VÍ DỤ THỰC TẾ PHONG PHÚ
@@ -279,6 +498,29 @@ Ví dụ:
 - This coffee shop is **more comfortable than** the one near my office.
 - The new phone model is **slightly more expensive than** the old one, but it has **far better** features.
 - Today is **not as hot as** yesterday, thank goodness!
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l12-p7-1
+prompt: Buying a house in the city is ___ (expensive) than in the countryside.
+hint: Tính từ dài → "more" + tính từ + than.
+answer: more expensive
+```
+
+```example
+id: l12-p7-2
+prompt: Mount Everest is ___ (high) mountain in the world.
+hint: So sánh nhất của tính từ ngắn, nhớ "the".
+answer: the highest
+```
+
+```example
+id: l12-p7-3
+prompt: My new laptop is ___ (not / heavy) as my old one. (viết đầy đủ cụm)
+hint: So sánh bằng phủ định: not as + tính từ + as.
+answer: not as heavy
+```
 
 ---
 
@@ -315,6 +557,27 @@ Ví dụ:
 | There are less students this year. | There are fewer students this year. | Danh từ đếm được (students) dùng "fewer", không dùng "less". |
 | She is the tallest of the school. | She is the tallest in the school. | "In" dùng với địa điểm/nhóm; "of" dùng với danh sách hoặc số lượng cụ thể. |
 | He is as taller as his brother. | He is as tall as his brother. | Trong so sánh bằng "as...as", dùng dạng nguyên thể của tính từ, không dùng -er. |
+
+```example
+id: l12-err-1
+prompt: (Sửa lỗi) SAI: This test is as harder as the last one. → This test is as ___ as the last one.
+hint: Trong "as…as" dùng tính từ nguyên thể.
+answer: hard
+```
+
+```example
+id: l12-err-2
+prompt: (Sửa lỗi) SAI: Winter in Sapa is more cold than in Hue. → Winter in Sapa is ___ than in Hue.
+hint: Tính từ một âm tiết → thêm -er.
+answer: colder
+```
+
+```example
+id: l12-err-3
+prompt: (Sửa lỗi) SAI: This is most useful book in the library. → This is ___ book in the library.
+hint: So sánh nhất cần "the".
+answer: the most useful
+```
 
 ---
 
