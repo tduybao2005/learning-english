@@ -29,6 +29,20 @@ Sau khi hoàn thành bài này, bạn sẽ:
 
 Người Việt thường gặp khó khăn với giới từ vì tiếng Việt dùng "ở", "vào", "trên", "trong" theo cách khác, và không có quy tắc 1-1 rõ ràng.
 
+```example
+id: l10-p1-1
+prompt: The cat is sleeping ___ the sofa. (on / in)
+hint: Bề mặt → dùng giới từ chỉ "trên bề mặt".
+answer: on
+```
+
+```example
+id: l10-p1-2
+prompt: My little brother is hiding ___ the wardrobe. (in / at)
+hint: Không gian kín, có giới hạn.
+answer: in
+```
+
 ---
 
 ## 2. BA GIỚI TỪ QUAN TRỌNG NHẤT: IN / ON / AT
@@ -82,6 +96,34 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 > ❌ *in this week* | ✅ ***this** week*
 > ❌ *on every day* | ✅ ***every** day*
 
+```example
+id: l10-p2-1
+prompt: My parents got married ___ 1998. (in / on / at)
+hint: Năm → dùng "in".
+answer: in
+```
+
+```example
+id: l10-p2-2
+prompt: The wedding will be held ___ 20th October. (in / on / at)
+hint: Ngày cụ thể → dùng "on".
+answer: on
+```
+
+```example
+id: l10-p2-3
+prompt: The shop closes ___ 9:30 every evening. (in / on / at)
+hint: Giờ cụ thể → dùng "at".
+answer: at
+```
+
+```example
+id: l10-p2-4
+prompt: I visited my grandparents ___ summer. (in / on / at)
+hint: Mùa trong năm → dùng "in".
+answer: in
+```
+
 ---
 
 ### 2.2 GIỚI TỪ CHỈ ĐỊA ĐIỂM
@@ -121,6 +163,27 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 5. *We met **at** the entrance, then sat **on** the grass **in** the park.*
    (Chúng tôi gặp nhau tại lối vào, sau đó ngồi trên cỏ trong công viên.)
 
+```example
+id: l10-p2-5
+prompt: My aunt lives ___ Can Tho. (in / on / at)
+hint: Thành phố → dùng "in".
+answer: in
+```
+
+```example
+id: l10-p2-6
+prompt: I met my old teacher ___ the bus stop. (in / on / at)
+hint: Một điểm cụ thể có mục đích → dùng "at".
+answer: at
+```
+
+```example
+id: l10-p2-7
+prompt: Their office is ___ the fifth floor. (in / on / at)
+hint: Tầng của toà nhà → dùng "on".
+answer: on
+```
+
 ---
 
 ## 3. GIỚI TỪ CHỈ NƠI CHỐN (Prepositions of Place)
@@ -156,6 +219,34 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 9. *The hotel is **close to** the beach and **near** many restaurants.*
 10. *Please wait **outside** — it's too noisy **inside**.*
 
+```example
+id: l10-p3-1
+prompt: The pharmacy is ___ the two coffee shops. (between / among)
+hint: Ở giữa HAI vật → dùng "between".
+answer: between
+```
+
+```example
+id: l10-p3-2
+prompt: A big clock hangs ___ the blackboard. (above / under)
+hint: Phía trên, không tiếp xúc.
+answer: above
+```
+
+```example
+id: l10-p3-3
+prompt: My motorbike is parked ___ the house. (behind / among)
+hint: Phía sau ngôi nhà.
+answer: behind
+```
+
+```example
+id: l10-p3-4
+prompt: The bakery is ___ the bank — just cross the street. (opposite / inside)
+hint: Đối diện, bên kia đường.
+answer: opposite
+```
+
 ---
 
 ## 4. GIỚI TỪ CHỈ CHUYỂN ĐỘNG (Prepositions of Movement)
@@ -189,6 +280,34 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 7. *He jumped **over** the fence and landed on the other side.*
 8. *They drove **past** the old temple, **through** the village, then **into** the valley.*
 
+```example
+id: l10-p4-1
+prompt: The children ran ___ the classroom when the bell rang. (into / on)
+hint: Chuyển động vào bên trong.
+answer: into
+```
+
+```example
+id: l10-p4-2
+prompt: We cycled ___ the canal for two kilometres. (along / across)
+hint: Đi dọc theo một con đường/dòng nước.
+answer: along
+```
+
+```example
+id: l10-p4-3
+prompt: A helicopter flew ___ our village this morning. (over / under)
+hint: Bay qua bên trên.
+answer: over
+```
+
+```example
+id: l10-p4-4
+prompt: Go ___ the post office and turn right at the corner. (past / into)
+hint: Đi ngang qua rồi tiếp tục.
+answer: past
+```
+
 ---
 
 ## 5. CỤM DANH TỪ VỚI GIỚI TỪ CỐ ĐỊNH (Noun + Preposition Collocations)
@@ -217,6 +336,27 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 | **in the end** | cuối cùng (kết quả) | **In the end**, she decided to stay. |
 | **at the end of** | ở cuối | Turn left **at the end of** the road. |
 | **in the middle of** | ở giữa | She called me **in the middle of** dinner! |
+
+```example
+id: l10-p5-1
+prompt: Nam is ___ charge of the school library this term. (in / at)
+hint: Cụm cố định nghĩa "phụ trách".
+answer: in
+```
+
+```example
+id: l10-p5-2
+prompt: I broke your cup ___ mistake — I'm so sorry. (by / on)
+hint: Cụm cố định nghĩa "vô tình, nhầm".
+answer: by
+```
+
+```example
+id: l10-p5-3
+prompt: My sister is ___ holiday in Da Lat this week. (on / in)
+hint: Cụm cố định nghĩa "đang đi nghỉ".
+answer: on
+```
 
 ---
 
@@ -261,6 +401,43 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 ❌ *Please explain **me** the situation.*
 ✅ *Please explain the situation **to** me.*
 
+**Sửa lỗi — thử ngay:**
+
+```example
+id: l10-p6-1
+prompt: (Sửa Lỗi 1) SAI: The meeting starts on 8 a.m. → The meeting starts ___ 8 a.m.
+hint: Giờ cụ thể → dùng "at".
+answer: at
+```
+
+```example
+id: l10-p6-2
+prompt: (Sửa Lỗi 2) SAI: We will travel in next summer. → We will travel ___ summer. (giữ "next")
+hint: Không dùng giới từ trước "next".
+answer: next
+```
+
+```example
+id: l10-p6-3
+prompt: (Sửa Lỗi 3) SAI: My friend studies at Australia. → My friend studies ___ Australia.
+hint: Tên quốc gia → dùng "in".
+answer: in
+```
+
+```example
+id: l10-p6-4
+prompt: (Sửa Lỗi 4) SAI: We reached the theatre on time to see the opening scene. → We reached the theatre ___ time to see the opening scene.
+hint: "kịp lúc, trước khi quá muộn" → dùng "in time".
+answer: in
+```
+
+```example
+id: l10-p6-5
+prompt: (Sửa Lỗi 5) SAI: They discussed about the new plan. → They ___ the new plan.
+hint: "discuss" không đi với "about".
+answer: discussed
+```
+
 ---
 
 ## 7. 20+ VÍ DỤ TỔNG HỢP
@@ -280,6 +457,29 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 13. *She was **in** a hurry so she ran **down** the stairs and **out of** the office.*
 14. *I found the perfect recipe **in** a cookbook **on** the shelf **above** the refrigerator.*
 15. *Phu Quoc is **on** an island **in** the south of Vietnam, **near** the Cambodian border.*
+
+**Tổng hợp — thử ngay:**
+
+```example
+id: l10-p7-1
+prompt: My English class begins ___ the afternoon. (in / on / at)
+hint: Buổi trong ngày → dùng "in".
+answer: in
+```
+
+```example
+id: l10-p7-2
+prompt: I read that article ___ the internet last night. (in / on / at)
+hint: Công nghệ, màn hình → dùng "on".
+answer: on
+```
+
+```example
+id: l10-p7-3
+prompt: Please leave your shoes ___ the door. (outside / among)
+hint: Bên ngoài cửa.
+answer: outside
+```
 
 ---
 
@@ -305,6 +505,27 @@ Người Việt thường gặp khó khăn với giới từ vì tiếng Việt 
 | Please explain me the situation. | Please explain the situation to me. | "Explain" dùng "to" khi có tân ngữ gián tiếp: explain something to someone. |
 | She arrived to home late. | She arrived home late. | "Arrive home" không cần giới từ; hoặc "arrive at home" nếu muốn nhấn mạnh. |
 | He is in the bus. | He is on the bus. | Phương tiện giao thông công cộng dùng "on": on the bus/train/plane. |
+
+```example
+id: l10-err-1
+prompt: (Sửa lỗi) SAI: My cousin is in the train to Hue. → My cousin is ___ the train to Hue.
+hint: Phương tiện công cộng → dùng "on".
+answer: on
+```
+
+```example
+id: l10-err-2
+prompt: (Sửa lỗi) SAI: I will call you in Sunday. → I will call you ___ Sunday.
+hint: Ngày trong tuần → dùng "on".
+answer: on
+```
+
+```example
+id: l10-err-3
+prompt: (Sửa lỗi) SAI: Could you explain me this rule? → Could you explain this rule ___ me?
+hint: "explain something to someone".
+answer: to
+```
 
 ---
 
