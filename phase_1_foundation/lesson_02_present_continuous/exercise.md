@@ -54,17 +54,17 @@ lang: vi-en
     - C) have
     - D) having
 
-17. She ______ to music when I called her.
-    - A) is listening
-    - B) listens
-    - C) was listening *(Chú ý: câu này nên dùng Past Continuous — nhận biết và chọn đáp án đúng nhất trong ngữ cảnh hiện tại)*
-    - D) listened
+17. Be quiet! She ______ to music with her headphones on right now.
+    - A) listens
+    - B) listen
+    - C) is listening
+    - D) listening
 
-18. I ______ you ______ better every day. Keep it up!
-    - A) see / getting
-    - B) can see / getting
-    - C) am seeing / get
-    - D) see / are getting
+18. I ______ what you mean, but I ______ about it right now.
+    - A) am seeing / am thinking
+    - B) see / think
+    - C) see / am thinking
+    - D) am seeing / think
 
 19. He ______ always ______ his socks on the floor! It's so annoying!
     - A) is / leaving
@@ -215,9 +215,8 @@ lang: vi-en
 
 ### Section B:
 16. B (is having)
-17. C (was listening — chú ý ngữ cảnh "when I called" gợi ý quá khứ; trong khuôn khổ bài này nhận biết đây là câu trap)
-18. D (I can see / getting — "can see" là cụm thông dụng)
-*(Ghi chú cho giáo viên: câu 17 là câu khó; nếu học sinh chọn A đây cũng là điểm cần thảo luận về ngữ cảnh)*
+17. C (is listening — "right now" là dấu hiệu của Present Continuous)
+18. C (see / am thinking — "see" nghĩa "hiểu" là stative verb → hiện tại đơn; "think about" nghĩa "đang cân nhắc" là động từ hành động, có "right now" → Present Continuous)
 19. A (is / leaving)
 20. B (is meeting)
 21. C (are becoming)
