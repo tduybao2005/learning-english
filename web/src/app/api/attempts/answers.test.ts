@@ -470,3 +470,113 @@ describe("real corpus lesson with per-section-restarting numbering (lesson_08_ad
     expect(attempt?.currentQuestionNumber).toBe(15); // keeps climbing
   });
 });
+
+// ---------------------------------------------------------------------------
+// Regression: ERROR_CORRECTION questions ask the learner to retype the WHOLE
+// corrected sentence (see QuestionCard's ErrorCorrectionAnswer: "Viết lại cả
+// câu cho đúng"). The seeded AnswerVariant holds only the corrected WORD
+// ("are"), and `keyNote` is an explanatory ASIDE — a truncated sentence plus a
+// note ("They are having lunch... — plural subject"), NOT the clean full
+// sentence. The route previously graded the full rewrite against `keyNote`,
+// which rejected every correct answer (phase_1 lesson_02 Section D, reported by
+// a learner). It must now route ERROR_CORRECTION through `matchAnswer`, whose
+// dedicated path accepts the rewrite when it contains the corrected word.
+// ---------------------------------------------------------------------------
+describe("ERROR_CORRECTION grading — full rewrite is accepted (regression)", () => {
+  let ecUserId: string;
+  let ecLessonId: string;
+  let ecExerciseId: string;
+  let ecQId: string;
+
+  beforeAll(async () => {
+    const phase = await db.phase.create({
+      data: { slug: `test_phase_ec_${RUN_ID}`, orderIndex: 100001, title: "Test Phase EC", cefrLabel: "A1" },
+    });
+    const lesson = await db.lesson.create({
+      data: {
+        phaseId: phase.id,
+        slug: `test_lesson_ec_${RUN_ID}`,
+        orderIndex: 0,
+        title: "Test Lesson EC",
+        lectureMd: "# Test",
+        sourceDir: "test",
+        contentHash: "test-hash-ec",
+      },
+    });
+    ecLessonId = lesson.id;
+
+    const exercise = await db.exercise.create({ data: { lessonId: lesson.id, title: "EC Exercise" } });
+    ecExerciseId = exercise.id;
+
+    const section = await db.section.create({
+      data: { exerciseId: exercise.id, label: "D", title: "Error Correction", kind: "ERROR_CORRECTION", orderIndex: 0 },
+    });
+
+    // Mirrors the real seed shape for phase_1 lesson_02 Q38: variant = the
+    // corrected WORD, keyNote = the truncated explanatory aside.
+    const q = await db.question.create({
+      data: {
+        sectionId: section.id,
+        number: 38,
+        prompt: "They is having lunch in the cafeteria.\n    → Lỗi: ______ → Sửa: ______",
+        answerRaw: '"is" → **are** (They are having lunch... — plural subject)',
+        keyNote: "They are having lunch... — plural subject",
+        variants: { create: [{ text: "are", normalized: "are" }] },
+      },
+    });
+    ecQId = q.id;
+
+    const user = await db.user.create({ data: { email: `runner-test-ec-${RUN_ID}@example.com` } });
+    ecUserId = user.id;
+    sessionMock.getSessionUser.mockResolvedValue(user);
+  });
+
+  afterAll(async () => {
+    await db.lessonProgress.deleteMany({ where: { userId: ecUserId } });
+    await db.attemptAnswer.deleteMany({ where: { attempt: { userId: ecUserId } } });
+    await db.exerciseAttempt.deleteMany({ where: { userId: ecUserId } });
+    await db.exercise.delete({ where: { id: ecExerciseId } });
+    await db.lesson.delete({ where: { id: ecLessonId } });
+    await db.phase.deleteMany({ where: { slug: `test_phase_ec_${RUN_ID}` } });
+    await db.user.delete({ where: { id: ecUserId } });
+  });
+
+  it("accepts the full corrected sentence the learner is asked to retype", async () => {
+    const created = await createAttempt(postRequest({ redo: true }), {
+      params: Promise.resolve({ id: ecExerciseId }),
+    });
+    const { attemptId } = await created.json();
+
+    const res = await submitAnswer(
+      postRequest({ questionId: ecQId, answerText: "They are having lunch in the cafeteria." }),
+      { params: Promise.resolve({ id: attemptId }) },
+    );
+    const json = await res.json();
+    expect(json.correct).toBe(true);
+  });
+
+  it("accepts just the corrected word", async () => {
+    const created = await createAttempt(postRequest({ redo: true }), {
+      params: Promise.resolve({ id: ecExerciseId }),
+    });
+    const { attemptId } = await created.json();
+
+    const res = await submitAnswer(postRequest({ questionId: ecQId, answerText: "are" }), {
+      params: Promise.resolve({ id: attemptId }),
+    });
+    expect((await res.json()).correct).toBe(true);
+  });
+
+  it("still rejects the uncorrected sentence (the original error is unchanged)", async () => {
+    const created = await createAttempt(postRequest({ redo: true }), {
+      params: Promise.resolve({ id: ecExerciseId }),
+    });
+    const { attemptId } = await created.json();
+
+    const res = await submitAnswer(
+      postRequest({ questionId: ecQId, answerText: "They is having lunch in the cafeteria." }),
+      { params: Promise.resolve({ id: attemptId }) },
+    );
+    expect((await res.json()).correct).toBe(false);
+  });
+});

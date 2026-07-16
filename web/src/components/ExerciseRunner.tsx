@@ -36,13 +36,23 @@ interface ExerciseRunnerProps {
   linkComponent: React.ElementType;
 }
 
-/** Kicker line shown above the prompt, keyed off the question's kind. */
+/** Kicker line shown above the prompt, keyed off the question's kind. It is the
+ * only task instruction the learner sees — the runner does not render the
+ * section's `instructions` text — so each kind must name its own task (e.g. a
+ * TRANSLATION prompt is a bare Vietnamese sentence and reads as unanswerable
+ * without the "translate to English" cue). */
 function kickerFor(kind: SafeQuestionKind): string {
   switch (kind) {
     case "MULTIPLE_CHOICE":
       return "Chọn đáp án đúng";
     case "FILL_BLANK":
       return "Điền vào chỗ trống";
+    case "TRANSLATION":
+      return "Dịch câu sau sang tiếng Anh";
+    case "TRANSFORMATION":
+      return "Viết lại câu theo yêu cầu";
+    case "ERROR_CORRECTION":
+      return "Tìm và sửa lỗi sai";
     default:
       return "Trả lời câu hỏi";
   }

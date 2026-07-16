@@ -51,20 +51,23 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   const kind = question.section.kind as QuestionKind;
 
-  // TRANSFORMATION and ERROR_CORRECTION ask the learner to retype the ONE
-  // correct full sentence, so they are graded STRICTLY against that sentence
-  // (no fuzzy/typo leniency). The canonical sentence is the variant text for
-  // TRANSFORMATION, and the keyNote for ERROR_CORRECTION (whose variant holds
-  // only the corrected word). A near-miss with just a missing capital / final
-  // period comes back as wrong-with-a-reason.
+  // TRANSFORMATION asks the learner to retype the ONE correct full sentence,
+  // so it is graded STRICTLY against that sentence (no fuzzy/typo leniency) —
+  // its variants hold the full target sentence. A near-miss with just a
+  // missing capital / final period comes back as wrong-with-a-reason.
+  //
+  // ERROR_CORRECTION is deliberately NOT graded this way. Its seeded variant
+  // holds only the corrected WORD/PHRASE (e.g. "are"), while `keyNote` is an
+  // explanatory aside — a truncated sentence plus a note ("They are having
+  // lunch... — plural subject") or not even a sentence ("invert subject &
+  // auxiliary"). Grading the learner's full rewritten sentence against that
+  // aside rejected every correct answer. `matchAnswer` has a dedicated
+  // ERROR_CORRECTION path that instead accepts the rewrite when it contains
+  // the corrected word/phrase, which is the actual thing being tested.
   let matchResult: MatchResult;
   let minorReason: string | null = null;
-  if (kind === "TRANSFORMATION" || kind === "ERROR_CORRECTION") {
-    const canonicals =
-      kind === "ERROR_CORRECTION" && question.keyNote
-        ? [question.keyNote]
-        : question.variants.map((v) => v.text);
-    const graded = gradeSentence(answerText, canonicals);
+  if (kind === "TRANSFORMATION") {
+    const graded = gradeSentence(answerText, question.variants.map((v) => v.text));
     minorReason = graded.reason;
     matchResult = graded.correct ? { correct: true, matchType: "EXACT" } : { correct: false };
   } else {
