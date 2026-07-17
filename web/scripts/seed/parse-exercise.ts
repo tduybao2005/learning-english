@@ -696,6 +696,53 @@ function variantsFillBlank(
   return dedupeVariants([...variants, ...extra]);
 }
 
+/** Ceiling on the cartesian expansion below — a pathological answer with many
+ * choice groups must not blow up into hundreds of variants. */
+const MAX_INLINE_CHOICE_FORMS = 16;
+
+/** An inline word-level choice: "warm/friendly", "whom/who", "could/spoke".
+ * Only letters/digits (plus intra-word ' and -) may touch the slash, so the
+ * surrounding punctuation stays out of the alternation — "moving/touching."
+ * matches just "moving/touching" and the sentence keeps its full stop. */
+const INLINE_CHOICE_RE = /[\p{L}\p{N}][\p{L}\p{N}'’-]*(?:\/[\p{L}\p{N}][\p{L}\p{N}'’-]*)+/gu;
+
+/**
+ * Expands the inline word choices in one answer into a full sentence per
+ * combination: "She has a warm/friendly personality." yields "...a warm
+ * personality." and "...a friendly personality.".
+ *
+ * Returns [] when there is nothing to expand (or too much to expand). The
+ * caller keeps the original text as a variant regardless, so this is purely
+ * additive: an answer where the slash ISN'T a choice ("and/or") still matches
+ * as written, and a choice the notation can't resolve ("been learning/has
+ * studied" — the right branch is two words, so no split is right) merely adds
+ * forms nobody would type rather than losing the ones that work.
+ */
+function expandInlineChoices(text: string): string[] {
+  const groups = [...text.matchAll(INLINE_CHOICE_RE)];
+  if (groups.length === 0) return [];
+
+  const choices = groups.map((g) => g[0].split("/"));
+  const total = choices.reduce((n, c) => n * c.length, 1);
+  if (total > MAX_INLINE_CHOICE_FORMS) return [];
+
+  const forms: string[] = [];
+  for (let i = 0; i < total; i++) {
+    let rest = i;
+    let out = "";
+    let cursor = 0;
+    groups.forEach((g, gi) => {
+      const options = choices[gi];
+      const pick = options[rest % options.length];
+      rest = Math.floor(rest / options.length);
+      out += text.slice(cursor, g.index) + pick;
+      cursor = g.index + g[0].length;
+    });
+    forms.push(out + text.slice(cursor));
+  }
+  return forms;
+}
+
 function variantsRewrite(answers: string[]): ParsedVariant[] {
   const variants: ParsedVariant[] = [];
   for (const a of answers) {
@@ -711,9 +758,11 @@ function variantsRewrite(answers: string[]): ParsedVariant[] {
     for (const alt of stripped.split(/\s+\/\s+/)) {
       const text = alt.trim();
       if (!text) continue;
-      variants.push(mkVariant(text));
-      const bare = stripParen(text);
-      if (bare && bare !== text) variants.push(mkVariant(bare));
+      for (const form of [text, ...expandInlineChoices(text)]) {
+        variants.push(mkVariant(form));
+        const bare = stripParen(form);
+        if (bare && bare !== form) variants.push(mkVariant(bare));
+      }
     }
   }
   return dedupeVariants(variants);

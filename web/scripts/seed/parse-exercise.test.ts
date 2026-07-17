@@ -241,7 +241,7 @@ describe("parseExercise — TOEIC-style images and audio-only options", () => {
     ]);
   });
 
-  it("keeps an inline word-choice slash inside one TRANSFORMATION variant", () => {
+  it("expands an inline word-choice slash without shattering the sentence", () => {
     const md = [
       "# Test",
       "## SECTION C: SENTENCE TRANSFORMATION",
@@ -254,8 +254,49 @@ describe("parseExercise — TOEIC-style images and audio-only options", () => {
     ].join("\n");
     const parsed = parseExercise(md);
     const q = parsed.sections[0].questions[0];
-    // No spaces around the slash: it picks a word WITHIN the sentence, so
-    // splitting would shatter it into "She has a warm" + "friendly personality."
-    expect(q.variants.map((v) => v.text)).toEqual(["She has a warm/friendly personality."]);
+    // An unspaced slash picks a word WITHIN the sentence: each choice yields a
+    // whole sentence. It must never be split like a spaced " / " would be, or
+    // it'd shatter into "She has a warm" + "friendly personality.".
+    expect(q.variants.map((v) => v.text)).toEqual([
+      "She has a warm/friendly personality.",
+      "She has a warm personality.",
+      "She has a friendly personality.",
+    ]);
+  });
+
+  it("keeps punctuation attached to an inline word choice", () => {
+    const md = [
+      "# Test",
+      "## SECTION E: TRANSLATION VIETNAMESE → ENGLISH",
+      "2. Bộ phim rất cảm động.",
+      "    → ______",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section E:",
+      "2. The film was very moving/touching. I cried when I watched it.",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const q = parsed.sections[0].questions[0];
+    // The choice is "moving"/"touching", not "touching." — the sentence's own
+    // full stop must survive the expansion.
+    expect(q.variants.map((v) => v.text)).toContain("The film was very touching. I cried when I watched it.");
+    expect(q.variants.map((v) => v.text)).toContain("The film was very moving. I cried when I watched it.");
+  });
+
+  it("expands every combination when one answer has several inline choices", () => {
+    const md = [
+      "# Test",
+      "## SECTION C: SENTENCE TRANSFORMATION",
+      "3. Tôi không nói được tiếng Trung.",
+      "    → ______",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section C:",
+      "3. If I could/spoke Chinese, I could/would apply for that job.",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const texts = parsed.sections[0].questions[0].variants.map((v) => v.text);
+    expect(texts).toContain("If I spoke Chinese, I would apply for that job.");
+    expect(texts).toContain("If I spoke Chinese, I could apply for that job.");
   });
 });
