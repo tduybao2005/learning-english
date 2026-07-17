@@ -219,4 +219,43 @@ describe("parseExercise — TOEIC-style images and audio-only options", () => {
     expect(parsed.sections[0].kind).toBe("MULTIPLE_CHOICE");
     expect(q.variants.map((v) => v.text)).toEqual(["C"]);
   });
+  it("splits a TRANSFORMATION answer's spaced-slash alternatives into separate variants", () => {
+    const md = [
+      "# Test",
+      "## SECTION C: SENTENCE TRANSFORMATION",
+      "31. The workers finished the project in three months.",
+      "    → How long ______?",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section C:",
+      "31. How long did the workers take to finish the project? / How long did it take them to finish the project?",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const q = parsed.sections[0].questions[0];
+    expect(parsed.sections[0].kind).toBe("TRANSFORMATION");
+    // A spaced slash means "either of these is right"; without splitting, the
+    // learner would have to type BOTH sentences and the slash to ever match.
+    expect(q.variants.map((v) => v.text)).toEqual([
+      "How long did the workers take to finish the project?",
+      "How long did it take them to finish the project?",
+    ]);
+  });
+
+  it("keeps an inline word-choice slash inside one TRANSFORMATION variant", () => {
+    const md = [
+      "# Test",
+      "## SECTION C: SENTENCE TRANSFORMATION",
+      "8. She is friendly.",
+      "    → ______",
+      "",
+      "## ANSWER KEY (ĐÁP ÁN)",
+      "### Section C:",
+      "8. She has a warm/friendly personality.",
+    ].join("\n");
+    const parsed = parseExercise(md);
+    const q = parsed.sections[0].questions[0];
+    // No spaces around the slash: it picks a word WITHIN the sentence, so
+    // splitting would shatter it into "She has a warm" + "friendly personality."
+    expect(q.variants.map((v) => v.text)).toEqual(["She has a warm/friendly personality."]);
+  });
 });

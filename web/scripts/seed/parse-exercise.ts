@@ -701,9 +701,20 @@ function variantsRewrite(answers: string[]): ParsedVariant[] {
   for (const a of answers) {
     const stripped = stripMd(a.split("\n")[0]);
     if (!stripped) continue;
-    variants.push(mkVariant(stripped));
-    const bare = stripParen(stripped);
-    if (bare && bare !== stripped) variants.push(mkVariant(bare));
+    // A slash with whitespace on BOTH sides separates alternate acceptable
+    // answers ("How long did X? / How long did Y?") — each must become its own
+    // variant, or nothing matches at all: gradeSentence compares against the
+    // whole string, so the learner would have to type both sentences AND the
+    // slash. Only a spaced slash splits: an inline "warm/friendly" chooses a
+    // word *within* one sentence, and splitting on it would shatter the answer
+    // into the fragments "She has a warm" + "friendly personality.".
+    for (const alt of stripped.split(/\s+\/\s+/)) {
+      const text = alt.trim();
+      if (!text) continue;
+      variants.push(mkVariant(text));
+      const bare = stripParen(text);
+      if (bare && bare !== text) variants.push(mkVariant(bare));
+    }
   }
   return dedupeVariants(variants);
 }
