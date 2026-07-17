@@ -99,7 +99,11 @@ function FillBlankInputs({
               spellCheck={false}
               onChange={(e) => update(i, e.target.value)}
               className={cn(
-                "mx-1 inline-block w-28 rounded-lg border border-input bg-transparent px-2 py-1 text-center font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
+                // my-1: the box is taller than the line-height, so on a prompt
+                // whose blanks wrap onto consecutive lines they'd otherwise
+                // touch edge-to-edge. Inline-block vertical margins grow the
+                // line box, which keeps them visually separated.
+                "mx-1 my-1 inline-block w-28 rounded-lg border border-input bg-transparent px-2 py-1 text-center font-medium outline-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:opacity-60",
                 isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
                 isCorrectPick && "animate-pop border-success bg-success-bg text-success",
               )}
