@@ -1,0 +1,126 @@
+import Link from "next/link";
+import { notFound, redirect } from "next/navigation";
+
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { getSessionUser } from "@/lib/auth/session";
+import { getLearnTopicDetail } from "@/lib/learn-topics";
+import { LESSON_TOPIC_GROUP_LABELS } from "@/lib/lesson-topics";
+import { TopicLessonList } from "@/components/learn/TopicLessonList";
+
+const RING_RADIUS = 26;
+const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
+
+export default async function LearnTopicPage({
+  params,
+}: {
+  params: Promise<{ topic: string }>;
+}) {
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
+  const { topic: slug } = await params;
+  const topic = await getLearnTopicDetail(slug, user.id);
+  if (topic === null) notFound();
+
+  const percent = topic.total === 0 ? 0 : Math.round((topic.done / topic.total) * 100);
+  // Bài để "Tiếp tục": bài đang học đầu tiên, nếu không có thì bài chưa học
+  // đầu tiên. Chủ đề học xong hết thì không hiện nút.
+  const nextLesson =
+    topic.lessons.find((l) => l.status === "learning") ??
+    topic.lessons.find((l) => l.status === "new") ??
+    null;
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-6 lg:py-8">
+      <div className="mb-5 flex items-center gap-3">
+        <Link
+          href="/learn"
+          aria-label="Quay lại danh sách chủ đề"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="size-5"
+            aria-hidden
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </Link>
+        <span className="truncate rounded-full bg-muted px-3 py-1.5 text-caption font-semibold text-muted-foreground">
+          {LESSON_TOPIC_GROUP_LABELS[topic.group]}
+        </span>
+      </div>
+
+      {/* Hero: danh tính chủ đề, tiến độ và lối vào bài kế gom trong một khối
+          — cùng bố cục với trang chủ đề Từ vựng. */}
+      <section className="mb-6 overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+        <div className="flex items-center gap-4 bg-primary p-5 text-primary-foreground">
+          <span className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 text-4xl">
+            {topic.emoji}
+          </span>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-h1 font-extrabold leading-tight">{topic.nameVi}</h1>
+            <p className="line-clamp-2 text-caption text-primary-foreground/80">
+              {topic.description}
+            </p>
+            <p className="mt-1 text-caption font-semibold text-primary-foreground/90">
+              Đã học {topic.done}/{topic.total} bài
+              {topic.learning > 0 && <> · đang học {topic.learning}</>}
+            </p>
+          </div>
+          <div className="relative hidden size-16 shrink-0 sm:block">
+            <svg viewBox="0 0 64 64" className="size-full -rotate-90">
+              <circle
+                cx="32"
+                cy="32"
+                r={RING_RADIUS}
+                fill="none"
+                strokeWidth="7"
+                className="stroke-white/25"
+              />
+              <circle
+                cx="32"
+                cy="32"
+                r={RING_RADIUS}
+                fill="none"
+                strokeWidth="7"
+                strokeLinecap="round"
+                className="stroke-white"
+                strokeDasharray={RING_CIRCUMFERENCE}
+                strokeDashoffset={RING_CIRCUMFERENCE * (1 - percent / 100)}
+              />
+            </svg>
+            <span className="absolute inset-0 flex items-center justify-center text-sm font-bold">
+              {percent}%
+            </span>
+          </div>
+        </div>
+
+        {nextLesson !== null && (
+          <div className="p-4">
+            <Link
+              href={nextLesson.href}
+              className={cn(buttonVariants({ size: "lg" }), "w-full gap-2 text-base")}
+            >
+              ▶ {nextLesson.status === "learning" ? "Học tiếp" : "Bắt đầu"}: {nextLesson.title}
+            </Link>
+          </div>
+        )}
+      </section>
+
+      {topic.total === 0 ? (
+        <p className="rounded-2xl border border-dashed border-border bg-card/50 p-6 text-center text-muted-foreground">
+          Chủ đề này chưa có bài nào.
+        </p>
+      ) : (
+        <TopicLessonList lessons={topic.lessons} linkComponent={Link} />
+      )}
+    </div>
+  );
+}
