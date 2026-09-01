@@ -28,7 +28,7 @@ afterEach(() => {
 });
 
 test("ghép đúng thì cặp ô biến mất khỏi bảng để bàn ngắn dần", () => {
-  render(<MatchGame words={makeWords(6)} backHref="/vocab" lessonId="l1" linkComponent="a" />);
+  render(<MatchGame words={makeWords(6)} backHref="/vocab" bestTimeKey="l1" linkComponent="a" />);
 
   expect(screen.getByText("word0")).toBeTruthy();
   expect(screen.getByText("nghĩa 0")).toBeTruthy();
@@ -46,7 +46,7 @@ test("ghép đúng thì cặp ô biến mất khỏi bảng để bàn ngắn d�
 });
 
 test("ghép sai thì không ô nào biến mất", () => {
-  render(<MatchGame words={makeWords(6)} backHref="/vocab" lessonId="l1" linkComponent="a" />);
+  render(<MatchGame words={makeWords(6)} backHref="/vocab" bestTimeKey="l1" linkComponent="a" />);
 
   fireEvent.click(screen.getByText("word0"));
   fireEvent.click(screen.getByText("nghĩa 1"));

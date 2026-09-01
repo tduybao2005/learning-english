@@ -10,15 +10,12 @@ import Link from "next/link";
  */
 export function GameTopBar({
   backHref,
-  phaseOrder,
-  lessonOrder,
-  mode,
+  label,
 }: {
   backHref: string;
-  phaseOrder: number;
-  lessonOrder: number;
-  /** Tên chế độ luyện tập, ví dụ "Thẻ ghi nhớ". */
-  mode: string;
+  /** Nhãn ngữ cảnh ngắn, ví dụ "GĐ 1 · Bài 3 · Thẻ ghi nhớ" hoặc
+   *  "🍜 Ăn uống · Quiz". */
+  label: string;
 }) {
   return (
     <div className="mb-6 flex items-center gap-3">
@@ -41,7 +38,7 @@ export function GameTopBar({
         </svg>
       </Link>
       <span className="truncate rounded-full bg-muted px-3 py-1.5 text-caption font-semibold text-muted-foreground">
-        GĐ {phaseOrder} · Bài {lessonOrder} · {mode}
+        {label}
       </span>
     </div>
   );

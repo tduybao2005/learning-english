@@ -43,9 +43,7 @@ export default async function VocabQuizPage({
       <div className="mx-auto flex w-full max-w-2xl flex-col px-4 py-6 lg:py-8">
         <GameTopBar
           backHref={backHref}
-          phaseOrder={lesson.phase.orderIndex}
-          lessonOrder={lesson.orderIndex}
-          mode="Trắc nghiệm"
+          label={`GĐ ${lesson.phase.orderIndex} · Bài ${lesson.orderIndex} · Trắc nghiệm`}
         />
 
         <div className="flex flex-1 flex-col justify-center pb-10">

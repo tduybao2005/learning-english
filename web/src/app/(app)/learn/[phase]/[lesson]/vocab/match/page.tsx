@@ -43,9 +43,7 @@ export default async function VocabMatchPage({
       <div className="mx-auto flex w-full max-w-2xl flex-col px-4 py-6 lg:py-8">
         <GameTopBar
           backHref={backHref}
-          phaseOrder={lesson.phase.orderIndex}
-          lessonOrder={lesson.orderIndex}
-          mode="Nối từ"
+          label={`GĐ ${lesson.phase.orderIndex} · Bài ${lesson.orderIndex} · Ghép cặp`}
         />
 
         <div className="flex flex-1 flex-col justify-center pb-10">
@@ -54,7 +52,7 @@ export default async function VocabMatchPage({
             Bài học này chưa có từ vựng.
           </p>
         ) : (
-          <MatchGame words={words} backHref={backHref} lessonId={lesson.id} linkComponent={Link} />
+          <MatchGame words={words} backHref={backHref} bestTimeKey={lesson.id} linkComponent={Link} />
         )}
         </div>
       </div>

@@ -51,9 +51,7 @@ export default async function FlashcardsPage({
       <div className="mx-auto flex w-full max-w-2xl flex-col px-4 py-6 lg:py-8">
         <GameTopBar
           backHref={backHref}
-          phaseOrder={lesson.phase.orderIndex}
-          lessonOrder={lesson.orderIndex}
-          mode="Thẻ ghi nhớ"
+          label={`GĐ ${lesson.phase.orderIndex} · Bài ${lesson.orderIndex} · Thẻ ghi nhớ`}
         />
 
         <div className="flex flex-1 flex-col justify-center pb-10">

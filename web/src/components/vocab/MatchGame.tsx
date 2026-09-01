@@ -45,12 +45,13 @@ function formatTime(totalSeconds: number): string {
 export function MatchGame({
   words,
   backHref,
-  lessonId,
+  bestTimeKey,
   linkComponent: Link,
 }: {
   words: VocabWordLite[];
   backHref: string;
-  lessonId: string;
+  /** Khoá lưu kỷ lục thời gian trong localStorage (theo bài hoặc theo chủ đề). */
+  bestTimeKey: string;
   /** Pass `NextLink` in the app, `"a"` in a design. Required — see AppHeader. */
   linkComponent: React.ElementType;
 }) {
@@ -75,7 +76,7 @@ export function MatchGame({
   // rounds-not-ready-yet early return — 0 while `rounds` is still null,
   // which correctly keeps the timer from starting until real rounds exist.
   const totalRounds = rounds?.length ?? 0;
-  const storageKey = `vocab-match-best:${lessonId}`;
+  const storageKey = `vocab-match-best:${bestTimeKey}`;
 
   // Compute the shuffled rounds client-side only, post-mount — see the
   // docstring above for why this can't be a `useState` lazy initializer.
