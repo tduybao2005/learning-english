@@ -1,8 +1,6 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 
-import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { SettingsGoalFormConnected } from "@/components/SettingsGoalFormConnected";
 import { SettingsNameEditorConnected } from "@/components/SettingsNameEditorConnected";
@@ -20,12 +18,6 @@ export default async function SettingsPage() {
   const user = await getSessionUser();
   if (!user) redirect("/login");
 
-  const latestAttempt = await db.placementAttempt.findFirst({
-    where: { userId: user.id, completedAt: { not: null } },
-    orderBy: { completedAt: "desc" },
-    select: { band: true },
-  });
-
   const avatarLetter = (user.name ?? user.email).charAt(0).toUpperCase();
 
   return (
@@ -42,11 +34,9 @@ export default async function SettingsPage() {
               {avatarLetter}
             </span>
             <div className="min-w-0">
+              {/* Tên + email là đủ: dòng "band ước tính" đi cùng bài kiểm tra
+                  đầu vào, mà bài đó đã được ẩn khỏi giao diện. */}
               <SettingsNameEditorConnected initialName={user.name} email={user.email} />
-              <p className="text-xs text-primary-foreground/80">
-                Band ước tính gần nhất:{" "}
-                {latestAttempt?.band != null ? latestAttempt.band.toFixed(1) : "Chưa làm bài kiểm tra"}
-              </p>
             </div>
           </div>
         </div>
@@ -68,17 +58,6 @@ export default async function SettingsPage() {
             <SettingsGoalFormConnected initialGoalType={user.goalType} initialGoalValue={user.goalValue} />
           </div>
         </details>
-
-        <Link
-          href="/onboarding/placement"
-          className="flex min-h-14 items-center gap-3 rounded-xl border border-border bg-card px-4 py-3 transition-shadow hover:shadow-md"
-        >
-          <span aria-hidden className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-secondary text-base">
-            🔄
-          </span>
-          <span className="flex-1 text-sm font-semibold">Làm lại kiểm tra đầu vào</span>
-          <span className="text-muted-foreground">›</span>
-        </Link>
 
         <ThemeToggleRowConnected />
 

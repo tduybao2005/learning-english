@@ -1,8 +1,11 @@
 /**
- * Optional sign-in allowlist. `ALLOWED_EMAILS` is unset in every
- * environment except the one host that's meant to be single-learner-only —
- * unset/blank means unrestricted (preserves prior behavior everywhere
- * else: dev, test stack, other deployments).
+ * Optional sign-in allowlist. Unset/blank means **unrestricted** — any Google
+ * account can sign in, which is what the deployed host runs today so several
+ * learners can share it.
+ *
+ * Điền `ALLOWED_EMAILS` (các email cách nhau bằng dấu phẩy) để đóng lại khi
+ * cần; không có giá trị nào khác đóng được cổng này, nên đừng dựa vào việc
+ * "ít người biết địa chỉ" để coi là đã giới hạn.
  */
 export function isAllowedEmail(
   email: string,

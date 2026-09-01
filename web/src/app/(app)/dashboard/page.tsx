@@ -17,15 +17,9 @@ function formatGoalLabel(goalType: "IELTS" | "CEFR" | "TOEIC", goalValue: string
   return goalValue;
 }
 
-export default async function DashboardPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ prompt?: string }>;
-}) {
+export default async function DashboardPage() {
   const user = await getSessionUser();
   if (!user) redirect("/login");
-
-  const { prompt } = await searchParams;
 
   const [phases, states] = await Promise.all([
     db.phase.findMany({
@@ -108,21 +102,6 @@ export default async function DashboardPage({
             ) : null}
           </div>
         </div>
-
-        {prompt === "placement" ? (
-          <div className="mb-6 flex flex-col gap-3 rounded-xl border border-primary/30 bg-primary/5 p-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm">
-              Bạn chưa làm bài kiểm tra đầu vào — làm bài để chúng tôi đánh giá đúng
-              trình độ hiện tại của bạn.
-            </p>
-            <Link
-              href="/onboarding/placement"
-              className={cn(buttonVariants({ size: "sm" }), "shrink-0")}
-            >
-              Làm bài kiểm tra đầu vào
-            </Link>
-          </div>
-        ) : null}
 
         {/* "Tiếp tục" card — phone/tablet only. On `lg:` the same lesson is
             surfaced by the right-hand rail below, which must not change. */}

@@ -33,7 +33,9 @@ export default function OnboardingPathPage() {
         return;
       }
 
-      router.push("/onboarding/placement");
+      // Bài kiểm tra đầu vào đã được ẩn: lộ trình không còn khoá bài nên
+      // không có gì để nó mở khoá nữa. Vào thẳng nơi có bài học.
+      router.push("/learn");
     } catch {
       setError("Không thể lưu lựa chọn. Vui lòng thử lại.");
       setIsSubmitting(false);
@@ -41,7 +43,7 @@ export default function OnboardingPathPage() {
   }
 
   function handleSkip() {
-    router.push("/dashboard?prompt=placement");
+    router.push("/learn");
   }
 
   return (
