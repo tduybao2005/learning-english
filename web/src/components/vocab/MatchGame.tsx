@@ -12,6 +12,8 @@ interface ReviewResult {
 }
 
 const WRONG_FLASH_MS = 500;
+/** Khớp thời lượng `tile-collapse` trong globals.css. */
+const TILE_COLLAPSE_MS = 280;
 
 function formatTime(totalSeconds: number): string {
   const m = Math.floor(totalSeconds / 60);
@@ -55,6 +57,8 @@ export function MatchGame({
   const [rounds, setRounds] = useState<MatchRound[] | null>(null);
   const [roundIndex, setRoundIndex] = useState(0);
   const [matched, setMatched] = useState<Set<string>>(new Set());
+  // Ô đã ghép đúng và đã chạy xong hiệu ứng thu nhỏ — gỡ hẳn khỏi bàn.
+  const [vanished, setVanished] = useState<Set<string>>(new Set());
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
   const [wrongPair, setWrongPair] = useState<{ left: string; right: string } | null>(null);
@@ -64,6 +68,7 @@ export function MatchGame({
   const [bestTime, setBestTime] = useState<number | null>(null);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const wrongTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const vanishTimeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   // `totalRounds` (not `round`/`allDone`) is needed by the timer effect's
   // dependency array below, so it's computed here, ahead of the
@@ -99,8 +104,12 @@ export function MatchGame({
   }, [finished, totalRounds]);
 
   useEffect(() => {
+    // Giữ chính mảng timeout trong biến cục bộ: tới lúc cleanup chạy thì
+    // `vanishTimeoutsRef.current` có thể đã trỏ sang mảng khác.
+    const vanishTimeouts = vanishTimeoutsRef.current;
     return () => {
       if (wrongTimeoutRef.current) clearTimeout(wrongTimeoutRef.current);
+      vanishTimeouts.forEach(clearTimeout);
     };
   }, []);
 
@@ -153,6 +162,10 @@ export function MatchGame({
       const nextResults = [...results, { wordId: leftId, correct: true }];
       setResults(nextResults);
 
+      vanishTimeoutsRef.current.push(
+        setTimeout(() => setVanished((v) => new Set(v).add(leftId)), TILE_COLLAPSE_MS),
+      );
+
       if (round && nextMatched.size >= round.pairs.length) {
         const nextRoundIndex = roundIndex + 1;
         setRoundIndex(nextRoundIndex);
@@ -160,6 +173,7 @@ export function MatchGame({
           finishSession(nextResults, elapsed);
         } else {
           setMatched(new Set());
+          setVanished(new Set());
         }
       }
     } else {
@@ -195,6 +209,7 @@ export function MatchGame({
   function handleRestart() {
     setRoundIndex(0);
     setMatched(new Set());
+    setVanished(new Set());
     setSelectedLeft(null);
     setSelectedRight(null);
     setWrongPair(null);
@@ -249,6 +264,7 @@ export function MatchGame({
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-2">
           {round.left.map((pair) => {
+            if (vanished.has(pair.wordId)) return null;
             const isMatched = matched.has(pair.wordId);
             const isSelected = selectedLeft === pair.wordId;
             const isWrong = wrongPair?.left === pair.wordId;
@@ -259,11 +275,11 @@ export function MatchGame({
                 disabled={isMatched}
                 onClick={() => handleClickLeft(pair.wordId)}
                 className={cn(
-                  "rounded-lg border-2 p-3 text-left font-medium transition-colors",
-                  isMatched && "animate-pop border-success/40 bg-success-bg text-success opacity-40",
+                  "min-h-11 rounded-xl border p-3 text-left font-medium transition-all",
+                  isMatched && "animate-tile-collapse border-success bg-success-bg text-success",
                   !isMatched && isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
-                  !isMatched && !isWrong && isSelected && "border-primary bg-primary/10",
-                  !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40",
+                  !isMatched && !isWrong && isSelected && "-translate-y-0.5 border-primary bg-primary/10 shadow-md ring-2 ring-primary/25",
+                  !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40 hover:shadow-sm",
                 )}
               >
                 {pair.word}
@@ -273,6 +289,7 @@ export function MatchGame({
         </div>
         <div className="flex flex-col gap-2">
           {round.right.map((pair) => {
+            if (vanished.has(pair.wordId)) return null;
             const isMatched = matched.has(pair.wordId);
             const isSelected = selectedRight === pair.wordId;
             const isWrong = wrongPair?.right === pair.wordId;
@@ -283,11 +300,11 @@ export function MatchGame({
                 disabled={isMatched}
                 onClick={() => handleClickRight(pair.wordId)}
                 className={cn(
-                  "rounded-lg border-2 p-3 text-left font-medium transition-colors",
-                  isMatched && "animate-pop border-success/40 bg-success-bg text-success opacity-40",
+                  "min-h-11 rounded-xl border p-3 text-left font-medium transition-all",
+                  isMatched && "animate-tile-collapse border-success bg-success-bg text-success",
                   !isMatched && isWrong && "animate-shake border-destructive bg-destructive-bg text-destructive",
-                  !isMatched && !isWrong && isSelected && "border-primary bg-primary/10",
-                  !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40",
+                  !isMatched && !isWrong && isSelected && "-translate-y-0.5 border-primary bg-primary/10 shadow-md ring-2 ring-primary/25",
+                  !isMatched && !isWrong && !isSelected && "border-border bg-card hover:border-primary/40 hover:shadow-sm",
                 )}
               >
                 {pair.meaningVi}

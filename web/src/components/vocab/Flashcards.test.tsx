@@ -17,7 +17,7 @@ function makeWords(n: number): FlashcardWord[] {
 }
 
 beforeEach(() => {
-  vi.useFakeTimers({ shouldAdvanceTime: true });
+  vi.useFakeTimers();
   vi.stubGlobal(
     "fetch",
     vi.fn(() => Promise.resolve({ ok: true } as Response)),

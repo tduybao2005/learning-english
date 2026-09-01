@@ -9,6 +9,9 @@ import { playSfx } from "@/lib/audio/sfx";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
 
+/** Nhịp chờ sau khi lộ đáp án rồi mới sang câu kế. */
+const AUTO_ADVANCE_MS = 900;
+
 interface ReviewResult {
   wordId: string;
   correct: boolean;
@@ -58,6 +61,23 @@ export function QuizGame({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Hai giá trị này phải tính TRƯỚC early-return bên dưới, vì effect tự
+  // chuyển câu là một hook — hook không được nằm sau một nhánh return.
+  const answered = selectedId !== null;
+  const isLastRound = rounds !== null && index + 1 >= rounds.length;
+
+  // Tự sang câu kế sau khi đã lộ đáp án — bỏ nhịp bấm "Câu tiếp theo" mà
+  // trước đây bắt người học lặp lại sau mỗi câu trong 10 câu. Câu CUỐI thì
+  // không tự chuyển: kết thúc phiên là chuyển cảnh lớn, để người học chủ động.
+  useEffect(() => {
+    if (!answered || isLastRound) return;
+    const id = setTimeout(() => {
+      setSelectedId(null);
+      setIndex((i) => i + 1);
+    }, AUTO_ADVANCE_MS);
+    return () => clearTimeout(id);
+  }, [answered, isLastRound]);
+
   if (rounds === null) {
     return (
       <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
@@ -69,7 +89,6 @@ export function QuizGame({
   const total = rounds.length;
   const done = index >= total;
   const round = rounds[index];
-  const answered = selectedId !== null;
   // Từ tiếng Anh của vòng hiện tại — dùng cho nút "Nghe lại" sau khi lộ đáp án.
   const quizWord = round ? words.find((w) => w.id === round.wordId) : undefined;
 
@@ -152,9 +171,21 @@ export function QuizGame({
           <span>
             Câu {index + 1}/{total}
           </span>
-          <span className="rounded-full bg-streak-bg px-2.5 py-1 text-caption font-bold text-streak-foreground">
-            <span className={streak >= 2 ? "inline-block animate-flame" : "inline-block"}>🔥</span>{" "}
-            Chuỗi đúng: {streak}
+          <span className="flex items-center gap-2">
+            {/* Mốc 5/10 câu đúng liên tiếp: trước đây đúng 10 câu cảm giác y
+                hệt đúng 2 câu, không có gì ghi nhận cả. */}
+            {(streak === 5 || streak === 10) && (
+              <span
+                data-testid="streak-milestone"
+                className="animate-unlock-pop rounded-full bg-accent px-2.5 py-1 text-caption font-bold text-accent-foreground"
+              >
+                {streak === 10 ? "Bùng nổ! 10 câu liền" : "Chuỗi 5 câu!"}
+              </span>
+            )}
+            <span className="rounded-full bg-streak-bg px-2.5 py-1 text-caption font-bold text-streak-foreground">
+              <span className={streak >= 2 ? "inline-block animate-flame" : "inline-block"}>🔥</span>{" "}
+              Chuỗi đúng: {streak}
+            </span>
           </span>
         </div>
         <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
@@ -165,14 +196,20 @@ export function QuizGame({
         </div>
       </div>
 
-      <div className="rounded-xl border border-border bg-card p-6 text-center">
+      <div key={index} className="animate-item-in rounded-xl border border-border bg-card p-6 text-center">
         <p className="mb-1 text-xs text-muted-foreground">
           {round.direction === "EN_TO_VI" ? "Nghĩa tiếng Việt của từ này là gì?" : "Từ tiếng Anh nào có nghĩa này?"}
         </p>
-        <p className="text-2xl font-bold">{round.prompt}</p>
+        <p data-testid="quiz-prompt" className="text-2xl font-bold">
+          {round.prompt}
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2" data-testid="quiz-options">
+      <div
+        key={`options-${index}`}
+        className="animate-item-in grid grid-cols-1 gap-2 sm:grid-cols-2"
+        data-testid="quiz-options"
+      >
         {round.options.map((option, i) => {
           const label = String.fromCharCode(65 + i);
           const isCorrect = option.id === round.correctOptionId;
@@ -230,9 +267,9 @@ export function QuizGame({
         </div>
       )}
 
-      {answered && (
+      {answered && isLastRound && (
         <div className="flex justify-center">
-          <Button onClick={handleNext}>{index + 1 >= total ? "Xem kết quả" : "Câu tiếp theo →"}</Button>
+          <Button onClick={handleNext}>Xem kết quả</Button>
         </div>
       )}
     </div>

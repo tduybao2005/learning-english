@@ -219,6 +219,12 @@
 @utility animate-fly-off-right { animation: fly-off-right 0.22s var(--ease-standard) both; }
 @utility animate-fly-off-left { animation: fly-off-left 0.22s var(--ease-standard) both; }
 
+/* Ô ghép đúng thu lại rồi rời khỏi bàn, để bàn ngắn dần theo tiến độ. */
+@keyframes tile-collapse {
+  to { transform: scale(0.82); opacity: 0; }
+}
+@utility animate-tile-collapse { animation: tile-collapse 0.28s var(--ease-standard) both; }
+
 /* Mục kế tiếp trượt vào (thẻ mới, câu hỏi mới) — giữ mạch liên tục thay vì
    đổi nội dung tức thì. */
 @keyframes item-in {
