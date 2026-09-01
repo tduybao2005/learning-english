@@ -317,3 +317,32 @@ describe("buildMatchRound", () => {
     expect(buildMatchRound([makeWord("a"), makeWord("b", "")])).toBeNull();
   });
 });
+
+describe("audioUrl trong bàn ghép cặp", () => {
+  it("buildMatchRound mang audioUrl theo từng cặp để bàn ghép đọc được từ", () => {
+    const words = [
+      { id: "w1", word: "bread", meaningVi: "bánh mì", audioUrl: "/audio/vocab/bread.mp3" },
+      { id: "w2", word: "milk", meaningVi: "sữa", audioUrl: null },
+    ];
+
+    const round = buildMatchRound(words, () => 0);
+
+    expect(round).not.toBeNull();
+    const bread = round!.pairs.find((p) => p.wordId === "w1");
+    const milk = round!.pairs.find((p) => p.wordId === "w2");
+    expect(bread?.audioUrl).toBe("/audio/vocab/bread.mp3");
+    expect(milk?.audioUrl).toBeNull();
+  });
+
+  it("buildMatchRounds cũng mang audioUrl theo", () => {
+    const words = [
+      { id: "w1", word: "bread", meaningVi: "bánh mì", audioUrl: "/audio/vocab/bread.mp3" },
+      { id: "w2", word: "milk", meaningVi: "sữa", audioUrl: "/audio/vocab/milk.mp3" },
+    ];
+
+    const rounds = buildMatchRounds(words, 6, () => 0);
+
+    expect(rounds).toHaveLength(1);
+    expect(rounds[0].pairs.every((p) => p.audioUrl !== undefined)).toBe(true);
+  });
+});

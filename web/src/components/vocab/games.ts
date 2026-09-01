@@ -136,6 +136,10 @@ export interface MatchPair {
   wordId: string;
   word: string;
   meaningVi: string;
+  /** File phát âm của từ tiếng Anh; null khi chưa sinh. Bàn ghép cặp đọc từ
+   * này lên mỗi khi ghép đúng, nên nó phải đi cùng cặp chứ không tra ngược
+   * từ pool — MatchBoard không nhìn thấy pool. */
+  audioUrl: string | null;
 }
 
 export interface MatchRound {
@@ -163,6 +167,7 @@ export function buildMatchRound(
     wordId: w.id,
     word: w.word,
     meaningVi: w.meaningVi,
+    audioUrl: w.audioUrl,
   }));
   return { pairs, left: shuffle(pairs, rng), right: shuffle(pairs, rng) };
 }
@@ -193,6 +198,7 @@ export function buildMatchRounds(
       wordId: w.id,
       word: w.word,
       meaningVi: w.meaningVi,
+      audioUrl: w.audioUrl,
     }));
     rounds.push({
       pairs,
