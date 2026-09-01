@@ -150,6 +150,14 @@ make test-down   # xoá stack test (DB tmpfs bay theo)
 - **`SKIPPED` không phải "đã học".** Bài kiểm tra đầu vào ghi SKIPPED cho mọi
   bài trước điểm được xếp; gộp nó vào tiến độ thì người vừa thi xong đã thấy
   "đã học 23/52 bài". Cả `/learn` lẫn `/dashboard` chỉ đếm `COMPLETED`.
+- **Bài kiểm tra đầu vào đã bị ẩn khỏi giao diện** (bốn lối vào: bước
+  onboarding, banner `/dashboard`, mục trong Cài đặt, dòng band). Route
+  `/onboarding/placement` và `api/placement/*` vẫn còn để bật lại; đừng thêm
+  link mới tới chúng trừ khi có yêu cầu. Nó không còn tác dụng gì kể từ khi
+  lộ trình bỏ khoá bài.
+- **Đăng nhập đang MỞ cho mọi tài khoản Google** — `ALLOWED_EMAILS` để trống
+  trong `.env` của host. Điền email (cách nhau bằng dấu phẩy) rồi `make up`
+  để đóng lại; không có cơ chế nào khác giới hạn ai vào được.
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`

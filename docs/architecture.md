@@ -83,6 +83,14 @@ so it carries the devDependencies. Driven by `make test-up` / `test-unit` /
 `/listening`, `/settings`, `/onboarding`. It imports only `lib/auth/auth.config.ts`,
 which is deliberately Prisma-free so it can run on the edge.
 
+**Đăng nhập mở, bài kiểm tra đầu vào ẩn.** `isAllowedEmail` coi
+`ALLOWED_EMAILS` rỗng là không giới hạn, và host đang chạy như vậy để nhiều
+người học dùng chung — nghĩa là bất kỳ tài khoản Google nào cũng đăng nhập và
+tạo `User` được. Bài kiểm tra đầu vào bị gỡ khỏi mọi lối vào giao diện: nó
+từng dùng để gán điểm bắt đầu và ghi `SKIPPED` cho các bài phía trước, mà lộ
+trình nay không khoá bài nên việc đó không còn nghĩa. Route và API vẫn nằm
+trong repo, chỉ là không ai tới được từ UI.
+
 **Lộ trình duyệt theo chủ đề, không theo giai đoạn.** Giai đoạn 1–5 là thứ tự
 soạn nội dung, không phải cách người học nghĩ về tiếng Anh: muốn ôn câu bị
 động thì phải nhớ nó nằm ở Giai đoạn 3 và 4 rồi mở hai chỗ. `lesson-topics.ts`
