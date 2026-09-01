@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
-import { resolveSwipe } from "@/components/vocab/games";
+import { formatIpa, resolveSwipe } from "@/components/vocab/games";
 
 export interface FlashcardWord {
   id: string;
@@ -261,7 +261,9 @@ export function Flashcards({
                 <p className="text-center text-h1 font-extrabold">{card.word}</p>
                 {card.audioUrl && <PronounceButton src={card.audioUrl} label={card.word} />}
               </div>
-              {card.ipa !== "" && <p className="text-muted-foreground">/{card.ipa}/</p>}
+              {formatIpa(card.ipa) !== "" && (
+                <p className="text-muted-foreground">{formatIpa(card.ipa)}</p>
+              )}
               <p className="mt-4 text-caption text-muted-foreground">Nhấn để xem nghĩa ↻</p>
             </div>
 

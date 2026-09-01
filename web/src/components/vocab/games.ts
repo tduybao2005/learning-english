@@ -189,3 +189,16 @@ export function resolveSwipe(dx: number, threshold: number): SwipeOutcome {
   if (dx <= -threshold) return "dont-know";
   return "none";
 }
+
+/**
+ * Chuẩn hoá phiên âm về đúng một cặp gạch chéo.
+ *
+ * Dữ liệu từ `vocabulary.md` không nhất quán: phần lớn từ đã có sẵn dạng
+ * `/weɪk ʌp/`, một số ít thì không. Trước đây UI luôn bọc thêm `/.../` nên
+ * đa số từ hiện ra thành `//weɪk ʌp//`. Trả chuỗi rỗng khi không có gì để
+ * hiển thị, để UI ẩn hẳn dòng phiên âm thay vì hiện `//`.
+ */
+export function formatIpa(ipa: string): string {
+  const core = ipa.trim().replace(/^\/+/, "").replace(/\/+$/, "").trim();
+  return core === "" ? "" : `/${core}/`;
+}

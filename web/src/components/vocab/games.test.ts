@@ -7,6 +7,7 @@ import {
   buildMatchRounds,
   resultTier,
   resolveSwipe,
+  formatIpa,
   type VocabWordLite,
 } from "./games";
 
@@ -213,5 +214,26 @@ describe("resolveSwipe", () => {
     expect(resolveSwipe(99, 100)).toBe("none");
     expect(resolveSwipe(-99, 100)).toBe("none");
     expect(resolveSwipe(0, 100)).toBe("none");
+  });
+});
+
+describe("formatIpa", () => {
+  it("giữ nguyên một cặp gạch chéo khi dữ liệu đã có sẵn", () => {
+    // 2.084/3.419 từ trong DB có ipa dạng "/weɪk ʌp/" — bọc thêm nữa thành "//weɪk ʌp//".
+    expect(formatIpa("/weɪk ʌp/")).toBe("/weɪk ʌp/");
+  });
+
+  it("thêm gạch chéo khi dữ liệu chưa có", () => {
+    expect(formatIpa("weɪk ʌp")).toBe("/weɪk ʌp/");
+  });
+
+  it("bỏ khoảng trắng thừa hai đầu", () => {
+    expect(formatIpa("  /weɪk ʌp/  ")).toBe("/weɪk ʌp/");
+  });
+
+  it("trả chuỗi rỗng khi không có phiên âm, để UI ẩn hẳn dòng đó", () => {
+    expect(formatIpa("")).toBe("");
+    expect(formatIpa("   ")).toBe("");
+    expect(formatIpa("//")).toBe("");
   });
 });
