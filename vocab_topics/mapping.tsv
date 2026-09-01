@@ -1397,3 +1397,1310 @@ worried	emotions-personality
 wrinkled	appearance
 yesterday	time-events
 yesterday morning	time-events
+always	time-events
+every day	time-events
+hardly ever	time-events
+occasionally	time-events
+often	time-events
+rarely	time-events
+seldom	time-events
+sometimes	time-events
+usually	time-events
+call (someone)	daily-routine
+clean (the house)	daily-routine
+go shopping	shopping-money
+keep a diary	daily-routine
+meet friends	daily-routine
+pay bills	shopping-money
+play sports	leisure-hobbies
+spend time	daily-routine
+take a break	daily-routine
+take medicine	health-body
+concentrate	education
+design	work-career
+draw	leisure-hobbies
+paint	leisure-hobbies
+present	work-career
+type	work-career
+write	education
+cry	emotions-personality
+hurry	daily-routine
+laugh	emotions-personality
+look for	phrasal-verbs
+rest	daily-routine
+shout	emotions-personality
+wait	daily-routine
+whisper	emotions-personality
+begin	time-events
+continue	time-events
+end	time-events
+finish	time-events
+forget	emotions-personality
+happen	time-events
+realize	emotions-personality
+remember	emotions-personality
+start	time-events
+stop	time-events
+take place	time-events
+answer	reporting-verbs
+apologize	emotions-personality
+ask	reporting-verbs
+feel	emotions-personality
+smile	emotions-personality
+speak	reporting-verbs
+think	emotions-personality
+first	linking-cohesion
+luckily	linking-cohesion
+next	linking-cohesion
+unfortunately	linking-cohesion
+ashamed	emotions-personality
+delighted	emotions-personality
+disappointed	emotions-personality
+exhausted	emotions-personality
+frightened	emotions-personality
+grateful	emotions-personality
+heartbroken	emotions-personality
+shocked	emotions-personality
+aim	work-career
+book	travel-transport
+expect	time-events
+hope	emotions-personality
+intend	time-events
+plan	time-events
+schedule	time-events
+by the time	time-events
+definitely	opinion-argument
+in the long run	time-events
+in the near future	time-events
+maybe	opinion-argument
+perhaps	opinion-argument
+probably	opinion-argument
+aspiration	work-career
+dream	emotions-personality
+goal	work-career
+opportunity	work-career
+optimistic	emotions-personality
+pessimistic	emotions-personality
+prediction	opinion-argument
+realistic	emotions-personality
+achieve one's goals	collocations
+be about to	collocations
+be due to	collocations
+be supposed to	collocations
+can't wait to	collocations
+change one's mind	collocations
+look forward to	collocations
+make up one's mind	collocations
+take a risk	collocations
+be	daily-routine
+break	daily-routine
+bring	daily-routine
+buy	shopping-money
+choose	daily-routine
+do	daily-routine
+drink	food-drink
+eat	food-drink
+get	daily-routine
+give	daily-routine
+have	daily-routine
+hear	daily-routine
+keep	daily-routine
+make	daily-routine
+meet	family-relationships
+pay	shopping-money
+ride	travel-transport
+see	daily-routine
+take	daily-routine
+teach	education
+win	leisure-hobbies
+accomplished	work-career
+challenging	work-career
+experienced	work-career
+incredible	emotions-personality
+meaningful	emotions-personality
+remarkable	emotions-personality
+rewarding	work-career
+unforgettable	emotions-personality
+advice	opinion-argument
+courage	emotions-personality
+education	education
+experience	work-career
+freedom	government-society
+happiness	emotions-personality
+health	health-body
+information	media-social
+knowledge	education
+love	emotions-personality
+news	media-social
+patience	emotions-personality
+progress	education
+trust	emotions-personality
+abstract	academic-awl
+amount	quantity-data
+collective	academic-awl
+concrete	academic-awl
+countable	quantity-data
+number	quantity-data
+plural	quantity-data
+quantity	quantity-data
+singular	quantity-data
+uncountable	quantity-data
+alone	emotions-personality
+aunt	family-relationships
+boyfriend	family-relationships
+brave	emotions-personality
+brother	family-relationships
+childhood	family-relationships
+classmate	education
+colleague	work-career
+cousin	family-relationships
+daughter	family-relationships
+describe	reporting-verbs
+family	family-relationships
+father	family-relationships
+forgive	emotions-personality
+funny	emotions-personality
+girlfriend	family-relationships
+grandfather	family-relationships
+grandmother	family-relationships
+grandparents	family-relationships
+hardworking	emotions-personality
+husband	family-relationships
+intelligent	emotions-personality
+kind	emotions-personality
+miss	emotions-personality
+mother	family-relationships
+neighbor	family-relationships
+nephew	family-relationships
+niece	family-relationships
+only child	family-relationships
+parents	family-relationships
+partner	family-relationships
+personality	emotions-personality
+recognize	daily-routine
+relationship	family-relationships
+relative	family-relationships
+serious	emotions-personality
+shy	emotions-personality
+sister	family-relationships
+son	family-relationships
+stepfather	family-relationships
+stepmother	family-relationships
+stranger	family-relationships
+support	family-relationships
+together	family-relationships
+twins	family-relationships
+uncle	family-relationships
+wife	family-relationships
+bored /bɔːrd/	emotions-personality
+confused /kənˈfjuːzd/	emotions-personality
+embarrassed /ɪmˈbærəst/	emotions-personality
+excited /ɪkˈsaɪtɪd/	emotions-personality
+frightened/scared /ˈfraɪtənd/	emotions-personality
+interested /ˈɪntrəstɪd/	emotions-personality
+satisfied /ˈsætɪsfaɪd/	emotions-personality
+shocked /ʃɒkt/	emotions-personality
+surprised /səˈpraɪzd/	emotions-personality
+tired /taɪərd/	emotions-personality
+accidentally	opinion-argument
+angrily	emotions-personality
+beautifully	emotions-personality
+carefully	emotions-personality
+clearly	opinion-argument
+fast	daily-routine
+fluently	education
+gracefully	emotions-personality
+happily	emotions-personality
+hard	daily-routine
+loudly	emotions-personality
+nervously	emotions-personality
+patiently	emotions-personality
+politely	emotions-personality
+quickly	daily-routine
+quietly	emotions-personality
+slowly	daily-routine
+softly	emotions-personality
+surprisingly	opinion-argument
+well	daily-routine
+frequently	time-events
+normally	time-events
+once/twice a week	time-events
+absolutely	opinion-argument
+barely / hardly	opinion-argument
+extremely	opinion-argument
+fairly	opinion-argument
+incredibly	opinion-argument
+quite	opinion-argument
+rather	opinion-argument
+really	opinion-argument
+slightly	opinion-argument
+very	opinion-argument
+abroad	travel-transport
+everywhere	places-city
+here	places-city
+indoors/outdoors	places-city
+nowhere	places-city
+somewhere	places-city
+there	places-city
+around the corner	travel-transport
+at the corner	travel-transport
+at the crossroads	travel-transport
+at the traffic lights	travel-transport
+in the distance	travel-transport
+northeast	travel-transport
+on the left/right	travel-transport
+straight ahead	travel-transport
+turn left/right	travel-transport
+and	linking-cohesion
+but	linking-cohesion
+nor	linking-cohesion
+or	linking-cohesion
+so	cause-effect
+after	linking-cohesion
+until	linking-cohesion
+when	linking-cohesion
+as	cause-effect
+because	cause-effect
+even though	linking-cohesion
+if	linking-cohesion
+though	linking-cohesion
+that	linking-cohesion
+where	linking-cohesion
+which	linking-cohesion
+whom	linking-cohesion
+who	linking-cohesion
+whose	linking-cohesion
+clause	academic-awl
+conjunction	academic-awl
+dependent clause	academic-awl
+fragment	academic-awl
+independent clause	academic-awl
+phrase	academic-awl
+predicate	academic-awl
+run-on	academic-awl
+sentence	academic-awl
+subject	academic-awl
+bad	emotions-personality
+beautiful	appearance
+good	emotions-personality
+popular	media-social
+traditional	culture-tradition
+big	quantity-data
+deep	quantity-data
+heavy	quantity-data
+light	quantity-data
+long	quantity-data
+affordable	shopping-money
+cheap	shopping-money
+valuable	shopping-money
+worthwhile	shopping-money
+close	places-city
+distant	places-city
+far	places-city
+near	places-city
+friendly	emotions-personality
+smart	emotions-personality
+common	academic-awl
+frequent	time-events
+new	home-objects
+old	appearance
+quick	time-events
+slow	time-events
+young	appearance
+boring	emotions-personality
+difficult	academic-awl
+easy	academic-awl
+interesting	emotions-personality
+necessary	academic-awl
+useful	academic-awl
+all day long	time-events
+all morning	time-events
+atmosphere	weather-nature
+attempt	academic-awl
+at that moment	time-events
+at the time	time-events
+back then	time-events
+chaos	time-events
+chase	health-body
+commotion	time-events
+crawl	health-body
+dawn	time-events
+drift	weather-nature
+dusk	time-events
+emerge	time-events
+faint	health-body
+flip	health-body
+freeze	weather-nature
+gaze	health-body
+glance	health-body
+grab	health-body
+hop	health-body
+incident	time-events
+lean	health-body
+march	health-body
+midnight	time-events
+narrate	reporting-verbs
+negotiate	work-career
+panic	emotions-personality
+peek	health-body
+previously	time-events
+rehearse	leisure-hobbies
+repair	home-objects
+review	education
+rush	health-body
+scene	time-events
+settle	places-city
+shiver	health-body
+signal	technology
+sneak	health-body
+sob	health-body
+sprint	health-body
+stare	health-body
+struggle	emotions-personality
+stumble	health-body
+surround	places-city
+throughout	time-events
+tiptoe	health-body
+tremble	health-body
+unfold	time-events
+wander	health-body
+witness	crime-law
+yawn	health-body
+accomplish	work-career
+anticipate	opinion-argument
+approve	work-career
+cancel	daily-routine
+collapse	academic-awl
+convince	opinion-argument
+defeat	leisure-hobbies
+delay	time-events
+depart	travel-transport
+deposit	shopping-money
+destroy	environment
+dismiss	work-career
+escape	crime-law
+evolve	environment
+exceed	quantity-data
+expand	economy-business
+expire	time-events
+fulfill	work-career
+inherit	family-relationships
+launch	economy-business
+obtain	academic-awl
+overcome	emotions-personality
+prior to	time-events
+prove	opinion-argument
+publish	media-social
+recall	emotions-personality
+recover	health-body
+reform	government-society
+release	media-social
+replace	academic-awl
+rescue	healthcare
+resign	work-career
+retreat	academic-awl
+revise	education
+sign	work-career
+submit	education
+survive	health-body
+transfer	work-career
+undergo	healthcare
+upgrade	technology
+withdraw	shopping-money
+advance	technology
+aspire	work-career
+automation	technology
+breakthrough	technology
+budget	economy-business
+career	work-career
+challenge	work-career
+collaborate	work-career
+commitment	work-career
+compete	economy-business
+complete	work-career
+construction	urbanisation-housing
+deadline	work-career
+dedicate	work-career
+destination	travel-transport
+devote	work-career
+double	quantity-data
+eliminate	academic-awl
+expectation	opinion-argument
+explore	travel-transport
+fund	economy-business
+future	time-events
+generation	government-society
+innovate	technology
+install	technology
+integrate	technology
+milestone	time-events
+mission	work-career
+objective	work-career
+optimize	technology
+pioneer	technology
+project	work-career
+renewable	environment
+revolution	government-society
+save	shopping-money
+skill	work-career
+solution	academic-awl
+surpass	academic-awl
+sustainability	environment
+agreement	academic-awl
+alumni	education
+alumnus	education
+analyses	academic-awl
+appendices	academic-awl
+appendix	academic-awl
+athletics	leisure-hobbies
+audience	media-social
+bacteria	healthcare
+bacterium	healthcare
+board	economy-business
+class	education
+committee	government-society
+couple	family-relationships
+criteria	academic-awl
+criterion	academic-awl
+crowd	places-city
+curricula	education
+curriculum	education
+each	quantity-data
+economics	economy-business
+either	quantity-data
+everyone	quantity-data
+fraction	quantity-data
+glasses	appearance
+government	government-society
+headquarters	economy-business
+index	quantity-data
+indices	quantity-data
+jury	crime-law
+majority	quantity-data
+mathematics	education
+means	academic-awl
+media	media-social
+minority	quantity-data
+neither	quantity-data
+nothing	quantity-data
+phenomena	academic-awl
+phenomenon	academic-awl
+physics	education
+police	crime-law
+public	government-society
+scissors	home-objects
+series	academic-awl
+somebody	quantity-data
+species	environment
+staff	work-career
+team	work-career
+the elderly	government-society
+the poor	government-society
+the rich	government-society
+theses	education
+thesis	education
+total	quantity-data
+trousers	appearance
+american	culture-tradition
+archipelago	weather-nature
+architect	work-career
+astronaut	work-career
+attorney	crime-law
+bbc	media-social
+beatles	culture-tradition
+best	comparison-contrast
+breakfast	food-drink
+canal	weather-nature
+desert	weather-nature
+dinner	food-drink
+earth	weather-nature
+economist	work-career
+eiffel tower	travel-transport
+elderly	government-society
+engineer	work-career
+english	education
+equator	weather-nature
+european	culture-tradition
+fbi agent	crime-law
+football	leisure-hobbies
+great wall	travel-transport
+heir	family-relationships
+herb	food-drink
+historian	work-career
+history	education
+home	home-objects
+honour	emotions-personality
+hour	time-events
+internet	technology
+lunch	food-drink
+mba	education
+monday	time-events
+moon	weather-nature
+mountain range	weather-nature
+netherlands	travel-transport
+north pole	weather-nature
+ocean	weather-nature
+officer	crime-law
+past	time-events
+peninsula	weather-nature
+philippines	travel-transport
+poor	government-society
+rich	government-society
+river	weather-nature
+sea	weather-nature
+sky	weather-nature
+spring	weather-nature
+strait	weather-nature
+sun	weather-nature
+umbrella	home-objects
+united nations	globalisation
+universe	weather-nature
+x-ray	healthcare
+ability	work-career
+allow	crime-law
+authorised	crime-law
+banned	crime-law
+capability	work-career
+capable	work-career
+certain	opinion-argument
+certainty	opinion-argument
+circumstance	academic-awl
+compulsory	crime-law
+cope	emotions-personality
+dare	emotions-personality
+deduction	opinion-argument
+definite	opinion-argument
+deserve	emotions-personality
+doubtful	opinion-argument
+eligible	crime-law
+enforcement	crime-law
+entitled	crime-law
+essential	academic-awl
+exempted	crime-law
+fine	crime-law
+hesitate	emotions-personality
+liable	crime-law
+likely	opinion-argument
+mandatory	crime-law
+obligation	crime-law
+optional	crime-law
+penalty	crime-law
+permission	crime-law
+permit	crime-law
+possibility	opinion-argument
+prohibition	crime-law
+recommendation	opinion-argument
+regret	emotions-personality
+regulation	crime-law
+reluctant	emotions-personality
+requirement	crime-law
+restricted	crime-law
+suggestion	opinion-argument
+suspicious	crime-law
+unlikely	opinion-argument
+unnecessary	opinion-argument
+urgent	time-events
+violation	crime-law
+voluntary	government-society
+warning	crime-law
+willing	emotions-personality
+appointment	daily-routine
+auxiliary verb	academic-awl
+clarify	reporting-verbs
+complaint	emotions-personality
+curious	emotions-personality
+directly	academic-awl
+distance	quantity-data
+duration	time-events
+echo question	academic-awl
+explanation	opinion-argument
+familiar	emotions-personality
+feedback	work-career
+frequency	time-events
+guess	opinion-argument
+hesitation	emotions-personality
+impressed	emotions-personality
+indirect question	academic-awl
+inquire / enquire	reporting-verbs
+interested	emotions-personality
+interrogate	crime-law
+interview	work-career
+inversion	academic-awl
+manner	academic-awl
+nationality	culture-tradition
+occupation	work-career
+opinion	opinion-argument
+possession	academic-awl
+preference	opinion-argument
+query	reporting-verbs
+questionnaire	academic-awl
+reason	cause-effect
+response	reporting-verbs
+rhetorical question	academic-awl
+satisfied	emotions-personality
+suppose	opinion-argument
+survey	academic-awl
+tag question	academic-awl
+verify	academic-awl
+accelerate	charts-trends
+allocate	economy-business
+assemble	maps-processes
+automate	maps-processes
+calibrate	maps-processes
+categorize	academic-awl
+classify	academic-awl
+compile	maps-processes
+compress	maps-processes
+construct	maps-processes
+contaminate	environment
+convert	maps-processes
+demolish	urbanisation-housing
+detect	technology
+disclose	media-social
+dispose of	environment
+document	academic-awl
+emit	environment
+extract	maps-processes
+filter	maps-processes
+harvest	maps-processes
+irrigate	maps-processes
+isolate	healthcare
+line up	daily-routine
+manufacture	maps-processes
+measure	maps-processes
+operate	maps-processes
+preserve	environment
+prioritize	work-career
+recycle	environment
+refine	maps-processes
+regulate	government-society
+standardize	academic-awl
+sterilize	maps-processes
+store	maps-processes
+synthesize	maps-processes
+transmit	maps-processes
+transport	maps-processes
+accountability	government-society
+adaptation	environment
+address	academic-awl
+alleviate	academic-awl
+awareness	government-society
+biodiversity	environment
+catastrophe	environment
+combat	government-society
+congestion	urbanisation-housing
+conservation	environment
+contamination	environment
+cooperation	globalisation
+corruption	government-society
+crucial	academic-awl
+deforestation	environment
+deteriorate	environment
+discrimination	government-society
+drastic	academic-awl
+drought	environment
+ecosystem	environment
+emission	environment
+enforce	crime-law
+exacerbate	cause-effect
+extinction	environment
+feasible	academic-awl
+fossil fuel	environment
+global warming	environment
+greenhouse gas	environment
+habitat	environment
+healthcare	healthcare
+incentive	economy-business
+inequality	government-society
+inevitable	academic-awl
+infrastructure	urbanisation-housing
+initiative	government-society
+investment	economy-business
+legislation	crime-law
+literacy	education
+malnutrition	healthcare
+migration	globalisation
+mitigation	environment
+overpopulation	government-society
+pollution	environment
+poverty	government-society
+rehabilitate	healthcare
+sanitation	healthcare
+scarcity	economy-business
+subsidy	economy-business
+substantial	quantity-data
+sustainable	environment
+tackle	academic-awl
+transparency	government-society
+undermine	academic-awl
+unemployment	economy-business
+urbanization	urbanisation-housing
+abandon	academic-awl
+alternatively	linking-cohesion
+ambition	work-career
+catalyst	cause-effect
+catastrophic	environment
+compel	academic-awl
+complacency	emotions-personality
+deception	crime-law
+decisive	emotions-personality
+deliberate	academic-awl
+dilemma	opinion-argument
+endure	emotions-personality
+foresee	opinion-argument
+foresight	opinion-argument
+had it not been for	linking-cohesion
+hinder	cause-effect
+hindsight	opinion-argument
+hypothetical	opinion-argument
+impulse	emotions-personality
+inevitably	linking-cohesion
+in retrospect	time-events
+intervene	government-society
+irreversible	academic-awl
+jeopardize	cause-effect
+mediocrity	academic-awl
+miscalculate	quantity-data
+misinterpret	reporting-verbs
+mitigate	environment
+neglect	emotions-personality
+overlook	academic-awl
+perseverance	emotions-personality
+persist	emotions-personality
+pivotal	academic-awl
+plausible	opinion-argument
+prevent	cause-effect
+reconcile	emotions-personality
+rectify	academic-awl
+remorse	emotions-personality
+repercussion	cause-effect
+scenario	opinion-argument
+seize	academic-awl
+setback	work-career
+speculation	opinion-argument
+squander	shopping-money
+turning point	time-events
+underestimate	opinion-argument
+unprecedented	academic-awl
+adversity	emotions-personality
+amendment	crime-law
+anthropologist	work-career
+archaeological site	culture-tradition
+archaeologist	work-career
+archetype	culture-tradition
+asylum	government-society
+bureaucracy	government-society
+cathedral	culture-tradition
+cohesion	linking-cohesion
+consensus	opinion-argument
+controversial	opinion-argument
+correlation	charts-trends
+correspondent	media-social
+curator	work-career
+dedicated	emotions-personality
+diplomat	globalisation
+disparity	government-society
+dissertation	education
+distinguished	work-career
+eloquence	reporting-verbs
+eminent	work-career
+entrepreneur	economy-business
+excerpt	academic-awl
+expedition	travel-transport
+ideology	government-society
+implication	cause-effect
+incarceration	crime-law
+innovation	technology
+institution	government-society
+integrity	emotions-personality
+jurisdiction	crime-law
+legacy	culture-tradition
+linguist	work-career
+magistrate	crime-law
+manuscript	culture-tradition
+methodology	academic-awl
+misconception	opinion-argument
+monument	culture-tradition
+notorious	crime-law
+observatory	technology
+paradigm	academic-awl
+parliament	government-society
+philanthropist	government-society
+philanthropy	government-society
+precedent	crime-law
+prestigious	education
+referendum	government-society
+renowned	media-social
+sanatorium	healthcare
+solitude	emotions-personality
+synopsis	academic-awl
+treaty	globalisation
+urbanisation	urbanisation-housing
+vernacular	culture-tradition
+virtue	emotions-personality
+avoid	daily-routine
+can't help	collocations
+can't stand	collocations
+enjoy	emotions-personality
+mind	daily-routine
+postpone	time-events
+practice	education
+risk	academic-awl
+afford	shopping-money
+need	daily-routine
+seem	opinion-argument
+tend	charts-trends
+want	emotions-personality
+mean	reporting-verbs
+try	daily-routine
+hate	emotions-personality
+like	emotions-personality
+prefer	opinion-argument
+between	academic-awl
+from	academic-awl
+in	academic-awl
+of	academic-awl
+on	academic-awl
+to	academic-awl
+about the same as	comparison-contrast
+almost the same	comparison-contrast
+a lot less than	comparison-contrast
+bigger than	comparison-contrast
+much better than	comparison-contrast
+much worse than	comparison-contrast
+smaller than	comparison-contrast
+totally different from	comparison-contrast
+twice as much	comparison-contrast
+way more than	comparison-contrast
+considerably	charts-trends
+dramatically	charts-trends
+marginally	charts-trends
+rapidly	charts-trends
+sharply	charts-trends
+steadily	charts-trends
+substantially	charts-trends
+a decline	charts-trends
+a decrease	charts-trends
+a fall	charts-trends
+a fluctuation	charts-trends
+a growth	charts-trends
+an increase	charts-trends
+a peak	charts-trends
+a plateau	charts-trends
+a rise	charts-trends
+a surge	charts-trends
+ambiguous	academic-awl
+augment	academic-awl
+barely	opinion-argument
+circumscribe	academic-awl
+circumvent	crime-law
+coerce	crime-law
+coherent	linking-cohesion
+compromise	opinion-argument
+conspicuous	academic-awl
+contentious	opinion-argument
+curtail	academic-awl
+detrimental	cause-effect
+devastating	environment
+deviate	academic-awl
+disproportionate	quantity-data
+egregious	academic-awl
+entrenched	academic-awl
+eradicate	healthcare
+escalate	charts-trends
+exacerbation	cause-effect
+formidable	academic-awl
+fundamentally	linking-cohesion
+hasten	cause-effect
+impede	cause-effect
+imperative	academic-awl
+implicate	crime-law
+inadvertently	academic-awl
+inequity	government-society
+inextricably	linking-cohesion
+irrevocable	academic-awl
+magnitude	quantity-data
+nascent	academic-awl
+negligence	crime-law
+negligible	quantity-data
+obsolete	technology
+ominous	emotions-personality
+paramount	academic-awl
+perpetual	time-events
+perpetuate	cause-effect
+pervasive	academic-awl
+polarise	government-society
+precarious	academic-awl
+profound	academic-awl
+recede	charts-trends
+redress	crime-law
+resilient	emotions-personality
+scarcely	opinion-argument
+stark	comparison-contrast
+stigma	government-society
+stringent	crime-law
+tenuous	academic-awl
+ubiquitous	academic-awl
+vigilance	crime-law
+watershed	time-events
+antithesis	comparison-contrast
+arbitrate	crime-law
+bedrock	academic-awl
+binary	technology
+catalyse	cause-effect
+circumspect	emotions-personality
+commensurate	comparison-contrast
+consolidate	academic-awl
+contend	opinion-argument
+contingent	academic-awl
+corroborate	opinion-argument
+corrosive	environment
+delineate	academic-awl
+derivative	academic-awl
+disparate	comparison-contrast
+edifice	urbanisation-housing
+elicit	academic-awl
+engender	cause-effect
+entail	cause-effect
+expedient	academic-awl
+extrinsic	academic-awl
+galvanise	cause-effect
+hallmark	academic-awl
+holistic	academic-awl
+immutable	academic-awl
+impetus	cause-effect
+incumbent	government-society
+inequitable	government-society
+intrinsic	academic-awl
+leverage	economy-business
+mediate	crime-law
+nexus	academic-awl
+nuanced	academic-awl
+paradox	opinion-argument
+pervade	academic-awl
+posit	opinion-argument
+pragmatic	emotions-personality
+precede	time-events
+precipitate	cause-effect
+prescient	opinion-argument
+purport	reporting-verbs
+ramification	cause-effect
+reciprocal	academic-awl
+refute	opinion-argument
+speculative	opinion-argument
+spurious	opinion-argument
+substantiate	opinion-argument
+symbiotic	environment
+viable	academic-awl
+analyse	academic-awl
+examine	academic-awl
+quantify	quantity-data
+adopt	academic-awl
+cause	cause-effect
+lead	cause-effect
+highlight	reporting-verbs
+recognise	academic-awl
+uncover	academic-awl
+validate	opinion-argument
+build	maps-processes
+draft	academic-awl
+complicate	academic-awl
+constrain	academic-awl
+limit	academic-awl
+as if / as though	linking-cohesion
+ask + that	opinion-argument
+be addressed	collocations
+be considered	collocations
+be notified	collocations
+be + past participle (formal)	collocations
+be present	collocations
+be reviewed	collocations
+be submitted	collocations
+demand + that	opinion-argument
+for fear that	linking-cohesion
+hold a meeting	work-career
+if it were possible	linking-cohesion
+if i were you	opinion-argument
+insist + that	opinion-argument
+it is crucial that	opinion-argument
+it is demanded that	opinion-argument
+it is essential that	opinion-argument
+it is imperative that	opinion-argument
+it is important that	opinion-argument
+it is necessary that	opinion-argument
+it is proposed that	opinion-argument
+it is recommended that	opinion-argument
+it is requested that	opinion-argument
+it is required that	opinion-argument
+it is suggested that	opinion-argument
+it is vital that	opinion-argument
+lest	linking-cohesion
+move (that)	opinion-argument
+order + that	opinion-argument
+propose + that	opinion-argument
+recommend + that	opinion-argument
+request + that	opinion-argument
+require + that	opinion-argument
+stipulate + that	opinion-argument
+suggest + that	opinion-argument
+urge + that	opinion-argument
+were it not for	linking-cohesion
+appears to have been	reporting-verbs
+being criticized	collocations
+being kept waiting	collocations
+being misunderstood	collocations
+cannot be ignored	collocations
+could be improved	collocations
+get arrested	crime-law
+get caught	crime-law
+get fired	work-career
+get hurt	health-body
+get lost	travel-transport
+get sth fixed	collocations
+had been discovered	collocations
+has been established	collocations
+have one's hair cut	appearance
+have sth checked	collocations
+have sth done	collocations
+have sth repaired	home-objects
+is alleged to have	reporting-verbs
+is being investigated	crime-law
+is believed to be	reporting-verbs
+is considered to be	reporting-verbs
+is expected to	reporting-verbs
+is known to	reporting-verbs
+is reported to have	reporting-verbs
+is said to have	reporting-verbs
+is thought to be	reporting-verbs
+is understood to be	reporting-verbs
+it has been argued	reporting-verbs
+it has been reported	reporting-verbs
+it has been suggested	reporting-verbs
+it is believed that	reporting-verbs
+it is claimed that	reporting-verbs
+it is estimated that	reporting-verbs
+it is expected that	reporting-verbs
+it is generally accepted	reporting-verbs
+it is widely known	reporting-verbs
+it was found that	reporting-verbs
+may be affected	collocations
+must be submitted	collocations
+ought to be addressed	collocations
+should be reviewed	collocations
+to be promoted	collocations
+to be told	collocations
+to be understood	collocations
+to have been completed	collocations
+to have been given	collocations
+was being conducted	collocations
+was thought to have	reporting-verbs
+were being monitored	collocations
+were believed to be	reporting-verbs
+will be announced	collocations
+mutter	reporting-verbs
+proclaim	reporting-verbs
+shriek	reporting-verbs
+snap	reporting-verbs
+look at	phrasal-verbs
+empirical	academic-awl
+replicate	academic-awl
+spectrum	academic-awl
+synthesis	academic-awl
+variable	academic-awl
+emissions	environment
+contemporary	culture-tradition
+demographic	government-society
+diversify	economy-business
+heritage	culture-tradition
+indigenous	culture-tradition
+stereotype	government-society
+commodity	economy-business
+deficit	economy-business
+enterprise	economy-business
+inflation	economy-business
+monopoly	economy-business
+productivity	economy-business
+revenue	economy-business
+surplus	economy-business
+ailment	healthcare
+chronic	healthcare
+diagnose	healthcare
+epidemic	healthcare
+immunity	healthcare
+mortality	healthcare
+prognosis	healthcare
+susceptible	healthcare
+syndrome	healthcare
+therapeutic	healthcare
+anxiety	emotions-personality
+cognition	healthcare
+compulsive	emotions-personality
+inhibit	healthcare
+motivation	emotions-personality
+perception	emotions-personality
+rational	emotions-personality
+reinforcement	education
+stimulus	healthcare
+subconscious	healthcare
+attainment	education
+cohort	education
+dropout	education
+intervention	education
+longitudinal	education
+pedagogy	education
+validity	education
+autonomous	government-society
+colonisation	government-society
+democracy	government-society
+imperialism	government-society
+sovereignty	government-society
+assignment	education
+revision	education
+scholarship	education
+semester	education
+tutor	education
+cuisine	food-drink
+delicacy	food-drink
+ingredient	food-drink
+nutritious	food-drink
+recipe	food-drink
+savour	food-drink
+expressive	leisure-hobbies
+genre	leisure-hobbies
+improvise	leisure-hobbies
+masterpiece	leisure-hobbies
+melody	leisure-hobbies
+mindset	emotions-personality
+resilience	emotions-personality
+self-discipline	emotions-personality
+bond	family-relationships
+companionship	family-relationships
+conflict	family-relationships
+empathy	family-relationships
+socialise	family-relationships
+competitive	health-body
+endurance	health-body
+injury	health-body
+recreational	health-body
+stamina	health-body
+vigorous	health-body
+algorithm	technology
+bandwidth	technology
+upload	technology
+adventurous	travel-transport
+immerse	travel-transport
+itinerary	travel-transport
+scenic	travel-transport
+colleagues	work-career
+freelance	work-career
+promotion	work-career
+burnout	work-career
+critical thinking	education
+digital divide	technology
+exponential growth	charts-trends
+interdisciplinary	education
+lifelong learning	education
+marginalise	government-society
+mental wellbeing	healthcare
+therapy	healthcare
+vocational	education
+*at a time when... the issue of... has never been more pressing.*	opinion-argument
+*despite widespread consensus that..., the reality is far more complex.*	opinion-argument
+*few issues in contemporary society provoke more debate than...*	opinion-argument
+*in recent years, there has been a marked increase in...*	opinion-argument
+*it has become increasingly apparent that...*	opinion-argument
+*[statistic]. this figure underscores the urgency of...*	opinion-argument
+*the question of whether... has long been a subject of scholarly debate.*	opinion-argument
+*the rapid proliferation of... has fundamentally altered...*	opinion-argument
+*the relationship between... and... is one that merits careful examination.*	opinion-argument
+*[topic] lies at the heart of one of the most pressing challenges facing...*	opinion-argument
+*although [concession], [position] because [reason].*	opinion-argument
+*it is argued herein that...*	opinion-argument
+*it is the contention of this essay that...*	opinion-argument
+*on balance, [your position] appears to be the more defensible view.*	opinion-argument
+*the central argument of this essay is that...*	opinion-argument
+*the position adopted here is that...*	opinion-argument
+*this essay contends that...*	opinion-argument
+*this essay will demonstrate that... by examining...*	opinion-argument
+*[topic], it will be argued, fundamentally [claim].*	opinion-argument
+*while... has clear merit, ... is ultimately more compelling because...*	opinion-argument
+*adding to this complexity is...*	linking-cohesion
+*an equally compelling consideration is...*	linking-cohesion
+*a second, arguably more significant, factor is...*	linking-cohesion
+*beyond this, there is substantial evidence to suggest that...*	linking-cohesion
+*compounding this issue is the fact that...*	linking-cohesion
+*furthermore, it is worth noting that...*	linking-cohesion
+*it is also important to acknowledge that...*	linking-cohesion
+*moreover, one cannot overlook the role of...*	linking-cohesion
+*of equal, if not greater, significance is...*	linking-cohesion
+*this is further corroborated by...*	linking-cohesion
+*a comparative analysis of [x] and [y] reveals that...*	opinion-argument
+*a striking example of this can be seen in...*	opinion-argument
+*evidence of this can be observed in...*	opinion-argument
+*one need look no further than [x] to find evidence of...*	opinion-argument
+*research conducted by [x] demonstrates that...*	opinion-argument
+*[statistic] offers a clear indication of...*	opinion-argument
+*the case of [country/company/person] provides a compelling illustration of...*	opinion-argument
+*this is perhaps best illustrated by...*	opinion-argument
+*this phenomenon is exemplified by...*	opinion-argument
+*to illustrate this point, consider...*	opinion-argument
+*admittedly,...; however, this overlooks the fact that...*	comparison-contrast
+*although [x] presents certain advantages, these are outweighed by...*	comparison-contrast
+*critics may contend that...; this objection, however, does not withstand scrutiny because...*	comparison-contrast
+*despite the apparent merits of..., a closer examination reveals...*	comparison-contrast
+*it is tempting to conclude that...; however, the evidence suggests otherwise.*	comparison-contrast
+*it would be misleading to suggest that...*	comparison-contrast
+*proponents of [x] argue that...; yet this position fails to account for...*	comparison-contrast
+*the counterargument that... carries some weight; nevertheless,...*	comparison-contrast
+*while it is true that..., this does not necessarily mean...*	comparison-contrast
+*whilst acknowledging [x], it must be stressed that [y] remains paramount.*	comparison-contrast
+*a contributing factor to [issue] is...*	cause-effect
+*as a direct consequence of..., [result].*	cause-effect
+*the cumulative effect of [x] and [y] has been...*	cause-effect
+*the [effect] can be attributed largely to...*	cause-effect
+*the knock-on effect of [x] is that...*	cause-effect
+*the ramifications of [x] extend beyond...*	cause-effect
+*this has led to a significant increase/decrease in...*	cause-effect
+*this, in turn, triggers/generates...*	cause-effect
+*[x] has given rise to...*	cause-effect
+*[x] is, in large part, a product of...*	cause-effect
+*evidence suggests that...*	opinion-argument
+*in all probability,...*	opinion-argument
+*it cannot be ruled out that...*	opinion-argument
+*it seems plausible that...*	opinion-argument
+*it would appear that...*	opinion-argument
+*one possible explanation is that...*	opinion-argument
+*there is reason to believe that...*	opinion-argument
+*this is likely to result in...*	opinion-argument
+*this may/might/could be attributed to...*	opinion-argument
+*[x] tends to/appears to...*	opinion-argument
+*as this essay has argued, [restatement of thesis in new words].*	linking-cohesion
+*in light of the evidence presented above, it can be concluded that...*	linking-cohesion
+*it is therefore imperative that...*	linking-cohesion
+*on balance, it is clear that...*	linking-cohesion
+*taken together, these arguments strongly suggest that...*	linking-cohesion
+*the foregoing analysis has demonstrated that...*	linking-cohesion
+*the implications of this are far-reaching, extending to...*	linking-cohesion
+*this underscores the need for...*	linking-cohesion
+*ultimately, the weight of evidence favours...*	linking-cohesion
+*without addressing [x], progress toward [y] will remain limited.*	linking-cohesion
+hypothetically speaking, if [x] were to happen...	opinion-argument
+if nothing changes, i would predict that...	opinion-argument
+i imagine that in the coming decades...	opinion-argument
+i suspect that future generations will...	opinion-argument
+it seems entirely plausible that...	opinion-argument
+it strikes me that in the long term...	opinion-argument
+one scenario is that... though another is equally possible.	opinion-argument
+should this become widespread, the consequences could be...	opinion-argument
+there's a real possibility that...	opinion-argument
+were this trend to continue, we might expect...	opinion-argument
+at its core, this debate is really about...	opinion-argument
+i find it helpful to separate two distinct questions...	opinion-argument
+it's worth distinguishing between [x] and [y]...	opinion-argument
+it would be an oversimplification to suggest that...	opinion-argument
+the answer varies significantly depending on...	opinion-argument
+the issue is genuinely multifaceted...	opinion-argument
+the key tension here is between [x] and [y]...	opinion-argument
+there are genuinely competing perspectives here...	opinion-argument
+this is fundamentally a question of [x]...	opinion-argument
+what makes this particularly complex is...	opinion-argument
