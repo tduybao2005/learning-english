@@ -76,12 +76,46 @@ so it carries the devDependencies. Driven by `make test-up` / `test-unit` /
 |---|---|---|
 | `(auth)` | `/login` | Google OAuth only; no passwords. |
 | `onboarding/` | `/onboarding/name`, `/path`, `/placement`, `/placement/result` | Runs outside the app shell; sets name, goal, placement band. |
-| `(app)` | `/dashboard`, `/learn/[phase]/[lesson]` (+ `/exercise`, `/vocab/{flashcards,match,quiz}`), `/listening`, `/listening/[slug]`, `/ielts`, `/ielts/[n]`, `/vocab`, `/settings` | Authenticated shell (sidebar + header). |
+| `(app)` | `/dashboard`, `/learn/[phase]/[lesson]` (+ `/exercise`, `/vocab/{flashcards,play}`), `/listening`, `/listening/[slug]`, `/ielts`, `/ielts/[n]`, `/vocab`, `/vocab/[topic]` (+ `/flashcards`, `/play`), `/settings` | Authenticated shell (sidebar + header). |
 | `api/` | `attempts/[id]/answers`, `exercises/[id]/attempts`, `listening/[slug]/check`, `placement/*`, `onboarding/path`, `profile/name`, `vocab/review`, `auth/[...nextauth]` | Route handlers; all grading happens here, server-side. |
 
 `web/src/middleware.ts` (edge runtime) gates `/dashboard`, `/learn`, `/ielts`,
 `/listening`, `/settings`, `/onboarding`. It imports only `lib/auth/auth.config.ts`,
 which is deliberately Prisma-free so it can run on the edge.
+
+**Vocabulary is browsed by topic, not by lesson.** `VocabTopic` (37 rows,
+seeded from `vocab_topics/topics.tsv`, see `docs/content-model.md`) hangs off
+`VocabWord.topicId`; `web/src/lib/vocab-topics.ts` serves `/vocab` and
+`/vocab/[topic]`. Every count there is over **deduplicated** words
+(`lower(trim(word))`), never over `VocabWord` rows: 3,419 rows are only 2,706
+distinct words because 482 words appear in several lessons, and counting rows
+would show a word six times and never let a topic reach 100%. The topic detail
+query uses `SELECT DISTINCT ON (lower(trim(w.word)))` keeping the earliest
+phase → lesson → orderIndex occurrence, and a word's status comes from the
+**highest** Leitner box across all of its rows.
+
+Unlike the rest of the seed, topic assignment runs a pass over every
+`VocabWord` row independent of `contentHash` — lessons whose Markdown has not
+changed are skipped by the ingest loop, so a mapping-only edit would otherwise
+never land. That pass also clears `topicId` for words dropped from the
+mapping, which is why `web/Dockerfile` must COPY `vocab_topics/` into the
+image: without it the seed reads an empty mapping and wipes every topic.
+
+**One practice session, not three games.** `/vocab/[topic]/play` (and the
+per-lesson `/learn/.../vocab/play`) run `PracticeSession`, driven by the pure
+`components/vocab/session-engine.ts`: words are cut into 6-word stages, each
+stage plays one match board then one quiz question per word, and any word
+answered wrong enters a review queue — asked again 3 steps later, needing two
+consecutive correct answers to leave (six steps apart), resetting to zero on
+a further miss. The session ends only when the plan is exhausted *and* the
+queue is empty, so its length grows with the learner's weak words; a 40-review
+ceiling then relaxes the requirement to one correct answer so nobody gets
+stuck. The engine speaks only in `wordId`s — `games.ts` builds the actual
+rounds — which is what makes the queue testable without mocking `rng`.
+Results POST to `/api/vocab/review` as **one row per wordId** (`correct` =
+never missed this session), because `applyReviewResults` computes every result
+off a single pre-batch snapshot and would mis-step the Leitner box on a
+duplicated id.
 
 **Domain logic lives in `web/src/lib/`, not in components:** `grading/`
 (normalize → match → sentence diffing / error spans), `band.ts` and `toeic.ts`
@@ -127,10 +161,11 @@ the `node` environment (UI tests opt into jsdom per file with a
 | `phase_<N>_<name>/exam/` | end-of-phase exam + answer key |
 | `ielts_practice_tests/test_<NN>/` | full IELTS tests (reading/writing/speaking/key) |
 | `toeic_practice_tests/test_<NN>/` | TOEIC tests (listening placeholder/reading/speaking/writing/key) |
+| `vocab_topics/` | hand-curated topic taxonomy (`topics.tsv` + `mapping.tsv`), gate: `make check-vocab` |
 | `index/manifest.json` | generated inventory of all of the above |
 | `web/src/app/` | routes: `(auth)`, `onboarding/`, `(app)`, `api/` |
 | `web/src/lib/` | domain logic (grading, banding, progress, vocab) — unit-tested |
-| `web/src/components/` | UI: app shell (`AppSidebar`, `AppHeader`), runners (`ExerciseRunner`, `SectionedListeningRunner`, `ExerciseReview`, `runner/`), `vocab/` (games), `ui/` (shadcn primitives) |
+| `web/src/components/` | UI: app shell (`AppSidebar`, `AppHeader`), runners (`ExerciseRunner`, `SectionedListeningRunner`, `ExerciseReview`, `runner/`), `vocab/` (`PracticeSession` + `session-engine`, `Flashcards`, `MatchBoard`, `QuizCard`), `ui/` (shadcn primitives) |
 | `web/prisma/` | `schema.prisma` + `migrations/` |
 | `web/scripts/seed/` | Markdown → Postgres ingest + parsers (+ their tests) |
 | `web/scripts/tts/` | Python TTS → `web/public/audio/` |

@@ -39,6 +39,15 @@ upserts them into Postgres. Two different idempotency strategies live here:
 - **The Exercise and ListeningSet subtrees are deleted and recreated** on every
   run that touches them — question/answer rows are cheap to rebuild and this
   avoids drift from partially-edited keys.
+- **Vocab topics are a third strategy.** `VocabTopic` rows are *upserted* by
+  slug (never deleted, or every `VocabWord.topicId` would break), and topic
+  assignment then runs a pass over **all** `VocabWord` rows independent of
+  `contentHash`. It has to: editing only `vocab_topics/mapping.tsv` changes no
+  lesson's hash, so a hash-gated pass would never apply it. The same pass
+  clears `topicId` for words no longer in the mapping — which means a missing
+  `vocab_topics/` directory wipes every topic in one run. `loadVocabTopics`
+  now throws instead of returning an empty mapping, and `web/Dockerfile`
+  COPYs the directory into both the `runner` and `test` stages.
 
 `seed-placement.ts` and `seed-ielts.ts` cover the placement test and the 30
 IELTS tests; `make seed-all` runs all three. Listening sets are *not* separate:
@@ -46,11 +55,13 @@ they come from `web/content/listening/*.md` and are seeded by `ingest.ts`
 itself, so plain `make seed` already picks them up.
 
 Parsers are per-format (`parse-lesson`, `parse-vocab`, `parse-exercise`,
-`parse-listening`) and each has co-located tests. `overrides.json` +
+`parse-listening`, `parse-vocab-topics`) and each has co-located tests. `overrides.json` +
 `overrides-loader.ts` pin the question kind for items the parser would otherwise
 misclassify. Two validators run outside the DB write path: `npm run
 seed:validate` (`validate.ts`) and `npm run seed:validate-listening`
-(`check-listening.ts`).
+(`check-listening.ts`). A third, `make check-vocab`
+(`check-vocab-topics.ts`), diffs `vocab_topics/` against the Markdown — see
+`docs/content-model.md` for its four findings.
 
 Content changes therefore flow one way: edit the Markdown → re-seed → the app
 serves the new version. The seed never writes back to the Markdown, and answer
@@ -108,11 +119,23 @@ the Prisma-free `lib/auth/auth.config.ts`, so it can run on the edge runtime.
 
 ## 8. Vocab review flow
 
-Vocabulary uses **Leitner boxes 0–5** (`lib/vocab.ts`). The flashcard / match /
-quiz games under `/learn/<phase>/<lesson>/vocab/*` post self-reports to
+Vocabulary uses **Leitner boxes 0–5** (`lib/vocab.ts`). Two surfaces feed it —
+flashcards (`/vocab/<topic>/flashcards`, `/learn/<phase>/<lesson>/vocab/flashcards`)
+and the merged practice session (`.../play`) — and both post to
 `POST /api/vocab/review`: correct promotes a word one box (capped at 5), wrong
 demotes it. A word counts as *learned* at `box >= 3` (`LEARNED_BOX_THRESHOLD`),
-which is what lesson and dashboard progress read.
+which is what lesson, topic and dashboard progress read.
+
+A practice session may ask the same word several times (the review queue keeps
+re-asking a missed word until two consecutive correct answers), but it posts
+**one row per wordId**, `correct` = the word was never missed in that session.
+That is not a simplification: `applyReviewResults` computes every result in a
+batch off the same pre-batch snapshot, so two rows for one wordId would apply
+two transitions to the same starting box and land on the wrong one.
+
+A topic session draws at most 20 words (`getTopicSessionWords`), ranked
+never-reviewed → lowest box → longest since last review, so repeated sessions
+cycle through a large topic while staying on its weak words.
 
 ## 9. What is disposable and what is not
 

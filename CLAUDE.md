@@ -30,6 +30,12 @@ Runtime is self-hosted Docker Compose behind a Cloudflare tunnel — see
   `speaking.md`, `answer_key.md` (test_01–test_30, all complete).
 - `toeic_practice_tests/test_<NN>/` — `listening.md` (placeholder, no
   content yet), `reading.md`, `speaking.md`, `writing.md`, `answer_key.md`.
+- `vocab_topics/` — side-car taxonomy that groups every vocabulary word into
+  one of 37 real-world topics, independent of which lesson it came from:
+  `topics.tsv` (`slug name_vi name_en emoji group order_index`, groups
+  EVERYDAY / ACADEMIC / FUNCTIONAL) and `mapping.tsv` (`word topic_slug`,
+  keyed on the lowercased word alone). Not derived from the Markdown — it is
+  hand-curated and checked against it by `make check-vocab`.
 - `scripts/` — stdlib-Python tooling; `docs/` — knowledge base;
   `docs/plans/` — historical plans (frozen, don't update).
 - `docs/design/` — the app's visual design system exports (self-contained,
@@ -67,8 +73,18 @@ make bootstrap   # first run: build, start db+web, migrate, seed everything
 make up | down | logs | ps
 make migrate     # prisma migrate deploy inside the web container
 make seed-all    # ingest lessons/vocab/exercises + placement + IELTS + backfill audioUrl
+make check-vocab # cổng kiểm tra vocab_topics/ (exit 1 nếu còn từ chưa phân loại)
 make dbsh        # psql into the db container
 ```
+
+**Từ vựng theo chủ đề** — `/vocab` duyệt theo 37 chủ đề trong `vocab_topics/`,
+KHÔNG theo bài; trang bài học vẫn còn nhưng chỉ là lối vào phụ. Sửa
+`vocab_topics/*.tsv` xong phải chạy `make check-vocab` rồi `make seed-all`:
+ingest có một lượt đồng bộ `topicId` chạy độc lập với `contentHash`, nên nó
+gán lại toàn bộ — kể cả các bài không đổi nội dung — và **xoá `topicId` của
+những từ không còn trong mapping**. Vì thế `web/Dockerfile` phải COPY
+`vocab_topics/` vào image; thiếu là lần seed kế tiếp quét sạch chủ đề của cả
+kho (loadVocabTopics nay ném lỗi thay vì im lặng, nhưng đừng bỏ dòng COPY).
 
 **Âm thanh** — SFX ở `web/public/sounds/` (sinh bằng `python3 web/scripts/make-sfx.py`),
 phát âm từ vựng ở `web/public/audio/vocab/<slug>.mp3` (giọng `en-GB-LibbyNeural`).
@@ -110,6 +126,11 @@ make test-down   # xoá stack test (DB tmpfs bay theo)
   của chính đề đó — không phần trăm, không band IELTS, không mượn bảng đề
   khác. Speaking/Writing chấm 0–200 theo rubric trong `answer_key.md`.
   Listening chưa có audio → ghi "chưa thi", không chấm 0.
+- **Đừng gán chủ đề từ vựng theo TÊN NHÓM trong `vocabulary.md`** — phải xét
+  nghĩa từng từ. Cách gán cả nhóm đã hai lần đẩy nhầm từ vào chủ đề sai
+  ("bad"/"beautiful" vào So sánh & Đối chiếu; "yawn"/"survey" vào Thời gian)
+  và phải revert. Gán xong một lô thì bốc mẫu vài chục từ mỗi chủ đề để soi
+  trước khi commit.
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`

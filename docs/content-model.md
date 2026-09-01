@@ -55,8 +55,29 @@ ends with an embedded answer key holding per-section answers.
 - Open-ended sections may say `Gợi ý đáp án` (suggested answers, not exact keys).
 - Scoring rules live in `.claude/skills/grading-english-exercises/SKILL.md`.
 
+**Table shapes are NOT uniform.** Column count ranges 3–6 and the order
+varies, so `web/scripts/seed/parse-vocab.ts` reads each table's own header
+row and maps columns to roles by keyword (`ipa|phát âm`, `nghĩa|meaning`,
+`ví dụ|example`, plus a `cách dùng|usage` fallback); the first non-index
+column is always the word. Missing roles fall back to `""` rather than
+borrowing another column's data. Two tables carry words with **no** meaning
+column at all and are still valid: the word-family grid in
+`phase_3_intermediate/lesson_10_word_formation` (columns are Danh từ / Động
+từ / Tính từ / Trạng từ). Do not add a rule that drops meaning-less tables —
+it would silently delete those 25 words.
+
 ### Known data quirks
 
+- `phase_4_advanced/lesson_06_vocabulary_nuances/vocabulary.md` has a
+  **matrix** table under `### CẢM XÚC — GRADIENTS`: rows are intensity levels
+  (`Nhẹ`, `Vừa`, … `Đỉnh cao`) and columns are emotion families. The parser
+  takes column 0 as the word, so it emits the six Vietnamese level labels as
+  fake "words" and drops the 24 real English ones (`content`, `irritated`,
+  `euphoric`, `livid`, …). Those six are exactly the six words that
+  `make check-vocab` still reports as unclassified. Structurally this table
+  is indistinguishable from the valid word-family grid above, so the fix
+  belongs in the content (add a standard vocabulary table alongside the
+  matrix), not in a parser heuristic.
 - `phase_1_foundation/lesson_01_simple_present/exercise.md` has a student's
   answers filled into some blanks (`______cooks______`) — treat the ANSWER KEY
   section as the only source of truth.
@@ -64,6 +85,35 @@ ends with an embedded answer key holding per-section answers.
   (curriculum gap, tracked in `docs/STATUS.md`).
 - Lesson dirs may also contain `score_report_<YYYY-MM-DD>.md` (grading output)
   and `feedback.md` (learner's notes to the content author).
+
+## Vocabulary topics — `vocab_topics/`
+
+A side-car taxonomy that groups vocabulary by real-world topic rather than by
+the lesson it happens to appear in. Two tab-separated files, both with a
+header row; `#` starts a comment line.
+
+**`topics.tsv`** — `slug  name_vi  name_en  emoji  group  order_index`.
+`group` is one of `EVERYDAY` / `ACADEMIC` / `FUNCTIONAL`; `order_index` is the
+display order *within* a group and must be unique per group. 37 rows.
+
+**`mapping.tsv`** — `word  topic_slug`. The key is the word ALONE, lowercased
+and trimmed — not word+lesson. A word appearing in several lessons therefore
+gets one topic everywhere, which is what makes the deduplicated per-topic
+counts add up. Assigning the same word to two different topics is a hard
+error.
+
+`make check-vocab` (`web/scripts/seed/check-vocab-topics.ts`) diffs the
+mapping against every `vocabulary.md` and reports four findings:
+
+| Finding | Meaning | Blocks? |
+|---|---|---|
+| `MISSING` | word in the Markdown, no mapping row | only under `--check` |
+| `UNKNOWN_TOPIC` | mapping points at a slug not in `topics.tsv` | always |
+| `ORPHAN` | mapping row for a word no longer in any lesson | always |
+| `DUP_TOPIC` | duplicate slug, or two topics sharing a group+order | always |
+
+`ORPHAN` is the one that catches drift when the Markdown is edited but the
+mapping is not.
 
 ## Phase exams — `phase_<N>_<name>/exam/`
 
