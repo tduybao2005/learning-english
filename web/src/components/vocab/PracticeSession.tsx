@@ -224,6 +224,10 @@ export function PracticeSession({
   }
 
   function handleMatchComplete(wrongWordIds: string[]) {
+    // Ghép nhầm cũng là trả lời sai, nên phải cắt chuỗi: nếu không, một
+    // phiên 18/20 vẫn khoe "chuỗi đúng dài nhất 22" vì hai từ hỏng đều hỏng
+    // ở bàn ghép cặp — con số đó tự mâu thuẫn với chính điểm bên cạnh.
+    if (wrongWordIds.length > 0) setStreak(0);
     setSession((s) => (s === null ? s : submitStep(s, wrongWordIds)));
   }
 

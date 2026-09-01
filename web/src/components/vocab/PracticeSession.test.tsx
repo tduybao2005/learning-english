@@ -205,3 +205,29 @@ test("chủ đề quá ít từ thì báo rõ thay vì dựng phiên hỏng", ()
   render(<PracticeSession words={makeWords(3)} backHref="/vocab" linkComponent="a" />);
   expect(screen.getByText("Chủ đề này chưa đủ từ vựng để luyện tập.")).toBeTruthy();
 });
+
+test("ghép cặp sai cũng cắt chuỗi đúng, không để chuỗi vượt quá số câu thật sự đúng", () => {
+  render(<PracticeSession words={makeWords(12)} backHref="/vocab" linkComponent="a" />);
+
+  // Chặng 1 sạch: 6 câu đúng liên tiếp.
+  solveMatchBoard();
+  for (let i = 0; i < 6; i++) answerQuiz(true);
+
+  // Chặng 2 mở đầu bằng một cặp ghép sai — chuỗi phải đứt ở đây.
+  const left = screen.getAllByTestId("match-left")[0];
+  const leftIndex = (left.textContent ?? "").replace("word", "");
+  const wrongRight = screen
+    .getAllByTestId("match-right")
+    .find((el) => el.textContent !== `nghĩa ${leftIndex}`);
+  fireEvent.click(left);
+  fireEvent.click(wrongRight!);
+  act(() => {
+    vi.advanceTimersByTime(600);
+  });
+  solveMatchBoard();
+
+  finishAllCorrect();
+
+  const streak = screen.getByText("Chuỗi đúng dài nhất").nextElementSibling;
+  expect(Number(streak?.textContent)).toBeLessThan(12);
+});

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { parseTopicsTsv, parseMappingTsv } from "./parse-vocab-topics";
+import { parseTopicsTsv, parseMappingTsv, loadVocabTopics } from "./parse-vocab-topics";
 
 const TOPICS_TSV = [
   "slug\tname_vi\tname_en\temoji\tgroup\torder_index",
@@ -72,5 +72,20 @@ describe("parseMappingTsv", () => {
   it("chấp nhận dòng lặp y hệt (cùng từ, cùng chủ đề)", () => {
     const same = "word\ttopic_slug\nwake up\tdaily-routine\nwake up\tdaily-routine";
     expect(parseMappingTsv(same).size).toBe(1);
+  });
+});
+
+describe("loadVocabTopics", () => {
+  it("ném lỗi khi không tìm thấy thư mục vocab_topics", () => {
+    // Thiếu thư mục là lỗi triển khai (quên COPY vào image), không phải một
+    // trạng thái hợp lệ: trả về rỗng lặng lẽ sẽ khiến lần seed kế tiếp xoá
+    // sạch topicId của toàn bộ 3.419 dòng từ vựng.
+    expect(() => loadVocabTopics("/khong/ton/tai")).toThrow(/vocab_topics/);
+  });
+
+  it("đọc được cặp tsv trong một thư mục có thật", () => {
+    const { topics, mapping } = loadVocabTopics();
+    expect(topics.length).toBeGreaterThan(0);
+    expect(mapping.size).toBeGreaterThan(0);
   });
 });

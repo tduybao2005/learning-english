@@ -66,7 +66,9 @@ export function TopicWordList({ words }: { words: TopicWord[] }) {
         className="min-h-11 w-full rounded-xl border border-border bg-card px-4 text-sm transition-colors focus-visible:border-primary/40 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
       />
 
-      <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1" role="tablist">
+      {/* Lưới 4 cột thay vì hàng cuộn ngang: bốn nhãn tiếng Việt kèm số đếm
+          luôn tràn khỏi màn hình điện thoại, đẩy "Đã thuộc" ra ngoài mép. */}
+      <div className="grid grid-cols-4 gap-1.5" role="tablist">
         {FILTERS.map((f) => (
           <button
             key={f.value}
@@ -76,7 +78,7 @@ export function TopicWordList({ words }: { words: TopicWord[] }) {
             data-testid="word-filter"
             onClick={() => setFilter(f.value)}
             className={cn(
-              "min-h-9 shrink-0 rounded-full border px-3.5 text-caption font-semibold transition-all",
+              "flex min-h-9 items-center justify-center rounded-full border px-1 text-center text-[11px] font-semibold leading-tight transition-all",
               filter === f.value
                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                 : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",

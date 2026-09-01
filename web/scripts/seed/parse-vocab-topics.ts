@@ -86,6 +86,12 @@ export function loadVocabTopics(dir: string = VOCAB_TOPICS_DIR): {
 } {
   const topicsPath = path.join(dir, "topics.tsv");
   const mappingPath = path.join(dir, "mapping.tsv");
+  // Thiếu cả hai file nghĩa là thư mục không tới được — hầu như luôn do quên
+  // COPY `vocab_topics/` vào image. Trả về rỗng lặng lẽ thì lần seed kế tiếp
+  // sẽ xoá sạch topicId của toàn bộ từ vựng mà không báo gì, nên phải nổ ngay.
+  if (!fs.existsSync(topicsPath) && !fs.existsSync(mappingPath)) {
+    throw new Error(`Không tìm thấy vocab_topics tại "${dir}" (topics.tsv/mapping.tsv đều thiếu)`);
+  }
   const topics = fs.existsSync(topicsPath)
     ? parseTopicsTsv(fs.readFileSync(topicsPath, "utf8"))
     : [];

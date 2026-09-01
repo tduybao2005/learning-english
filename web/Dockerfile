@@ -63,6 +63,10 @@ COPY phase_3_intermediate /app/phase_3_intermediate
 COPY phase_4_advanced /app/phase_4_advanced
 COPY phase_5_ielts_prep /app/phase_5_ielts_prep
 COPY ielts_practice_tests /app/ielts_practice_tests
+# Bảng chủ đề từ vựng — cùng lý do bố trí như trên. Thiếu thư mục này thì
+# lần `make seed-all` kế tiếp sẽ xoá sạch topicId của mọi từ (loadVocabTopics
+# nay ném lỗi thay vì im lặng, nhưng vẫn phải COPY vào image).
+COPY vocab_topics /app/vocab_topics
 
 RUN chown -R nextjs:nodejs /app
 USER nextjs
@@ -87,5 +91,6 @@ COPY phase_3_intermediate /app/phase_3_intermediate
 COPY phase_4_advanced /app/phase_4_advanced
 COPY phase_5_ielts_prep /app/phase_5_ielts_prep
 COPY ielts_practice_tests /app/ielts_practice_tests
+COPY vocab_topics /app/vocab_topics
 ENV NODE_ENV=test
 CMD ["npm", "run", "test:ci"]
