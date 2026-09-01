@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { playSfx } from "@/lib/audio/sfx";
+import { playWordAudio } from "@/lib/audio/word-audio";
 import type { MatchRound } from "@/components/vocab/games";
 
 /** Khớp thời lượng `tile-collapse` trong globals.css. */
@@ -53,7 +54,10 @@ export function MatchBoard({
 
   function evaluate(leftId: string, rightId: string) {
     if (leftId === rightId) {
-      playSfx("correct");
+      // Ghép đúng thì thứ đáng nghe là chính từ vừa ghép, không phải tiếng
+      // "ting" — người học ghép sáu cặp là nghe được sáu lần phát âm.
+      // `pairs` là nguồn chân lý của bàn (cột trái/phải chỉ là bản xáo).
+      playWordAudio(round.pairs.find((p) => p.wordId === leftId)?.audioUrl ?? null);
       const nextMatched = new Set(matched);
       nextMatched.add(leftId);
       setMatched(nextMatched);

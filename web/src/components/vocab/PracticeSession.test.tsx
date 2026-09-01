@@ -2,6 +2,13 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
+const { playWordAudio, playSfx } = vi.hoisted(() => ({
+  playWordAudio: vi.fn(),
+  playSfx: vi.fn(),
+}));
+vi.mock("@/lib/audio/word-audio", () => ({ playWordAudio }));
+vi.mock("@/lib/audio/sfx", () => ({ playSfx }));
+
 import { PracticeSession } from "@/components/vocab/PracticeSession";
 import type { VocabWordLite } from "@/components/vocab/games";
 
@@ -10,7 +17,7 @@ function makeWords(n: number): VocabWordLite[] {
     id: `w${i}`,
     word: `word${i}`,
     meaningVi: `nghĩa ${i}`,
-    audioUrl: null,
+    audioUrl: `/audio/vocab/word${i}.mp3`,
   }));
 }
 
@@ -20,6 +27,8 @@ beforeEach(() => {
   vi.useFakeTimers();
   fetchMock = vi.fn(() => Promise.resolve({ ok: true } as Response));
   vi.stubGlobal("fetch", fetchMock);
+  playWordAudio.mockClear();
+  playSfx.mockClear();
 });
 
 afterEach(() => {
@@ -54,8 +63,11 @@ function answerQuiz(correct: boolean) {
   const index = currentPromptWordIndex();
   const options = screen.getAllByTestId("quiz-option");
   const target = options.find((o) => {
-    const text = o.textContent ?? "";
-    const isRight = text.includes(`nghĩa ${index}`) || text.includes(`word${index}`);
+    // So khớp CHÍNH XÁC, không `includes`: nhãn lựa chọn là "nghĩa 1" và
+    // "nghĩa 10" nên `includes("nghĩa 1")` khớp cả hai, làm helper chọn nhầm
+    // ô — test đỏ ngẫu nhiên theo kết quả xáo bài từ 10 từ trở lên.
+    const text = (o.textContent ?? "").replace(/^[A-Z]/, "");
+    const isRight = text === `nghĩa ${index}` || text === `word${index}`;
     return correct ? isRight : !isRight;
   });
   fireEvent.click(target ?? options[0]);
@@ -230,4 +242,29 @@ test("ghép cặp sai cũng cắt chuỗi đúng, không để chuỗi vượt q
 
   const streak = screen.getByText("Chuỗi đúng dài nhất").nextElementSibling;
   expect(Number(streak?.textContent)).toBeLessThan(12);
+});
+
+test("chọn đúng câu trắc nghiệm thì đọc từ tiếng Anh, không kêu ting", () => {
+  render(<PracticeSession words={makeWords(6)} backHref="/vocab" linkComponent="a" />);
+  solveMatchBoard();
+  playWordAudio.mockClear();
+  playSfx.mockClear();
+
+  const index = currentPromptWordIndex();
+  answerQuiz(true);
+
+  expect(playWordAudio).toHaveBeenCalledWith(`/audio/vocab/word${index}.mp3`);
+  expect(playSfx).not.toHaveBeenCalledWith("correct");
+});
+
+test("chọn sai vẫn kêu tiếng báo sai và không đọc từ", () => {
+  render(<PracticeSession words={makeWords(6)} backHref="/vocab" linkComponent="a" />);
+  solveMatchBoard();
+  playWordAudio.mockClear();
+  playSfx.mockClear();
+
+  answerQuiz(false);
+
+  expect(playSfx).toHaveBeenCalledWith("wrong");
+  expect(playWordAudio).not.toHaveBeenCalled();
 });

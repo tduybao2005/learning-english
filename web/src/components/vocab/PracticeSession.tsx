@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 
 import { playSfx } from "@/lib/audio/sfx";
+import { playWordAudio } from "@/lib/audio/word-audio";
 import { MatchBoard } from "@/components/vocab/MatchBoard";
 import { QuizCard } from "@/components/vocab/QuizCard";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
@@ -217,7 +218,15 @@ export function PracticeSession({
     const correct = optionId === rendered.round.correctOptionId;
     // Phát ngay trong handler của cú bấm: Safari/iOS chỉ cho phát audio khi
     // còn trong ngữ cảnh user gesture.
-    playSfx(correct ? "correct" : "wrong");
+    //
+    // Đúng thì đọc chính từ tiếng Anh thay vì kêu "ting": phản hồi đó vừa
+    // xác nhận vừa dạy cách đọc. Sai thì vẫn giữ tiếng báo lỗi — nó là cảnh
+    // báo, và đọc từ ngay lúc vừa chọn sai sẽ nghe như đang khen.
+    if (correct) {
+      playWordAudio(rendered.word?.audioUrl ?? null);
+    } else {
+      playSfx("wrong");
+    }
     const next = correct ? streak + 1 : 0;
     setStreak(next);
     setBestStreak((b) => Math.max(b, next));
