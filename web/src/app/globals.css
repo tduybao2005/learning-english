@@ -203,6 +203,19 @@
 @utility backface-hidden { backface-visibility: hidden; }
 @utility rotate-y-180 { transform: rotateY(180deg); }
 
+/* Vòng tròn tiến độ ở màn hình kết thúc phiên: chạy từ rỗng tới giá trị
+   `stroke-dashoffset` đặt inline trên chính phần tử (cùng thủ thuật
+   "chỉ có from" như `progress-fill` ở trên). Cần `--ring-c` = chu vi. */
+@keyframes ring-fill { from { stroke-dashoffset: var(--ring-c); } }
+@utility animate-ring-fill { animation: ring-fill 0.9s var(--ease-standard) both; }
+
+/* Thẻ kết quả bật lên khi phiên học kết thúc. */
+@keyframes summary-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@utility animate-summary-in { animation: summary-in 0.32s var(--ease-standard) both; }
+
 /* CTA glow shadows (design doc §03 — độ nổi). */
 @utility shadow-primary-glow { box-shadow: 0 8px 20px oklch(from var(--primary) l c h / 28%); }
 @utility shadow-accent-glow { box-shadow: 0 8px 20px oklch(from var(--accent) l c h / 28%); }

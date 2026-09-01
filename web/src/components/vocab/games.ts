@@ -162,3 +162,30 @@ export function buildMatchRounds(
   }
   return rounds;
 }
+
+export type ResultTier = "excellent" | "good" | "review";
+
+/**
+ * Xếp hạng một phiên luyện tập theo tỉ lệ đúng, dùng chung cho màn hình
+ * kết thúc của cả ba game. Phiên rỗng (`total === 0`) trả "review" thay vì
+ * chia cho 0.
+ */
+export function resultTier(correct: number, total: number): ResultTier {
+  if (total <= 0) return "review";
+  const ratio = correct / total;
+  if (ratio >= 0.9) return "excellent";
+  if (ratio >= 0.7) return "good";
+  return "review";
+}
+
+export type SwipeOutcome = "know" | "dont-know" | "none";
+
+/**
+ * Quy đổi quãng kéo ngang của một thẻ ghi nhớ thành hành động tự đánh giá:
+ * kéo sang phải = đã nhớ, sang trái = chưa nhớ, chưa đủ ngưỡng = thả về chỗ cũ.
+ */
+export function resolveSwipe(dx: number, threshold: number): SwipeOutcome {
+  if (dx >= threshold) return "know";
+  if (dx <= -threshold) return "dont-know";
+  return "none";
+}

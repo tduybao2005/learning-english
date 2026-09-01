@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { SessionSummary } from "@/components/vocab/SessionSummary";
 import { buildMatchRounds, type VocabWordLite, type MatchRound } from "@/components/vocab/games";
 
 interface ReviewResult {
@@ -215,37 +215,22 @@ export function MatchGame({
   const bestTimeLabel = bestTime !== null ? formatTime(bestTime) : null;
 
   if (allDone) {
+    const totalPairs = rounds.reduce((sum, r) => sum + r.pairs.length, 0);
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center">
-        <div className="text-5xl">🔗</div>
-        <h2 className="text-xl font-bold">Hoàn thành nối từ!</h2>
-        <p className="text-muted-foreground">
-          Thời gian: <span className="font-medium text-primary">{formatTime(elapsed)}</span>
-          {bestTimeLabel !== null && (
-            <>
-              {" "}
-              · Kỷ lục: <span className="font-medium">{bestTimeLabel}</span>
-            </>
-          )}
-        </p>
-        {saveState === "saving" && (
-          <p className="text-xs text-muted-foreground">Đang lưu tiến độ...</p>
-        )}
-        {saveState === "saved" && <p className="text-xs text-muted-foreground">Đã lưu tiến độ.</p>}
-        {saveState === "error" && (
-          <p className="text-xs text-destructive">
-            Không thể lưu tiến độ. Vui lòng kiểm tra kết nối và thử lại.
-          </p>
-        )}
-        <div className="mt-3 flex gap-3">
-          <Button variant="outline" onClick={handleRestart}>
-            Chơi lại
-          </Button>
-          <Link href={backHref} className={cn(buttonVariants())}>
-            Quay lại từ vựng
-          </Link>
-        </div>
-      </div>
+      <SessionSummary
+        title="Hoàn thành nối từ!"
+        correct={results.length}
+        total={totalPairs}
+        extraStats={[
+          { label: "Thời gian", value: formatTime(elapsed) },
+          ...(bestTimeLabel !== null ? [{ label: "Kỷ lục", value: bestTimeLabel }] : []),
+        ]}
+        saveState={saveState}
+        restartLabel="Chơi lại"
+        onRestart={handleRestart}
+        backHref={backHref}
+        linkComponent={Link}
+      />
     );
   }
 

@@ -5,6 +5,8 @@ import {
   sampleDistractors,
   buildQuizRounds,
   buildMatchRounds,
+  resultTier,
+  resolveSwipe,
   type VocabWordLite,
 } from "./games";
 
@@ -171,5 +173,45 @@ describe("buildMatchRounds", () => {
     expect(buildMatchRounds([], 6)).toEqual([]);
     expect(buildMatchRounds([makeWord("only")], 6)).toEqual([]);
     expect(buildMatchRounds([makeWord("only", "")], 6)).toEqual([]);
+  });
+});
+
+describe("resultTier", () => {
+  it("gives the top tier only from 90% up", () => {
+    expect(resultTier(10, 10)).toBe("excellent");
+    expect(resultTier(9, 10)).toBe("excellent");
+    expect(resultTier(8, 10)).toBe("good");
+  });
+
+  it("gives the middle tier from 70% up", () => {
+    expect(resultTier(7, 10)).toBe("good");
+    expect(resultTier(69, 100)).toBe("review");
+  });
+
+  it("gives the bottom tier below 70%", () => {
+    expect(resultTier(0, 10)).toBe("review");
+    expect(resultTier(1, 3)).toBe("review");
+  });
+
+  it("never divides by zero on an empty session", () => {
+    expect(resultTier(0, 0)).toBe("review");
+  });
+});
+
+describe("resolveSwipe", () => {
+  it("treats a rightward drag past the threshold as 'đã nhớ'", () => {
+    expect(resolveSwipe(120, 100)).toBe("know");
+    expect(resolveSwipe(100, 100)).toBe("know");
+  });
+
+  it("treats a leftward drag past the threshold as 'chưa nhớ'", () => {
+    expect(resolveSwipe(-120, 100)).toBe("dont-know");
+    expect(resolveSwipe(-100, 100)).toBe("dont-know");
+  });
+
+  it("ignores a drag that never reaches the threshold", () => {
+    expect(resolveSwipe(99, 100)).toBe("none");
+    expect(resolveSwipe(-99, 100)).toBe("none");
+    expect(resolveSwipe(0, 100)).toBe("none");
   });
 });

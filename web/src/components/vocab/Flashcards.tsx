@@ -3,8 +3,9 @@
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
+import { SessionSummary } from "@/components/vocab/SessionSummary";
 
 export interface FlashcardWord {
   id: string;
@@ -82,35 +83,17 @@ export function Flashcards({
   if (done) {
     const learnedCount = results.filter((r) => r.correct).length;
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center">
-        <div className="text-5xl">🎉</div>
-        <h2 className="text-xl font-bold">Hoàn thành phiên học!</h2>
-        <p className="text-muted-foreground">
-          Đã nhớ{" "}
-          <span className="font-medium text-emerald-600 dark:text-emerald-400">{learnedCount}</span>{" "}
-          / {total} thẻ · Chưa nhớ{" "}
-          <span className="font-medium text-destructive">{total - learnedCount}</span>
-        </p>
-        {saveState === "saving" && (
-          <p className="text-xs text-muted-foreground">Đang lưu tiến độ...</p>
-        )}
-        {saveState === "saved" && (
-          <p className="text-xs text-muted-foreground">Đã lưu tiến độ.</p>
-        )}
-        {saveState === "error" && (
-          <p className="text-xs text-destructive">
-            Không thể lưu tiến độ. Vui lòng kiểm tra kết nối và thử lại.
-          </p>
-        )}
-        <div className="mt-3 flex gap-3">
-          <Button variant="outline" onClick={handleRestart}>
-            Học lại
-          </Button>
-          <Link href={backHref} className={cn(buttonVariants())}>
-            Quay lại từ vựng
-          </Link>
-        </div>
-      </div>
+      <SessionSummary
+        title="Hoàn thành phiên học!"
+        correct={learnedCount}
+        total={total}
+        extraStats={[{ label: "Chưa nhớ", value: String(total - learnedCount) }]}
+        saveState={saveState}
+        restartLabel="Học lại"
+        onRestart={handleRestart}
+        backHref={backHref}
+        linkComponent={Link}
+      />
     );
   }
 

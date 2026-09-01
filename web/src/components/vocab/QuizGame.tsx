@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { buildQuizRounds, type VocabWordLite, type QuizRound } from "@/components/vocab/games";
 import { playSfx } from "@/lib/audio/sfx";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
+import { SessionSummary } from "@/components/vocab/SessionSummary";
 
 interface ReviewResult {
   wordId: string;
@@ -130,33 +131,17 @@ export function QuizGame({
   if (done) {
     const correctCount = results.filter((r) => r.correct).length;
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-border bg-card p-8 text-center">
-        <div className="text-5xl">🏆</div>
-        <h2 className="text-xl font-bold">Hoàn thành trắc nghiệm!</h2>
-        <p className="text-muted-foreground">
-          Đúng{" "}
-          <span className="font-medium text-emerald-600 dark:text-emerald-400">{correctCount}</span>{" "}
-          / {total} câu · Chuỗi đúng dài nhất{" "}
-          <span className="font-medium text-primary">{bestStreak}</span>
-        </p>
-        {saveState === "saving" && (
-          <p className="text-xs text-muted-foreground">Đang lưu tiến độ...</p>
-        )}
-        {saveState === "saved" && <p className="text-xs text-muted-foreground">Đã lưu tiến độ.</p>}
-        {saveState === "error" && (
-          <p className="text-xs text-destructive">
-            Không thể lưu tiến độ. Vui lòng kiểm tra kết nối và thử lại.
-          </p>
-        )}
-        <div className="mt-3 flex gap-3">
-          <Button variant="outline" onClick={handleRestart}>
-            Chơi lại
-          </Button>
-          <Link href={backHref} className={cn(buttonVariants())}>
-            Quay lại từ vựng
-          </Link>
-        </div>
-      </div>
+      <SessionSummary
+        title="Hoàn thành trắc nghiệm!"
+        correct={correctCount}
+        total={total}
+        extraStats={[{ label: "Chuỗi đúng dài nhất", value: String(bestStreak) }]}
+        saveState={saveState}
+        restartLabel="Chơi lại"
+        onRestart={handleRestart}
+        backHref={backHref}
+        linkComponent={Link}
+      />
     );
   }
 
