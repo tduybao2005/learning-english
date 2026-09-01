@@ -6,9 +6,9 @@ import { MobileTabBar } from "./MobileTabBar";
 
 describe("MobileTabBar", () => {
   it("renders the five hub tabs", () => {
-    render(<MobileTabBar linkComponent="a" activePath="/dashboard" />);
+    render(<MobileTabBar linkComponent="a" activePath="/learn" />);
     const expected: [RegExp, string][] = [
-      [/Lộ trình/, "/dashboard"],
+      [/Lộ trình/, "/learn"],
       [/Từ vựng/, "/vocab"],
       [/Luyện nghe/, "/listening"],
       [/Đề thi/, "/exams"],

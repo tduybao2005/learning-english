@@ -15,7 +15,7 @@ type Tab = {
 /** Labels mirror `AppSidebar`'s nav exactly — the two navs are the same
  * information architecture at two viewports. */
 const TABS: readonly Tab[] = [
-  { href: "/dashboard", label: "Lộ trình", icon: Home },
+  { href: "/learn", label: "Lộ trình", icon: Home },
   { href: "/vocab", label: "Từ vựng", icon: BookOpen },
   { href: "/listening", label: "Luyện nghe", icon: Headphones },
   { href: "/exams", label: "Đề thi", icon: GraduationCap, alsoOwns: ["/ielts"] },

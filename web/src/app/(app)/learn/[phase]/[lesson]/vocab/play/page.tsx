@@ -4,7 +4,6 @@ import { notFound, redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { GameTopBar } from "@/components/vocab/GameTopBar";
 import { getSessionUser } from "@/lib/auth/session";
-import { getLessonStates } from "@/lib/progress";
 import { PracticeSession } from "@/components/vocab/PracticeSession";
 
 /** Phiên luyện tập theo BÀI — gộp ghép cặp + trắc nghiệm, thay cho hai
@@ -27,9 +26,6 @@ export default async function VocabPlayPage({
   if (!lesson) notFound();
 
   // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
-  const states = await getLessonStates(user.id);
-  const state = states.get(lesson.id) ?? "LOCKED";
-  if (state === "LOCKED") redirect("/dashboard");
 
   const words = await db.vocabWord.findMany({
     where: { lessonId: lesson.id },

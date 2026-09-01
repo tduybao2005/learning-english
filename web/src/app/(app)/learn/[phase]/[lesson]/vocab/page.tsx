@@ -3,7 +3,6 @@ import { notFound, redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { getLessonStates } from "@/lib/progress";
 import { getVocabStats } from "@/lib/vocab";
 
 export default async function VocabHubPage({
@@ -24,9 +23,6 @@ export default async function VocabHubPage({
   if (!lesson) notFound();
 
   // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
-  const states = await getLessonStates(user.id);
-  const state = states.get(lesson.id) ?? "LOCKED";
-  if (state === "LOCKED") redirect("/dashboard");
 
   const [words, stats] = await Promise.all([
     db.vocabWord.findMany({

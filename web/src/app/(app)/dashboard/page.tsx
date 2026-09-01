@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
-import { LessonMap } from "@/components/LessonMap";
 import { EmptyState } from "@/components/EmptyState";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -51,10 +50,11 @@ export default async function DashboardPage({
   const totalDone = phases.reduce(
     (sum, phase) =>
       sum +
-      phase.lessons.filter((lesson) => {
-        const state = states.get(lesson.id);
-        return state === "COMPLETED" || state === "SKIPPED";
-      }).length,
+      // Chỉ đếm COMPLETED. Bài kiểm tra đầu vào ghi SKIPPED cho mọi bài
+      // trước điểm được xếp, nên gộp SKIPPED vào đây thì người vừa thi xong
+      // đã thấy "23/52 bài đã hoàn thành" dù chưa học buổi nào — và con số
+      // đó lệch hẳn với `/learn`, nơi tiến độ chỉ tính bài học thật.
+      phase.lessons.filter((lesson) => states.get(lesson.id) === "COMPLETED").length,
     0,
   );
   const subtitleParts = totalLessons > 0 ? [`${totalDone}/${totalLessons} bài đã hoàn thành`] : [];
@@ -157,8 +157,22 @@ export default async function DashboardPage({
           />
         ) : (
           <>
-            <h3 className="mb-2 text-body font-bold lg:hidden">Lộ trình</h3>
-            <LessonMap phases={phases} states={states} linkComponent={Link} />
+            {/* Lộ trình đầy đủ đã chuyển sang `/learn` (duyệt theo chủ đề).
+                Dashboard giữ vai trò "hôm nay học gì", không lặp lại cả bản đồ. */}
+            <Link
+              href="/learn"
+              className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+            >
+              <span>
+                <span className="block font-semibold">Xem lộ trình theo chủ đề</span>
+                <span className="block text-caption text-muted-foreground">
+                  {totalDone}/{totalLessons} bài đã hoàn thành
+                </span>
+              </span>
+              <span aria-hidden className="text-muted-foreground">
+                ›
+              </span>
+            </Link>
           </>
         )}
       </div>

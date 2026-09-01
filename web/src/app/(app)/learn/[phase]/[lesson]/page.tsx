@@ -4,7 +4,6 @@ import { notFound, redirect } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { db } from "@/lib/db";
 import { getSessionUser } from "@/lib/auth/session";
-import { getLessonStates } from "@/lib/progress";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { InlineExample } from "@/components/InlineExample";
 import { splitLectureSegments } from "@/lib/lecture-examples";
@@ -31,9 +30,6 @@ export default async function LecturePage({
   if (!lesson) notFound();
 
   // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
-  const states = await getLessonStates(user.id);
-  const state = states.get(lesson.id) ?? "LOCKED";
-  if (state === "LOCKED") redirect("/dashboard");
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
 

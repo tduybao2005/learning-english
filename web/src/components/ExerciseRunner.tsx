@@ -307,7 +307,7 @@ function ExerciseRunnerSession({
                 Học bài tiếp theo →
               </Link>
               <Link
-                href="/dashboard"
+                href="/learn"
                 className={cn(buttonVariants({ variant: "outline" }), "w-full sm:w-auto")}
               >
                 Về lộ trình học
@@ -322,7 +322,7 @@ function ExerciseRunnerSession({
             <p className="text-muted-foreground">Bạn đã hoàn thành toàn bộ lộ trình hiện có!</p>
             <div className="mt-3 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <Link
-                href="/dashboard"
+                href="/learn"
                 className={cn(buttonVariants({ variant: "default" }), "w-full sm:w-auto")}
               >
                 Về lộ trình học

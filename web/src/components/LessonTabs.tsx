@@ -30,7 +30,7 @@ export function LessonTabs({
   return (
     <>
       <Link
-        href="/dashboard"
+        href="/learn"
         className="mb-4 block w-fit text-caption text-muted-foreground transition-colors hover:text-foreground"
       >
         ← Quay lại lộ trình học

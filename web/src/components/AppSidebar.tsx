@@ -3,7 +3,7 @@ import { Home, Headphones, GraduationCap, BookOpen, Settings } from "lucide-reac
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/dashboard", label: "Lộ trình", icon: Home },
+  { href: "/learn", label: "Lộ trình", icon: Home },
   { href: "/listening", label: "Luyện nghe", icon: Headphones },
   { href: "/exams", label: "Đề thi", icon: GraduationCap },
   { href: "/vocab", label: "Từ vựng", icon: BookOpen },
