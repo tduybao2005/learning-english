@@ -76,12 +76,38 @@ so it carries the devDependencies. Driven by `make test-up` / `test-unit` /
 |---|---|---|
 | `(auth)` | `/login` | Google OAuth only; no passwords. |
 | `onboarding/` | `/onboarding/name`, `/path`, `/placement`, `/placement/result` | Runs outside the app shell; sets name, goal, placement band. |
-| `(app)` | `/dashboard`, `/learn/[phase]/[lesson]` (+ `/exercise`, `/vocab/{flashcards,play}`), `/listening`, `/listening/[slug]`, `/ielts`, `/ielts/[n]`, `/vocab`, `/vocab/[topic]` (+ `/flashcards`, `/play`), `/settings` | Authenticated shell (sidebar + header). |
+| `(app)` | `/learn`, `/learn/chu-de/[topic]`, `/learn/[phase]/[lesson]` (+ `/exercise`, `/vocab/{flashcards,play}`), `/dashboard`, `/listening`, `/listening/[slug]`, `/ielts`, `/ielts/[n]`, `/vocab`, `/vocab/[topic]` (+ `/flashcards`, `/play`), `/settings` | Authenticated shell (sidebar + header). `/learn` là hub lộ trình; `/dashboard` chỉ còn "hôm nay học gì". |
 | `api/` | `attempts/[id]/answers`, `exercises/[id]/attempts`, `listening/[slug]/check`, `placement/*`, `onboarding/path`, `profile/name`, `vocab/review`, `auth/[...nextauth]` | Route handlers; all grading happens here, server-side. |
 
 `web/src/middleware.ts` (edge runtime) gates `/dashboard`, `/learn`, `/ielts`,
 `/listening`, `/settings`, `/onboarding`. It imports only `lib/auth/auth.config.ts`,
 which is deliberately Prisma-free so it can run on the edge.
+
+**Lộ trình duyệt theo chủ đề, không theo giai đoạn.** Giai đoạn 1–5 là thứ tự
+soạn nội dung, không phải cách người học nghĩ về tiếng Anh: muốn ôn câu bị
+động thì phải nhớ nó nằm ở Giai đoạn 3 và 4 rồi mở hai chỗ. `lesson-topics.ts`
+gom 52 bài thành 15 chủ đề (4 nhóm CORE / ADVANCED / VOCAB / IELTS);
+`learn-topics.ts` ghép taxonomy đó với `Lesson` + `LessonProgress` thành dữ
+liệu cho `/learn` và `/learn/chu-de/[topic]`. URL bài học giữ nguyên
+`/learn/[phase]/[lesson]`, nên không link cũ nào hỏng.
+
+Taxonomy là **hằng số TypeScript** chứ không phải bảng DB như `vocab_topics/`:
+nó chỉ 52 dòng, gần như không đổi, và con đường TSV → seed → Postgres đã một
+lần quét sạch `topicId` của cả kho từ vựng vì image thiếu file nguồn. Ở dạng
+hằng số thì không có migration, không bước seed, không dòng COPY nào để quên;
+`lesson-topics.test.ts` bắt mọi bài thiếu hoặc bị xếp hai nơi.
+
+Đi kèm là **bỏ khoá bài**: `Phase.orderIndex` vẫn quyết định thứ tự mở khoá
+trong `progress.ts`, nhưng UI không còn cưỡng chế nó — một chủ đề trải trên
+nhiều giai đoạn mà nửa mở nửa khoá thì vô nghĩa với người học. Năm guard
+`redirect("/dashboard")` dưới `learn/[phase]/[lesson]/` đã bị xoá. `SKIPPED`
+(do bài kiểm tra đầu vào ghi) là trạng thái thứ tư, không tính vào tiến độ.
+
+**Một phiên luyện tập, phản hồi bằng giọng đọc.** Trả lời đúng phát file phát
+âm của chính từ đó (`word-audio.ts`) thay cho SFX "correct"; trả lời sai gọi
+`stopWordAudio()` rồi `playSfx("wrong")`, vì giọng đọc dài ~1s sẽ lấp mất
+tiếng báo lỗi dài 0,46s. `MatchPair` mang theo `audioUrl` để bàn ghép cặp đọc
+được từ mà không cần nhìn thấy pool.
 
 **Vocabulary is browsed by topic, not by lesson.** `VocabTopic` (37 rows,
 seeded from `vocab_topics/topics.tsv`, see `docs/content-model.md`) hangs off

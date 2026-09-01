@@ -36,6 +36,10 @@ Runtime is self-hosted Docker Compose behind a Cloudflare tunnel — see
   EVERYDAY / ACADEMIC / FUNCTIONAL) and `mapping.tsv` (`word topic_slug`,
   keyed on the lowercased word alone). Not derived from the Markdown — it is
   hand-curated and checked against it by `make check-vocab`.
+- Chủ đề **bài học** (khác chủ đề từ vựng) không có file nguồn: taxonomy 52
+  bài → 15 chủ đề nằm ở `web/src/lib/lesson-topics.ts` dưới dạng hằng số
+  TypeScript, có `lesson-topics.test.ts` làm cổng kiểm tra. Thêm/xoá thư mục
+  `lesson_*` thì phải cập nhật cả hai, nếu không `npm test` sẽ đỏ.
 - `scripts/` — stdlib-Python tooling; `docs/` — knowledge base;
   `docs/plans/` — historical plans (frozen, don't update).
 - `docs/design/` — the app's visual design system exports (self-contained,
@@ -95,6 +99,14 @@ cd web && npm run audio:vocab   # sinh mp3 còn thiếu + ghi VocabWord.audioUrl
 cd .. && make up                # build lại image kèm file mới
 ```
 
+Trả lời ĐÚNG ở phần luyện tập từ vựng phát **file phát âm của chính từ đó**
+(`playWordAudio` trong `web/src/lib/audio/word-audio.ts`), không phải SFX
+"correct" — phản hồi đó vừa xác nhận vừa dạy cách đọc. Trả lời SAI vẫn dùng
+`playSfx("wrong")`, nhưng phải gọi `stopWordAudio()` trước: giọng đọc dài cỡ
+một giây sẽ lấp mất tiếng báo lỗi ngắn 0,46s. Từ chưa có `audioUrl` thì im
+lặng chứ không quay lại tiếng ting. `VOICE_VERSION` trong `word-audio.ts`
+phải khớp với `PronounceButton.tsx`.
+
 Seed vocab là delete+create, nên `VocabWord.audioUrl` bị xoá sau mỗi lần seed —
 `make seed-all` đã tự chạy lại bước backfill; đừng bỏ bước đó đi.
 
@@ -131,6 +143,13 @@ make test-down   # xoá stack test (DB tmpfs bay theo)
   ("bad"/"beautiful" vào So sánh & Đối chiếu; "yawn"/"survey" vào Thời gian)
   và phải revert. Gán xong một lô thì bốc mẫu vài chục từ mỗi chủ đề để soi
   trước khi commit.
+- **Lộ trình không còn khoá bài.** `/learn` duyệt theo chủ đề, mọi bài đều
+  vào được; `LessonProgress` vẫn ghi như cũ nhưng chỉ dùng để HIỂN THỊ tiến
+  độ. Đừng thêm lại `if (state === "LOCKED") redirect(...)` vào các trang
+  dưới `learn/[phase]/[lesson]/` — có năm chỗ như vậy đã bị xoá có chủ đích.
+- **`SKIPPED` không phải "đã học".** Bài kiểm tra đầu vào ghi SKIPPED cho mọi
+  bài trước điểm được xếp; gộp nó vào tiến độ thì người vừa thi xong đã thấy
+  "đã học 23/52 bài". Cả `/learn` lẫn `/dashboard` chỉ đếm `COMPLETED`.
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`
