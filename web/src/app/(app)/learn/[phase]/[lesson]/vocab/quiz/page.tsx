@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { db } from "@/lib/db";
+import { GameTopBar } from "@/components/vocab/GameTopBar";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
 import { QuizGame } from "@/components/vocab/QuizGame";
@@ -40,15 +41,12 @@ export default async function VocabQuizPage({
   return (
     <div className="lg:fixed lg:inset-0 lg:z-50 lg:overflow-y-auto lg:bg-background">
       <div className="mx-auto max-w-2xl px-4 py-8 lg:py-10">
-        <Link
-          href={backHref}
-          className="mb-4 inline-block text-sm text-muted-foreground hover:text-foreground"
-        >
-          ← Quay lại từ vựng
-        </Link>
-
-        <p className="text-caption font-semibold text-primary">{lesson.phase.title}</p>
-        <h1 className="mb-6 text-h2 font-extrabold">Trắc nghiệm — {lesson.title}</h1>
+        <GameTopBar
+          backHref={backHref}
+          phaseOrder={lesson.phase.orderIndex}
+          lessonOrder={lesson.orderIndex}
+          mode="Trắc nghiệm"
+        />
 
         {words.length === 0 ? (
           <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">

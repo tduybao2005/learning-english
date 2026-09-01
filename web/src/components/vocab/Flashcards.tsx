@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
 import { formatIpa, resolveSwipe } from "@/components/vocab/games";
@@ -264,7 +263,6 @@ export function Flashcards({
               {formatIpa(card.ipa) !== "" && (
                 <p className="text-muted-foreground">{formatIpa(card.ipa)}</p>
               )}
-              <p className="mt-4 text-caption text-muted-foreground">Nhấn để xem nghĩa ↻</p>
             </div>
 
             {/* Back: meaning + example */}
@@ -285,21 +283,39 @@ export function Flashcards({
       </div>
 
       {flipped ? (
-        <div className="flex flex-col items-center gap-2">
-          <div className="flex justify-center gap-3">
-            <Button variant="destructive" onClick={() => report(false)}>
-              Chưa nhớ ✗
-            </Button>
-            <Button variant="success" onClick={() => report(true)}>
-              Đã nhớ ✓
-            </Button>
+        <div className="flex flex-col gap-2">
+          {/* Hai ô tự đánh giá: cùng chiều rộng, cao 56px, mỗi ô là một khối
+              rõ ràng chứ không phải hai nút nhỏ đặt cạnh nhau. "Chưa nhớ" để
+              dạng viền (nhẹ, không doạ), "Đã nhớ" là hành động chính nên tô
+              đầy và có glow theo đúng quy ước của design system. */}
+          <div className="grid grid-cols-2 gap-3">
+            <button
+              type="button"
+              onClick={() => report(false)}
+              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl border-2 border-destructive/30 bg-destructive/5 font-semibold text-destructive transition-all hover:-translate-y-0.5 hover:border-destructive/60 hover:bg-destructive/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-destructive/20 active:translate-y-0"
+            >
+              <span className="text-base">Chưa nhớ</span>
+              <span className="text-[11px] font-medium opacity-60">← hoặc vuốt trái</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => report(true)}
+              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl bg-success font-semibold text-success-foreground shadow-success-glow transition-all hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-success/30 active:translate-y-0"
+            >
+              <span className="text-base">Đã nhớ</span>
+              <span className="text-[11px] font-medium opacity-75">→ hoặc vuốt phải</span>
+            </button>
           </div>
-          <p className="text-caption text-muted-foreground">Hoặc vuốt thẻ: ← chưa nhớ · đã nhớ →</p>
         </div>
       ) : (
-        <p className="text-center text-caption text-muted-foreground">
-          Lật thẻ để tự đánh giá xem đã nhớ từ này chưa.
-        </p>
+        <button
+          type="button"
+          onClick={() => setFlipped(true)}
+          className="mx-auto flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+        >
+          Lật thẻ để xem nghĩa
+          <span aria-hidden>↻</span>
+        </button>
       )}
     </div>
   );
