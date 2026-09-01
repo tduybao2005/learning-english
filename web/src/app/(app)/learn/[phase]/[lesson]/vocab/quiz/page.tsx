@@ -39,8 +39,8 @@ export default async function VocabQuizPage({
   const backHref = `${base}/vocab`;
 
   return (
-    <div className="lg:fixed lg:inset-0 lg:z-50 lg:overflow-y-auto lg:bg-background">
-      <div className="mx-auto max-w-2xl px-4 py-8 lg:py-10">
+    <div className="lg:fixed lg:inset-0 lg:z-50 lg:flex lg:overflow-y-auto lg:bg-background">
+      <div className="mx-auto flex w-full max-w-2xl flex-col px-4 py-6 lg:py-8">
         <GameTopBar
           backHref={backHref}
           phaseOrder={lesson.phase.orderIndex}
@@ -48,6 +48,7 @@ export default async function VocabQuizPage({
           mode="Trắc nghiệm"
         />
 
+        <div className="flex flex-1 flex-col justify-center pb-10">
         {words.length === 0 ? (
           <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
             Bài học này chưa có từ vựng.
@@ -55,6 +56,7 @@ export default async function VocabQuizPage({
         ) : (
           <QuizGame words={words} backHref={backHref} linkComponent={Link} />
         )}
+        </div>
       </div>
     </div>
   );
