@@ -97,6 +97,9 @@ export async function getVocabTopicsOverview(userId: string): Promise<VocabTopic
   };
 }
 
+/** Trạng thái học của một từ, suy từ hộp Leitner cao nhất người học đạt được. */
+export type TopicWordStatus = "new" | "learning" | "learned";
+
 export interface TopicWord {
   id: string;
   word: string;
@@ -107,6 +110,7 @@ export interface TopicWord {
   /** Bài học đầu tiên có từ này — hiện dưới dạng nhãn mờ "GĐ 1 · Bài 3". */
   phaseOrder: number;
   lessonOrder: number;
+  status: TopicWordStatus;
 }
 
 export interface TopicDetail {
@@ -131,42 +135,54 @@ export async function getTopicDetail(slug: string, userId: string): Promise<Topi
   });
   if (topic === null) return null;
 
-  const words = await db.$queryRaw<
-    {
-      id: string;
-      word: string;
-      ipa: string;
-      meaningVi: string;
-      exampleEn: string;
-      audioUrl: string | null;
-      phaseOrder: number;
-      lessonOrder: number;
-    }[]
-  >`
-    SELECT DISTINCT ON (lower(trim(w.word)))
-      w.id, w.word, w.ipa, w."meaningVi", w."exampleEn", w."audioUrl",
-      p."orderIndex" AS "phaseOrder", l."orderIndex" AS "lessonOrder"
-    FROM "VocabWord" w
-    JOIN "Lesson" l ON l.id = w."lessonId"
-    JOIN "Phase" p ON p.id = l."phaseId"
-    JOIN "VocabTopic" t ON t.id = w."topicId"
-    WHERE t.slug = ${slug}
-    ORDER BY lower(trim(w.word)), p."orderIndex", l."orderIndex", w."orderIndex"
-  `;
+  const [rows, boxRows] = await Promise.all([
+    db.$queryRaw<
+      {
+        id: string;
+        word: string;
+        ipa: string;
+        meaningVi: string;
+        exampleEn: string;
+        audioUrl: string | null;
+        phaseOrder: number;
+        lessonOrder: number;
+      }[]
+    >`
+      SELECT DISTINCT ON (lower(trim(w.word)))
+        w.id, w.word, w.ipa, w."meaningVi", w."exampleEn", w."audioUrl",
+        p."orderIndex" AS "phaseOrder", l."orderIndex" AS "lessonOrder"
+      FROM "VocabWord" w
+      JOIN "Lesson" l ON l.id = w."lessonId"
+      JOIN "Phase" p ON p.id = l."phaseId"
+      JOIN "VocabTopic" t ON t.id = w."topicId"
+      WHERE t.slug = ${slug}
+      ORDER BY lower(trim(w.word)), p."orderIndex", l."orderIndex", w."orderIndex"
+    `,
+    // Hộp Leitner CAO NHẤT trong mọi dòng của cùng một từ: một từ có mặt ở
+    // nhiều bài thì tiến độ ở bài nào cũng là tiến độ của chính từ đó.
+    db.$queryRaw<{ key: string; box: number }[]>`
+      SELECT lower(trim(w.word)) AS key, max(pr.box)::int AS box
+      FROM "VocabWord" w
+      JOIN "VocabProgress" pr ON pr."wordId" = w.id
+      JOIN "VocabTopic" t ON t.id = w."topicId"
+      WHERE pr."userId" = ${userId} AND t.slug = ${slug}
+      GROUP BY lower(trim(w.word))
+    `,
+  ]);
 
-  const learnedRows = await db.$queryRaw<{ learned: bigint }[]>`
-    SELECT count(DISTINCT lower(trim(w.word))) AS learned
-    FROM "VocabProgress" pr
-    JOIN "VocabWord" w ON w.id = pr."wordId"
-    JOIN "VocabTopic" t ON t.id = w."topicId"
-    WHERE pr."userId" = ${userId} AND pr.box >= ${LEARNED_BOX_THRESHOLD} AND t.slug = ${slug}
-  `;
+  const boxByKey = new Map(boxRows.map((r) => [r.key, r.box]));
+  const words: TopicWord[] = rows.map((row) => {
+    const box = boxByKey.get(row.word.trim().toLowerCase());
+    const status: TopicWordStatus =
+      box === undefined ? "new" : box >= LEARNED_BOX_THRESHOLD ? "learned" : "learning";
+    return { ...row, status };
+  });
 
   return {
     ...topic,
     group: topic.group as TopicGroup,
     words,
-    learned: Number(learnedRows[0]?.learned ?? 0),
+    learned: words.filter((w) => w.status === "learned").length,
   };
 }
 

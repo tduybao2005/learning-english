@@ -4,7 +4,9 @@ import {
   eligibleForGames,
   sampleDistractors,
   buildQuizRounds,
+  buildQuizRound,
   buildMatchRounds,
+  buildMatchRound,
   resultTier,
   resolveSwipe,
   formatIpa,
@@ -272,5 +274,46 @@ describe("parseInlineEmphasis", () => {
   it("không trả đoạn rỗng", () => {
     expect(parseInlineEmphasis("**bold**")).toEqual([{ text: "bold", bold: true, italic: false }]);
     expect(parseInlineEmphasis("")).toEqual([]);
+  });
+});
+
+describe("buildQuizRound", () => {
+  const pool = [makeWord("a"), makeWord("b"), makeWord("c"), makeWord("d"), makeWord("e")];
+
+  it("dựng câu hỏi cho đúng từ được yêu cầu", () => {
+    const round = buildQuizRound(pool[2], pool, 4, seededRng([0.3, 0.6, 0.9]));
+    expect(round?.wordId).toBe("c");
+    expect(round?.correctOptionId).toBe("c");
+  });
+
+  it("luôn có đáp án đúng nằm trong các lựa chọn", () => {
+    const round = buildQuizRound(pool[0], pool, 4, seededRng([0.15, 0.75, 0.45]));
+    expect(round?.options.map((o) => o.id)).toContain("a");
+    expect(round?.options).toHaveLength(4);
+  });
+
+  it("trả null khi không gom nổi 2 lựa chọn", () => {
+    expect(buildQuizRound(pool[0], [pool[0]], 4)).toBeNull();
+  });
+
+  it("bám vào hướng hỏi được chỉ định thay vì bốc ngẫu nhiên", () => {
+    const round = buildQuizRound(pool[1], pool, 4, seededRng([0.3]), "VI_TO_EN");
+    expect(round?.direction).toBe("VI_TO_EN");
+    expect(round?.prompt).toBe(pool[1].meaningVi);
+  });
+});
+
+describe("buildMatchRound", () => {
+  it("dựng đúng một bàn từ tập từ được đưa vào, không tự chia chặng", () => {
+    const words = [makeWord("a"), makeWord("b"), makeWord("c")];
+    const round = buildMatchRound(words, seededRng([0.4, 0.7, 0.2]));
+    expect(round?.pairs.map((p) => p.wordId).sort()).toEqual(["a", "b", "c"]);
+    expect(round?.left).toHaveLength(3);
+    expect(round?.right).toHaveLength(3);
+  });
+
+  it("trả null khi chưa đủ 2 từ hợp lệ", () => {
+    expect(buildMatchRound([makeWord("a")])).toBeNull();
+    expect(buildMatchRound([makeWord("a"), makeWord("b", "")])).toBeNull();
   });
 });

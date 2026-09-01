@@ -5,9 +5,11 @@ import { db } from "@/lib/db";
 import { GameTopBar } from "@/components/vocab/GameTopBar";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLessonStates } from "@/lib/progress";
-import { MatchGame } from "@/components/vocab/MatchGame";
+import { PracticeSession } from "@/components/vocab/PracticeSession";
 
-export default async function VocabMatchPage({
+/** Phiên luyện tập theo BÀI — gộp ghép cặp + trắc nghiệm, thay cho hai
+ *  route `/quiz` và `/match` trước đây. */
+export default async function VocabPlayPage({
   params,
 }: {
   params: Promise<{ phase: string; lesson: string }>;
@@ -35,25 +37,24 @@ export default async function VocabMatchPage({
     select: { id: true, word: true, meaningVi: true, audioUrl: true },
   });
 
-  const base = `/learn/${phaseSlug}/${lessonSlug}`;
-  const backHref = `${base}/vocab`;
+  const backHref = `/learn/${phaseSlug}/${lessonSlug}/vocab`;
 
   return (
     <div className="lg:fixed lg:inset-0 lg:z-50 lg:flex lg:overflow-y-auto lg:bg-background">
       <div className="mx-auto flex w-full max-w-2xl flex-col px-4 py-6 lg:py-8">
         <GameTopBar
           backHref={backHref}
-          label={`GĐ ${lesson.phase.orderIndex} · Bài ${lesson.orderIndex} · Ghép cặp`}
+          label={`GĐ ${lesson.phase.orderIndex} · Bài ${lesson.orderIndex} · Luyện tập`}
         />
 
         <div className="flex flex-1 flex-col justify-center pb-10">
-        {words.length === 0 ? (
-          <p className="rounded-xl border border-border bg-card p-6 text-center text-muted-foreground">
-            Bài học này chưa có từ vựng.
-          </p>
-        ) : (
-          <MatchGame words={words} backHref={backHref} bestTimeKey={lesson.id} linkComponent={Link} />
-        )}
+          {words.length === 0 ? (
+            <p className="rounded-2xl border border-border bg-card p-6 text-center text-muted-foreground">
+              Bài học này chưa có từ vựng.
+            </p>
+          ) : (
+            <PracticeSession words={words} backHref={backHref} linkComponent={Link} />
+          )}
         </div>
       </div>
     </div>

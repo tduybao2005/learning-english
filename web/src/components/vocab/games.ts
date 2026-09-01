@@ -72,6 +72,39 @@ export interface QuizRound {
 }
 
 /**
+ * Dựng MỘT câu trắc nghiệm cho đúng từ `word`, lấy đáp án nhiễu từ `pool`.
+ *
+ * Tách riêng khỏi `buildQuizRounds` vì phiên luyện tập (`session-engine`)
+ * quyết định hỏi từ nào theo hàng đợi ôn lại, chứ không bốc sẵn một mẻ câu
+ * hỏi từ đầu. Trả `null` khi không gom nổi 2 lựa chọn — một câu trắc nghiệm
+ * chỉ có một đáp án thì vô nghĩa.
+ */
+export function buildQuizRound(
+  word: VocabWordLite,
+  pool: VocabWordLite[],
+  optionCount = 4,
+  rng: () => number = Math.random,
+  direction?: QuizDirection,
+): QuizRound | null {
+  if (word.meaningVi === "") return null;
+  const distractors = sampleDistractors(pool, word, optionCount - 1, rng);
+  const optionWords = shuffle([word, ...distractors], rng);
+  if (optionWords.length < 2) return null;
+
+  const dir: QuizDirection = direction ?? (rng() < 0.5 ? "EN_TO_VI" : "VI_TO_EN");
+  return {
+    wordId: word.id,
+    direction: dir,
+    prompt: dir === "EN_TO_VI" ? word.word : word.meaningVi,
+    options: optionWords.map((w) => ({
+      id: w.id,
+      text: dir === "EN_TO_VI" ? w.meaningVi : w.word,
+    })),
+    correctOptionId: word.id,
+  };
+}
+
+/**
  * Builds up to `roundCount` quiz rounds, each a random EN→VI or VI→EN
  * question with up to `optionCount` options (correct + distractors). Draws
  * rounds *without replacement* from the lesson's eligible words, so a
@@ -93,21 +126,8 @@ export function buildQuizRounds(
 
   const rounds: QuizRound[] = [];
   for (const word of chosen) {
-    const distractors = sampleDistractors(eligible, word, optionCount - 1, rng);
-    const optionWords = shuffle([word, ...distractors], rng);
-    if (optionWords.length < 2) continue;
-
-    const direction: QuizDirection = rng() < 0.5 ? "EN_TO_VI" : "VI_TO_EN";
-    rounds.push({
-      wordId: word.id,
-      direction,
-      prompt: direction === "EN_TO_VI" ? word.word : word.meaningVi,
-      options: optionWords.map((w) => ({
-        id: w.id,
-        text: direction === "EN_TO_VI" ? w.meaningVi : w.word,
-      })),
-      correctOptionId: word.id,
-    });
+    const round = buildQuizRound(word, eligible, optionCount, rng);
+    if (round !== null) rounds.push(round);
   }
   return rounds;
 }
@@ -125,6 +145,26 @@ export interface MatchRound {
   left: MatchPair[];
   /** Shuffled order for the VI column. */
   right: MatchPair[];
+}
+
+/**
+ * Dựng MỘT bàn ghép cặp từ đúng tập từ được đưa vào, không tự chia chặng —
+ * việc chia chặng thuộc về `session-engine`. Trả `null` khi chưa đủ 2 từ
+ * hợp lệ để thành một bàn.
+ */
+export function buildMatchRound(
+  words: VocabWordLite[],
+  rng: () => number = Math.random,
+): MatchRound | null {
+  const eligible = eligibleForGames(words);
+  if (eligible.length < 2) return null;
+
+  const pairs: MatchPair[] = eligible.map((w) => ({
+    wordId: w.id,
+    word: w.word,
+    meaningVi: w.meaningVi,
+  }));
+  return { pairs, left: shuffle(pairs, rng), right: shuffle(pairs, rng) };
 }
 
 /**

@@ -103,31 +103,16 @@ export default async function VocabHubPage({
               <span className="text-muted-foreground">›</span>
             </Link>
             <Link
-              href={`${base}/vocab/quiz`}
+              href={`${base}/vocab/play`}
               className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
             >
               <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-streak-bg text-lg">
                 ⚡
               </span>
               <span className="flex-1">
-                <span className="block text-sm font-semibold">Quiz trắc nghiệm</span>
+                <span className="block text-sm font-semibold">Luyện tập</span>
                 <span className="block text-caption text-muted-foreground">
-                  4 đáp án · tính streak
-                </span>
-              </span>
-              <span className="text-muted-foreground">›</span>
-            </Link>
-            <Link
-              href={`${base}/vocab/match`}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
-            >
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-destructive-bg text-lg">
-                🧩
-              </span>
-              <span className="flex-1">
-                <span className="block text-sm font-semibold">Ghép cặp</span>
-                <span className="block text-caption text-muted-foreground">
-                  Nối từ với nghĩa tương ứng
+                  Ghép cặp + trắc nghiệm · tự ôn lại từ sai
                 </span>
               </span>
               <span className="text-muted-foreground">›</span>
