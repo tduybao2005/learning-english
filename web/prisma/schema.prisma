@@ -108,7 +108,39 @@ model VocabWord {
   orderIndex Int
   progress   VocabProgress[]
 
+  /// Chủ đề của từ, gán lúc seed từ `vocab_topics/mapping.tsv` (khoá theo
+  /// chính từ đó). Null = chưa phân loại — trang Từ vựng gom vào mục riêng
+  /// thay vì giấu đi, và `make check-vocab` đếm được còn thiếu bao nhiêu.
+  topicId    String?
+  topic      VocabTopic?     @relation(fields: [topicId], references: [id], onDelete: SetNull)
+
   @@unique([lessonId, orderIndex])
+  @@index([topicId])
+}
+
+/// Nhóm lớn của chủ đề từ vựng: đời sống, học thuật/IELTS, và ngôn ngữ chức
+/// năng (từ nối, mô tả biểu đồ, idioms, AWL... — thứ không thuộc chủ đề đời
+/// sống hay IELTS nào cả).
+enum VocabTopicGroup {
+  EVERYDAY
+  ACADEMIC
+  FUNCTIONAL
+}
+
+/// Chủ đề từ vựng, seed từ `vocab_topics/topics.tsv` bằng upsert theo `slug`
+/// (KHÔNG delete+create như VocabWord) để `topicId` của từ không bị đứt sau
+/// mỗi lần seed.
+model VocabTopic {
+  id         String          @id @default(cuid())
+  slug       String          @unique
+  nameVi     String
+  nameEn     String
+  emoji      String
+  group      VocabTopicGroup
+  orderIndex Int
+  words      VocabWord[]
+
+  @@unique([group, orderIndex])
 }
 
 model Exercise {

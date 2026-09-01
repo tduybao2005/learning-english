@@ -8,6 +8,7 @@ import { parseVocab } from "./parse-vocab";
 import { parseExercise } from "./parse-exercise";
 import { parseListening } from "./parse-listening";
 import { loadOverrides, scopedOverrides } from "./overrides-loader";
+import { loadVocabTopics } from "./parse-vocab-topics";
 import { stripFrontmatter } from "./strip-frontmatter";
 
 function parseArgs(argv: string[]) {
@@ -212,6 +213,29 @@ async function main() {
     lessons = lessons.filter((l) => l.phaseOrder === phase);
   }
 
+  // Chủ đề từ vựng: upsert theo slug, KHÔNG delete+create như VocabWord —
+  // nếu xoá đi tạo lại thì id đổi và topicId của mọi từ sẽ đứt.
+  const { topics: topicRows, mapping: topicMapping } = loadVocabTopics();
+  const topicIdBySlug = new Map<string, string>();
+  for (const t of topicRows) {
+    const row = await db.vocabTopic.upsert({
+      where: { slug: t.slug },
+      update: { nameVi: t.nameVi, nameEn: t.nameEn, emoji: t.emoji, group: t.group, orderIndex: t.orderIndex },
+      create: {
+        slug: t.slug,
+        nameVi: t.nameVi,
+        nameEn: t.nameEn,
+        emoji: t.emoji,
+        group: t.group,
+        orderIndex: t.orderIndex,
+      },
+      select: { id: true },
+    });
+    topicIdBySlug.set(t.slug, row.id);
+  }
+  let classifiedWords = 0;
+  let unclassifiedWords = 0;
+
   console.log(
     `[seed] repoRoot=${repoRoot} lessons=${lessons.length}${phase !== undefined ? ` (filtered to phase ${phase})` : ""}${dryRun ? " [dry-run]" : ""}${force ? " [force]" : ""}`
   );
@@ -310,15 +334,22 @@ async function main() {
     await db.vocabWord.deleteMany({ where: { lessonId: lessonRow.id } });
     if (words.length > 0) {
       await db.vocabWord.createMany({
-        data: words.map((w, i) => ({
-          lessonId: lessonRow.id,
-          groupName: w.groupName,
-          word: w.word,
-          ipa: w.ipa,
-          meaningVi: w.meaningVi,
-          exampleEn: w.exampleEn,
-          orderIndex: i,
-        })),
+        data: words.map((w, i) => {
+          const topicSlug = topicMapping.get(w.word.trim().toLowerCase());
+          const topicId = topicSlug === undefined ? null : (topicIdBySlug.get(topicSlug) ?? null);
+          if (topicId === null) unclassifiedWords += 1;
+          else classifiedWords += 1;
+          return {
+            lessonId: lessonRow.id,
+            groupName: w.groupName,
+            word: w.word,
+            ipa: w.ipa,
+            meaningVi: w.meaningVi,
+            exampleEn: w.exampleEn,
+            orderIndex: i,
+            topicId,
+          };
+        }),
       });
     }
 
@@ -381,6 +412,52 @@ async function main() {
 
   console.log(
     `[seed] done. created=${created} updated=${updated} skipped=${skipped} totalVocabWordsWritten=${totalWords} totalExerciseQuestionsWritten=${totalQuestions}${dryRun ? " (dry-run, no writes)" : ""}`
+  );
+
+  // Đồng bộ chủ đề cho MỌI từ đang có trong DB, độc lập với contentHash.
+  // Bài học không đổi nội dung thì vòng lặp trên bỏ qua, nên nếu chỉ gán
+  // topicId lúc createMany thì cập nhật mapping.tsv sẽ không có tác dụng gì
+  // cho tới khi Markdown đổi — đúng lỗi đã gặp ở lần chạy đầu (2/3419 từ).
+  if (!dryRun) {
+    const allWords = await db.vocabWord.findMany({ select: { id: true, word: true } });
+    const idsByTopicId = new Map<string, string[]>();
+    const idsToClear: string[] = [];
+
+    for (const w of allWords) {
+      const slug = topicMapping.get(w.word.trim().toLowerCase());
+      const topicId = slug === undefined ? undefined : topicIdBySlug.get(slug);
+      if (topicId === undefined) {
+        idsToClear.push(w.id);
+        continue;
+      }
+      const bucket = idsByTopicId.get(topicId);
+      if (bucket === undefined) idsByTopicId.set(topicId, [w.id]);
+      else bucket.push(w.id);
+    }
+
+    const CHUNK = 500;
+    let synced = 0;
+    for (const [topicId, ids] of idsByTopicId) {
+      for (let i = 0; i < ids.length; i += CHUNK) {
+        const chunk = ids.slice(i, i + CHUNK);
+        await db.vocabWord.updateMany({ where: { id: { in: chunk } }, data: { topicId } });
+        synced += chunk.length;
+      }
+    }
+    // Từ đã bị gỡ khỏi mapping thì phải trả về chưa phân loại, nếu không sẽ
+    // kẹt ở chủ đề cũ mãi.
+    for (let i = 0; i < idsToClear.length; i += CHUNK) {
+      const chunk = idsToClear.slice(i, i + CHUNK);
+      await db.vocabWord.updateMany({ where: { id: { in: chunk } }, data: { topicId: null } });
+    }
+
+    classifiedWords = synced;
+    unclassifiedWords = idsToClear.length;
+  }
+
+  // Không bao giờ seed xong mà không biết còn bao nhiêu từ chưa có chủ đề.
+  console.log(
+    `[seed] chủ đề từ vựng: ${topicRows.length} chủ đề · đã gán ${classifiedWords} từ · chưa phân loại ${unclassifiedWords} từ`
   );
 
   // Listening sets are independent of the phase/lesson walk above (and of
