@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { PronounceButton } from "@/components/vocab/PronounceButton";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
-import { formatIpa, resolveSwipe } from "@/components/vocab/games";
+import { formatIpa, parseInlineEmphasis, resolveSwipe } from "@/components/vocab/games";
 
 export interface FlashcardWord {
   id: string;
@@ -155,13 +155,14 @@ export function Flashcards({
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <div className="mb-1 flex items-center justify-between text-xs text-muted-foreground">
-          <span>
-            Thẻ {index + 1}/{total}
+        <div className="mb-1.5 flex items-baseline justify-between">
+          <span data-testid="card-counter" className="text-caption font-semibold text-foreground">
+            Thẻ {index + 1}
+            <span className="font-normal text-muted-foreground">/{total}</span>
           </span>
-          <span>{card.groupName}</span>
+          <span className="text-caption text-muted-foreground">{percent}%</span>
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
           <div
             className="h-full rounded-full bg-primary transition-all duration-200"
             style={{ width: `${percent}%` }}
@@ -248,35 +249,60 @@ export function Flashcards({
           <div
             className={cn("relative h-64 w-full flip-inner lg:h-80", flipped && "flip-inner-flipped")}
           >
-            {/* Front: word + IPA */}
+            {/* Mặt trước: nhóm từ (nhỏ, trên cùng) + từ + phiên âm.
+                Nhóm từ nằm trong thẻ chứ không ở hàng tiến độ phía trên nữa —
+                ở đó nó vừa dài vừa tranh chỗ với số thẻ. */}
             <div
               className={cn(
-                "absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-2xl border bg-card p-6 backface-hidden transition-colors",
+                "absolute inset-0 flex flex-col rounded-2xl border bg-card p-5 backface-hidden transition-colors",
                 intent === "know" && "border-success",
                 intent === "dont-know" && "border-destructive",
               )}
             >
-              <div className="flex items-center gap-2">
-                <p className="text-center text-h1 font-extrabold">{card.word}</p>
-                {card.audioUrl && <PronounceButton src={card.audioUrl} label={card.word} />}
+              <p className="line-clamp-1 text-caption font-medium text-muted-foreground">
+                {card.groupName}
+              </p>
+              <div className="flex flex-1 flex-col items-center justify-center gap-2">
+                <div className="flex items-center gap-2">
+                  <p className="text-center text-display font-extrabold tracking-tight">
+                    {card.word}
+                  </p>
+                  {card.audioUrl && <PronounceButton src={card.audioUrl} label={card.word} />}
+                </div>
+                {formatIpa(card.ipa) !== "" && (
+                  <p className="text-lg text-muted-foreground">{formatIpa(card.ipa)}</p>
+                )}
               </div>
-              {formatIpa(card.ipa) !== "" && (
-                <p className="text-muted-foreground">{formatIpa(card.ipa)}</p>
-              )}
             </div>
 
-            {/* Back: meaning + example */}
+            {/* Mặt sau: nghĩa (chính) + câu ví dụ trong khối trích dẫn riêng,
+                từ khoá được in đậm thật thay vì hiện nguyên dấu ** như trước. */}
             <div
               className={cn(
-                "absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-2xl border bg-primary p-6 text-center text-primary-foreground backface-hidden rotate-y-180 transition-colors",
+                "absolute inset-0 flex flex-col justify-center gap-4 rounded-2xl border bg-primary p-6 text-center text-primary-foreground backface-hidden rotate-y-180 transition-colors",
                 intent === "know" && "border-success",
                 intent === "dont-know" && "border-destructive",
               )}
             >
-              <p className="text-lg font-semibold">
-                {card.meaningVi !== "" ? card.meaningVi : "(chưa có nghĩa)"}
-              </p>
-              {card.exampleEn !== "" && <p className="text-sm italic opacity-90">{card.exampleEn}</p>}
+              <div>
+                <p className="text-caption uppercase tracking-wide opacity-60">Nghĩa</p>
+                <p className="text-h2 font-bold leading-snug">
+                  {card.meaningVi !== "" ? card.meaningVi : "(chưa có nghĩa)"}
+                </p>
+              </div>
+
+              {card.exampleEn !== "" && (
+                <p className="mx-auto max-w-prose rounded-xl bg-white/12 px-4 py-3 text-sm leading-relaxed">
+                  {parseInlineEmphasis(card.exampleEn).map((seg, i) => {
+                    const content = seg.bold ? <strong>{seg.text}</strong> : seg.text;
+                    return (
+                      <span key={i} className={seg.italic ? "italic" : undefined}>
+                        {content}
+                      </span>
+                    );
+                  })}
+                </p>
+              )}
             </div>
           </div>
         </div>

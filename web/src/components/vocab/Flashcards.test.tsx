@@ -64,23 +64,23 @@ test("lật thẻ rồi mới hiện 2 nút tự đánh giá", () => {
 
 test("vuốt sang phải quá ngưỡng sau khi lật thì sang thẻ kế", () => {
   renderCards(3);
-  expect(screen.getByText("Thẻ 1/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 1/3");
   flip();
   swipe(150);
-  expect(screen.getByText("Thẻ 2/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 2/3");
 });
 
 test("vuốt chưa đủ ngưỡng thì ở lại thẻ hiện tại", () => {
   renderCards(3);
   flip();
   swipe(40);
-  expect(screen.getByText("Thẻ 1/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 1/3");
 });
 
 test("chưa lật thẻ thì vuốt không được tính, vẫn ở thẻ hiện tại", () => {
   renderCards(3);
   swipe(150);
-  expect(screen.getByText("Thẻ 1/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 1/3");
 });
 
 test("phím mũi tên phải tính là đã nhớ, mũi tên trái tính là chưa nhớ", () => {
@@ -90,14 +90,14 @@ test("phím mũi tên phải tính là đã nhớ, mũi tên trái tính là ch�
   act(() => {
     vi.advanceTimersByTime(400);
   });
-  expect(screen.getByText("Thẻ 2/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 2/3");
 
   flip();
   fireEvent.keyDown(window, { key: "ArrowLeft" });
   act(() => {
     vi.advanceTimersByTime(400);
   });
-  expect(screen.getByText("Thẻ 3/3")).toBeTruthy();
+  expect(screen.getByTestId("card-counter").textContent).toBe("Thẻ 3/3");
 });
 
 test("vuốt hết bộ thẻ thì hiện màn hình kết thúc với số đã nhớ đúng", () => {

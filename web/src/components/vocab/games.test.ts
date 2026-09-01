@@ -8,6 +8,7 @@ import {
   resultTier,
   resolveSwipe,
   formatIpa,
+  parseInlineEmphasis,
   type VocabWordLite,
 } from "./games";
 
@@ -235,5 +236,41 @@ describe("formatIpa", () => {
     expect(formatIpa("")).toBe("");
     expect(formatIpa("   ")).toBe("");
     expect(formatIpa("//")).toBe("");
+  });
+});
+
+describe("parseInlineEmphasis", () => {
+  it("tách phần in đậm ra khỏi phần chữ thường", () => {
+    // 862/3.178 câu ví dụ trong DB có dạng này; trước đây hiện nguyên dấu **.
+    expect(parseInlineEmphasis("I **wake up** at 6 am.")).toEqual([
+      { text: "I ", bold: false, italic: false },
+      { text: "wake up", bold: true, italic: false },
+      { text: " at 6 am.", bold: false, italic: false },
+    ]);
+  });
+
+  it("hiểu cả phần in nghiêng bọc ngoài lẫn in đậm bên trong", () => {
+    expect(parseInlineEmphasis("*The pursuit of **happiness** is real.*")).toEqual([
+      { text: "The pursuit of ", bold: false, italic: true },
+      { text: "happiness", bold: true, italic: true },
+      { text: " is real.", bold: false, italic: true },
+    ]);
+  });
+
+  it("trả nguyên một đoạn khi câu không có dấu nhấn nào", () => {
+    expect(parseInlineEmphasis("She left early.")).toEqual([
+      { text: "She left early.", bold: false, italic: false },
+    ]);
+  });
+
+  it("giữ nguyên dấu sao lẻ không thành cặp, không nuốt mất chữ", () => {
+    expect(parseInlineEmphasis("2 * 3 = 6")).toEqual([
+      { text: "2 * 3 = 6", bold: false, italic: false },
+    ]);
+  });
+
+  it("không trả đoạn rỗng", () => {
+    expect(parseInlineEmphasis("**bold**")).toEqual([{ text: "bold", bold: true, italic: false }]);
+    expect(parseInlineEmphasis("")).toEqual([]);
   });
 });

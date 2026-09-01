@@ -202,3 +202,55 @@ export function formatIpa(ipa: string): string {
   const core = ipa.trim().replace(/^\/+/, "").replace(/\/+$/, "").trim();
   return core === "" ? "" : `/${core}/`;
 }
+
+export interface EmphasisSegment {
+  text: string;
+  bold: boolean;
+  italic: boolean;
+}
+
+/**
+ * Tách một dòng chữ có đánh dấu Markdown tối giản thành các đoạn có/không
+ * in đậm, in nghiêng.
+ *
+ * 862/3.178 câu ví dụ trong `vocabulary.md` viết từ khoá dạng `**wake up**`,
+ * một số câu còn bọc nghiêng cả câu dạng `*...*`. Trước đây UI in thẳng
+ * chuỗi thô nên người học thấy nguyên dấu sao trên thẻ.
+ *
+ * Trả về đoạn thay vì JSX để hàm ở lại tầng logic thuần và test được không
+ * cần DOM; component chỉ việc ánh xạ đoạn sang <strong>/<em>.
+ */
+export function parseInlineEmphasis(input: string): EmphasisSegment[] {
+  if (input === "") return [];
+
+  let text = input;
+  let baseItalic = false;
+
+  // Bọc nghiêng toàn câu: chỉ gỡ khi bên trong không còn dấu sao lẻ nào
+  // (tránh cắt nhầm chuỗi kiểu "*a* và *b*").
+  if (text.length > 2 && text.startsWith("*") && text.endsWith("*") && !text.startsWith("**")) {
+    const inner = text.slice(1, -1);
+    if (!inner.replaceAll("**", "").includes("*")) {
+      text = inner;
+      baseItalic = true;
+    }
+  }
+
+  const segments: EmphasisSegment[] = [];
+  const boldPattern = /\*\*(.+?)\*\*/g;
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = boldPattern.exec(text)) !== null) {
+    if (match.index > cursor) {
+      segments.push({ text: text.slice(cursor, match.index), bold: false, italic: baseItalic });
+    }
+    segments.push({ text: match[1], bold: true, italic: baseItalic });
+    cursor = match.index + match[0].length;
+  }
+  if (cursor < text.length) {
+    segments.push({ text: text.slice(cursor), bold: false, italic: baseItalic });
+  }
+
+  return segments.filter((s) => s.text !== "");
+}
