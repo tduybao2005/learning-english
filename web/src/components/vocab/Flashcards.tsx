@@ -284,12 +284,9 @@ export function Flashcards({
                 intent === "dont-know" && "border-destructive",
               )}
             >
-              <div>
-                <p className="text-caption uppercase tracking-wide opacity-60">Nghĩa</p>
-                <p className="text-h2 font-bold leading-snug">
-                  {card.meaningVi !== "" ? card.meaningVi : "(chưa có nghĩa)"}
-                </p>
-              </div>
+              <p className="text-h2 font-bold leading-snug">
+                {card.meaningVi !== "" ? card.meaningVi : "(chưa có nghĩa)"}
+              </p>
 
               {card.exampleEn !== "" && (
                 <p className="mx-auto max-w-prose rounded-xl bg-white/12 px-4 py-3 text-sm leading-relaxed">

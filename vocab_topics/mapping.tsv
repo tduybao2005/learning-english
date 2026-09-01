@@ -1,0 +1,6 @@
+# Phân loại từ vựng theo chủ đề. Mỗi dòng: <từ><TAB><topic_slug>
+# - Khoá là CHÍNH TỪ ĐÓ (không phân biệt hoa thường), không phải cặp bài+vị trí:
+#   một từ luôn có đúng một chủ đề dù xuất hiện ở nhiều bài.
+# - topic_slug phải có trong topics.tsv.
+# - Kiểm tra bằng: make check-vocab
+word	topic_slug

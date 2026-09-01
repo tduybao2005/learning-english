@@ -1,0 +1,38 @@
+slug	name_vi	name_en	emoji	group	order_index
+family-relationships	Gia đình & Quan hệ	Family & Relationships	👨‍👩‍👧	EVERYDAY	1
+daily-routine	Sinh hoạt hằng ngày	Daily Routine	⏰	EVERYDAY	2
+food-drink	Ăn uống	Food & Drink	🍜	EVERYDAY	3
+home-objects	Nhà cửa & Đồ vật	Home & Objects	🏠	EVERYDAY	4
+travel-transport	Du lịch & Giao thông	Travel & Transport	✈️	EVERYDAY	5
+shopping-money	Mua sắm & Tiền bạc	Shopping & Money	🛒	EVERYDAY	6
+health-body	Sức khoẻ & Cơ thể	Health & Body	🩺	EVERYDAY	7
+weather-nature	Thời tiết & Thiên nhiên	Weather & Nature	🌦️	EVERYDAY	8
+leisure-hobbies	Giải trí & Sở thích	Leisure & Hobbies	🎬	EVERYDAY	9
+emotions-personality	Cảm xúc & Tính cách	Emotions & Personality	😊	EVERYDAY	10
+appearance	Ngoại hình	Appearance	🧑	EVERYDAY	11
+time-events	Thời gian & Sự kiện	Time & Events	📅	EVERYDAY	12
+places-city	Thành phố & Địa điểm	Places & City Life	🏙️	EVERYDAY	13
+education	Giáo dục	Education	🎓	ACADEMIC	1
+environment	Môi trường	Environment	🌱	ACADEMIC	2
+technology	Công nghệ	Technology	💻	ACADEMIC	3
+work-career	Công việc & Sự nghiệp	Work & Career	💼	ACADEMIC	4
+healthcare	Y tế	Healthcare	🏥	ACADEMIC	5
+media-social	Truyền thông & Mạng xã hội	Media & Social Media	📱	ACADEMIC	6
+crime-law	Tội phạm & Pháp luật	Crime & Law	⚖️	ACADEMIC	7
+government-society	Chính phủ & Xã hội	Government & Society	🏛️	ACADEMIC	8
+economy-business	Kinh tế & Kinh doanh	Economy & Business	📈	ACADEMIC	9
+culture-tradition	Văn hoá & Truyền thống	Culture & Tradition	🎭	ACADEMIC	10
+urbanisation-housing	Đô thị hoá & Nhà ở	Urbanisation & Housing	🏗️	ACADEMIC	11
+globalisation	Toàn cầu hoá	Globalisation	🌍	ACADEMIC	12
+linking-cohesion	Từ nối & Mạch lạc	Linking & Cohesion	🔗	FUNCTIONAL	1
+charts-trends	Mô tả biểu đồ & Xu hướng	Charts & Trends	📊	FUNCTIONAL	2
+maps-processes	Mô tả bản đồ & Quy trình	Maps & Processes	🗺️	FUNCTIONAL	3
+opinion-argument	Nêu quan điểm & Lập luận	Opinion & Argument	💬	FUNCTIONAL	4
+reporting-verbs	Động từ tường thuật	Reporting Verbs	🗣️	FUNCTIONAL	5
+comparison-contrast	So sánh & Đối chiếu	Comparison & Contrast	🔀	FUNCTIONAL	6
+academic-awl	Từ vựng học thuật AWL	Academic Word List	📚	FUNCTIONAL	7
+idioms-colloquial	Thành ngữ & Khẩu ngữ	Idioms & Colloquialisms	🎯	FUNCTIONAL	8
+phrasal-verbs	Cụm động từ	Phrasal Verbs	🔧	FUNCTIONAL	9
+collocations	Cụm từ đi kèm	Collocations	🔤	FUNCTIONAL	10
+quantity-data	Lượng & Số liệu	Quantity & Data	🔢	FUNCTIONAL	11
+cause-effect	Nguyên nhân & Kết quả	Cause & Effect	➡️	FUNCTIONAL	12

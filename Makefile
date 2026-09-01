@@ -69,6 +69,16 @@ seed-all: seed
 # Từ nào CHƯA có file thì cần chạy `cd web && npm run audio:vocab` ở host (nơi
 # có edge-tts) rồi `make build` lại — container không cài edge-tts.
 	$(COMPOSE) exec web npx tsx scripts/generate-vocab-audio.ts
+# Báo cáo tình trạng phân loại chủ đề (không chặn seed) — để không bao giờ
+# seed xong mà không biết còn bao nhiêu từ chưa được gán chủ đề.
+	$(COMPOSE) exec web npx tsx scripts/seed/check-vocab-topics.ts
+
+# Cổng kiểm tra nghiêm ngặt cho bộ phân loại chủ đề: thoát 1 nếu có bất kỳ
+# từ nào chưa phân loại, mapping trỏ sai chủ đề, mapping thừa (nội dung đã
+# đổi), hay chủ đề bị trùng. Chạy trên host, không cần DB.
+.PHONY: check-vocab
+check-vocab:
+	cd web && npx tsx scripts/seed/check-vocab-topics.ts --check
 
 # Full first-run setup: build the image, start Postgres, wait for it to
 # accept connections, start the app, migrate, then seed everything.
