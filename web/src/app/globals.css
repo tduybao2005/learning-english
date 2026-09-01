@@ -209,6 +209,24 @@
 @keyframes ring-fill { from { stroke-dashoffset: var(--ring-c); } }
 @utility animate-ring-fill { animation: ring-fill 0.9s var(--ease-standard) both; }
 
+/* Thẻ ghi nhớ bay khỏi màn hình khi người học vuốt qua ngưỡng. */
+@keyframes fly-off-right {
+  to { transform: translateX(140%) rotate(18deg); opacity: 0; }
+}
+@keyframes fly-off-left {
+  to { transform: translateX(-140%) rotate(-18deg); opacity: 0; }
+}
+@utility animate-fly-off-right { animation: fly-off-right 0.22s var(--ease-standard) both; }
+@utility animate-fly-off-left { animation: fly-off-left 0.22s var(--ease-standard) both; }
+
+/* Mục kế tiếp trượt vào (thẻ mới, câu hỏi mới) — giữ mạch liên tục thay vì
+   đổi nội dung tức thì. */
+@keyframes item-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@utility animate-item-in { animation: item-in 0.2s var(--ease-standard) both; }
+
 /* Thẻ kết quả bật lên khi phiên học kết thúc. */
 @keyframes summary-in {
   from { opacity: 0; transform: translateY(12px) scale(0.97); }
