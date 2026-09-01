@@ -4,3 +4,928 @@
 # - topic_slug phải có trong topics.tsv.
 # - Kiểm tra bằng: make check-vocab
 word	topic_slug
+...a more nuanced approach would suggest...	opinion-argument
+...are inextricably linked	opinion-argument
+...has been a source of considerable controversy	opinion-argument
+...has far-reaching consequences for...	opinion-argument
+...has transformative potential	opinion-argument
+...however, this concern does not outweigh...	opinion-argument
+...is a complex and multifaceted issue	opinion-argument
+...is not without merit	opinion-argument
+...is particularly prevalent in [context]...	opinion-argument
+...nevertheless, upon closer examination...	opinion-argument
+...plays a pivotal role in...	opinion-argument
+...represents a significant departure from...	opinion-argument
+...strikes a balance between [x] and [y]...	opinion-argument
+...the long-term implications of this are...	opinion-argument
+...the weight of evidence suggests...	opinion-argument
+...this argument overlooks the fact that...	opinion-argument
+...this is a false dichotomy	opinion-argument
+...this view, while understandable, fails to account for...	opinion-argument
+...yet the evidence suggests otherwise...	opinion-argument
+a blessing in disguise	idioms-colloquial
+a case in point is	linking-cohesion
+a chip on your shoulder	idioms-colloquial
+a compelling argument for this view is...	opinion-argument
+a comprehensive strategy must include...	opinion-argument
+a contributing factor is...	opinion-argument
+a further reason to support this position is...	opinion-argument
+a key benefit is...	opinion-argument
+a major drawback is...	opinion-argument
+a new [road/building] was introduced	maps-processes
+a notable advantage is...	opinion-argument
+a notable disadvantage is...	opinion-argument
+a pertinent example is [country/org], which...	opinion-argument
+a positive aspect of x is...	opinion-argument
+a potential downside is...	opinion-argument
+a primary reason for this development is...	opinion-argument
+a prime illustration is	linking-cohesion
+a quarter	charts-trends
+a significant concern is...	opinion-argument
+a step in the right direction	idioms-colloquial
+a third	charts-trends
+a viable approach would be to...	opinion-argument
+above all	linking-cohesion
+absorbs	maps-processes
+accommodate	academic-awl
+according to	linking-cohesion
+accordingly	linking-cohesion
+account for	phrasal-verbs
+accumulates	maps-processes
+accurate	academic-awl
+achieve	academic-awl
+acknowledge	reporting-verbs
+acute shortage	collocations
+add fuel to the fire	idioms-colloquial
+add up	phrasal-verbs
+added to this	linking-cohesion
+adequate	academic-awl
+adjacent	academic-awl
+adjacent to	maps-processes
+administer	academic-awl
+admit	reporting-verbs
+admittedly	linking-cohesion
+admittedly, critics might argue that...	opinion-argument
+adult	academic-awl
+advise	reporting-verbs
+advocate	academic-awl
+advocates of x claim that...	opinion-argument
+after being + v3	maps-processes
+after that	maps-processes
+against the clock	idioms-colloquial
+agree	reporting-verbs
+all the same	linking-cohesion
+all things considered	linking-cohesion
+allege	reporting-verbs
+along the main road	maps-processes
+alongside	maps-processes
+also	linking-cohesion
+alter	academic-awl
+although / even though	linking-cohesion
+although it cannot be denied	linking-cohesion
+although some may contend that [x], ...	opinion-argument
+among the most compelling advantages is...	opinion-argument
+an alternative perspective suggests that...	opinion-argument
+analysis	academic-awl
+analyze	academic-awl
+announce	reporting-verbs
+annual	academic-awl
+apart from this	linking-cohesion
+apparent	academic-awl
+apparently	linking-cohesion
+appear to	linking-cohesion
+approach	academic-awl
+appropriate	academic-awl
+approximate	academic-awl
+approximately	charts-trends
+arbitrary	academic-awl
+area	academic-awl
+arguably	linking-cohesion
+argue	reporting-verbs
+argue strongly	collocations
+around	charts-trends
+as a consequence	linking-cohesion
+as a consequence of	linking-cohesion
+as a matter of fact	linking-cohesion
+as a result	linking-cohesion
+as a rule	linking-cohesion
+as busy as a bee	idioms-colloquial
+as clear as mud	idioms-colloquial
+as cool as a cucumber	idioms-colloquial
+as evidenced by	linking-cohesion
+as exemplified by	linking-cohesion
+as good as gold	idioms-colloquial
+as sharp as a tack	idioms-colloquial
+as soon as	maps-processes
+as well	linking-cohesion
+as well as	linking-cohesion
+aspect	academic-awl
+assert	reporting-verbs
+assess	academic-awl
+assessment	academic-awl
+assist	academic-awl
+assume	reporting-verbs
+assumption	academic-awl
+at a crossroads	idioms-colloquial
+at a price	idioms-colloquial
+at the drop of a hat	idioms-colloquial
+at the end of the day	idioms-colloquial
+at the intersection of	maps-processes
+at the same time	maps-processes
+at this stage / at this point	maps-processes
+attitude	academic-awl
+attribute	academic-awl
+available	academic-awl
+back out	phrasal-verbs
+back to square one	idioms-colloquial
+be likely to	linking-cohesion
+be that as it may	linking-cohesion
+be up to no good	idioms-colloquial
+beat around the bush	idioms-colloquial
+before being + v3	maps-processes
+beg	reporting-verbs
+behind the times	idioms-colloquial
+bend over backwards	idioms-colloquial
+benefit	academic-awl
+besides	linking-cohesion
+between a rock and a hard place	idioms-colloquial
+between...and	maps-processes
+beyond question	idioms-colloquial
+beyond that	linking-cohesion
+birth rate	collocations
+bite off more than you can chew	idioms-colloquial
+bite the bullet	idioms-colloquial
+boast	reporting-verbs
+both perspectives have considerable merit; however,...	opinion-argument
+branch out	phrasal-verbs
+break down	phrasal-verbs
+break the ice	idioms-colloquial
+break through	phrasal-verbs
+break up	phrasal-verbs
+bring about	phrasal-verbs
+bring in	phrasal-verbs
+bring up	phrasal-verbs
+broadly speaking	linking-cohesion
+brush up on	phrasal-verbs
+build on	phrasal-verbs
+build up	phrasal-verbs
+burn bridges	idioms-colloquial
+burn the midnight oil	idioms-colloquial
+by all accounts	idioms-colloquial
+by and large	linking-cohesion
+by far	charts-trends
+by the same token	linking-cohesion
+by virtue of	linking-cohesion
+calculate	reporting-verbs
+call back	phrasal-verbs
+call for	phrasal-verbs
+call off	phrasal-verbs
+calm down	phrasal-verbs
+capacity	academic-awl
+carbon footprint	collocations
+carry on	phrasal-verbs
+carry out	phrasal-verbs
+catch up on	phrasal-verbs
+catch up with	phrasal-verbs
+category	academic-awl
+central to this argument is the observation that...	opinion-argument
+certainly	linking-cohesion
+change fundamentally	collocations
+channel	academic-awl
+chapter	academic-awl
+chronic poverty	collocations
+claim	reporting-verbs
+clean up	phrasal-verbs
+climate change	collocations
+climbed	charts-trends
+closely related	collocations
+code	academic-awl
+come across	phrasal-verbs
+come back	phrasal-verbs
+come full circle	idioms-colloquial
+come into effect	collocations
+come to a conclusion	collocations
+come under pressure	collocations
+come up with	phrasal-verbs
+command	reporting-verbs
+commission	academic-awl
+commit	academic-awl
+communicate	academic-awl
+community	academic-awl
+compare	charts-trends
+compared with	charts-trends
+compelling evidence	collocations
+compensate	academic-awl
+complain	reporting-verbs
+complex	academic-awl
+comprise	charts-trends
+concede	reporting-verbs
+conceivably	linking-cohesion
+concept	academic-awl
+conclude	reporting-verbs
+conclusion	academic-awl
+concurrently	linking-cohesion
+condenses	maps-processes
+conduct	academic-awl
+confess	reporting-verbs
+confirm	reporting-verbs
+connects to	maps-processes
+consent	academic-awl
+consequence	academic-awl
+consequently	linking-cohesion
+consider	academic-awl
+considerable	academic-awl
+consistent	academic-awl
+constitute	charts-trends
+context	academic-awl
+contract	academic-awl
+contrast	academic-awl
+contribute	academic-awl
+contribute significantly	collocations
+contributing to this trend is the fact that...	opinion-argument
+controversy	academic-awl
+conversely	linking-cohesion
+conversely, those who oppose this view believe...	opinion-argument
+coordinate	academic-awl
+cost an arm and a leg	idioms-colloquial
+countries such as [x] and [y] have demonstrated that...	opinion-argument
+cover all the bases	idioms-colloquial
+create	academic-awl
+crime rate	collocations
+critically important	collocations
+critics maintain that	linking-cohesion
+critics of this viewpoint contend that...	opinion-argument
+cut back	phrasal-verbs
+cut corners	idioms-colloquial
+cut down on	phrasal-verbs
+data	academic-awl
+deal with	phrasal-verbs
+debate	academic-awl
+decade	academic-awl
+declare	reporting-verbs
+declined	charts-trends
+decreased	charts-trends
+deep concern	collocations
+deeply concerned	collocations
+define	academic-awl
+definition	academic-awl
+demand	reporting-verbs
+demonstrate	reporting-verbs
+deny	reporting-verbs
+depict	charts-trends
+derive	academic-awl
+despite / in spite of	linking-cohesion
+despite this	linking-cohesion
+determine	reporting-verbs
+differ significantly	collocations
+dipped	charts-trends
+dipped to a low of	charts-trends
+disagree	reporting-verbs
+distinct	academic-awl
+distribute	academic-awl
+do away with	phrasal-verbs
+do damage	collocations
+do justice to	collocations
+do one's best	collocations
+do research	collocations
+doubt	reporting-verbs
+draw on	phrasal-verbs
+draw up	phrasal-verbs
+drift apart	phrasal-verbs
+drop off	phrasal-verbs
+dropped	charts-trends
+due to this	linking-cohesion
+eat like a horse	idioms-colloquial
+economic growth	collocations
+economy	academic-awl
+emphasise	reporting-verbs
+enable	academic-awl
+encourage	reporting-verbs
+end up	phrasal-verbs
+enhance	academic-awl
+enters	maps-processes
+environment	academic-awl
+environmental impact	collocations
+equally importantly	linking-cohesion
+equate	academic-awl
+escalated	charts-trends
+establish	academic-awl
+estimate	reporting-verbs
+evaluate	academic-awl
+evaporates	maps-processes
+even so	linking-cohesion
+every cloud has a silver lining	idioms-colloquial
+evidence	academic-awl
+evidence from [source type] suggests that...	opinion-argument
+exclude	academic-awl
+exhibit	academic-awl
+exits / leaves	maps-processes
+explain	reporting-verbs
+facilitate	academic-awl
+facing	maps-processes
+factor	academic-awl
+fall back on	phrasal-verbs
+fall out	phrasal-verbs
+fall through	phrasal-verbs
+fell	charts-trends
+figure	charts-trends
+figure out	phrasal-verbs
+fill out	phrasal-verbs
+finally / lastly	maps-processes
+find	reporting-verbs
+find out	phrasal-verbs
+first / initially	maps-processes
+fit as a fiddle	idioms-colloquial
+flows into	maps-processes
+fluctuated	charts-trends
+fluctuation	charts-trends
+focus	academic-awl
+following this	maps-processes
+for example	linking-cohesion
+for example, ...	opinion-argument
+for instance	linking-cohesion
+for instance, ...	opinion-argument
+for these reasons, i am firmly of the belief that...	opinion-argument
+for this reason	linking-cohesion
+forbid	reporting-verbs
+forms	maps-processes
+formulate	academic-awl
+fossil fuels	collocations
+found	academic-awl
+framework	academic-awl
+from this perspective	linking-cohesion
+function	academic-awl
+furthermore	linking-cohesion
+generally	linking-cohesion
+generate	academic-awl
+generates	maps-processes
+get access to	collocations
+get along with	phrasal-verbs
+get cold feet	idioms-colloquial
+get involved in	collocations
+get on	phrasal-verbs
+get out of	phrasal-verbs
+get over	phrasal-verbs
+get rid of	collocations
+get the hang of it	idioms-colloquial
+get to the point	idioms-colloquial
+get under someone's skin	idioms-colloquial
+get up	phrasal-verbs
+give a speech	collocations
+give advice	collocations
+give away	phrasal-verbs
+give back	phrasal-verbs
+give in	phrasal-verbs
+give permission	collocations
+give priority to	collocations
+give rise to	phrasal-verbs
+give someone the cold shoulder	idioms-colloquial
+give the benefit of the doubt	idioms-colloquial
+give up	phrasal-verbs
+give way to	phrasal-verbs
+given that	linking-cohesion
+go ahead	phrasal-verbs
+go away	phrasal-verbs
+go beyond expectations	collocations
+go broke	idioms-colloquial
+go downhill	idioms-colloquial
+go on	phrasal-verbs
+go out	phrasal-verbs
+go over	phrasal-verbs
+go the extra mile	idioms-colloquial
+go through a process	collocations
+go through the roof	idioms-colloquial
+goes without saying	idioms-colloquial
+governments should implement...	opinion-argument
+granted	linking-cohesion
+great importance	collocations
+grew	charts-trends
+grow apart	phrasal-verbs
+grow rapidly	collocations
+grow up	phrasal-verbs
+growing awareness	collocations
+guarantee	reporting-verbs
+half	charts-trends
+hands down	idioms-colloquial
+hard work	collocations
+has been added	maps-processes
+have a bone to pick	idioms-colloquial
+have a thick skin	idioms-colloquial
+have access to	collocations
+have an impact on	collocations
+have butterflies	idioms-colloquial
+have consequences	collocations
+have difficulty	collocations
+have influence on	collocations
+having considered both perspectives, i am inclined to believe that...	opinion-argument
+healthcare system	collocations
+heavy traffic	collocations
+hence	linking-cohesion
+high unemployment	collocations
+highly effective	collocations
+highly unlikely	collocations
+hit a high of	charts-trends
+hit the jackpot	idioms-colloquial
+hit the nail on the head	idioms-colloquial
+hitherto	linking-cohesion
+hold back	phrasal-verbs
+hold on	phrasal-verbs
+hold out	phrasal-verbs
+however	linking-cohesion
+hypothesis	academic-awl
+i accept that there are those who believe [x]...	opinion-argument
+i am convinced that...	opinion-argument
+i am firmly of the view that...	opinion-argument
+i am of the opinion that...	opinion-argument
+i firmly believe that...	opinion-argument
+i maintain that...	opinion-argument
+i would argue that this trend is largely detrimental because...	opinion-argument
+i would argue that...	opinion-argument
+identify	academic-awl
+illustrate	academic-awl
+image	academic-awl
+impact	academic-awl
+impact deeply	collocations
+implement	academic-awl
+imply	reporting-verbs
+in addition	linking-cohesion
+in addition to	linking-cohesion
+in all likelihood	linking-cohesion
+in comparison to	charts-trends
+in conclusion	linking-cohesion
+in conclusion, i maintain that...	opinion-argument
+in contrast	linking-cohesion
+in fact	linking-cohesion
+in general	linking-cohesion
+in hot water	idioms-colloquial
+in light of	linking-cohesion
+in many cases	linking-cohesion
+in most cases	linking-cohesion
+in my view, ...	opinion-argument
+in my view, this is primarily a positive development because...	opinion-argument
+in no uncertain terms	idioms-colloquial
+in other words	linking-cohesion
+in other words, ...	opinion-argument
+in particular	linking-cohesion
+in stark contrast to	linking-cohesion
+in summary, while i acknowledge [x], i remain convinced that [y]...	opinion-argument
+in the black	idioms-colloquial
+in the centre / center	maps-processes
+in the final analysis	linking-cohesion
+in the interim	linking-cohesion
+in the meantime	maps-processes
+in the nick of time	idioms-colloquial
+in the north / south / east / west	maps-processes
+in the northeast / southwest	maps-processes
+in the red	idioms-colloquial
+in the vicinity of	maps-processes
+in the view of	linking-cohesion
+inasmuch as	linking-cohesion
+income inequality	collocations
+increase dramatically	collocations
+increased	charts-trends
+increasingly common	collocations
+indeed	linking-cohesion
+indicate	reporting-verbs
+individual	academic-awl
+insist	reporting-verbs
+instruct	reporting-verbs
+interpret	academic-awl
+invite	reporting-verbs
+involve	academic-awl
+iron out	phrasal-verbs
+is broken down into	maps-processes
+is converted into	maps-processes
+is cooled to	maps-processes
+is cut / is shaped	maps-processes
+is fed into	maps-processes
+is filtered through	maps-processes
+is heated to	maps-processes
+is molded / is assembled	maps-processes
+is packaged / is distributed	maps-processes
+is separated into	maps-processes
+is tested / is inspected	maps-processes
+is transported to	maps-processes
+is treated / is recycled	maps-processes
+issue	academic-awl
+it could be argued that	linking-cohesion
+it follows that	linking-cohesion
+it goes without saying that...	opinion-argument
+it is clear that	charts-trends
+it is clear that the merits considerably outstrip the drawbacks.	opinion-argument
+it is my belief that...	opinion-argument
+it is my contention that...	opinion-argument
+it is often claimed that...	opinion-argument
+it is precipitated by...	opinion-argument
+it is therefore clear that...	opinion-argument
+it is therefore important that [call to action]...	opinion-argument
+it is understandable that some people feel...	opinion-argument
+it is widely acknowledged that...	opinion-argument
+it is worth noting that	linking-cohesion
+it is worth noting that...	opinion-argument
+it must be acknowledged	linking-cohesion
+it would be an oversimplification to dismiss either view entirely.	opinion-argument
+just over	charts-trends
+just under	charts-trends
+justify	academic-awl
+keep a straight face	idioms-colloquial
+keep someone at arm's length	idioms-colloquial
+keep up with	phrasal-verbs
+kill time	idioms-colloquial
+labour market	collocations
+lament	reporting-verbs
+largely responsible	collocations
+lay off	phrasal-verbs
+lead to	phrasal-verbs
+leads to	maps-processes
+learn the ropes	idioms-colloquial
+legal	academic-awl
+let down	phrasal-verbs
+leveled off	charts-trends
+like two peas in a pod	idioms-colloquial
+likewise	linking-cohesion
+living standards	collocations
+look after	phrasal-verbs
+look ahead	phrasal-verbs
+look back	phrasal-verbs
+look back on	phrasal-verbs
+look into	phrasal-verbs
+look up	phrasal-verbs
+look up to	phrasal-verbs
+look up to someone	idioms-colloquial
+maintain	reporting-verbs
+major	academic-awl
+make a contribution	collocations
+make a decision	collocations
+make a difference	collocations
+make an argument	collocations
+make an effort	collocations
+make ends meet	idioms-colloquial
+make no mistake	idioms-colloquial
+make progress	collocations
+make up	phrasal-verbs
+markedly	charts-trends
+may suggest / indicate	linking-cohesion
+method	academic-awl
+modify	academic-awl
+monitor	academic-awl
+moreover	linking-cohesion
+most importantly	linking-cohesion
+motive	academic-awl
+move on	phrasal-verbs
+move the goalposts	idioms-colloquial
+my own view is that... though i recognise that...	opinion-argument
+namely	linking-cohesion
+nearby	maps-processes
+nearly	charts-trends
+needless to say	idioms-colloquial
+nevertheless	linking-cohesion
+next to	maps-processes
+nonetheless	linking-cohesion
+not only...but also	linking-cohesion
+notably	charts-trends
+note	reporting-verbs
+notion	academic-awl
+notwithstanding	linking-cohesion
+notwithstanding this	linking-cohesion
+object	reporting-verbs
+observe	reporting-verbs
+occur	academic-awl
+offer	reporting-verbs
+old as the hills	idioms-colloquial
+on a shoestring	idioms-colloquial
+on account of	linking-cohesion
+on balance	linking-cohesion
+on balance, i feel that...	opinion-argument
+on balance, i would argue that...	opinion-argument
+on balance, the positive effects predominate.	opinion-argument
+on reflection, i believe the net effect is [positive/negative] due to...	opinion-argument
+on the contrary	linking-cohesion
+on the other hand,...	opinion-argument
+on the outskirts	maps-processes
+on the spur of the moment	idioms-colloquial
+on the up and up	idioms-colloquial
+on the whole	linking-cohesion
+on top of that	linking-cohesion
+once	maps-processes
+once in a blue moon	idioms-colloquial
+one beneficial outcome is...	opinion-argument
+one concern that critics raise is...	opinion-argument
+one effective measure would be...	opinion-argument
+one primary reason why... is that...	opinion-argument
+one school of thought holds that...	opinion-argument
+one significant merit of x is...	opinion-argument
+open a can of worms	idioms-colloquial
+open up	phrasal-verbs
+opposite	maps-processes
+order	reporting-verbs
+out with the old, in with the new	idioms-colloquial
+outcome	academic-awl
+over and above this	linking-cohesion
+overall	linking-cohesion
+owing to the fact that	linking-cohesion
+parameter	academic-awl
+participate	academic-awl
+particularly challenging	collocations
+passes through	maps-processes
+pattern	charts-trends
+pay back	phrasal-verbs
+pay off	phrasal-verbs
+peaked	charts-trends
+perceive	academic-awl
+percent	academic-awl
+percentage	charts-trends
+perhaps the most significant reason is that...	opinion-argument
+period	academic-awl
+persuade	reporting-verbs
+phase in	phrasal-verbs
+phase out	phrasal-verbs
+pick up	phrasal-verbs
+plateaued	charts-trends
+pledge	reporting-verbs
+plummeted	charts-trends
+point out	phrasal-verbs
+policy	academic-awl
+policymakers would be well advised to...	opinion-argument
+population growth	collocations
+positive	academic-awl
+potential	academic-awl
+potentially	linking-cohesion
+precipitates	maps-processes
+predict	reporting-verbs
+presumably	linking-cohesion
+principle	academic-awl
+process	academic-awl
+produces	maps-processes
+promise	reporting-verbs
+promote	academic-awl
+proponents argue that	linking-cohesion
+proponents of this view argue that...	opinion-argument
+proportion	academic-awl
+propose	reporting-verbs
+protest	reporting-verbs
+pull someone's leg	idioms-colloquial
+pull through	phrasal-verbs
+pursue	academic-awl
+put away	phrasal-verbs
+put forward	phrasal-verbs
+put off	phrasal-verbs
+put on	phrasal-verbs
+put simply	linking-cohesion
+put up with	phrasal-verbs
+put your foot in your mouth	idioms-colloquial
+rapid development	collocations
+reached a peak	charts-trends
+reached its lowest point	charts-trends
+read between the lines	idioms-colloquial
+reassure	reporting-verbs
+recommend	reporting-verbs
+reduce substantially	collocations
+refuse	reporting-verbs
+reject	academic-awl
+releases	maps-processes
+rely	academic-awl
+rely on	phrasal-verbs
+remained stable	charts-trends
+remained unchanged	maps-processes
+remind	reporting-verbs
+report	reporting-verbs
+represent	charts-trends
+request	reporting-verbs
+require	academic-awl
+research	academic-awl
+research conducted in [field/country] has shown that...	opinion-argument
+resolve	academic-awl
+respectively	charts-trends
+respond	academic-awl
+restrict	academic-awl
+returns to	maps-processes
+reveal	reporting-verbs
+role	academic-awl
+roll out	phrasal-verbs
+rose	charts-trends
+roughly	charts-trends
+rule of thumb	idioms-colloquial
+rule out	phrasal-verbs
+run away	phrasal-verbs
+run into	phrasal-verbs
+run out of	phrasal-verbs
+say	reporting-verbs
+scale up	phrasal-verbs
+sceptics contend that	linking-cohesion
+section	academic-awl
+see eye to eye	idioms-colloquial
+see through	phrasal-verbs
+seeing that	linking-cohesion
+set in your ways	idioms-colloquial
+set off	phrasal-verbs
+set up	phrasal-verbs
+settle down	phrasal-verbs
+severe consequences	collocations
+shake things up	idioms-colloquial
+shot up	charts-trends
+show	reporting-verbs
+show up	phrasal-verbs
+significant challenge	collocations
+similar	academic-awl
+similarly	linking-cohesion
+simultaneously	linking-cohesion
+sit down	phrasal-verbs
+sit on the fence	idioms-colloquial
+sleep like a log	idioms-colloquial
+slipped	charts-trends
+slow down	phrasal-verbs
+soared	charts-trends
+social media	collocations
+sooner or later	idioms-colloquial
+sort out	phrasal-verbs
+source	academic-awl
+speak one's mind	idioms-colloquial
+speak out against	phrasal-verbs
+specific	academic-awl
+specifically	linking-cohesion
+speculate	reporting-verbs
+speed up	phrasal-verbs
+stab in the back	idioms-colloquial
+stand by	phrasal-verbs
+stand for	phrasal-verbs
+stand on your own two feet	idioms-colloquial
+stand up for	phrasal-verbs
+statistic	charts-trends
+statistics indicate that approximately...	opinion-argument
+stay away from	phrasal-verbs
+stayed the same	maps-processes
+stem from	phrasal-verbs
+step down	phrasal-verbs
+steps should be taken to...	opinion-argument
+stress	reporting-verbs
+strike it rich	idioms-colloquial
+strikingly	charts-trends
+strong argument	collocations
+strongly opposed	collocations
+structure	academic-awl
+subsequently	linking-cohesion
+such + noun	linking-cohesion
+such as	linking-cohesion
+suggest	reporting-verbs
+suggest *(academic)*	reporting-verbs
+supporters of this position maintain that...	opinion-argument
+surged	charts-trends
+surrounding	maps-processes
+sustain	academic-awl
+switch over	phrasal-verbs
+take a turn for the better/worse	idioms-colloquial
+take action	collocations
+take advantage of	collocations
+take off	phrasal-verbs
+take on	phrasal-verbs
+take over	phrasal-verbs
+take part in	collocations
+take responsibility	collocations
+take steps	collocations
+take up	phrasal-verbs
+take with a pinch of salt	idioms-colloquial
+taking everything into account	linking-cohesion
+taking everything into consideration, it is evident that...	opinion-argument
+tell	reporting-verbs
+tend to	linking-cohesion
+testify	reporting-verbs
+that is / i.e.	linking-cohesion
+that is to say	linking-cohesion
+that said	linking-cohesion
+the + comparative (more...the more)	linking-cohesion
+the arguments presented above demonstrate that...	opinion-argument
+the balance of evidence suggests that...	opinion-argument
+the ball is in your court	idioms-colloquial
+the benefits far outweigh the drawbacks.	opinion-argument
+the crisis is further compounded by...	opinion-argument
+the disadvantages ultimately outweigh the advantages.	opinion-argument
+the elephant in the room	idioms-colloquial
+the former... the latter	linking-cohesion
+the implication of this is that...	opinion-argument
+the implications of this trend are mixed, but on balance...	opinion-argument
+the issue can be attributed to...	opinion-argument
+the issue of [x] has attracted considerable attention...	opinion-argument
+the key point here is that...	opinion-argument
+the most persuasive argument in favour of [position] is...	opinion-argument
+the problem can be tackled through...	opinion-argument
+the problem is largely due to...	opinion-argument
+the reason for this is that...	opinion-argument
+the root cause of this problem lies in...	opinion-argument
+the scale of the advantages is simply greater than...	opinion-argument
+the situation is exacerbated by...	opinion-argument
+the situation would be alleviated if...	opinion-argument
+the two sides must be carefully balanced before concluding that...	opinion-argument
+the underlying reason is that...	opinion-argument
+the weight of evidence, in my view, supports the position that...	opinion-argument
+then / next	maps-processes
+theory	academic-awl
+there are several reasons why this trend is emerging.	opinion-argument
+there has been growing debate about whether...	opinion-argument
+there is evidence to suggest	linking-cohesion
+thereby	linking-cohesion
+therefore	linking-cohesion
+these + summary noun	linking-cohesion
+think outside the box	idioms-colloquial
+this + summary noun	linking-cohesion
+this can be seen in the case of [x], where...	opinion-argument
+this could be addressed by...	opinion-argument
+this could be mitigated by...	opinion-argument
+this development is, on the whole, [beneficial/concerning] for...	opinion-argument
+this essay will examine both perspectives before concluding that...	opinion-argument
+this explains why	linking-cohesion
+this has led to	linking-cohesion
+this has the potential to...	opinion-argument
+this is a direct consequence of...	opinion-argument
+this is because...	opinion-argument
+this is best illustrated by the fact that...	opinion-argument
+this is clearly demonstrated by the example of [x]...	opinion-argument
+this is demonstrated by	linking-cohesion
+this is driven in part by...	opinion-argument
+this is partly a consequence of...	opinion-argument
+this phenomenon can be explained by a number of factors.	opinion-argument
+this phenomenon is driven by...	opinion-argument
+this problem stems from...	opinion-argument
+this raises the question of whether...	opinion-argument
+this risks...	opinion-argument
+this stems from the fact that...	opinion-argument
+this trend arises as a result of...	opinion-argument
+those on the opposing side of the debate argue...	opinion-argument
+those who favour x contend that...	opinion-argument
+threaten	reporting-verbs
+three quarters	charts-trends
+throw away	phrasal-verbs
+throw in the towel	idioms-colloquial
+thus	linking-cohesion
+tip of the iceberg	idioms-colloquial
+to conclude	linking-cohesion
+to elaborate, when [x], it follows that [y]...	opinion-argument
+to give an example	linking-cohesion
+to illustrate	linking-cohesion
+to illustrate this point, consider [example]...	opinion-argument
+to put this another way, ...	opinion-argument
+to some extent	linking-cohesion
+to sum up	linking-cohesion
+to summarise, this essay has argued that...	opinion-argument
+to the north of	maps-processes
+too	linking-cohesion
+trajectory	charts-trends
+trend	charts-trends
+turn a blind eye	idioms-colloquial
+turn around	phrasal-verbs
+turn down	phrasal-verbs
+turn into	phrasal-verbs
+turn off	phrasal-verbs
+turn on	phrasal-verbs
+turn out	phrasal-verbs
+turn over a new leaf	idioms-colloquial
+turn the corner	idioms-colloquial
+turn up	phrasal-verbs
+two thirds	charts-trends
+ultimately	linking-cohesion
+ultimately, i am of the view that...	opinion-argument
+ultimately, the evidence strongly suggests that...	opinion-argument
+undergoes	maps-processes
+undoubtedly	linking-cohesion
+urge	reporting-verbs
+vary	academic-awl
+vow	reporting-verbs
+wake up	phrasal-verbs
+warn	reporting-verbs
+was built	maps-processes
+was constructed	maps-processes
+was converted into	maps-processes
+was demolished	maps-processes
+was developed	maps-processes
+was enlarged	maps-processes
+was expanded	maps-processes
+was extended	maps-processes
+was knocked down	maps-processes
+was narrowed	maps-processes
+was reduced in size	maps-processes
+was relocated	maps-processes
+was renovated	maps-processes
+was replaced by	maps-processes
+was transformed into	maps-processes
+was widened	maps-processes
+wear your heart on your sleeve	idioms-colloquial
+weighing up both sides	linking-cohesion
+what is more	linking-cohesion
+what is particularly noteworthy is that...	opinion-argument
+what this means in practice is that...	opinion-argument
+when push comes to shove	idioms-colloquial
+whether this development is positive or negative depends largely on...	opinion-argument
+while both views have merit, i find the arguments for x more persuasive because...	opinion-argument
+while it is true that	linking-cohesion
+while it is true that [opposing point], ...	opinion-argument
+while the drawbacks are real, they are outweighed by...	opinion-argument
+while there are some positive aspects, the overall impact is...	opinion-argument
+while x has its merits, y presents a compelling counter-argument.	opinion-argument
+widely accepted	collocations
+widespread concern	collocations
+without a shadow of a doubt	idioms-colloquial
+wonder	reporting-verbs
+work out	phrasal-verbs
+write down	phrasal-verbs
+x can be attributed to a combination of...	opinion-argument
+yet	linking-cohesion
