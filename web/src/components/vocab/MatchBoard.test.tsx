@@ -2,11 +2,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, expect, test, vi } from "vitest";
 
-const { playWordAudio, playSfx } = vi.hoisted(() => ({
+const { playWordAudio, stopWordAudio, playSfx } = vi.hoisted(() => ({
   playWordAudio: vi.fn(),
+  stopWordAudio: vi.fn(),
   playSfx: vi.fn(),
 }));
-vi.mock("@/lib/audio/word-audio", () => ({ playWordAudio }));
+vi.mock("@/lib/audio/word-audio", () => ({ playWordAudio, stopWordAudio }));
 vi.mock("@/lib/audio/sfx", () => ({ playSfx }));
 
 import { MatchBoard } from "@/components/vocab/MatchBoard";
@@ -25,6 +26,7 @@ function clickPair(word: string, meaning: string) {
 
 beforeEach(() => {
   playWordAudio.mockClear();
+  stopWordAudio.mockClear();
   playSfx.mockClear();
 });
 
@@ -53,4 +55,13 @@ test("ghép sai vẫn kêu tiếng báo sai — đó là báo lỗi, không ph�
 
   expect(playSfx).toHaveBeenCalledWith("wrong");
   expect(playWordAudio).not.toHaveBeenCalled();
+});
+
+test("ghép sai thì cắt giọng đọc đang chạy trước khi kêu tiếng sai", () => {
+  render(<MatchBoard round={round} onComplete={() => {}} />);
+
+  clickPair("bread", "sữa");
+
+  expect(stopWordAudio).toHaveBeenCalled();
+  expect(playSfx).toHaveBeenCalledWith("wrong");
 });

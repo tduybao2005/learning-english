@@ -2,11 +2,12 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
-const { playWordAudio, playSfx } = vi.hoisted(() => ({
+const { playWordAudio, stopWordAudio, playSfx } = vi.hoisted(() => ({
   playWordAudio: vi.fn(),
+  stopWordAudio: vi.fn(),
   playSfx: vi.fn(),
 }));
-vi.mock("@/lib/audio/word-audio", () => ({ playWordAudio }));
+vi.mock("@/lib/audio/word-audio", () => ({ playWordAudio, stopWordAudio }));
 vi.mock("@/lib/audio/sfx", () => ({ playSfx }));
 
 import { PracticeSession } from "@/components/vocab/PracticeSession";
@@ -28,6 +29,7 @@ beforeEach(() => {
   fetchMock = vi.fn(() => Promise.resolve({ ok: true } as Response));
   vi.stubGlobal("fetch", fetchMock);
   playWordAudio.mockClear();
+  stopWordAudio.mockClear();
   playSfx.mockClear();
 });
 
@@ -265,6 +267,7 @@ test("chọn sai vẫn kêu tiếng báo sai và không đọc từ", () => {
 
   answerQuiz(false);
 
+  expect(stopWordAudio).toHaveBeenCalled();
   expect(playSfx).toHaveBeenCalledWith("wrong");
   expect(playWordAudio).not.toHaveBeenCalled();
 });

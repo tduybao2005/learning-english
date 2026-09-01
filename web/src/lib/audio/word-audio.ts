@@ -45,6 +45,23 @@ export function playWordAudio(src: string | null | undefined): void {
   }
 }
 
+/**
+ * Dừng giọng đọc đang chạy.
+ *
+ * Gọi trước tiếng báo SAI: file phát âm của từ vừa ghép đúng dài cỡ một giây,
+ * nên nếu người học ghép sai ngay sau đó thì tiếng "sai" ngắn bị lấp dưới
+ * giọng đọc còn dở và nghe như app không phản hồi gì.
+ */
+export function stopWordAudio(): void {
+  if (current === null) return;
+  try {
+    current.pause();
+  } catch {
+    /* fail silent */
+  }
+  current = null;
+}
+
 export function __resetWordAudioForTests(): void {
   cache.clear();
   current = null;

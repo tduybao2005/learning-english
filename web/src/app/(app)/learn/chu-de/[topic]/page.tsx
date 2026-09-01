@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import { getSessionUser } from "@/lib/auth/session";
 import { getLearnTopicDetail } from "@/lib/learn-topics";
 import { LESSON_TOPIC_GROUP_LABELS } from "@/lib/lesson-topics";
@@ -104,11 +102,39 @@ export default async function LearnTopicPage({
 
         {nextLesson !== null && (
           <div className="p-4">
+            {/* Nút hai dòng: nhãn hành động ở trên, tên bài ở dưới và cắt được.
+                Tiêu đề bài do seed sinh ra viết hoa toàn bộ và dài (vd "BÀI 1:
+                THỂ BỊ ĐỘNG (PASSIVE VOICE)") — nhồi tất cả vào một dòng thì
+                chữ tràn ra ngoài viền, còn ký tự ▶ dạng text thì bị cắt mất
+                nửa bên trái. Icon vẽ bằng SVG trong huy hiệu tròn không có
+                cả hai vấn đề đó. */}
             <Link
               href={nextLesson.href}
-              className={cn(buttonVariants({ size: "lg" }), "w-full gap-2 text-base")}
+              className="group flex min-h-11 w-full items-center gap-3 rounded-xl bg-primary px-4 py-3 text-primary-foreground shadow-primary-glow transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
             >
-              ▶ {nextLesson.status === "learning" ? "Học tiếp" : "Bắt đầu"}: {nextLesson.title}
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/20">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden>
+                  <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.3-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14Z" />
+                </svg>
+              </span>
+              <span className="min-w-0 flex-1 text-left">
+                <span className="block text-caption font-semibold uppercase tracking-wider text-primary-foreground/75">
+                  {nextLesson.status === "learning" ? "Học tiếp" : "Bắt đầu"}
+                </span>
+                <span className="block truncate font-bold">{nextLesson.title}</span>
+              </span>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="size-5 shrink-0 text-primary-foreground/70 transition-transform group-hover:translate-x-0.5"
+                aria-hidden
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
             </Link>
           </div>
         )}

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { playSfx } from "@/lib/audio/sfx";
-import { playWordAudio } from "@/lib/audio/word-audio";
+import { playWordAudio, stopWordAudio } from "@/lib/audio/word-audio";
 import type { MatchRound } from "@/components/vocab/games";
 
 /** Khớp thời lượng `tile-collapse` trong globals.css. */
@@ -75,6 +75,10 @@ export function MatchBoard({
       return;
     }
 
+    // Cắt giọng đọc của cặp vừa ghép đúng trước đó: file phát âm dài cỡ một
+    // giây, ghép sai ngay sau đó thì tiếng báo lỗi ngắn bị lấp bên dưới và
+    // người học tưởng app không phản hồi gì.
+    stopWordAudio();
     playSfx("wrong");
     wrongIdsRef.current.add(leftId);
     setWrongPair({ left: leftId, right: rightId });

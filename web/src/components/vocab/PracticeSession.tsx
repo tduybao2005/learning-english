@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 
 import { playSfx } from "@/lib/audio/sfx";
-import { playWordAudio } from "@/lib/audio/word-audio";
+import { playWordAudio, stopWordAudio } from "@/lib/audio/word-audio";
 import { MatchBoard } from "@/components/vocab/MatchBoard";
 import { QuizCard } from "@/components/vocab/QuizCard";
 import { SessionSummary } from "@/components/vocab/SessionSummary";
@@ -225,6 +225,7 @@ export function PracticeSession({
     if (correct) {
       playWordAudio(rendered.word?.audioUrl ?? null);
     } else {
+      stopWordAudio();
       playSfx("wrong");
     }
     const next = correct ? streak + 1 : 0;

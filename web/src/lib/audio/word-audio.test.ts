@@ -1,7 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, expect, test, vi } from "vitest";
 
-import { playWordAudio, __resetWordAudioForTests } from "@/lib/audio/word-audio";
+import {
+  playWordAudio,
+  stopWordAudio,
+  __resetWordAudioForTests,
+} from "@/lib/audio/word-audio";
 
 type FakeAudio = {
   src: string;
@@ -80,4 +84,24 @@ test("nuốt lỗi khi trình duyệt chặn autoplay", () => {
   );
 
   expect(() => playWordAudio("/audio/vocab/bread.mp3")).not.toThrow();
+});
+
+test("stopWordAudio cắt giọng đọc đang chạy để tiếng báo sai nghe được", () => {
+  playWordAudio("/audio/vocab/bread.mp3");
+
+  stopWordAudio();
+
+  expect(created[0].pause).toHaveBeenCalledTimes(1);
+});
+
+test("stopWordAudio gọi khi chưa phát gì thì không nổ", () => {
+  expect(() => stopWordAudio()).not.toThrow();
+});
+
+test("sau stopWordAudio, từ kế tiếp không bị pause hai lần", () => {
+  playWordAudio("/audio/vocab/bread.mp3");
+  stopWordAudio();
+  playWordAudio("/audio/vocab/milk.mp3");
+
+  expect(created[0].pause).toHaveBeenCalledTimes(1);
 });
