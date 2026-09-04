@@ -70,7 +70,7 @@ export default async function LecturePage({
             href={`${base}/exercise`}
             className={cn(
               buttonVariants({ variant: "default" }),
-              "w-full shadow-primary-glow transition-shadow hover:shadow-lg sm:w-auto",
+              "w-full shadow-primary-glow transition-all hover:shadow-lg active:shadow-none sm:w-auto",
             )}
           >
             Làm bài tập →

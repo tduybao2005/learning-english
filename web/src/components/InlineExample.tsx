@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
+import { playSfx } from "@/lib/audio/sfx";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { SafeExample } from "@/lib/lecture-examples";
@@ -62,11 +63,18 @@ export function InlineExample({
     setStatus("checking");
     try {
       const data = await post({ exampleId: example.id, input });
+      // Ví dụ trong bài giảng là bài ngữ pháp điền chỗ trống, không gắn với
+      // một từ vựng nào nên không có file phát âm để đọc lên — ở đây SFX
+      // đúng/sai là phản hồi hợp lý, khác với phần luyện tập từ vựng (xem
+      // `playWordAudio`). Phát sau khi server trả kết quả, không phát ở
+      // `handleReveal`: kêu "đúng" lúc người học bấm xem đáp án là khen nhầm.
       if (data.correct) {
         setAnswer(typeof data.answer === "string" ? data.answer : null);
         setStatus("correct");
+        playSfx("correct");
       } else {
         setStatus("incorrect");
+        playSfx("wrong");
       }
     } catch {
       setStatus("idle");

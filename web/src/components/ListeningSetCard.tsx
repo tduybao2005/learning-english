@@ -23,7 +23,7 @@ export function ListeningSetCard({
     <Link
       href={href}
       className={cn(
-        "flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-colors hover:bg-muted/50",
+        "press-tile flex items-center gap-4 rounded-xl border border-border bg-card p-4 transition-all hover:bg-muted/50 active:bg-muted",
         className,
       )}
     >

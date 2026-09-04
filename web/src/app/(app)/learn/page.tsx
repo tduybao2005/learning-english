@@ -37,7 +37,7 @@ function TopicCard({ topic }: { topic: LearnTopicDetail }) {
     <Link
       href={`/learn/chu-de/${topic.slug}`}
       data-testid="learn-topic-card"
-      className="group flex flex-col gap-2 rounded-2xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+      className="group flex flex-col gap-2 rounded-2xl border border-border bg-card p-4 press-tile transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
     >
       <div className="flex items-start justify-between gap-2">
         <span

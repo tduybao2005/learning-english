@@ -113,7 +113,7 @@ export function MatchBoard({
 
   const tileClass = (state: { matched: boolean; wrong: boolean; selected: boolean }) =>
     cn(
-      "min-h-11 rounded-xl border p-3 text-left font-medium transition-all",
+      "press-tile min-h-11 rounded-xl border p-3 text-left font-medium transition-all",
       state.matched && "animate-tile-collapse border-success bg-success-bg text-success",
       !state.matched &&
         state.wrong &&
@@ -125,7 +125,7 @@ export function MatchBoard({
       !state.matched &&
         !state.wrong &&
         !state.selected &&
-        "border-border bg-card hover:border-primary/40 hover:shadow-sm",
+        "border-border bg-card hover:border-primary/40 hover:shadow-sm active:shadow-none",
     );
 
   return (

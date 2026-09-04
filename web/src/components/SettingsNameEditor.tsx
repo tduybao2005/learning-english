@@ -72,7 +72,7 @@ export function SettingsNameEditor({
               setBlank(false);
               setEditing(true);
             }}
-            className="rounded p-0.5 opacity-80 transition-opacity hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50"
+            className="press-btn rounded p-0.5 opacity-80 transition-all hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50"
           >
             ✏️
           </button>
@@ -95,7 +95,7 @@ export function SettingsNameEditor({
           onKeyDown={(e) => e.key === "Enter" && submit()}
           className="w-full max-w-56 rounded-lg border border-white/30 bg-white/10 px-2 py-1 text-sm text-primary-foreground outline-none placeholder:text-primary-foreground/50 focus-visible:ring-2 focus-visible:ring-white/50"
         />
-        <button type="button" onClick={submit} disabled={pending} className="rounded-lg bg-white/20 px-2.5 py-1 text-xs font-semibold hover:bg-white/30">
+        <button type="button" onClick={submit} disabled={pending} className="press-btn rounded-lg bg-white/20 px-2.5 py-1 text-xs font-semibold transition-all hover:bg-white/30">
           {pending ? "..." : "Lưu"}
         </button>
         <button type="button" onClick={() => setEditing(false)} className="text-xs text-primary-foreground/80 hover:text-primary-foreground">

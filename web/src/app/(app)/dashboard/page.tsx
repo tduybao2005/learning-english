@@ -140,7 +140,7 @@ export default async function DashboardPage() {
                 Dashboard giữ vai trò "hôm nay học gì", không lặp lại cả bản đồ. */}
             <Link
               href="/learn"
-              className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+              className="press-tile flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
             >
               <span>
                 <span className="block font-semibold">Xem lộ trình theo chủ đề</span>

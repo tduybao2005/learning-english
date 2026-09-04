@@ -60,7 +60,7 @@ export function MobileTabBar({
               href={href}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "flex min-h-11 flex-col items-center justify-center gap-0.5 text-caption font-medium transition-colors",
+                "press-btn flex min-h-11 flex-col items-center justify-center gap-0.5 text-caption font-medium transition-all",
                 active ? "text-primary" : "text-muted-foreground hover:text-foreground",
               )}
             >

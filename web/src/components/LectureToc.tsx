@@ -44,7 +44,7 @@ export function LectureToc({ entries }: { entries: TocEntry[] }) {
                 "-ml-px block border-l-2 py-1 pl-3 text-sm transition-colors",
                 activeId === entry.id
                   ? "border-primary font-semibold text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground",
+                  : "border-transparent text-muted-foreground hover:text-foreground active:text-foreground",
               )}
             >
               {entry.text}

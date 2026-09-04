@@ -31,7 +31,7 @@ export default async function TopicPage({ params }: { params: Promise<{ topic: s
         <Link
           href="/vocab"
           aria-label="Quay lại danh sách chủ đề"
-          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+          className="press-btn flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
         >
           <svg
             viewBox="0 0 24 24"

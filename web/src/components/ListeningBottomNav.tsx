@@ -21,7 +21,7 @@ export function ListeningBottomNav({
       <div className="mx-auto flex h-12 max-w-5xl items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/listening"
-          className="inline-flex items-center gap-1 whitespace-nowrap text-caption font-medium text-muted-foreground hover:text-foreground"
+          className="press-btn inline-flex items-center gap-1 whitespace-nowrap text-caption font-medium text-muted-foreground transition-all hover:text-foreground"
         >
           ← Quay lại danh sách bài nghe
         </Link>

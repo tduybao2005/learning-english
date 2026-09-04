@@ -315,7 +315,7 @@ export function Flashcards({
             <button
               type="button"
               onClick={() => report(false)}
-              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl border-2 border-destructive/30 bg-destructive/5 font-semibold text-destructive transition-all hover:-translate-y-0.5 hover:border-destructive/60 hover:bg-destructive/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-destructive/20 active:translate-y-0"
+              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl border-2 border-destructive/30 bg-destructive/5 font-semibold text-destructive transition-all hover:-translate-y-0.5 hover:border-destructive/60 hover:bg-destructive/10 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-destructive/20 active:translate-y-0 active:scale-[0.96]"
             >
               <span className="text-base">Chưa nhớ</span>
               <span className="text-[11px] font-medium opacity-60">← hoặc vuốt trái</span>
@@ -323,7 +323,7 @@ export function Flashcards({
             <button
               type="button"
               onClick={() => report(true)}
-              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl bg-success font-semibold text-success-foreground shadow-success-glow transition-all hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-success/30 active:translate-y-0"
+              className="group flex min-h-14 flex-col items-center justify-center gap-0.5 rounded-2xl bg-success font-semibold text-success-foreground shadow-success-glow transition-all hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-success/30 active:translate-y-0 active:scale-[0.96]"
             >
               <span className="text-base">Đã nhớ</span>
               <span className="text-[11px] font-medium opacity-75">→ hoặc vuốt phải</span>
@@ -334,7 +334,7 @@ export function Flashcards({
         <button
           type="button"
           onClick={() => setFlipped(true)}
-          className="mx-auto flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+          className="mx-auto flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-semibold text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
         >
           Lật thẻ để xem nghĩa
           <span aria-hidden>↻</span>

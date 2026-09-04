@@ -220,7 +220,7 @@ export function AudioPlayer({
               onClick={() => changeSpeed(s)}
               aria-pressed={speed === s}
               className={cn(
-                "rounded-md px-2 py-1 text-xs font-medium transition-colors",
+                "press-btn rounded-md px-2 py-1 text-xs font-medium transition-all",
                 speed === s
                   ? "bg-primary text-primary-foreground"
                   : "bg-muted text-muted-foreground hover:bg-muted/70"

@@ -35,7 +35,7 @@ export default async function LearnTopicPage({
         <Link
           href="/learn"
           aria-label="Quay lại danh sách chủ đề"
-          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+          className="press-btn flex size-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:border-primary/40 hover:text-foreground hover:shadow-sm active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
         >
           <svg
             viewBox="0 0 24 24"
@@ -110,7 +110,7 @@ export default async function LearnTopicPage({
                 cả hai vấn đề đó. */}
             <Link
               href={nextLesson.href}
-              className="group flex min-h-11 w-full items-center gap-3 rounded-xl bg-primary px-4 py-3 text-primary-foreground shadow-primary-glow transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
+              className="press-tile group flex min-h-11 w-full items-center gap-3 rounded-xl bg-primary px-4 py-3 text-primary-foreground shadow-primary-glow transition-all hover:-translate-y-0.5 hover:shadow-lg active:shadow-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
             >
               <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-white/20">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden>

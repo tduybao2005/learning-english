@@ -55,7 +55,7 @@ export function QuizCard({
               data-testid="quiz-option"
               onClick={() => onSelect(option.id)}
               className={cn(
-                "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
+                "press-tile flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-all disabled:opacity-70",
                 isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
                 !isSelected && !isCorrectReveal && "border-border hover:bg-muted",
                 isWrong && "animate-shake border-destructive bg-destructive-bg",

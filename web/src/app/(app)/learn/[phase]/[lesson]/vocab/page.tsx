@@ -54,7 +54,7 @@ export default async function VocabHubPage({
     <div className="mx-auto max-w-3xl px-4 py-8">
       <Link
         href="/vocab"
-        className="mb-4 inline-block text-caption text-muted-foreground transition-colors hover:text-foreground"
+        className="press-btn mb-4 inline-block text-caption text-muted-foreground transition-all hover:text-foreground"
       >
         ← Quay lại Từ vựng
       </Link>
@@ -85,7 +85,7 @@ export default async function VocabHubPage({
           <div className="mb-6 flex flex-col gap-2">
             <Link
               href={`${base}/vocab/flashcards`}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
+              className="press-tile flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:shadow-md active:shadow-none"
             >
               <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-secondary text-lg">
                 🃏
@@ -100,7 +100,7 @@ export default async function VocabHubPage({
             </Link>
             <Link
               href={`${base}/vocab/play`}
-              className="flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-shadow hover:shadow-md"
+              className="press-tile flex items-center gap-3 rounded-xl border border-border bg-card p-4 transition-all hover:shadow-md active:shadow-none"
             >
               <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-streak-bg text-lg">
                 ⚡

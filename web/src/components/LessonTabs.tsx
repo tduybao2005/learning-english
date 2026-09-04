@@ -31,7 +31,7 @@ export function LessonTabs({
     <>
       <Link
         href="/learn"
-        className="mb-4 block w-fit text-caption text-muted-foreground transition-colors hover:text-foreground"
+        className="press-btn mb-4 block w-fit text-caption text-muted-foreground transition-all hover:text-foreground"
       >
         ← Quay lại lộ trình học
       </Link>
@@ -51,7 +51,7 @@ export function LessonTabs({
             key={tab.key}
             href={`${basePath}${tab.suffix}`}
             className={cn(
-              "flex min-h-11 items-center rounded-lg px-4 text-sm font-semibold transition-colors",
+              "press-btn flex min-h-11 items-center rounded-lg px-4 text-sm font-semibold transition-all",
               active === tab.key
                 ? "bg-card text-foreground shadow-sm"
                 : "text-muted-foreground hover:text-foreground",

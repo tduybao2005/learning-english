@@ -55,7 +55,7 @@ export function AppSidebar({
               key={href}
               href={href}
               className={cn(
-                "flex min-h-11 items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                "press-btn flex min-h-11 items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-all",
                 isActive
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:bg-muted hover:text-foreground",
@@ -71,7 +71,7 @@ export function AppSidebar({
       <div className="border-t border-border p-3">
         <Link
           href="/settings"
-          className="group flex items-center gap-3 rounded-xl border border-transparent bg-muted p-3 transition-colors hover:border-primary hover:bg-secondary"
+          className="press-tile group flex items-center gap-3 rounded-xl border border-transparent bg-muted p-3 transition-all hover:border-primary hover:bg-secondary"
         >
           <span
             aria-hidden

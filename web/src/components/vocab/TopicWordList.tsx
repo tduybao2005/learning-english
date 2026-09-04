@@ -78,7 +78,7 @@ export function TopicWordList({ words }: { words: TopicWord[] }) {
             data-testid="word-filter"
             onClick={() => setFilter(f.value)}
             className={cn(
-              "flex min-h-9 items-center justify-center rounded-full border px-1 text-center text-[11px] font-semibold leading-tight transition-all",
+              "press-btn flex min-h-9 items-center justify-center rounded-full border px-1 text-center text-[11px] font-semibold leading-tight transition-all",
               filter === f.value
                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                 : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",

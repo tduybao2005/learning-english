@@ -245,9 +245,47 @@
 @utility shadow-accent-glow { box-shadow: 0 8px 20px oklch(from var(--accent) l c h / 28%); }
 @utility shadow-success-glow { box-shadow: 0 8px 20px oklch(from var(--success) l c h / 28%); }
 
+/* ---------------------------------------------------------------------------
+   Phản hồi khi BẤM (press feedback).
+
+   Vì sao cần riêng, không dùng `hover:` được: Tailwind v4 bọc mọi biến thể
+   `hover:` trong `@media (hover: hover)`, nên trên điện thoại chúng KHÔNG BAO
+   GIỜ chạy — chạm vào thẻ chủ đề là im lìm, người dùng tưởng app đơ. `:active`
+   là trạng thái duy nhất chạy trên cả chuột lẫn cảm ứng.
+
+   Dùng `press-tile` cho thẻ/ô/hàng danh sách, `press-btn` cho nút nhỏ, chip,
+   icon, mục nav. Nơi gọi TỰ giữ `transition-all` của nó — hai utility này cố
+   ý không khai báo `transition` để khỏi giẫm lên khai báo sẵn có.
+
+   Dùng thuộc tính `scale` đứng riêng chứ không phải `transform: scale()`:
+   nhiều thẻ đã có `hover:-translate-y-0.5`, mà Tailwind v4 ghi cái đó vào
+   thuộc tính `translate`. Nếu ở đây dùng `transform` thì hai bên tranh nhau
+   một thuộc tính và cú nhấc khi hover bị nuốt mất trên desktop.
+
+   Khối `prefers-reduced-motion` phía dưới tự rút transition về 0.01ms, nên
+   người bật giảm chuyển động vẫn thấy đổi màu mà không bị co giật. */
+@utility press-tile {
+  &:active {
+    scale: 0.96;
+    box-shadow: none;
+  }
+}
+
+@utility press-btn {
+  &:active {
+    scale: 0.94;
+  }
+}
+
 @layer base {
   * { @apply border-border outline-ring/50; }
   body { @apply bg-background text-foreground font-sans; }
+
+  /* Vệt xám mặc định của trình duyệt di động chồng lên hiệu ứng press ở trên
+     thành hai lớp phản hồi lệch nhịp. Tắt nó đi, `press-*` lo phần này. */
+  a, button, [role="button"], [role="tab"], label, summary {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

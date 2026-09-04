@@ -1,6 +1,9 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+
+const { playSfx } = vi.hoisted(() => ({ playSfx: vi.fn() }));
+vi.mock("@/lib/audio/sfx", () => ({ playSfx }));
 
 import { InlineExample } from "@/components/InlineExample";
 
@@ -15,6 +18,10 @@ function mockFetch(response: unknown) {
   vi.stubGlobal("fetch", fn);
   return fn;
 }
+
+beforeEach(() => {
+  playSfx.mockClear();
+});
 
 afterEach(() => {
   cleanup();
@@ -85,6 +92,38 @@ describe("InlineExample", () => {
     await waitFor(() => expect(screen.getByText(/goes/)).toBeDefined());
     expect((screen.getByRole("textbox") as HTMLInputElement).disabled).toBe(true);
     expect(screen.queryByRole("button", { name: "Kiểm tra" })).toBeNull();
+  });
+
+  it("kêu tiếng đúng khi trả lời đúng", async () => {
+    mockFetch({ correct: true, matchType: "EXACT", answer: "goes" });
+    render(<InlineExample lessonId="l1" example={example} />);
+
+    fireEvent.change(screen.getByRole("textbox"), { target: { value: "goes" } });
+    fireEvent.click(screen.getByRole("button", { name: "Kiểm tra" }));
+
+    await waitFor(() => expect(playSfx).toHaveBeenCalledWith("correct"));
+    expect(playSfx).toHaveBeenCalledTimes(1);
+  });
+
+  it("kêu tiếng sai khi trả lời sai", async () => {
+    mockFetch({ correct: false });
+    render(<InlineExample lessonId="l1" example={example} />);
+
+    fireEvent.change(screen.getByRole("textbox"), { target: { value: "go" } });
+    fireEvent.click(screen.getByRole("button", { name: "Kiểm tra" }));
+
+    await waitFor(() => expect(playSfx).toHaveBeenCalledWith("wrong"));
+    expect(playSfx).toHaveBeenCalledTimes(1);
+  });
+
+  it("xem đáp án thì im lặng — khen người bỏ cuộc thì sai, mà phạt thì cũng sai", async () => {
+    mockFetch({ revealed: true, answer: "goes" });
+    render(<InlineExample lessonId="l1" example={example} />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Xem đáp án" }));
+
+    await waitFor(() => expect(screen.getByText(/goes/)).toBeDefined());
+    expect(playSfx).not.toHaveBeenCalled();
   });
 
   it("submits on Enter", async () => {

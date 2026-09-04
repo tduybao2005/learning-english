@@ -104,7 +104,7 @@ export default async function IeltsTestPage({
     <div className={cn("mx-auto px-4 py-8", gradeable ? "max-w-6xl" : "max-w-3xl")}>
       <Link
         href={`/ielts?skill=${activeSkill}`}
-        className="mb-4 inline-block text-sm text-muted-foreground hover:text-foreground"
+        className="press-btn mb-4 inline-block text-sm text-muted-foreground transition-all hover:text-foreground"
       >
         ← Quay lại đề {SKILL_META[activeSkill].label}
       </Link>

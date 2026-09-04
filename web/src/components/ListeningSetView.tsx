@@ -146,7 +146,7 @@ export function ListeningSetView({
                     }}
                     className={cn(
                       "flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-4 font-semibold [&::-webkit-details-marker]:hidden",
-                      unlocked ? "hover:bg-muted/50" : "cursor-not-allowed text-muted-foreground",
+                      unlocked ? "press-tile transition-all hover:bg-muted/50 active:bg-muted" : "cursor-not-allowed text-muted-foreground",
                     )}
                   >
                     <span className="flex items-center gap-2">
@@ -177,7 +177,7 @@ export function ListeningSetView({
               }}
               className={cn(
                 "flex min-h-11 cursor-pointer list-none items-center justify-between gap-2 rounded-xl px-4 font-semibold [&::-webkit-details-marker]:hidden",
-                allDone ? "hover:bg-muted/50" : "cursor-not-allowed text-muted-foreground",
+                allDone ? "press-tile transition-all hover:bg-muted/50 active:bg-muted" : "cursor-not-allowed text-muted-foreground",
               )}
             >
               <span className="flex items-center gap-2">

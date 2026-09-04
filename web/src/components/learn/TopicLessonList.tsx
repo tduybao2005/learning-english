@@ -78,7 +78,7 @@ export function TopicLessonList({
             data-testid="lesson-filter"
             onClick={() => setFilter(f.value)}
             className={cn(
-              "flex min-h-9 items-center justify-center rounded-full border px-1 text-center text-[11px] font-semibold leading-tight transition-all",
+              "press-btn flex min-h-9 items-center justify-center rounded-full border px-1 text-center text-[11px] font-semibold leading-tight transition-all",
               filter === f.value
                 ? "border-primary bg-primary text-primary-foreground shadow-sm"
                 : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
@@ -102,7 +102,7 @@ export function TopicLessonList({
                 <Link
                   href={l.href}
                   data-testid="topic-lesson"
-                  className="flex min-h-11 items-center gap-3 px-4 py-3 transition-colors hover:bg-muted/60 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
+                  className="press-tile flex min-h-11 items-center gap-3 px-4 py-3 transition-all hover:bg-muted/60 active:bg-muted focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/12"
                 >
                   <span className={cn("size-2 shrink-0 rounded-full", meta.dot)} aria-hidden />
                   <div className="min-w-0 flex-1">

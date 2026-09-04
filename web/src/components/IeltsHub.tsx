@@ -47,7 +47,7 @@ export function IeltsHub({
             <Link
               href="/exams"
               aria-label="Quay lại Đề thi"
-              className="-ml-2 flex size-11 shrink-0 items-center justify-center rounded-xl text-muted-foreground transition-colors hover:bg-muted lg:hidden"
+              className="press-btn -ml-2 flex size-11 shrink-0 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-muted active:bg-muted lg:hidden"
             >
               <ArrowLeft className="size-5" aria-hidden />
             </Link>
@@ -72,7 +72,7 @@ export function IeltsHub({
               aria-selected={skill === s.key}
               onClick={() => setSkill(s.key)}
               className={cn(
-                "rounded-full px-4 text-sm font-semibold transition-colors",
+                "press-btn rounded-full px-4 text-sm font-semibold transition-all",
                 "max-lg:min-h-11 max-lg:border max-lg:border-border",
                 "lg:min-h-9",
                 skill === s.key
@@ -98,7 +98,7 @@ export function IeltsHub({
             className={cn(
               // Squares are a desktop luxury: on a phone they'd eat the fold,
               // so below lg: the tile is a short 56px+ button instead.
-              "flex flex-col items-center justify-center gap-1 rounded-2xl border border-border bg-card text-center transition-colors hover:bg-muted/50",
+              "press-tile flex flex-col items-center justify-center gap-1 rounded-2xl border border-border bg-card text-center transition-all hover:bg-muted/50 active:bg-muted",
               "max-lg:min-h-14 max-lg:px-1 max-lg:py-2 lg:aspect-square",
               !test.isComplete && "opacity-60 hover:opacity-80",
             )}
@@ -119,7 +119,7 @@ export function IeltsHub({
           <button
             type="button"
             onClick={() => setShowAll(true)}
-            className="font-semibold text-primary hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center max-lg:px-2"
+            className="press-btn font-semibold text-primary transition-all hover:underline max-lg:inline-flex max-lg:min-h-11 max-lg:items-center max-lg:px-2"
           >
             xem tất cả
           </button>

@@ -105,7 +105,7 @@ export function ExamsHub({
                   href={exam.href}
                   className={cn(
                     shared,
-                    "bg-card transition-colors hover:bg-muted/50",
+                    "press-tile bg-card transition-all hover:bg-muted/50 active:bg-muted",
                     "max-lg:border-primary",
                   )}
                 >

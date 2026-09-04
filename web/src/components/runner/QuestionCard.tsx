@@ -168,7 +168,7 @@ function MultipleChoiceOptions({
                 onChangeJoined(opt.label);
               }}
               className={cn(
-                "flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-colors disabled:opacity-70",
+                "press-tile flex min-h-11 items-center gap-3 rounded-xl border px-3.5 py-3 text-left text-sm font-medium transition-all disabled:opacity-70",
                 labelOnly && "justify-center",
                 isSelected && !isWrong && !isCorrectPick && "border-primary bg-primary/10",
                 !isSelected && "border-border hover:bg-muted",

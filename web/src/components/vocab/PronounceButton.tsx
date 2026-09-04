@@ -54,7 +54,7 @@ export function PronounceButton({
       onClick={handleClick}
       aria-label={`Phát âm: ${label}`}
       className={cn(
-        "inline-flex size-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-primary",
+        "press-btn inline-flex size-9 items-center justify-center rounded-full text-muted-foreground transition-all hover:bg-muted hover:text-primary active:bg-muted",
         className,
       )}
     >
