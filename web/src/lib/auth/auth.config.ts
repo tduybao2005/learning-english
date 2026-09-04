@@ -1,6 +1,8 @@
 import type { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 
+import { isAllowedEmail } from "./allowed-emails";
+
 /**
  * Edge-safe NextAuth config shared by middleware.ts (edge runtime) and
  * auth.ts (node). MUST NOT import Prisma/@/lib/db — the Prisma-touching
@@ -18,7 +20,14 @@ export const authConfig = {
   trustHost: true, // behind Cloudflare tunnel / docker
   callbacks: {
     authorized({ auth }) {
-      return !!auth?.user; // middleware: redirect to /login when false
+      // Xét lại allowlist ở MỌI request, không chỉ lúc đăng nhập: phiên là
+      // JWT 30 ngày và không có bảng `Session` để thu hồi, nên nếu chỉ kiểm
+      // trong callback `signIn` thì người bị gỡ khỏi `ALLOWED_EMAILS` vẫn
+      // dùng tiếp được tới cả tháng. `isAllowedEmail` là hàm thuần đọc biến
+      // môi trường nên vẫn chạy được ở edge runtime của middleware.
+      const email = auth?.user?.email;
+      if (!email) return false;
+      return isAllowedEmail(email);
     },
   },
 } satisfies NextAuthConfig;
