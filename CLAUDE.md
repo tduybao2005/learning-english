@@ -155,9 +155,13 @@ make test-down   # xoá stack test (DB tmpfs bay theo)
   `/onboarding/placement` và `api/placement/*` vẫn còn để bật lại; đừng thêm
   link mới tới chúng trừ khi có yêu cầu. Nó không còn tác dụng gì kể từ khi
   lộ trình bỏ khoá bài.
-- **Đăng nhập đang MỞ cho mọi tài khoản Google** — `ALLOWED_EMAILS` để trống
-  trong `.env` của host. Điền email (cách nhau bằng dấu phẩy) rồi `make up`
-  để đóng lại; không có cơ chế nào khác giới hạn ai vào được.
+- **Đăng nhập đang GIỚI HẠN** — `ALLOWED_EMAILS` trong `.env` của host chỉ có
+  hai tài khoản của chủ sở hữu (đặt 2026-09-04). Để trống biến này là mở lại
+  cho mọi tài khoản Google; không có cơ chế nào khác giới hạn ai vào được.
+  **`isAllowedEmail` chỉ chạy trong callback `signIn`**, tức chỉ chặn lượt
+  đăng nhập MỚI. Phiên dùng JWT (30 ngày, không có bảng `Session`) nên ai đã
+  đăng nhập từ trước vẫn dùng được tới khi token hết hạn — muốn đá hết ra
+  ngay thì phải đổi `AUTH_SECRET` rồi `make up`.
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`
