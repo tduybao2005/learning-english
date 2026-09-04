@@ -110,6 +110,16 @@ phải khớp với `PronounceButton.tsx`.
 Seed vocab là delete+create, nên `VocabWord.audioUrl` bị xoá sau mỗi lần seed —
 `make seed-all` đã tự chạy lại bước backfill; đừng bỏ bước đó đi.
 
+**`ingest.ts --force` XOÁ TIẾN ĐỘ NGƯỜI DÙNG — đọc trước khi chạy.** Bình
+thường ingest bỏ qua bài có `contentHash` không đổi nên không ai mất gì. Với
+`--force`, mọi bài đều bị delete+create, kéo theo hai dây cascade:
+`VocabWord` → `VocabProgress` (`onDelete: Cascade`, schema.prisma:253) và
+`Exercise` → `ExerciseAttempt`. Ngày 2026-09-04 chạy `--force` để nạp lại đáp
+án đã xoá sạch 20 dòng `VocabProgress` và 3 dòng `ExerciseAttempt` thật.
+`LessonProgress` KHÔNG bị ảnh hưởng (khoá theo `lessonId`, mà Lesson chỉ
+upsert chứ không bị xoá). Cần `--force` thì **dump DB trước**:
+`docker compose exec -T db pg_dump -U learning_english learning_english > backup.sql`.
+
 **Môi trường test cách ly** (repo root) — dùng khi code tính năng mới hay đổi
 schema. Compose project riêng, port riêng, DB ephemeral, không có Cloudflare
 tunnel, **không đụng port/dữ liệu của stack prod** (`docs/test-environment.md`):
