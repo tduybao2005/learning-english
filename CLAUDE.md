@@ -158,10 +158,13 @@ make test-down   # xoá stack test (DB tmpfs bay theo)
 - **Đăng nhập đang GIỚI HẠN** — `ALLOWED_EMAILS` trong `.env` của host chỉ có
   hai tài khoản của chủ sở hữu (đặt 2026-09-04). Để trống biến này là mở lại
   cho mọi tài khoản Google; không có cơ chế nào khác giới hạn ai vào được.
-  **`isAllowedEmail` chỉ chạy trong callback `signIn`**, tức chỉ chặn lượt
-  đăng nhập MỚI. Phiên dùng JWT (30 ngày, không có bảng `Session`) nên ai đã
-  đăng nhập từ trước vẫn dùng được tới khi token hết hạn — muốn đá hết ra
-  ngay thì phải đổi `AUTH_SECRET` rồi `make up`.
+  Allowlist được xét ở **ba** chỗ, đừng bỏ chỗ nào: callback `signIn` (lượt
+  đăng nhập mới), `authorized` trong `auth.config.ts` (middleware, các trang
+  trong `config.matcher`) và `getSessionUser` (`/api/*` + server component —
+  `config.matcher` KHÔNG khớp `/api/*`). Chỉ kiểm ở `signIn` là không đủ:
+  phiên là JWT 30 ngày, không có bảng `Session` để thu hồi, nên người bị gỡ
+  khỏi danh sách vẫn dùng tiếp được cả tháng. Muốn đá mọi phiên ra ngay lập
+  tức thì đổi `AUTH_SECRET` rồi `make up` (đã làm 2026-09-04).
 - **Keep the bilingual convention**: Vietnamese headings/framing, English
   examples and explanations. Don't translate existing content.
 - After adding/removing content files, rerun `python3 scripts/build_index.py`
