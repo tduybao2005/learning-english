@@ -10,14 +10,14 @@ import { getSessionUser } from "@/lib/auth/session";
  * `/ielts/*`, `/listening/*`, `/settings`). Navigation is split by viewport:
  * `AppSidebar` at `lg:`, `MobileTabBar` below it, with `AppHeader` reduced to
  * the brand. Sign-out is deliberately in neither — it lives on the settings
- * page, which both navs link to. Redirects unauthenticated requests to
- * `/login`, and brand-new Google users who haven't completed onboarding to
- * `/onboarding/name`. Async because the sidebar's profile card
- * (name/email/band) needs the session user. */
+ * page, which both navs link to. Signed-out visitors are NOT redirected here:
+ * the lecture pages under `/learn` are readable without an account, and each
+ * route that writes progress guards itself. Brand-new Google users who have
+ * not finished onboarding still go to `/onboarding/name`. Async because the
+ * sidebar's profile card (name/email/band) needs the session user. */
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const user = await getSessionUser();
-  if (!user) redirect("/login");
-  if (user.goalType === null) redirect("/onboarding/name");
+  if (user && user.goalType === null) redirect("/onboarding/name");
 
   return (
     <div className="flex min-h-screen flex-col">

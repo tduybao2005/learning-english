@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Learning English">
+  <title>Learning English</title>
+  <defs>
+    <linearGradient id="la" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5360de"/>
+      <stop offset="100%" stop-color="#3a42ae"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="120" height="120" rx="28" fill="url(#la)"/>
+
+  <!-- Open book. The spine sits low so the page lines above it have room to
+       climb — the mark is about levelling up, not about reading in general. -->
+  <g fill="#ffffff">
+    <path d="M60 92 C52 84 38 81 24 82 a3 3 0 0 1 -3 -3 V56 a3 3 0 0 1 3 -3
+             c14 -1 28 2 36 10 Z"/>
+    <path d="M60 92 c8 -8 22 -11 36 -10 a3 3 0 0 0 3 -3 V56 a3 3 0 0 0 -3 -3
+             c-14 -1 -28 2 -36 10 Z"/>
+  </g>
+
+  <!-- Page lines rising left to right: the five-phase climb from A1 to C1. -->
+  <g stroke="#5360de" stroke-width="4" stroke-linecap="round" opacity="0.55">
+    <path d="M30 70 H44"/>
+    <path d="M30 78 H40"/>
+  </g>
+  <g stroke="#f36353" stroke-width="4.5" stroke-linecap="round">
+    <path d="M70 72 H80"/>
+    <path d="M70 64 H86"/>
+  </g>
+
+  <!-- The marker sitting at the top of the climb. -->
+  <circle cx="92" cy="56" r="6" fill="#f36353"/>
+  <circle cx="92" cy="56" r="2.3" fill="#ffffff"/>
+
+  <!-- Ascending ticks above the book, echoing the same climb. -->
+  <g fill="#ffffff" opacity="0.4">
+    <rect x="34" y="40" width="5" height="8" rx="2.5"/>
+    <rect x="45" y="34" width="5" height="14" rx="2.5"/>
+    <rect x="56" y="28" width="5" height="20" rx="2.5"/>
+  </g>
+</svg>

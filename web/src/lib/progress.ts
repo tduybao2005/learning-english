@@ -27,9 +27,15 @@ async function getLessonsInGlobalOrder(): Promise<Lesson[]> {
  * a brand new user. Subsequent unlocks are expected to be written as explicit
  * UNLOCKED rows by the lesson-completion flow (Task 9), not computed here.
  */
-export async function getLessonStates(userId: string): Promise<Map<string, LessonState>> {
+export async function getLessonStates(
+  userId: string | null,
+): Promise<Map<string, LessonState>> {
   const lessons = await getLessonsInGlobalOrder();
-  const progressRows = await db.lessonProgress.findMany({ where: { userId } });
+  // Khách chưa đăng nhập không có bản ghi tiến độ nào; truy vấn với userId
+  // rỗng sẽ trả về toàn bộ bảng nên phải chặn ở đây.
+  const progressRows = userId
+    ? await db.lessonProgress.findMany({ where: { userId } })
+    : [];
   const statusByLessonId = new Map(progressRows.map((row) => [row.lessonId, row.status]));
 
   const states = new Map<string, LessonState>();

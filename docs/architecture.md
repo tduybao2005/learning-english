@@ -23,7 +23,6 @@ flowchart TD
     DB --> APP[Next.js 15 App Router<br/>server components + route handlers]
     APP --> L1[Learner in the browser]
 
-    A --> C2[AI agents<br/>entry: CLAUDE.md / AGENTS.md]
     B --> C2
     C2 --> G[grading-english-exercises skill<br/>→ score_report_*.md]
     A --> Q[Quarto → PDF]
@@ -208,6 +207,5 @@ the `node` environment (UI tests opt into jsdom per file with a
 | `scripts/` | stdlib-Python curriculum tooling (see docs/data-flow.md) |
 | `docs/design/` | design-system exports — read before any UI work |
 | `docs/plans/` | historical planning docs (frozen) |
-| `docs/superpowers/plans/` | executable implementation plans |
-| `.claude/skills/grading-english-exercises/` | grading skill (rubric + templates) |
+| `web/scripts/seed/` | the pipeline that loads Markdown into Postgres |
 | `_quarto.yml` | Quarto project: renders `**/*.md` to PDF |

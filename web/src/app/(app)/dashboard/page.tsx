@@ -95,7 +95,7 @@ export default async function DashboardPage() {
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <h2 className="mb-1 text-h1 font-extrabold tracking-tight">
-              {user.name ? `Chào ${user.name} 👋` : "Chào bạn 👋"}
+              Lộ trình của bạn
             </h2>
             {goalSubtitle ? (
               <p className="text-caption text-muted-foreground">{goalSubtitle}</p>

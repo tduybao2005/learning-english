@@ -23,7 +23,7 @@ Learner feedback about content goes into a `feedback.md` in the lesson dir.
 
 ## 3. Agent retrieval flow
 
-Agent reads `CLAUDE.md` (root) → for discovery reads `index/manifest.json`
+Discovery starts at `index/manifest.json`
 (one file lists every lesson/test, titles, topics, completeness) → jumps
 straight to the target file; frontmatter (`type`, `phase`, `topic`, `cefr`)
 identifies any file without reading its body.

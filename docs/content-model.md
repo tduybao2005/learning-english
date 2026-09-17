@@ -53,7 +53,8 @@ ends with an embedded answer key holding per-section answers.
 - MCQ keys: `16. B (is having)`.
 - Error correction: `34. "is know" → **knows** (explanation)`.
 - Open-ended sections may say `Gợi ý đáp án` (suggested answers, not exact keys).
-- Scoring rules live in `.claude/skills/grading-english-exercises/SKILL.md`.
+- Scoring rules live with the exercise itself, in the `## ĐÁP ÁN` answer-key
+  section each `exercise.md` carries.
 
 **Table shapes are NOT uniform.** Column count ranges 3–6 and the order
 varies, so `web/scripts/seed/parse-vocab.ts` reads each table's own header

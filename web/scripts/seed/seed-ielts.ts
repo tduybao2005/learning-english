@@ -64,7 +64,7 @@ interface BandTableRow {
 /**
  * Reads the raw→band table out of THIS test's own answer_key.md.
  *
- * Hard rule from CLAUDE.md: an IELTS test is scored with its own table, never a
+ * Hard rule: an IELTS test is scored with its own table, never a
  * percentage and never another test's table — so a missing table is a hard
  * failure, not a reason to fall back to a neighbour's.
  *

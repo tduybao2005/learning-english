@@ -15,10 +15,9 @@ export default async function LearnTopicPage({
   params: Promise<{ topic: string }>;
 }) {
   const user = await getSessionUser();
-  if (!user) redirect("/login");
 
   const { topic: slug } = await params;
-  const topic = await getLearnTopicDetail(slug, user.id);
+  const topic = await getLearnTopicDetail(slug, user?.id ?? null);
   if (topic === null) notFound();
 
   const percent = topic.total === 0 ? 0 : Math.round((topic.done / topic.total) * 100);

@@ -1,8 +1,0 @@
-- Tôi muốn build 1 web được với nội dung bài giảng hiện đang có 
-- Ban đầu phải có trang đăng nhập/đăng ký, và sẽ đăng nhập đăng ký thông qua gmail, sau khi người dùng đăng nhập vô gmail thì sẽ gửi 1 mã ID về gmail họ, họ sẽ nhập ID đó vô để hoàn tất đăng ký, ở những lần sau nếu họ có lỡ bấm đăng xuất thì chỉ cần đăng nhập lại với gmail của họ đã đăng ký trước đó là được, tài khoản sẽ được lưu lại thông tin cũng như tiến trình học (để những lần sau họ đăng nhập lại không bị reset phải học lại từ đầu mới mở khóa các lecture mới)
-- Và họ sẽ được chọn các cấp độ học hoặc lộ trình học, chẳng hạn IELTS các cấp độ (có thêm cái để tick chọn IELTS bao nhiêu chấm), hoặc là chọn theo cấp độ A1/A2/B1/B2/C1...., và sau đó họ sẽ được làm 1 bài kiểm tra để đánh giá mức độ 1 cách chính xác hơn
-- Và họ sẽ được làm 1 bài kiểm tra kỹ năng để đánh giá mức độ (1 đề reading, 1 đề writing,1 đề listening)
-- Có các lecture (bài giảng)
-- Sau khi hoàn thành mỗi lecture thì sẽ phải làm các exercise, các exercise phải làm đúng mới được chuyển qua câu tiếp theo nhé, đồng thời với câu đó nếu như người dùng chọn sai thì phải có giải thích lý do đi kèm để người dùng hiểu và chọn lại, sau khi người dùng hoàn thành xong exercise đó thì vẫn có thể quay lại để làm lại (và các giải thích lỗi sai lần làm trước đó sẽ biến mất, tuy nhiên nếu người dùng làm lại vẫn có lỗi sai đó hoặc lỗi sai khác thì vẫn sẽ có phần giải thích hiện lên. Nó giống như 1 con AI hoặc 1 tool hay 1 skill gì đó)
-- và ngoài ra phần vocabulary sẽ có các trò chơi hoặc 1 phần riêng chỉ để học từ vựng (giống như duolingo)
-- trước mắt chỉ cần nhiêu đây và hãy cook ra cho t 1 trang web với UI đẹp mắt và hệ thống tốt 

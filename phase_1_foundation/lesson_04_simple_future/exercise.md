@@ -220,12 +220,12 @@ lang: vi-en
 30. Shall I help you with your bags? / Would you like me to help you with your bags?
 
 ### Section D:
-31. "will going" → **will go** (I will go to the cinema... — no "-ing" after "will")
+31. "will going" → **will go** OR **am going to** (I will go to the cinema... — remove "will"; OR "I am going to the cinema tomorrow night" — remove "will", keep "going to" since this sounds like a pre-arranged plan)
 32. "going to to" → **going to** (She is going to study... — only one "to")
 33. "will collapse" → **is going to collapse** (visible evidence — it's already cracking)
-34. "goes to be" → **is going to be** (I think she is going to be...)
+34. "goes to be" → **is going to be** OR **will be** (I think she is going to be...; OR "I think she will be a great doctor one day" — "I think" pairs naturally with "will" for personal opinion/prediction)
 35. "comes" → **come** (Will he come... — base form after "will")
-36. "I am meeting... I just decided right now" → **I will meet / I'll meet** (spontaneous decision)
+36. "I am meeting... I just decided right now" → **I will meet** OR **I'll meet** (spontaneous decision)
 37. "becomes" → **become** (will definitely become — base form after "will")
 
 ### Section E (Sample Answers):
