@@ -82,7 +82,9 @@ function TopicCard({ topic }: { topic: LearnTopicDetail }) {
  */
 export default async function LearnHubPage() {
   const user = await getSessionUser();
-  const topics = await getLearnTopics(user?.id ?? null);
+  if (!user) redirect("/login");
+
+  const topics = await getLearnTopics(user.id);
   const totalLessons = topics.reduce((sum, t) => sum + t.total, 0);
   const doneLessons = topics.reduce((sum, t) => sum + t.done, 0);
   const percent = totalLessons === 0 ? 0 : Math.round((doneLessons / totalLessons) * 100);

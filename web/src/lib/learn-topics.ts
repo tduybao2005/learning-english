@@ -138,14 +138,14 @@ async function fetchLessonRows(): Promise<LessonRow[]> {
   }));
 }
 
-export async function getLearnTopics(userId: string | null): Promise<LearnTopicDetail[]> {
+export async function getLearnTopics(userId: string): Promise<LearnTopicDetail[]> {
   const [rows, states] = await Promise.all([fetchLessonRows(), getLessonStates(userId)]);
   return buildLearnTopics(rows, states);
 }
 
 export async function getLearnTopicDetail(
   slug: string,
-  userId: string | null,
+  userId: string,
 ): Promise<LearnTopicDetail | null> {
   const topics = await getLearnTopics(userId);
   return topics.find((t) => t.slug === slug) ?? null;

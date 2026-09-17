@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { db } from "@/lib/db";
+import { getSessionUser } from "@/lib/auth/session";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { InlineExample } from "@/components/InlineExample";
 import { splitLectureSegments } from "@/lib/lecture-examples";
@@ -16,6 +17,9 @@ export default async function LecturePage({
 }: {
   params: Promise<{ phase: string; lesson: string }>;
 }) {
+  const user = await getSessionUser();
+  if (!user) redirect("/login");
+
   const { phase: phaseSlug, lesson: lessonSlug } = await params;
 
   const lesson = await db.lesson.findFirst({
@@ -24,6 +28,8 @@ export default async function LecturePage({
   });
 
   if (!lesson) notFound();
+
+  // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
 
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
 

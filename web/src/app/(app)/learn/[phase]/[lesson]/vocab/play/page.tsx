@@ -25,6 +25,8 @@ export default async function VocabPlayPage({
 
   if (!lesson) notFound();
 
+  // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
+
   const words = await db.vocabWord.findMany({
     where: { lessonId: lesson.id },
     orderBy: { orderIndex: "asc" },

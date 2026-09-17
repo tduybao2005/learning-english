@@ -22,6 +22,8 @@ export default async function VocabHubPage({
 
   if (!lesson) notFound();
 
+  // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
+
   const [words, stats] = await Promise.all([
     db.vocabWord.findMany({
       where: { lessonId: lesson.id },

@@ -4,8 +4,8 @@ A bilingual (Vietnamese/English) IELTS self-study platform. The curriculum is
 written as Markdown files, seeded into Postgres, and served by a Next.js app
 that never writes back to it.
 
-**Live: [ielts.tdbao-brian.work](https://ielts.tdbao-brian.work)** — lessons are
-readable without an account.
+**Live: [ielts.tdbao-brian.work](https://ielts.tdbao-brian.work)** — sign in
+with Google to start.
 
 | | |
 |---|---|
@@ -57,7 +57,8 @@ Two things follow from this, and both are the point:
 - **Listening** from generated audio
 - **30 IELTS practice tests**, browsable in full
 
-Reading lessons needs no account. Signing in with Google saves progress.
+Signing in with Google is what creates the account that holds your progress,
+so the study pages sit behind it.
 
 ---
 

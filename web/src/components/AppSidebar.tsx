@@ -69,16 +69,6 @@ export function AppSidebar({
       </nav>
 
       <div className="border-t border-border p-3">
-        {/* Chưa đăng nhập thì thẻ hồ sơ rỗng trông như lỗi — đổi thành lối vào
-            đăng nhập, vì bài giảng đọc được mà không cần tài khoản. */}
-        {!name && !email ? (
-          <Link
-            href="/login"
-            className="press-tile flex items-center justify-center gap-2 rounded-xl border border-primary bg-primary/10 p-3 text-sm font-semibold text-primary transition-all hover:bg-primary/20"
-          >
-            Đăng nhập để lưu tiến độ
-          </Link>
-        ) : (
         <Link
           href="/settings"
           className="press-tile group flex items-center gap-3 rounded-xl border border-transparent bg-muted p-3 transition-all hover:border-primary hover:bg-secondary"
@@ -97,7 +87,6 @@ export function AppSidebar({
           </span>
           <Settings className="ml-auto size-4 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
         </Link>
-        )}
       </div>
     </aside>
   );

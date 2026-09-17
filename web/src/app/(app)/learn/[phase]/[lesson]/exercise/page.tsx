@@ -31,6 +31,8 @@ export default async function ExercisePage({
 
   if (!lesson) notFound();
 
+  // Guard: a locked lesson's URL is not viewable — bounce back to the dashboard.
+
   const base = `/learn/${phaseSlug}/${lessonSlug}`;
 
   if (!lesson.exercise) {
