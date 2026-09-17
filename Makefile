@@ -30,8 +30,11 @@ env:
 	@test -f .env || { \
 		cp .env.example .env; \
 		SECRET=$$(openssl rand -hex 32); \
-		sed -i.bak "s/^AUTH_SECRET=.*/AUTH_SECRET=$$SECRET/" .env && rm -f .env.bak; \
-		echo "Created .env with a generated AUTH_SECRET."; \
+		DBPASS=$$(openssl rand -hex 16); \
+		sed -i.bak "s/^AUTH_SECRET=.*/AUTH_SECRET=$$SECRET/" .env; \
+		sed -i.bak "s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=$$DBPASS/" .env; \
+		rm -f .env.bak; \
+		echo "Created .env with a generated AUTH_SECRET and POSTGRES_PASSWORD."; \
 	}
 
 build: env
